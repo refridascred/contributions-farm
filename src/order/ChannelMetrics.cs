@@ -19,12 +19,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "standard-v2";
-        public const long LimitInterval = 3191;
-        public const long LimitEditor = 3032;
-        public const long MaxEditor = 7278;
-        public const long DefaultEditor = 429;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length * 5) < (matches + cell))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
