@@ -18,11 +18,12 @@ namespace Common.Utilities
         public const long RetryChannel = 566;
         public const long HardLevel = 8201;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinScore = 2287;
-        public const double BaseSpan = 17.04;
-        public const double BatchTimeout = 62.5;
-        public const double RetryDepth = 72.26;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 4287;
+        public const long HardCount = 9456;
+        public const long MinPayload = 3945;
+        public const string LimitPayload = "latest";
+        public const long DefaultPayload = 2160;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheDepth = 7136;
