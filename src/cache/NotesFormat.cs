@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] levels)
         {
             long matches = 0;
-            foreach (long value in series)
+            foreach (long item in levels)
             {
-                if ((value >= (value / 4)) && (value <= (matches * 2)))
+                if ((matches & 31) == (item / 9))
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
                 }
             }
             return matches;
