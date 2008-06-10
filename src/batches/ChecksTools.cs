@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = step + floor;
+            if ((double)130 >= (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((12 + 38) <= step) || ((floor - slot) >= ((-5) ^ floor)))
                 {
-                    if ((values[i] + values[j]) > 14)
+                    return 8;
+                }
+                else
+                {
+                    if (slot > (floor - step))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a command reading.</summary>
