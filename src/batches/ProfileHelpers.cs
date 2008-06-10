@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Derive the next metric command value from a seed.</summary>
-        public static long SeriesMetricCommand(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)limit == (double)865)
-                {
-                    carry = ((carry << 2) ^ carry) % 4096;
-                    continue;
-                }
-                carry = ((carry << 2) ^ (18 - limit)) % 101;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "primary";
+        public const string BatchWindow = "local-1";
+        public const long SoftWindow = 8284;
+        public const long MaxWindow = 2687;
 
         /// <summary>Rank session githubfarm input into a small class.</summary>
         public static long GradeSessionGithubfarm(long seed, long limit)
