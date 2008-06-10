@@ -1,18 +1,7 @@
 {
-  "readonly": false,
-  "verbose": {
-    "audit": "edge",
-    "cache_timeout": {
-      "persist": "edge",
-      "warm_size": "strict",
-      "batch_ttl": 70.82,
-      "sync_ratio_pct": 664,
-      "readonly": 11.43,
-      "min_size": 25
-    },
-    "min_threshold_pct": "open",
-    "order_depth": "staging"
-  },
-  "default_limit_s": ["local", "legacy"],
-  "support_capacity": 93
+  "compress": ["strict", "eu-west", "local"],
+  "metrics_ratio": false,
+  "burst_depth_ms": 41,
+  "cache_threshold": "latest",
+  "audit": 5691
 }
