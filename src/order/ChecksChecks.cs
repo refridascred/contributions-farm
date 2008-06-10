@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer contributi readings against a rule.</summary>
-        public static long AuditBufferContributiMatches(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((cell + cell) < seen) && ((8 - origin) == (seen * 3)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "primary-edge";
+        public const double RetrySize = 43.1;
+        public const long StepContributi = 9804;
+        public const long IdleBudget = 6117;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
