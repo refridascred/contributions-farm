@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 6237;
-        public const double LimitSchema = 54.5;
-        public const double BaseSchema = 83.34;
-        public const long StepSchema = 9905;
-        public const double RetryBudget = 26.53;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheScore = 77.45;
+        public const double CacheBuffer = 59.68;
+        public const long MinTimeout = 5050;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long StepRecord(long seed)
