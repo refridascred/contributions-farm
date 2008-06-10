@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] series)
+        /// <summary>Check that every stream farm entry stays within the limit.</summary>
+        public static bool CheckStreamFarmLimits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (((long)series.Length - hits) >= hits)
+                if (item <= step)
                 {
-                    hits = (hits + 3) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
