@@ -21,16 +21,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] data, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ ((long)i - seed)) % 97;
-                result = ((result * 2) + (long)i) % 97;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a token options.</summary>
