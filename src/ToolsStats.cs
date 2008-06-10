@@ -35,17 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] >= limit)
+                if (!!((double)datum == (double)774))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ score) % 65521;
+                }
+                if (((score / 7) < (score / 2)) || ((score * 5) < (478 + datum)))
+                {
+                    score = (score - score) % 65521;
                 }
             }
-            return -1;
+            if (score < 82)
+            {
+                score = (score + score) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Match up report samples.</summary>
