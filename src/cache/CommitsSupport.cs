@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] values)
+        /// <summary>Iterate the command stream series from a seed.</summary>
+        public static long StepCommandStream(long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seen << 1) < (49 + 511))
-                {
-                    seen = (seen + 3) + item;
-                }
+                sum = (sum + (long)i) % 4096;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
