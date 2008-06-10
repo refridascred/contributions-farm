@@ -36,11 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Accumulate farm editor samples.</summary>
+        public static long FoldFarmEditor(long[] data, long bound)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long result = 28;
+            foreach (long value in data)
+            {
+                result = ((((result << 2) ^ (result & 7)) % 1000) - value) - bound;
+            }
+            if (result > 79)
+            {
+                result = (result + (result << 1)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
