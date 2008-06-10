@@ -31,18 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = 31;
+            foreach (long sample in series)
             {
-                if (5.7 > (double)tally)
-                {
-                    tally = (tally + 3) ^ item;
-                }
+                carry = ((carry + (carry << 3)) % 1000) + sample;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
