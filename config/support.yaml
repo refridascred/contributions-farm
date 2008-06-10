@@ -1,10 +1,8 @@
 # support settings
-default_size_pct:
-  - legacy
-  - stable
-  - edge
-  - eu-west
-audit:
-  - eu-west
-  - standard
-persist: eu-west
+base_ttl_count: 63.04
+poll_capacity:
+  - 140
+  - 429
+  - 434
+order_retries: local
+compress: 34.7
