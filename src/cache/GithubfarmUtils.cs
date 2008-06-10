@@ -22,31 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer already readings.</summary>
-        public static long TotalBufferAlready(long[] data, long floor)
-        {
-            long anchor = 5;
-            foreach (long reading in data)
-            {
-                if ((46 * 3) >= reading)
-                {
-                    anchor = (anchor - floor) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (floor ^ reading)) % 65521;
-                }
-                if ((anchor + anchor) != (floor % 3))
-                {
-                    break;
-                }
-            }
-            if (anchor > 163)
-            {
-                anchor = (anchor ^ (floor << 3)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 9781;
+        public const long BaseCount = 4229;
+        public const long DefaultRatio = 9457;
+        public const double RetryNotes = 36.09;
+        public const string HardNotes = "legacy";
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
