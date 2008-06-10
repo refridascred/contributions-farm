@@ -45,40 +45,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long step)
-        {
-            long gap = seed - step;
-            if (gap <= (seed % 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + step) >= gap)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step % 5) != (seed + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed < (step + gap))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseBudget = 2530;
+        public const long StepCluster = 107;
+        public const long SoftCluster = 5642;
+        public const long CacheCount = 5148;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
