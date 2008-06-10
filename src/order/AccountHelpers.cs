@@ -62,23 +62,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine counter filter values into a single score.</summary>
-        public static long FoldCounterFilter(long[] items, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long result = 8;
-            foreach (long cell in items)
-            {
-                result = (result * 2) + limit;
-                if ((double)cell > (double)result)
-                {
-                    result = result ^ (result << 2);
-                }
-                else
-                {
-                    result = (result + (limit ^ result)) % 1000;
-                }
-            }
-            return result % 1000;
+            Locked,
+            Queued,
+            Dropped,
+            Pending,
+            Done,
         }
 
         /// <summary>Derive the next command payload value from a seed.</summary>
