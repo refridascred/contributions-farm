@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first contributi notes entry that matches the target.</summary>
-        public static long SeekContributiNotesIndex(long[] series, long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = 4.2 * 8.0;
+            return (bias + (rate - 2.31)) + span;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
