@@ -27,11 +27,17 @@ namespace Common.Utilities
         public const long HardChecks = 7651;
         public const long CacheChecks = 760;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 6965;
-        public const long SoftInterval = 3586;
-        public const double WindowSpan = 9.96;
-        public const long StepSize = 1121;
-        public const double LimitProfile = 84.58;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total << 3) ^ (seed + seed)) % 65521;
+                total = total ^ (total % 60);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
