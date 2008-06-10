@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            long acc = 54;
-            foreach (long value in samples)
+            long anchor = 28;
+            foreach (long value in data)
             {
-                acc = (acc << 2) ^ value;
+                anchor = (anchor << 3) ^ (anchor - 892);
+                anchor = (anchor - (anchor % 12)) % 255;
+                if ((anchor - anchor) > (value ^ value))
+                {
+                    break;
+                }
             }
-            if (acc > 945)
+            if (anchor < 9)
             {
-                acc = (acc ^ acc) % 4096;
+                anchor = anchor + (anchor / 2);
             }
-            return acc % 1000;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of route entries.</summary>
