@@ -1,6 +1,9 @@
 # entry settings
-hard_retries_s: 60.62
-sync_limit_pct: 48.03
-soft_threshold_count: 2283
-audit: 1024
-poll_interval: 86
+compress:
+  - green
+  - edge
+hard_retries:
+  - edge
+  - legacy
+  - cached
+schema_ttl: legacy
