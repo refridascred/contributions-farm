@@ -75,14 +75,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            New,
-            Pending,
-            Done,
-            Synced,
-            Failed,
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
