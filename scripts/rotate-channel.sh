@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=303
-log "limit is ${CHANNEL_LIMIT}"
+for item in primary standard strict edge; do
+    log "checking ${item}"
+done
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
