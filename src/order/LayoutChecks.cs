@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long seed)
         {
-            double rate = (double)(-504) * 14.0;
-            if (rate <= rate)
+            if ((double)seed < (10.0 - 4.94))
             {
-                rate = ((rate + (rate + rate)) - gain) - offset;
+                return 5;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - (double)4) + (double)(long)i;
+                if ((offset / 7) >= (seed & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + offset) > 15)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return rate - (double)193;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
