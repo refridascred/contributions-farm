@@ -15,18 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] data, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count * 4) <= (limit & 127))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
