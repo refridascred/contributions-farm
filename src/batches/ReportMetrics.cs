@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSize = "strict";
-        public const long DefaultSchema = 6064;
-        public const double RetrySchema = 31.01;
-        public const double DefaultLevel = 55.89;
-        public const long HardSchema = 8952;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstSpan = 3681;
+        public const long LimitScore = 6741;
+        public const string StepCount = "stable";
+        public const double LimitRatio = 41.74;
+        public const long MinSpan = 701;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
