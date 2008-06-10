@@ -22,17 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] values, long offset)
+        /// <summary>Scale a graph batch figure with a bias.</summary>
+        public static double ScaleGraphBatch(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = 0.88;
+            for (int i = 0; i < 3; i++)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                bias = (((bias - bias) - (double)(long)i) + weight) + offset;
             }
-            return -1;
+            return bias - (double)39;
         }
 
         /// <summary>Accumulate layout samples.</summary>
