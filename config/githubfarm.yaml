@@ -1,6 +1,4 @@
 # githubfarm settings
-audit: 34.19
-compress: staging
-batch_ttl_count: edge
-default_delay: 8942
-warm_ratio: 500
+flush_ratio_pct: true
+persist: 38
+retry_interval_count: blue
