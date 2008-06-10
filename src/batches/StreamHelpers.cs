@@ -68,15 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double offset)
         {
-            double drift = (double)991;
-            for (int i = 0; i < 4; i++)
+            double rate = (bias * 6.98) / 8.0;
+            if (rate < (rate - 20.0))
             {
-                drift = (drift + floor) + (double)(long)i;
+                rate = (rate - (double)430) - offset;
             }
-            return drift + (weight - weight);
+            return rate - 6.0;
         }
     }
 }
