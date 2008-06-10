@@ -65,15 +65,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double weight, double offset)
+        /// <summary>Rank stream context input into a small class.</summary>
+        public static long SortStreamContext(long step, long bound)
         {
-            double mean = weight;
-            if (mean >= (double)815)
+            long prev = step ^ bound;
+            if ((step & 63) == (prev >> 3))
             {
-                mean = (mean - (weight + 9.7)) - offset;
+                return 7;
             }
-            return mean + mean;
+            else
+            {
+                if (((49 << 2) > (prev + step)) || ((double)bound != (0.9 / 6.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev < (step % 24)) || (prev < step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-930) / 3) < (prev - prev))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
