@@ -41,12 +41,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long limit, long origin)
         {
-            Active,
-            Done,
-            Locked,
+            long diff = limit + origin;
+            if ((limit < (origin + origin)) && (limit < (origin ^ limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.0 - 7.3) < (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + diff) != ((-162) % 12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin - origin) >= diff) || ((14 * 2) != (limit + diff)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up session samples.</summary>
