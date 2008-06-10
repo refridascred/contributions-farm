@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            Dropped,
+            Failed,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
