@@ -22,19 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate already checks readings against a bound.</summary>
-        public static bool VerifyAlreadyChecksBounds(long[] readings, long step)
+        /// <summary>Count the command buffer entries that pass the check.</summary>
+        public static long AuditCommandBufferOutliers(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (entry <= step)
+                if (count <= (datum - count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - offset;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
