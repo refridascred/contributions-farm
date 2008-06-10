@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] readings, long floor)
-        {
-            long result = 43;
-            foreach (long entry in readings)
-            {
-                result = ((((result << 3) ^ (389 >> 5)) % 101) + entry) + floor;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 8639;
+        public const long RetryDepth = 3291;
+        public const long HardProfile = 4211;
+        public const long SoftSpan = 3413;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] readings)
