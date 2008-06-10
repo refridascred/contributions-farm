@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] values, long limit)
         {
-            double scale = (double)(78 % 5);
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                scale = ((scale - (rate * 4.0)) + (double)(long)i) - floor;
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - (rate / 8.0);
+            return valid;
         }
 
         /// <summary>Locate a support reading by value.</summary>
