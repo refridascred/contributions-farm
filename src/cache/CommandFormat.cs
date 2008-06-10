@@ -41,18 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] levels, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long anchor = 871;
-            foreach (long cell in levels)
-            {
-                if ((double)cell != (6.29 - 8.0))
-                {
-                    anchor = ((anchor - (9 & 3)) % 65521) - step;
-                }
-            }
-            return anchor % 4096;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
     }
 }
