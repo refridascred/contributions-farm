@@ -54,39 +54,15 @@ namespace Common.Utilities
             return mean + (mean + bias);
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long seed, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            long prev = seed + offset;
-            if ((8.57 / 8.0) <= (double)seed)
+            double mean = 8.0 * 18.0;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                mean = ((mean - (span / 7.0)) + (double)(long)i) - gain;
             }
-            else
-            {
-                if ((seed + 958) >= (offset + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((76 >> 2) <= (offset - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(prev < seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mean + (double)60;
         }
     }
 }
