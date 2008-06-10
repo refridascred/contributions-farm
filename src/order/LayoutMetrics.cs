@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 3270;
-        public const long MinPayload = 4085;
-        public const double DefaultBudget = 0.34;
-        public const long MinTimeout = 9185;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Closed,
+            Dropped,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BatchFactor = 35.85;
