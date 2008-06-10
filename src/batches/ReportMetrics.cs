@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinTimeout = 84.96;
-        public const double BurstBuffer = 18.35;
-        public const long BaseSpan = 6165;
-        public const long StepDepth = 4753;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!((item - count) == (count & 255)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine stats graph values into a single score.</summary>
         public static long ScoreStatsGraph(long[] readings)
