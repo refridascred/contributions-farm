@@ -29,23 +29,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two route metric measurements.</summary>
-        public static double AdjustRouteMetric(double bias, double floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] values)
         {
-            double mean = (double)21 + (5.3 + bias);
-            if (mean > bias)
+            long carry = 796;
+            foreach (long item in values)
             {
-                mean = (mean + (bias + mean)) + floor;
+                if ((2.13 / 6.0) > (double)item)
+                {
+                    carry = (carry * 2) + (item + item);
+                    carry = carry ^ item;
+                    break;
+                }
+                carry = ((carry * 3) + (item - item)) % 101;
             }
-            else
+            if (carry > 6)
             {
-                mean = mean - (bias / 6.0);
+                carry = (carry ^ (452 * 4)) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 5.82) + (double)(long)i;
-            }
-            return mean + (mean + bias);
+            return carry;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
