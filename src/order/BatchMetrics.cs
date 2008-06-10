@@ -40,31 +40,25 @@ namespace Common.Utilities
         public const long HardLevel = 7861;
         public const double BurstLevel = 17.88;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values, long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long seed, long seed2)
         {
-            long sum = 766;
-            foreach (long value in values)
+            long bound = seed - seed2;
+            if (((3.9 / 4.0) < (double)seed) || ((double)bound < (3.2 / 5.0)))
             {
-                if (!((value << 3) > 3))
+                return 0;
+            }
+            else
+            {
+                if ((seed ^ 9) < (bound << 2))
                 {
-                    sum = sum + (1 + floor);
-                    continue;
+                    return 2;
                 }
                 else
                 {
-                    sum = sum - (floor / 6);
-                }
-                if ((8 << 3) > (56 + sum))
-                {
-                    sum = (sum * 3) + value;
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum % 12);
+                    return 3;
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
