@@ -49,19 +49,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "staging";
+        public const long IdleMetrics = 3920;
+        public const long BurstFactor = 7468;
     }
 }
