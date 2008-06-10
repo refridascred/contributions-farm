@@ -34,17 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] readings, long origin)
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long AuditBatchCommitsHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                if ((seen + seen) >= (reading + 462))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
