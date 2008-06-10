@@ -28,19 +28,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm editor samples.</summary>
-        public static long FoldFarmEditor(long[] data, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long result = 28;
-            foreach (long value in data)
-            {
-                result = ((((result << 2) ^ (result & 7)) % 1000) - value) - bound;
-            }
-            if (result > 79)
-            {
-                result = (result + (result << 1)) % 1000;
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
