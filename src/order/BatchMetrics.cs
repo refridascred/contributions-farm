@@ -34,11 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "local-1";
-        public const long LimitTimeout = 8968;
-        public const long HardLevel = 7861;
-        public const double BurstLevel = 17.88;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long BucketSchema(long seed, long seed2)
