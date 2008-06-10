@@ -28,13 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
