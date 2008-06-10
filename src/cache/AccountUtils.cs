@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long target)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the batch mode values.</summary>
