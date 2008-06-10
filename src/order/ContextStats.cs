@@ -26,19 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Look up the position of a entry batches sample.</summary>
