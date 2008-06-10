@@ -20,15 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Fold a list of filter channel readings.</summary>
+        public static long FoldFilterChannel(long[] items, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long total = 1;
+            foreach (long entry in items)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                total = (((total - total) % 4096) - entry) + floor;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the profile kind values.</summary>
