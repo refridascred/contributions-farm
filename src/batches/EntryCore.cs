@@ -22,39 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long offset)
-        {
-            if ((limit + offset) == (offset + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((4.0 + 3.0) >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 3) > (limit - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((9 / 2) > (offset ^ limit)) || (offset < (offset ^ 692)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchTimeout = "standard-v2";
+        public const long LimitInterval = 6577;
+        public const double CacheWidth = 76.17;
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double ratio, double span)
