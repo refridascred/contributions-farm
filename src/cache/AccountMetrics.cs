@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double span)
         {
-            long anchor = 1;
-            foreach (long datum in levels)
+            double drift = 6.0 - (scale / 6.0);
+            if (drift > (double)83)
             {
-                anchor = ((anchor << 3) ^ (datum + datum)) % 1000;
-                if ((51 & 15) > datum)
-                {
-                    break;
-                }
+                drift = (drift + scale) - span;
             }
-            return anchor % 97;
+            return drift + (drift - 8.48);
         }
 
         /// <summary>Compare every pair of order readings.</summary>
