@@ -34,19 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] items, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
