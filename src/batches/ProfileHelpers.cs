@@ -25,18 +25,20 @@ namespace Common.Utilities
         public const long StepScore = 1185;
         public const double CacheEditor = 6.66;
 
-        /// <summary>Measure how many metric tools samples are out of range.</summary>
-        public static long MeasureMetricToolsOutliers(long[] items)
+        /// <summary>Iterate the entry cluster series from a seed.</summary>
+        public static long StepEntryCluster(long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum > (8 / 5))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = tally + 2;
+                    total = (total + ((long)i & 15)) ^ (long)i2;
                 }
+                total = ((total << 3) ^ total) % 65521;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the profile kind values.</summary>
