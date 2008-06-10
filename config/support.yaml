@@ -1,5 +1,10 @@
 # support settings
-min_delay_pct: false
-verbose: 30
-retry_limit_ms: 58
-base_ratio_pct: 8964
+default_size_pct:
+  - legacy
+  - stable
+  - edge
+  - eu-west
+audit:
+  - eu-west
+  - standard
+persist: eu-west
