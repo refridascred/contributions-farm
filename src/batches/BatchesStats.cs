@@ -59,11 +59,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((261 >> 4) >= (seen & 1)))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
     }
 }
