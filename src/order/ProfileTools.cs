@@ -41,31 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long bound, long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            if ((302 + bound) == (floor << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)86 <= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (bound << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
