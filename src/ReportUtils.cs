@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Idle,
-            Done,
-            Active,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 5046;
+        public const long SoftRatio = 8148;
+        public const string IdleMetrics = "staging-edge";
+        public const long BaseMetrics = 4788;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
