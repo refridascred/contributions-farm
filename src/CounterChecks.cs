@@ -43,18 +43,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] levels, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((16.0 * 14.0) > (double)(long)levels.Length)
-                {
-                    matches = ((matches + 2) ^ value) + limit;
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
