@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 1896;
+        public const string BatchContext = "open";
+        public const long CacheContext = 3906;
+        public const long DefaultContext = 4895;
+        public const double RetryContext = 57.96;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long floor, long limit)
