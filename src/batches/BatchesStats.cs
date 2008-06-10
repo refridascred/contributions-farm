@@ -15,17 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a entry contributi sample.</summary>
-        public static long SeekEntryContributiIndex(long[] levels, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
+                if (!((17.0 * 14.0) >= (double)item))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
