@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] items, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long target, long target2)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long prev = target - target2;
+            if (target2 > (prev % 8))
             {
-                if (((datum ^ datum) < datum) && !((step - matches) <= matches))
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= (15.0 / 3.0))
                 {
-                    matches = matches + 2;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
