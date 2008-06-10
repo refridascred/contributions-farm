@@ -23,13 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] items)
         {
-            Idle,
-            Ready,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!(((matches - cell) >= (546 % 60)) && ((cell >> 4) <= cell)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank support input into a small class.</summary>
