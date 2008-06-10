@@ -1,5 +1,6 @@
 # githubfarm settings
-audit: fallback
-enabled: cached
-order_size: 39.51
-batch_delay: 7.26
+retry_interval: false
+flush_capacity_ms: 5462
+base_retries_pct: false
+verbose: fallback
+soft_window_count: fallback
