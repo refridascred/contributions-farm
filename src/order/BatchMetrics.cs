@@ -54,26 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] samples, long floor)
         {
-            long carry = 659;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((double)carry == (17.0 + 7.3))
+                if (datum >= floor)
                 {
-                    carry = (carry * 2) + (carry + reading);
-                }
-                else
-                {
-                    carry = carry ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 612)
-            {
-                carry = (carry + (78 + 988)) % 97;
-            }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Blend two format window measurements.</summary>
