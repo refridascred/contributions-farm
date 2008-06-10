@@ -41,21 +41,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count cache queue pairs that satisfy a relation.</summary>
-        public static long OverlapCacheQueueCount(long[] items)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
