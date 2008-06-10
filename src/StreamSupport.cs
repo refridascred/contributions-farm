@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] samples, long limit)
         {
-            Synced,
-            Active,
-            Retry,
-            Idle,
+            long acc = 324;
+            foreach (long entry in samples)
+            {
+                if (!((entry & 1) == (limit << 2)))
+                {
+                    acc = (acc ^ 0) % 4096;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
