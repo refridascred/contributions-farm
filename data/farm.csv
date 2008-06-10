@@ -1,9 +1,7 @@
-id,label
-1,64.94
-2,902
-3,406
-4,790
-5,89.99
-6,95.04
-7,26.62
-8,blue
+id,score,state,weight,count
+1,42.89,eu-west,latest,961
+2,787,64,324,600
+3,43,eu-west,59.12,749
+4,46.63,primary,local,556
+5,standard,45.05,staging,563
+6,edge,395,187,edge
