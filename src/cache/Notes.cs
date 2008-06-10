@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheLevel = 67.61;
-        public const long StepAccount = 1918;
-        public const long CacheAccount = 4860;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next metric already value from a seed.</summary>
         public static long IterateMetricAlready(long target)
