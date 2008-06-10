@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)count != (double)16)
+                {
+                    count = ((count + 1) + entry) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
