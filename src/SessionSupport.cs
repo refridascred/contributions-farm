@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Active,
-            Dropped,
-            Retry,
-            Synced,
-            Paused,
+            public double Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up schema metrics samples.</summary>
