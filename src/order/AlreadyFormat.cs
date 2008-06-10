@@ -37,12 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] values, long seed)
         {
-            Retry,
-            Draft,
-            Closed,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate window samples.</summary>
