@@ -58,15 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double ratio, double span)
-        {
-            double mean = ratio;
-            if (mean >= (mean / 5.0))
-            {
-                mean = mean + 1.6;
-            }
-            return mean + span;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 4727;
+        public const string BurstBatches = "stable-1";
+        public const long StepTimeout = 2214;
+        public const long WindowBatches = 7769;
+        public const long BatchTimeout = 3312;
     }
 }
