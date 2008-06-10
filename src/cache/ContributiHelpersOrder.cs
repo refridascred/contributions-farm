@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long BatchChecks = 1319;
         public const long MaxChecks = 7249;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] values, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((matches % 2) < (matches ^ origin)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) ^ reading;
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
