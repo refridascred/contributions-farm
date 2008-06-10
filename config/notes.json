@@ -1,12 +1,7 @@
 {
-  "base_window": {
-    "cache_threshold": 66.54,
-    "compress": 32.65,
-    "cache_window": "edge",
-    "min_interval": false,
-    "batch_depth_s": "legacy",
-    "enabled": "blue"
-  },
-  "max_delay_pct": 25.97,
-  "window_limit": 5114
+  "max_capacity_s": 12.52,
+  "retry_interval_ms": "standard",
+  "githubfarm_timeout": [28, 8, 383, 280],
+  "retry_threshold_ms": false,
+  "default_size_s": false
 }
