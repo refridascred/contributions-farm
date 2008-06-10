@@ -51,15 +51,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next account token value.</summary>
-        public static double ScaleAccountToken(double bias, double bias2)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double load = bias / 9.0;
-            if (load >= 10.0)
-            {
-                load = load - bias2;
-            }
-            return load + (double)3;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
