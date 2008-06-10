@@ -29,12 +29,9 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "cached-edge";
+        public const long HardRatio = 7862;
+        public const long StepDepth = 1567;
     }
 }
