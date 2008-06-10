@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length - item) > (matches ^ item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinDepth = 9781;
+        public const long HardReport = 5777;
+        public const long BurstReport = 5022;
+        public const long CacheReport = 3876;
 
         /// <summary>Accumulate batches checks samples.</summary>
         public static long ScoreBatchesChecks(long[] series)
