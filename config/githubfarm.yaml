@@ -1,5 +1,8 @@
 # githubfarm settings
-already_size: green
-batch_threshold_ms: 250
-audit: primary
-batches_depth: 87
+hard_interval_ms: latest
+min_retries:
+  - 406
+  - 201
+  - 207
+flush_interval: 65.21
+warm_ttl_ms: blue
