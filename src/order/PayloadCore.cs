@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many editor notes samples are out of range.</summary>
-        public static long CountEditorNotesHits(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count % 2) >= (reading >> 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultDepth = 9151;
+        public const long BurstRecord = 9706;
+        public const long BaseDepth = 1969;
+        public const long BatchCount = 1155;
+        public const long BatchLevel = 931;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
