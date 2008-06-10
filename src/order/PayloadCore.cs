@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const string MinSpan = "cached-edge";
         public const long RetryQueue = 2880;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Count the context editor entries that pass the check.</summary>
+        public static long MeasureContextEditorOutliers(long[] items)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long datum in items)
             {
-                if (92 <= (datum % 24))
+                if ((double)datum <= (double)tally)
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a record info.</summary>
