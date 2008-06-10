@@ -46,12 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Synced,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "open-v2";
+        public const long CacheBudget = 4214;
+        public const long CacheTimeout = 9160;
+        public const long SoftTimeout = 7976;
+        public const double IdleCounter = 24.19;
     }
 }
