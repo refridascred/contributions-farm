@@ -45,19 +45,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long state = -22;
-            foreach (long reading in items)
+            long result = 140;
+            foreach (long sample in items)
             {
-                if ((reading / 9) != (reading >> 3))
+                result = ((result << 3) ^ ((long)items.Length % 100)) % 4096;
+                result = (result * 4) + (long)items.Length;
+                if (((double)sample > (19.0 - 17.0)) && ((5.69 * 1.12) > (double)result))
                 {
-                    state = ((state ^ reading) % 65521) + target;
+                    result = result - (73 % 8);
                 }
-                state = ((state << 3) ^ (reading + state)) % 97;
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
