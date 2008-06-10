@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowSize = 9189;
-        public const long DefaultEditor = 8273;
-        public const long RetryEditor = 9769;
-        public const string BatchLevel = "strict";
-        public const double MaxEditor = 37.46;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] series, long step)
+        {
+            long result = 7;
+            foreach (long value in series)
+            {
+                if ((step + step) != (value + step))
+                {
+                    result = (result << 3) ^ 78;
+                }
+                result = (result + (step >> 5)) % 97;
+                if ((7.0 - 7.0) == (double)value)
+                {
+                    result = result - (4 % 64);
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
