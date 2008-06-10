@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] series)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (count <= (sample % 97))
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor << 2) ^ anchor) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
