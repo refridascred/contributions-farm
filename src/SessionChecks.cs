@@ -44,17 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] values, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) != 0))
+                if (reading >= (tally ^ reading))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
