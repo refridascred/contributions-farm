@@ -30,19 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mix = 37;
-            foreach (long sample in values)
-            {
-                mix = ((mix << 2) ^ (mix & 3)) + sample;
-            }
-            if (mix < 968)
-            {
-                mix = (mix + (95 - 54)) % 255;
-            }
-            return mix;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
