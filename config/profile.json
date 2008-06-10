@@ -1,7 +1,6 @@
 {
-  "compress": false,
-  "strict": 34.46,
-  "retry_size_ms": [444, 79],
-  "profile_timeout": "edge",
-  "sync_ttl_pct": 61
+  "dry_run": [362, 183],
+  "token_depth": 250,
+  "default_interval_pct": true,
+  "max_capacity": "blue"
 }
