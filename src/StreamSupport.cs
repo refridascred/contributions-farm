@@ -39,12 +39,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            Failed,
-            Done,
-            Idle,
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (((state * 2) + (floor << 3)) % 101) ^ (long)i2;
+                    state = state - (0 ^ floor);
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
