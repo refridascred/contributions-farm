@@ -21,21 +21,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
