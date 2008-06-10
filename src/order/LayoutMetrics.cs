@@ -29,15 +29,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate batches checks samples.</summary>
-        public static long ScoreBatchesChecks(long[] series)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long result = 78;
-            foreach (long item in series)
-            {
-                result = result - item;
-            }
-            return result;
+            Locked,
+            Ready,
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
