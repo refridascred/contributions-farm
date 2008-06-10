@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] values, long limit)
         {
-            Closed,
-            Locked,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value ^ 628) < (95 + value))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
