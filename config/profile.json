@@ -1,6 +1,14 @@
 {
-  "sync_ratio_s": "local",
-  "soft_capacity": 30,
-  "githubfarm_delay": "eu-west",
-  "burst_capacity_ms": true
+  "soft_ttl_pct": [93, 92, 421],
+  "dry_run": {
+    "warm_window_pct": false,
+    "context_capacity": {
+      "cache_delay": [215, 87, 324],
+      "readonly": 77.97,
+      "flush_depth_pct": ["green", "local", "stable", "eu-west"]
+    },
+    "enabled": "green",
+    "flush_ratio_pct": "stable"
+  },
+  "sync_window": "primary"
 }
