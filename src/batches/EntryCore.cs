@@ -30,21 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the commits state values.</summary>
