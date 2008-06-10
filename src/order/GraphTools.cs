@@ -23,19 +23,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (22 > (seen - 520))
-                {
-                    seen = ((seen + 2) + entry) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleTimeout = "open-v2";
+        public const long CacheFilter = 7138;
+        public const long WindowFilter = 3950;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long CombineMetrics(long[] data, long seed)
