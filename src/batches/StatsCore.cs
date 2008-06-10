@@ -27,11 +27,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
