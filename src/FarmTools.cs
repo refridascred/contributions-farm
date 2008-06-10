@@ -35,15 +35,9 @@ namespace Common.Utilities
             return weight - (double)8;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels)
-        {
-            long acc = 227;
-            foreach (long reading in levels)
-            {
-                acc = ((acc * 5) + (reading - 127)) % 255;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 4875;
+        public const long MaxCount = 8242;
+        public const long HardBuffer = 315;
     }
 }
