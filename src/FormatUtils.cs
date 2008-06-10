@@ -65,14 +65,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long target)
         {
-            Failed,
-            Ready,
-            Paused,
-            Synced,
-            Retry,
+            if ((bound < ((-415) + target)) || ((6.6 - 5.0) < (double)target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) > bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 1) >= (target % 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((45 + bound) == (bound + bound)) || (((-95) + bound) <= (target / 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
