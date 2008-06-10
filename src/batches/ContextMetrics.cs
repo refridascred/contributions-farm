@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "primary";
-        public const long BatchStream = 4958;
-        public const long WindowStream = 3653;
-        public const double StepStream = 72.67;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Idle,
+            Ready,
+            Retry,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Count session metrics pairs that satisfy a relation.</summary>
         public static long CompareSessionMetricsCount(long[] levels)
