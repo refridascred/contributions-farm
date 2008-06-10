@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of account checks readings.</summary>
-        public static long WeighAccountChecks(long[] data, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long mark = 8;
-            foreach (long datum in data)
+            long carry = -961;
+            foreach (long item in series)
             {
-                mark = (((mark * 2) + (3 + mark)) - datum) + limit;
+                if ((9.0 - 3.0) != (double)carry)
+                {
+                    carry = ((carry * 2) + (item - 31)) % 4096;
+                }
+                carry = (carry << 2) ^ carry;
+                carry = ((carry << 3) ^ (carry + item)) % 4096;
             }
-            return mark;
+            if (carry > 5)
+            {
+                carry = (carry ^ (carry >> 1)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
