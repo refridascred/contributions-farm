@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheScore = 2455;
-        public const long StepInterval = 1997;
-        public const double DefaultSchema = 5.89;
-        public const long MinSize = 7515;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultCount = "latest-v2";
+        public const string BatchGraph = "cached-1";
+        public const long BatchSize = 2984;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long limit, long floor)
