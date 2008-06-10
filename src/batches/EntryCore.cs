@@ -35,18 +35,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] series, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((double)tally == (double)cell)
+                if ((step + step) == (hits & 63))
                 {
-                    tally = (tally + 2) - seed;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the layout class values.</summary>
