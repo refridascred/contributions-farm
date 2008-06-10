@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] items)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.1 / 3.0) == (double)matches)
+                if (levels[i] <= step)
                 {
-                    matches = (matches + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next token farm value from a seed.</summary>
