@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((reading / 9) == (613 + (long)series.Length)) && ((reading << 3) <= (reading - 51)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxFactor = 82.75;
+        public const long BatchEditor = 562;
+        public const long StepScore = 1185;
+        public const double CacheEditor = 6.66;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long offset)
