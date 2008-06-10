@@ -66,18 +66,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long floor, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if ((seed + floor) > (876 / 5))
             {
-                if (((2.67 / 7.0) >= (double)count) || ((double)count < (double)datum))
+                return 5;
+            }
+            else
+            {
+                if ((seed / 7) >= floor)
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (floor > (floor ^ seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
