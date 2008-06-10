@@ -71,11 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 9677;
-        public const long BatchFormat = 6070;
-        public const double LimitSpan = 65.76;
-        public const double SoftFormat = 89.92;
-        public const long StepScore = 418;
+        /// <summary>Measure how many metric metrics samples are out of range.</summary>
+        public static long MeasureMetricMetricsMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits < (reading ^ 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
