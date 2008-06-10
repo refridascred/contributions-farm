@@ -1,5 +1,5 @@
 {
-  "default_interval_s": 19,
-  "notes_size": "staging",
-  "window_capacity": true
+  "batch_threshold": "latest",
+  "min_threshold": "green",
+  "compress": 40.48
 }
