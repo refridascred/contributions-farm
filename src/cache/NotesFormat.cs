@@ -14,17 +14,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a schema order reading by value.</summary>
-        public static long LookupSchemaOrderIndex(long[] values, long seed)
+        /// <summary>Match up already filter samples.</summary>
+        public static long OverlapAlreadyFilterCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a buffer cluster pair into a bucket.</summary>
