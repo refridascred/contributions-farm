@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Rank context graph input into a small class.</summary>
