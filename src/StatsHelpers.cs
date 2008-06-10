@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double weight, double span)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] readings, long seed)
         {
-            double gain = (double)(14 * 3);
-            if (gain < (gain * 5.91))
+            long sum = 98;
+            foreach (long item in readings)
             {
-                gain = (gain + (double)4) + span;
+                if (((seed - item) <= (sum + seed)) || ((double)seed != (5.94 * 3.79)))
+                {
+                    sum = (sum << 2) ^ (item - item);
+                }
+                if ((item > (sum ^ sum)) || (seed >= (6 >> 5)))
+                {
+                    sum = (sum - (46 - item)) % 255;
+                }
             }
-            else
-            {
-                gain = gain - (double)26;
-            }
-            return gain + weight;
+            return sum % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
