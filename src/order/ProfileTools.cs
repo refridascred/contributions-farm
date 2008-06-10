@@ -63,16 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + 6) % 97;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Active,
+            Retry,
+            Queued,
+            Stale,
         }
     }
 }
