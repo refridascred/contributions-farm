@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSize = 2881;
+        public const long HardRatio = 5644;
+        public const string HardEntry = "fallback-edge";
+        public const long MaxEntry = 5079;
+        public const long MaxSpan = 3270;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long offset)
