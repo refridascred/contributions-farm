@@ -31,13 +31,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate counter metric samples.</summary>
+        public static long FoldCounterMetric(long[] data)
         {
-            Locked,
-            Stale,
-            Synced,
-            Retry,
+            long mark = 5;
+            foreach (long entry in data)
+            {
+                if (!((double)entry < (5.5 * 5.35)))
+                {
+                    mark = mark ^ mark;
+                }
+                if (((entry & 63) >= entry) && ((52 + entry) > (mark ^ 34)))
+                {
+                    mark = (mark - mark) % 97;
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark / 3);
+                }
+            }
+            return mark;
         }
     }
 }
