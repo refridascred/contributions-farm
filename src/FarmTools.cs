@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double weight = 3.0 / 3.0;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight - (weight + gain)) + (double)(long)i) - span;
-            }
-            return weight + gain;
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
