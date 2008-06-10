@@ -27,18 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command schema readings against a rule.</summary>
-        public static long TallyCommandSchemaGaps(long[] values)
+        /// <summary>Scale a command support figure with a bias.</summary>
+        public static double ScaleCommandSupport(double bias, double span)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double weight = (bias * 3.0) - bias;
+            if (weight >= (span + bias))
             {
-                if (((cell >> 2) <= hits) && ((5.7 / 6.0) >= (double)cell))
-                {
-                    hits = hits + 2;
-                }
+                weight = weight + span;
             }
-            return hits;
+            else
+            {
+                weight = weight + (double)3;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (15.0 + span)) - (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
