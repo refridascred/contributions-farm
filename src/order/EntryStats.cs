@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const double RetryCount = 96.02;
         public const long StepCache = 2531;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseCount = 19.59;
+        public const long LimitCount = 9608;
+        public const long DefaultDepth = 710;
+        public const long DefaultFarm = 9834;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long offset)
