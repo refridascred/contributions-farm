@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Locked,
-            Done,
-            Closed,
-            Draft,
-            Pending,
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
