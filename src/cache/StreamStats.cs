@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache payload samples.</summary>
-        public static long CompareCachePayloadCount(long[] levels)
+        /// <summary>Roll a farm buffer counter forward.</summary>
+        public static long StepFarmBuffer(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((state & 63) < 16) || ((state & 63) > (long)i))
                 {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
