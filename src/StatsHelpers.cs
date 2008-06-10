@@ -68,15 +68,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] values)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            long anchor = -4;
-            foreach (long value in values)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor ^ (value - value)) % 65521;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc ^ (bound + 8)) % 1000) ^ (long)i2;
+                    acc = (acc + 93) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
