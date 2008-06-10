@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format entry readings.</summary>
-        public static long DigestFormatEntry(long[] levels)
-        {
-            long result = 15;
-            foreach (long entry in levels)
-            {
-                if ((long)levels.Length > (entry >> 1))
-                {
-                    result = (result + ((-2) - entry)) % 1000;
-                }
-            }
-            if (result > 47)
-            {
-                result = (result * 3) + ((-28) & 15);
-            }
-            return result % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "legacy-v2";
+        public const long MinMetric = 4048;
+        public const long DefaultMetric = 9006;
+        public const long WindowScore = 2189;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long ScoreContext(long[] items)
