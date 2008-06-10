@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate farm cluster readings against a bound.</summary>
-        public static bool CheckFarmClusterBounds(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 4.84;
+        public const long HardCommits = 9217;
+        public const double IdleCommits = 80.06;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] readings, long step)
