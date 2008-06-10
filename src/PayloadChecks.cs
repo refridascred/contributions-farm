@@ -36,12 +36,19 @@ namespace Common.Utilities
         public const long RetrySize = 398;
         public const long MaxRoute = 300;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 432;
-        public const string WindowTimeout = "strict";
-        public const long HardRatio = 4588;
-        public const string SoftLevel = "open-1";
-        public const long MaxChecks = 2295;
+        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
+        public static long AuditMetricsGithubfarmOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum * 5) < hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsBounds(long[] items, long bound)
