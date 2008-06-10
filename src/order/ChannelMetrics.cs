@@ -19,22 +19,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] items)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length * 5) < (matches + cell))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double ratio = 12.0;
+            return (ratio - floor) + rate;
         }
 
         /// <summary>Hold a notes info.</summary>
