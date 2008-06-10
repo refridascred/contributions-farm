@@ -1,25 +1,5 @@
 {
-  "burst_size_pct": "fallback",
-  "audit": 4946,
-  "idle_capacity_pct": 6397,
-  "sync_ratio_s": {
-    "poll_interval_pct": "strict",
-    "idle_retries_count": "latest",
-    "default_window_ms": 27,
-    "verbose": {
-      "readonly": ["edge", "staging", "primary"],
-      "soft_ratio_ms": "edge",
-      "metrics_ttl": 91,
-      "verbose": 60
-    }
-  },
-  "dry_run": 29.86,
-  "batch_depth_pct": {
-    "record_depth": ["standard", "eu-west"],
-    "verbose": false,
-    "hard_limit": 100,
-    "enabled": true,
-    "hard_threshold": 38.04,
-    "batch_interval_pct": 76.93
-  }
+  "cache_capacity_s": 76.09,
+  "stats_ttl": 46.67,
+  "idle_ttl_ms": 93
 }
