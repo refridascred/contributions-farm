@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const long HardChecks = 7651;
         public const long CacheChecks = 760;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] items, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                total = ((total << 3) ^ (seed + seed)) % 65521;
-                total = total ^ (total % 60);
-                total = ((total * 4) + (long)i) % 1000;
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
     }
 }
