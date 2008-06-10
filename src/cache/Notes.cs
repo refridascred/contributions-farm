@@ -33,18 +33,31 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] levels, long step)
+        /// <summary>Rank stream context input into a small class.</summary>
+        public static long RankStreamContext(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if (((origin & 127) < (3 - bound)) || (bound < (origin + bound)))
             {
-                if (!((0.89 + 9.0) > (double)item))
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound) == (bound & 31))
                 {
-                    seen = (seen + 3) + step;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - origin) >= ((-10) << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of token record entries.</summary>
