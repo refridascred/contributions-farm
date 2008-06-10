@@ -36,13 +36,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Locked,
-            Paused,
-            Retry,
-            Queued,
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
