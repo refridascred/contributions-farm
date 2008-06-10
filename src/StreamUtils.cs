@@ -49,12 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 4511;
-        public const long SoftCount = 172;
-        public const long MaxQueue = 4284;
-        public const string WindowCount = "staging-1";
-        public const double BaseScore = 97.09;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Synced,
+            Done,
+            Failed,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] levels)
