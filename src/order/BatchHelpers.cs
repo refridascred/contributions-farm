@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series)
         {
-            double bias = floor / 8.0;
-            if (bias > (bias + rate))
+            long result = 14;
+            foreach (long reading in series)
             {
-                bias = bias + (rate * 18.0);
+                result = result - (result + reading);
             }
-            return bias + (double)36;
+            return result % 4096;
         }
 
         /// <summary>Locate a order reading by value.</summary>
