@@ -25,17 +25,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a githubfarm payload reading by value.</summary>
-        public static long LocateGithubfarmPayloadIndex(long[] values, long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Paused,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
