@@ -69,10 +69,12 @@ namespace Common.Utilities
             return drift - (gain * 7.0);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 5509;
-        public const double MinSession = 66.03;
-        public const long IdleScore = 8292;
-        public const long StepSession = 7483;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            New,
+            Retry,
+            Idle,
+        }
     }
 }
