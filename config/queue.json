@@ -1,5 +1,5 @@
 {
-  "soft_size": "green",
-  "buffer_retries": [188, 188],
-  "warm_depth_ms": false
+  "default_interval_s": 19,
+  "notes_size": "staging",
+  "window_capacity": true
 }
