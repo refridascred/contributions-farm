@@ -54,19 +54,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload entry readings against a bound.</summary>
-        public static bool CheckPayloadEntryBounds(long[] readings, long floor)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
