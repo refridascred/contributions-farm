@@ -42,27 +42,39 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long offset, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long slot = offset + origin;
+            if (((double)slot <= (3.8 - 1.22)) && ((double)offset > (0.19 / 3.0)))
             {
-                if ((8.99 / 5.0) > (double)(long)i)
+                return 3;
+            }
+            else
+            {
+                if (!((slot - offset) <= (origin / 7)))
                 {
-                    score = (score + (-5)) % 1000;
-                }
-                if ((score ^ score) <= score)
-                {
-                    score = ((score * 5) + (score / 3)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    score = (score * 4) + score;
+                    if (((32 - slot) == (origin >> 2)) && ((16.0 + 13.0) >= (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((slot - (-247)) < (465 - origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
