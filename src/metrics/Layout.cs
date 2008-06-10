@@ -60,19 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm schema readings against a bound.</summary>
-        public static bool VerifyGithubfarmSchemaLimits(long[] values, long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (item != limit)
+                if (datum < limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
