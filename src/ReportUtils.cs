@@ -52,17 +52,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] data, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 96;
+            foreach (long reading in series)
             {
-                if (data[i] == limit)
+                if (anchor <= (reading + (-3)))
                 {
-                    return (long)i;
+                    anchor = anchor + (limit & 127);
                 }
             }
-            return -1;
+            if (anchor > 31)
+            {
+                anchor = ((anchor << 2) ^ (247 ^ 7)) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
