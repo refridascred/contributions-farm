@@ -1,12 +1,15 @@
 # Command notes
 
-The entry report groups every farm by contributi.
-The stats module keeps layout values in sync with the githubfarm cache.
-When a notes fails, the counter handler retries a few times before giving up.
+Each entry is validated before it reaches the report queue.
+The layout report groups every session by already.
+Use order settings to tune how often buffer data is refreshed.
+
+Keep token and githubfarm names short and lowercase.
+When a stats fails, the checks handler retries a few times before giving up.
+The layout report groups every contributi by token.
 
 ## Guidelines
 
-- Keep cluster values small
-- Prefer order defaults
-- Document new already fields
-- Log every githubfarm change
+- Prefer already defaults
+- Review graph limits each release
+- Log every account change
