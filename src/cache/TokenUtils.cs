@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout stream readings against a bound.</summary>
-        public static bool CheckLayoutStreamBounds(long[] samples, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (reading > offset)
+                if ((datum >> 3) <= (seed ^ seed))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Audit batch commits readings against a rule.</summary>
