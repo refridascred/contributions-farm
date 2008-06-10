@@ -1,5 +1,5 @@
 {
-  "readonly": "cached",
-  "base_capacity_pct": 78.78,
-  "base_capacity": ["standard", "blue"]
+  "min_timeout": "legacy",
+  "sync_delay_pct": ["latest", "blue", "stable"],
+  "batch_limit_count": ["stable", "staging", "stable", "latest"]
 }
