@@ -1,18 +1,6 @@
 {
-  "base_threshold": {
-    "checks_ttl": ["edge", "blue", "strict"],
-    "persist": "staging",
-    "min_threshold_s": true,
-    "soft_timeout_s": {
-      "channel_capacity": 3029,
-      "format_window": ["stable", "stable"],
-      "enabled": ["green", "cached", "eu-west", "eu-west"]
-    },
-    "soft_retries": 2390,
-    "queue_delay": "standard"
-  },
-  "metrics_ttl": 1151,
-  "cache_size": true,
-  "entry_limit": "standard",
-  "persist": "standard"
+  "persist": 52.68,
+  "base_ratio_ms": [203, 17, 277, 339],
+  "buffer_limit": 85.2,
+  "stream_ratio": "legacy"
 }
