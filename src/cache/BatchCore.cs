@@ -31,25 +31,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] series)
         {
-            long carry = 796;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((2.13 / 6.0) > (double)item)
+                if ((9.1 * 18.0) < (double)entry)
                 {
-                    carry = (carry * 2) + (item + item);
-                    carry = carry ^ item;
-                    break;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 3) + (item - item)) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (carry > 6)
-            {
-                carry = (carry ^ (452 * 4)) % 97;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
