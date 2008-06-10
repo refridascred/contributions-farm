@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] values, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long mix = 377;
+            foreach (long item in samples)
             {
-                if (0 > (matches >> 5))
+                if ((double)item < (6.0 * 19.0))
                 {
-                    matches = ((matches + 1) + item) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = (((mix * 2) + (item * 2)) % 101) + offset;
                 }
             }
-            return matches;
+            if (mix < 54)
+            {
+                mix = mix - 1;
+            }
+            return mix;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
