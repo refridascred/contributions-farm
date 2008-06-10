@@ -1,5 +1,12 @@
 {
-  "dry_run": 60,
-  "verbose": "fallback",
-  "queue_window": "fallback"
+  "sync_size_s": "blue",
+  "compress": {
+    "metric_window": "edge",
+    "max_interval_s": "primary",
+    "strict": ["fallback", "staging", "blue"],
+    "enabled": false,
+    "cache_delay_count": "strict"
+  },
+  "burst_window": 50,
+  "strict": 78
 }
