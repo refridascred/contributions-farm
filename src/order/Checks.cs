@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Rank token context input into a small class.</summary>
+        public static long ClassifyTokenContext(long origin, long seed)
         {
-            Retry,
-            Done,
-            Synced,
-            New,
+            if ((origin * 2) != (seed / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed > (8 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((23 - origin) > (seed - 0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
