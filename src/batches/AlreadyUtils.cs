@@ -17,16 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryScore = 1122;
+        public const double SoftSpan = 25.07;
+        public const long StepCluster = 7339;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long BucketContributi(long seed, long step)
