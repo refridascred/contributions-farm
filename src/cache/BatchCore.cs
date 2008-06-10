@@ -31,22 +31,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] values, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits < (9 % 10))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 3) - entry) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
