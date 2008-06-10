@@ -47,11 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            double drift = (rate + rate) - offset;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift + (double)4;
         }
 
         /// <summary>Grade a command editor value against two limits.</summary>
