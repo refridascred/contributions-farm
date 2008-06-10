@@ -21,22 +21,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long total = 2;
-            foreach (long sample in levels)
-            {
-                if ((offset + offset) >= (offset ^ offset))
-                {
-                    total = ((total ^ (893 & 15)) % 255) + sample;
-                }
-                if ((double)total < (5.6 + 7.1))
-                {
-                    break;
-                }
-            }
-            return total;
+            Idle,
+            Ready,
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a buffer header.</summary>
