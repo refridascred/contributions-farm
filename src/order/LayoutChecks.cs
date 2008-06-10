@@ -39,10 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheFactor = 3362;
-        public const long LimitSession = 6707;
-        public const long SoftSession = 2624;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 43.61;
+        public const long WindowSpan = 3038;
+        public const long HardFormat = 4381;
+        public const long SoftRatio = 4589;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatGaps(long[] values)
