@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long seed)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if ((double)seed < (10.0 - 4.94))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset / 7) >= (seed & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + offset) > 15)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
