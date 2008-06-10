@@ -39,11 +39,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double scale, double span)
+        /// <summary>Count support cluster pairs that satisfy a relation.</summary>
+        public static long OverlapSupportClusterCount(long[] readings)
         {
-            double mean = scale;
-            return (mean + (mean / 7.0)) + span;
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
