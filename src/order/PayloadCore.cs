@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const string DefaultMetric = "standard-1";
         public const long RetryMetric = 7429;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
