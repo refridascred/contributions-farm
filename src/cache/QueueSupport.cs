@@ -23,18 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long origin, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if (step < (step >> 1))
             {
-                if (!(datum >= tally) && (datum > (62 + datum)))
+                return 6;
+            }
+            else
+            {
+                if ((74 + origin) <= (origin - origin))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
