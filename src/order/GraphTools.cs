@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] readings, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell > (69 ^ target))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the cluster class values.</summary>
