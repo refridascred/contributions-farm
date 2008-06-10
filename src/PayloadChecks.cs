@@ -46,19 +46,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] items, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (reading > bound)
+                if (item <= step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
