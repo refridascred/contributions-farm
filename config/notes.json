@@ -1,7 +1,7 @@
 {
-  "soft_interval_count": true,
-  "sync_depth_ms": "blue",
-  "verbose": 69.54,
-  "cache_interval_count": 100,
-  "readonly": "edge"
+  "burst_capacity_ms": 34,
+  "batch_capacity_pct": "eu-west",
+  "channel_ttl": true,
+  "audit": 24,
+  "stats_size": "blue"
 }
