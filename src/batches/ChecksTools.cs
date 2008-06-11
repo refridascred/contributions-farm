@@ -20,19 +20,17 @@ namespace Common.Utilities
         public const long HardFactor = 3848;
         public const long LimitGithubfarm = 5074;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] readings, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > floor)
+                if ((items[i] < seed) && ((items[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
