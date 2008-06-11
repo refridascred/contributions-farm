@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count route stream pairs that satisfy a relation.</summary>
-        public static long OverlapRouteStreamCount(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell < 8.21)
                 {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
