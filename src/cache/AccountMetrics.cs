@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long seed, long floor)
         {
-            long mix = -69;
-            foreach (long value in items)
+            if (((floor ^ 0) > (seed + seed)) || ((seed + seed) != (17 * 3)))
             {
-                mix = (((mix * 2) + (mix - 756)) % 65521) - value;
+                return 7;
             }
-            return mix % 97;
+            else
+            {
+                if (((double)seed >= (7.07 * 2.0)) && ((477 - seed) >= (floor ^ 490)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor <= 3.8)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1.0 + 2.83) < (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a session counter forward.</summary>
