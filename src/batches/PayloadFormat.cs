@@ -45,22 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardEntry = "cached-v2";
+        public const long LimitLevel = 6942;
+        public const long CacheEntry = 4864;
+        public const double StepWidth = 78.42;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string CacheOrder = "open";
