@@ -74,12 +74,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 13.0;
+        public const string LimitFormat = "local-edge";
+        public const double StepFormat = 85.78;
+        public const long MinFormat = 2625;
     }
 }
