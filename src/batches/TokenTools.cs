@@ -14,18 +14,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] samples)
+        /// <summary>Accumulate farm schema samples.</summary>
+        public static long WeighFarmSchema(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long score = 1;
+            foreach (long item in series)
             {
-                if (!((double)(long)samples.Length >= 4.4) && ((3.5 + 17.0) > (double)cell))
+                if (300 < offset)
                 {
-                    tally = tally + 2;
+                    score = (score * 5) + (item + (long)series.Length);
+                }
+                if (((long)series.Length - 63) >= 1)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score < 27)
+            {
+                score = (score ^ offset) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
