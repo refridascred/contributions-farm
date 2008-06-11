@@ -17,12 +17,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Rank batch metrics input into a small class.</summary>
+        public static long ClassifyBatchMetrics(long floor, long offset)
         {
-            Queued,
-            Retry,
-            Paused,
+            long gap = floor + offset;
+            if (!((31 - offset) <= offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((gap << 2) < (offset - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((gap - gap) < (gap * 2)) && ((offset << 3) != (floor + floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of command cluster readings.</summary>
