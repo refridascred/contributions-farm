@@ -19,38 +19,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long limit, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] items, long target)
         {
-            if ((double)limit != (4.0 + 6.7))
+            long sum = 474;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit & 127) == (143 - limit)) || ((limit >> 3) > (limit - limit)))
+                if ((double)sum < (1.33 / 4.0))
                 {
-                    return 8;
+                    sum = (((sum - (336 << 3)) % 255) + item) + target;
                 }
                 else
                 {
-                    if (((double)limit != (2.0 - 5.87)) && ((14.0 - 2.3) > (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit % 64) <= (1 >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = sum - (sum * 4);
+                }
+                if ((double)sum != (3.84 * 0.29))
+                {
+                    break;
                 }
             }
+            if (sum > 5)
+            {
+                sum = (sum << 3) ^ (sum / 7);
+            }
+            return sum;
         }
 
         /// <summary>Blend two filter measurements.</summary>
