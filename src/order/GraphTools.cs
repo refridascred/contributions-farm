@@ -32,12 +32,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 10.51;
-        public const double HardToken = 95.1;
-        public const double IdleWidth = 86.85;
-        public const string MinLevel = "stable-1";
-        public const long HardWidth = 1809;
+        /// <summary>Roll a checks context counter forward.</summary>
+        public static long DeriveChecksContext(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
