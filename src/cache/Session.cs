@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count channel notes pairs that satisfy a relation.</summary>
+        public static long PairChannelNotesCount(long[] data)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first profile metrics entry that matches the target.</summary>
