@@ -31,12 +31,22 @@ namespace Common.Utilities
             return (drift + (double)37) + rate;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 5237;
-        public const double HardBudget = 44.48;
-        public const string BatchCount = "standard";
-        public const long BatchFactor = 7233;
-        public const long SoftWindow = 9648;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double rate, double offset)
