@@ -1,5 +1,7 @@
 {
-  "schema_capacity": "fallback",
-  "idle_limit": "open",
-  "hard_window_s": "primary"
+  "tools_ratio": 47.94,
+  "batch_depth": "latest",
+  "order_interval": "edge",
+  "flush_ttl_s": "stable",
+  "context_threshold": ["edge", "cached", "legacy", "latest"]
 }
