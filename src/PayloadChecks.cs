@@ -35,20 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 32.89;
+        public const string MaxContributi = "alpha";
+        public const long DefaultContributi = 9774;
+        public const double LimitContributi = 78.75;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
