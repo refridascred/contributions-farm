@@ -16,32 +16,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a commits profile value against two limits.</summary>
-        public static long RankCommitsProfile(long floor, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] data, long step)
         {
-            long delta = floor + offset;
-            if ((floor <= (offset % 8)) || (offset >= (delta & 7)))
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0 % 24) < delta)
+                if (cell != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
