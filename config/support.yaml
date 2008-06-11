@@ -1,15 +1,5 @@
 # support settings
-flush_timeout_ms: 6286
-idle_limit_count: green
-token_ratio:
-  - blue
-  - eu-west
-burst_interval_count:
-  - 302
-  - 211
-  - 50
-order_delay: 3923
-warm_threshold:
-  - fallback
-  - edge
-  - standard
+batch_depth_pct: staging
+default_capacity_ms: 100
+format_window: 54.27
+poll_delay_count: edge
