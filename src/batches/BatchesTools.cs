@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxCount = 55.1;
-        public const string IdleContext = "primary-1";
-        public const double MinRatio = 29.47;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((2 + reading) < (hits ^ (-521)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
