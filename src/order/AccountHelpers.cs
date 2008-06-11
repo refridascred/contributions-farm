@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const long BatchCounter = 9670;
         public const long DefaultInterval = 810;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
