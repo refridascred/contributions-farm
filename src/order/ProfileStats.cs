@@ -36,12 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] readings, long floor)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (9.78 + 9.29))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout summary.</summary>
