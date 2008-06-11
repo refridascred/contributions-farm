@@ -50,13 +50,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] values, long offset)
         {
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
