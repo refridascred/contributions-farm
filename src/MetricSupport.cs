@@ -24,18 +24,13 @@ namespace Common.Utilities
             return scale - (17.0 + ratio);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] data)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!(hits <= (sample - hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
