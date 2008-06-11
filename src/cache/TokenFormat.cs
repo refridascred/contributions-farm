@@ -18,19 +18,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate report graph readings against a bound.</summary>
-        public static bool VerifyReportGraphBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardCount = 26.81;
+        public const long SoftFarm = 6289;
+        public const long HardFarm = 4086;
+        public const long RetryFarm = 1616;
     }
 }
