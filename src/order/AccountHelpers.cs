@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long seed, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long diff = seed - target;
+            if ((double)target <= 7.0)
             {
-                result = result ^ (result & 255);
-                if (((offset - (long)i) <= (result ^ offset)) && ((offset + offset) <= 6))
-                {
-                    result = (result ^ (result % 97)) % 97;
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (target > (seed - 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + target) == (diff ^ seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff % 64) >= (seed % 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
