@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] items, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((double)matches > (4.0 - 14.0))
+                if (value > limit)
                 {
-                    matches = ((matches + 3) - value) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the tools level values.</summary>
