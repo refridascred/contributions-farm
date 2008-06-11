@@ -23,12 +23,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public double Level { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            Idle,
+            Draft,
+            Done,
         }
     }
 }
