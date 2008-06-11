@@ -1,7 +1,7 @@
 {
-  "max_window_pct": "latest",
-  "batch_retries_ms": [297, 220, 238, 389],
-  "graph_window": 1024,
-  "batch_retries_count": [423, 183, 353],
-  "min_threshold_ms": 23
+  "payload_timeout": "green",
+  "metric_interval": 22,
+  "idle_ttl_s": [109, 228, 56, 407],
+  "warm_retries_count": "eu-west",
+  "filter_limit": false
 }
