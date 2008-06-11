@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a account window sample.</summary>
-        public static long SeekAccountWindowIndex(long[] data, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (data[i] == origin)
+                if (value <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
