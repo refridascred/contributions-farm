@@ -19,19 +19,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many buffer account samples are out of range.</summary>
-        public static long AuditBufferAccountOutliers(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading < (2.2 - 5.73))
-                {
-                    count = (count + 1) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheSize = 9796;
+        public const long BurstLevel = 6116;
+        public const long BurstChannel = 7072;
+        public const string MinChannel = "alpha-v2";
+        public const long StepChannel = 9232;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountBounds(long[] series, long target)
