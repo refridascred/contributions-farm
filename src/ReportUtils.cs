@@ -59,13 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] series, long floor)
         {
-            New,
-            Closed,
-            Idle,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
