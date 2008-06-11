@@ -10,39 +10,34 @@ namespace Common.Utilities
         public const long MaxFormat = 1760;
         public const string IdleFormat = "primary";
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long bound)
         {
-            long cur = seed + floor;
-            if ((cur << 3) == (cur * 3))
+            long total = 93;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.89 + 13.0) != (double)cur)
+                if ((total ^ reading) > (reading + bound))
                 {
-                    return 1;
+                    break;
+                }
+                if (!((reading >> 1) == (reading & 1)))
+                {
+                    total = (total ^ (reading + reading)) % 65521;
                 }
                 else
                 {
-                    if (((cur << 1) > 68) && (966 < (seed << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur * 2) <= (floor + cur))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total + total) % 4096;
+                }
+                if (bound <= (-274))
+                {
+                    total = (total ^ (total & 1)) % 97;
                 }
             }
+            if (total > 546)
+            {
+                total = ((total * 5) + bound) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the order mode values.</summary>
