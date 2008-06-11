@@ -43,13 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Failed,
-            Ready,
+            Done,
+            Synced,
             Paused,
-            Closed,
+            Pending,
         }
 
         /// <summary>Count the profile editor entries that pass the check.</summary>
