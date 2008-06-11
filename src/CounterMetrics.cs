@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long origin, long limit)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double rate, double bias)
         {
-            long delta = origin - limit;
-            if ((delta > (0 & 31)) || ((double)limit > (16.0 + 2.86)))
+            double load = rate;
+            if (load > (load - rate))
             {
-                return 8;
+                load = load + (bias / 9.0);
             }
-            else
-            {
-                if (2.1 >= (double)delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return load - (3.15 * 0.24);
         }
 
         /// <summary>Describe the payload status values.</summary>
