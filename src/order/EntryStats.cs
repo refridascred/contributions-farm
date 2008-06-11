@@ -24,15 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double load = 5.0;
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load - load) + (double)(long)i) - span;
-            }
-            return load - (ratio * 12.0);
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
