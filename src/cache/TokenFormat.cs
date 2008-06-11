@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
