@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] data, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            double mean = bias;
+            if (mean <= (mean * 8.8))
             {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + (4.0 / 3.0)) - rate;
             }
-            return valid;
+            else
+            {
+                mean = mean + (7.9 - mean);
+            }
+            return mean - (double)19;
         }
 
         /// <summary>Combine record values into a single score.</summary>
