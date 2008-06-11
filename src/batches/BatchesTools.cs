@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((2 + reading) < (hits ^ (-521)))
-                {
-                    hits = hits + 2;
-                }
+                mark = (mark - (82 + origin)) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the order phase values.</summary>
