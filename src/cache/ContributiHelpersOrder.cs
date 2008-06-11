@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const double WindowDepth = 75.99;
         public const long RetrySchema = 4618;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long limit, long bound)
-        {
-            long diff = limit + bound;
-            if ((-16) > (4 + diff))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff + limit) >= (bound + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstSize = 6425;
+        public const string RetryRecord = "alpha-edge";
+        public const long MinDepth = 8081;
+        public const string DefaultInterval = "cached-1";
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] items)
