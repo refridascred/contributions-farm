@@ -21,15 +21,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double bias, double bias2)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] values, long target)
         {
-            double weight = (bias - bias) - (bias2 - 15.0);
-            if (weight < 7.2)
+            bool valid = true;
+            foreach (long value in values)
             {
-                weight = weight - (bias - 8.0);
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight + (double)0;
+            return valid;
         }
     }
 }
