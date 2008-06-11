@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 200;
+        public const long CacheRatio = 9779;
+        public const long LimitCache = 3474;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long PairStreamCount(long[] series)
