@@ -22,27 +22,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mark = -9;
-            foreach (long item in data)
-            {
-                if ((209 <= origin) && ((mark % 2) > item))
-                {
-                    mark = (mark + (item << 1)) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - origin)) % 255;
-                }
-                mark = (mark << 2) ^ (mark + item);
-                if ((mark - item) > item)
-                {
-                    mark = ((mark << 3) ^ (mark + origin)) % 65521;
-                }
-            }
-            return mark;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
