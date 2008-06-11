@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long offset, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            if ((origin < (origin ^ 6)) && ((offset + offset) <= (origin - offset)))
             {
-                if (!(573 <= origin))
-                {
-                    result = (result ^ (result * 5)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((offset > (757 / 5)) || ((double)offset == (double)70))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((88 - 4) == ((-203) + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks editor samples are out of range.</summary>
