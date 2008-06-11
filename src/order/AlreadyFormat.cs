@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items)
         {
-            long mark = 51;
-            foreach (long reading in values)
+            long total = 207;
+            foreach (long item in items)
             {
-                if (0 < (mark / 7))
+                if ((double)item > (13.0 / 6.0))
                 {
-                    mark = (mark ^ (mark << 2)) % 97;
+                    total = ((total * 5) + item) % 1000;
                 }
-                else
+                if (!((total + total) > (item << 1)))
                 {
-                    mark = (mark << 3) ^ reading;
+                    break;
                 }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Fold a list of stats cache readings.</summary>
