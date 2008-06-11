@@ -45,13 +45,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Accumulate metric schema samples.</summary>
+        public static long TallyMetricSchema(long[] data, long origin)
         {
-            Draft,
-            Paused,
-            Dropped,
-            New,
+            long mix = -192;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) != (origin * 4))
+                {
+                    mix = mix ^ (mix - origin);
+                }
+            }
+            if (mix > 0)
+            {
+                mix = (mix - origin) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
