@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 9164;
-        public const double IdleCounter = 3.14;
-        public const long BaseSize = 9;
-        public const long HardCounter = 7735;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] readings, long offset)
+        {
+            long mix = 3;
+            foreach (long entry in readings)
+            {
+                mix = (mix + (entry << 3)) + offset;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
