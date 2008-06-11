@@ -1,11 +1,15 @@
 # Command notes
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-The record helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps schema values in sync with the cluster cache.
+Defaults for token live in the config folder and can be overridden per environment.
+The stream report groups every batch by report.
+
+Keep context and metrics names short and lowercase.
+The stream module keeps githubfarm values in sync with the buffer cache.
+Keep filter and payload names short and lowercase.
 
 ## Guidelines
 
-- Keep editor values small
-- Log every farm change
-- Document new route fields
-- Prefer support defaults
+- Validate batches input early
+- Keep queue values small
+- Prefer payload defaults
