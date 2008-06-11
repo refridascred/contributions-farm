@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every editor format entry stays within the limit.</summary>
-        public static bool VerifyEditorFormatBounds(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstSize = "latest-1";
+        public const long HardGraph = 944;
+        public const long CacheScore = 3727;
+        public const string RetryRatio = "strict";
+        public const long RetrySpan = 6365;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiOutliers(long[] data)
