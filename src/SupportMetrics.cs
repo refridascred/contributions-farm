@@ -22,22 +22,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] samples, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((double)hits > (double)origin) && ((double)hits == (double)origin))
+                if (!(((matches >> 2) == (matches - limit)) || (value > (value + limit))))
                 {
-                    hits = (hits + 1) + entry;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a contributi info.</summary>
