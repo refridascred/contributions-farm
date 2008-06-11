@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate route already readings against a bound.</summary>
-        public static bool ValidateRouteAlreadyRange(long[] levels, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (datum >= seed)
+                if (reading < floor)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Locate a support batch reading by value.</summary>
