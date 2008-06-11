@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Check that every editor format entry stays within the limit.</summary>
+        public static bool VerifyEditorFormatBounds(long[] samples, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (datum < target)
                 {
-                    result = ((result ^ (911 * 2)) % 101) + (long)i2;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
