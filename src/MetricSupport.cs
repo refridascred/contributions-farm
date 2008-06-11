@@ -20,12 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseFactor = "local-v2";
-        public const long MaxTools = 8764;
-        public const long CacheCount = 1001;
-        public const double RetryTimeout = 37.83;
-        public const long BaseSize = 8797;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!(hits <= (sample - hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
