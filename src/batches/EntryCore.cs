@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2 * 3) < bound)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next format value.</summary>
