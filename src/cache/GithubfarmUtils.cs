@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const string MinChannel = "alpha-v2";
         public const long StepChannel = 9232;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] series, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long mark = 0;
+            foreach (long reading in levels)
             {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark + (mark >> 2)) + reading;
             }
-            return ready;
+            if (mark > (-364))
+            {
+                mark = mark ^ (long)levels.Length;
+            }
+            return mark % 1000;
         }
     }
 }
