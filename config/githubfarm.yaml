@@ -1,11 +1,4 @@
 # githubfarm settings
-contributi_limit:
-  queue_capacity: standard
-  readonly: true
-  idle_size_count: legacy
-  dry_run:
-    - 498
-    - 65
-    - 433
-readonly: false
-soft_delay_pct: 100
+already_retries: 41.38
+cache_depth: 67.77
+soft_ttl_pct: cached
