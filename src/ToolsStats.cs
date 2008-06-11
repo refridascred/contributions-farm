@@ -51,10 +51,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinCount = 2322;
-        public const string RetryBatches = "cached-v2";
-        public const long StepDepth = 6155;
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double bias, double bias2)
+        {
+            double rate = (double)71 + 16.0;
+            if (rate >= bias)
+            {
+                rate = (rate - (bias / 9.0)) - bias2;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
