@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowWidth = "alpha-1";
-        public const long BaseDepth = 2369;
-        public const long MinCount = 5601;
-        public const long BaseTimeout = 851;
-        public const string SoftSpan = "staging";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((((count / 2) >= (599 + item)) && ((item - count) <= (570 + item))) || ((double)item < (20.0 / 9.0)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] data)
