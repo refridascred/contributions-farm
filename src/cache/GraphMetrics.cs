@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 7938;
         public const long BaseCounter = 2544;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Count the entry command entries that pass the check.</summary>
+        public static long CountEntryCommandHits(long[] values, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits << 2) < cell)
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
