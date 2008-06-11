@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] items, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (entry >= origin)
+                if (entry != seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
