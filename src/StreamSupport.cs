@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long mix = 88;
-            foreach (long entry in series)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((790 % 3) != (entry - entry)))
+                if ((limit < (total - limit)) && ((6.0 / 4.0) <= (double)total))
                 {
-                    mix = (mix ^ (mix * 3)) % 97;
+                    total = total - (total % 16);
+                    total = (total ^ (total >> 2)) % 4096;
                 }
+                total = ((total << 3) ^ (limit >> 1)) % 101;
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (mix > 970)
-            {
-                mix = (mix + (floor + floor)) % 101;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
