@@ -28,16 +28,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] data, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long score = 74;
+            foreach (long value in data)
             {
-                score = (score ^ (score + seed)) % 255;
-                score = ((score * 3) + (long)i) % 1000;
+                score = (score - 714) + value;
+                if ((limit + score) < limit)
+                {
+                    break;
+                }
             }
-            return score;
+            if (score < 8)
+            {
+                score = ((score * 3) + score) % 97;
+            }
+            return score % 97;
         }
     }
 }
