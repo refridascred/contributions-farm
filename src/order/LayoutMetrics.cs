@@ -40,19 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            double rate = (double)(59 >> 5);
-            if (rate <= 0.7)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + ratio) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate + (double)281;
+            return count;
         }
     }
 }
