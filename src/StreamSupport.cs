@@ -17,19 +17,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate format filter readings against a bound.</summary>
-        public static bool ValidateFormatFilterBounds(long[] readings, long limit)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
