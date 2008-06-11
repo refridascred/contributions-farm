@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
