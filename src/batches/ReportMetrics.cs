@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 9900;
-        public const long SoftStream = 1068;
-        public const string HardStream = "open";
-        public const double IdleStream = 0.31;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] samples, long step)
+        {
+            long anchor = 5;
+            foreach (long value in samples)
+            {
+                if (value >= (0 & 1))
+                {
+                    anchor = (anchor ^ (anchor & 3)) % 97;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ step) % 4096;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long RollLayout(long bound)
