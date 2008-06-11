@@ -27,17 +27,17 @@ namespace Common.Utilities
         public const long HardTimeout = 5862;
         public const string WindowCount = "stable";
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Look up the position of a support token sample.</summary>
+        public static long LookupSupportTokenIndex(long[] samples, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 2) ^ (total - 4)) % 97;
-                total = ((total << 3) ^ (total / 5)) % 255;
-                total = ((total * 2) + (long)i) % 101;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
