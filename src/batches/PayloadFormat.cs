@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] levels, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((double)offset < (3.96 - 0.16))
+                if ((offset / 2) == (matches / 5))
                 {
-                    seen = (seen + 1) + item;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a order options.</summary>
