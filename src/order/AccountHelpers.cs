@@ -84,14 +84,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] values, long offset)
         {
-            Stale,
-            Retry,
-            Draft,
-            Queued,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
