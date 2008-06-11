@@ -44,20 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardBudget = 428;
+        public const double WindowEntry = 28.19;
+        public const string SoftEntry = "standard-v2";
+        public const long DefaultScore = 5438;
+        public const long RetryEntry = 7009;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] levels, long target)
