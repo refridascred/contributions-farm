@@ -28,10 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "open";
-        public const long MinSize = 7147;
-        public const long StepStats = 1371;
-        public const long BaseStats = 7948;
+        /// <summary>Blend two cache checks measurements.</summary>
+        public static double ScaleCacheChecks(double bias, double floor)
+        {
+            double rate = (bias + floor) * 6.4;
+            if (rate > bias)
+            {
+                rate = rate + (floor + floor);
+            }
+            else
+            {
+                rate = rate + 1.0;
+            }
+            return rate + floor;
+        }
     }
 }
