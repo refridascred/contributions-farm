@@ -50,13 +50,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardWidth = "local-v2";
+        public const long MinBudget = 8534;
+        public const double MinCounter = 25.15;
+        public const double MaxCounter = 2.56;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
