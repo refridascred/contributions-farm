@@ -28,12 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long limit)
         {
-            New,
-            Paused,
-            Pending,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
