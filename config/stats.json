@@ -1,5 +1,7 @@
 {
-  "soft_interval": 1024,
-  "retry_threshold": "open",
-  "batch_interval": 36.19
+  "persist": 81.35,
+  "default_interval_s": true,
+  "githubfarm_interval": 72.98,
+  "cache_limit": 34.57,
+  "compress": ["green", "stable"]
 }
