@@ -1,4 +1,9 @@
 # entry settings
-idle_ttl_pct: 6372
-idle_capacity: local
-burst_threshold_count: 500
+command_depth: 18.37
+dry_run:
+  - primary
+  - cached
+  - local
+  - local
+soft_delay_ms: true
+batch_ttl: 1024
