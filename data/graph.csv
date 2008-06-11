@@ -1,7 +1,9 @@
-id,region,label
-1,open,80.36
-2,edge,21
-3,49.95,23.85
-4,927,standard
-5,166,583
-6,24.45,633
+id,token,count,region
+1,48.28,33,cached
+2,70.56,stable,46.77
+3,staging,32.45,46.55
+4,76,458,522
+5,strict,179,76.13
+6,360,eu-west,71.56
+7,833,fallback,20.15
+8,fallback,fallback,935
