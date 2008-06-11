@@ -78,22 +78,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] data, long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long anchor = 51;
-            foreach (long entry in data)
-            {
-                if ((entry & 15) > (floor % 8))
-                {
-                    anchor = anchor + (floor / 8);
-                }
-                else
-                {
-                    anchor = (anchor - (entry & 7)) % 1000;
-                }
-            }
-            return anchor % 1000;
+            Paused,
+            Stale,
+            Draft,
         }
     }
 }
