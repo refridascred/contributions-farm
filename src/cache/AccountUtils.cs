@@ -36,17 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout account sample.</summary>
-        public static long LookupLayoutAccountIndex(long[] series, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
