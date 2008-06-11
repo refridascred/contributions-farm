@@ -1,9 +1,4 @@
 # entry settings
-strict: strict
-max_ttl_pct: 8733
-route_depth: true
-poll_interval_pct:
-  - legacy
-  - local
-enabled: 179
-burst_delay_pct: 60
+cache_threshold: 250
+burst_window_s: green
+burst_depth_count: staging
