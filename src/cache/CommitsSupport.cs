@@ -29,19 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a buffer notes reading.</summary>
-        public static double ProjectBufferNotes(double rate, double bias)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] data, long limit)
         {
-            double mean = bias;
-            if (mean >= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (rate * 3.71);
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (rate + rate);
-            }
-            return mean - (bias - mean);
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
