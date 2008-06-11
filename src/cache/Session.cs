@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] readings)
+        /// <summary>Audit batch support readings against a rule.</summary>
+        public static long AuditBatchSupportOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long value in items)
             {
-                if ((seen < (seen / 6)) && (seen < (datum * 2)))
+                if ((value ^ seen) < value)
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
                 }
                 else
                 {
