@@ -54,21 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 855;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = ((result ^ 5) % 101) + cell;
+                if ((result >> 4) > (result << 2))
                 {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (result > 0)
+            {
+                result = ((result * 5) + (result - result)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
