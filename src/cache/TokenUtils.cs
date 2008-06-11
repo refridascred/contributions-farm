@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftDepth = 7876;
-        public const long BurstBudget = 6703;
-        public const long IdleRatio = 2247;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleCluster = 1066;
