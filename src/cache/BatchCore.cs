@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record graph samples.</summary>
-        public static long WeighRecordGraph(long[] levels, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels)
         {
-            long state = 90;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((6.88 + 6.0) == (double)value)
+                if ((count + count) > count)
                 {
-                    state = state + target;
+                    count = (count + 2) + reading;
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Scale a command profile figure with a bias.</summary>
