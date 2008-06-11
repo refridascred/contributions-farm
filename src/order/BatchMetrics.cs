@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long IdleBudget = 1808;
         public const long SoftBudget = 5236;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (hits > (hits + entry))
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
