@@ -21,15 +21,11 @@ namespace Common.Utilities
         public const long BatchCounter = 9670;
         public const long DefaultInterval = 810;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double scale, double floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double mean = (double)(0 + 0);
-            if (mean >= scale)
-            {
-                mean = mean - floor;
-            }
-            return mean - scale;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine session window values into a single score.</summary>
