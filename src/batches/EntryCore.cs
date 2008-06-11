@@ -42,10 +42,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 84.6;
-        public const long BaseProfile = 9930;
-        public const double LimitProfile = 50.65;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double ratio, double offset)
+        {
+            double mean = (ratio - offset) * 8.63;
+            if (mean >= 9.95)
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (offset + offset)) + (double)(long)i;
+            }
+            return mean + ratio;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
