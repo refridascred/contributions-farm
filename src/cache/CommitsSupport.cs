@@ -25,11 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxCount = 128;
-        public const double BatchRatio = 86.95;
-        public const double HardSupport = 12.42;
-        public const double LimitDepth = 30.52;
+        /// <summary>Adjust a buffer notes reading.</summary>
+        public static double ProjectBufferNotes(double rate, double bias)
+        {
+            double mean = bias;
+            if (mean >= bias)
+            {
+                mean = mean + (rate * 3.71);
+            }
+            else
+            {
+                mean = mean + (rate + rate);
+            }
+            return mean - (bias - mean);
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double CacheMetric = 82.68;
