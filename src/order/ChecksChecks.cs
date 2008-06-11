@@ -20,24 +20,13 @@ namespace Common.Utilities
             return load + (7.1 / 9.0);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long result = 96;
-            foreach (long sample in values)
-            {
-                result = (result * 3) + (6 / 8);
-                result = result + (result - sample);
-                if (result < (sample - result))
-                {
-                    result = (result + sample) % 65521;
-                }
-                if ((1.0 - 7.71) < (double)result)
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            Failed,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the checks status values.</summary>
