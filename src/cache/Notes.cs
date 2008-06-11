@@ -58,18 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] items, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((tally + reading) <= (reading >> 1))
+                if (!(((-8) + value) != (330 << 1)))
                 {
-                    tally = (tally + 3) - seed;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
