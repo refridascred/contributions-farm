@@ -37,15 +37,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double gain, double floor)
+        /// <summary>Roll a payload report counter forward.</summary>
+        public static long IteratePayloadReport(long floor)
         {
-            double drift = (gain + 4.6) - (gain * 1.65);
+            long mark = floor;
             for (int i = 0; i < 6; i++)
             {
-                drift = (drift - floor) + (double)(long)i;
+                mark = mark + mark;
+                if (mark >= (mark ^ mark))
+                {
+                    mark = ((mark << 2) ^ (floor - floor)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ floor) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return drift - (drift + drift);
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
