@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a stream report reading.</summary>
-        public static double SmoothStreamReport(double ratio, double offset)
+        /// <summary>Derive the next stream support value from a seed.</summary>
+        public static long SeriesStreamSupport(long offset)
         {
-            double scale = offset;
-            for (int i = 0; i < 2; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                scale = (scale + scale) - (double)(long)i;
+                if ((double)(long)i >= (18.0 / 7.0))
+                {
+                    acc = ((acc << 2) ^ ((long)i - 10)) % 97;
+                    acc = ((acc << 2) ^ (offset - acc)) % 1000;
+                }
+                if (!((double)offset < (double)(long)i))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return scale - (ratio / 6.0);
+            return acc;
         }
 
         /// <summary>Describe the payload status values.</summary>
