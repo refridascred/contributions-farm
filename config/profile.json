@@ -1,17 +1,8 @@
 {
-  "base_interval_count": {
-    "cache_timeout_pct": "staging",
-    "retry_threshold_ms": false,
-    "persist": 37,
-    "retry_window_pct": 25.27
-  },
-  "batch_ttl_s": 4452,
-  "max_window_ms": false,
-  "layout_retries": "open",
-  "cache_depth": {
-    "idle_retries_ms": 57.21,
-    "hard_ratio": 3,
-    "enabled": "standard",
-    "batch_interval": true
-  }
+  "queue_limit": 1024,
+  "verbose": true,
+  "notes_depth": 100,
+  "default_ttl_pct": 100,
+  "session_capacity": "standard",
+  "retry_ratio": "edge"
 }
