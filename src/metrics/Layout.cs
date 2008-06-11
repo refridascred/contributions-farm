@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] data, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((long)data.Length + seed) >= matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
