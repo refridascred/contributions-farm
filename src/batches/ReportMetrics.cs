@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Synced,
-            Draft,
-            Queued,
-            Dropped,
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
