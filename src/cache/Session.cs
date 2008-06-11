@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSpan = 5047;
-        public const long HardFormat = 8648;
-        public const double LimitFormat = 94.74;
-        public const string DefaultWidth = "cached";
-        public const long DefaultDepth = 7266;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (acc < (origin + origin))
+                {
+                    acc = ((acc * 3) + ((long)i / 2)) % 65521;
+                    acc = (acc + (6 % 5)) % 1000;
+                }
+                else
+                {
+                    acc = acc + (acc ^ 270);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first profile metrics entry that matches the target.</summary>
         public static long SeekProfileMetricsIndex(long[] samples, long limit)
