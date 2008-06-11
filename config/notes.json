@@ -1,5 +1,7 @@
 {
-  "poll_depth": "eu-west",
-  "flush_retries_count": false,
-  "warm_size_ms": 100
+  "max_window_pct": "latest",
+  "batch_retries_ms": [297, 220, 238, 389],
+  "graph_window": 1024,
+  "batch_retries_count": [423, 183, 353],
+  "min_threshold_ms": 23
 }
