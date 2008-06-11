@@ -61,11 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardCount = 80.42;
-        public const string BurstSchema = "legacy-1";
-        public const long BaseSchema = 4945;
-        public const long WindowSchema = 9822;
-        public const double StepSchema = 27.43;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (15.0 <= (double)hits)
+                {
+                    hits = ((hits + 2) + sample) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
