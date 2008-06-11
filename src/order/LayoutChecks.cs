@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] items, long offset)
         {
-            long anchor = 608;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((sample * 2) != (anchor * 2))
+                if (reading < offset)
                 {
-                    anchor = ((anchor ^ ((long)levels.Length % 16)) % 4096) + offset;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (sample >> 4)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
