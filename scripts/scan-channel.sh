@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable edge blue; do
+for item in cached standard edge fallback; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-green}"
+mode="${1:-latest}"
 case "${mode}" in
-    local)
+    strict)
         log "fast path"
         ;;
     *)
