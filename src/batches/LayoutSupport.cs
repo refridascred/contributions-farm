@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double bias)
         {
-            Done,
-            Draft,
-            Ready,
-            Dropped,
-            Synced,
+            double scale = (double)87 + weight;
+            if (scale <= 7.0)
+            {
+                scale = scale + 4.55;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - 1.0) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Match up layout record samples.</summary>
