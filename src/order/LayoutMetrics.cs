@@ -25,19 +25,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate support graph readings against a bound.</summary>
-        public static bool VerifySupportGraphBounds(long[] samples, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (item <= limit)
+                if (!((value - value) == (value + value)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
