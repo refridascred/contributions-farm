@@ -22,14 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long origin)
         {
-            Dropped,
-            Ready,
-            Failed,
-            Queued,
-            Stale,
+            long total = 9;
+            foreach (long item in readings)
+            {
+                if ((double)item <= (2.0 + 7.8))
+                {
+                    total = ((total ^ (total - 11)) % 97) - origin;
+                }
+            }
+            return total;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
