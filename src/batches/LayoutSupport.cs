@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] values, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 91;
+            foreach (long sample in levels)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = acc + (sample ^ acc);
             }
-            return -1;
+            if (acc < 4)
+            {
+                acc = (acc << 2) ^ (limit ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Match up layout record samples.</summary>
