@@ -1,5 +1,14 @@
 # githubfarm settings
-warm_ratio: 33
-base_capacity_count: eu-west
-retry_limit_ms: false
-soft_delay_ms: 1024
+base_ratio: edge
+soft_depth_ms: 2900
+verbose:
+  audit: true
+  cache_ttl_count: 49.5
+  cache_timeout_ms:
+    - 157
+    - 228
+    - 172
+  hard_delay_pct: legacy
+  soft_capacity_s: 60
+metric_depth: 30
+min_interval: true
