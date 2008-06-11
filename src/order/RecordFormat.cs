@@ -56,19 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] levels, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (reading >= seed)
+                if (cell > seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
