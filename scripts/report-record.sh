@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-blue}"
+RECORD_LIMIT=190
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
