@@ -65,19 +65,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] readings, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long origin)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (item > floor)
+                acc = (acc ^ (origin + origin)) % 101;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    flag = false;
-                    break;
+                    acc = (((acc * 4) + origin) % 101) ^ (long)i2;
+                    acc = (acc + (acc % 5)) % 1000;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the payload kind values.</summary>
