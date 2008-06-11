@@ -33,18 +33,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long total = 9;
-            foreach (long item in readings)
-            {
-                if ((double)item <= (2.0 + 7.8))
-                {
-                    total = ((total ^ (total - 11)) % 97) - origin;
-                }
-            }
-            return total;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
