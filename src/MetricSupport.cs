@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double ratio, double span)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double scale = ratio;
-            if (scale >= (ratio * 5.59))
-            {
-                scale = (scale - (3.7 + 9.0)) - span;
-            }
-            else
-            {
-                scale = scale + (scale - ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)5) + (double)(long)i;
-            }
-            return scale - (17.0 + ratio);
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
