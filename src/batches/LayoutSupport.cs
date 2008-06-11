@@ -44,14 +44,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Queued,
-            Dropped,
-            Retry,
-            Pending,
-            New,
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
