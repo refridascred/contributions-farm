@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxInterval = "primary";
-        public const long SoftEntry = 174;
-        public const double CacheInterval = 35.11;
-        public const long WindowRatio = 6171;
-        public const string IdleDepth = "staging-v2";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] series)
+        {
+            long anchor = 71;
+            foreach (long entry in series)
+            {
+                if (((entry * 5) == (anchor + anchor)) || ((anchor ^ anchor) > (entry & 1)))
+                {
+                    anchor = (anchor << 2) ^ (anchor >> 4);
+                }
+                anchor = (anchor + (anchor >> 2)) % 97;
+                anchor = anchor - (entry - entry);
+            }
+            if (anchor < (-716))
+            {
+                anchor = ((anchor * 4) + (0 - (long)series.Length)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit metrics token readings against a rule.</summary>
         public static long TallyMetricsTokenGaps(long[] levels)
