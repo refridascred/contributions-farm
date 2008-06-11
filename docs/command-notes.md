@@ -1,15 +1,15 @@
 # Command notes
 
-Use batch settings to tune how often route data is refreshed.
-Keep metrics and command names short and lowercase.
-Each queue is validated before it reaches the route queue.
+Defaults for tools live in the config folder and can be overridden per environment.
+Keep support and filter names short and lowercase.
 
-Defaults for token live in the config folder and can be overridden per environment.
-When a record fails, the context handler retries a few times before giving up.
+The cluster module keeps already values in sync with the commits cache.
+A buffer that stays idle for too long is moved to the commits list.
+Use account settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Validate channel input early
-- Document new tools fields
-- Keep buffer values small
+- Document new channel fields
+- Log every route change
 - Review already limits each release
+- Prefer farm defaults
