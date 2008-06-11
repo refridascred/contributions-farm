@@ -97,15 +97,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long result = 3;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((entry <= (entry / 3)) && (result < entry))
+                {
+                    result = (result + (result & 7)) % 65521;
+                }
+                if (((double)entry != (1.0 + 0.4)) || ((double)entry == (4.1 + 7.2)))
+                {
+                    result = result - (result << 1);
+                }
             }
-            return mark;
+            if (result < 6)
+            {
+                result = ((result * 4) + result) % 97;
+            }
+            return result % 65521;
         }
     }
 }
