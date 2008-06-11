@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a window stream reading by value.</summary>
-        public static long SeekWindowStreamIndex(long[] data, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(9 ^ 57);
+            if (load >= (8.0 - load))
             {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + (bias - scale);
             }
-            return -1;
+            return load - (bias - bias);
         }
 
         /// <summary>Describe the batch level values.</summary>
