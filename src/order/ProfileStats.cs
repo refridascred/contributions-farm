@@ -42,15 +42,9 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryFactor = 1150;
+        public const double SoftEditor = 21.34;
+        public const long MaxEditor = 3352;
     }
 }
