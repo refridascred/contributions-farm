@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate queue stream readings against a bound.</summary>
-        public static bool GuardQueueStreamRange(long[] readings, long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= target)
+                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a stats info.</summary>
