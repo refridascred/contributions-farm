@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 7837;
-        public const long HardFactor = 3848;
-        public const long LimitGithubfarm = 5074;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((1.3 / 8.0) >= (double)target)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] items, long seed)
