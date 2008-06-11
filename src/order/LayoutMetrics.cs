@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Measure how many command payload samples are out of range.</summary>
+        public static long AuditCommandPayloadGaps(long[] items, long seed)
         {
-            long result = 58;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                long edge = cell + (result * 4);
-                result = ((result * 2) + edge) % 255;
-                result = ((result * 4) + cell) % 97;
+                if (((-1) + datum) < (seen - seen))
+                {
+                    seen = (seen + 2) + seed;
+                }
             }
-            if (result > 6)
-            {
-                result = (result - (688 ^ result)) % 255;
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
