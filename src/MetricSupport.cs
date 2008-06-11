@@ -25,17 +25,15 @@ namespace Common.Utilities
         public const double BaseChannel = 4.86;
         public const long WindowLevel = 6831;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] values, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 4;
+            foreach (long cell in values)
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (cell << 2)) % 1000) - floor;
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
