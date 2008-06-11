@@ -24,22 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] series)
         {
-            long mark = -15;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (mark <= (reading + step))
+                if ((double)matches > (4.42 * 8.7))
                 {
-                    mark = mark + (reading / 5);
+                    matches = (matches + 2) + sample;
                 }
-                if ((mark ^ reading) > reading)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
