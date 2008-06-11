@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
             public double Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
