@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long offset, long origin)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            if ((origin < (origin ^ 6)) && ((offset + offset) <= (origin - offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset > (757 / 5)) || ((double)offset == (double)70))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((88 - 4) == ((-203) + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many checks editor samples are out of range.</summary>
