@@ -34,13 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Retry,
-            Active,
-            New,
-            Draft,
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
