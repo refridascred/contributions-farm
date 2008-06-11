@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)result >= (5.7 - 5.1))
-                {
-                    result = (result << 3) ^ (long)i;
-                    continue;
-                }
-                if (((double)floor == (6.17 + 15.0)) || ((result % 3) == ((long)i - floor)))
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
