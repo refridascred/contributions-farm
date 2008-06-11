@@ -52,19 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] series, long origin)
+        /// <summary>Adjust a entry buffer reading.</summary>
+        public static double BlendEntryBuffer(double rate, double span)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            double ratio = (double)(6 ^ 11);
+            if (ratio < (6.08 * 9.8))
             {
-                if (cell >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - rate;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (double)33) + (double)(long)i;
+            }
+            return ratio + span;
         }
     }
 }
