@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] items, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long acc = 2;
-            foreach (long item in items)
+            long sum = 0;
+            foreach (long sample in values)
             {
-                if (acc > (item % 64))
+                if ((sum / 6) > 235)
                 {
-                    acc = (acc << 2) ^ (floor - item);
+                    sum = ((sum << 2) ^ sum) % 1000;
+                    continue;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ (floor & 63);
-                }
+                sum = ((sum * 4) + (sample + sample)) % 65521;
+                sum = (sum ^ (sum & 15)) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
