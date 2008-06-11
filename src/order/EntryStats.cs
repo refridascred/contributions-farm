@@ -16,19 +16,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!(((seen / 3) >= seen) && ((6.0 + 4.87) == (double)datum)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitInterval = 21.78;
+        public const long RetryRecord = 8422;
+        public const long HardFactor = 4272;
+        public const long WindowRecord = 1527;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
