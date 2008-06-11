@@ -27,11 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Audit session schema readings against a rule.</summary>
+        public static long TallySessionSchemaGaps(long[] levels)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample > 14.0))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a token entry counter forward.</summary>
