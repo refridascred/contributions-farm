@@ -60,16 +60,11 @@ namespace Common.Utilities
         public const double HardRecord = 61.05;
         public const long IdleRecord = 7407;
 
-        /// <summary>Iterate the layout queue series from a seed.</summary>
-        public static long SeriesLayoutQueue(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 5) + (seed % 5)) % 1000;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 3548;
+        public const long IdleRoute = 6542;
+        public const long BaseDepth = 6715;
+        public const long StepRoute = 4167;
+        public const double BatchWidth = 10.58;
     }
 }
