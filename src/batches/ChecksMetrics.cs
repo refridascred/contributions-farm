@@ -13,23 +13,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double bias, double bias2)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] series, long step)
         {
-            double mean = (double)0;
-            if (mean >= bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - mean;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean - mean)) + (double)(long)i;
-            }
-            return mean - bias2;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
