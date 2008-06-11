@@ -49,20 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order cluster value from a seed.</summary>
-        public static long DeriveOrderCluster(long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (46 < mark)
+                if (items[i] == step)
                 {
-                    mark = (mark - (32 << 1)) % 4096;
-                    mark = (mark + (seed & 31)) % 101;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
