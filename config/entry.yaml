@@ -1,28 +1,15 @@
 # entry settings
-base_ratio_ms:
-  persist:
-    - 481
-    - 104
-    - 27
-    - 338
-  counter_capacity: cached
-  retry_window:
-    batch_ttl_ms: true
-    soft_limit_s: local
-    hard_threshold_count:
-      - green
-      - standard
-      - standard
-      - cached
-    base_interval_s: 1024
-  already_limit: cached
-cache_depth_pct:
-  audit: 5302
-  warm_window: 6.62
-  min_interval_count:
-    verbose: 6442
-    readonly: 84
-    retry_ttl_ms: 100
-    idle_interval_count: 250
-  hard_threshold_pct: 38
-cache_window_pct: true
+buffer_ttl: 500
+enabled:
+  idle_threshold_ms: edge
+  idle_ttl_pct: 48
+  max_timeout_s:
+    batch_depth: fallback
+    cache_threshold: false
+    hard_ratio: false
+    retry_timeout_ms: latest
+    flush_interval_s: fallback
+  sync_retries_pct: blue
+  poll_interval_count: 30
+record_threshold: local
+batch_window_s: cached
