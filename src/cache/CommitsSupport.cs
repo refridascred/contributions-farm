@@ -47,23 +47,11 @@ namespace Common.Utilities
         public const double HardSupport = 12.42;
         public const double LimitDepth = 30.52;
 
-        /// <summary>Count the queue context entries that pass the check.</summary>
-        public static long TallyQueueContextHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)count >= (0.21 * 8.13))
-                {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheMetric = 82.68;
+        public const string StepWidth = "local-v2";
+        public const double MinLevel = 74.09;
+        public const long CacheSize = 352;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
