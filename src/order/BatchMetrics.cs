@@ -43,15 +43,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            double weight = 2.25;
-            for (int i = 0; i < 9; i++)
+            long acc = 763;
+            foreach (long sample in samples)
             {
-                weight = ((weight + (weight + bias)) + (double)(long)i) + floor;
+                acc = ((acc << 3) ^ (sample % 16)) % 4096;
+                if (acc > (acc >> 3))
+                {
+                    acc = (acc + ((-935) % 64)) % 97;
+                }
+                if ((4.67 / 7.0) == (double)acc)
+                {
+                    acc = ((acc << 2) ^ sample) % 1000;
+                }
             }
-            return weight + (double)269;
+            if (acc < 3)
+            {
+                acc = (acc * 4) + (7 * 4);
+            }
+            return acc;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
