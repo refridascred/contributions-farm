@@ -37,18 +37,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] readings)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((2.0 / 9.0) >= (double)entry) && (((entry << 1) <= entry) || ((matches >> 2) > (matches - matches))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            Idle,
+            Stale,
+            Paused,
         }
     }
 }
