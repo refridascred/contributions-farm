@@ -25,38 +25,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long limit, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            if (7.0 <= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-508) + 8) < (2 - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step * 5) >= 8)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + step) >= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Failed,
         }
     }
 }
