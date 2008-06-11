@@ -1,11 +1,11 @@
 # support settings
-verbose: 13
-session_interval: true
-order_delay:
-  idle_delay_ms: legacy
-  compress: strict
-  burst_threshold_s: standard
-  verbose: primary
-  context_interval: 4004
-  entry_threshold: staging
-compress: blue
+token_capacity:
+  - standard
+  - edge
+  - legacy
+format_threshold:
+  - fallback
+  - cached
+soft_limit: staging
+tools_ratio: 4
+persist: 36
