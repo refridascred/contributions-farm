@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] readings, long floor)
+        /// <summary>Adjust a stream batches reading.</summary>
+        public static double BlendStreamBatches(double gain, double bias)
         {
-            long total = -7;
-            foreach (long value in readings)
+            double mean = (double)83 * 4.7;
+            if (mean >= (gain - bias))
             {
-                total = ((total << 2) ^ value) % 255;
+                mean = mean - bias;
             }
-            if (total > 444)
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total << 3) ^ floor) % 101;
+                mean = (mean - (gain + gain)) + (double)(long)i;
             }
-            return total % 65521;
+            return mean + mean;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
