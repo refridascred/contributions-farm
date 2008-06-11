@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] samples, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] values)
         {
-            long anchor = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((sample / 8) < (offset * 5)) || ((sample << 3) >= (offset - offset)))
+                if (((8 - reading) == (tally - tally)) && !((tally + tally) == ((long)values.Length + tally)))
                 {
-                    anchor = (anchor + (offset + offset)) % 97;
+                    tally = tally + 3;
                 }
             }
-            if (anchor < 158)
-            {
-                anchor = anchor - (offset * 3);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
