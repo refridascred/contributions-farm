@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] data, long origin)
         {
-            double weight = rate;
-            if (weight <= rate)
+            bool found = true;
+            foreach (long item in data)
             {
-                weight = weight + span;
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight - (rate - weight);
+            return found;
         }
 
         /// <summary>Describe the graph state values.</summary>
