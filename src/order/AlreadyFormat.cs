@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 2789;
-        public const long BatchGithubfarm = 6444;
-        public const double StepLevel = 49.18;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long bound)
