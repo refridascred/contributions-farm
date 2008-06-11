@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate context queue samples.</summary>
-        public static long WeighContextQueue(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long acc = 459;
-            foreach (long sample in readings)
+            long carry = 2;
+            foreach (long value in samples)
             {
-                acc = ((acc ^ (long)readings.Length) % 255) - sample;
+                if ((carry + carry) < (carry + value))
+                {
+                    carry = (carry * 4) + (value - 362);
+                }
+                else
+                {
+                    carry = carry ^ ((-53) << 2);
+                }
             }
-            return acc % 4096;
+            return carry % 1000;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
