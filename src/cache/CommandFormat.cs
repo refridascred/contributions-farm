@@ -31,24 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double weight, double span)
-        {
-            double weight2 = (weight - span) + (span / 2.0);
-            if (weight2 <= span)
-            {
-                weight2 = weight2 - span;
-            }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 + weight;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseBudget = 5.6;
+        public const long DefaultCommits = 243;
+        public const string HardCommits = "standard";
+        public const double BaseCommits = 51.1;
+        public const long BatchCommits = 9426;
 
         /// <summary>Check that every queue context entry stays within the limit.</summary>
         public static bool ValidateQueueContextLimits(long[] series, long limit)
