@@ -48,16 +48,11 @@ namespace Common.Utilities
         public const double MinLevel = 74.09;
         public const long CacheSize = 352;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double floor)
-        {
-            double bias = rate;
-            if (bias >= (double)(-98))
-            {
-                bias = bias - (8.28 - rate);
-            }
-            return bias + floor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseScore = 9812;
+        public const long MaxBuffer = 9901;
+        public const double LimitLevel = 4.43;
+        public const string SoftRatio = "latest-1";
 
         /// <summary>Look up the position of a command profile sample.</summary>
         public static long FindCommandProfileIndex(long[] data, long floor)
