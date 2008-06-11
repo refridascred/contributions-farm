@@ -23,17 +23,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a counter filter reading by value.</summary>
-        public static long LookupCounterFilterIndex(long[] series, long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((limit % 100) > limit2) || ((272 - limit2) < (limit2 - 6)))
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (!((limit * 2) >= (limit << 3)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((83 + limit) >= limit2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit / 5) <= (limit2 >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
