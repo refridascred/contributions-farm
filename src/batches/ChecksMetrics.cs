@@ -50,12 +50,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 7896;
         public const long SoftInterval = 1221;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double floor)
-        {
-            double drift = (double)43 * 16.0;
-            return (drift - (floor - 20.0)) + rate;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 944;
+        public const long MinSize = 5809;
+        public const double MaxFilter = 5.2;
+        public const long LimitFilter = 7760;
+        public const long SoftFilter = 3377;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheStream = 172;
