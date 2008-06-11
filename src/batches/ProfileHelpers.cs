@@ -71,12 +71,12 @@ namespace Common.Utilities
             return rate + (double)927;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                if (levels[i] <= bound)
                 {
                     return (long)i;
                 }
