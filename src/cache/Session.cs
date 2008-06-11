@@ -35,13 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            New,
-            Synced,
-            Ready,
-            Done,
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry << 3) ^ (carry - offset)) % 101;
+                if ((double)offset <= 8.1)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry - 7) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a batch reading.</summary>
