@@ -14,11 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 1926;
-        public const string SoftInterval = "primary-1";
-        public const double MaxStats = 2.87;
-        public const string BurstStats = "standard-1";
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total + ((long)i - 92)) % 97;
+                total = (total ^ (floor << 3)) % 255;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] data)
