@@ -13,12 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Match up format samples.</summary>
