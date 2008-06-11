@@ -1,13 +1,19 @@
 # support settings
-enabled: true
-burst_threshold: fallback
-hard_depth_ms: 63.03
-batch_threshold_pct: false
-flush_size_s:
-  - 272
-  - 481
-  - 188
-record_limit:
-  - local
-  - open
-  - cached
+sync_limit_ms: 8227
+contributi_ratio: 2587
+command_retries: false
+persist:
+  batch_threshold: 41.69
+  poll_limit_s: 8441
+  compress: 22.35
+  retry_limit_s: 30.3
+  checks_window:
+    burst_depth_pct: staging
+    stream_delay: 40
+    enabled: 45.15
+    hard_timeout_count: false
+  report_ratio: cached
+editor_ratio:
+  - 388
+  - 185
+  - 447
