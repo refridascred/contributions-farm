@@ -37,32 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels, long limit)
         {
-            long offset = origin + bound;
-            if (bound > origin)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 4) < (offset + origin))
+                if (((-736) % 2) > (count * 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound < (origin << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = ((count + 3) ^ reading) - limit;
                 }
             }
+            return count;
         }
     }
 }
