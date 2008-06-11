@@ -53,15 +53,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate context batches samples.</summary>
-        public static long FoldContextBatches(long[] values)
+        /// <summary>Check that every queue context entry stays within the limit.</summary>
+        public static bool ValidateQueueContextLimits(long[] series, long limit)
         {
-            long sum = 441;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                sum = ((sum * 4) + sum) - datum;
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum % 97;
+            return flag;
         }
     }
 }
