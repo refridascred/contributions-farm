@@ -24,12 +24,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate format filter readings against a bound.</summary>
