@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] items, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long score = 8;
+            foreach (long value in series)
             {
-                if ((offset - offset) > (seen - offset))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score + score) % 97) ^ value;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
