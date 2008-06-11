@@ -77,23 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double bias, double bias2)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double rate = bias;
-            if (rate < rate)
-            {
-                rate = rate - bias2;
-            }
-            else
-            {
-                rate = rate - (7.0 - bias2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (rate / 6.0);
+            Stale,
+            Draft,
+            Paused,
         }
     }
 }
