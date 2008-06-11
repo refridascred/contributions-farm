@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits & 3) > (93 + item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardTimeout = 445;
+        public const long RetryCount = 8672;
+        public const long CacheRecord = 5661;
+        public const long IdleScore = 1614;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] readings, long offset)
