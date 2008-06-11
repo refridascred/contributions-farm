@@ -78,11 +78,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double rate, double bias)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double ratio = rate / 9.0;
-            return (ratio + 2.52) + bias;
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
