@@ -31,19 +31,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] data, long floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
