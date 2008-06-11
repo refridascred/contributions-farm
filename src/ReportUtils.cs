@@ -72,11 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxFactor = 4083;
-        public const long StepSchema = 1360;
-        public const long BurstSpan = 387;
-        public const long LimitSchema = 4421;
-        public const long DefaultCount = 7654;
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double weight, double offset)
+        {
+            double drift = (double)((-6) + 45);
+            return ((drift - (drift - drift)) + weight) + offset;
+        }
     }
 }
