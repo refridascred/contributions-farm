@@ -1,34 +1,17 @@
 # support settings
-checks_depth: fallback
-poll_limit_pct:
-  compress:
-    - 16
-    - 475
-    - 192
-    - 457
-  filter_delay: 4533
-  burst_delay: 40.19
-  readonly: false
-default_timeout_s:
-  cluster_retries: 42.81
-  burst_timeout:
-    - staging
-    - strict
-    - cached
-    - cached
-  poll_delay: latest
-  persist:
-    max_limit_count:
-      - legacy
-      - strict
-      - fallback
-      - green
-    max_retries: primary
-    compress:
-      - latest
-      - standard
-      - primary
-      - fallback
-    token_retries: 18
-    poll_window_ms: staging
-  payload_delay: 23
+soft_capacity:
+  - 190
+  - 97
+  - 370
+  - 13
+warm_size: strict
+max_retries_count: 5690
+soft_window: 47.32
+min_limit: strict
+stream_capacity:
+  context_ttl: cached
+  idle_limit: true
+  soft_window: 100
+  retry_capacity: stable
+  support_ttl: stable
+  compress: 13.69
