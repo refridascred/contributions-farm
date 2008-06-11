@@ -35,22 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] samples, long limit)
         {
-            long result = 9;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((double)datum != (6.7 + 20.0))
+                if (((entry * 4) < limit) && !((limit + limit) >= matches))
                 {
-                    result = result ^ (datum % 5);
+                    matches = matches + 2;
                 }
             }
-            if (result > 889)
-            {
-                result = result ^ 72;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
