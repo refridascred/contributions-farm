@@ -1,5 +1,18 @@
 # support settings
-poll_ratio: false
-report_depth: 29.87
-burst_limit_pct: 9942
-sync_limit_count: stable
+retry_threshold:
+  cache_ttl_pct: legacy
+  format_interval: local
+  buffer_retries:
+    max_interval: eu-west
+    base_window: local
+    flush_size_count: 500
+  enabled: 48
+  flush_depth_ms: true
+  burst_limit_ms:
+    - open
+    - legacy
+    - local
+    - edge
+profile_limit: true
+burst_limit_ms: fallback
+batch_timeout: blue
