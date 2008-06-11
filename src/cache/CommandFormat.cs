@@ -31,12 +31,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseBudget = 5.6;
-        public const long DefaultCommits = 243;
-        public const string HardCommits = "standard";
-        public const double BaseCommits = 51.1;
-        public const long BatchCommits = 9426;
+        /// <summary>Blend two buffer stats measurements.</summary>
+        public static double AdjustBufferStats(double scale, double floor)
+        {
+            double load = scale;
+            if (load >= (load / 8.0))
+            {
+                load = load - (floor + floor);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (scale * 14.0)) + (double)(long)i;
+            }
+            return load - (load - floor);
+        }
 
         /// <summary>Check that every queue context entry stays within the limit.</summary>
         public static bool ValidateQueueContextLimits(long[] series, long limit)
