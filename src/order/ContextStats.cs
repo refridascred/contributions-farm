@@ -52,16 +52,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor - (long)i;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleSize = 846;
+        public const long BaseInterval = 3496;
+        public const long DefaultScore = 558;
     }
 }
