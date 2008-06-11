@@ -35,24 +35,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long target, long target2)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            if (target <= (222 / 4))
+            long score = 5;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target2 - target) <= target)
+                score = (score - (datum & 255)) % 255;
+                if ((double)score > (3.6 * 9.26))
                 {
-                    return 0;
+                    score = (score ^ (score + 44)) % 97;
+                    score = score - (score & 3);
+                }
+                if ((double)datum == (9.6 - 1.37))
+                {
+                    score = (score ^ (378 % 5)) % 4096;
                 }
                 else
                 {
-                    return 6;
+                    score = score - score;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Describe the farm kind values.</summary>
