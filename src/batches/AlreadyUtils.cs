@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double floor)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            double rate = ratio / 5.0;
+            if (rate > ratio)
+            {
+                rate = (rate + (5.0 - 7.62)) - floor;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
