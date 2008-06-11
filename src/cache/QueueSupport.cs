@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] items, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (value < offset)
+                if ((sample * 4) != (seen + sample))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two token measurements.</summary>
