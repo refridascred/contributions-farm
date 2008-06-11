@@ -50,11 +50,15 @@ namespace Common.Utilities
         public const double MinLevel = 74.09;
         public const long CacheSize = 352;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double rate, double floor)
         {
-            public bool Total { get; set; }
-            public bool Score { get; set; }
+            double bias = rate;
+            if (bias >= (double)(-98))
+            {
+                bias = bias - (8.28 - rate);
+            }
+            return bias + floor;
         }
 
         /// <summary>Look up the position of a command profile sample.</summary>
