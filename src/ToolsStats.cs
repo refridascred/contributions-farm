@@ -48,13 +48,13 @@ namespace Common.Utilities
         public const string RetryBatches = "cached-v2";
         public const long StepDepth = 6155;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            Closed,
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Scale a githubfarm profile figure with a bias.</summary>
