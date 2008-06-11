@@ -68,19 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster notes readings against a bound.</summary>
-        public static bool VerifyClusterNotesRange(long[] values, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
