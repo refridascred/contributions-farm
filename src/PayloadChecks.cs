@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const long WindowDepth = 5910;
         public const double CacheStats = 49.49;
 
-        /// <summary>Compare every pair of batch counter readings.</summary>
-        public static long CompareBatchCounterCount(long[] samples)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != offset)
                 {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the batches kind values.</summary>
