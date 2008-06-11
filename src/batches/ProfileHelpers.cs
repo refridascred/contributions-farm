@@ -43,12 +43,10 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 5.0);
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 55.88;
+        public const double BatchWidth = 54.19;
+        public const long BatchSize = 2442;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string HardWidth = "local-v2";
