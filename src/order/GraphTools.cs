@@ -12,11 +12,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 66.67;
-        public const double MinReport = 25.08;
-        public const long LimitReport = 6154;
-        public const string HardReport = "standard-edge";
+        /// <summary>Count channel format pairs that satisfy a relation.</summary>
+        public static long CompareChannelFormatCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long FoldEditor(long[] readings)
