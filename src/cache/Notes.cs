@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Ready,
-            Queued,
-            Failed,
-            Synced,
-            Idle,
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
