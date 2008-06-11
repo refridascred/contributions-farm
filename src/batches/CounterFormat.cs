@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((double)tally >= (double)value)
+                if (((6.0 / 9.0) != (double)datum) && (((double)(long)series.Length != (0.4 / 5.0)) || ((matches * 4) >= datum)))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of schema cluster entries.</summary>
