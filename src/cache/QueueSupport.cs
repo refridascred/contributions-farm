@@ -38,11 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            Failed,
+            Dropped,
+            Stale,
         }
     }
 }
