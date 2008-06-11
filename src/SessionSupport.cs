@@ -35,18 +35,27 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = -9;
+            foreach (long item in data)
             {
-                if (((158 >> 5) < (datum / 6)) || ((3.4 / 6.0) == (double)hits))
+                if ((209 <= origin) && ((mark % 2) > item))
                 {
-                    hits = hits + 3;
+                    mark = (mark + (item << 1)) % 1000;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - origin)) % 255;
+                }
+                mark = (mark << 2) ^ (mark + item);
+                if ((mark - item) > item)
+                {
+                    mark = ((mark << 3) ^ (mark + origin)) % 65521;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
