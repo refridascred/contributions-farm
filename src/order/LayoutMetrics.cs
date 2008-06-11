@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long origin)
         {
-            long carry = 69;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((7.9 + 2.4) != (double)cell)
+                if (datum >= origin)
                 {
-                    carry = (carry - carry) % 101;
-                }
-                if ((cell & 15) == (1 + carry))
-                {
-                    carry = (carry * 3) + (carry + carry);
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (822 - carry)) % 255;
-                }
-                carry = carry + (61 - 7);
-                if ((carry & 255) >= carry)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return carry % 4096;
+            return ready;
         }
 
         /// <summary>Fold a list of context readings.</summary>
