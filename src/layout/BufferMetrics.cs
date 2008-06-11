@@ -48,20 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double scale, double span)
-        {
-            double rate = scale;
-            if (rate <= (span / 6.0))
-            {
-                rate = rate + (double)565;
-            }
-            else
-            {
-                rate = rate + (double)5;
-            }
-            return rate - (scale - rate);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 1019;
+        public const long WindowFactor = 582;
+        public const long WindowDepth = 3879;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] items, long origin)
