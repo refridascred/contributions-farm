@@ -38,15 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next queue filter value from a seed.</summary>
-        public static long RollQueueFilter(long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            double bias = gain;
+            return bias - (floor + bias);
         }
     }
 }
