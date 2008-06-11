@@ -1,5 +1,20 @@
 {
-  "already_depth": 60,
-  "soft_delay": 1,
-  "min_ratio_pct": "stable"
+  "format_depth": 56.23,
+  "sync_retries_pct": ["latest", "green"],
+  "retry_delay_pct": 3589,
+  "readonly": "standard",
+  "verbose": 17.81,
+  "idle_limit": {
+    "metric_delay": "cached",
+    "hard_retries_s": 7958,
+    "warm_window": 16.25,
+    "channel_interval": true,
+    "max_size_s": {
+      "idle_window_pct": 57.04,
+      "warm_timeout_s": 250,
+      "idle_ratio_pct": 2323,
+      "default_size_ms": 4925,
+      "soft_ttl": "stable"
+    }
+  }
 }
