@@ -32,16 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] values, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                mix = (mix ^ limit) % 1000;
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((5.72 * 15.0) > (double)value)
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
