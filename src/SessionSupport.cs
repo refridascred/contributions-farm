@@ -19,11 +19,25 @@ namespace Common.Utilities
         public const long IdleScore = 9275;
         public const double BurstWindow = 57.94;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchInterval = 2541;
-        public const string WindowRoute = "open";
-        public const long CacheRoute = 9129;
-        public const double BurstWidth = 49.73;
-        public const long IdleLevel = 8325;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long bound2)
+        {
+            long cur = bound + bound2;
+            if ((cur << 1) > (2 >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= 9.3)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
