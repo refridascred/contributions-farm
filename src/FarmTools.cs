@@ -16,13 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] levels)
         {
-            Synced,
-            Idle,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - cell) != (cell - hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stream mode values.</summary>
