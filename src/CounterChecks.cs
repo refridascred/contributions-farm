@@ -44,11 +44,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstRatio = "local";
-        public const long BaseRatio = 8573;
-        public const long CacheSize = 9673;
-        public const double RetryStream = 9.63;
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double DefaultTools = 62.63;
