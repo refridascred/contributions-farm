@@ -52,22 +52,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the profile editor entries that pass the check.</summary>
-        public static long MeasureProfileEditorGaps(long[] items, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((count + (-239)) > (count >> 5)) && (count > value))
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
