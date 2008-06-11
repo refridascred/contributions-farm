@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] readings, long floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((floor ^ (-5)) > (575 >> 4)) && ((floor - hits) > (hits / 2)))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine token values into a single score.</summary>
