@@ -22,21 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a counter cluster reading.</summary>
