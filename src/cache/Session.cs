@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] levels, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long bound, long seed)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            if ((bound << 2) > (seed ^ seed))
             {
-                if (sample != origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)5 <= (double)seed)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed == (double)7)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) >= (seed << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
