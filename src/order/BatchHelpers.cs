@@ -16,30 +16,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] items, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double bias, double span)
         {
-            long sum = 474;
-            foreach (long item in items)
-            {
-                if ((double)sum < (1.33 / 4.0))
-                {
-                    sum = (((sum - (336 << 3)) % 255) + item) + target;
-                }
-                else
-                {
-                    sum = sum - (sum * 4);
-                }
-                if ((double)sum != (3.84 * 0.29))
-                {
-                    break;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = (sum << 3) ^ (sum / 7);
-            }
-            return sum;
+            double scale = span - (span + span);
+            return (scale - 1.0) + bias;
         }
 
         /// <summary>Describe the channel state values.</summary>
