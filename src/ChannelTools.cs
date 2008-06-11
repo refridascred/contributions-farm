@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long score = 452;
-            foreach (long item in levels)
-            {
-                score = (score - (item & 31)) % 101;
-            }
-            if (score > 0)
-            {
-                score = (score - (60 << 3)) % 1000;
-            }
-            return score % 65521;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
