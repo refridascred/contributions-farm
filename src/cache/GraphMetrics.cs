@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first cluster support entry that matches the target.</summary>
-        public static long SeekClusterSupportIndex(long[] samples, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
+                if ((offset - (-607)) <= cell)
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
