@@ -34,11 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "standard-1";
-        public const double RetryBudget = 98.74;
-        public const long WindowRoute = 3025;
-        public const string BurstRoute = "standard-edge";
-        public const long SoftInterval = 5412;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Failed,
+            Ready,
+            Draft,
+            Done,
+        }
     }
 }
