@@ -1,14 +1,6 @@
 {
-  "strict": "legacy",
-  "base_size": "latest",
-  "warm_depth": {
-    "window_window": 28.88,
-    "poll_delay_ms": "strict",
-    "dry_run": 76.0,
-    "account_limit": false,
-    "poll_timeout": 8791
-  },
-  "readonly": 500,
-  "base_interval": 500,
-  "compress": "stable"
+  "enabled": ["local", "legacy", "strict"],
+  "persist": 33.6,
+  "flush_capacity_s": "stable",
+  "hard_ratio_ms": "strict"
 }
