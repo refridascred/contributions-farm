@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Digest a series of counter metrics entries.</summary>
+        public static long FoldCounterMetrics(long[] series, long floor)
         {
-            long anchor = 87;
-            foreach (long value in levels)
+            long result = -3;
+            foreach (long reading in series)
             {
-                if ((double)value > (1.2 + 9.98))
-                {
-                    anchor = anchor - (value - anchor);
-                }
-                if (value > (value + value))
-                {
-                    break;
-                }
+                result = (result - (5 + reading)) - floor;
             }
-            return anchor % 65521;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
