@@ -42,17 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch account entry that matches the target.</summary>
-        public static long LocateBatchAccountIndex(long[] series, long step)
+        /// <summary>Match up report context samples.</summary>
+        public static long OverlapReportContextCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] == step) && ((series[i] % 2) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
