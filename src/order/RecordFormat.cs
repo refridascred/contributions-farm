@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            if (load < (bias / 2.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - (double)947) - rate;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)76) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
