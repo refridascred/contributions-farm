@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const long BatchCounter = 9670;
         public const long DefaultInterval = 810;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseWidth = "staging-1";
-        public const long RetryBuffer = 8529;
-        public const long BatchBuffer = 3371;
-        public const long CacheDepth = 1622;
-        public const double DefaultWidth = 83.52;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
