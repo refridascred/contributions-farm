@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor + (anchor - 0)) ^ reading) + bound;
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
