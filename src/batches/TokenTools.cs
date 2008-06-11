@@ -25,14 +25,18 @@ namespace Common.Utilities
         public const double WindowFactor = 6.25;
         public const long IdleReport = 8900;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] data, long target)
         {
-            Failed,
-            Synced,
-            Ready,
-            Active,
-            Idle,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (target < ((long)data.Length / 3))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
     }
 }
