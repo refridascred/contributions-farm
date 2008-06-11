@@ -52,13 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Pending,
-            Dropped,
-            Stale,
-            Draft,
+            Locked,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Digest a series of context entries.</summary>
