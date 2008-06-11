@@ -19,18 +19,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of context notes readings.</summary>
-        public static long CompareContextNotesCount(long[] values)
+        /// <summary>Measure how many checks editor samples are out of range.</summary>
+        public static long AuditChecksEditorHits(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)entry >= (18.0 * 1.16))
                 {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
