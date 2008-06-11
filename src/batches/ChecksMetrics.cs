@@ -59,14 +59,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Queued,
-            Failed,
-            Pending,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 172;
+        public const long IdleInterval = 416;
+        public const string CacheSize = "primary-v2";
+        public const double MaxStream = 97.92;
     }
 }
