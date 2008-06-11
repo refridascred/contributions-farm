@@ -1,13 +1,9 @@
 # githubfarm settings
-buffer_ttl: blue
-default_window: blue
-base_threshold_ms: green
-hard_ttl_s: true
-audit:
-  contributi_capacity: primary
-  profile_timeout:
-    warm_capacity_s: 59
-    max_ttl: 30
-    hard_retries_ms: true
-  min_capacity: 36
-poll_threshold_count: true
+burst_threshold_count: latest
+audit: 93.66
+poll_ttl_s: true
+default_threshold: blue
+persist:
+  - 171
+  - 200
+  - 469
