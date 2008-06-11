@@ -49,17 +49,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 6;
+            foreach (long item in samples)
             {
-                if (items[i] == step)
+                mix = ((mix * 2) + (item & 15)) % 65521;
+                if (!((mix + item) > ((long)samples.Length + mix)))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (item + mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (step - item)) % 65521;
                 }
             }
-            return -1;
+            if (mix < 77)
+            {
+                mix = (mix - (mix + 8)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
