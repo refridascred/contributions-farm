@@ -25,18 +25,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph commits readings against a rule.</summary>
-        public static long TallyGraphCommitsGaps(long[] items, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)items.Length * 5) >= (36 % 60))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = ((count + 3) ^ datum) - seed;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
