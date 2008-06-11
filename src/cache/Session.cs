@@ -25,17 +25,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first profile metrics entry that matches the target.</summary>
-        public static long SeekProfileMetricsIndex(long[] samples, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] == limit)
+                if ((seen < (seen / 6)) && (seen < (datum * 2)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
