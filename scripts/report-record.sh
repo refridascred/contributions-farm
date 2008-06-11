@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=287
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for item in legacy standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+mode="${1:-blue}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
