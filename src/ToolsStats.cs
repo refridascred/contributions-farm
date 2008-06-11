@@ -34,11 +34,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 7093;
-        public const long BurstDepth = 5586;
-        public const double LimitScore = 73.43;
-        public const string SoftDepth = "legacy-1";
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
