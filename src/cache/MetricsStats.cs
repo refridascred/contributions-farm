@@ -41,24 +41,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank counter cluster input into a small class.</summary>
-        public static long ClassifyCounterCluster(long seed, long seed2)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            if ((seed - seed2) > seed2)
+            double bias2 = (double)(794 * 5);
+            if (bias2 < (double)(-3))
             {
-                return 8;
+                bias2 = bias2 - bias;
             }
             else
             {
-                if ((seed / 2) <= (seed & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                bias2 = bias2 - scale;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Describe the queue level values.</summary>
