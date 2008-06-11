@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels, long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long total = 58;
-            foreach (long datum in levels)
-            {
-                if (datum >= (total + total))
-                {
-                    total = (total ^ (6 - offset)) % 101;
-                }
-            }
-            return total;
+            Active,
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a context info.</summary>
