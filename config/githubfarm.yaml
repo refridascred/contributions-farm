@@ -1,6 +1,8 @@
 # githubfarm settings
-cache_delay_pct: fallback
-soft_limit_pct:
-  - 116
-  - 102
-strict: legacy
+checks_capacity:
+  - primary
+  - standard
+  - blue
+dry_run: 60
+max_interval_ms: 93.4
+flush_ratio_s: 50.5
