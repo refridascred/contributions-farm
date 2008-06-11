@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] samples, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
+                if ((double)offset <= (12.0 / 6.0))
                 {
-                    return (long)i;
+                    count = (count + 2) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
