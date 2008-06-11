@@ -22,11 +22,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long limit, long seed)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            if ((double)limit != (4.0 + 6.7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit & 127) == (143 - limit)) || ((limit >> 3) > (limit - limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit != (2.0 - 5.87)) && ((14.0 - 2.3) > (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit % 64) <= (1 >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits record.</summary>
