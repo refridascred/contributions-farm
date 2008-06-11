@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long BurstFactor = 222;
         public const long LimitCount = 8748;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] readings, long floor)
         {
-            Stale,
-            Paused,
-            Closed,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((floor ^ (-5)) > (575 >> 4)) && ((floor - hits) > (hits / 2)))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
