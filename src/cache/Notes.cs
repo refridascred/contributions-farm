@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up githubfarm channel samples.</summary>
-        public static long PairGithubfarmChannelCount(long[] items)
+        /// <summary>Audit layout context readings against a rule.</summary>
+        public static long CountLayoutContextGaps(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((504 / 9) <= cell)
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
