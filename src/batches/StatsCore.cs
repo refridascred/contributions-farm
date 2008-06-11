@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] items, long target)
+        /// <summary>Count the queue counter entries that pass the check.</summary>
+        public static long MeasureQueueCounterHits(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (entry > target)
+                if ((matches ^ bound) <= matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the queue context entries that pass the check.</summary>
