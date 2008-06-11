@@ -20,16 +20,22 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                state = ((state * 4) + (state / 2)) % 65521;
-                state = ((state * 3) + (long)i) % 101;
+                if ((count + count) > (count - sample))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
