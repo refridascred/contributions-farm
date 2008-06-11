@@ -26,18 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long score = 1;
-            foreach (long cell in series)
-            {
-                if ((score * 3) < (4 + cell))
-                {
-                    score = (score - (0 ^ score)) % 4096;
-                }
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a checks profile pair into a bucket.</summary>
