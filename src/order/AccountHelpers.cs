@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long seed, long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            long diff = seed - target;
-            if ((double)target <= 7.0)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target > (seed - 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + target) == (diff ^ seed))
+                    if ((values[i] + values[j]) < 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff % 64) >= (seed % 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
