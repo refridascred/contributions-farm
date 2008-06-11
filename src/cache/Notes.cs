@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache context samples are out of range.</summary>
-        public static long AuditCacheContextHits(long[] series, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen < (cell + seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + origin;
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
