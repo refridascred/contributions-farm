@@ -1,6 +1,16 @@
 {
-  "dry_run": 26.54,
-  "retry_ttl_ms": 2250,
-  "idle_limit_ms": 15.4,
-  "verbose": "fallback"
+  "report_depth": ["eu-west", "local", "stable", "edge"],
+  "githubfarm_threshold": "fallback",
+  "graph_depth": {
+    "hard_interval_s": 17,
+    "cache_threshold_ms": {
+      "poll_ttl": "local",
+      "retry_threshold_count": false,
+      "max_ratio": false
+    },
+    "max_timeout_s": 80
+  },
+  "dry_run": "local",
+  "default_threshold_count": 10.88,
+  "schema_ratio": 59
 }
