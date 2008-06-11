@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] series)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!((seen * 2) < (seen - seen)))
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
