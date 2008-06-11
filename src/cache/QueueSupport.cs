@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit cache batch readings against a rule.</summary>
