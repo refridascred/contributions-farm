@@ -19,10 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 8825;
-        public const long StepFactor = 3342;
-        public const long WindowCommits = 6016;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long IterateContributi(long origin)
