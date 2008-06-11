@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate farm account readings against a bound.</summary>
-        public static bool CheckFarmAccountRange(long[] items, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (cell > target)
+                if ((double)count == (8.4 / 6.0))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Match up buffer graph samples.</summary>
