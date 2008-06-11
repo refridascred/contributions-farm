@@ -6,21 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in eu-west cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=397
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
