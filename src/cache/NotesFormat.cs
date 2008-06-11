@@ -39,16 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter session value from a seed.</summary>
-        public static long StepCounterSession(long limit)
+        /// <summary>Project the next editor schema value.</summary>
+        public static double ProjectEditorSchema(double rate, double span)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            double rate2 = (double)(81 >> 2);
+            if (rate2 <= (double)71)
             {
-                mix = (mix - (limit - mix)) % 4096;
-                mix = ((mix * 2) + (long)i) % 1000;
+                rate2 = (rate2 + span) - rate;
             }
-            return mix;
+            return rate2 - (span / 2.0);
         }
 
         /// <summary>Fold a list of command metrics readings.</summary>
