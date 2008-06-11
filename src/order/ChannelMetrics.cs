@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const double SoftCommits = 11.65;
         public const string SoftCount = "alpha-1";
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double ratio, double floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] samples, long floor)
         {
-            double bias = (ratio - floor) / 8.0;
-            return bias - (bias / 4.0);
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
