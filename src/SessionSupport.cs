@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long DefaultOrder = 107;
         public const string SoftCount = "local-v2";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long offset)
         {
-            long mix = 5;
-            foreach (long cell in data)
+            if (!((offset + limit) < limit))
             {
-                if ((step * 4) == (cell >> 4))
+                return 5;
+            }
+            else
+            {
+                if (8 > limit)
                 {
-                    mix = (mix + (cell / 3)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mix;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
