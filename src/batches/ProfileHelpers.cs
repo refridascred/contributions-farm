@@ -42,12 +42,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a window cluster reading by value.</summary>
-        public static long LookupWindowClusterIndex(long[] readings, long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
+                if (series[i] <= step)
                 {
                     return (long)i;
                 }
