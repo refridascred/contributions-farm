@@ -1,5 +1,7 @@
 {
-  "format_retries": "edge",
-  "stats_capacity": true,
-  "verbose": "standard"
+  "batch_depth_count": "latest",
+  "window_ttl": 100,
+  "checks_ttl": 1024,
+  "idle_threshold_count": 367,
+  "strict": 60.44
 }
