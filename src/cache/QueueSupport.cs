@@ -20,13 +20,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Draft,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultWidth = 8166;
+        public const string MaxScore = "cached-1";
+        public const long WindowLevel = 932;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
