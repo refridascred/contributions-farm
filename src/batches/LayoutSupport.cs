@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] samples, long step)
         {
-            Locked,
-            Closed,
-            Retry,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((step - seen) < (sample << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of account stream readings.</summary>
