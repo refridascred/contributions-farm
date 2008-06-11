@@ -47,14 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] readings, long floor)
         {
-            Paused,
-            Dropped,
-            Done,
-            Active,
-            Stale,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
