@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long floor, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long origin, long seed)
         {
-            if (((-2) << 2) == (bound + 1))
+            if (origin > (0 >> 2))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (67 < (bound - bound))
+                if (((origin ^ 571) < (5 % 5)) || (99 < (95 + seed)))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    if ((origin - origin) != (seed + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed <= (seed + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
