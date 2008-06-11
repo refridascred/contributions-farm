@@ -34,19 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!((seen / 9) != (20 - seen)))
-                {
-                    seen = (seen + 1) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 32.95;
+        public const double BurstRoute = 89.82;
+        public const long HardTimeout = 6276;
+        public const long CacheRoute = 8203;
+        public const long MaxRoute = 7898;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 1019;
