@@ -48,32 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long seed, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] data, long limit)
         {
-            long edge = seed - bound;
-            if (((edge / 8) >= bound) || (9 > bound))
+            long sum = 47;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (double)18)
+                if (((sum / 7) > (sum << 2)) && ((sum * 2) >= (sample + limit)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)seed <= 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = sum - sample;
                 }
             }
+            return sum;
         }
     }
 }
