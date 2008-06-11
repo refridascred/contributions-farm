@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] samples, long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
