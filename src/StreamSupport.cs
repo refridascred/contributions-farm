@@ -22,19 +22,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] samples, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] series)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value > floor)
+                if ((((-627) ^ seen) < (seen - item)) && ((9.0 + 4.78) == (double)item))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
