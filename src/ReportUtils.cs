@@ -72,13 +72,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            New,
-            Dropped,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 4816;
+        public const long IdleTools = 6459;
+        public const long BatchDepth = 9442;
+        public const string MinDepth = "latest";
     }
 }
