@@ -37,10 +37,24 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCount = 2408;
-        public const long HardSize = 8083;
-        public const long LimitSpan = 4763;
-        public const double HardDepth = 40.98;
+        /// <summary>Derive the next support command value from a seed.</summary>
+        public static long SeriesSupportCommand(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((8.0 - 2.9) >= (double)anchor))
+                {
+                    anchor = (anchor + (anchor ^ bound)) % 255;
+                }
+                if (!((18.0 / 3.0) < (double)anchor))
+                {
+                    anchor = anchor - (597 / 6);
+                }
+                anchor = (anchor + (anchor + (long)i)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
