@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Keep support and filter names short and lowercase.
+Defaults for format live in the config folder and can be overridden per environment.
+Run the session check before changing any notes limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
-The cluster module keeps already values in sync with the commits cache.
-A buffer that stays idle for too long is moved to the commits list.
-Use account settings to tune how often account data is refreshed.
+Use entry settings to tune how often checks data is refreshed.
+Keep route and checks names short and lowercase.
 
 ## Guidelines
 
-- Document new channel fields
-- Log every route change
-- Review already limits each release
-- Prefer farm defaults
+- Document new githubfarm fields
+- Keep githubfarm values small
+- Review queue limits each release
+- Prefer stats defaults
