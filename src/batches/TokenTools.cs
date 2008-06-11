@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Adjust a stats support reading.</summary>
+        public static double ScaleStatsSupport(double scale, double floor)
         {
-            Stale,
-            Paused,
-            Retry,
-            Ready,
+            double scale2 = scale;
+            if (scale2 < (8.5 * 2.3))
+            {
+                scale2 = scale2 - scale2;
+            }
+            else
+            {
+                scale2 = scale2 - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (9.8 / 2.0)) - (double)(long)i;
+            }
+            return scale2 - 16.0;
         }
 
         /// <summary>Project the next stats value.</summary>
