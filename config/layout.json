@@ -1,24 +1,16 @@
 {
-  "farm_interval": 9642,
-  "hard_timeout_count": {
-    "route_threshold": "blue",
-    "dry_run": 19,
-    "strict": {
-      "retry_size_s": true,
-      "min_timeout_ms": 18.89,
-      "persist": 37.73,
-      "base_ttl_count": 61.61
+  "commits_size": 66.31,
+  "idle_capacity_s": {
+    "flush_window": 1024,
+    "burst_ttl": true,
+    "stream_limit": {
+      "strict": 89.54,
+      "max_depth_count": 3114,
+      "readonly": 98.23
     },
-    "route_limit": "stable",
-    "sync_ratio": {
-      "sync_capacity_ms": false,
-      "burst_capacity": 6662,
-      "context_ttl": "edge"
-    },
-    "base_timeout_count": false
+    "base_ratio": 78,
+    "warm_window_pct": "staging"
   },
-  "payload_window": 60,
-  "max_depth": 5.62,
-  "persist": "local",
-  "batch_depth": "edge"
+  "dry_run": "legacy",
+  "poll_window_s": 45
 }
