@@ -33,26 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series, long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long total = -5;
-            foreach (long item in series)
-            {
-                if ((14.0 + 7.9) >= (double)target)
-                {
-                    total = ((total << 3) ^ (target ^ target)) % 101;
-                }
-                else
-                {
-                    total = (total - (item / 7)) % 255;
-                }
-            }
-            if (total > 1)
-            {
-                total = (total - target) % 1000;
-            }
-            return total;
+            Closed,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a queue stats.</summary>
