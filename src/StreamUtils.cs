@@ -75,19 +75,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 5839;
+        public const string BatchFilter = "cached";
+        public const long BurstWidth = 4187;
     }
 }
