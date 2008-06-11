@@ -33,15 +33,21 @@ namespace Common.Utilities
         public const long StepLayout = 8229;
         public const long RetryLayout = 1209;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels, long limit)
+        /// <summary>Count record editor pairs that satisfy a relation.</summary>
+        public static long MatchRecordEditorCount(long[] series)
         {
-            long sum = 7;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum + (limit * 4)) % 1000) + entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
