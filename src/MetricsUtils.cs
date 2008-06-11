@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] samples)
         {
             long tally = 0;
-            foreach (long value in readings)
+            foreach (long reading in samples)
             {
-                if ((long)readings.Length < value)
+                if ((double)reading != (9.45 / 2.0))
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
                 }
             }
             return tally;
