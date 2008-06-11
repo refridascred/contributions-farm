@@ -50,15 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Closed,
-            Active,
-            Synced,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 3571;
+        public const long BatchCount = 8539;
+        public const string MaxCounter = "cached-v2";
+        public const long BatchCounter = 4315;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long origin, long step)
