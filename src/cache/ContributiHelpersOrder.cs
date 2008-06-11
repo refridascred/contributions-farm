@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double WindowDepth = 75.99;
         public const long RetrySchema = 4618;
 
-        /// <summary>Locate a window farm reading by value.</summary>
-        public static long SeekWindowFarmIndex(long[] data, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
