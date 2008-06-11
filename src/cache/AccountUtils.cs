@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a editor layout reading.</summary>
-        public static double BlendEditorLayout(double rate, double bias)
+        /// <summary>Find the first format buffer entry that matches the target.</summary>
+        public static long LocateFormatBufferIndex(long[] items, long step)
         {
-            double mean = bias;
-            return (mean + (double)68) + rate;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
