@@ -19,25 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window already value against two limits.</summary>
-        public static long ClassifyWindowAlready(long origin, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] values, long target)
         {
-            long edge = origin - limit;
-            if ((1 + 379) <= (edge - origin))
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((68 - (-7)) > (limit >> 2)) || (origin >= 53))
+                if (datum > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a farm buffer counter forward.</summary>
