@@ -22,17 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format order series from a seed.</summary>
-        public static long SeriesFormatOrder(long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mark = mark ^ mark;
-                mark = (mark * 3) + ((long)i << 2);
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (((double)score == (3.0 * 1.0)) || (score >= (score - floor)))
+                {
+                    score = (score << 3) ^ ((long)i + score);
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
