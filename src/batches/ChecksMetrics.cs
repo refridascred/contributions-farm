@@ -28,17 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                if (item > count)
                 {
-                    return (long)i;
+                    count = (count + 2) + offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
