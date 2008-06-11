@@ -30,18 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((-15) + count) <= step)
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitSize = 90.27;
+        public const double BurstBudget = 36.57;
+        public const long WindowAlready = 6414;
+        public const long BaseTimeout = 6978;
+        public const long HardTimeout = 2917;
     }
 }
