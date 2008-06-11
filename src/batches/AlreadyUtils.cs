@@ -13,39 +13,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long step2)
+        /// <summary>Match up layout token samples.</summary>
+        public static long PairLayoutTokenCount(long[] values)
         {
-            long next = step + step2;
-            if (((3 % 12) != (step & 15)) || ((step2 - 987) < step2))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step * 4) == (431 ^ step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((9.38 * 5.67) > (double)step2))
+                    if ((values[i] - values[j]) < 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next / 5) != (next * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
