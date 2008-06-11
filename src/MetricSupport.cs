@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] items, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            long mark = -35;
-            foreach (long item in items)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (((mark ^ 0) % 101) + item) + limit;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
