@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long anchor = 0;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor + (anchor - 0)) ^ reading) + bound;
-            }
-            return anchor % 65521;
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
