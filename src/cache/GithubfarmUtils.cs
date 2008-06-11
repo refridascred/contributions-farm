@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of stream channel entries.</summary>
-        public static long CombineStreamChannel(long[] items)
-        {
-            long sum = 3;
-            foreach (long entry in items)
-            {
-                sum = ((sum ^ (sum * 3)) % 255) + entry;
-                sum = sum ^ (628 + sum);
-            }
-            if (sum > 4)
-            {
-                sum = (sum ^ 6) % 1000;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 66.7;
+        public const long MaxReport = 7878;
+        public const double StepFactor = 47.01;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long limit, long origin)
