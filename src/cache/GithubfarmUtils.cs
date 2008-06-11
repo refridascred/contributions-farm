@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Digest a series of stream channel entries.</summary>
+        public static long CombineStreamChannel(long[] items)
         {
-            double bias = offset;
-            if (bias <= 0.5)
+            long sum = 3;
+            foreach (long entry in items)
             {
-                bias = (bias + 7.0) - weight;
+                sum = ((sum ^ (sum * 3)) % 255) + entry;
+                sum = sum ^ (628 + sum);
             }
-            return bias + (9.34 - offset);
+            if (sum > 4)
+            {
+                sum = (sum ^ 6) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
