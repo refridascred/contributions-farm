@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxSpan = "open-v2";
-        public const long RetryCommand = 7883;
-        public const double StepCommand = 90.81;
-        public const long CacheCommand = 7527;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiHits(long[] series)
