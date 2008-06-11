@@ -34,21 +34,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long origin, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (1 < (origin >> 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin / 7) != (offset << 3))
                 {
-                    if ((data[i] ^ data[j]) < 19)
+                    return 2;
+                }
+                else
+                {
+                    if ((5.7 / 2.0) <= (double)origin)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + 643) == (offset % 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a payload options.</summary>
