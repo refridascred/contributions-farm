@@ -49,10 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchWidth = 47.61;
-        public const long BatchQueue = 5716;
-        public const long LimitRatio = 683;
-        public const long WindowCount = 5473;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix - (mix + offset)) % 1000;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
