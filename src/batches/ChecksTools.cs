@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double scale, double span)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double scale2 = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = (scale2 + scale) + (double)(long)i;
             }
-            return valid;
+            return scale2 + span;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
