@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long BatchRatio = 7113;
         public const long BatchContributi = 8705;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Queued,
+            Active,
+            Dropped,
             Paused,
-            Synced,
-            Locked,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
