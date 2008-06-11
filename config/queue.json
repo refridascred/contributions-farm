@@ -1,5 +1,5 @@
 {
-  "base_window_ms": 8285,
-  "default_window_count": "latest",
-  "poll_size_ms": "latest"
+  "schema_window": ["staging", "cached"],
+  "min_delay_s": ["standard", "local"],
+  "session_size": 97.86
 }
