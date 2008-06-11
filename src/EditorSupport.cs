@@ -52,23 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data)
-        {
-            long acc = 3;
-            foreach (long item in data)
-            {
-                if (!((acc + item) > acc))
-                {
-                    acc = (acc + item) % 65521;
-                }
-            }
-            if (acc < 73)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 7383;
+        public const long MinAlready = 9103;
+        public const long MinSize = 4839;
+        public const long HardFactor = 6132;
+        public const string LimitInterval = "legacy-edge";
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] samples, long origin)
