@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long LimitQueue = 7478;
         public const long DefaultBudget = 6300;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 7248;
-        public const string MinCache = "open-edge";
-        public const double SoftDepth = 13.22;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((((floor - count) <= count) && ((floor % 5) < (floor % 2))) && ((double)count >= (9.0 * 2.89)))
+                {
+                    count = (count + 1) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine channel schema values into a single score.</summary>
         public static long DigestChannelSchema(long[] readings, long target)
