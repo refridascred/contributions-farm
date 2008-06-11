@@ -28,13 +28,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
+            Active,
+            New,
             Done,
-            Synced,
-            Paused,
-            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the support class values.</summary>
