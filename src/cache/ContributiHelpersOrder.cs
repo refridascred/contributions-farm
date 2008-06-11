@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double WindowDepth = 75.99;
         public const long RetrySchema = 4618;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstSize = 6425;
-        public const string RetryRecord = "alpha-edge";
-        public const long MinDepth = 8081;
-        public const string DefaultInterval = "cached-1";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadOutliers(long[] readings, long bound)
