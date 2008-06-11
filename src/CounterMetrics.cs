@@ -38,17 +38,19 @@ namespace Common.Utilities
         public const double LimitDepth = 68.76;
         public const long DefaultMetrics = 7281;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                if (reading >= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
