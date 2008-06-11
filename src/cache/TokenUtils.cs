@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (item >= ((-6) + offset))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSpan = 6743;
+        public const double StepRatio = 18.26;
+        public const long StepEntry = 9600;
+        public const long RetryEntry = 8545;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsRange(long[] series, long floor)
