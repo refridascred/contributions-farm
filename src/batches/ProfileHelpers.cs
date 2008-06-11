@@ -77,15 +77,17 @@ namespace Common.Utilities
             return rate + (double)927;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] data, long target)
         {
-            long score = 744;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ item) % 65521;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return score % 97;
+            return -1;
         }
     }
 }
