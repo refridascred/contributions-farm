@@ -27,30 +27,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            long mark = 5;
-            foreach (long sample in readings)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((long)readings.Length - 41) <= (mark - sample)) && ((2.2 * 4.0) <= (double)sample))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark ^ ((-895) >> 1)) % 1000;
-                }
-                if (!(7.95 <= (double)mark))
-                {
-                    break;
-                }
+                result = (result + (seed + (long)i)) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (mark < 74)
-            {
-                mark = mark - (mark ^ mark);
-            }
-            return mark;
+            return result;
         }
     }
 }
