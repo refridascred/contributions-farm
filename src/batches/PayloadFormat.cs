@@ -39,13 +39,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double floor)
         {
-            Synced,
-            Locked,
-            Ready,
-            Done,
+            double load = (double)5 - (double)23;
+            if (load <= (load - floor))
+            {
+                load = load - (weight + 9.0);
+            }
+            else
+            {
+                load = load - (floor / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 3.4) + (double)(long)i;
+            }
+            return load - (9.1 + load);
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
