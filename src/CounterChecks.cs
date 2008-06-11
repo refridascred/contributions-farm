@@ -44,12 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitDepth = 68.88;
-        public const double LimitChannel = 52.1;
-        public const double BaseInterval = 9.61;
-        public const double BatchLevel = 52.33;
-        public const string CacheSize = "primary";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstRatio = "local";
+        public const long BaseRatio = 8573;
+        public const long CacheSize = 9673;
+        public const double RetryStream = 9.63;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double DefaultTools = 62.63;
