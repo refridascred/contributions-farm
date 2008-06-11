@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] samples, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long offset, long target)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            if ((7.8 - 15.0) == (double)target)
             {
-                if (entry <= step)
+                return 1;
+            }
+            else
+            {
+                if (((target - target) < (target >> 1)) && ((target / 9) > (offset + offset)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (468 <= (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((7.0 / 2.0) != (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Adjust a command reading.</summary>
