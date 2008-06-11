@@ -15,21 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc * 2) + (datum + 47);
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Blend two profile measurements.</summary>
