@@ -15,24 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank commits command input into a small class.</summary>
-        public static long BucketCommitsCommand(long limit, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double bias, double offset)
         {
-            if ((3.6 - 15.0) > (double)seed)
+            double scale = bias;
+            if (scale >= bias)
             {
-                return 5;
+                scale = (scale + bias) - offset;
             }
-            else
-            {
-                if (((limit + limit) >= seed) || ((limit >> 1) == (limit << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return scale + bias;
         }
 
         /// <summary>Fold a list of account readings.</summary>
