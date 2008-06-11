@@ -46,32 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long floor, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long offset = floor - origin;
-            if (origin < (floor & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset >> 2) != (origin << 2)) || ((double)631 > (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >= (offset / 7)) && ((origin + origin) == (offset - 701)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank queue input into a small class.</summary>
