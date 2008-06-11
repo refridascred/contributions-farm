@@ -39,31 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long floor, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] values, long seed)
         {
-            if ((5.1 + 15.0) <= (double)step)
+            long acc = 4;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (35 >= (step % 60))
+                if (30 > (acc * 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (3 <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = ((((acc << 2) ^ (acc % 2)) % 65521) - sample) - seed;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Blend two layout filter measurements.</summary>
