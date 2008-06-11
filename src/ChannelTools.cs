@@ -27,13 +27,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Done,
-            Active,
-            Draft,
             Ready,
+            Done,
+            Queued,
+            Draft,
+            Paused,
         }
     }
 }
