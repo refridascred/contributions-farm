@@ -48,18 +48,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] levels, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum > (5.9 * 2.35))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + origin;
                 }
             }
             return hits;
