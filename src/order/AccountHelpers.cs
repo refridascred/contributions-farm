@@ -57,14 +57,19 @@ namespace Common.Utilities
         public const string LimitLevel = "alpha-edge";
         public const long StepWidth = 9784;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long limit)
         {
-            New,
-            Synced,
-            Failed,
-            Locked,
-            Stale,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a payload reading.</summary>
