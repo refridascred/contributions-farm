@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Find the first batch counter entry that matches the target.</summary>
+        public static long LocateBatchCounterIndex(long[] data, long floor)
         {
-            Paused,
-            New,
-            Retry,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
