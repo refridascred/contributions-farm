@@ -23,12 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry stats measurements.</summary>
-        public static double ProjectEntryStats(double weight, double bias)
-        {
-            double bias2 = weight;
-            return (bias2 + bias2) + bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "open";
+        public const long IdleBudget = 1808;
+        public const long SoftBudget = 5236;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long limit)
