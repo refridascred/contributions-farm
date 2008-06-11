@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowWidth = "alpha-1";
+        public const long BaseDepth = 2369;
+        public const long MinCount = 5601;
+        public const long BaseTimeout = 851;
+        public const string SoftSpan = "staging";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] readings, long bound)
