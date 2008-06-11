@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long anchor = 901;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor << 3) ^ ((-737) - 323)) + item;
-            }
-            return anchor;
+            Paused,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
