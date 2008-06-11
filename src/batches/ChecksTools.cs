@@ -49,11 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Validate channel already readings against a bound.</summary>
+        public static bool ValidateChannelAlreadyRange(long[] series, long seed)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
