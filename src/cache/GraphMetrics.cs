@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Find the first cluster support entry that matches the target.</summary>
+        public static long SeekClusterSupportIndex(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
