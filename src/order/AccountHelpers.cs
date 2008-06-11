@@ -52,18 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally >> 4) < (sample + 94))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the format level values.</summary>
