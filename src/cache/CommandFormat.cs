@@ -20,13 +20,17 @@ namespace Common.Utilities
         public const long BurstCount = 561;
         public const double LimitCache = 3.77;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Locate a queue cluster reading by value.</summary>
+        public static long LookupQueueClusterIndex(long[] series, long origin)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token kind values.</summary>
