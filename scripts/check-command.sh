@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=261
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-eu-west}"
+mode="${1:-legacy}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in blue edge primary standard; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 5))
+    total=$((total + i * 3))
 done
 log "total ${total}"
