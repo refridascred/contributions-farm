@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-v2";
         public const long LimitSpan = 7434;
 
-        /// <summary>Iterate the farm schema series from a seed.</summary>
-        public static long SeriesFarmSchema(long step)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
