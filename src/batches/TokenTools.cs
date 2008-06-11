@@ -36,17 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long offset)
+        /// <summary>Check that every farm entry entry stays within the limit.</summary>
+        public static bool ValidateFarmEntryLimits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (items[i] < offset)
+                if (value <= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
