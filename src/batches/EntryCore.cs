@@ -50,17 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long origin)
+        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmProfileRange(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
