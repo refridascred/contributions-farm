@@ -1,10 +1,6 @@
 {
-  "min_depth_count": 250,
-  "min_timeout": ["latest", "eu-west", "open", "local"],
-  "stream_capacity": 4951,
-  "enabled": {
-    "githubfarm_threshold": 7.97,
-    "verbose": [324, 234, 317, 454],
-    "soft_interval_ms": 94
-  }
+  "dry_run": 26.54,
+  "retry_ttl_ms": 2250,
+  "idle_limit_ms": 15.4,
+  "verbose": "fallback"
 }
