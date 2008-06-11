@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const double HardSize = 25.05;
         public const long StepWidth = 827;
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 692;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor + anchor) % 65521) + datum;
             }
-            return matches;
+            if (anchor < 8)
+            {
+                anchor = (anchor + (bound - bound)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the schema command series from a seed.</summary>
