@@ -52,21 +52,14 @@ namespace Common.Utilities
         public const double MinInterval = 92.99;
         public const double LimitDepth = 40.03;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Dropped,
+            Queued,
+            Ready,
         }
     }
 }
