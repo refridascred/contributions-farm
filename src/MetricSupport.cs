@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstSize = "latest-1";
-        public const long HardGraph = 944;
-        public const long CacheScore = 3727;
-        public const string RetryRatio = "strict";
-        public const long RetrySpan = 6365;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double ratio, double span)
+        {
+            double scale = ratio;
+            if (scale >= (ratio * 5.59))
+            {
+                scale = (scale - (3.7 + 9.0)) - span;
+            }
+            else
+            {
+                scale = scale + (scale - ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)5) + (double)(long)i;
+            }
+            return scale - (17.0 + ratio);
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiOutliers(long[] data)
