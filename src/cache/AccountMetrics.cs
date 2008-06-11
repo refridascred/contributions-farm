@@ -27,38 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank layout graph input into a small class.</summary>
-        public static long GradeLayoutGraph(long target, long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            if ((double)floor > (4.0 / 4.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((536 << 2) > floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target + target) >= (target << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor - floor) >= (floor - 43))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a token entry counter forward.</summary>
