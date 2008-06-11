@@ -1,15 +1,7 @@
 {
-  "counter_ttl": {
-    "idle_timeout_s": {
-      "contributi_interval": "strict",
-      "default_delay_ms": "blue",
-      "compress": 500
-    },
-    "batches_depth": 6628,
-    "warm_capacity_pct": 100,
-    "min_depth": 4331,
-    "soft_delay_count": "cached"
-  },
-  "verbose": 4,
-  "schema_ttl": false
+  "default_threshold_pct": 60,
+  "persist": ["green", "legacy", "latest", "stable"],
+  "min_threshold_ms": 500,
+  "audit": "staging",
+  "default_size": "fallback"
 }
