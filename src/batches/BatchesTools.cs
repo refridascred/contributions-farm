@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
