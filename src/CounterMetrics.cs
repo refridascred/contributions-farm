@@ -43,19 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel queue value.</summary>
-        public static double SmoothChannelQueue(double scale, double span)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] values)
         {
-            double bias = (double)(5 ^ 6);
-            if (bias <= scale)
+            long anchor = -8;
+            foreach (long cell in values)
             {
-                bias = (bias + (double)6) - span;
+                if (((-6) + anchor) >= anchor)
+                {
+                    anchor = ((anchor + (anchor - anchor)) % 255) - cell;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - scale;
+            return anchor % 1000;
         }
     }
 }
