@@ -41,26 +41,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] readings, long origin)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            long anchor = -68;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((anchor * 2) < anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor ^ (reading - origin);
-                }
-                else
-                {
-                    anchor = (anchor + (0 >> 4)) % 1000;
-                }
-                if (((long)readings.Length * 3) > reading)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
