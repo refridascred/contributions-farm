@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long seed, long floor)
         {
-            Done,
-            Locked,
-            Stale,
+            long offset = seed + floor;
+            if ((offset - offset) >= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.78 - 12.0) == (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ 18) < (offset * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (seed ^ seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
