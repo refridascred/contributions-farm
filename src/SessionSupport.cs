@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels, long origin)
+        /// <summary>Audit payload githubfarm readings against a rule.</summary>
+        public static long AuditPayloadGithubfarmGaps(long[] data)
         {
-            long score = 4;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((reading - origin) <= (origin / 9))
+                if ((19.0 * 13.0) < (double)reading)
                 {
-                    score = ((score << 2) ^ (213 ^ origin)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            if (score > 3)
-            {
-                score = score - (score << 1);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
