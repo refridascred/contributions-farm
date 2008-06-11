@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels, long origin)
         {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public double Region { get; set; }
+            long score = 4;
+            foreach (long reading in levels)
+            {
+                if ((reading - origin) <= (origin / 9))
+                {
+                    score = ((score << 2) ^ (213 ^ origin)) % 1000;
+                }
+            }
+            if (score > 3)
+            {
+                score = score - (score << 1);
+            }
+            return score;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
