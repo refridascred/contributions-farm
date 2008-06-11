@@ -26,11 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitBudget = 8466;
-        public const long BatchRatio = 9371;
-        public const double StepLevel = 40.27;
-        public const string RetryContext = "open-edge";
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] levels)
