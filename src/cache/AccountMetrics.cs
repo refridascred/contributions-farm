@@ -27,22 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit session schema readings against a rule.</summary>
-        public static long TallySessionSchemaGaps(long[] levels)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)sample > 14.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a token entry counter forward.</summary>
