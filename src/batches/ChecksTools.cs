@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
