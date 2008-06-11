@@ -54,23 +54,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            long total = 8;
-            foreach (long value in levels)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                total = (total - (76 & 31)) % 1000;
-                if (!((total << 1) >= (total - total)))
-                {
-                    total = (total - value) % 1000;
-                    total = (total + (total + 1)) % 97;
-                }
-                total = total ^ (75 ^ total);
-                if (!((total - total) > value))
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
             return total;
         }
