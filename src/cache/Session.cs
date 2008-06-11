@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheSpan = 5047;
+        public const long HardFormat = 8648;
+        public const double LimitFormat = 94.74;
+        public const string DefaultWidth = "cached";
+        public const long DefaultDepth = 7266;
 
         /// <summary>Find the first profile metrics entry that matches the target.</summary>
         public static long SeekProfileMetricsIndex(long[] samples, long limit)
