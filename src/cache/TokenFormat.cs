@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const double MaxStats = 2.87;
         public const string BurstStats = "standard-1";
 
-        /// <summary>Audit entry queue readings against a rule.</summary>
-        public static long TallyEntryQueueOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((hits - sample) == (sample - sample)) && ((sample * 4) == (hits << 1))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 5479;
+        public const string HardTools = "stable";
+        public const long BatchTools = 6913;
+        public const long BurstCount = 20;
+        public const long CacheDepth = 6633;
     }
 }
