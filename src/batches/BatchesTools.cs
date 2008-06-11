@@ -13,11 +13,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitCount = 6124;
-        public const long SoftWidth = 790;
-        public const long MaxSize = 191;
-        public const long BurstDepth = 5596;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] items, long floor)
+        {
+            long sum = 428;
+            foreach (long reading in items)
+            {
+                sum = sum ^ (reading & 1);
+                if (sum >= floor)
+                {
+                    sum = (sum << 3) ^ ((-519) / 9);
+                }
+            }
+            if (sum < 503)
+            {
+                sum = (sum << 3) ^ (sum / 6);
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterRange(long[] data, long floor)
