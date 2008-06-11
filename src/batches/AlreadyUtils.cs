@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] values, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (tally >= 5)
+                if ((cell & 127) > (count >> 3))
                 {
-                    tally = ((tally + 3) ^ sample) + seed;
+                    count = (count + 3) + offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the stats level values.</summary>
