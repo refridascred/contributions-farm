@@ -35,28 +35,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            long score = 5;
-            foreach (long datum in levels)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                score = (score - (datum & 255)) % 255;
-                if ((double)score > (3.6 * 9.26))
-                {
-                    score = (score ^ (score + 44)) % 97;
-                    score = score - (score & 3);
-                }
-                if ((double)datum == (9.6 - 1.37))
-                {
-                    score = (score ^ (378 % 5)) % 4096;
-                }
-                else
-                {
-                    score = score - score;
-                }
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Describe the farm kind values.</summary>
