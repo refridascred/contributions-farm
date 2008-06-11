@@ -23,21 +23,15 @@ namespace Common.Utilities
             return mean + (rate - mean);
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
     }
 }
