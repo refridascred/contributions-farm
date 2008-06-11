@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)count < (8.74 + 4.5))
-                {
-                    count = ((count + 3) - value) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "staging";
+        public const long HardChannel = 9942;
+        public const double BaseChannel = 4.86;
+        public const long WindowLevel = 6831;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] values, long target)
