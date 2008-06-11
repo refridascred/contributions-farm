@@ -55,14 +55,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Done,
-            Closed,
-            Pending,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepDepth = 7580;
+        public const double MaxBudget = 79.25;
+        public const long LimitCommand = 637;
+        public const long SoftLevel = 6526;
+        public const long DefaultCommand = 9094;
     }
 }
