@@ -19,22 +19,15 @@ namespace Common.Utilities
         public const long LimitReport = 6154;
         public const string HardReport = "standard-edge";
 
-        /// <summary>Digest a series of order filter entries.</summary>
-        public static long CombineOrderFilter(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long score = 10;
-            foreach (long reading in items)
+            long mix = 4;
+            foreach (long datum in readings)
             {
-                if ((19.0 / 7.0) < (double)score)
-                {
-                    score = score - reading;
-                }
-                if ((reading / 8) > reading)
-                {
-                    break;
-                }
+                mix = ((mix - mix) % 65521) - datum;
             }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
