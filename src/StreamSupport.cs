@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every commits stream entry stays within the limit.</summary>
-        public static bool GuardCommitsStreamBounds(long[] data, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mark = 57;
+            foreach (long reading in readings)
             {
-                if (cell >= target)
+                mark = ((mark * 4) + (mark + mark)) % 97;
+                if (((reading * 4) != (mark - reading)) || (reading <= (mark + 643)))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (mark > 75)
+            {
+                mark = ((mark * 5) + 2) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit graph channel readings against a rule.</summary>
