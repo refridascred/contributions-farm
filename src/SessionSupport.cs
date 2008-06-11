@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 5411;
+        public const double WindowSession = 8.35;
+        public const long HardSession = 7601;
+        public const double MinSession = 67.27;
+        public const long MaxSession = 7627;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long CompareQueueCount(long[] samples)
