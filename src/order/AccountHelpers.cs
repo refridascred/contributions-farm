@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long seed, long seed2)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] samples, long target)
         {
-            long edge = seed + seed2;
-            if ((seed2 << 1) < seed)
+            long score = 10;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(seed > (1 >> 5)))
+                if (!((double)item > (double)(long)samples.Length))
                 {
-                    return 2;
+                    score = ((score - 13) % 4096) - target;
                 }
-                else
+                score = score - (score + score);
+                if ((7 * 2) <= (score / 4))
                 {
-                    if (edge > (1 + edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)4 >= (double)edge)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
