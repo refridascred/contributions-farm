@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a batch already figure with a bias.</summary>
-        public static double ScaleBatchAlready(double ratio, double bias)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long seed, long offset)
         {
-            double rate = (bias + bias) * 8.5;
-            if (rate >= rate)
+            if (offset >= (offset + seed))
             {
-                rate = rate + rate;
+                return 8;
             }
             else
             {
-                rate = rate - rate;
+                if ((offset << 2) > (-6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset >= (4.3 - 0.4)) && ((seed >> 5) <= (offset << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset >= (seed * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate - ratio;
         }
 
         /// <summary>Describe the report level values.</summary>
