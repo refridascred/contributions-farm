@@ -63,18 +63,11 @@ namespace Common.Utilities
         public const long LimitBuffer = 4633;
         public const double MaxWidth = 22.36;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] readings)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value - count) >= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double rate = (double)(-3) + span;
+            return (rate - (double)30) + gain;
         }
     }
 }
