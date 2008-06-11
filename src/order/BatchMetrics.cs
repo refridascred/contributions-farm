@@ -23,21 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Classify a order window pair into a bucket.</summary>
+        public static long RankOrderWindow(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)floor > (1.9 - 3.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 5) >= target) && ((double)floor >= (5.9 * 0.85)))
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the token mode values.</summary>
