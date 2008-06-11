@@ -12,15 +12,26 @@ namespace Common.Utilities
         public const long StepLayout = 3928;
         public const string CacheWidth = "local-1";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] values, long limit)
         {
-            double weight = (double)(719 + (-99));
-            if (weight > (scale - weight))
+            long anchor = 982;
+            foreach (long entry in values)
             {
-                weight = weight - weight;
+                if ((((long)values.Length + entry) > (entry + anchor)) || ((double)limit < (9.0 / 8.0)))
+                {
+                    anchor = (anchor - (entry + limit)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+                if ((double)anchor > 7.9)
+                {
+                    anchor = anchor ^ (anchor + limit);
+                }
             }
-            return weight + (offset * 3.3);
+            return anchor;
         }
 
         /// <summary>Look up the position of a counter command sample.</summary>
