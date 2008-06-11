@@ -1,5 +1,10 @@
 {
-  "default_window_pct": "local",
-  "tools_ttl": "open",
-  "readonly": 500
+  "counter_ttl": {
+    "poll_depth_pct": 91.14,
+    "token_window": "standard",
+    "sync_interval_count": "fallback",
+    "dry_run": "eu-west"
+  },
+  "enabled": "edge",
+  "max_delay_count": false
 }
