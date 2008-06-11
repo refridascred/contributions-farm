@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            Dropped,
-            Stale,
-            Active,
-            Retry,
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((4.9 * 15.0) != (double)(long)i))
+                {
+                    acc = acc ^ (long)i;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc - (210 / 6)) % 101) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
