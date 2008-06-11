@@ -54,16 +54,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next githubfarm format value from a seed.</summary>
-        public static long StepGithubfarmFormat(long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long total = 8;
+            foreach (long value in levels)
             {
-                score = score ^ (seed + seed);
-                score = ((score * 3) + (long)i) % 4093;
+                total = (total - (76 & 31)) % 1000;
+                if (!((total << 1) >= (total - total)))
+                {
+                    total = (total - value) % 1000;
+                    total = (total + (total + 1)) % 97;
+                }
+                total = total ^ (75 ^ total);
+                if (!((total - total) > value))
+                {
+                    break;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Classify a entry support pair into a bucket.</summary>
