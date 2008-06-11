@@ -65,19 +65,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double bias, double floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double gain = (5.13 / 5.0) * 2.7;
-            if (gain > (gain + gain))
-            {
-                gain = gain + floor;
-            }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain - floor;
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
