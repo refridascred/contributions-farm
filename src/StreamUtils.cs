@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1400;
-        public const double CacheStats = 56.32;
-        public const string LimitScore = "fallback-v2";
-        public const long BaseStats = 3051;
-        public const long StepRatio = 2060;
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double weight, double offset)
+        {
+            double gain = weight;
+            return gain + offset;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 3588;
