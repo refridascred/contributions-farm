@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] items, long floor)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
