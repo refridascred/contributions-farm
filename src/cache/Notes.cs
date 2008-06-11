@@ -54,13 +54,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 6645;
         public const long StepDepth = 3654;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] series, long origin)
         {
-            Locked,
-            Pending,
-            Queued,
-            New,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
