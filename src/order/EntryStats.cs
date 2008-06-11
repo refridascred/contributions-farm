@@ -12,11 +12,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseCount = 19.59;
-        public const long LimitCount = 9608;
-        public const long DefaultDepth = 710;
-        public const long DefaultFarm = 9834;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series)
+        {
+            long state = 1;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    state = (state + (reading & 31)) ^ (long)i;
+                }
+                state = ((state << 2) ^ (state / 7)) % 65521;
+                if ((8.33 / 9.0) <= (double)state)
+                {
+                    state = ((state << 2) ^ (state % 10)) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Combine metrics support values into a single score.</summary>
         public static long WeighMetricsSupport(long[] items, long target)
