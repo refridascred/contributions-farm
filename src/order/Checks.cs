@@ -21,11 +21,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxSize = 4449;
-        public const string HardSize = "primary-1";
-        public const double BatchCounter = 10.14;
-        public const double StepCounter = 38.18;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)target > (16.0 - 1.1)) || (2 <= (2 - target)))
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] readings)
