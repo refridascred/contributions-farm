@@ -1,6 +1,7 @@
-id,owner,ratio,count
-1,9.47,617,490
-2,edge,primary,56.81
-3,stable,edge,74.97
-4,110,253,494
-5,912,latest,54.19
+id,region,label
+1,open,80.36
+2,edge,21
+3,49.95,23.85
+4,927,standard
+5,166,583
+6,24.45,633
