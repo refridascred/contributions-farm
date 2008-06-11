@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 1235;
-        public const long MinBatch = 3107;
-        public const long MaxDepth = 9465;
-        public const long RetryWidth = 1923;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
