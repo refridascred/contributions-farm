@@ -1,10 +1,6 @@
 {
-  "batch_timeout": ["open", "legacy", "staging", "strict"],
-  "burst_capacity": 17.77,
-  "format_delay": {
-    "cache_delay": 7.45,
-    "profile_ratio": 100,
-    "cache_threshold_ms": "standard"
-  },
-  "burst_threshold": "local"
+  "audit": true,
+  "layout_depth": false,
+  "stats_ttl": [283, 375, 470, 254],
+  "batch_threshold_pct": 54.44
 }
