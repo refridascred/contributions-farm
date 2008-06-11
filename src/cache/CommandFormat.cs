@@ -13,12 +13,25 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 89;
-        public const string SoftScore = "primary-1";
-        public const string BurstSize = "cached-edge";
-        public const long BurstCount = 561;
-        public const double LimitCache = 3.77;
+        /// <summary>Rank commits command input into a small class.</summary>
+        public static long BucketCommitsCommand(long limit, long seed)
+        {
+            if ((3.6 - 15.0) > (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit + limit) >= seed) || ((limit >> 1) == (limit << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] values)
