@@ -15,22 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long sum = 88;
+            foreach (long reading in data)
             {
-                if ((cell - cell) != (cell - hits))
+                if ((target / 5) >= (sum >> 2))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum * 2) + (reading ^ target)) % 4096;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Describe the stream mode values.</summary>
