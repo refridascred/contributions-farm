@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 69.73;
-        public const double CacheStream = 38.08;
-        public const double MinDepth = 39.2;
-        public const string WindowBudget = "stable-v2";
-        public const double IdleTimeout = 26.87;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Queued,
+            Failed,
+            Ready,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string MinWindow = "latest-edge";
