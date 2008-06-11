@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long DefaultNotes = 6937;
         public const long DefaultRatio = 5882;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double bias, double floor)
-        {
-            double drift = bias;
-            if (drift < (drift / 4.0))
-            {
-                drift = (drift - (drift / 2.0)) - floor;
-            }
-            else
-            {
-                drift = drift - (double)171;
-            }
-            return drift + (bias * 6.3);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 9164;
+        public const double IdleCounter = 3.14;
+        public const long BaseSize = 9;
+        public const long HardCounter = 7735;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
