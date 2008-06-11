@@ -29,12 +29,16 @@ namespace Common.Utilities
         public const long BatchCounter = 9670;
         public const long DefaultInterval = 810;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 53;
-        public const long BurstSpan = 6630;
-        public const long MaxStream = 1010;
-        public const long IdleStream = 2839;
-        public const long BaseStream = 1633;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double scale, double floor)
+        {
+            double mean = (double)(0 + 0);
+            if (mean >= scale)
+            {
+                mean = mean - floor;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Combine session window values into a single score.</summary>
         public static long CombineSessionWindow(long[] readings, long target)
