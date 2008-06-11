@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] samples, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
+                if (entry >= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a stats info.</summary>
