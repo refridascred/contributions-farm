@@ -12,32 +12,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank counter stream input into a small class.</summary>
-        public static long BucketCounterStream(long bound, long step)
+        /// <summary>Fold a list of record support readings.</summary>
+        public static long TallyRecordSupport(long[] readings)
         {
-            long next = bound ^ step;
-            if ((next - bound) <= step)
+            long state = 78;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((next + bound) >= step) || ((bound << 2) > (next << 3)))
+                if ((datum - state) < (state * 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(0 < next))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = ((state * 5) + (0 << 1)) % 1000;
                 }
             }
+            if (state < 73)
+            {
+                state = (state - (888 * 5)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Accumulate commits samples.</summary>
