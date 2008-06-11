@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools report pairs that satisfy a relation.</summary>
-        public static long OverlapToolsReportCount(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] levels, long origin)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count < (8.74 + 4.5))
                 {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 3) - value) - origin;
                 }
             }
             return count;
