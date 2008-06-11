@@ -1,7 +1,7 @@
 {
-  "session_threshold": 5,
-  "compress": 100,
-  "record_size": 250,
-  "default_capacity_s": 3,
-  "idle_capacity": 89.29
+  "channel_capacity": 5551,
+  "verbose": [434, 308, 442],
+  "audit": false,
+  "batch_timeout_ms": 27,
+  "entry_limit": "cached"
 }
