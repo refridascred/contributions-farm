@@ -51,21 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session queue samples.</summary>
-        public static long MatchSessionQueueCount(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
