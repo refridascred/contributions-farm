@@ -1,5 +1,6 @@
 {
-  "sync_capacity": "cached",
-  "strict": 81,
-  "max_size_count": "legacy"
+  "verbose": true,
+  "dry_run": "latest",
+  "persist": "blue",
+  "max_depth": false
 }
