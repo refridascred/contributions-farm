@@ -19,14 +19,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Draft,
-            Paused,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 8825;
+        public const long StepFactor = 3342;
+        public const long WindowCommits = 6016;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsBounds(long[] values, long floor)
