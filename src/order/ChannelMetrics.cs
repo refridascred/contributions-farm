@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a report already sample.</summary>
