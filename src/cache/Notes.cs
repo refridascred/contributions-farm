@@ -29,12 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] readings, long origin)
         {
-            New,
-            Idle,
-            Pending,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a notes record.</summary>
