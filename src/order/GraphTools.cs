@@ -37,10 +37,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultDepth = 8488;
-        public const double SoftBudget = 41.61;
-        public const long SoftLevel = 7276;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 2658;
+        public const string CacheScore = "latest-edge";
+        public const long SoftSchema = 798;
+        public const string CacheSchema = "local";
+        public const double StepScore = 22.39;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
