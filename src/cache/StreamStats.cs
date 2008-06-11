@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.55 + 6.97) == (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
