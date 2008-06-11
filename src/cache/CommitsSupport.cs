@@ -56,9 +56,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardScore = 35.69;
-        public const long IdleSpan = 6382;
-        public const long SoftCount = 4485;
+        /// <summary>Look up the position of a command profile sample.</summary>
+        public static long FindCommandProfileIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
