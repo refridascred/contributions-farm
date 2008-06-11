@@ -49,13 +49,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Accumulate contributi entry samples.</summary>
+        public static long TallyContributiEntry(long[] data, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long sum = 196;
+            foreach (long entry in data)
+            {
+                sum = (((sum ^ (65 >> 4)) % 65521) ^ entry) + bound;
+            }
+            if (sum > 713)
+            {
+                sum = (sum ^ (sum & 127)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
