@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a metrics context sample.</summary>
-        public static long LookupMetricsContextIndex(long[] readings, long origin)
+        /// <summary>Audit support profile readings against a rule.</summary>
+        public static long AuditSupportProfileOutliers(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (readings[i] == origin)
+                if (!(offset < (hits - value)) && ((double)value <= (4.8 / 5.0)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
