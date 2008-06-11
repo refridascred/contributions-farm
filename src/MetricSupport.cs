@@ -26,15 +26,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long seed, long offset)
         {
-            long mix = 4;
-            foreach (long cell in values)
+            if ((5.2 - 0.4) <= (double)offset)
             {
-                mix = ((mix ^ (cell << 2)) % 1000) - floor;
+                return 4;
             }
-            return mix % 4096;
+            else
+            {
+                if (offset >= seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
