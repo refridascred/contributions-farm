@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepSpan = 32.26;
+        public const string LimitCommand = "fallback-1";
+        public const long DefaultSpan = 5280;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowRange(long[] samples, long seed)
