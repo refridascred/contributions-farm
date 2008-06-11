@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading != (9.45 / 2.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 2927;
+        public const long WindowStats = 4156;
+        public const double HardFactor = 83.01;
+        public const long StepWidth = 5404;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] samples)
