@@ -14,12 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Scale a record account figure with a bias.</summary>
+        public static double ScaleRecordAccount(double rate, double floor)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            double ratio = rate;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + (rate + ratio)) + floor;
+            }
+            else
+            {
+                ratio = ratio - (rate * 2.0);
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
