@@ -51,11 +51,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 1401;
-        public const string IdleFarm = "open";
-        public const string LimitLevel = "alpha-edge";
-        public const long StepWidth = 9784;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatLimits(long[] values, long limit)
