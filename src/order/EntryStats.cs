@@ -40,12 +40,11 @@ namespace Common.Utilities
             return load - (ratio * 12.0);
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
