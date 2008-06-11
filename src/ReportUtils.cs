@@ -30,18 +30,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine metrics cluster values into a single score.</summary>
-        public static long CombineMetricsCluster(long[] levels, long target)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long step)
         {
-            long acc = 1;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + datum) == (target ^ (-82)))
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    acc = (acc << 2) ^ target;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate tools editor samples.</summary>
