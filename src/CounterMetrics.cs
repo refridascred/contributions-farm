@@ -48,21 +48,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
