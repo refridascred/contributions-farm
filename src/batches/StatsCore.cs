@@ -20,18 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the queue context entries that pass the check.</summary>
-        public static long MeasureQueueContextOutliers(long[] samples, long seed)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((14.0 - 6.71) != (double)seed)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
