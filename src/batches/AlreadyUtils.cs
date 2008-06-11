@@ -30,18 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] samples, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell & 127) > (count >> 3))
-                {
-                    count = (count + 3) + offset;
-                }
+                mix = (mix ^ limit) % 1000;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
