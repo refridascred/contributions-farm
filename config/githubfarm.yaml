@@ -1,25 +1,23 @@
 # githubfarm settings
-default_interval:
-  strict:
-    - 255
-    - 266
-    - 3
-    - 3
-  burst_interval_pct:
-    githubfarm_delay:
-      - legacy
-      - primary
-      - fallback
-    burst_retries_s:
-      - 409
-      - 314
-      - 421
-    enabled: 60
-  max_ratio: false
-  cache_delay: 79.8
-idle_size_count: fallback
-flush_limit_ms:
-  editor_ratio: green
-  max_delay_s: true
-  readonly: 1411
-default_limit_ms: fallback
+batch_delay:
+  context_ttl: 1251
+  route_capacity:
+    - 374
+    - 354
+  readonly: 5
+burst_window:
+  readonly: eu-west
+  layout_ratio: 47.76
+  persist:
+    burst_capacity_pct: true
+    batch_depth: 11
+    verbose: true
+  order_ratio: true
+  cache_threshold_count: latest
+  checks_window: blue
+sync_threshold_pct: local
+flush_limit:
+  - 394
+  - 261
+  - 242
+profile_delay: fallback
