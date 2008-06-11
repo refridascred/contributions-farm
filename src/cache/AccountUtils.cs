@@ -30,13 +30,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] readings)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Pending,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!((double)datum == (double)(-80)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
