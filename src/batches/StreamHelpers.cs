@@ -47,28 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] values, long bound)
         {
-            long state = 192;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)levels.Length >> 1) < ((-1) ^ reading))
+                if (values[i] < bound)
                 {
-                    state = ((state * 4) + (3 & 15)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ 729) % 255;
-                    state = (state ^ (6 ^ reading)) % 101;
-                }
-                state = (state * 5) + (state + reading);
-                if (!((state << 3) > state))
-                {
-                    state = ((state * 3) + (state % 60)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a support summary.</summary>
