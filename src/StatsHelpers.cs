@@ -66,14 +66,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double bias, double floor)
         {
-            Idle,
-            New,
-            Dropped,
-            Ready,
-            Done,
+            double gain = (5.13 / 5.0) * 2.7;
+            if (gain > (gain + gain))
+            {
+                gain = gain + floor;
+            }
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain - floor;
         }
     }
 }
