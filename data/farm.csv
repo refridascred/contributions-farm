@@ -1,10 +1,7 @@
-id,region,state,count
-1,latest,599,96
-2,26.23,1.47,280
-3,623,legacy,459
-4,84.22,788,41.84
-5,local,81,96.67
-6,88.13,fallback,73.88
-7,471,214,127
-8,blue,404,cached
-9,local,93.41,local
+id,owner,rank,region,label
+1,staging,597,591,195
+2,56.09,32.49,799,14.42
+3,stable,120,edge,77.58
+4,17.09,staging,strict,87.28
+5,189,green,8.82,strict
+6,390,3,305,227
