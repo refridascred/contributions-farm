@@ -40,18 +40,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches filter samples are out of range.</summary>
-        public static long CountBatchesFilterOutliers(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = -5;
+            foreach (long item in series)
             {
-                if ((6.3 - 6.84) <= (double)cell)
+                if ((14.0 + 7.9) >= (double)target)
                 {
-                    hits = hits + 2;
+                    total = ((total << 3) ^ (target ^ target)) % 101;
+                }
+                else
+                {
+                    total = (total - (item / 7)) % 255;
                 }
             }
-            return hits;
+            if (total > 1)
+            {
+                total = (total - target) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
