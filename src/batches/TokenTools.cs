@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const string DefaultChecks = "open-edge";
         public const long IdleBudget = 4177;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double rate, double bias)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double mean = (rate - rate) * 6.62;
-            if (mean >= mean)
-            {
-                mean = mean - bias;
-            }
-            return mean + (rate - mean);
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
