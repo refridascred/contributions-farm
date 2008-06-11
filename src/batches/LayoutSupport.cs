@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Adjust a report session reading.</summary>
+        public static double ProjectReportSession(double bias, double bias2)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            double scale = (double)(6 + (-654));
+            if (scale > (0.87 - bias2))
+            {
+                scale = scale - (bias - bias);
+            }
+            return scale + (double)89;
         }
 
         /// <summary>Match up layout record samples.</summary>
