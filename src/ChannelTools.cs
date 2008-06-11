@@ -28,14 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long seed)
         {
-            Ready,
-            Done,
-            Queued,
-            Draft,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
