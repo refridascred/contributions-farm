@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] items)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count < (double)134)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + datum;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Blend two profile measurements.</summary>
