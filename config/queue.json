@@ -1,5 +1,7 @@
 {
-  "warm_ratio": "strict",
-  "idle_window": false,
-  "verbose": 434
+  "enabled": 30,
+  "tools_timeout": ["eu-west", "edge", "edge", "latest"],
+  "soft_size": 19,
+  "batch_threshold": "blue",
+  "payload_ttl": 60
 }
