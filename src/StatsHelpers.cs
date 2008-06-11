@@ -23,16 +23,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long seed, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
+            if ((4.47 - 8.8) == (double)seed)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (4 > (bound - seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - bound) >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools state values.</summary>
