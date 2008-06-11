@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double weight, double span)
         {
-            Stale,
-            Active,
-            Draft,
+            double scale = (weight + weight) - (span - span);
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
