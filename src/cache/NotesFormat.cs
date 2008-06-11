@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] values)
+        /// <summary>Scale a batch already figure with a bias.</summary>
+        public static double ScaleBatchAlready(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double rate = (bias + bias) * 8.5;
+            if (rate >= rate)
             {
-                if ((datum - datum) == (count & 31))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate + rate;
             }
-            return count;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + ratio) - (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
