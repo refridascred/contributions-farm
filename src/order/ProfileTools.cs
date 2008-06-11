@@ -66,19 +66,21 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Validate commits window readings against a bound.</summary>
-        public static bool ValidateCommitsWindowLimits(long[] samples, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] + data[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the cache phase values.</summary>
