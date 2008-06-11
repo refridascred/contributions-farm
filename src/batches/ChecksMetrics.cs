@@ -22,23 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record session readings.</summary>
-        public static long DigestRecordSession(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long limit, long floor)
         {
-            long acc = 118;
-            foreach (long item in samples)
+            long slot = limit ^ floor;
+            if ((0.38 + 6.5) > (double)slot)
             {
-                acc = (acc + (item + item)) % 101;
-                if (!((item + item) < (item * 3)))
+                return 2;
+            }
+            else
+            {
+                if ((slot << 1) == (floor + floor))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (floor > (469 % 97))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit * 2) != (slot - slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc < 23)
-            {
-                acc = (acc ^ (acc >> 3)) % 101;
-            }
-            return acc % 1000;
         }
 
         /// <summary>Hold a cluster summary.</summary>
