@@ -24,18 +24,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many layout batches samples are out of range.</summary>
-        public static long AuditLayoutBatchesHits(long[] samples)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((2.0 * 3.27) > (double)seen)
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate format filter readings against a bound.</summary>
