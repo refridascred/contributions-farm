@@ -36,18 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry command entries that pass the check.</summary>
-        public static long CountEntryCommandHits(long[] values, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((hits << 2) < cell)
+                if (datum > floor)
                 {
-                    hits = (hits + 1) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
