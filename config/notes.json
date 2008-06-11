@@ -1,5 +1,17 @@
 {
-  "format_retries": "primary",
-  "default_interval": "cached",
-  "hard_window_s": 15.35
+  "verbose": false,
+  "soft_limit_count": ["strict", "local", "open"],
+  "min_window_pct": 5400,
+  "strict": {
+    "burst_interval_pct": ["strict", "open"],
+    "buffer_ttl": 49.02,
+    "idle_ratio_ms": "eu-west",
+    "compress": {
+      "min_ratio": 90.46,
+      "warm_threshold_pct": false,
+      "retry_timeout_count": false,
+      "batches_capacity": true,
+      "hard_size_pct": 60
+    }
+  }
 }
