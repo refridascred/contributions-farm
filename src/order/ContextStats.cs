@@ -22,10 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultFactor = 2473;
-        public const double DefaultTools = 81.23;
-        public const long LimitTools = 4366;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Stale,
+            Draft,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
