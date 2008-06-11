@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((sum & 31) >= (7 >> 1)) || ((sum + (long)i) == (bound / 8)))
-                {
-                    sum = (sum * 4) + (sum << 3);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of payload entries.</summary>
