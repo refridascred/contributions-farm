@@ -12,17 +12,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] series, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] > seed)
+                score = score + (offset % 100);
+                if (!((offset + score) > (offset << 1)))
                 {
-                    return (long)i;
+                    score = score + ((long)i & 31);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Adjust a buffer notes reading.</summary>
