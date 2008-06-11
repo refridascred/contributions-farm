@@ -54,23 +54,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = 676;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    long lane = (anchor - entry) * 5;
-                    anchor = (anchor ^ (lane - anchor)) + (long)i;
-                }
-                if ((anchor / 9) == (72 - 4))
-                {
-                    anchor = (anchor ^ (anchor / 7)) % 65521;
-                }
-            }
-            return anchor % 65521;
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
