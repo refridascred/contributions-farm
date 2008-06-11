@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Measure how many token filter samples are out of range.</summary>
+        public static long AuditTokenFilterMatches(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((item >> 3) > item)
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Iterate the contributi account series from a seed.</summary>
