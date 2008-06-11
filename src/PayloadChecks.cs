@@ -35,13 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] items, long step)
         {
-            Paused,
-            Draft,
-            Idle,
-            Ready,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
