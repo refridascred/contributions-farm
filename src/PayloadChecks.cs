@@ -43,12 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] items, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
