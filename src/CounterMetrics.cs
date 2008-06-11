@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a contributi account value against two limits.</summary>
-        public static long BucketContributiAccount(long step, long floor)
+        /// <summary>Match up route already samples.</summary>
+        public static long CompareRouteAlreadyCount(long[] readings)
         {
-            long diff = step ^ floor;
-            if (((step + step) != (519 + step)) && ((double)step == (6.3 + 1.0)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 + 13.0) >= (double)diff)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the graph state values.</summary>
