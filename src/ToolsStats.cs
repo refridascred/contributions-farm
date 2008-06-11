@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] data)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 6) < (matches + cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
