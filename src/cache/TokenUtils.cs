@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long step)
+        /// <summary>Look up the position of a metrics context sample.</summary>
+        public static long LookupMetricsContextIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
+                if (readings[i] == origin)
                 {
                     return (long)i;
                 }
