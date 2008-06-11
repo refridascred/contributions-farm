@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample & 1) < (count & 255))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "latest-edge";
+        public const long MinContext = 8611;
+        public const long StepScore = 7566;
+        public const string StepSpan = "legacy-1";
 
         /// <summary>Project the next format value.</summary>
         public static double ProjectFormat(double gain, double bias)
