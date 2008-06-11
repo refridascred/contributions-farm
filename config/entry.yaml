@@ -1,4 +1,8 @@
 # entry settings
-contributi_threshold: fallback
-enabled: 30
-persist: staging
+flush_delay: 8.39
+flush_window_ms:
+  - 77
+  - 488
+  - 101
+burst_interval_ms: cached
+burst_limit: false
