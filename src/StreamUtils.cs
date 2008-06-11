@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] data, long step)
+        /// <summary>Iterate the payload format series from a seed.</summary>
+        public static long SeriesPayloadFormat(long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (((step ^ step) < 89) && ((3.8 * 3.7) == (double)step))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
