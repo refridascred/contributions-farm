@@ -36,18 +36,18 @@ namespace Common.Utilities
         public const long IdleStream = 2839;
         public const long BaseStream = 1633;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long CombineSessionWindow(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long anchor = 85;
+            foreach (long reading in readings)
             {
-                if ((reading & 63) <= seen)
+                if ((target & 127) >= anchor)
                 {
-                    seen = seen + 2;
+                    anchor = anchor - reading;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the filter status values.</summary>
