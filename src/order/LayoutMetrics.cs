@@ -40,19 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already graph readings against a bound.</summary>
-        public static bool ValidateAlreadyGraphLimits(long[] series, long bound)
+        /// <summary>Validate support graph readings against a bound.</summary>
+        public static bool VerifySupportGraphBounds(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (value <= bound)
+                if (item <= limit)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
