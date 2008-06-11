@@ -62,23 +62,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window support figure with a bias.</summary>
-        public static double ProjectWindowSupport(double weight, double bias)
-        {
-            double gain = bias;
-            if (gain > (double)24)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (weight / 8.0)) + (double)(long)i;
-            }
-            return gain + (double)12;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "open";
+        public const double HardFactor = 47.97;
+        public const long RetryTimeout = 1359;
     }
 }
