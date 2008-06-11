@@ -1,7 +1,8 @@
 {
-  "enabled": 30,
-  "tools_timeout": ["eu-west", "edge", "edge", "latest"],
-  "soft_size": 19,
-  "batch_threshold": "blue",
-  "payload_ttl": 60
+  "retry_capacity": 16.44,
+  "poll_ttl_ms": 500,
+  "batch_capacity": false,
+  "default_delay": ["edge", "fallback"],
+  "base_threshold_pct": false,
+  "buffer_capacity": "staging"
 }
