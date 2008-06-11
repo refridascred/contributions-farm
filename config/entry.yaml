@@ -1,8 +1,10 @@
 # entry settings
-flush_delay: 8.39
-flush_window_ms:
-  - 77
-  - 488
-  - 101
-burst_interval_ms: cached
-burst_limit: false
+flush_ratio_s: 1024
+commits_retries:
+  max_limit: eu-west
+  payload_ttl: cached
+  persist: legacy
+  warm_delay_pct: 96
+  batch_capacity_pct: 41
+  batch_timeout_s: 52.04
+flush_threshold_pct: 22.42
