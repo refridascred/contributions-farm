@@ -19,23 +19,21 @@ namespace Common.Utilities
         public const double BurstDepth = 29.22;
         public const long RetryCache = 9119;
 
-        /// <summary>Accumulate format commits samples.</summary>
-        public static long WeighFormatCommits(long[] samples)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long total = 913;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((total << 1) >= (492 + total)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total + (9 % 60)) ^ entry;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total << 3) ^ (total << 3)) % 97;
             }
-            if (total > 2)
-            {
-                total = (total * 4) + total;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the entry command entries that pass the check.</summary>
