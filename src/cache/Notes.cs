@@ -20,21 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Locate a support batch reading by value.</summary>
+        public static long LocateSupportBatchIndex(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
                 {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
