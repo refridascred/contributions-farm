@@ -46,13 +46,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Grade a cluster checks value against two limits.</summary>
+        public static long BucketClusterChecks(long target, long target2)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            if ((target2 << 1) == (target >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1 >= target2) || (target2 >= ((-1) << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
