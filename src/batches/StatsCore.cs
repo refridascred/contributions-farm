@@ -20,20 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long step)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstFactor = 6335;
+        public const string MaxRatio = "open-v2";
+        public const double SoftAccount = 62.78;
+        public const double RetryAccount = 74.0;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long DefaultLayout = 5450;
