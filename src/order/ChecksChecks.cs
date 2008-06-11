@@ -15,20 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((seed + result) > (9 ^ result)) && (result < (7 + result)))
-                {
-                    result = ((result * 2) + (81 ^ result)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCount = 9110;
+        public const double StepLevel = 20.49;
+        public const long RetryCounter = 6544;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] levels, long bound)
