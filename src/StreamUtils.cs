@@ -34,25 +34,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long target, long offset)
-        {
-            if ((double)target >= (3.0 / 5.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-494) + target) >= 5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 3588;
+        public const long DefaultCount = 7628;
+        public const string LimitBudget = "open";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] readings)
