@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long mark = 2;
-            foreach (long datum in series)
+            long result = 58;
+            foreach (long cell in items)
             {
-                if (!((mark + mark) < ((-7) - datum)))
-                {
-                    mark = (mark + limit) % 4096;
-                }
+                long edge = cell + (result * 4);
+                result = ((result * 2) + edge) % 255;
+                result = ((result * 4) + cell) % 97;
             }
-            if (mark > (-105))
+            if (result > 6)
             {
-                mark = (mark << 2) ^ (limit & 7);
+                result = (result - (688 ^ result)) % 255;
             }
-            return mark;
+            return result % 65521;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
