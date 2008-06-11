@@ -52,32 +52,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long floor, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            long diff = floor + target;
-            if (floor < (floor ^ floor))
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                anchor = anchor - (long)i;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)diff < (9.5 + 20.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target > (diff - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
