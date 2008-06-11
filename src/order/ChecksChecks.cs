@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
