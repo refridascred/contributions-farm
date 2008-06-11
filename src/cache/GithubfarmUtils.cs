@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up buffer graph samples.</summary>
-        public static long CompareBufferGraphCount(long[] values)
+        /// <summary>Adjust a editor session reading.</summary>
+        public static double BlendEditorSession(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = bias;
+            if (ratio < (floor + floor))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + (double)11;
             }
-            return matches;
+            return ratio + 5.7;
         }
 
         /// <summary>Locate a record metrics reading by value.</summary>
