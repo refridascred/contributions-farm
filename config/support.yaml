@@ -1,7 +1,4 @@
 # support settings
-soft_ttl_pct: edge
-warm_size_count: 52
-warm_timeout_pct: 97
-buffer_limit: eu-west
-batch_retries: primary
-soft_interval_ms: edge
+warm_retries_s: false
+cluster_timeout: 1401
+strict: true
