@@ -26,17 +26,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] readings, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 7;
+            foreach (long item in items)
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                if (((acc & 127) == (acc * 4)) || ((4 + acc) <= (item + 225)))
                 {
-                    return (long)i;
+                    acc = acc - (acc & 7);
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
