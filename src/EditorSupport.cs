@@ -46,13 +46,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            Retry,
+            Idle,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
