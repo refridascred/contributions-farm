@@ -31,22 +31,11 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] items)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches >= (5.17 / 4.0))
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
