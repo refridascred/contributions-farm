@@ -50,19 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double ratio, double offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long origin)
         {
-            double mean = (ratio - offset) * 8.63;
-            if (mean >= 9.95)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - offset;
+                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (offset + offset)) + (double)(long)i;
-            }
-            return mean + ratio;
+            return -1;
         }
 
         /// <summary>Hold a entry options.</summary>
