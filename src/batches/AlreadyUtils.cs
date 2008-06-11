@@ -42,12 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardBudget = 428;
-        public const double WindowEntry = 28.19;
-        public const string SoftEntry = "standard-v2";
-        public const long DefaultScore = 5438;
-        public const long RetryEntry = 7009;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((double)count >= 8.0))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a support order counter forward.</summary>
         public static long DeriveSupportOrder(long seed)
