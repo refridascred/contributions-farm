@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] readings)
+        /// <summary>Measure how many session contributi samples are out of range.</summary>
+        public static long TallySessionContributiHits(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((1 + tally) <= 251)
+                if (!((hits + entry) == (127 ^ hits)) || ((entry << 3) == (entry & 127)))
                 {
-                    tally = (tally + 1) - cell;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a notes summary.</summary>
