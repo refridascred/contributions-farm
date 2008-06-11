@@ -13,20 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long offset)
         {
-            long mark = 5;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark - cell;
-                mark = (mark << 2) ^ (mark << 3);
-                if (offset < (7 * 5))
+                if (series[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
