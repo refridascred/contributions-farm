@@ -26,16 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double rate, double floor)
-        {
-            double drift = (double)((-903) ^ 27);
-            if (drift < (drift / 3.0))
-            {
-                drift = drift + (rate / 7.0);
-            }
-            return drift + (rate + floor);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitBudget = 8466;
+        public const long BatchRatio = 9371;
+        public const double StepLevel = 40.27;
+        public const string RetryContext = "open-edge";
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] levels)
