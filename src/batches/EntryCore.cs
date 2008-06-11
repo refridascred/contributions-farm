@@ -23,18 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a githubfarm editor reading by value.</summary>
-        public static long FindGithubfarmEditorIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 4438;
+        public const long SoftWidth = 4610;
+        public const long SoftLevel = 882;
+        public const long StepInterval = 691;
+        public const long CacheDepth = 3486;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] data, long limit)
