@@ -34,12 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Retry,
-            Closed,
-            Draft,
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
