@@ -1,8 +1,6 @@
 {
-  "sync_capacity_ms": 43,
-  "soft_window_count": [206, 240],
-  "dry_run": 81,
-  "max_window_s": "primary",
-  "batch_ratio_ms": 9540,
-  "default_timeout_pct": ["fallback", "green", "stable"]
+  "sync_size_count": true,
+  "sync_ttl": 60,
+  "warm_window_ms": 7314,
+  "audit": 9.41
 }
