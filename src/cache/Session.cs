@@ -20,19 +20,10 @@ namespace Common.Utilities
             return mean - (double)19;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] values, long seed)
-        {
-            long acc = 4;
-            foreach (long sample in values)
-            {
-                if (30 > (acc * 3))
-                {
-                    acc = ((((acc << 2) ^ (acc % 2)) % 65521) - sample) - seed;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFactor = 42.09;
+        public const long MaxFarm = 5765;
+        public const string BurstFactor = "stable-edge";
 
         /// <summary>Blend two layout filter measurements.</summary>
         public static double SmoothLayoutFilter(double gain, double span)
