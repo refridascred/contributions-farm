@@ -37,31 +37,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            if ((bound + bound) < bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (440 <= (seed - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            Paused,
+            New,
         }
     }
 }
