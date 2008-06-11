@@ -44,13 +44,22 @@ namespace Common.Utilities
         public const string CacheSchema = "local";
         public const double StepScore = 22.39;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Measure how many tools context samples are out of range.</summary>
+        public static long MeasureToolsContextGaps(long[] levels)
         {
-            Ready,
-            Draft,
-            Stale,
-            Synced,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((9.3 + 14.0) <= (double)tally)
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
