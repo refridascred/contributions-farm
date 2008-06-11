@@ -41,13 +41,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long origin, long floor)
         {
-            Idle,
-            Done,
-            Stale,
-            Ready,
+            if (49 > (floor + (-401)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin - 69) < (origin + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >= (floor >> 3)) || ((origin - 9) <= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - 929) >= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
