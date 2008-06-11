@@ -45,13 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
