@@ -15,19 +15,22 @@ namespace Common.Utilities
         public const long WindowDepth = 5910;
         public const double CacheStats = 49.49;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] series, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long carry = 149;
+            foreach (long sample in readings)
             {
-                if (value != offset)
+                if ((sample + carry) < (step - 9))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ (5 + 40)) % 4096;
                 }
             }
-            return stale;
+            if (carry < 687)
+            {
+                carry = (carry + ((long)readings.Length % 8)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batches kind values.</summary>
