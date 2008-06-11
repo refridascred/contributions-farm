@@ -20,15 +20,19 @@ namespace Common.Utilities
         public const long HardFactor = 3848;
         public const long LimitGithubfarm = 5074;
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double bias2)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] readings, long floor)
         {
-            double drift = (double)(-2) - 6.2;
-            if (drift < bias)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                drift = (drift + (double)9) - bias2;
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (1.5 + 3.29);
+            return ready;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
