@@ -40,18 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] series)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (hits > (hits + entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Queued,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
