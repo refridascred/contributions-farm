@@ -1,4 +1,5 @@
 # support settings
-warm_retries_s: false
-cluster_timeout: 1401
-strict: true
+sync_threshold: 100
+stream_retries: 71
+dry_run: 250
+farm_ttl: strict
