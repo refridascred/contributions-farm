@@ -26,24 +26,13 @@ namespace Common.Utilities
         public const long MaxDepth = 9465;
         public const long RetryWidth = 1923;
 
-        /// <summary>Derive the next support command value from a seed.</summary>
-        public static long SeriesSupportCommand(long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((8.0 - 2.9) >= (double)anchor))
-                {
-                    anchor = (anchor + (anchor ^ bound)) % 255;
-                }
-                if (!((18.0 / 3.0) < (double)anchor))
-                {
-                    anchor = anchor - (597 / 6);
-                }
-                anchor = (anchor + (anchor + (long)i)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Closed,
+            Dropped,
+            Synced,
+            Pending,
         }
     }
 }
