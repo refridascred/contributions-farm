@@ -13,24 +13,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            if (!((offset + limit) < limit))
+            long mark = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (8 > limit)
+                if (!((mark * 4) >= mark))
                 {
-                    return 6;
+                    mark = (mark + (cell ^ 2)) % 4096;
                 }
                 else
                 {
-                    return 3;
+                    mark = ((mark << 3) ^ (cell * 3)) % 1000;
                 }
             }
+            if (mark < (-41))
+            {
+                mark = ((mark * 5) + (mark - 53)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
