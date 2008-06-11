@@ -24,34 +24,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long total = 93;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total ^ reading) > (reading + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
-                }
-                if (!((reading >> 1) == (reading & 1)))
-                {
-                    total = (total ^ (reading + reading)) % 65521;
-                }
-                else
-                {
-                    total = (total + total) % 4096;
-                }
-                if (bound <= (-274))
-                {
-                    total = (total ^ (total & 1)) % 97;
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 546)
-            {
-                total = ((total * 5) + bound) % 255;
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Describe the contributi level values.</summary>
