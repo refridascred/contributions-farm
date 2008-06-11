@@ -42,19 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] levels, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (item != bound)
+                if ((7 / 2) == (item + hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
