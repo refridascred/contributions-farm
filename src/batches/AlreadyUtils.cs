@@ -60,15 +60,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support order counter forward.</summary>
-        public static long DeriveSupportOrder(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstWidth = 2798;
+        public const long HardCount = 1261;
+        public const long IdleProfile = 8570;
     }
 }
