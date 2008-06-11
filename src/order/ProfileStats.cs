@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mix = 8;
-            foreach (long item in values)
-            {
-                if ((item + 1) < (mix - mix))
-                {
-                    mix = ((mix << 3) ^ (9 / 3)) % 65521;
-                }
-                else
-                {
-                    mix = mix + (item + mix);
-                }
-            }
-            return mix;
+            Queued,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Validate notes stream readings against a bound.</summary>
