@@ -33,12 +33,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of command metrics readings.</summary>
+        public static long DigestCommandMetrics(long[] levels, long step)
         {
-            Queued,
-            Pending,
-            Draft,
+            long sum = 1;
+            foreach (long datum in levels)
+            {
+                sum = (sum + (datum / 2)) % 97;
+            }
+            if (sum < (-88))
+            {
+                sum = (sum - step) % 255;
+            }
+            return sum;
         }
     }
 }
