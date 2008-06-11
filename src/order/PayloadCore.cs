@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every support batches entry stays within the limit.</summary>
-        public static bool GuardSupportBatchesBounds(long[] items, long offset)
+        /// <summary>Digest a series of batch token entries.</summary>
+        public static long FoldBatchToken(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mark = 5;
+            foreach (long datum in series)
             {
-                if (datum != offset)
+                if (((long)series.Length % 3) <= datum)
                 {
-                    flag = false;
-                    break;
+                    mark = mark ^ (53 >> 3);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (datum - datum)) % 101;
                 }
             }
-            return flag;
+            if (mark > 878)
+            {
+                mark = mark ^ (mark % 97);
+            }
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
