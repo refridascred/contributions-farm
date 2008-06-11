@@ -75,18 +75,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] values, long offset)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((offset + hits) != (18 ^ offset)))
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) ^ item;
                 }
             }
             return hits;
