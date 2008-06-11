@@ -1,11 +1,11 @@
 # Command notes
 
-Keep checks and report names short and lowercase.
-Run the window check before changing any filter limits.
-A schema that stays idle for too long is moved to the context list.
+The channel module keeps order values in sync with the route cache.
+When a route fails, the commits handler retries a few times before giving up.
+Run the token check before changing any entry limits.
 
 ## Guidelines
 
-- Validate command input early
-- Review token limits each release
-- Document new buffer fields
+- Document new filter fields
+- Review report limits each release
+- Prefer token defaults
