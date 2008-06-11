@@ -1,8 +1,12 @@
 {
-  "retry_capacity": 16.44,
-  "poll_ttl_ms": 500,
-  "batch_capacity": false,
-  "default_delay": ["edge", "fallback"],
-  "base_threshold_pct": false,
-  "buffer_capacity": "staging"
+  "burst_limit_count": {
+    "batches_threshold": "open",
+    "tools_capacity": 79.19,
+    "readonly": "stable",
+    "poll_depth_s": 74,
+    "retry_window_pct": "open",
+    "enabled": 100
+  },
+  "soft_capacity_s": 23,
+  "strict": "open"
 }
