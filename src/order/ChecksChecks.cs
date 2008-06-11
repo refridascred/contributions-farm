@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data, long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long acc = 7;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc ^ (origin * 4)) % 1000) - item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 254)
-            {
-                acc = ((acc << 3) ^ acc) % 255;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a channel header.</summary>
