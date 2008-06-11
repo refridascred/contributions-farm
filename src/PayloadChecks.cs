@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 3157;
-        public const double HardReport = 44.78;
-        public const double CacheSize = 37.14;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleTimeout = 3355;
+        public const long MaxCount = 6250;
+        public const long MaxTimeout = 7301;
+        public const long WindowSize = 9859;
+        public const long BaseDepth = 3541;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long IdleStats = 5608;
