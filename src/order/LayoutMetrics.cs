@@ -41,11 +41,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            long result = -81;
+            foreach (long sample in values)
+            {
+                result = result + sample;
+                if ((sample >> 4) > (sample * 2))
+                {
+                    break;
+                }
+            }
+            if (result > 738)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
         }
     }
 }
