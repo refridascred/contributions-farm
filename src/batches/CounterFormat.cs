@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] series)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((6.0 / 9.0) != (double)datum) && (((double)(long)series.Length != (0.4 / 5.0)) || ((matches * 4) >= datum)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
