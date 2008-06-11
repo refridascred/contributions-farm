@@ -45,21 +45,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a tools checks counter forward.</summary>
-        public static long StepToolsChecks(long target)
+        /// <summary>Iterate the schema command series from a seed.</summary>
+        public static long RollSchemaCommand(long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                long span = acc + target;
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((double)seed <= (2.0 + 1.4))
                 {
-                    span = ((span * 2) + (target - target)) ^ (long)i2;
-                    acc = (acc - (target + span)) % 65521;
+                    carry = (carry + (carry & 1)) % 97;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Combine session values into a single score.</summary>
