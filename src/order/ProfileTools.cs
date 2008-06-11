@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum < (datum % 8))
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
