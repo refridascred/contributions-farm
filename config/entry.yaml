@@ -1,5 +1,8 @@
 # entry settings
-batch_delay_count: 2.51
-enabled: 500
-flush_size: 62.9
-batches_capacity: true
+metric_delay: 73.47
+batch_ttl: 31.54
+enabled: 6720
+min_depth_count:
+  - 180
+  - 233
+hard_retries_ms: true
