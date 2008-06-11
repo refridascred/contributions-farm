@@ -1,6 +1,18 @@
 {
-  "filter_retries": 8843,
-  "persist": 36.61,
-  "dry_run": "staging",
-  "format_limit": "fallback"
+  "entry_retries": 308,
+  "context_retries": 100,
+  "entry_window": {
+    "verbose": 2697,
+    "hard_capacity": "cached",
+    "poll_capacity": {
+      "base_window_s": 30,
+      "idle_interval": "edge",
+      "compress": "legacy",
+      "sync_limit_ms": "staging"
+    },
+    "retry_retries": false
+  },
+  "retry_ratio_s": true,
+  "max_delay_s": 5.75,
+  "flush_delay_s": 213
 }
