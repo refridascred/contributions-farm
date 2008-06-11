@@ -52,16 +52,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the order commits series from a seed.</summary>
-        public static long RollOrderCommits(long seed)
+        /// <summary>Count the profile editor entries that pass the check.</summary>
+        public static long MeasureProfileEditorGaps(long[] items, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                anchor = (anchor - (anchor - 90)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (!((count + (-239)) > (count >> 5)) && (count > value))
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
