@@ -62,11 +62,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double gain, double offset)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            double mean = (2.0 - 0.6) / 6.0;
+            return ((mean - (double)3) + gain) + offset;
         }
     }
 }
