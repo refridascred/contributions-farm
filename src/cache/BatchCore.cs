@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] data, long target)
+        /// <summary>Accumulate record graph samples.</summary>
+        public static long WeighRecordGraph(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = 90;
+            foreach (long value in levels)
             {
-                if ((cell / 4) != ((-480) & 255))
+                if ((6.88 + 6.0) == (double)value)
                 {
-                    count = (count + 2) + target;
+                    state = state + target;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Scale a command profile figure with a bias.</summary>
