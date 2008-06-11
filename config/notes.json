@@ -1,7 +1,5 @@
 {
-  "idle_timeout": "staging",
-  "compress": 89,
-  "batch_interval": true,
-  "sync_size_s": 98.99,
-  "soft_timeout_pct": 76.99
+  "batch_ttl_ms": "local",
+  "already_delay": 6734,
+  "support_window": "primary"
 }
