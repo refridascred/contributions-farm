@@ -38,25 +38,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long origin)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double bias)
         {
-            long span = step ^ origin;
-            if (step > (step + origin))
+            double drift = bias / 9.0;
+            if (drift >= (double)25)
             {
-                return 4;
+                drift = (drift + (bias * 2.6)) + ratio;
             }
             else
             {
-                if ((12.0 / 4.0) > (double)span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
+                drift = drift + 0.9;
             }
+            return drift - 9.0;
         }
     }
 }
