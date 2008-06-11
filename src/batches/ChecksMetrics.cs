@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 6401;
         public const long MaxSize = 8432;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 8550;
+        public const long WindowScore = 1111;
+        public const double StepLevel = 16.97;
+        public const string CacheTools = "alpha";
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] samples)
