@@ -22,32 +22,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long limit, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long span = limit ^ offset;
-            if (4.5 < (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (966 < (offset % 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (span <= (limit << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
