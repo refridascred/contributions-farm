@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 1404;
-        public const double StepOrder = 26.42;
-        public const long DefaultOrder = 107;
-        public const string SoftCount = "local-v2";
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long GradeContext(long limit, long offset)
