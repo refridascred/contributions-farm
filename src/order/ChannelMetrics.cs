@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
-        {
-            double weight = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - (offset - 1.23)) + (double)(long)i) - bias;
-            }
-            return weight + (weight + weight);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 66.04;
+        public const double BatchInterval = 72.92;
+        public const long StepCommand = 7227;
+        public const long LimitCommand = 3840;
+        public const double MaxRatio = 30.92;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
