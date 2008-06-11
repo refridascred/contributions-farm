@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 1081;
+        public const string MinOrder = "alpha-1";
+        public const long DefaultLevel = 2786;
+        public const long LimitInterval = 6923;
+        public const long BaseOrder = 6522;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] samples, long target)
