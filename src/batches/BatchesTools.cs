@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long MaxSize = 191;
         public const long BurstDepth = 5596;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] data, long floor)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
