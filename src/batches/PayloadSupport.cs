@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank account counter input into a small class.</summary>
-        public static long RankAccountCounter(long target, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] readings)
         {
-            if ((floor / 8) == (target / 5))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target * 3) >= (floor + target))
+                if ((value <= (seen + value)) || (((8.1 + 7.8) == (double)seen) || ((3 & 3) != ((long)readings.Length ^ value))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor >= (floor ^ target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
