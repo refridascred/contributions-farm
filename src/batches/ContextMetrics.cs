@@ -65,32 +65,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long limit2)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long prev = limit ^ limit2;
-            if ((double)limit2 <= (1.0 + 12.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit > prev)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev * 2) >= (limit2 - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate contributi metrics samples.</summary>
