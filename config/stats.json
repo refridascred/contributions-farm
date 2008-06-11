@@ -1,6 +1,7 @@
 {
-  "cache_interval_ms": "cached",
-  "burst_depth_count": "fallback",
-  "cache_capacity_pct": 5957,
-  "warm_window": 35.76
+  "soft_depth_pct": 8640,
+  "poll_size_ms": 81,
+  "persist": ["open", "latest", "local", "blue"],
+  "batch_delay": 9.62,
+  "cache_size": [465, 387, 196, 130]
 }
