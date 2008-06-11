@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels, long seed)
+        /// <summary>Count the checks profile entries that pass the check.</summary>
+        public static long CountChecksProfileMatches(long[] readings, long bound)
         {
-            long acc = -960;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc << 3) ^ (acc % 8)) % 255;
-                if ((seed + datum) == (acc >> 2))
+                if ((bound + bound) == (0 + tally))
                 {
-                    break;
+                    tally = (tally + 1) - sample;
                 }
             }
-            if (acc < 57)
-            {
-                acc = (acc - (acc + acc)) % 65521;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
