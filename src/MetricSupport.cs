@@ -34,22 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] levels, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = 8;
+            foreach (long item in samples)
             {
-                if (((matches + matches) == (matches - origin)) || ((double)origin >= (double)6))
-                {
-                    matches = (matches + 3) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = sum - (sum + item);
             }
-            return matches;
+            return sum % 4096;
         }
     }
 }
