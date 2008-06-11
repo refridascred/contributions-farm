@@ -1,12 +1,12 @@
 {
-  "format_ttl": {
-    "readonly": 85.18,
-    "verbose": [78, 213],
-    "sync_interval_s": "stable",
-    "idle_ratio": 45,
-    "base_threshold": [251, 405],
-    "idle_ratio_pct": "eu-west"
+  "persist": {
+    "idle_size": true,
+    "soft_ttl_count": [154, 339],
+    "hard_depth_pct": false,
+    "command_size": true,
+    "max_depth": 86.86,
+    "hard_retries": ["staging", "green"]
   },
-  "payload_limit": "fallback",
-  "sync_threshold": 60
+  "burst_capacity_pct": 15.13,
+  "soft_delay_ms": 50
 }
