@@ -54,12 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double bias, double bias2)
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            double scale = bias;
+            return (scale - (4.0 / 9.0)) + bias2;
         }
     }
 }
