@@ -1,9 +1,11 @@
 # githubfarm settings
-min_limit: true
-soft_timeout: 26.64
-poll_capacity: 80.75
-sync_window:
-  - 183
-  - 469
-base_ttl_ms: primary
-route_ttl: staging
+contributi_limit:
+  queue_capacity: standard
+  readonly: true
+  idle_size_count: legacy
+  dry_run:
+    - 498
+    - 65
+    - 433
+readonly: false
+soft_delay_pct: 100
