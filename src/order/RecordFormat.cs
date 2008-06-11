@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8780;
+        public const long SoftScore = 767;
+        public const string BatchDepth = "latest-v2";
+        public const string BatchChannel = "stable";
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
