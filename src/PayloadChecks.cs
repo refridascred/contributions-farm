@@ -43,20 +43,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] items, long seed)
         {
-            long acc = 866;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                long lane = (-385) + 649;
-                if (325 < (lane ^ lane))
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
                 {
-                    lane = (lane - (sample % 3)) % 1000;
+                    return (long)i;
                 }
-                acc = ((acc << 3) ^ (7 + 16)) % 65521;
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
