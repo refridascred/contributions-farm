@@ -43,12 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the payload kind values.</summary>
