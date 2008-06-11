@@ -33,18 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] levels)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (reading >= (421 >> 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
