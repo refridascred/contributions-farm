@@ -69,19 +69,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of context channel entries.</summary>
-        public static long ScoreContextChannel(long[] levels, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long anchor = 381;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor * 2) + (cell ^ 1)) % 255) - limit;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor < 88)
-            {
-                anchor = (anchor * 2) + (anchor - 49);
-            }
-            return anchor % 97;
+            return count;
         }
     }
 }
