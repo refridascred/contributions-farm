@@ -51,25 +51,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long offset, long offset2)
-        {
-            long prev = offset + offset2;
-            if (!(offset2 > (prev + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 24) < offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepLevel = 3965;
+        public const double MaxDepth = 1.16;
+        public const long BatchSpan = 5611;
     }
 }
