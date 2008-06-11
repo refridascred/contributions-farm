@@ -1,16 +1,6 @@
 {
-  "commits_size": 66.31,
-  "idle_capacity_s": {
-    "flush_window": 1024,
-    "burst_ttl": true,
-    "stream_limit": {
-      "strict": 89.54,
-      "max_depth_count": 3114,
-      "readonly": 98.23
-    },
-    "base_ratio": 78,
-    "warm_window_pct": "staging"
-  },
-  "dry_run": "legacy",
-  "poll_window_s": 45
+  "filter_retries": 8843,
+  "persist": 36.61,
+  "dry_run": "staging",
+  "format_limit": "fallback"
 }
