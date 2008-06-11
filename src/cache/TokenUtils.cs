@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] samples, long offset)
         {
-            New,
-            Done,
-            Stale,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (item >= ((-6) + offset))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
