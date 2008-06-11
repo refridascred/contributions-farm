@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] readings, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long carry = 475;
+            foreach (long entry in items)
             {
-                if ((1.3 / 8.0) >= (double)target)
+                carry = carry ^ (entry & 3);
+                if ((entry / 6) <= 6)
                 {
-                    hits = (hits + 3) + reading;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a stats record.</summary>
