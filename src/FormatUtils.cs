@@ -59,19 +59,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double scale, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
-            double scale2 = scale;
-            if (scale2 < span)
+            long count = 0;
+            foreach (long sample in items)
             {
-                scale2 = scale2 - (double)2;
+                if ((double)count > (9.4 - 4.3))
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (span / 3.0);
-            }
-            return scale2 - (6.87 / 7.0);
+            return count;
         }
 
         /// <summary>Hold a tools header.</summary>
