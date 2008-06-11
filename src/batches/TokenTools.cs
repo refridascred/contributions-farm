@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const string DefaultChecks = "open-edge";
         public const long IdleBudget = 4177;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = 2;
-            foreach (long reading in readings)
-            {
-                mix = (mix + (mix ^ reading)) % 4096;
-                if (!((reading - 358) >= (mix + reading)))
-                {
-                    mix = mix + mix;
-                }
-            }
-            return mix % 65521;
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
