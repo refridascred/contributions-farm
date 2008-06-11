@@ -1,25 +1,17 @@
 # entry settings
-graph_capacity: 10.29
-audit:
-  burst_capacity: true
-  flush_depth:
-    editor_interval:
-      - 397
-      - 278
-      - 314
-    poll_capacity:
-      - 380
-      - 434
-      - 34
-    contributi_retries: 55
-    warm_interval_count: 37.83
-  audit: legacy
-  base_size_count: false
-  poll_timeout_count: cached
-support_ttl: 10.57
-farm_limit: 5158
-verbose: 25
-warm_limit:
-  - primary
-  - standard
+flush_depth_pct: blue
+sync_delay_pct: edge
+warm_threshold:
+  - stable
   - strict
+  - standard
+  - eu-west
+hard_ratio_ms:
+  soft_ttl_s: 76.43
+  strict: 8281
+  hard_timeout:
+    - 388
+    - 401
+    - 3
+    - 404
+command_window: 30
