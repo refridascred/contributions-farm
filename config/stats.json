@@ -1,5 +1,6 @@
 {
-  "cache_interval_pct": 9189,
-  "min_interval": 69.09,
-  "format_limit": "open"
+  "checks_ttl": 86.24,
+  "payload_ratio": [205, 131],
+  "max_ratio_s": 76,
+  "retry_ttl_count": false
 }
