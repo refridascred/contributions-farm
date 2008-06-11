@@ -29,12 +29,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of counter token readings.</summary>
+        public static long TallyCounterToken(long[] readings)
         {
-            Ready,
-            Paused,
-            Draft,
+            long sum = 115;
+            foreach (long sample in readings)
+            {
+                if ((sample / 5) < ((-49) / 6))
+                {
+                    sum = ((sum << 3) ^ (sample >> 5)) % 101;
+                }
+                if ((double)sample == (16.0 / 7.0))
+                {
+                    break;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = (sum * 3) + (sum % 64);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
