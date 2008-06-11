@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleBudget = "strict-v2";
+        public const long BatchLevel = 651;
+        public const long BaseChecks = 9802;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double AdjustChecks(double weight, double span)
