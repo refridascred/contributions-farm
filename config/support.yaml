@@ -1,19 +1,6 @@
 # support settings
-sync_limit_ms: 8227
-contributi_ratio: 2587
-command_retries: false
-persist:
-  batch_threshold: 41.69
-  poll_limit_s: 8441
-  compress: 22.35
-  retry_limit_s: 30.3
-  checks_window:
-    burst_depth_pct: staging
-    stream_delay: 40
-    enabled: 45.15
-    hard_timeout_count: false
-  report_ratio: cached
-editor_ratio:
-  - 388
-  - 185
-  - 447
+warm_delay:
+  - 242
+  - 338
+audit: 8889
+hard_window: open
