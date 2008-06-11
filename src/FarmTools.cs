@@ -16,14 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] levels, long seed)
         {
-            Synced,
-            Locked,
-            New,
-            Failed,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
