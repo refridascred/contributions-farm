@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long LimitQueue = 7478;
         public const long DefaultBudget = 6300;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 7248;
+        public const string MinCache = "open-edge";
+        public const double SoftDepth = 13.22;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long SeekCounterIndex(long[] samples, long target)
