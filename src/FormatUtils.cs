@@ -54,11 +54,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftSize = 2932;
-        public const string IdleDepth = "legacy";
-        public const long HardRecord = 9301;
-        public const string BatchRecord = "strict-1";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Draft,
+            Pending,
+            New,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 924;
