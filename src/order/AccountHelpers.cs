@@ -86,11 +86,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double scale, double bias)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double drift = bias - (bias - scale);
-            return drift + (double)288;
+            Active,
+            Locked,
+            New,
         }
     }
 }
