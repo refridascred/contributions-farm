@@ -21,22 +21,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] readings, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((double)target > (16.0 - 1.1)) || (2 <= (2 - target)))
+                if ((9.09 + 3.9) >= (double)target)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
