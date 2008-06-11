@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "strict-edge";
-        public const long BaseFarm = 1766;
-        public const long BurstFarm = 5890;
-        public const long WindowFarm = 5017;
-        public const long MaxRatio = 8427;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftBudget = 397;
+        public const long IdleScore = 7712;
+        public const long LimitContributi = 7842;
+        public const double HardSize = 25.05;
+        public const long StepWidth = 827;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 4287;
