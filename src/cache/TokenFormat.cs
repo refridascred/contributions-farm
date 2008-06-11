@@ -26,12 +26,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] values, long limit)
         {
-            Draft,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((limit << 1) > item)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
