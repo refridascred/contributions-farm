@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long prev = bound + origin;
-            if ((double)origin <= (2.0 - 9.74))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.5 * 5.14) > (double)prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Draft,
+            Synced,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Combine format values into a single score.</summary>
