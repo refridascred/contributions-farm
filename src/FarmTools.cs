@@ -16,17 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] levels, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
