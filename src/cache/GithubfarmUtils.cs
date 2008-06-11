@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long MaxReport = 7878;
         public const double StepFactor = 47.01;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] data, long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = 533;
-            foreach (long entry in data)
-            {
-                if (seed >= (entry * 3))
-                {
-                    state = ((state << 2) ^ entry) % 65521;
-                }
-                else
-                {
-                    state = (state - entry) % 1000;
-                }
-            }
-            return state;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
