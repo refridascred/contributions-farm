@@ -1,5 +1,7 @@
 # support settings
-retry_size: legacy
-hard_ratio_s: open
-min_capacity: 5931
-audit: 63.74
+soft_ttl_pct: edge
+warm_size_count: 52
+warm_timeout_pct: 97
+buffer_limit: eu-west
+batch_retries: primary
+soft_interval_ms: edge
