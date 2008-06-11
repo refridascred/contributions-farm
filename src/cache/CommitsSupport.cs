@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] levels, long target)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
