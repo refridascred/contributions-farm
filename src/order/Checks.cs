@@ -36,21 +36,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Validate queue githubfarm readings against a bound.</summary>
