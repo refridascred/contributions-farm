@@ -1,5 +1,6 @@
 # support settings
-hard_depth_count: 42
-graph_timeout: eu-west
-cache_limit: 5181
-default_interval_count: 13.16
+warm_ratio_pct: 87.6
+metric_ttl: primary
+min_retries_s: standard
+flush_interval_pct: edge
+max_delay_count: true
