@@ -37,16 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel token samples.</summary>
-        public static long CombineChannelToken(long[] series)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long state = 99;
-            foreach (long reading in series)
-            {
-                state = (state + 542) % 101;
-                state = (state * 3) + (reading * 2);
-            }
-            return state;
+            Queued,
+            Pending,
+            Draft,
         }
     }
 }
