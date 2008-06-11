@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 5185;
-        public const double WindowStream = 29.84;
-        public const string BaseDepth = "standard-1";
-        public const long StepStream = 2014;
-        public const long DefaultStream = 8327;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((double)matches >= (6.9 / 8.0)) && (((double)datum < 5.0) && ((5.6 * 11.0) == (double)matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next notes command value from a seed.</summary>
         public static long StepNotesCommand(long limit)
