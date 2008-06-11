@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Dropped,
-            New,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchScore = 8808;
+        public const double SoftStats = 70.55;
+        public const long LimitStats = 6638;
+        public const long MinRatio = 2277;
+        public const string BurstStats = "legacy-v2";
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] samples)
