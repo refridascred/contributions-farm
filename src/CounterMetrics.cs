@@ -33,16 +33,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstDepth = "open-1";
+        public const double LimitDepth = 68.76;
+        public const long DefaultMetrics = 7281;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LocateContributiIndex(long[] readings, long seed)
