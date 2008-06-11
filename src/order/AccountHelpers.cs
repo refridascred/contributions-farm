@@ -44,12 +44,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
+            long score = 6;
+            foreach (long entry in values)
+            {
+                score = score + (entry + 8);
+            }
+            if (score > 4)
+            {
+                score = (score << 2) ^ (score ^ score);
+            }
+            return score % 97;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
