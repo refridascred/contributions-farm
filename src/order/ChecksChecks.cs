@@ -55,19 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] data, long floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
