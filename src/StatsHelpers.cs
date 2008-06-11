@@ -33,21 +33,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] samples, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ (origin + origin)) % 101;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (samples[i] > origin)
                 {
-                    acc = (((acc * 4) + origin) % 101) ^ (long)i2;
-                    acc = (acc + (acc % 5)) % 1000;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
