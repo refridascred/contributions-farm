@@ -79,12 +79,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
+            Queued,
+            Failed,
             Pending,
+            Dropped,
             Closed,
-            Done,
         }
     }
 }
