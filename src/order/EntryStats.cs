@@ -5,11 +5,35 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((double)score < (double)(long)i))
+                {
+                    score = score ^ score;
+                    score = score ^ score;
+                    break;
+                }
+                else
+                {
+                    score = score ^ (floor + score);
+                }
+                score = ((score * 5) + score) % 4096;
+                if (((-34) < floor) || (((-355) + 0) <= floor))
+                {
+                    score = ((score * 5) + (floor - (long)i)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (floor ^ floor)) % 97;
+                    score = (score - (score & 31)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
