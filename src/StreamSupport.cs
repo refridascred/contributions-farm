@@ -24,22 +24,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] series)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long offset = origin + bound;
+            if (bound > origin)
             {
-                if ((double)matches > (4.42 * 8.7))
+                return 6;
+            }
+            else
+            {
+                if ((bound * 4) < (offset + origin))
                 {
-                    matches = (matches + 2) + sample;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (bound < (origin << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
