@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green standard; do
+for item in local standard; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-strict}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
