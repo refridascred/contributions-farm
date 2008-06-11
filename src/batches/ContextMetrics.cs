@@ -57,11 +57,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 2551;
-        public const string BurstRecord = "latest-1";
-        public const double HardRecord = 45.17;
-        public const long DefaultBudget = 355;
-        public const long RetryRecord = 4069;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
