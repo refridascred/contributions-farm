@@ -13,18 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 80.32;
+        public const double BatchCache = 95.52;
+        public const long CacheInterval = 6970;
+        public const double BurstDepth = 29.22;
+        public const long RetryCache = 9119;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
