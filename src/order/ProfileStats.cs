@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the commits context entries that pass the check.</summary>
-        public static long MeasureCommitsContextGaps(long[] series, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((double)hits != (double)value)
+                if (item != limit)
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the stats kind values.</summary>
