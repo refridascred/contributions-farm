@@ -1,4 +1,6 @@
 # githubfarm settings
-already_retries: 41.38
-cache_depth: 67.77
-soft_ttl_pct: cached
+cache_delay_pct: fallback
+soft_limit_pct:
+  - 116
+  - 102
+strict: legacy
