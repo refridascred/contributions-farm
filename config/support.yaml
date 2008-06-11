@@ -1,21 +1,11 @@
 # support settings
-soft_size_count: true
-min_retries_s:
-  - standard
-  - blue
-persist:
-  - strict
-  - legacy
-  - edge
-warm_interval:
-  hard_size_pct:
-    persist: true
-    sync_ratio_s: 89
-    min_ttl_pct: true
-    retry_limit: eu-west
-    payload_capacity: 1024
-  hard_capacity_ms: 24.94
-  dry_run: 48
-  queue_ratio: 23
-entry_ttl: eu-west
-compress: latest
+verbose: 13
+session_interval: true
+order_delay:
+  idle_delay_ms: legacy
+  compress: strict
+  burst_threshold_s: standard
+  verbose: primary
+  context_interval: 4004
+  entry_threshold: staging
+compress: blue
