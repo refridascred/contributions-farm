@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double span)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] samples, long step)
         {
-            double load = 7.0;
-            if (load > (bias + 3.0))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                load = (load + (load * 6.5)) - span;
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (bias + load);
-            }
-            return load + (load / 3.0);
+            return found;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
