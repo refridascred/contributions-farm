@@ -57,19 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] levels, long seed)
         {
-            long result = 60;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                result = ((result * 5) + ((-17) ^ item)) % 255;
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result > (-231))
-            {
-                result = (result ^ (result + result)) % 1000;
-            }
-            return result;
+            return ok;
         }
     }
 }
