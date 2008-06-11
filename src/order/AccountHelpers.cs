@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
