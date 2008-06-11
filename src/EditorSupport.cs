@@ -13,10 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseInterval = "legacy";
-        public const long CacheTimeout = 5615;
-        public const long SoftSupport = 8210;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterBounds(long[] samples, long bound)
