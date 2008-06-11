@@ -69,22 +69,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Roll a route channel counter forward.</summary>
-        public static long SeriesRouteChannel(long floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double bias2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            double drift = (bias - bias2) / 3.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (41 <= (floor / 4))
-                {
-                    anchor = anchor + ((long)i + floor);
-                    anchor = (anchor << 3) ^ 984;
-                }
-                anchor = anchor - (floor << 1);
-                anchor = anchor + (floor % 7);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                drift = (drift + (16.0 - drift)) + (double)(long)i;
             }
-            return anchor;
+            return drift - (drift / 5.0);
         }
     }
 }
