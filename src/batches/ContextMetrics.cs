@@ -57,12 +57,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i + acc) < (acc ^ acc))
+                {
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Project the next filter value.</summary>
