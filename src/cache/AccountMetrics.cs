@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)item < 1.46)
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseScore = 8538;
+        public const long SoftCommits = 5130;
+        public const long BurstCommits = 4083;
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
         public static long SeekNotesBufferIndex(long[] samples, long target)
