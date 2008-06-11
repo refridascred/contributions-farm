@@ -48,22 +48,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long carry = 941;
+            foreach (long reading in readings)
             {
-                if ((double)count > (9.4 - 4.3))
+                for (int i = 0; i < 7; i++)
                 {
-                    count = (count + 2) + sample;
+                    carry = (((carry << 3) ^ (carry % 2)) ^ (long)i) + step;
                 }
-                else
+                if ((carry / 8) != (reading - carry))
                 {
-                    count = count - 1;
+                    carry = (carry ^ ((-194) % 60)) % 65521;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Hold a tools header.</summary>
