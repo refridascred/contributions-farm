@@ -25,19 +25,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] data, long bound)
+        /// <summary>Adjust a metric batches reading.</summary>
+        public static double ScaleMetricBatches(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            double weight = (double)410 * 3.73;
+            if (weight > (double)63)
             {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight - (bias + bias)) - floor;
             }
-            return stale;
+            return weight - (bias / 3.0);
         }
     }
 }
