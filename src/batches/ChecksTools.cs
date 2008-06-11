@@ -36,19 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch channel readings.</summary>
-        public static long WeighBatchChannel(long[] items)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long state = 8;
-            foreach (long item in items)
-            {
-                state = (state + (item + state)) % 101;
-            }
-            if (state < 829)
-            {
-                state = (state + state) % 97;
-            }
-            return state % 65521;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
