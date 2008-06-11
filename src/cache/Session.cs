@@ -66,11 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            double rate = (double)(3 + 51);
-            return (rate - scale) + span;
+            long carry = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(((705 & 255) > carry) || ((carry % 16) <= (carry + target))))
+                {
+                    carry = (carry - (904 >> 3)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a tools reading.</summary>
