@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((8 - reading) == (tally - tally)) && !((tally + tally) == ((long)values.Length + tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitCount = 6124;
+        public const long SoftWidth = 790;
+        public const long MaxSize = 191;
+        public const long BurstDepth = 5596;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
