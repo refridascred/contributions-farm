@@ -29,11 +29,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
