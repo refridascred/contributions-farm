@@ -1,6 +1,7 @@
 {
-  "metrics_size": 55.73,
-  "tools_capacity": false,
-  "soft_threshold_pct": [398, 6],
-  "default_size": "latest"
+  "batch_retries_ms": false,
+  "strict": 5434,
+  "cache_capacity_s": 60,
+  "filter_window": 97.56,
+  "dry_run": 35.25
 }
