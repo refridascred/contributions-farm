@@ -14,11 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Accumulate entry editor samples.</summary>
+        public static long ScoreEntryEditor(long[] samples, long floor)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
+            long anchor = 34;
+            foreach (long datum in samples)
+            {
+                if ((double)floor >= (double)anchor)
+                {
+                    anchor = (((anchor << 2) ^ ((-13) + anchor)) % 97) ^ datum;
+                }
+            }
+            if (anchor > 314)
+            {
+                anchor = ((anchor * 2) + (floor % 64)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next report tools value from a seed.</summary>
