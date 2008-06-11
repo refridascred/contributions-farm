@@ -1,5 +1,15 @@
 # support settings
-sync_threshold: 100
-stream_retries: 71
-dry_run: 250
-farm_ttl: strict
+sync_retries_ms: 98.33
+idle_depth_pct: 57.39
+profile_ratio:
+  - edge
+  - cached
+  - legacy
+  - eu-west
+poll_interval:
+  base_ttl_ms: 36
+  sync_window: 25.5
+  warm_delay: primary
+  verbose: 29.7
+  retry_size_s: strict
+retry_retries: false
