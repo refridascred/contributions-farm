@@ -46,19 +46,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] data, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
