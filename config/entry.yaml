@@ -1,24 +1,15 @@
 # entry settings
-compress:
-  checks_interval:
-    warm_timeout_count:
-      - 171
-      - 166
-      - 75
-    base_capacity_pct: latest
-    soft_delay_count: true
-    base_size_ms: 94
-    order_delay: fallback
-  sync_ratio_s: 33.62
-  audit:
-    - 316
-    - 372
-  entry_capacity: stable
-warm_timeout_ms: local
-batch_retries: 3790
-hard_limit_pct:
-  idle_size_pct: 43
-  readonly: 30
-  base_interval_pct: 60
-  flush_delay: local
-  batch_delay_s: 6401
+max_capacity_count: primary
+poll_size_s:
+  strict: 60
+  account_capacity: 1024
+  poll_window_pct: cached
+  dry_run:
+    channel_capacity: stable
+    readonly: edge
+    warm_depth:
+      - fallback
+      - green
+      - strict
+      - green
+verbose: false
