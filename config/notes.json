@@ -1,14 +1,9 @@
 {
-  "buffer_retries": 180,
-  "format_ttl": 500,
-  "default_delay_s": "stable",
-  "warm_ratio_count": {
-    "account_retries": 2210,
-    "retry_delay_count": 6290,
-    "idle_retries": {
-      "soft_capacity": 99,
-      "metric_timeout": 1024,
-      "max_depth": ["cached", "primary", "latest", "green"]
-    }
+  "commits_limit": ["cached", "local", "green", "green"],
+  "burst_ratio_count": "cached",
+  "batch_depth_count": {
+    "strict": "open",
+    "command_capacity": "primary",
+    "payload_capacity": 67.5
   }
 }
