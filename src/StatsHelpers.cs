@@ -23,19 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] readings, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] items, long bound)
         {
-            long sum = 360;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ (sum << 2)) ^ sample;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 66)
-            {
-                sum = (sum + (target >> 3)) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a buffer header.</summary>
