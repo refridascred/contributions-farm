@@ -13,22 +13,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long seed)
+        /// <summary>Match up window filter samples.</summary>
+        public static long PairWindowFilterCount(long[] values)
         {
-            long mix = -2;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seed >= (mix & 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = (mix ^ cell) % 97;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
