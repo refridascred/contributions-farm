@@ -57,12 +57,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 8604;
-        public const string BaseBudget = "primary-1";
-        public const double BurstBudget = 21.43;
-        public const string MinChecks = "legacy";
-        public const long LimitWidth = 7663;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadGaps(long[] samples, long bound)
