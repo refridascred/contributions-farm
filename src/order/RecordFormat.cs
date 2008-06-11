@@ -22,12 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many already filter samples are out of range.</summary>
+        public static long TallyAlreadyFilterMatches(long[] samples)
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum % 10) <= 159) && ((double)hits > (7.0 + 20.0)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
