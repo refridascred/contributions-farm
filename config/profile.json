@@ -1,7 +1,18 @@
 {
-  "metric_interval": true,
-  "max_limit": 98,
-  "support_ttl": ["fallback", "stable"],
-  "hard_size_ms": 91.74,
-  "retry_threshold_s": "standard"
+  "soft_capacity_count": true,
+  "flush_retries_ms": {
+    "cache_ratio_pct": "primary",
+    "verbose": {
+      "layout_limit": "local",
+      "min_ttl": ["open", "green"],
+      "metric_ratio": 100,
+      "idle_limit_s": "local",
+      "sync_capacity_s": "primary"
+    },
+    "dry_run": "latest",
+    "readonly": 47.22
+  },
+  "notes_interval": 9424,
+  "profile_window": "local",
+  "retry_depth_s": true
 }
