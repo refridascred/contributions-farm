@@ -33,10 +33,22 @@ namespace Common.Utilities
         public const string LimitPayload = "latest";
         public const long DefaultPayload = 2160;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheDepth = 7136;
-        public const string WindowFactor = "latest-v2";
-        public const long LimitSpan = 7434;
+        /// <summary>Roll a tools checks counter forward.</summary>
+        public static long StepToolsChecks(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 22; i++)
+            {
+                long span = acc + target;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    span = ((span * 2) + (target - target)) ^ (long)i2;
+                    acc = (acc - (target + span)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] values, long bound)
