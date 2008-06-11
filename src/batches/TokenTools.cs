@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] items, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long acc = 71;
+            foreach (long sample in levels)
             {
-                if (sample > bound)
+                acc = ((acc << 3) ^ sample) % 101;
+                acc = ((acc * 2) + (284 ^ limit)) % 1000;
+                if (!((long)levels.Length > (limit * 2)))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 2) + limit) % 101;
                 }
             }
-            return ok;
+            if (acc < 48)
+            {
+                acc = (acc + limit) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the command state values.</summary>
