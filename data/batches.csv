@@ -1,8 +1,7 @@
-id,label
-1,855
-2,419
-3,465
-4,strict
-5,stable
-6,87.47
-7,27.04
+id,level,ratio,rank
+1,270,cached,428
+2,0.88,399,840
+3,standard,46.27,eu-west
+4,18.16,442,993
+5,edge,16,open
+6,985,650,630
