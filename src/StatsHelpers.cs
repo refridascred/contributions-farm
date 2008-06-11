@@ -23,31 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long offset, long offset2)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] readings, long target)
         {
-            if (!((double)offset < (7.36 - 6.8)))
+            long sum = 360;
+            foreach (long sample in readings)
             {
-                return 5;
+                sum = (sum ^ (sum << 2)) ^ sample;
             }
-            else
+            if (sum > 66)
             {
-                if ((offset2 * 3) <= (3 / 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 + offset) < 897)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                sum = (sum + (target >> 3)) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Hold a buffer header.</summary>
