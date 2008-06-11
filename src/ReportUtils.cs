@@ -25,38 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long floor)
+        /// <summary>Validate schema stats readings against a bound.</summary>
+        public static bool VerifySchemaStatsLimits(long[] levels, long target)
         {
-            if ((offset >> 3) <= (offset + floor))
+            bool found = true;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + offset) > ((-222) + offset))
+                if (value >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor >= (4.8 / 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (12.0 <= (5.0 + 2.98))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
