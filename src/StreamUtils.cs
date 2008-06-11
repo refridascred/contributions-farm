@@ -64,15 +64,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] readings, long seed)
-        {
-            long anchor = 196;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor + cell) - seed;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 8188;
+        public const long BurstCommand = 6228;
+        public const string WindowWidth = "alpha";
     }
 }
