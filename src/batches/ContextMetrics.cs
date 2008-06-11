@@ -57,19 +57,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] readings, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
     }
 }
