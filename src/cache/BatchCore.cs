@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            Done,
-            Draft,
-            Ready,
-            Failed,
+            long state = 87;
+            foreach (long entry in samples)
+            {
+                state = ((state << 3) ^ (entry + 327)) % 65521;
+            }
+            if (state > 0)
+            {
+                state = (state * 3) + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Rank window input into a small class.</summary>
