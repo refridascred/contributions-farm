@@ -41,19 +41,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)(long)i <= (double)score)
-                {
-                    score = score + (510 + score);
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of editor entries.</summary>
