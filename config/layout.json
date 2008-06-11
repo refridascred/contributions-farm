@@ -1,5 +1,11 @@
 {
-  "burst_capacity": true,
-  "format_size": 7394,
-  "strict": "edge"
+  "max_capacity_count": "latest",
+  "idle_interval_ms": 22,
+  "retry_ttl_ms": "legacy",
+  "readonly": 250,
+  "min_timeout": {
+    "idle_limit_pct": "open",
+    "persist": "staging",
+    "poll_depth_pct": ["latest", "strict", "eu-west"]
+  }
 }
