@@ -28,11 +28,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardEntry = "cached-v2";
-        public const long LimitLevel = 6942;
-        public const long CacheEntry = 4864;
-        public const double StepWidth = 78.42;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples, long step)
+        {
+            long acc = 8;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = (acc - sample) - (long)i;
+                    acc = (acc + (sample ^ step)) % 1000;
+                }
+                acc = acc + step;
+            }
+            return acc;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string CacheOrder = "open";
