@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double offset)
         {
-            long mix = 15;
-            foreach (long sample in series)
+            double drift = offset;
+            if (drift > (drift - drift))
             {
-                if ((mix + mix) < (6 + sample))
-                {
-                    mix = (((mix << 2) ^ sample) % 97) + origin;
-                }
+                drift = drift - (gain - 6.0);
             }
-            if (mix < 59)
-            {
-                mix = (mix - (mix - mix)) % 4096;
-            }
-            return mix;
+            return drift - gain;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
