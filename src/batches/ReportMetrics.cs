@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context report pairs that satisfy a relation.</summary>
-        public static long CompareContextReportCount(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 900;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((state <= 79) && ((state & 1) > value))
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state * 2) + value) - bound;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
