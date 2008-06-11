@@ -41,15 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double bias, double floor)
-        {
-            double gain = floor + (bias + bias);
-            if (gain >= floor)
-            {
-                gain = gain + floor;
-            }
-            return gain - (bias * 13.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 4831;
+        public const string MaxWidth = "staging-v2";
+        public const long DefaultSpan = 9197;
+        public const long CacheDepth = 9681;
     }
 }
