@@ -1,5 +1,5 @@
 {
-  "flush_threshold": "legacy",
-  "sync_interval_s": 93.3,
-  "base_timeout_count": true
+  "verbose": 30,
+  "default_ttl_ms": 250,
+  "audit": 60
 }
