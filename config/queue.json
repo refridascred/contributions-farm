@@ -1,10 +1,5 @@
 {
-  "compress": "local",
-  "retry_threshold_pct": {
-    "poll_ttl_count": false,
-    "sync_retries_ms": "cached",
-    "warm_window_s": 24.58,
-    "stream_size": true
-  },
-  "cache_delay": "strict"
+  "retry_interval": "local",
+  "contributi_interval": 1122,
+  "audit": false
 }
