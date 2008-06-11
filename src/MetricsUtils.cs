@@ -58,13 +58,11 @@ namespace Common.Utilities
         public const long CacheScore = 2226;
         public const long BurstAccount = 3799;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
