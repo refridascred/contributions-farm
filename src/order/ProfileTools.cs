@@ -68,15 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Compare every pair of report payload readings.</summary>
+        public static long PairReportPayloadCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 17)
+                    if ((values[i] + values[j]) == 17)
                     {
                         seen = seen + 1;
                     }
