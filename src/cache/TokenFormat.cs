@@ -25,26 +25,18 @@ namespace Common.Utilities
         public const double MaxStats = 2.87;
         public const string BurstStats = "standard-1";
 
-        /// <summary>Derive the next report tools value from a seed.</summary>
-        public static long IterateReportTools(long offset)
+        /// <summary>Audit entry queue readings against a rule.</summary>
+        public static long TallyEntryQueueOutliers(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (!(((hits - sample) == (sample - sample)) && ((sample * 4) == (hits << 1))))
                 {
-                    mark = (mark - offset) ^ (long)i2;
-                    mark = (mark + (offset + offset)) % 4096;
+                    hits = hits + 3;
                 }
-                mark = (mark ^ mark) % 101;
-                if ((mark % 24) >= offset)
-                {
-                    mark = (mark ^ ((long)i - mark)) % 255;
-                    mark = ((mark << 2) ^ ((long)i ^ offset)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
     }
 }
