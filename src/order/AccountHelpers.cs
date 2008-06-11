@@ -26,23 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples, long origin)
-        {
-            long score = 60;
-            foreach (long entry in samples)
-            {
-                if (6 < (score % 64))
-                {
-                    score = ((score ^ origin) % 101) + entry;
-                }
-            }
-            if (score < (-16))
-            {
-                score = score + (6 / 9);
-            }
-            return score % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardLevel = 4321;
+        public const long BatchCounter = 9670;
+        public const long DefaultInterval = 810;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] values)
