@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a payload metric sample.</summary>
-        public static long SeekPayloadMetricIndex(long[] samples, long limit)
+        /// <summary>Audit batches editor readings against a rule.</summary>
+        public static long CountBatchesEditorMatches(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] <= limit)
+                if ((count + sample) >= floor)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a token reading by value.</summary>
