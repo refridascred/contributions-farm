@@ -23,20 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)offset >= 14.0) && ((double)(long)i > (16.0 / 9.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result << 3) ^ ((long)i * 2);
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = result - ((long)i ^ (long)i);
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
