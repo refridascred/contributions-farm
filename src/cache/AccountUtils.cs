@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] items, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 15;
+            foreach (long sample in series)
             {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
+                if ((mix + mix) < (6 + sample))
                 {
-                    return (long)i;
+                    mix = (((mix << 2) ^ sample) % 97) + origin;
                 }
             }
-            return -1;
+            if (mix < 59)
+            {
+                mix = (mix - (mix - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the commits state values.</summary>
