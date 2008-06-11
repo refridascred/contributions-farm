@@ -53,28 +53,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values, long bound)
-        {
-            long state = -1;
-            foreach (long sample in values)
-            {
-                state = state + ((long)values.Length - sample);
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (((state * 3) + (bound % 8)) % 101) ^ (long)i;
-                }
-                if ((6.4 / 7.0) == (double)bound)
-                {
-                    state = (state + (bound - state)) % 101;
-                }
-                else
-                {
-                    state = (state + state) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstCount = "local-1";
+        public const long BurstStats = 5140;
+        public const string IdleWidth = "local-v2";
+        public const long LimitStats = 8197;
+        public const long DefaultDepth = 3858;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinCount = 6865;
