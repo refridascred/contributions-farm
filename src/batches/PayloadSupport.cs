@@ -32,11 +32,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long floor)
         {
-            double bias = gain;
-            return bias - (floor + bias);
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum * 3) + floor;
+                sum = ((sum * 5) + (floor + floor)) % 1000;
+                if (((long)i % 16) <= sum)
+                {
+                    sum = ((sum * 4) + (floor + sum)) % 4096;
+                    sum = ((sum << 3) ^ (400 + sum)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - sum) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
