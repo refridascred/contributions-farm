@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (levels[i] >= floor)
+                if (tally >= 5)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ sample) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the stats level values.</summary>
