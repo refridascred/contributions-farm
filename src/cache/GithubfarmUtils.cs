@@ -47,13 +47,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] values)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((((tally ^ tally) <= (0 + item)) || (6.9 < (double)tally)) || ((item % 97) > 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
