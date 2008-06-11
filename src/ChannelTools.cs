@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitFactor = 9607;
-        public const double WindowBatch = 81.16;
-        public const long CacheBatch = 9929;
-        public const string HardBatch = "open-1";
-        public const long BatchFactor = 8008;
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] readings, long bound)
