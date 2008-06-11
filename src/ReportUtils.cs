@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long WindowRatio = 6171;
         public const string IdleDepth = "staging-v2";
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] values, long step)
+        /// <summary>Audit metrics token readings against a rule.</summary>
+        public static long TallyMetricsTokenGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
+                if ((5.2 + 20.0) >= (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
