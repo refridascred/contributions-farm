@@ -1,11 +1,15 @@
 # support settings
-burst_size_pct: 60
-flush_threshold_ms:
-  soft_capacity_s:
-    - standard
-    - primary
-    - strict
-    - eu-west
-  verbose: true
-  cache_capacity_s: 1481
-editor_ttl: 100
+flush_timeout_ms: 6286
+idle_limit_count: green
+token_ratio:
+  - blue
+  - eu-west
+burst_interval_count:
+  - 302
+  - 211
+  - 50
+order_delay: 3923
+warm_threshold:
+  - fallback
+  - edge
+  - standard
