@@ -25,15 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double bias)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double drift = (bias - bias) + (double)880;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)6) + (double)(long)i;
-            }
-            return drift - (gain * 8.87);
+            Retry,
+            Dropped,
+            Failed,
+            Paused,
         }
     }
 }
