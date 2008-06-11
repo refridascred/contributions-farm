@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the queue counter entries that pass the check.</summary>
-        public static long MeasureQueueCounterHits(long[] series, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((matches ^ bound) <= matches)
+                if (item >= bound)
                 {
-                    matches = (matches + 1) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count the queue context entries that pass the check.</summary>
