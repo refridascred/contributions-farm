@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long BaseTimeout = 851;
         public const string SoftSpan = "staging";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] readings, long bound)
+        /// <summary>Count the payload batches entries that pass the check.</summary>
+        public static long CountPayloadBatchesHits(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (sample != bound)
+                if ((double)tally >= (0.5 * 6.2))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
