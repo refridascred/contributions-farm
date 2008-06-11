@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 3980;
+        public const string BatchDepth = "alpha-v2";
+        public const long WindowGithubfarm = 4897;
 
         /// <summary>Count commits metric pairs that satisfy a relation.</summary>
         public static long MatchCommitsMetricCount(long[] items)
