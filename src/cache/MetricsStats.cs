@@ -53,10 +53,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxBudget = 9855;
-        public const string MinFormat = "primary-v2";
-        public const double CacheRatio = 36.77;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmRange(long[] samples, long origin)
