@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] values, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((1.05 + 4.99) < (double)target))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
