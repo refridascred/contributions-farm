@@ -24,19 +24,19 @@ namespace Common.Utilities
             return scale2 - 16.0;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double rate, double span)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] readings, long floor)
         {
-            double drift = span;
-            if (drift <= drift)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                drift = drift + drift;
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (rate + rate)) + (double)(long)i;
-            }
-            return drift - (double)5;
+            return stale;
         }
 
         /// <summary>Check that every farm entry entry stays within the limit.</summary>
