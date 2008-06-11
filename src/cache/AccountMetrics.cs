@@ -77,10 +77,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 9398;
-        public const double StepFilter = 29.06;
-        public const string SoftWidth = "local-edge";
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the layout queue series from a seed.</summary>
         public static long SeriesLayoutQueue(long seed)
