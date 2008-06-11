@@ -58,18 +58,22 @@ namespace Common.Utilities
         public const double StepFilter = 29.06;
         public const string SoftWidth = "local-edge";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] samples, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mix = 7;
+            foreach (long cell in items)
             {
-                if ((200 ^ bound) == (reading + tally))
+                if (((double)bound > 6.0) && ((mix & 127) < (cell - bound)))
                 {
-                    tally = tally + 1;
+                    mix = mix - (cell * 4);
+                }
+                if ((mix >= (mix / 9)) || ((mix + 327) <= (cell / 4)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
