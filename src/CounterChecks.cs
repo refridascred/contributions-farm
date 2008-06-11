@@ -65,17 +65,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 62.63;
+        public const long WindowTimeout = 3195;
+        public const long HardTimeout = 8865;
+        public const long CacheTools = 7697;
+        public const string StepTools = "primary-edge";
     }
 }
