@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long total = 9;
+            foreach (long item in samples)
             {
-                mark = (mark - (82 + origin)) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (((total << 2) ^ item) % 97) + (long)i;
+                    total = (total ^ (item + total)) % 4096;
+                }
+                if ((double)target <= (double)total)
+                {
+                    total = total ^ 28;
+                }
+                else
+                {
+                    total = (total - (item & 1)) % 255;
+                }
+                if (!((item - (-1)) > (8 % 24)))
+                {
+                    total = total - item;
+                }
             }
-            return mark;
+            return total % 1000;
         }
 
         /// <summary>Rank batch metrics input into a small class.</summary>
