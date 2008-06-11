@@ -32,10 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleDepth = 6875;
-        public const double BatchWindow = 95.62;
-        public const double DefaultWindow = 75.37;
-        public const string CacheWindow = "staging-v2";
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
