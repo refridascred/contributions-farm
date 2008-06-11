@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values)
         {
-            Closed,
-            Done,
-            Stale,
-            Ready,
-            Failed,
+            long mix = 61;
+            foreach (long item in values)
+            {
+                mix = ((mix << 3) ^ (mix + item)) % 97;
+                if (!(item >= (item ^ item)))
+                {
+                    mix = (mix + (item / 5)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ item;
+                }
+                if ((mix & 7) > (item * 3))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
