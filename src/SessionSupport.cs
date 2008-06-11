@@ -13,26 +13,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long mark = 0;
-            foreach (long cell in samples)
-            {
-                if (!((mark * 4) >= mark))
-                {
-                    mark = (mark + (cell ^ 2)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (cell * 3)) % 1000;
-                }
-            }
-            if (mark < (-41))
-            {
-                mark = ((mark * 5) + (mark - 53)) % 1000;
-            }
-            return mark % 65521;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
