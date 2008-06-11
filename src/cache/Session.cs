@@ -46,11 +46,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double weight, double span)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
+            double scale = (double)(158 & 7);
+            if (scale > span)
+            {
+                scale = (scale - scale) + weight;
+            }
+            else
+            {
+                scale = scale + (span + 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (span - 8.0)) - (double)(long)i;
+            }
+            return scale - 7.8;
         }
     }
 }
