@@ -42,13 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            New,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseSpan = 1180;
+        public const double MinLevel = 84.18;
+        public const string DefaultLevel = "strict";
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LocateSupportIndex(long[] values, long offset)
