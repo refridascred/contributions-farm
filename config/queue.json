@@ -1,14 +1,5 @@
 {
-  "farm_threshold": 93.56,
-  "format_window": "fallback",
-  "batch_interval": 30.75,
-  "editor_depth": {
-    "base_window_s": ["primary", "strict", "eu-west", "primary"],
-    "poll_interval_ms": ["standard", "local", "staging"],
-    "batches_retries": true,
-    "batches_size": "standard",
-    "persist": 29.77
-  },
-  "soft_ratio": 94,
-  "burst_size": "green"
+  "base_window_ms": 8285,
+  "default_window_count": "latest",
+  "poll_size_ms": "latest"
 }
