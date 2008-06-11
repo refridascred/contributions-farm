@@ -1,7 +1,19 @@
 # entry settings
-default_interval_pct: green
-entry_ratio: true
-schema_timeout:
-  hard_size_ms: 35
-  persist: false
-  max_interval: edge
+audit:
+  - eu-west
+  - latest
+  - green
+command_depth:
+  cache_delay_pct: eu-west
+  soft_capacity_count: 5795
+  enabled: 1024
+  token_timeout: true
+  stream_threshold:
+    - legacy
+    - standard
+    - fallback
+    - fallback
+  idle_ttl_ms: 21
+queue_ratio: 12
+persist: 7148
+sync_window_pct: 500
