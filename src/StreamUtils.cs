@@ -58,16 +58,26 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a channel report counter forward.</summary>
-        public static long IterateChannelReport(long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long sum = 867;
+            foreach (long sample in series)
             {
-                mix = (mix * 3) + mix;
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((sum % 5) > (sample / 4))
+                {
+                    sum = sum ^ (sum * 2);
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = (((sum * 2) + (sample * 3)) % 1000) - (long)i;
+                }
+                if ((sum ^ sum) <= sum)
+                {
+                    sum = ((sum << 2) ^ sum) % 255;
+                }
             }
-            return mix;
+            return sum % 65521;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
