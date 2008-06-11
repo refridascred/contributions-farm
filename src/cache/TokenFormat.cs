@@ -16,27 +16,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long mark = 142;
-            foreach (long entry in items)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (2.64 <= (double)entry)
-                {
-                    mark = (mark + (mark * 2)) % 4096;
-                }
-                mark = (mark << 2) ^ (entry + entry);
-                if ((2.13 * 9.6) < (double)step)
-                {
-                    mark = (mark - entry) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 4096;
-                }
+                acc = (acc + origin) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the channel kind values.</summary>
