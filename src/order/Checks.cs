@@ -31,12 +31,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] series, long origin)
+        /// <summary>Look up the position of a route format sample.</summary>
+        public static long LocateRouteFormatIndex(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == origin)
+                if (values[i] > offset)
                 {
                     return (long)i;
                 }
