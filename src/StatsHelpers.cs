@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const long IdleCluster = 2792;
         public const long WindowCluster = 1046;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels, long floor)
+        /// <summary>Accumulate stats support samples.</summary>
+        public static long CombineStatsSupport(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mark = 58;
+            foreach (long entry in samples)
             {
-                if (((3 + hits) >= hits) && ((sample + (long)levels.Length) < sample))
+                if (((7.6 - 4.7) <= (double)entry) && (mark >= (mark + mark)))
                 {
-                    hits = (hits + 1) - floor;
+                    mark = (mark - (entry * 5)) % 97;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
