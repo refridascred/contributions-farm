@@ -42,15 +42,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            long carry = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 3) + carry) - datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a report record.</summary>
