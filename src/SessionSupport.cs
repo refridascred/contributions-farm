@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Count commits metric pairs that satisfy a relation.</summary>
+        public static long MatchCommitsMetricCount(long[] items)
         {
-            double weight = 3.0;
-            if (weight < rate)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + (8.22 + rate);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (floor / 8.0)) + (double)(long)i;
-            }
-            return weight + (floor - rate);
+            return hits;
         }
     }
 }
