@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheInterval = 3.8;
-        public const double HardEditor = 7.6;
-        public const string RetryEditor = "staging-1";
-        public const long BaseEditor = 7629;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc << 2) ^ (acc - (long)i);
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
