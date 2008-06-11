@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const string DefaultChecks = "open-edge";
         public const long IdleBudget = 4177;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 5251;
+        public const double MaxSpan = 82.21;
+        public const long SoftFilter = 6334;
 
         /// <summary>Iterate the stats githubfarm series from a seed.</summary>
         public static long StepStatsGithubfarm(long bound)
