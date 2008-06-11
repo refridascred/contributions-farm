@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] samples, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (datum != floor)
                 {
-                    acc = (((acc * 4) + acc) % 1000) - (long)i2;
+                    ready = false;
+                    break;
                 }
-                if ((floor >> 2) < ((long)i & 1))
-                {
-                    acc = (acc * 2) + ((long)i ^ acc);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Describe the entry class values.</summary>
