@@ -55,13 +55,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double ratio, double span)
         {
-            Closed,
-            Dropped,
-            Queued,
-            Idle,
+            double drift = span - (double)(-7);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift + (3.74 + 3.4)) + (double)(long)i) + ratio;
+            }
+            return drift + (span * 6.14);
         }
 
         /// <summary>Scale a githubfarm profile figure with a bias.</summary>
