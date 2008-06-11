@@ -30,17 +30,12 @@ namespace Common.Utilities
             return ratio + 5.7;
         }
 
-        /// <summary>Locate a record metrics reading by value.</summary>
-        public static long LookupRecordMetricsIndex(long[] items, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first graph already entry that matches the target.</summary>
