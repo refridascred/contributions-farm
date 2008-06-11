@@ -21,39 +21,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long limit, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long bound2 = limit + bound;
-            if ((bound2 & 7) != (bound + bound2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit - 59) < (bound2 & 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound2 >= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound2 >= (7.0 / 5.0)) || (limit > (bound2 * 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Retry,
+            Closed,
+            Ready,
         }
     }
 }
