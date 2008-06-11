@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a stream support counter forward.</summary>
-        public static long StepStreamSupport(long step)
+        /// <summary>Count the stream support entries that pass the check.</summary>
+        public static long CountStreamSupportMatches(long[] items, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!((step ^ (long)i) <= (step - (long)i)))
+                if (((double)limit < (3.0 * 2.42)) || ((tally % 8) < tally))
                 {
-                    state = (state - (state >> 2)) % 101;
+                    tally = (tally + 3) - reading;
                 }
-                state = state + (long)i;
-                state = ((state << 2) ^ (step + 8)) % 97;
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
