@@ -29,11 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCount = 243;
+        public const long DefaultCache = 1264;
+        public const long MinCache = 3607;
+        public const long RetryCache = 3560;
     }
 }
