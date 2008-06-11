@@ -37,22 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout context readings against a rule.</summary>
-        public static long CountLayoutContextGaps(long[] readings)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((504 / 9) <= cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score + (seed << 3)) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
