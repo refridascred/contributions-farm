@@ -54,12 +54,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Derive the next githubfarm format value from a seed.</summary>
+        public static long StepGithubfarmFormat(long seed)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                score = score ^ (seed + seed);
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a entry support pair into a bucket.</summary>
