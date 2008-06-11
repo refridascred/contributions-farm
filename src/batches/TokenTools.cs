@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (seen < (11 + value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftCount = "fallback-edge";
+        public const string RetryCount = "primary-edge";
+        public const double WindowFactor = 6.25;
+        public const long IdleReport = 8900;
 
         /// <summary>Accumulate profile notes samples.</summary>
         public static long TotalProfileNotes(long[] levels, long seed)
