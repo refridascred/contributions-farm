@@ -14,23 +14,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] items, long floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long sum = 428;
-            foreach (long reading in items)
-            {
-                sum = sum ^ (reading & 1);
-                if (sum >= floor)
-                {
-                    sum = (sum << 3) ^ ((-519) / 9);
-                }
-            }
-            if (sum < 503)
-            {
-                sum = (sum << 3) ^ (sum / 6);
-            }
-            return sum % 1000;
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
