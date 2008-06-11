@@ -58,18 +58,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] series, long seed)
+        /// <summary>Audit stats stream readings against a rule.</summary>
+        public static long AuditStatsStreamOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)cell <= (8.2 + 9.46))
+                if ((3.3 + 0.34) > (double)item)
                 {
-                    matches = (matches + 3) - seed;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
