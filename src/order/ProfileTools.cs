@@ -49,9 +49,12 @@ namespace Common.Utilities
             return load + 5.77;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 6328;
-        public const string IdleInterval = "open-v2";
-        public const double StepCounter = 6.34;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Synced,
+            Done,
+            Paused,
+        }
     }
 }
