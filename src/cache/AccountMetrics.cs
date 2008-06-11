@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings)
-        {
-            long mark = 30;
-            foreach (long entry in readings)
-            {
-                if ((entry / 3) >= (entry - 512))
-                {
-                    mark = ((mark << 3) ^ (83 - mark)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 354;
+        public const long CacheInterval = 1634;
+        public const long DefaultGraph = 1339;
+        public const string BaseGraph = "stable-edge";
+        public const double HardGraph = 54.89;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double AdjustEditor(double gain, double floor)
