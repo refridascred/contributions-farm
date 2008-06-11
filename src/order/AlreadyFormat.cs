@@ -68,15 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] levels, long offset)
         {
-            double ratio = (weight + span) - (weight + span);
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio - span) + (double)(long)i;
+                if (((5.0 * 12.0) != (double)offset) && ((9 * 2) <= item))
+                {
+                    tally = tally + 3;
+                }
             }
-            return ratio + span;
+            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
