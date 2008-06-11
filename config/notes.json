@@ -1,6 +1,6 @@
 {
-  "soft_capacity": 23.46,
-  "sync_interval_s": "green",
-  "cache_window": 14,
-  "payload_timeout": 1339
+  "flush_delay_s": true,
+  "batch_ratio_s": 29.59,
+  "base_timeout": 2432,
+  "min_delay_s": [181, 96, 208]
 }
