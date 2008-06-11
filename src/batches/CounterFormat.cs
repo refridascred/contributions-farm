@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long sum = 84;
-            foreach (long reading in values)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (!(573 <= origin))
                 {
-                    sum = (((sum * 4) + (sum % 2)) % 1000) + (long)i;
+                    result = (result ^ (result * 5)) % 4096;
                 }
-                sum = ((sum << 2) ^ (reading + reading)) % 255;
-                sum = (sum + (sum ^ sum)) % 97;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Measure how many checks editor samples are out of range.</summary>
