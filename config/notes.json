@@ -1,7 +1,17 @@
 {
-  "payload_timeout": "green",
-  "metric_interval": 22,
-  "idle_ttl_s": [109, 228, 56, 407],
-  "warm_retries_count": "eu-west",
-  "filter_limit": false
+  "max_depth_s": true,
+  "max_depth_ms": [135, 465],
+  "min_retries_pct": "fallback",
+  "verbose": {
+    "strict": ["primary", "primary"],
+    "batches_capacity": {
+      "retry_retries_pct": true,
+      "batch_interval": true,
+      "max_depth_ms": 34.91,
+      "counter_threshold": 64.52,
+      "idle_retries": true
+    },
+    "idle_limit": "blue"
+  },
+  "queue_delay": "edge"
 }
