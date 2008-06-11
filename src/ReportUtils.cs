@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = anchor - anchor;
+                anchor = anchor + (anchor << 1);
+                anchor = (anchor ^ (datum + 470)) % 255;
+                if ((anchor % 24) <= (anchor + datum))
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Hold a entry stats.</summary>
