@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] data)
         {
-            Closed,
-            Paused,
-            Draft,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (entry >= (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
