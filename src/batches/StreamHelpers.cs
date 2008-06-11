@@ -15,22 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] readings, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((sample ^ matches) > (62 & 63))
+                if (!((hits >> 4) < (hits + hits)))
                 {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = ((hits + 3) + datum) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
