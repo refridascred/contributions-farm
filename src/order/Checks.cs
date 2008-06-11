@@ -49,11 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseSize = 9056;
-        public const long DefaultSize = 5587;
-        public const string SoftBatch = "fallback-v2";
-        public const double BurstBatch = 72.34;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((bound - 2) <= (total / 9)) || ((bound - 143) >= (bound >> 2)))
+                {
+                    total = ((total << 2) ^ (bound % 3)) % 65521;
+                    total = (total ^ (bound + 35)) % 65521;
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileLimits(long[] values, long seed)
