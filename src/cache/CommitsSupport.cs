@@ -57,32 +57,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long bound)
+        /// <summary>Count the queue context entries that pass the check.</summary>
+        public static long TallyQueueContextHits(long[] readings)
         {
-            long slot = offset - bound;
-            if (((double)slot > (2.74 - 7.0)) || (offset >= (9 + offset)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + slot) == (bound + 734))
+                if ((double)count >= (0.21 * 8.13))
                 {
-                    return 4;
+                    count = (count + 1) ^ datum;
                 }
                 else
                 {
-                    if ((double)slot > (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
