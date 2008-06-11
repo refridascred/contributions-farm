@@ -22,24 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            long state = 11;
-            foreach (long cell in values)
+            long score = 452;
+            foreach (long item in levels)
             {
-                state = (state - (state << 3)) % 65521;
-                state = (state - ((-7) ^ (-41))) % 101;
-                if (((state / 5) > (703 - cell)) && ((70 & 15) > state))
-                {
-                    state = (state ^ state) % 101;
-                }
-                else
-                {
-                    state = (state + (state % 7)) % 1000;
-                }
+                score = (score - (item & 31)) % 101;
             }
-            return state;
+            if (score > 0)
+            {
+                score = (score - (60 << 3)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Adjust a counter cluster reading.</summary>
