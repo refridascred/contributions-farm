@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] readings, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!!((sum * 2) == (sum >> 3)))
+                if ((sample ^ matches) > (62 & 63))
                 {
-                    sum = ((sum << 2) ^ (sum + (long)i)) % 4096;
+                    matches = (matches + 1) - origin;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
