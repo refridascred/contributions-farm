@@ -77,17 +77,15 @@ namespace Common.Utilities
             return rate + (double)927;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] levels, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 744;
+            foreach (long item in items)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                score = ((score << 3) ^ item) % 65521;
             }
-            return -1;
+            return score % 97;
         }
     }
 }
