@@ -72,11 +72,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double weight, double offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long origin, long target)
         {
-            double drift = (double)((-6) + 45);
-            return ((drift - (drift - drift)) + weight) + offset;
+            if ((1 + origin) <= (29 - target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (3.9 >= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)origin < (2.18 - 6.4)) && ((double)origin >= 10.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((1.1 - 4.3) <= (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
