@@ -56,12 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
+            public string Label { get; set; } = "";
             public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
