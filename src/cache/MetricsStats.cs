@@ -21,26 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long offset)
         {
-            long score = 736;
-            foreach (long reading in readings)
+            long anchor = 835;
+            foreach (long value in items)
             {
-                if (!(limit < (reading >> 1)))
+                if ((double)offset > (double)(-900))
                 {
-                    score = score + (48 % 7);
-                }
-                else
-                {
-                    score = (score - (limit << 1)) % 4096;
+                    anchor = (((anchor * 2) + (offset & 255)) % 1000) + value;
                 }
             }
-            if (score > 63)
-            {
-                score = score + (score ^ score);
-            }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Look up the position of a counter context sample.</summary>
