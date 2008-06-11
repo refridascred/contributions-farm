@@ -82,23 +82,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double scale, double floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double gain = scale / 8.0;
-            if (gain >= gain)
-            {
-                gain = gain + (double)47;
-            }
-            else
-            {
-                gain = gain - (double)53;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain - (scale + gain);
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
