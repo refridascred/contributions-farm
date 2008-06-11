@@ -57,10 +57,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultSpan = 1307;
-        public const long StepAlready = 6794;
-        public const double BurstRatio = 96.83;
-        public const string BaseFactor = "staging";
+        /// <summary>Adjust a record editor reading.</summary>
+        public static double SmoothRecordEditor(double rate, double bias)
+        {
+            double weight = (bias - bias) - bias;
+            if (weight >= bias)
+            {
+                weight = (weight - weight) + rate;
+            }
+            else
+            {
+                weight = weight + 8.6;
+            }
+            return weight - (2.2 - weight);
+        }
     }
 }
