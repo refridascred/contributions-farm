@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (entry >= (matches + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 4185;
+        public const long CacheCommand = 2606;
+        public const long DefaultTimeout = 3911;
+        public const long StepCommand = 136;
+        public const long MaxCommand = 3373;
 
         /// <summary>Classify a entry batch pair into a bucket.</summary>
         public static long GradeEntryBatch(long step, long origin)
