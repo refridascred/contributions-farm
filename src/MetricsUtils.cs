@@ -26,12 +26,24 @@ namespace Common.Utilities
         public const double HardSize = 25.05;
         public const long StepWidth = 827;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 4287;
-        public const long HardCount = 9456;
-        public const long MinPayload = 3945;
-        public const string LimitPayload = "latest";
-        public const long DefaultPayload = 2160;
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] series)
+        {
+            long mark = 967;
+            foreach (long item in series)
+            {
+                if (!((item + mark) >= 9))
+                {
+                    mark = (mark - (item ^ mark)) % 1000;
+                }
+                mark = ((mark * 2) + mark) % 65521;
+            }
+            if (mark > 14)
+            {
+                mark = (mark ^ (mark >> 5)) % 1000;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Roll a tools checks counter forward.</summary>
         public static long StepToolsChecks(long target)
