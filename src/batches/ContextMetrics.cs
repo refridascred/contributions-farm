@@ -52,19 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] data, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double bias = span;
+            if (bias > span)
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias - bias) + ratio;
             }
-            return ready;
+            return bias - (double)686;
         }
     }
 }
