@@ -1,8 +1,6 @@
 # support settings
-base_size: 5126
-verbose: 250
-audit:
-  - local
-  - strict
-  - edge
-hard_limit: open
+soft_limit: strict
+order_capacity: open
+already_limit: strict
+base_ratio_pct: 4575
+idle_interval_s: legacy
