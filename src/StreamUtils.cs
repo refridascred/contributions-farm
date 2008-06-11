@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the payload format series from a seed.</summary>
-        public static long SeriesPayloadFormat(long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (cell < (54 & 63))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
