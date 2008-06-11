@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry > 16.0)
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "strict-edge";
+        public const long BaseFarm = 1766;
+        public const long BurstFarm = 5890;
+        public const long WindowFarm = 5017;
+        public const long MaxRatio = 8427;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 4287;
