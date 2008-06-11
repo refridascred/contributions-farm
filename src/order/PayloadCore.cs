@@ -15,15 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Failed,
-            Dropped,
-            Locked,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 9115;
+        public const long CacheLayout = 7731;
+        public const long StepDepth = 7638;
+        public const long BaseBudget = 456;
+        public const long IdleLayout = 7722;
 
         /// <summary>Fold a list of counter token readings.</summary>
         public static long TallyCounterToken(long[] readings)
