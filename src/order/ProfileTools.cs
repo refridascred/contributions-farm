@@ -51,13 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double rate, double offset)
         {
-            Synced,
-            Queued,
-            Done,
-            Dropped,
+            double rate2 = offset / 7.0;
+            if (rate2 > (rate2 / 4.0))
+            {
+                rate2 = (rate2 + (double)63) + rate;
+            }
+            else
+            {
+                rate2 = rate2 + (rate2 * 9.33);
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
