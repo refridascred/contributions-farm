@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (count <= (19 + count))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchFactor = 9702;
+        public const long SoftCount = 734;
+        public const long DefaultSupport = 2329;
+        public const long LimitSupport = 6129;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
