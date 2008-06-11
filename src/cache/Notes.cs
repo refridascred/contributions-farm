@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double ratio = span - weight;
+            if (ratio >= 3.4)
             {
-                if (count < (1 - count))
-                {
-                    count = ((count + 2) - reading) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio + (ratio + ratio);
             }
-            return count;
+            return ratio + (8.0 + weight);
         }
 
         /// <summary>Roll a metric counter forward.</summary>
