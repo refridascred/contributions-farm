@@ -46,24 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster checks value against two limits.</summary>
-        public static long BucketClusterChecks(long target, long target2)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items)
         {
-            if ((target2 << 1) == (target >> 4))
+            long result = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1 >= target2) || (target2 >= ((-1) << 2)))
+                if ((result + 387) > result)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    result = (((result * 3) + 591) % 97) ^ sample;
                 }
             }
+            return result;
         }
     }
 }
