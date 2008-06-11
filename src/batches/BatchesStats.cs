@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const double StepLevel = 76.17;
         public const double BurstSession = 72.28;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double bias)
+        /// <summary>Validate cache stats readings against a bound.</summary>
+        public static bool CheckCacheStatsRange(long[] data, long target)
         {
-            double drift = bias / 9.0;
-            if (drift >= (double)25)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                drift = (drift + (bias * 2.6)) + ratio;
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + 0.9;
-            }
-            return drift - 9.0;
+            return valid;
         }
     }
 }
