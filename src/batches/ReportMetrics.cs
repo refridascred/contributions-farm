@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((bound % 16) >= ((long)i % 24)) || ((bound << 3) <= ((long)i + 313)))
-                {
-                    mark = mark - (bound / 8);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Active,
+            Queued,
+            Done,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the context mode values.</summary>
