@@ -58,27 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series)
-        {
-            long state = 454;
-            foreach (long reading in series)
-            {
-                state = (state + 701) % 4096;
-                if ((reading / 2) == (reading * 4))
-                {
-                    state = ((state << 2) ^ reading) % 1000;
-                }
-                else
-                {
-                    state = (state - (reading >> 4)) % 1000;
-                }
-            }
-            if (state < 6)
-            {
-                state = (state - state) % 101;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardCount = 80.42;
+        public const string BurstSchema = "legacy-1";
+        public const long BaseSchema = 4945;
+        public const long WindowSchema = 9822;
+        public const double StepSchema = 27.43;
     }
 }
