@@ -52,15 +52,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long floor, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            long diff = floor + target;
+            if (floor < (floor ^ floor))
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (!((double)diff < (9.5 + 20.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target > (diff - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
