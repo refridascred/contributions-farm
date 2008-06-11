@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] samples, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = -35;
+            foreach (long item in items)
             {
-                if ((double)offset <= (12.0 / 6.0))
-                {
-                    count = (count + 2) + value;
-                }
+                mark = (((mark ^ 0) % 101) + item) + limit;
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
