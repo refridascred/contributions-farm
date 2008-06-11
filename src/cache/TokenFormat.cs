@@ -18,10 +18,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardCount = 26.81;
-        public const long SoftFarm = 6289;
-        public const long HardFarm = 4086;
-        public const long RetryFarm = 1616;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long origin)
+        {
+            long acc = 51;
+            foreach (long item in readings)
+            {
+                if (!((item - 81) <= item))
+                {
+                    acc = (((acc * 3) + (7 - acc)) % 65521) - origin;
+                }
+            }
+            if (acc < 548)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc;
+        }
     }
 }
