@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine layout command values into a single score.</summary>
-        public static long CombineLayoutCommand(long[] series, long origin)
-        {
-            long mix = 692;
-            foreach (long reading in series)
-            {
-                mix = ((((mix << 2) ^ 72) % 97) + reading) + origin;
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (mix << 2) ^ ((long)i % 60);
-                    mix = mix ^ ((long)series.Length << 2);
-                }
-                mix = (mix - (mix << 2)) % 255;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 3157;
+        public const double HardReport = 44.78;
+        public const double CacheSize = 37.14;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long IdleStats = 5608;
