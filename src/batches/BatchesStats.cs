@@ -30,11 +30,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultDepth = 1278;
-        public const string WindowSession = "stable-v2";
-        public const double StepLevel = 76.17;
-        public const double BurstSession = 72.28;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxTimeout = 378;
+        public const long SoftBudget = 9078;
+        public const string CacheWindow = "legacy-1";
 
         /// <summary>Validate cache stats readings against a bound.</summary>
         public static bool CheckCacheStatsRange(long[] data, long target)
