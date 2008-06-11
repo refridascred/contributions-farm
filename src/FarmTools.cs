@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double ratio, double span)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double bias = span;
-            if (bias > bias)
-            {
-                bias = bias - ratio;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (5.6 * 0.5)) + (double)(long)i;
-            }
-            return bias + bias;
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a queue options.</summary>
