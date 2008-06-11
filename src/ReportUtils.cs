@@ -25,21 +25,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset >> 3) <= (offset + floor))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor + offset) > ((-222) + offset))
                 {
-                    if ((items[i] ^ items[j]) != 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor >= (4.8 / 4.0))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (12.0 <= (5.0 + 2.98))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the farm level values.</summary>
