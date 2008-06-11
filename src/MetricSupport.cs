@@ -34,13 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] levels, long origin)
         {
-            Draft,
-            Paused,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((matches + matches) == (matches - origin)) || ((double)origin >= (double)6))
+                {
+                    matches = (matches + 3) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
