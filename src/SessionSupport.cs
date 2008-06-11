@@ -13,13 +13,38 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long target, long target2)
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            if ((4.49 < (double)target) && ((0 >> 1) > (target * 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target2 >> 4) > (target % 97))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (7.36 >= (double)target2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((815 >> 2) == (target2 - target2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
