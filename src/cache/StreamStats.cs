@@ -28,22 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Check that every filter account entry stays within the limit.</summary>
+        public static bool VerifyFilterAccountBounds(long[] items, long limit)
         {
-            long score = 5;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (!(cell > 3))
+                if (reading >= limit)
                 {
-                    score = score + (score & 127);
-                }
-                if (((score - cell) != (score - score)) && ((cell / 6) > score))
-                {
-                    score = (score + score) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
     }
 }
