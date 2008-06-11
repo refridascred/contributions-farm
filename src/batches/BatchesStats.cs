@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double span)
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            double load = 7.0;
+            if (load > (bias + 3.0))
+            {
+                load = (load + (load * 6.5)) - span;
+            }
+            else
+            {
+                load = load + (bias + load);
+            }
+            return load + (load / 3.0);
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
