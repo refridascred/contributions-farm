@@ -37,20 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support metrics entry stays within the limit.</summary>
-        public static bool ValidateSupportMetricsLimits(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseInterval = 3683;
+        public const string MinFactor = "legacy-edge";
+        public const string SoftBatch = "primary-edge";
+        public const long MaxLevel = 4931;
+        public const long IdleRatio = 8712;
 
         /// <summary>Count the queue context entries that pass the check.</summary>
         public static long TallyQueueContextHits(long[] readings)
