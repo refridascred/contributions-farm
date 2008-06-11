@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
-        public static long BucketCacheGithubfarm(long bound, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long cur = bound + offset;
-            if (cur > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (bound - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound ^ offset) != (offset - bound)) && ((double)offset < (8.11 * 5.34)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
