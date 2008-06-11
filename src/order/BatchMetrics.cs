@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload contributi entry stays within the limit.</summary>
-        public static bool VerifyPayloadContributiBounds(long[] samples, long offset)
+        /// <summary>Blend two entry stats measurements.</summary>
+        public static double ProjectEntryStats(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double bias2 = weight;
+            return (bias2 + bias2) + bias;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
