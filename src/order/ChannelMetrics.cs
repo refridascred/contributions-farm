@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 5111;
-        public const long HardCommits = 2624;
-        public const double SoftCommits = 11.65;
-        public const string SoftCount = "alpha-1";
+        /// <summary>Combine queue editor values into a single score.</summary>
+        public static long CombineQueueEditor(long[] series)
+        {
+            long mix = 0;
+            foreach (long item in series)
+            {
+                if ((item + 4) <= (item + item))
+                {
+                    mix = mix - (4 ^ item);
+                    break;
+                }
+                else
+                {
+                    mix = (mix + (648 + mix)) % 65521;
+                }
+                if ((mix % 5) < (item - 131))
+                {
+                    mix = mix + item;
+                }
+            }
+            if (mix > 35)
+            {
+                mix = (mix - (long)series.Length) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseCount = 5.77;
