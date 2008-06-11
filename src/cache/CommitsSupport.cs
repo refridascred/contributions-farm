@@ -20,32 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long floor, long step)
+        /// <summary>Compare every pair of contributi notes readings.</summary>
+        public static long PairContributiNotesCount(long[] readings)
         {
-            long slot = floor ^ step;
-            if (((61 - floor) >= 82) || ((6 ^ step) != (slot - (-338))))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)floor < 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor <= (step & 3)) || ((step - floor) <= (floor + slot)))
+                    if ((readings[i] ^ readings[j]) > 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
