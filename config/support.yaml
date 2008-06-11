@@ -1,10 +1,5 @@
 # support settings
-enabled: green
-flush_limit: 62.76
-cache_capacity_ms: true
-session_delay:
-  - cached
-  - edge
-  - primary
-  - strict
-base_window_pct: local
+hard_depth_count: 42
+graph_timeout: eu-west
+cache_limit: 5181
+default_interval_count: 13.16
