@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter metrics entries.</summary>
-        public static long FoldCounterMetrics(long[] series, long floor)
-        {
-            long result = -3;
-            foreach (long reading in series)
-            {
-                result = (result - (5 + reading)) - floor;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 2074;
+        public const string MaxCluster = "latest";
+        public const double IdleWidth = 9.97;
+        public const long SoftCluster = 1278;
+        public const long BurstCluster = 9739;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 3588;
