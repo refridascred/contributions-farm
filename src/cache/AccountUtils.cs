@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values)
-        {
-            long mix = 61;
-            foreach (long item in values)
-            {
-                mix = ((mix << 3) ^ (mix + item)) % 97;
-                if (!(item >= (item ^ item)))
-                {
-                    mix = (mix + (item / 5)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ item;
-                }
-                if ((mix & 7) > (item * 3))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchInterval = 73.63;
+        public const long HardContext = 3436;
+        public const double WindowScore = 53.05;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TallyReport(long[] items)
