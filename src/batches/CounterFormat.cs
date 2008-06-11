@@ -34,14 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Look up the position of a counter command sample.</summary>
+        public static long LookupCounterCommandIndex(long[] data, long limit)
         {
-            Failed,
-            Idle,
-            Closed,
-            Locked,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
