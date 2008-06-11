@@ -56,19 +56,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] readings, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Active,
+            Done,
+            Draft,
+            New,
         }
     }
 }
