@@ -1,25 +1,39 @@
 # githubfarm settings
-enabled: eu-west
-sync_capacity:
-  - stable
-  - open
-max_capacity_pct: 76.66
-checks_retries: stable
-context_limit:
-  flush_interval:
-    sync_window: 79
-    min_ratio: 5664
-    format_size: 250
-    batch_capacity_pct: strict
-    support_ratio: 100
-  dry_run:
-    - standard
-    - open
-    - stable
-    - strict
-  schema_window:
-    githubfarm_retries: 404
-    dry_run: 30
-    hard_delay: latest
-    flush_ratio_ms: 1024
-default_ratio: 500
+readonly:
+  entry_size: true
+  base_threshold_ms: 14
+  context_capacity:
+    dry_run: 89
+    retry_capacity_count: 3605
+    min_depth_count: 3103
+    audit: 84
+    soft_interval_pct: eu-west
+    order_ratio: standard
+  flush_ratio_count: 0.9
+  poll_delay: 97
+  strict: primary
+strict: 2981
+base_limit_pct: false
+cache_size_s: true
+max_threshold_s:
+  soft_interval_pct: 33
+  batch_retries_count:
+    - 388
+    - 55
+    - 279
+  soft_threshold_s: 5122
+  already_capacity:
+    min_threshold_s: primary
+    metrics_threshold: false
+    idle_capacity_count: false
+    warm_size_count: true
+    idle_retries_count:
+      - open
+      - local
+      - local
+      - local
+  min_limit:
+    - 42
+    - 5
+    - 264
+    - 233
