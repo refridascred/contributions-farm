@@ -59,12 +59,14 @@ namespace Common.Utilities
             return load + 5.77;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Synced,
-            Done,
-            Paused,
+            Failed,
+            Idle,
+            Stale,
+            Active,
+            Pending,
         }
     }
 }
