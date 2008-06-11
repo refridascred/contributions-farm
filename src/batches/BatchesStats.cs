@@ -33,17 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (samples[i] == floor)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate channel samples.</summary>
