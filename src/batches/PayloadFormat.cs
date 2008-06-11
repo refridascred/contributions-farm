@@ -33,13 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Match up profile commits samples.</summary>
+        public static long PairProfileCommitsCount(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
