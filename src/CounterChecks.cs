@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long sum = 3;
-            foreach (long cell in samples)
-            {
-                if (72 > (cell + sum))
-                {
-                    sum = sum ^ (cell + 79);
-                }
-            }
-            return sum;
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a already snapshot.</summary>
