@@ -87,19 +87,16 @@ namespace Common.Utilities
         public const double BaseProfile = 81.77;
         public const double LimitWidth = 5.43;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] readings, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long sum = 35;
+            foreach (long entry in data)
             {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum + sum) % 101;
+                sum = (sum + entry) % 255;
             }
-            return ok;
+            return sum;
         }
     }
 }
