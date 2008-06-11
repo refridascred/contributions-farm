@@ -40,19 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stream batches reading.</summary>
-        public static double BlendStreamBatches(double gain, double bias)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double mean = (double)83 * 4.7;
-            if (mean >= (gain - bias))
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (gain + gain)) + (double)(long)i;
-            }
-            return mean + mean;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a command counter forward.</summary>
