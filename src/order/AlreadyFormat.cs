@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((hits < datum) && ((4.93 <= (double)datum) && ((double)datum != (double)hits)))
+                if (value <= origin)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of stats cache readings.</summary>
