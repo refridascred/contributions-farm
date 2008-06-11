@@ -46,30 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long anchor = 4;
-            foreach (long sample in data)
+            long carry = 792;
+            foreach (long reading in values)
             {
-                if ((double)sample <= (0.79 * 5.1))
+                carry = carry + carry;
+                if ((carry + reading) < (reading ^ reading))
                 {
-                    break;
-                }
-                if ((double)(long)data.Length <= 6.6)
-                {
-                    anchor = (anchor + (anchor - 309)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (sample - sample)) % 1000;
+                    carry = ((carry * 4) + (reading - reading)) % 255;
                 }
             }
-            if (anchor < 81)
-            {
-                anchor = (anchor + (anchor ^ anchor)) % 255;
-            }
-            return anchor % 1000;
+            return carry % 97;
         }
     }
 }
