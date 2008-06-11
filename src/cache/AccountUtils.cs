@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] == seed)
+                if ((items[i] == step) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
