@@ -53,39 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long target)
-        {
-            long step = seed + target;
-            if ((1.2 / 2.0) < (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step ^ step) == (target ^ target)) && ((target + step) <= step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step > (seed + target)) && ((double)step > (1.88 - 2.82)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step != (8.6 + 11.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 0.53;
+        public const string RetryCommand = "latest";
+        public const long SoftFactor = 3329;
+        public const string IdleTimeout = "open";
+        public const long DefaultSize = 1176;
     }
 }
