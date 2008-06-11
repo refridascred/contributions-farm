@@ -37,21 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double rate = (double)(3 + 51);
+            return (rate - scale) + span;
         }
 
         /// <summary>Adjust a tools reading.</summary>
