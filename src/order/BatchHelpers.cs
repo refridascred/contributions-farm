@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long origin, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            if (origin > (0 >> 2))
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
+                mark = (mark - ((long)i - bound)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((origin ^ 571) < (5 % 5)) || (99 < (95 + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - origin) != (seed + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed <= (seed + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the batch level values.</summary>
