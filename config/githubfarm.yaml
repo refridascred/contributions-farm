@@ -1,8 +1,4 @@
 # githubfarm settings
-checks_capacity:
-  - primary
-  - standard
-  - blue
-dry_run: 60
-max_interval_ms: 93.4
-flush_ratio_s: 50.5
+poll_ratio_ms: stable
+audit: true
+warm_ratio_ms: stable
