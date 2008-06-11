@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const double MaxTimeout = 51.71;
         public const long BatchBudget = 9941;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] values, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 601;
+            foreach (long cell in data)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = mix - (982 - cell);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a cluster entry.</summary>
