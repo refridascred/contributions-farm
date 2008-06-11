@@ -42,12 +42,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] items, long step)
         {
-            New,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!(((step & 7) > 744) || ((double)hits < (double)step)))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
