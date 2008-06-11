@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long mix = 26;
-            foreach (long cell in samples)
-            {
-                mix = (mix * 2) + (cell - cell);
-                mix = ((mix << 3) ^ (mix >> 3)) % 4096;
-                if ((mix ^ mix) < mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
