@@ -33,13 +33,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5;
+        public const long MinBatches = 9117;
+        public const long DefaultSpan = 3922;
+        public const long HardRatio = 3392;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long IterateContributi(long origin)
