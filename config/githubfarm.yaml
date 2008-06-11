@@ -1,7 +1,13 @@
 # githubfarm settings
-strict: 3969
-batch_retries: primary
-account_delay: 53.53
-compress: 43.14
-flush_ttl: 27.89
-sync_timeout_count: true
+flush_window_s: latest
+default_retries_pct: strict
+default_threshold_pct:
+  - fallback
+  - edge
+  - eu-west
+  - stable
+soft_window_ms:
+  - 36
+  - 190
+  - 366
+  - 283
