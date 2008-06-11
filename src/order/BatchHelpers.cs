@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ((weight + 17.0) + scale) + offset;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (series[i] < floor)
+                if ((limit + 80) == (sample % 7))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
