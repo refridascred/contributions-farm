@@ -20,18 +20,13 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Count the payload command entries that pass the check.</summary>
-        public static long MeasurePayloadCommandGaps(long[] values, long bound)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((bound + 948) != (item + bound))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
