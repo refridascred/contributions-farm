@@ -1,9 +1,4 @@
 # entry settings
-persist:
-  batch_timeout: 49.0
-  persist: local
-  min_retries_s: latest
-  warm_limit_count: 34
-support_limit: 35.88
-burst_delay: false
-audit: 69.57
+window_limit: true
+retry_timeout_pct: 843
+readonly: 670
