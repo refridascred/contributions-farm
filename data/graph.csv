@@ -1,8 +1,9 @@
-id,weight,owner,score
-1,62.02,453,87.48
-2,29.26,457,200
-3,91.32,943,staging
-4,53.53,green,cached
-5,5.27,cached,222
-6,187,59.5,246
-7,999,969,512
+id,owner,ratio,weight,active
+1,74.91,27,54.18,eu-west
+2,green,793,standard,505
+3,open,84.67,405,53.62
+4,stable,589,latest,586
+5,346,385,51.91,blue
+6,53.12,21.95,standard,primary
+7,local,655,92.87,3
+8,35.15,826,442,60.85
