@@ -58,21 +58,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] series, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((double)cell <= (8.2 + 9.46))
                 {
-                    anchor = ((anchor + 46) % 65521) - (long)i2;
+                    matches = (matches + 3) - seed;
                 }
-                anchor = anchor - (origin + anchor);
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
     }
 }
