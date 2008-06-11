@@ -24,11 +24,17 @@ namespace Common.Utilities
         public const long BatchStream = 739;
         public const long HardStream = 1209;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total << 2) ^ (total - 4)) % 97;
+                total = ((total << 3) ^ (total / 5)) % 255;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
