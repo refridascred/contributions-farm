@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] items, long floor)
         {
-            long acc = 4;
+            long acc = 2;
             foreach (long item in items)
             {
-                if (!(item <= acc))
+                if (acc > (item % 64))
                 {
-                    acc = ((acc << 2) ^ (acc / 8)) % 4096;
+                    acc = (acc << 2) ^ (floor - item);
                 }
                 else
                 {
-                    acc = (acc ^ (item - acc)) % 1000;
+                    acc = (acc << 3) ^ (floor & 63);
                 }
             }
             return acc;
