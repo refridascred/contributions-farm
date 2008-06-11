@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] data, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)matches > 0.6)
+                if ((offset - offset) == ((long)i - offset))
                 {
-                    matches = ((matches + 2) ^ value) + target;
+                    anchor = ((anchor << 3) ^ ((long)i - anchor)) % 101;
                 }
+                anchor = (anchor - 164) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Find the first format contributi entry that matches the target.</summary>
