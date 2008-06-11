@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the contributi profile entries that pass the check.</summary>
-        public static long TallyContributiProfileGaps(long[] values)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count << 3) == (count % 60))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank notes input into a small class.</summary>
