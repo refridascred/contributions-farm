@@ -40,12 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many batches filter samples are out of range.</summary>
+        public static long CountBatchesFilterOutliers(long[] readings)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((6.3 - 6.84) <= (double)cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
