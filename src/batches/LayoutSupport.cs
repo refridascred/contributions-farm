@@ -36,15 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue cluster values into a single score.</summary>
-        public static long CombineQueueCluster(long[] values, long offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long result = 3;
-            foreach (long sample in values)
-            {
-                result = ((((result << 3) ^ 555) % 97) ^ sample) + offset;
-            }
-            return result;
+            Failed,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
