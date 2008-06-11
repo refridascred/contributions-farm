@@ -43,17 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a entry batches sample.</summary>
-        public static long LookupEntryBatchesIndex(long[] levels, long limit)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Iterate the order commits series from a seed.</summary>
