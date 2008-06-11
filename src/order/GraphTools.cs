@@ -40,12 +40,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 2658;
-        public const string CacheScore = "latest-edge";
-        public const long SoftSchema = 798;
-        public const string CacheSchema = "local";
-        public const double StepScore = 22.39;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
