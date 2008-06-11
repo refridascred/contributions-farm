@@ -77,12 +77,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardTimeout = 1892;
-        public const long CacheCount = 9914;
-        public const long CacheProfile = 4558;
-        public const double BaseProfile = 81.77;
-        public const double LimitWidth = 5.43;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseSpan = 3299;
+        public const long StepSize = 4943;
+        public const long MinBudget = 4097;
+        public const string CacheCommits = "open-v2";
+        public const long HardScore = 4459;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] data)
