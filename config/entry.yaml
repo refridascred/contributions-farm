@@ -1,7 +1,14 @@
 # entry settings
-verbose:
-  persist: false
-  compress: 20
-  enabled: 82
-context_capacity: 89.09
-base_depth: 73
+sync_limit_ms: 40
+format_timeout: cached
+batch_ttl:
+  idle_ratio_count: true
+  batches_timeout: staging
+  audit: 9.16
+  schema_retries: standard
+  buffer_limit: 60
+  schema_capacity: fallback
+checks_threshold: legacy
+tools_depth:
+  - 500
+  - 394
