@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseSpan = 2004;
-        public const string WindowCommits = "legacy-edge";
-        public const double RetryCommits = 78.25;
-        public const long BatchCommits = 3031;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Done,
+            Draft,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long step, long bound)
