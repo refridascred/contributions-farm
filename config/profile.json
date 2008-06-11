@@ -1,6 +1,6 @@
 {
-  "cache_ttl_count": true,
-  "batch_timeout_ms": 6614,
-  "base_depth": 23,
-  "cache_interval_ms": ["open", "stable"]
+  "burst_delay_pct": 2424,
+  "min_ttl": 250,
+  "poll_capacity": "strict",
+  "profile_ratio": [211, 25]
 }
