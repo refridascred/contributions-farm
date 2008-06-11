@@ -1,7 +1,14 @@
 # entry settings
-sync_retries_s: true
-flush_ttl_ms:
-  - standard
-  - eu-west
-compress: true
-max_delay: true
+retry_ttl_pct: 75.41
+readonly: false
+order_retries: 3474
+flush_threshold_count: staging
+retry_timeout_count:
+  soft_retries_s: 3138
+  already_retries:
+    - 30
+    - 167
+    - 442
+    - 386
+  githubfarm_limit: true
+warm_ratio_pct: 79.3
