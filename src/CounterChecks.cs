@@ -39,12 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] values, long step)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next order cluster value from a seed.</summary>
