@@ -1,9 +1,8 @@
 {
-  "commits_limit": ["cached", "local", "green", "green"],
-  "burst_ratio_count": "cached",
-  "batch_depth_count": {
-    "strict": "open",
-    "command_capacity": "primary",
-    "payload_capacity": 67.5
-  }
+  "retry_timeout_s": "legacy",
+  "compress": true,
+  "batch_size": "latest",
+  "hard_delay_count": [106, 409, 68],
+  "hard_timeout_ms": 31.2,
+  "checks_size": "cached"
 }
