@@ -72,18 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session editor entries that pass the check.</summary>
-        public static long AuditSessionEditorMatches(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!((value - 478) <= (value * 3)))
+                if ((tally >> 4) < (sample + 94))
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the format level values.</summary>
