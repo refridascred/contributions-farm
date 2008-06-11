@@ -65,40 +65,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a entry support pair into a bucket.</summary>
-        public static long SortEntrySupport(long bound, long limit)
-        {
-            long prev = bound - limit;
-            if ((8.56 <= (double)limit) && (prev >= (-38)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit == (18.0 - 5.12)) || ((bound << 1) == (prev << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - limit) > limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (prev > (bound + prev))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstDepth = 1533;
+        public const string CacheContext = "legacy";
+        public const long StepContext = 531;
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
