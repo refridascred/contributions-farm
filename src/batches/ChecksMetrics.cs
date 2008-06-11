@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] series, long step)
         {
-            long acc = 95;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in series)
             {
-                acc = (acc ^ (value - value)) % 97;
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
