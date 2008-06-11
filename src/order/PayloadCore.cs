@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] levels, long origin)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum > (5.9 * 2.35))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
