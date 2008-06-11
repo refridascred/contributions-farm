@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 8897;
-        public const long RetryContext = 4604;
-        public const long WindowFactor = 9758;
-        public const long MaxInterval = 4006;
+        /// <summary>Count the format layout entries that pass the check.</summary>
+        public static long AuditFormatLayoutMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) < (0 + reading))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
