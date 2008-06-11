@@ -1,20 +1,5 @@
 {
-  "flush_delay": 27,
-  "tools_interval": 26.39,
-  "min_ttl_count": false,
-  "compress": "edge",
-  "verbose": {
-    "soft_window_pct": "fallback",
-    "window_retries": {
-      "base_size_s": ["primary", "edge", "legacy", "standard"],
-      "compress": true,
-      "sync_retries": 3029,
-      "flush_ratio_count": true,
-      "batch_ratio": "local"
-    },
-    "soft_depth": "staging",
-    "buffer_timeout": "fallback",
-    "order_interval": "blue",
-    "schema_timeout": ["staging", "local", "eu-west", "edge"]
-  }
+  "burst_capacity": true,
+  "format_size": 7394,
+  "strict": "edge"
 }
