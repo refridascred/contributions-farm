@@ -28,11 +28,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 7735;
-        public const long IdleEditor = 6178;
-        public const long BurstBudget = 8874;
-        public const double StepRatio = 76.5;
+        /// <summary>Iterate the profile entry series from a seed.</summary>
+        public static long StepProfileEntry(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (origin >= (origin - sum))
+                {
+                    sum = (sum - (long)i) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] levels)
