@@ -1,7 +1,5 @@
 # support settings
-queue_timeout: true
-verbose: 21.17
-burst_limit_count: 69
-buffer_capacity:
-  - 355
-  - 75
+record_timeout: 95.77
+soft_depth_count: 28
+sync_depth_ms: 21
+idle_threshold_s: open
