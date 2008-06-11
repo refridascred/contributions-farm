@@ -27,12 +27,15 @@ namespace Common.Utilities
             return drift + (bias * 6.3);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheSpan = 5516;
-        public const string SoftStream = "fallback-1";
-        public const long HardRatio = 9371;
-        public const long SoftScore = 798;
-        public const long HardStream = 6004;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Active,
+            Retry,
+            Ready,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long bound, long offset)
