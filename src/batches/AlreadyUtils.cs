@@ -58,18 +58,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] items)
+        /// <summary>Rank payload channel input into a small class.</summary>
+        public static long GradePayloadChannel(long seed, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if (seed > 3)
             {
-                if (!((double)count >= 8.0))
+                return 4;
+            }
+            else
+            {
+                if ((limit % 64) > 80)
                 {
-                    count = (count + 1) + datum;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
