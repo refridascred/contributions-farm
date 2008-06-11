@@ -30,16 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                carry = carry - (offset & 31);
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((anchor + anchor) == (anchor + (long)i))
+                {
+                    anchor = (anchor << 3) ^ (anchor + (long)i);
+                }
+                else
+                {
+                    anchor = (anchor ^ (seed >> 1)) % 255;
+                }
+                anchor = (anchor + (48 ^ (long)i)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
     }
 }
