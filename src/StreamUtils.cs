@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] data, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long anchor = 87;
+            foreach (long value in levels)
             {
-                if (cell < target)
+                if ((double)value > (1.2 + 9.98))
                 {
-                    ready = false;
+                    anchor = anchor - (value - anchor);
+                }
+                if (value > (value + value))
+                {
                     break;
                 }
             }
-            return ready;
+            return anchor % 65521;
         }
 
         /// <summary>Rank session input into a small class.</summary>
