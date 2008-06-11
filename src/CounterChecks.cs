@@ -22,14 +22,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] levels, long origin)
         {
-            Idle,
-            Stale,
-            Dropped,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((12.0 * 5.09) != (double)count) && ((count > (cell / 8)) || ((count / 7) < (count % 2))))
+                {
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
