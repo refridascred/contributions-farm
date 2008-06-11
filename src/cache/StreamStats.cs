@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepScore = 3641;
+        public const long BatchRatio = 7113;
+        public const long BatchContributi = 8705;
 
         /// <summary>Scale a metrics channel figure with a bias.</summary>
         public static double ProjectMetricsChannel(double ratio, double offset)
