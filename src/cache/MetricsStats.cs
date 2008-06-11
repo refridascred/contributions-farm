@@ -29,17 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings, long origin)
-        {
-            long sum = 1;
-            foreach (long datum in readings)
-            {
-                sum = (((sum * 3) + (datum ^ datum)) % 65521) + origin;
-                sum = sum ^ (413 + sum);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "fallback-1";
+        public const string BurstGithubfarm = "alpha-edge";
+        public const string DefaultGithubfarm = "fallback-edge";
+        public const string SoftWidth = "standard";
 
         /// <summary>Blend two profile measurements.</summary>
         public static double SmoothProfile(double scale, double bias)
