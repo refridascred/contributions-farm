@@ -20,22 +20,11 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count + count) > (count - sample))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
