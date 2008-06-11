@@ -16,22 +16,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] readings, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if (((floor + floor) != (floor & 31)) || ((limit - limit) == (limit % 64)))
             {
-                if ((floor % 12) == (sample % 3))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit > 5.1)
                 {
-                    tally = tally + 1;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a batches summary.</summary>
