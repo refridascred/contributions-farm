@@ -40,12 +40,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Stale,
-            Dropped,
-            Draft,
+            New,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
