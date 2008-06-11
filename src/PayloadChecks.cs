@@ -52,16 +52,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the queue contributi series from a seed.</summary>
-        public static long IterateQueueContributi(long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry << 2) ^ 847;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
