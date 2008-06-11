@@ -31,13 +31,14 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Failed,
+            Stale,
             Synced,
-            Paused,
+            Locked,
             Ready,
+            New,
         }
     }
 }
