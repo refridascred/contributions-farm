@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a cache githubfarm value against two limits.</summary>
-        public static long BucketCacheGithubfarm(long floor, long origin)
-        {
-            long offset = floor - origin;
-            if (offset >= (floor & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor <= (floor - offset)) || ((offset * 2) <= origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstLevel = 5509;
+        public const double IdleEntry = 16.46;
+        public const long BurstEntry = 5275;
+        public const string StepEntry = "fallback";
+        public const string CacheSize = "primary-1";
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] readings, long floor)
