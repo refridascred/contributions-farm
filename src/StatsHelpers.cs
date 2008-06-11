@@ -23,11 +23,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 3234;
-        public const long IdleInterval = 3905;
-        public const long IdleCluster = 2792;
-        public const long WindowCluster = 1046;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
