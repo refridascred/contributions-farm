@@ -22,18 +22,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] readings, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value == (double)(-584))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) + bound;
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
