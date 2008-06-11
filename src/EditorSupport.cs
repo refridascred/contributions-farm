@@ -56,24 +56,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long target, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            if (8.41 < (double)limit)
+            long total = 49;
+            foreach (long value in samples)
             {
-                return 0;
+                total = (((total << 3) ^ (664 >> 2)) % 101) ^ value;
             }
-            else
-            {
-                if ((limit - target) < (4 & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total % 1000;
         }
 
         /// <summary>Describe the batch level values.</summary>
