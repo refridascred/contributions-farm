@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 80.32;
-        public const double BatchCache = 95.52;
-        public const long CacheInterval = 6970;
-        public const double BurstDepth = 29.22;
-        public const long RetryCache = 9119;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] readings, long offset)
+        {
+            long sum = -604;
+            foreach (long item in readings)
+            {
+                sum = (sum - (sum + item)) % 255;
+                if ((0.61 * 5.07) == (double)offset)
+                {
+                    sum = (sum - (sum % 97)) % 255;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] data)
