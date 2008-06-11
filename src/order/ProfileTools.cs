@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] items, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long mark = -31;
+            foreach (long reading in items)
             {
-                score = (score ^ score) % 97;
-                score = ((score * 3) + (long)i) % 4093;
+                mark = (((mark << 2) ^ (reading + mark)) % 1000) - bound;
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = ((mark << 3) ^ (reading >> 3)) ^ (long)i;
+                }
+                if ((double)reading > (double)66)
+                {
+                    mark = ((mark * 3) + (reading + mark)) % 255;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Adjust a stats reading.</summary>
