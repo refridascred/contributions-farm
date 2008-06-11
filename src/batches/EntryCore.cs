@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BaseEditor = 8696;
         public const long RetryScore = 4354;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long step)
+        /// <summary>Locate a githubfarm editor reading by value.</summary>
+        public static long FindGithubfarmEditorIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (1 > (hits - step))
+                if (levels[i] == seed)
                 {
-                    hits = (hits + 3) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
