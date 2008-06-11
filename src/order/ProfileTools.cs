@@ -52,14 +52,11 @@ namespace Common.Utilities
             return load + 5.77;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Failed,
-            Idle,
-            Stale,
-            Active,
-            Pending,
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
