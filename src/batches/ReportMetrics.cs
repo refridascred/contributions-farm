@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] samples, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long origin)
         {
-            long anchor = 5;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= (0 & 1))
+                if ((items[i] <= origin) && ((items[i] % 5) == 0))
                 {
-                    anchor = (anchor ^ (anchor & 3)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ step) % 4096;
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
