@@ -24,26 +24,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] data, long limit)
+        /// <summary>Validate notes stream readings against a bound.</summary>
+        public static bool GuardNotesStreamLimits(long[] samples, long offset)
         {
-            long score = 258;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((sample + sample) <= (score % 8))
+                if (datum > offset)
                 {
-                    score = ((score * 4) + (limit * 2)) % 1000;
-                }
-                if (((double)limit < (double)sample) || ((limit % 7) < (score + sample)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (score > 233)
-            {
-                score = score + (467 - limit);
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
