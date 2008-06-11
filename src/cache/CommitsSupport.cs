@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] data, long target)
+        /// <summary>Check that every checks batches entry stays within the limit.</summary>
+        public static bool ValidateChecksBatchesLimits(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (datum <= target)
+                if (value != floor)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
