@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheInterval = 3.8;
+        public const double HardEditor = 7.6;
+        public const string RetryEditor = "staging-1";
+        public const long BaseEditor = 7629;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
