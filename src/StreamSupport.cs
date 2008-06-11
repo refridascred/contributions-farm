@@ -40,11 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 5458;
-        public const long DefaultInterval = 505;
-        public const long StepCount = 3803;
-        public const long BaseLevel = 5572;
-        public const long HardTimeout = 8157;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + ((long)i + sum)) % 1000;
+                sum = (sum + seed) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
