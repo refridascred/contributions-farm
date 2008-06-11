@@ -32,12 +32,18 @@ namespace Common.Utilities
         public const long SoftWindow = 8284;
         public const long MaxWindow = 2687;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 7099;
-        public const long BaseRoute = 5780;
-        public const double WindowRoute = 67.36;
-        public const long SoftBudget = 2619;
-        public const double BurstTimeout = 32.24;
+        /// <summary>Locate a window cluster reading by value.</summary>
+        public static long LookupWindowClusterIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
