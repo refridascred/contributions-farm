@@ -52,19 +52,27 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long mix = 863;
-            foreach (long cell in data)
+            long state = 454;
+            foreach (long reading in series)
             {
-                mix = (mix - (cell + mix)) % 255;
+                state = (state + 701) % 4096;
+                if ((reading / 2) == (reading * 4))
+                {
+                    state = ((state << 2) ^ reading) % 1000;
+                }
+                else
+                {
+                    state = (state - (reading >> 4)) % 1000;
+                }
             }
-            if (mix < 66)
+            if (state < 6)
             {
-                mix = (mix - 113) % 97;
+                state = (state - state) % 101;
             }
-            return mix;
+            return state % 4096;
         }
     }
 }
