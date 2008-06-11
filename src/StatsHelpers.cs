@@ -22,21 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)offset < (7.36 - 6.8)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset2 * 3) <= (3 / 3))
                 {
-                    if ((readings[i] - readings[j]) == 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 + offset) < 897)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
