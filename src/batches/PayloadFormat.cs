@@ -32,13 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            Ready,
-            Idle,
-            Dropped,
-            Done,
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result << 2) ^ (origin * 3)) % 101;
+                result = (result << 2) ^ ((long)i + result);
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
