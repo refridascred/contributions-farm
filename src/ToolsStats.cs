@@ -22,24 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(origin >= (origin / 2)))
-                {
-                    score = ((score << 3) ^ (score ^ score)) % 97;
-                }
-                if ((long)i != ((long)i + score))
-                {
-                    score = ((score * 2) + (origin & 255)) % 97;
-                    score = score - ((long)i + origin);
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up command format samples.</summary>
