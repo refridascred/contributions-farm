@@ -1,7 +1,21 @@
 {
-  "batch_retries_ms": false,
-  "strict": 5434,
-  "cache_capacity_s": 60,
-  "filter_window": 97.56,
-  "dry_run": 35.25
+  "verbose": {
+    "checks_size": 5333,
+    "poll_retries": "eu-west",
+    "persist": "eu-west",
+    "soft_interval": {
+      "sync_window_pct": 7088,
+      "sync_interval_s": "stable",
+      "compress": 19,
+      "dry_run": ["cached", "green", "blue", "latest"],
+      "default_timeout_count": "green",
+      "sync_interval": "cached"
+    },
+    "editor_window": false,
+    "sync_retries_count": 2553
+  },
+  "soft_threshold": "legacy",
+  "poll_interval_count": 1024,
+  "warm_capacity_pct": [302, 385, 433, 177],
+  "report_depth": 3.82
 }
