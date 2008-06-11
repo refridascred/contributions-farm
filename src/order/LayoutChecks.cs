@@ -55,11 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
