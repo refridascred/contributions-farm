@@ -28,12 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 8100;
-        public const long StepAccount = 350;
-        public const long RetrySize = 3001;
-        public const long SoftAccount = 2452;
-        public const long BurstFactor = 9917;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSize = 616;
+        public const double CacheCount = 95.88;
+        public const double LimitRatio = 82.44;
+        public const string BaseBuffer = "standard-v2";
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
