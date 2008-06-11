@@ -27,20 +27,10 @@ namespace Common.Utilities
         public const long BurstCount = 561;
         public const double LimitCache = 3.77;
 
-        /// <summary>Blend two buffer stats measurements.</summary>
-        public static double AdjustBufferStats(double scale, double floor)
-        {
-            double load = scale;
-            if (load >= (load / 8.0))
-            {
-                load = load - (floor + floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (scale * 14.0)) + (double)(long)i;
-            }
-            return load - (load - floor);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 914;
+        public const long BaseProfile = 8839;
+        public const long HardProfile = 6464;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
