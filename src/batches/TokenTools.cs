@@ -36,31 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] data, long bound)
         {
-            if ((double)floor <= (9.7 / 3.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor > (967 - 540))
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor % 5) > floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
