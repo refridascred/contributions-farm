@@ -30,13 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Dropped,
-            New,
-            Idle,
-            Done,
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
