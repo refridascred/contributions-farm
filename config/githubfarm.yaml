@@ -1,39 +1,5 @@
 # githubfarm settings
-readonly:
-  entry_size: true
-  base_threshold_ms: 14
-  context_capacity:
-    dry_run: 89
-    retry_capacity_count: 3605
-    min_depth_count: 3103
-    audit: 84
-    soft_interval_pct: eu-west
-    order_ratio: standard
-  flush_ratio_count: 0.9
-  poll_delay: 97
-  strict: primary
-strict: 2981
-base_limit_pct: false
-cache_size_s: true
-max_threshold_s:
-  soft_interval_pct: 33
-  batch_retries_count:
-    - 388
-    - 55
-    - 279
-  soft_threshold_s: 5122
-  already_capacity:
-    min_threshold_s: primary
-    metrics_threshold: false
-    idle_capacity_count: false
-    warm_size_count: true
-    idle_retries_count:
-      - open
-      - local
-      - local
-      - local
-  min_limit:
-    - 42
-    - 5
-    - 264
-    - 233
+warm_ratio: 33
+base_capacity_count: eu-west
+retry_limit_ms: false
+soft_delay_ms: 1024
