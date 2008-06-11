@@ -44,22 +44,17 @@ namespace Common.Utilities
         public const string CacheSchema = "local";
         public const double StepScore = 22.39;
 
-        /// <summary>Measure how many tools context samples are out of range.</summary>
-        public static long MeasureToolsContextGaps(long[] levels)
+        /// <summary>Find the first profile context entry that matches the target.</summary>
+        public static long SeekProfileContextIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.3 + 14.0) <= (double)tally)
+                if (data[i] == target)
                 {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
