@@ -49,9 +49,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxTimeout = 3901;
-        public const long HardCache = 9309;
-        public const long BatchCache = 1395;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Score { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
