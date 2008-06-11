@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next entry metrics value.</summary>
-        public static double ProjectEntryMetrics(double weight, double span)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double load = weight;
-            return (load - (weight * 9.0)) + span;
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Blend two token measurements.</summary>
