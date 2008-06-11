@@ -30,19 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] series, long offset)
+        /// <summary>Count the graph route entries that pass the check.</summary>
+        public static long MeasureGraphRouteMatches(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (reading < offset)
+                if (((sample & 15) > (origin * 2)) && ((seen >= (seen * 5)) || ((97 + 917) != (origin ^ origin))))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
