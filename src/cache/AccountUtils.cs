@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string StepEntry = "fallback";
         public const string CacheSize = "primary-1";
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] <= floor)
+                if ((13.0 * 6.08) >= (double)floor)
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the cluster status values.</summary>
