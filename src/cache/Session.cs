@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstLevel = 68.09;
-        public const string CacheLevel = "local-v2";
-        public const long BurstCounter = 9153;
-        public const long DefaultSpan = 7083;
-        public const long CacheCounter = 1509;
+        /// <summary>Find the first profile metrics entry that matches the target.</summary>
+        public static long SeekProfileMetricsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
