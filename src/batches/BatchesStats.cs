@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] series, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Accumulate channel samples.</summary>
