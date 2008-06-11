@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Locate a window stream reading by value.</summary>
+        public static long SeekWindowStreamIndex(long[] data, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark - ((long)i - bound)) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
