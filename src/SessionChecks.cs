@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long DefaultNotes = 6937;
         public const long DefaultRatio = 5882;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double bias, double floor)
         {
-            Closed,
-            Locked,
-            Draft,
-            Idle,
+            double drift = bias;
+            if (drift < (drift / 4.0))
+            {
+                drift = (drift - (drift / 2.0)) - floor;
+            }
+            else
+            {
+                drift = drift - (double)171;
+            }
+            return drift + (bias * 6.3);
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
