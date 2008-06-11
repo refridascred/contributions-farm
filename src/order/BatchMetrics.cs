@@ -54,10 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstDepth = 1533;
-        public const string CacheContext = "legacy";
-        public const long StepContext = 531;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((((item << 2) == (matches ^ matches)) && ((double)item > (19.0 - 12.0))) || ((double)matches == (15.0 * 16.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the farm checks series from a seed.</summary>
         public static long SeriesFarmChecks(long step)
