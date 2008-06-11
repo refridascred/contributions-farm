@@ -38,38 +38,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long bound, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            if ((bound / 4) == (offset ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset & 255) > (bound / 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((0.35 / 7.0) != (double)offset) && ((bound - bound) > (24 + 96)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + offset) <= (170 * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Synced,
+            New,
         }
     }
 }
