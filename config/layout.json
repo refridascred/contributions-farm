@@ -1,17 +1,6 @@
 {
-  "max_ttl_ms": "eu-west",
-  "cache_window_count": 5962,
-  "sync_timeout_s": false,
-  "batches_depth": {
-    "enabled": {
-      "verbose": "strict",
-      "order_threshold": true,
-      "base_ttl_ms": 12
-    },
-    "poll_ratio": 3617,
-    "retry_ratio_count": [335, 360, 412, 133],
-    "readonly": 8540,
-    "soft_depth": 80.08
-  },
-  "idle_ratio_ms": [142, 416, 3, 461]
+  "flush_depth_count": "staging",
+  "batch_threshold_s": "primary",
+  "persist": "staging",
+  "default_interval_count": 24.34
 }
