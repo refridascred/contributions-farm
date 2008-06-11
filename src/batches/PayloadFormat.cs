@@ -32,17 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result << 2) ^ (origin * 3)) % 101;
-                result = (result << 2) ^ ((long)i + result);
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
