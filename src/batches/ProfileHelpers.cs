@@ -54,14 +54,14 @@ namespace Common.Utilities
         public const double MinCounter = 25.15;
         public const double MaxCounter = 2.56;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
+            Pending,
             Locked,
+            Idle,
+            Retry,
             Draft,
-            Closed,
-            Done,
-            Failed,
         }
 
         /// <summary>Locate a format reading by value.</summary>
