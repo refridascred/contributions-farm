@@ -52,18 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] data, long target)
         {
-            long total = 776;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (!((cell + 79) > (cell + cell)))
+                if (sample < target)
                 {
-                    total = (total + (cell + total)) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ready;
         }
     }
 }
