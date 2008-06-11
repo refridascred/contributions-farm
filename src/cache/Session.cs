@@ -48,14 +48,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Synced,
-            Dropped,
-            Closed,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxTimeout = 3901;
+        public const long HardCache = 9309;
+        public const long BatchCache = 1395;
     }
 }
