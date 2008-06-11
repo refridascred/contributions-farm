@@ -31,14 +31,31 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long target2)
         {
-            Draft,
-            Locked,
-            Idle,
-            Stale,
-            Paused,
+            if ((target2 - target) < target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target ^ target2) > (target >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target ^ target2) != (target2 + target2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
