@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in blue staging cached stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
@@ -17,11 +21,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
-
-for item in primary blue legacy staging; do
-    log "checking ${item}"
-done
