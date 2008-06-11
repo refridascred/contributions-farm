@@ -1,18 +1,10 @@
 # support settings
-retry_threshold:
-  cache_ttl_pct: legacy
-  format_interval: local
-  buffer_retries:
-    max_interval: eu-west
-    base_window: local
-    flush_size_count: 500
-  enabled: 48
-  flush_depth_ms: true
-  burst_limit_ms:
-    - open
-    - legacy
-    - local
-    - edge
-profile_limit: true
-burst_limit_ms: fallback
-batch_timeout: blue
+enabled: green
+flush_limit: 62.76
+cache_capacity_ms: true
+session_delay:
+  - cached
+  - edge
+  - primary
+  - strict
+base_window_pct: local
