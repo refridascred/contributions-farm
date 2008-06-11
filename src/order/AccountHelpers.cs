@@ -16,10 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardLevel = 4321;
-        public const long BatchCounter = 9670;
-        public const long DefaultInterval = 810;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Closed,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
