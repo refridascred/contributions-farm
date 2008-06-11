@@ -60,18 +60,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stats stream readings against a rule.</summary>
-        public static long AuditStatsStreamOutliers(long[] items)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((3.3 + 0.34) > (double)item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Paused,
+            Idle,
         }
     }
 }
