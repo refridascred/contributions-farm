@@ -1,6 +1,5 @@
 {
-  "enabled": ["local", "legacy", "strict"],
-  "persist": 33.6,
-  "flush_capacity_s": "stable",
-  "hard_ratio_ms": "strict"
+  "hard_capacity_pct": "local",
+  "account_retries": true,
+  "verbose": ["latest", "legacy", "stable"]
 }
