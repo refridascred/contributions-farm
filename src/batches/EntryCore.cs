@@ -50,21 +50,23 @@ namespace Common.Utilities
             return mean + (gain + mean);
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -2;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample <= (94 << 2)) || (state > (sample + state)))
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ (sample / 7);
                 }
+                state = (state + state) % 4096;
             }
-            return tally;
+            if (state < 753)
+            {
+                state = (state ^ (482 * 4)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
