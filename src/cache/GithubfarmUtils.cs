@@ -56,23 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            double gain = (double)19;
-            if (gain >= offset)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (bias + 5.4);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (double)5) - (double)(long)i;
-            }
-            return gain + (offset + offset);
+            return matches;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
