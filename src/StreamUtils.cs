@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((8.05 - 5.6) > (double)datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1400;
+        public const double CacheStats = 56.32;
+        public const string LimitScore = "fallback-v2";
+        public const long BaseStats = 3051;
+        public const long StepRatio = 2060;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 3588;
