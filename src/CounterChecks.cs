@@ -13,14 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 6643;
+        public const long WindowSpan = 5926;
+        public const double CacheStats = 87.86;
+        public const long IdleInterval = 3481;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] levels, long origin)
