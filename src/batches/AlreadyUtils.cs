@@ -13,23 +13,32 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine stream cluster values into a single score.</summary>
-        public static long CombineStreamCluster(long[] levels)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long bound, long origin)
         {
-            long mark = 882;
-            foreach (long value in levels)
+            long slot = bound - origin;
+            if ((slot - origin) < bound)
             {
-                mark = ((mark * 2) + value) % 65521;
-                if ((double)mark > 2.88)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > 13.0)
                 {
-                    mark = mark - (mark - mark);
+                    return 6;
                 }
                 else
                 {
-                    mark = mark + (6 ^ (long)levels.Length);
+                    if ((bound >> 4) <= (639 + slot))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Count cluster batch pairs that satisfy a relation.</summary>
