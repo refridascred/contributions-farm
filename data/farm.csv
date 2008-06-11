@@ -1,9 +1,7 @@
-id,level
-1,971
-2,171
-3,925
-4,blue
-5,eu-west
-6,357
-7,150
-8,896
+id,count,score,rank
+1,135,legacy,52.8
+2,238,eu-west,open
+3,fallback,latest,76.18
+4,632,168,899
+5,884,75.19,871
+6,824,302,935
