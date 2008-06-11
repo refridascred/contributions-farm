@@ -47,23 +47,14 @@ namespace Common.Utilities
             return mean + (gain + mean);
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long state = -2;
-            foreach (long sample in levels)
-            {
-                if ((sample <= (94 << 2)) || (state > (sample + state)))
-                {
-                    state = state ^ (sample / 7);
-                }
-                state = (state + state) % 4096;
-            }
-            if (state < 753)
-            {
-                state = (state ^ (482 * 4)) % 1000;
-            }
-            return state % 65521;
+            Idle,
+            Paused,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
