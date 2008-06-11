@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                acc = (acc << 2) ^ (acc - (long)i);
-                acc = ((acc * 5) + (long)i) % 97;
+                if (count <= (19 + count))
+                {
+                    count = (count + 3) ^ datum;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
