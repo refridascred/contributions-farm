@@ -1,15 +1,17 @@
 {
-  "idle_ratio": false,
-  "stream_depth": {
-    "queue_ratio": 62.22,
-    "poll_timeout_ms": 250,
-    "batch_retries": {
-      "support_limit": "local",
-      "strict": ["green", "legacy", "stable"],
-      "default_retries_ms": 88.24
-    }
+  "base_interval_count": {
+    "cache_timeout_pct": "staging",
+    "retry_threshold_ms": false,
+    "persist": 37,
+    "retry_window_pct": 25.27
   },
-  "min_timeout_pct": false,
-  "strict": "blue",
-  "commits_interval": 1024
+  "batch_ttl_s": 4452,
+  "max_window_ms": false,
+  "layout_retries": "open",
+  "cache_depth": {
+    "idle_retries_ms": 57.21,
+    "hard_ratio": 3,
+    "enabled": "standard",
+    "batch_interval": true
+  }
 }
