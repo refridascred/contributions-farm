@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "local-v2";
-        public const long BurstMetrics = 4784;
-        public const long StepMetrics = 7436;
-        public const long MaxBudget = 7253;
-        public const long MaxMetrics = 1101;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 5) + total) % 101;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
         public static long RankOrderWindow(long floor, long target)
