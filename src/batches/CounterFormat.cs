@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema cluster entries.</summary>
-        public static long TallySchemaCluster(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double offset)
         {
-            long total = 9;
-            foreach (long entry in items)
+            double weight = (double)(719 + (-99));
+            if (weight > (scale - weight))
             {
-                total = (((total << 3) ^ (total << 3)) % 101) + entry;
-                if ((double)total < (13.0 / 2.0))
-                {
-                    break;
-                }
+                weight = weight - weight;
             }
-            return total;
+            return weight + (offset * 3.3);
         }
 
         /// <summary>Look up the position of a counter command sample.</summary>
