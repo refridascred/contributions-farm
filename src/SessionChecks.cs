@@ -58,12 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Queued,
-            Locked,
             Ready,
+            Retry,
+            Done,
+            Paused,
+            Pending,
         }
     }
 }
