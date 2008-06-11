@@ -1,5 +1,8 @@
 {
-  "idle_window": "edge",
-  "cache_timeout": 4074,
-  "burst_ttl_count": false
+  "sync_capacity_ms": 43,
+  "soft_window_count": [206, 240],
+  "dry_run": 81,
+  "max_window_s": "primary",
+  "batch_ratio_ms": 9540,
+  "default_timeout_pct": ["fallback", "green", "stable"]
 }
