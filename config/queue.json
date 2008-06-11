@@ -1,6 +1,5 @@
 {
-  "cache_threshold": "latest",
-  "max_ratio_count": 250,
-  "warm_interval_pct": "strict",
-  "max_interval_count": "green"
+  "schema_capacity": "fallback",
+  "idle_limit": "open",
+  "hard_window_s": "primary"
 }
