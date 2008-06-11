@@ -41,21 +41,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = ratio;
+            if (scale <= (double)41)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + (ratio / 3.0)) - floor;
             }
-            return matches;
+            return scale + scale;
         }
     }
 }
