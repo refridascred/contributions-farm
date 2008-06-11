@@ -15,20 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double ratio, double offset)
         {
-            long result = 3;
-            foreach (long entry in values)
+            double ratio2 = (double)458;
+            if (ratio2 < (ratio2 / 3.0))
             {
-                result = ((result << 2) ^ result) % 101;
-                if ((entry >> 1) < (result % 2))
-                {
-                    result = (result << 2) ^ result;
-                }
-                result = (result << 3) ^ (entry - result);
+                ratio2 = (ratio2 + (offset * 7.51)) - ratio;
             }
-            return result % 4096;
+            return ratio2 - (ratio2 / 5.0);
         }
 
         /// <summary>Hold a batch entry.</summary>
