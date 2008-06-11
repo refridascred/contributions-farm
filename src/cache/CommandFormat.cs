@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const long BurstCount = 561;
         public const double LimitCache = 3.77;
 
-        /// <summary>Locate a queue cluster reading by value.</summary>
-        public static long LookupQueueClusterIndex(long[] series, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (series[i] == origin)
+                if (((count + count) >= cell) || !((count / 6) != (count + count)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the token kind values.</summary>
