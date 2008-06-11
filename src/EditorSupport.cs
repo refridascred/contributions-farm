@@ -44,21 +44,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 297;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum + carry) != (carry * 3))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - datum;
                 }
             }
-            return seen;
+            if (carry < 318)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the already kind values.</summary>
