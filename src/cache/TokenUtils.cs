@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 4185;
-        public const long CacheCommand = 2606;
-        public const long DefaultTimeout = 3911;
-        public const long StepCommand = 136;
-        public const long MaxCommand = 3373;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            New,
+            Done,
+            Stale,
+        }
 
         /// <summary>Classify a entry batch pair into a bucket.</summary>
         public static long GradeEntryBatch(long step, long origin)
