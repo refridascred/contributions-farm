@@ -70,19 +70,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next format schema value from a seed.</summary>
-        public static long SeriesFormatSchema(long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((seed / 9) == (seed << 1)) && ((double)anchor <= (19.0 / 4.0)))
-                {
-                    anchor = (anchor << 3) ^ (anchor * 3);
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
