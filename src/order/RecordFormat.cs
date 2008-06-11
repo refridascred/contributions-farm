@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const double MinDepth = 35.94;
         public const double RetryCommits = 47.48;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mix = -2;
+            foreach (long cell in values)
             {
-                if (!((seen - 16) < (seen - value)) || ((87 >> 4) > (seen << 1)))
+                if (seed >= (mix & 3))
                 {
-                    seen = seen + 2;
+                    mix = mix - mix;
+                }
+                else
+                {
+                    mix = (mix ^ cell) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a buffer entry.</summary>
