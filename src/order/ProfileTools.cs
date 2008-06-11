@@ -55,17 +55,9 @@ namespace Common.Utilities
             return load + 5.77;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 6328;
+        public const string IdleInterval = "open-v2";
+        public const double StepCounter = 6.34;
     }
 }
