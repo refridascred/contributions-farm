@@ -64,22 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] items)
+        /// <summary>Locate a batches githubfarm reading by value.</summary>
+        public static long LocateBatchesGithubfarmIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count / 4) >= 4)
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
                 {
-                    count = (count + 1) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
