@@ -1,4 +1,4 @@
 # githubfarm settings
-poll_ratio_ms: stable
-audit: true
-warm_ratio_ms: stable
+audit: 100
+base_capacity_count: 500
+strict: latest
