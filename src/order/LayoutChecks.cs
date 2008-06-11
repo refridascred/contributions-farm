@@ -48,15 +48,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] levels, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long sum = 364;
-            foreach (long reading in levels)
-            {
-                sum = (sum ^ seed) ^ reading;
-            }
-            return sum;
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
