@@ -42,23 +42,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double ratio = (double)(523 + 655);
-            if (ratio > scale)
-            {
-                ratio = (ratio - (double)6) + offset;
-            }
-            else
-            {
-                ratio = ratio + (double)9;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)891) + (double)(long)i;
-            }
-            return ratio - 3.5;
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
