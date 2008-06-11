@@ -53,19 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a entry buffer reading.</summary>
-        public static double BlendEntryBuffer(double rate, double span)
+        /// <summary>Validate queue githubfarm readings against a bound.</summary>
+        public static bool ValidateQueueGithubfarmRange(long[] samples, long offset)
         {
-            double ratio = (double)(6 ^ 11);
-            if (ratio < (6.08 * 9.8))
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                ratio = ratio - rate;
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (double)33) + (double)(long)i;
-            }
-            return ratio + span;
+            return flag;
         }
     }
 }
