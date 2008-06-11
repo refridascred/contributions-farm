@@ -45,31 +45,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long seed, long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            if ((floor < (floor << 3)) && ((double)seed <= (double)2))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 8) <= (floor - floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (2.0 >= (double)seed)
+                    if ((values[i] + values[j]) == 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
