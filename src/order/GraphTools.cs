@@ -29,11 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] values, long bound)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first batch account entry that matches the target.</summary>
