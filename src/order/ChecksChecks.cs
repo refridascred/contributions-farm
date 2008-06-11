@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Queued,
-            Failed,
-            Ready,
-            Draft,
-            Locked,
+            Pending,
+            Synced,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
