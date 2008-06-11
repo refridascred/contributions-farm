@@ -1,8 +1,5 @@
 {
-  "burst_interval_s": "open",
-  "warm_ratio_count": 42.45,
-  "base_limit_count": [254, 62, 134, 458],
-  "persist": 35.65,
-  "default_size": "open",
-  "poll_ttl": 98
+  "batch_retries": "strict",
+  "notes_ratio": 6867,
+  "compress": "strict"
 }
