@@ -19,25 +19,21 @@ namespace Common.Utilities
         public const long IdleScore = 9275;
         public const double BurstWindow = 57.94;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long bound, long bound2)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            long cur = bound + bound2;
-            if ((cur << 1) > (2 >> 5))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= 9.3)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
