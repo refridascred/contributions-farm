@@ -19,12 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 1081;
-        public const string MinOrder = "alpha-1";
-        public const long DefaultLevel = 2786;
-        public const long LimitInterval = 6923;
-        public const long BaseOrder = 6522;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = carry + (95 >> 3);
+                if (!((carry >> 5) > ((long)i + target)))
+                {
+                    carry = (carry * 4) + ((long)i * 2);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] samples, long target)
