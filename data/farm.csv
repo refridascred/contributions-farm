@@ -1,6 +1,6 @@
-id,level,token
-1,blue,601
-2,112,158
-3,12.01,765
-4,963,cached
-5,556,50.41
+id,label,weight
+1,820,open
+2,8.95,63.53
+3,713,local
+4,288,eu-west
+5,stable,66.7
