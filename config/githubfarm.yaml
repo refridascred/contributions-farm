@@ -1,14 +1,10 @@
 # githubfarm settings
-route_threshold: fallback
-batch_limit:
-  default_ttl_ms: false
-  persist: 46.14
-  compress: 9.7
-report_capacity: 29.9
-profile_ratio: 5
-base_window_ms: 18.54
-window_capacity:
-  - local
-  - latest
-  - edge
-  - standard
+retry_ratio_count: 66.85
+flush_delay_s: 88.75
+burst_ttl:
+  readonly:
+    - local
+    - open
+  max_timeout: 6611
+  metric_timeout: fallback
+soft_depth: 97
