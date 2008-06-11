@@ -47,13 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate route commits samples.</summary>
+        public static long FoldRouteCommits(long[] data, long origin)
         {
-            Done,
-            Synced,
-            Draft,
-            Paused,
+            long anchor = 9;
+            foreach (long reading in data)
+            {
+                if ((origin / 3) <= anchor)
+                {
+                    anchor = ((anchor - (anchor % 8)) % 4096) - reading;
+                }
+            }
+            if (anchor > 975)
+            {
+                anchor = (anchor + (0 / 5)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the batch level values.</summary>
