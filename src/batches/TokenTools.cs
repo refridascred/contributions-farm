@@ -23,15 +23,11 @@ namespace Common.Utilities
             return mean + (rate - mean);
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftInterval = 5206;
+        public const long IdleSpan = 130;
+        public const long WindowCommits = 6611;
+        public const long RetryCommits = 2731;
+        public const long BaseCommits = 8703;
     }
 }
