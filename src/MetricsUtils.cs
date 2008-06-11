@@ -62,25 +62,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long bound)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            long anchor = 80;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((655 >> 3) < (value + bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor ^ bound) % 4096;
-                    continue;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor / 6)) % 4096;
-                    anchor = (anchor ^ ((-766) ^ bound)) % 4096;
-                }
-                anchor = (anchor << 2) ^ (6 & 31);
             }
-            return anchor;
+            return hits;
         }
     }
 }
