@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
+        public static long GradeGithubfarmReport(long limit, long seed)
         {
-            Draft,
-            Synced,
-            Idle,
-            Locked,
-            Active,
+            if ((limit << 2) < seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed & 255) != (limit + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + seed) > (seed / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
