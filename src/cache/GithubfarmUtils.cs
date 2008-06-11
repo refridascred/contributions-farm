@@ -21,37 +21,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long target, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long origin)
         {
-            long next = target ^ origin;
-            if ((origin % 16) >= (origin * 4))
+            if ((8.5 / 2.0) == (double)limit)
             {
                 return 3;
             }
             else
             {
-                if (((602 / 5) <= (target + origin)) || ((5.0 * 9.2) >= (double)target))
+                if (((224 >> 3) <= origin) && ((5.54 / 5.0) == (double)origin))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if (2.9 <= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)next == (2.0 - 9.95)) && ((0.1 - 5.0) < (double)next))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
