@@ -11,25 +11,12 @@ namespace Common.Utilities
         public const string MinCounter = "strict-1";
         public const long SoftRatio = 4903;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long limit)
-        {
-            if ((double)origin == (0.2 / 6.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((480 + origin) <= (limit + 84))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 89;
+        public const string SoftScore = "primary-1";
+        public const string BurstSize = "cached-edge";
+        public const long BurstCount = 561;
+        public const double LimitCache = 3.77;
 
         /// <summary>Blend two buffer stats measurements.</summary>
         public static double AdjustBufferStats(double scale, double floor)
