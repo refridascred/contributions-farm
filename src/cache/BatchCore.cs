@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] readings, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 401;
+            foreach (long entry in items)
             {
-                if (readings[i] > bound)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    score = (score - (score + score)) - (long)i;
                 }
+                if ((double)score == (double)offset)
+                {
+                    score = (score - (score % 97)) % 97;
+                }
+                score = (score + (entry + score)) % 4096;
             }
-            return -1;
+            if (score < 62)
+            {
+                score = (score + 89) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
