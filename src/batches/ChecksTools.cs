@@ -51,19 +51,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long carry = 792;
-            foreach (long reading in values)
-            {
-                carry = carry + carry;
-                if ((carry + reading) < (reading ^ reading))
-                {
-                    carry = ((carry * 4) + (reading - reading)) % 255;
-                }
-            }
-            return carry % 97;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
