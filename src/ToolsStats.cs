@@ -61,22 +61,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] items, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (seen * 4))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Scale a githubfarm profile figure with a bias.</summary>
