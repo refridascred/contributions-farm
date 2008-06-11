@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a filter cache reading.</summary>
-        public static double ScaleFilterCache(double rate, double floor)
+        /// <summary>Match up metrics account samples.</summary>
+        public static long PairMetricsAccountCount(long[] readings)
         {
-            double ratio = (rate * 4.0) / 6.0;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - (double)16) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - floor;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
