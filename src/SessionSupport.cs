@@ -25,13 +25,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long step)
         {
-            Retry,
-            Dropped,
-            Failed,
-            Paused,
+            if ((double)bound >= (2.0 * 8.1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((7.35 * 5.0) < (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7 - 92) < (bound & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + step) < (step << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
