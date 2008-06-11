@@ -1,6 +1,7 @@
 {
-  "audit": true,
-  "layout_depth": false,
-  "stats_ttl": [283, 375, 470, 254],
-  "batch_threshold_pct": 54.44
+  "cache_threshold": false,
+  "flush_depth": 26,
+  "warm_capacity": 95,
+  "metrics_retries": "eu-west",
+  "soft_limit_pct": 61.28
 }
