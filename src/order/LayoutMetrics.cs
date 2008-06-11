@@ -26,11 +26,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseWidth = 8676;
-        public const double HardFilter = 53.4;
-        public const long IdleSpan = 6796;
-        public const long IdleWidth = 6253;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Pending,
+            Retry,
+            Closed,
+            New,
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double bias, double floor)
