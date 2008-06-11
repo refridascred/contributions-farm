@@ -34,19 +34,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every channel metric entry stays within the limit.</summary>
-        public static bool ValidateChannelMetricBounds(long[] series, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long target, long offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            if ((double)target >= (3.0 / 5.0))
             {
-                if (entry < bound)
+                return 5;
+            }
+            else
+            {
+                if (((-494) + target) >= 5)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a notes stats.</summary>
