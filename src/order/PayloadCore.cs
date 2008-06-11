@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every support batches entry stays within the limit.</summary>
+        public static bool GuardSupportBatchesBounds(long[] items, long offset)
         {
-            Queued,
-            Retry,
-            Done,
-            Idle,
-            Paused,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
