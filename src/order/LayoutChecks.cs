@@ -23,11 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchCount = "cached-v2";
-        public const long MaxAccount = 4674;
-        public const double MaxRatio = 46.72;
-        public const long BurstAccount = 9179;
+        /// <summary>Locate a counter filter reading by value.</summary>
+        public static long LookupCounterFilterIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MinFormat = 43.61;
