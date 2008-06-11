@@ -66,12 +66,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
