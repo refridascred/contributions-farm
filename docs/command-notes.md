@@ -1,12 +1,11 @@
 # Command notes
 
-Each metrics is validated before it reaches the payload queue.
-Keep filter and format names short and lowercase.
-A order that stays idle for too long is moved to the payload list.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Review metric limits each release
-- Validate counter input early
-- Document new batch fields
-- Keep profile values small
+- Keep entry values small
+- Validate batch input early
+- Document new farm fields
+- Review command limits each release
