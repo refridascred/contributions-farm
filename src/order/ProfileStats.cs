@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long mark = 6;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark - sample) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Hold a checks summary.</summary>
