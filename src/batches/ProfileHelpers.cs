@@ -38,19 +38,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi entry samples.</summary>
-        public static long TallyContributiEntry(long[] data, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long sum = 196;
-            foreach (long entry in data)
-            {
-                sum = (((sum ^ (65 >> 4)) % 65521) ^ entry) + bound;
-            }
-            if (sum > 713)
-            {
-                sum = (sum ^ (sum & 127)) % 255;
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine cache account values into a single score.</summary>
