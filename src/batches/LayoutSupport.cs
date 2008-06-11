@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] values, long seed)
         {
-            double scale = (double)87 + weight;
-            if (scale <= 7.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + 4.55;
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - 1.0) + (double)(long)i;
-            }
-            return scale + bias;
+            return -1;
         }
 
         /// <summary>Match up layout record samples.</summary>
