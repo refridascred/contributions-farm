@@ -12,13 +12,19 @@ namespace Common.Utilities
             return (load - (weight * 9.0)) + span;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double bias, double span)
         {
-            Draft,
-            Idle,
-            Locked,
-            Active,
+            double gain = bias;
+            if (gain > bias)
+            {
+                gain = (gain + (double)5) + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (8.3 + gain)) + (double)(long)i;
+            }
+            return gain + (gain / 2.0);
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
