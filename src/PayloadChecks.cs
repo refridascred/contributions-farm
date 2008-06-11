@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics account samples.</summary>
-        public static long MatchMetricsAccountCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 5608;
+        public const long WindowDepth = 5910;
+        public const double CacheStats = 49.49;
 
         /// <summary>Compare every pair of batch counter readings.</summary>
         public static long CompareBatchCounterCount(long[] samples)
