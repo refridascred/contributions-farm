@@ -1,10 +1,11 @@
 # Command notes
 
-When a cache fails, the context handler retries a few times before giving up.
-The commits report groups every metrics by counter.
+Run the queue check before changing any stream limits.
+When a schema fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cache values small
-- Review notes limits each release
-- Validate payload input early
+- Document new stream fields
+- Log every batch change
+- Keep entry values small
+- Validate counter input early
