@@ -50,10 +50,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3984;
-        public const long CacheBudget = 3970;
-        public const string BurstStats = "cached-v2";
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Retry,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long step)
