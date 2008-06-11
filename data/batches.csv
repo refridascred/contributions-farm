@@ -1,8 +1,6 @@
-id,active,level,state
-1,41.48,edge,standard
-2,open,local,870
-3,88.98,6.84,412
-4,staging,green,89
-5,47,318,standard
-6,local,legacy,68
-7,83.34,464,primary
+id,region,count,level,label
+1,539,staging,82.27,edge
+2,local,667,74.2,24.46
+3,81.43,42.37,286,22.04
+4,0,128,573,85.56
+5,626,8.02,17.22,402
