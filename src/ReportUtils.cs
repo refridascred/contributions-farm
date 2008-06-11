@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Done,
-            Paused,
-            Failed,
-            New,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxInterval = "primary";
+        public const long SoftEntry = 174;
+        public const double CacheInterval = 35.11;
+        public const long WindowRatio = 6171;
+        public const string IdleDepth = "staging-v2";
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] values, long step)
