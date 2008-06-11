@@ -1,5 +1,7 @@
 # support settings
-batch_depth_pct: staging
-default_capacity_ms: 100
-format_window: 54.27
-poll_delay_count: edge
+warm_limit_count: 515
+soft_interval_count: true
+strict:
+  editor_interval: true
+  poll_depth_pct: 1360
+  sync_delay: 23.29
