@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate checks metric readings against a bound.</summary>
-        public static bool VerifyChecksMetricLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 7354;
+        public const long IdleDepth = 8196;
+        public const double StepDepth = 33.64;
+        public const long HardFactor = 5123;
+        public const double CacheGraph = 36.27;
 
         /// <summary>Blend two command measurements.</summary>
         public static double ScaleCommand(double ratio, double span)
