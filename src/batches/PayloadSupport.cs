@@ -27,24 +27,11 @@ namespace Common.Utilities
             return gain + (gain / 2.0);
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long origin, long origin2)
-        {
-            if ((origin2 - origin) >= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin < (origin2 * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 19.08;
+        public const double HardSchema = 92.71;
+        public const long BaseSize = 7101;
+        public const long BatchSize = 1069;
+        public const long CacheSchema = 6651;
     }
 }
