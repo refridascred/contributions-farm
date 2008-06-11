@@ -31,19 +31,17 @@ namespace Common.Utilities
         public const long BatchCounter = 9670;
         public const long DefaultInterval = 810;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Find the first farm schema entry that matches the target.</summary>
+        public static long FindFarmSchemaIndex(long[] samples, long limit)
         {
-            long score = 6;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score + (entry + 8);
+                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 4)
-            {
-                score = (score << 2) ^ (score ^ score);
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
