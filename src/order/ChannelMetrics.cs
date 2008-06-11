@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 66.04;
-        public const double BatchInterval = 72.92;
-        public const long StepCommand = 7227;
-        public const long LimitCommand = 3840;
-        public const double MaxRatio = 30.92;
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double offset)
+        {
+            double load = (double)2;
+            if (load >= (4.93 / 6.0))
+            {
+                load = (load + bias) - offset;
+            }
+            return load + (bias * 7.8);
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
