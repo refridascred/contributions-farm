@@ -56,31 +56,16 @@ namespace Common.Utilities
         public const long DefaultFactor = 2217;
         public const long StepAlready = 7434;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long origin2)
+        /// <summary>Roll a already format counter forward.</summary>
+        public static long IterateAlreadyFormat(long floor)
         {
-            if ((double)origin2 != (1.82 * 4.2))
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                carry = ((carry * 4) + floor) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (origin <= (origin2 + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((18.0 / 3.0) <= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
