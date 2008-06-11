@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long MinLevel = 5622;
         public const long LimitTimeout = 3221;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
