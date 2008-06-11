@@ -14,18 +14,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total + ((long)i - 92)) % 97;
-                total = (total ^ (floor << 3)) % 255;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinLevel = 7525;
+        public const double BurstBatch = 75.37;
+        public const long HardBudget = 2463;
+        public const string StepDepth = "latest-v2";
+        public const string BurstSpan = "legacy-v2";
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double ratio, double floor)
