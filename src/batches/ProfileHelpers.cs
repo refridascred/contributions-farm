@@ -26,11 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "primary";
-        public const string BatchWindow = "local-1";
-        public const long SoftWindow = 8284;
-        public const long MaxWindow = 2687;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values)
+        {
+            long result = 3;
+            foreach (long entry in values)
+            {
+                result = ((result << 2) ^ result) % 101;
+                if ((entry >> 1) < (result % 2))
+                {
+                    result = (result << 2) ^ result;
+                }
+                result = (result << 3) ^ (entry - result);
+            }
+            return result % 4096;
+        }
 
         /// <summary>Locate a window cluster reading by value.</summary>
         public static long LookupWindowClusterIndex(long[] readings, long origin)
