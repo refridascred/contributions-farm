@@ -34,19 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route channel entries.</summary>
-        public static long FoldRouteChannel(long[] series)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            long mark = 718;
-            foreach (long entry in series)
+            double ratio = weight;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark - ((long)series.Length + 31)) % 1000) - entry;
+                ratio = ((ratio - (2.47 * 1.0)) + (double)(long)i) + floor;
             }
-            if (mark > 830)
-            {
-                mark = (mark + (mark + mark)) % 1000;
-            }
-            return mark % 4096;
+            return ratio - 9.1;
         }
     }
 }
