@@ -1,8 +1,6 @@
 # entry settings
-metric_delay: 73.47
-batch_ttl: 31.54
-enabled: 6720
-min_depth_count:
-  - 180
-  - 233
-hard_retries_ms: true
+soft_ttl_ms: staging
+batch_ttl: false
+flush_depth_s: 3
+audit: edge
+verbose: false
