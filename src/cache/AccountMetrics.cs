@@ -48,12 +48,10 @@ namespace Common.Utilities
             return drift - (drift + drift);
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 9398;
+        public const double StepFilter = 29.06;
+        public const string SoftWidth = "local-edge";
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long PairContributiCount(long[] readings)
