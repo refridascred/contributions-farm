@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the record layout entries that pass the check.</summary>
-        public static long MeasureRecordLayoutGaps(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)bound > (5.8 * 11.0)) && (count <= (bound ^ bound)))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitSize = 82.3;
+        public const string SoftRatio = "legacy-1";
+        public const double BaseCount = 22.89;
+        public const double RetryAlready = 79.57;
+        public const long BaseBudget = 9532;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleSize = 616;
