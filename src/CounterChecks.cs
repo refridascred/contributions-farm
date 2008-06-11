@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Synced,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchBudget = 240;
+        public const double RetryCount = 66.61;
+        public const string CacheBatch = "primary";
+        public const long BaseBatch = 6835;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long LimitStats = 6643;
