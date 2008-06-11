@@ -1,4 +1,5 @@
 # support settings
-cluster_capacity: stable
-base_ratio: 82.97
-default_threshold: 89.64
+poll_ratio: false
+report_depth: 29.87
+burst_limit_pct: 9942
+sync_limit_count: stable
