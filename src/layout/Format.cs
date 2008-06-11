@@ -54,17 +54,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] series, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long floor, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (floor <= seed)
             {
-                if ((series[i] >= target) && ((series[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((double)floor <= 8.0) || ((8 / 6) <= seed))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
