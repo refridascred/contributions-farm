@@ -24,19 +24,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] readings, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
