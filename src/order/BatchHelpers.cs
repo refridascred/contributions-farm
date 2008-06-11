@@ -34,15 +34,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long acc = 23;
-            foreach (long entry in readings)
-            {
-                acc = acc + (entry - acc);
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
