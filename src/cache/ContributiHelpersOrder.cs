@@ -51,18 +51,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route queue readings against a rule.</summary>
-        public static long TallyRouteQueueHits(long[] data, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long limit, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if (((-4) - limit) > (limit * 5))
             {
-                if (0 >= (cell + cell))
+                return 2;
+            }
+            else
+            {
+                if ((target >> 1) == (target << 1))
                 {
-                    matches = (matches + 1) - step;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)target != (double)330) || ((double)target != (5.75 / 8.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
