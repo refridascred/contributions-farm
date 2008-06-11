@@ -1,11 +1,10 @@
 # Command notes
 
-The channel module keeps order values in sync with the route cache.
-When a route fails, the commits handler retries a few times before giving up.
-Run the token check before changing any entry limits.
+The context module keeps batch values in sync with the support cache.
+Run the route check before changing any filter limits.
 
 ## Guidelines
 
-- Document new filter fields
-- Review report limits each release
-- Prefer token defaults
+- Review cache limits each release
+- Document new githubfarm fields
+- Validate record input early
