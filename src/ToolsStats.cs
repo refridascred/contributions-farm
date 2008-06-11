@@ -48,15 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double rate = (double)71 + 16.0;
-            if (rate >= bias)
-            {
-                rate = (rate - (bias / 9.0)) - bias2;
-            }
-            return rate + rate;
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
