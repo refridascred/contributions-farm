@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ((weight + 17.0) + scale) + offset;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long floor)
         {
-            Dropped,
-            Closed,
-            Idle,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
