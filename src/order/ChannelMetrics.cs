@@ -29,17 +29,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleDepth = 6875;
+        public const double BatchWindow = 95.62;
+        public const double DefaultWindow = 75.37;
+        public const string CacheWindow = "staging-v2";
     }
 }
