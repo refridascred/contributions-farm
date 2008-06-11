@@ -28,14 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Active,
-            New,
-            Done,
-            Ready,
-            Closed,
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
