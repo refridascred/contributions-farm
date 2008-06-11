@@ -1,23 +1,5 @@
 {
-  "hard_ratio_s": false,
-  "sync_capacity_ms": {
-    "verbose": true,
-    "compress": 12.15,
-    "max_window": "staging",
-    "max_limit": true,
-    "soft_threshold_s": "strict"
-  },
-  "soft_ttl": true,
-  "cache_ttl": {
-    "retry_retries_count": 8,
-    "audit": {
-      "report_threshold": "green",
-      "default_retries_s": "staging",
-      "idle_delay_ms": 3464
-    },
-    "poll_ratio": 30,
-    "max_depth": true,
-    "schema_retries": "legacy",
-    "persist": ["strict", "fallback", "standard", "primary"]
-  }
+  "sync_interval_count": 88.83,
+  "filter_limit": 250,
+  "min_depth_s": 91
 }
