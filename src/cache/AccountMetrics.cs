@@ -40,10 +40,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 1350;
-        public const string BaseFormat = "local";
-        public const string WindowWidth = "cached-1";
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long seed, long limit)
+        {
+            if ((limit < 7) && ((limit - 5) >= (limit + limit)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + 239) == (seed + 592))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LookupChannelIndex(long[] data, long bound)
