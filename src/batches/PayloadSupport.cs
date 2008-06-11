@@ -32,26 +32,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum * 3) + floor;
-                sum = ((sum * 5) + (floor + floor)) % 1000;
-                if (((long)i % 16) <= sum)
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
                 {
-                    sum = ((sum * 4) + (floor + sum)) % 4096;
-                    sum = ((sum << 3) ^ (400 + sum)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum - sum) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
     }
 }
