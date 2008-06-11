@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Failed,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardLevel = 9.37;
+        public const long BatchStream = 739;
+        public const long HardStream = 1209;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
