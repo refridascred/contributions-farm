@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 5117;
-        public const long MaxFormat = 1760;
-        public const string IdleFormat = "primary";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
+        {
+            long sum = 7;
+            foreach (long sample in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (sum + sum) + (long)i;
+                }
+                sum = ((sum * 3) + sum) % 101;
+                if (!((3 - sum) < (sum - 23)))
+                {
+                    sum = (sum ^ (sample & 31)) % 255;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] items, long bound)
