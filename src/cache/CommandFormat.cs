@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] items, long limit)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
