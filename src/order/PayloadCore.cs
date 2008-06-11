@@ -44,22 +44,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] values, long seed)
         {
-            long mix = 5;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)mix != (16.0 * 4.04))
+                if ((5.19 - 3.75) <= (double)seed)
                 {
-                    mix = (mix ^ (item ^ mix)) % 1000;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            if (mix > 101)
-            {
-                mix = mix - (mix ^ 24);
-            }
-            return mix;
+            return hits;
         }
     }
 }
