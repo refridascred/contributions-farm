@@ -1,28 +1,8 @@
 # githubfarm settings
-batch_retries_pct: 55
-sync_window: eu-west
-idle_interval_pct: staging
-hard_depth:
-  compress:
-    min_delay: false
-    hard_delay_count:
-      - standard
-      - staging
-      - edge
-      - local
-    flush_ttl_ms: 8019
-  sync_ttl: 5178
-  audit: 8702
-soft_size_pct:
-  channel_limit:
-    - edge
-    - primary
-    - eu-west
-  readonly: 53.04
-  poll_window_count: latest
-  burst_size_ms: 73
-  idle_threshold_pct:
-    - 409
-    - 132
-    - 364
-    - 231
+retry_threshold: 59.47
+default_depth:
+  - local
+  - blue
+  - blue
+checks_timeout: cached
+audit: true
