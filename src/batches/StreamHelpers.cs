@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the format layout entries that pass the check.</summary>
-        public static long AuditFormatLayoutMatches(long[] data)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((reading - reading) < (0 + reading))
+                if (reading != floor)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a graph header.</summary>
