@@ -1,5 +1,6 @@
 {
-  "persist": "eu-west",
-  "readonly": 5968,
-  "idle_threshold_ms": "staging"
+  "compress": 76,
+  "cache_ttl": [78, 149],
+  "min_size_count": [401, 159, 91],
+  "flush_delay": 3807
 }
