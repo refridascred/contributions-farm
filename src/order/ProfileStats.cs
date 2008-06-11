@@ -42,13 +42,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Dropped,
-            Retry,
-            Synced,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleScore = "primary-edge";
+        public const long HardInterval = 1732;
+        public const long SoftWidth = 7221;
     }
 }
