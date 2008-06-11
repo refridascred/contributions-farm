@@ -46,12 +46,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] levels, long origin)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seen >= (8.7 - 6.0))
+                {
+                    seen = ((seen + 2) ^ cell) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
