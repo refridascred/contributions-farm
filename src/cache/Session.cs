@@ -38,24 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] values, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry - offset)) % 101;
-                if ((double)offset <= 8.1)
+                if (values[i] == offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry - 7) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
