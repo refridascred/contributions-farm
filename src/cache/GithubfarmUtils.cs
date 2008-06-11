@@ -33,18 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] data, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] series, long target)
         {
-            long sum = 47;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (((sum / 7) > (sum << 2)) && ((sum * 2) >= (sample + limit)))
+                if (value < target)
                 {
-                    sum = sum - sample;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
     }
 }
