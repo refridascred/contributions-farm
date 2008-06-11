@@ -58,12 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
