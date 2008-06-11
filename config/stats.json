@@ -1,7 +1,12 @@
 {
-  "soft_delay": false,
-  "base_ttl_ms": 8.79,
-  "flush_timeout_count": 13,
-  "retry_window_count": 4720,
-  "compress": 24.83
+  "format_ttl": {
+    "readonly": 85.18,
+    "verbose": [78, 213],
+    "sync_interval_s": "stable",
+    "idle_ratio": 45,
+    "base_threshold": [251, 405],
+    "idle_ratio_pct": "eu-west"
+  },
+  "payload_limit": "fallback",
+  "sync_threshold": 60
 }
