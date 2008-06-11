@@ -71,9 +71,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepLevel = 3965;
-        public const double MaxDepth = 1.16;
-        public const long BatchSpan = 5611;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
