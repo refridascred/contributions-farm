@@ -76,21 +76,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 196;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor + cell) - seed;
             }
-            return hits;
+            return anchor;
         }
     }
 }
