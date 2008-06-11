@@ -1,7 +1,10 @@
-id,owner,rank,region,label
-1,staging,597,591,195
-2,56.09,32.49,799,14.42
-3,stable,120,edge,77.58
-4,17.09,staging,strict,87.28
-5,189,green,8.82,strict
-6,390,3,305,227
+id,owner,level,rank
+1,stable,24.2,23.53
+2,662,open,24.89
+3,cached,65,391
+4,19.31,fallback,cached
+5,open,90.89,711
+6,58.95,legacy,fallback
+7,774,53.05,edge
+8,63.23,943,39.39
+9,45.29,668,750
