@@ -13,24 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] values, long floor)
         {
-            if ((origin / 4) > (origin + offset))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((origin * 2) > origin))
+                if (cell <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
