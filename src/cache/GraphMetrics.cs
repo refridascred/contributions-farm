@@ -51,18 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] values, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] samples, long step)
         {
-            long carry = -9;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((7.32 - 7.36) > (double)carry)
+                if ((6.1 + 10.0) != (double)matches)
                 {
-                    carry = (carry + (floor + reading)) % 4096;
+                    matches = ((matches + 1) ^ item) - step;
                 }
             }
-            return carry % 65521;
+            return matches;
         }
     }
 }
