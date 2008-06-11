@@ -20,11 +20,23 @@ namespace Common.Utilities
         public const double MaxStats = 2.87;
         public const string BurstStats = "standard-1";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 5479;
-        public const string HardTools = "stable";
-        public const long BatchTools = 6913;
-        public const long BurstCount = 20;
-        public const long CacheDepth = 6633;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data)
+        {
+            long score = -984;
+            foreach (long value in data)
+            {
+                score = ((score * 5) + score) + value;
+                if (!((score >> 5) <= ((long)data.Length << 2)))
+                {
+                    break;
+                }
+            }
+            if (score < 291)
+            {
+                score = ((score << 2) ^ (999 + score)) % 97;
+            }
+            return score;
+        }
     }
 }
