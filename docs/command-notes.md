@@ -1,11 +1,11 @@
 # Command notes
 
-Each cluster is validated before it reaches the entry queue.
-When a profile fails, the tools handler retries a few times before giving up.
+Keep checks and report names short and lowercase.
+Run the window check before changing any filter limits.
+A schema that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Prefer context defaults
-- Review format limits each release
 - Validate command input early
-- Log every queue change
+- Review token limits each release
+- Document new buffer fields
