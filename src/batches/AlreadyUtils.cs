@@ -62,13 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] levels, long offset)
         {
-            Idle,
-            Closed,
-            Dropped,
-            New,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
