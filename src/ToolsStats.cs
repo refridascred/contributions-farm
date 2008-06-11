@@ -43,12 +43,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)origin >= (0.1 / 4.0))
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter options.</summary>
