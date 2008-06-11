@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long SoftCommits = 5130;
         public const long BurstCommits = 4083;
 
-        /// <summary>Find the first notes buffer entry that matches the target.</summary>
-        public static long SeekNotesBufferIndex(long[] samples, long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
