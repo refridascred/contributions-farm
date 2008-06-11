@@ -27,21 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
