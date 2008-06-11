@@ -52,9 +52,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSize = 846;
-        public const long BaseInterval = 3496;
-        public const long DefaultScore = 558;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long origin)
+        {
+            if (((origin + target) <= target) && ((double)target >= (6.34 - 9.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target != (double)(-7)) && ((738 - origin) < (origin - (-596))))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 4) != (origin >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin << 1) <= (origin / 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
