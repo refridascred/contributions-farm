@@ -55,18 +55,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] samples, long floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)matches < 5.5)
-                {
-                    matches = ((matches + 1) + cell) + floor;
-                }
-            }
-            return matches;
+            Pending,
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
