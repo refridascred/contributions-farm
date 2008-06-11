@@ -23,18 +23,9 @@ namespace Common.Utilities
         public const long BurstBudget = 6703;
         public const long IdleRatio = 2247;
 
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long AuditBatchCommitsHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen + seen) >= (reading + 462))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 1066;
+        public const long MaxCount = 5724;
+        public const long LimitCluster = 3322;
     }
 }
