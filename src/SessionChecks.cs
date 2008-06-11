@@ -14,15 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] readings, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long limit)
         {
-            long mix = 3;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + (entry << 3)) + offset;
+                if ((series[i] < limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Classify a record format pair into a bucket.</summary>
