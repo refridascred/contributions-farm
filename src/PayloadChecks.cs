@@ -68,21 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
