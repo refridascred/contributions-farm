@@ -53,39 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long offset, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] values, long origin)
         {
-            long prev = offset ^ bound;
-            if ((8 - 312) >= (prev + (-942)))
+            long state = -17;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset % 16) >= (offset ^ bound)))
+                state = (((state * 2) + (origin - 1)) % 97) - reading;
+                if ((double)state > (2.0 - 12.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset < prev) || ((bound % 16) != (846 + prev)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((bound + 870) == (prev & 255)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Describe the queue level values.</summary>
