@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] series)
         {
-            long carry = -4;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((8.0 * 3.48) < (double)item)
+                if ((3 - 851) < count)
                 {
-                    carry = ((carry ^ (carry + item)) % 65521) + origin;
-                }
-                else
-                {
-                    carry = (carry - carry) % 101;
+                    count = (count + 2) + reading;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a metric options.</summary>
