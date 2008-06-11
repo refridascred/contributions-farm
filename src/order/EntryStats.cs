@@ -51,18 +51,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metrics support values into a single score.</summary>
-        public static long WeighMetricsSupport(long[] items, long target)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = 35;
-            foreach (long sample in items)
-            {
-                if (!((double)target >= (1.0 * 7.4)))
-                {
-                    carry = ((carry + (12 + carry)) % 65521) ^ sample;
-                }
-            }
-            return carry;
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a entry options.</summary>
