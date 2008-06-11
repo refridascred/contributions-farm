@@ -63,22 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route commits samples.</summary>
-        public static long FoldRouteCommits(long[] data, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long target, long limit)
         {
-            long anchor = 9;
-            foreach (long reading in data)
+            if (8.41 < (double)limit)
             {
-                if ((origin / 3) <= anchor)
+                return 0;
+            }
+            else
+            {
+                if ((limit - target) < (4 & 127))
                 {
-                    anchor = ((anchor - (anchor % 8)) % 4096) - reading;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (anchor > 975)
-            {
-                anchor = (anchor + (0 / 5)) % 101;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the batch level values.</summary>
