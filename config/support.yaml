@@ -1,9 +1,34 @@
 # support settings
-counter_interval: false
-batch_ttl:
-  - 377
-  - 206
-  - 99
-  - 243
-poll_delay_ms: open
-idle_ratio_s: 56
+checks_depth: fallback
+poll_limit_pct:
+  compress:
+    - 16
+    - 475
+    - 192
+    - 457
+  filter_delay: 4533
+  burst_delay: 40.19
+  readonly: false
+default_timeout_s:
+  cluster_retries: 42.81
+  burst_timeout:
+    - staging
+    - strict
+    - cached
+    - cached
+  poll_delay: latest
+  persist:
+    max_limit_count:
+      - legacy
+      - strict
+      - fallback
+      - green
+    max_retries: primary
+    compress:
+      - latest
+      - standard
+      - primary
+      - fallback
+    token_retries: 18
+    poll_window_ms: staging
+  payload_delay: 23
