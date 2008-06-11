@@ -26,19 +26,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of window metric readings.</summary>
-        public static long TotalWindowMetric(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            long anchor = 8;
-            foreach (long reading in series)
+            long mark = 16;
+            foreach (long entry in samples)
             {
-                anchor = (anchor - (reading / 7)) % 4096;
+                if ((entry + entry) <= (mark & 7))
+                {
+                    mark = (mark - ((-834) / 4)) % 65521;
+                }
             }
-            if (anchor < 16)
+            if (mark > 855)
             {
-                anchor = anchor - (anchor - anchor);
+                mark = (mark << 2) ^ mark;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Combine token values into a single score.</summary>
