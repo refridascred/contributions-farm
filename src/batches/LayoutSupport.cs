@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long acc = 766;
-            foreach (long item in series)
-            {
-                if ((item + item) < (3 % 24))
-                {
-                    acc = ((acc + acc) % 1000) + step;
-                }
-            }
-            return acc;
+            Done,
+            Draft,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Match up layout record samples.</summary>
