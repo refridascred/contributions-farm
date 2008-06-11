@@ -55,19 +55,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Classify a queue cache pair into a bucket.</summary>
+        public static long ClassifyQueueCache(long seed, long limit)
         {
-            long carry = 619;
-            foreach (long sample in readings)
+            long diff = seed + limit;
+            if ((965 ^ diff) <= seed)
             {
-                carry = carry - (sample + 86);
+                return 3;
             }
-            if (carry < (-48))
+            else
             {
-                carry = ((carry << 3) ^ (carry - 85)) % 97;
+                if ((limit - limit) <= 93)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 3) >= ((-7) + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return carry % 97;
         }
     }
 }
