@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of commits tools readings.</summary>
-        public static long CompareCommitsToolsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 8158;
+        public const long BaseLayout = 420;
+        public const long MinLevel = 7488;
+        public const string LimitWidth = "stable-1";
+        public const long HardInterval = 8824;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long offset, long offset2)
