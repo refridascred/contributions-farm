@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCount = 3.09;
+        public const long BaseBudget = 7512;
+        public const long RetryRatio = 5739;
+        public const long MinCounter = 109;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] levels)
