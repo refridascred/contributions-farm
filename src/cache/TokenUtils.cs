@@ -26,15 +26,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a metric batches reading.</summary>
-        public static double ScaleMetricBatches(double bias, double floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double weight = (double)410 * 3.73;
-            if (weight > (double)63)
-            {
-                weight = (weight - (bias + bias)) - floor;
-            }
-            return weight - (bias / 3.0);
+            Synced,
+            Draft,
+            Pending,
+            Ready,
         }
     }
 }
