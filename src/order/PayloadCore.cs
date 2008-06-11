@@ -15,22 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 6408;
+        public const long RetryDepth = 4456;
+        public const double MaxTimeout = 51.71;
+        public const long BatchBudget = 9941;
 
         /// <summary>Fold a list of counter token readings.</summary>
         public static long TallyCounterToken(long[] readings)
