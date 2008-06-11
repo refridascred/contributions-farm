@@ -78,18 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] levels, long origin)
+        /// <summary>Project the next stream report value.</summary>
+        public static double SmoothStreamReport(double scale, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)seen >= (8.7 - 6.0))
-                {
-                    seen = ((seen + 2) ^ cell) - origin;
-                }
-            }
-            return seen;
+            double mean = (10.0 * 8.0) * 0.4;
+            return (mean - span) + scale;
         }
     }
 }
