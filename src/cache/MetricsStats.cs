@@ -64,19 +64,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] samples, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Ready,
+            Paused,
+            New,
+            Pending,
         }
     }
 }
