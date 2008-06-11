@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Each metric is validated before it reaches the command queue.
-Use batch settings to tune how often record data is refreshed.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
-Keep farm and channel names short and lowercase.
-The metrics report groups every report by editor.
+A batches that stays idle for too long is moved to the editor list.
+When a payload fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every metric change
-- Document new counter fields
-- Keep session values small
-- Prefer stream defaults
+- Document new graph fields
+- Log every batch change
+- Keep schema values small
+- Review schema limits each release
