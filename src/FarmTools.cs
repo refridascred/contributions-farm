@@ -42,13 +42,22 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] items)
         {
-            Done,
-            Ready,
-            Queued,
-            New,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches >= (5.17 / 4.0))
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
