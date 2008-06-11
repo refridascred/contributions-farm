@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string HardStream = "open";
         public const double IdleStream = 0.31;
 
-        /// <summary>Fold a list of channel format readings.</summary>
-        public static long TotalChannelFormat(long[] items, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long bound)
         {
-            long acc = 2;
-            foreach (long value in items)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc - (value / 4)) % 97) - limit;
+                if (((bound % 16) >= ((long)i % 24)) || ((bound << 3) <= ((long)i + 313)))
+                {
+                    mark = mark - (bound / 8);
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (acc > 0)
-            {
-                acc = (acc * 4) + (acc / 7);
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the context mode values.</summary>
