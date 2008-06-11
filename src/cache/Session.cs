@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (13 > cell)
+                if (cell >= step)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Combine record values into a single score.</summary>
