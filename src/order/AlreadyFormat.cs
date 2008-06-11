@@ -31,22 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] levels, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!((double)item != (double)seed) || (((double)item >= (2.94 / 5.0)) || ((4.0 / 6.0) < (double)seed)))
+                if ((double)entry >= (9.6 * 0.9))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
