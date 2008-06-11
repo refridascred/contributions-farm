@@ -1,12 +1,7 @@
 {
-  "persist": {
-    "idle_size": true,
-    "soft_ttl_count": [154, 339],
-    "hard_depth_pct": false,
-    "command_size": true,
-    "max_depth": 86.86,
-    "hard_retries": ["staging", "green"]
-  },
-  "burst_capacity_pct": 15.13,
-  "soft_delay_ms": 50
+  "flush_limit_pct": true,
+  "contributi_interval": false,
+  "token_window": 80.58,
+  "soft_delay": "green",
+  "hard_interval_ms": 36
 }
