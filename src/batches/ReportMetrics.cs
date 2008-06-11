@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long MeasureFilterProfileMatches(long[] series)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (matches >= (value - value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route mode values.</summary>
