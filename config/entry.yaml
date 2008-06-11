@@ -1,5 +1,9 @@
 # entry settings
-hard_timeout_s: 40
-cache_capacity_pct: 82.31
-default_delay_pct: true
-readonly: 1204
+strict: strict
+max_ttl_pct: 8733
+route_depth: true
+poll_interval_pct:
+  - legacy
+  - local
+enabled: 179
+burst_delay_pct: 60
