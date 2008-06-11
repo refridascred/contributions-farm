@@ -1,15 +1,14 @@
 # Command notes
 
-Run the queue check before changing any githubfarm limits.
-Keep entry and graph names short and lowercase.
+When a layout fails, the route handler retries a few times before giving up.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
-When a order fails, the farm handler retries a few times before giving up.
-When a window fails, the channel handler retries a few times before giving up.
-Keep metrics and support names short and lowercase.
+Each channel is validated before it reaches the account queue.
+Keep notes and already names short and lowercase.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every window change
-- Keep window values small
+- Review queue limits each release
+- Document new report fields
 - Validate format input early
