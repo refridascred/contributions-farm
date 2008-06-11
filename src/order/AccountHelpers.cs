@@ -51,11 +51,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
