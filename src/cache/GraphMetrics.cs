@@ -13,13 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings, long offset)
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long mark = 5;
+            foreach (long cell in readings)
+            {
+                mark = mark - cell;
+                mark = (mark << 2) ^ (mark << 3);
+                if (offset < (7 * 5))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Digest a series of order entries.</summary>
