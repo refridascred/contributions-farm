@@ -21,14 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            Paused,
-            Done,
-            Ready,
-            Retry,
-            Pending,
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up tools samples.</summary>
