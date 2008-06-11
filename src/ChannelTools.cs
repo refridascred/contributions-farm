@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
+            public long Token { get; set; }
             public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
