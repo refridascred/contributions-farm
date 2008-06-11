@@ -54,12 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            Draft,
+            Locked,
+            Synced,
         }
     }
 }
