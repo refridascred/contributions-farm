@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 9436;
-        public const long MaxEditor = 7492;
-        public const long BaseEditor = 8696;
-        public const long RetryScore = 4354;
+        /// <summary>Combine queue counter values into a single score.</summary>
+        public static long TotalQueueCounter(long[] values, long target)
+        {
+            long carry = 4;
+            foreach (long entry in values)
+            {
+                if (((9.99 / 8.0) == (double)target) || ((target - entry) <= carry))
+                {
+                    carry = (carry * 5) + (1 - carry);
+                }
+                if ((entry & 31) == (carry % 7))
+                {
+                    carry = carry ^ (target - target);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Locate a githubfarm editor reading by value.</summary>
         public static long FindGithubfarmEditorIndex(long[] levels, long seed)
