@@ -21,13 +21,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
+            Retry,
+            Done,
             Synced,
-            Draft,
-            Pending,
-            Ready,
+            Active,
+            Stale,
         }
     }
 }
