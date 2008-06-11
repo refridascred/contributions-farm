@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double weight, double span)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double scale = (weight + weight) - (span - span);
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - span;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
