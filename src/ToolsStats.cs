@@ -31,21 +31,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up command format samples.</summary>
-        public static long MatchCommandFormatCount(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)cell < (3.3 + 5.68))
                 {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a command summary.</summary>
