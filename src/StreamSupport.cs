@@ -22,22 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((((-627) ^ seen) < (seen - item)) && ((9.0 + 4.78) == (double)item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
