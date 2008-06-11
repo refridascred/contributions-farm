@@ -54,13 +54,15 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double bias)
         {
-            Active,
-            Draft,
-            Closed,
-            Locked,
+            double drift = (double)(936 - 85);
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (((drift - 9.12) + (double)(long)i) + weight) + bias;
+            }
+            return drift - (drift * 4.59);
         }
     }
 }
