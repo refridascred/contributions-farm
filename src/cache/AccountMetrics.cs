@@ -60,22 +60,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCounterCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 1350;
+        public const string BaseFormat = "local";
+        public const string WindowWidth = "cached-1";
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LookupChannelIndex(long[] data, long bound)
