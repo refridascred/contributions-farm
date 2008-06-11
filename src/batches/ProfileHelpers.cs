@@ -64,21 +64,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Combine cache account values into a single score.</summary>
+        public static long CombineCacheAccount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 45;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (((anchor << 3) ^ anchor) % 65521) ^ item;
             }
-            return seen;
+            if (anchor > 0)
+            {
+                anchor = (anchor * 2) + 862;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a format reading by value.</summary>
