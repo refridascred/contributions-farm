@@ -36,13 +36,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] levels, long seed)
         {
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long sum = 364;
+            foreach (long reading in levels)
+            {
+                sum = (sum ^ seed) ^ reading;
+            }
+            return sum;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
