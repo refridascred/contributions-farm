@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string LimitCommand = "fallback-1";
         public const long DefaultSpan = 5280;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] samples, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (entry != seed)
+                if (!(((seen / 3) >= seen) && ((6.0 + 4.87) == (double)datum)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
