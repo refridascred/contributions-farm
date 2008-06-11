@@ -13,17 +13,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long offset, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin / 4) > (origin + offset))
             {
-                if (series[i] == step)
+                return 0;
+            }
+            else
+            {
+                if (!((origin * 2) > origin))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
