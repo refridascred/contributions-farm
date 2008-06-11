@@ -1,12 +1,11 @@
 # Command notes
 
-The cache module keeps report values in sync with the format cache.
-Keep stats and schema names short and lowercase.
-Each report is validated before it reaches the notes queue.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer report defaults
-- Validate commits input early
-- Log every command change
-- Document new metric fields
+- Keep editor values small
+- Log every farm change
+- Document new route fields
+- Prefer support defaults
