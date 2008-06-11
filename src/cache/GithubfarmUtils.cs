@@ -49,22 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] values)
+        /// <summary>Find the first graph already entry that matches the target.</summary>
+        public static long SeekGraphAlreadyIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((tally ^ tally) <= (0 + item)) || (6.9 < (double)tally)) || ((item % 97) > 2))
+                if (samples[i] < origin)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
