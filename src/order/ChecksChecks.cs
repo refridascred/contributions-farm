@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a stream contributi figure with a bias.</summary>
-        public static double BlendStreamContributi(double weight, double floor)
-        {
-            double load = (double)(226 ^ 99);
-            if (load >= (double)6)
-            {
-                load = (load + (load + weight)) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - 2.4) + (double)(long)i;
-            }
-            return load + (7.1 / 9.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 69.73;
+        public const double CacheStream = 38.08;
+        public const double MinDepth = 39.2;
+        public const string WindowBudget = "stable-v2";
+        public const double IdleTimeout = 26.87;
 
         /// <summary>Grade a command contributi value against two limits.</summary>
         public static long ClassifyCommandContributi(long floor, long limit)
