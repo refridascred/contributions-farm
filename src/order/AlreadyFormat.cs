@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string BatchBudget = "fallback-edge";
         public const long BaseChannel = 177;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
