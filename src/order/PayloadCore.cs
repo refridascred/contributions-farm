@@ -33,26 +33,17 @@ namespace Common.Utilities
         public const double MaxTimeout = 51.71;
         public const long BatchBudget = 9941;
 
-        /// <summary>Fold a list of counter token readings.</summary>
-        public static long TallyCounterToken(long[] readings)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] values, long offset)
         {
-            long sum = 115;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample / 5) < ((-49) / 6))
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
                 {
-                    sum = ((sum << 3) ^ (sample >> 5)) % 101;
-                }
-                if ((double)sample == (16.0 / 7.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum * 3) + (sum % 64);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
