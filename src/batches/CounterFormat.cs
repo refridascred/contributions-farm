@@ -33,11 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 5905;
+        public const long MinMetrics = 4784;
+        public const long IdleInterval = 7501;
+        public const long BurstCount = 3257;
+        public const string WindowMetrics = "cached";
     }
 }
