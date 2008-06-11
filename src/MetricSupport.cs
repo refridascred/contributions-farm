@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= bound)
+                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count tools report pairs that satisfy a relation.</summary>
