@@ -71,19 +71,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double offset)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            double weight = rate;
-            if (weight <= (6.0 * 1.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + (offset - rate);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (rate * 5.7)) + (double)(long)i;
-            }
-            return weight + (rate - rate);
+            return hits;
         }
     }
 }
