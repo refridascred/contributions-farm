@@ -1,4 +1,7 @@
 # entry settings
-window_limit: true
-retry_timeout_pct: 843
-readonly: 670
+verbose:
+  persist: false
+  compress: 20
+  enabled: 82
+context_capacity: 89.09
+base_depth: 73
