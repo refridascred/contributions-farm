@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] levels, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (item < offset)
+                if (value > floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Blend two support measurements.</summary>
