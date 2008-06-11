@@ -1,15 +1,5 @@
 # entry settings
-buffer_ttl: 500
-enabled:
-  idle_threshold_ms: edge
-  idle_ttl_pct: 48
-  max_timeout_s:
-    batch_depth: fallback
-    cache_threshold: false
-    hard_ratio: false
-    retry_timeout_ms: latest
-    flush_interval_s: fallback
-  sync_retries_pct: blue
-  poll_interval_count: 30
-record_threshold: local
-batch_window_s: cached
+batch_delay_count: 2.51
+enabled: 500
+flush_size: 62.9
+batches_capacity: true
