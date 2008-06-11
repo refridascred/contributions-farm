@@ -22,18 +22,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] readings)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double rate = (double)(8 >> 5);
+            if (rate >= floor)
             {
-                if ((3.01 + 0.4) > (double)reading)
-                {
-                    matches = matches + 1;
-                }
+                rate = rate - (9.7 - rate);
             }
-            return matches;
+            else
+            {
+                rate = rate + (bias + floor);
+            }
+            return rate + rate;
         }
     }
 }
