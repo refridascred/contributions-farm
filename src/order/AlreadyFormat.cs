@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count < (6.17 + 11.0))
                 {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
