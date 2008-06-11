@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a support batch reading by value.</summary>
-        public static long LocateSupportBatchIndex(long[] items, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
