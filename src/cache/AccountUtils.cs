@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((seed + item) <= item) && ((0 - item) >= tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowBudget = 1386;
+        public const long BurstSession = 7629;
+        public const long IdleSize = 4904;
 
         /// <summary>Measure how many schema metrics samples are out of range.</summary>
         public static long TallySchemaMetricsOutliers(long[] readings, long floor)
