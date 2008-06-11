@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((matches - matches) == (matches + seed)))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit cache batch readings against a rule.</summary>
