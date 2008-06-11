@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] items, long offset)
         {
-            New,
-            Dropped,
-            Paused,
-            Idle,
-            Ready,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
