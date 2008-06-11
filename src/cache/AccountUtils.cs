@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double scale, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] series, long seed)
         {
-            double drift = offset;
-            return drift + (offset + scale);
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((seed + item) <= item) && ((0 - item) >= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many schema metrics samples are out of range.</summary>
