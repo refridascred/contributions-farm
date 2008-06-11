@@ -32,15 +32,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a checks context counter forward.</summary>
-        public static long DeriveChecksContext(long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            long state = -1;
+            foreach (long sample in values)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                state = state + ((long)values.Length - sample);
+                for (int i = 0; i < 8; i++)
+                {
+                    state = (((state * 3) + (bound % 8)) % 101) ^ (long)i;
+                }
+                if ((6.4 / 7.0) == (double)bound)
+                {
+                    state = (state + (bound - state)) % 101;
+                }
+                else
+                {
+                    state = (state + state) % 1000;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the token kind values.</summary>
