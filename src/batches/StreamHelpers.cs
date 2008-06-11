@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long step2 = step ^ limit;
-            if ((limit * 3) > step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-6) ^ limit) != (step2 % 100))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.0 - 7.4) > (double)step2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + step) >= (step2 << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank counter stream input into a small class.</summary>
