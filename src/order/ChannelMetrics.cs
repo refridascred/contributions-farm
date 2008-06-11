@@ -20,23 +20,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Scale a stats cluster figure with a bias.</summary>
-        public static double ProjectStatsCluster(double ratio, double bias)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            double load = bias;
-            if (load >= (double)52)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (double)9) - ratio;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)855) - (double)(long)i;
-            }
-            return load - bias;
+            return -1;
         }
     }
 }
