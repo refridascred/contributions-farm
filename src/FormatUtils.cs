@@ -50,18 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] levels, long seed)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (seed <= (matches + value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
