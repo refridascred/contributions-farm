@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (seen < (11 + value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
