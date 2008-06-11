@@ -62,14 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Paused,
-            Done,
-            Failed,
-            Ready,
             Idle,
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
