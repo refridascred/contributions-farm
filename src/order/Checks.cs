@@ -31,17 +31,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a route format sample.</summary>
-        public static long LocateRouteFormatIndex(long[] values, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (values[i] > offset)
+                if (entry > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
