@@ -45,18 +45,12 @@ namespace Common.Utilities
         public const long BatchCounter = 9670;
         public const long DefaultInterval = 810;
 
-        /// <summary>Find the first farm schema entry that matches the target.</summary>
-        public static long FindFarmSchemaIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseWidth = "staging-1";
+        public const long RetryBuffer = 8529;
+        public const long BatchBuffer = 3371;
+        public const long CacheDepth = 1622;
+        public const double DefaultWidth = 83.52;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
