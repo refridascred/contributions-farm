@@ -56,32 +56,11 @@ namespace Common.Utilities
         public const string MaxCounter = "cached-v2";
         public const long BatchCounter = 4315;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long step)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long next = origin ^ step;
-            if ((535 << 3) > (step * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - step) != (origin ^ (-88)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((next - origin) < (step - origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
