@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Queued,
+            Failed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Blend two checks measurements.</summary>
