@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const double MaxTimeout = 51.71;
         public const long BatchBudget = 9941;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] data)
-        {
-            long mix = 601;
-            foreach (long cell in data)
-            {
-                mix = mix - (982 - cell);
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardWidth = 1776;
+        public const long RetryInterval = 9348;
+        public const double DefaultBudget = 85.61;
+        public const long SoftSupport = 4398;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
