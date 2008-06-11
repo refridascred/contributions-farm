@@ -24,19 +24,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] data, long origin)
+        /// <summary>Measure how many layout batches samples are out of range.</summary>
+        public static long AuditLayoutBatchesHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (entry != origin)
+                if ((2.0 * 3.27) > (double)seen)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Validate format filter readings against a bound.</summary>
