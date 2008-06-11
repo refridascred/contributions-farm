@@ -29,11 +29,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
+            double load = 5.0;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load - load) + (double)(long)i) - span;
+            }
+            return load - (ratio * 12.0);
         }
 
         /// <summary>Hold a entry options.</summary>
