@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double bias, double bias2)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double weight = (bias + bias2) / 3.0;
-            if (weight < (bias / 2.0))
-            {
-                weight = weight + (double)(-925);
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + (double)8;
+            Stale,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a counter record.</summary>
