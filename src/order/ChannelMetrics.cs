@@ -18,12 +18,19 @@ namespace Common.Utilities
             return bias - (bias / 4.0);
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] data, long limit)
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
