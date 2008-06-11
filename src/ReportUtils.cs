@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long target)
         {
-            long anchor = 1;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor - anchor;
-                anchor = anchor + (anchor << 1);
-                anchor = (anchor ^ (datum + 470)) % 255;
-                if ((anchor % 24) <= (anchor + datum))
+                if ((values[i] <= target) && ((values[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
