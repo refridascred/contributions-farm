@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] items, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((offset - offset) > (seen - offset))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Adjust a layout checks reading.</summary>
