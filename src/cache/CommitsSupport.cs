@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] levels, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long origin, long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long next = origin ^ bound;
+            if ((double)17 > (double)origin)
             {
-                if (item != target)
+                return 4;
+            }
+            else
+            {
+                if (!((9 + (-25)) > (21 - next)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
