@@ -21,14 +21,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double bias, double bias2)
         {
-            Draft,
-            Locked,
-            Retry,
-            Closed,
-            Ready,
+            double weight = (bias - bias) - (bias2 - 15.0);
+            if (weight < 7.2)
+            {
+                weight = weight - (bias - 8.0);
+            }
+            return weight + (double)0;
         }
     }
 }
