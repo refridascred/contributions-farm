@@ -66,15 +66,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] samples, long origin)
         {
-            long total = 49;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total << 3) ^ (664 >> 2)) % 101) ^ value;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
