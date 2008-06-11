@@ -57,12 +57,10 @@ namespace Common.Utilities
         public const long HardRecord = 9301;
         public const string BatchRecord = "strict-1";
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public bool Score { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 924;
+        public const long BurstWidth = 7743;
+        public const long SoftMetric = 9451;
+        public const string MaxMetric = "staging";
     }
 }
