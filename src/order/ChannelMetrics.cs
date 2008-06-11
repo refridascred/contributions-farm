@@ -16,11 +16,13 @@ namespace Common.Utilities
             return weight + (weight + weight);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseCount = 5.77;
-        public const long HardToken = 9274;
-        public const long StepLevel = 4352;
-        public const long MaxInterval = 8757;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] series)
