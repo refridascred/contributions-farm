@@ -27,12 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Iterate the contributi account series from a seed.</summary>
+        public static long StepContributiAccount(long seed)
         {
-            Dropped,
-            Retry,
-            Failed,
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
