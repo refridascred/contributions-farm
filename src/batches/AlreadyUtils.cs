@@ -61,22 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] series, long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < (hits >> 2))
+                if (readings[i] == target)
                 {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
