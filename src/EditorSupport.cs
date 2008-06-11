@@ -35,16 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 65521;
+                if (datum > (datum * 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Accumulate route commits samples.</summary>
