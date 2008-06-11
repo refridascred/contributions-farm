@@ -55,11 +55,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSpan = 4007;
-        public const double MaxSession = 53.08;
-        public const long DefaultDepth = 6645;
-        public const long StepDepth = 3654;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] items, long seed)
