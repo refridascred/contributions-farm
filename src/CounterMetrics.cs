@@ -47,19 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] readings, long floor)
+        /// <summary>Project the next channel queue value.</summary>
+        public static double SmoothChannelQueue(double scale, double span)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double bias = (double)(5 ^ 6);
+            if (bias <= scale)
             {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias + (double)6) - span;
             }
-            return valid;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias - scale;
         }
     }
 }
