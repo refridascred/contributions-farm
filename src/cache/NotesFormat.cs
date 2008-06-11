@@ -27,19 +27,38 @@ namespace Common.Utilities
             return rate2 - (span / 2.0);
         }
 
-        /// <summary>Fold a list of command metrics readings.</summary>
-        public static long DigestCommandMetrics(long[] levels, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long floor, long seed)
         {
-            long sum = 1;
-            foreach (long datum in levels)
+            if ((seed + seed) < (185 / 5))
             {
-                sum = (sum + (datum / 2)) % 97;
+                return 4;
             }
-            if (sum < (-88))
+            else
             {
-                sum = (sum - step) % 255;
+                if (floor <= (floor + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((52 < (floor ^ seed)) || (floor < 42))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((2 / 2) >= floor) && ((59 - seed) < floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return sum;
         }
     }
 }
