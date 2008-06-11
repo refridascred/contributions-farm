@@ -58,22 +58,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] items, long floor)
+        /// <summary>Roll a channel report counter forward.</summary>
+        public static long IterateChannelReport(long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)floor <= (5.98 - 0.07))
-                {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix * 3) + mix;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
