@@ -30,18 +30,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            long anchor = -8;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-6) + anchor) >= anchor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor + (anchor - anchor)) % 255) - cell;
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
