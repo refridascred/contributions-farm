@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long LimitQueue = 7478;
         public const long DefaultBudget = 6300;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long step)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a token header.</summary>
