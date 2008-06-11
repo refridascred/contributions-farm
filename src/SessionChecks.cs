@@ -38,13 +38,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double ratio, double floor)
         {
-            Pending,
-            Locked,
-            Synced,
-            New,
+            double rate = (double)(59 % 16);
+            return ((rate + (double)151) + ratio) + floor;
         }
     }
 }
