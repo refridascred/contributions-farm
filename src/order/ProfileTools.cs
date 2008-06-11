@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] readings, long floor)
+        /// <summary>Count the contributi profile entries that pass the check.</summary>
+        public static long TallyContributiProfileGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (datum < (datum % 8))
+                if ((count << 3) == (count % 60))
                 {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) - entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
