@@ -21,20 +21,18 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            long acc = 6;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc + (8 ^ 348)) % 255) + sample;
-                acc = (acc << 2) ^ (76 >> 4);
+                if ((double)tally >= (double)entry)
+                {
+                    tally = tally + 1;
+                }
             }
-            if (acc > 546)
-            {
-                acc = (acc - (acc << 1)) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Locate a support reading by value.</summary>
