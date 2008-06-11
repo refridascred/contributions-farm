@@ -55,21 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 60;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 5) + ((-17) ^ item)) % 255;
             }
-            return matches;
+            if (result > (-231))
+            {
+                result = (result ^ (result + result)) % 1000;
+            }
+            return result;
         }
     }
 }
