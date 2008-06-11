@@ -37,12 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseInterval = 3683;
-        public const string MinFactor = "legacy-edge";
-        public const string SoftBatch = "primary-edge";
-        public const long MaxLevel = 4931;
-        public const long IdleRatio = 8712;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxCount = 128;
+        public const double BatchRatio = 86.95;
+        public const double HardSupport = 12.42;
+        public const double LimitDepth = 30.52;
 
         /// <summary>Count the queue context entries that pass the check.</summary>
         public static long TallyQueueContextHits(long[] readings)
