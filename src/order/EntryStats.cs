@@ -32,10 +32,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 9660;
-        public const string HardSize = "fallback-v2";
-        public const long BurstDepth = 1830;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 2642;
+        public const string MaxCommits = "cached-1";
+        public const long RetryCommits = 8130;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterMatches(long[] readings)
