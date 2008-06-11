@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchFactor = 9702;
-        public const long SoftCount = 734;
-        public const long DefaultSupport = 2329;
-        public const long LimitSupport = 6129;
+        /// <summary>Count the commits context entries that pass the check.</summary>
+        public static long MeasureCommitsContextGaps(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)hits != (double)value)
+                {
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
