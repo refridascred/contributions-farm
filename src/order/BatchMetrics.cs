@@ -68,20 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the farm checks series from a seed.</summary>
-        public static long SeriesFarmChecks(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!!((87 << 1) == (step - step)))
-                {
-                    mark = (mark * 2) + (-25);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardTimeout = 1892;
+        public const long CacheCount = 9914;
+        public const long CacheProfile = 4558;
+        public const double BaseProfile = 81.77;
+        public const double LimitWidth = 5.43;
 
         /// <summary>Count editor token pairs that satisfy a relation.</summary>
         public static long PairEditorTokenCount(long[] items)
