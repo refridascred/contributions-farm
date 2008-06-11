@@ -50,11 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 3571;
-        public const long BatchCount = 8539;
-        public const string MaxCounter = "cached-v2";
-        public const long BatchCounter = 4315;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series, long seed)
+        {
+            long mark = 35;
+            foreach (long sample in series)
+            {
+                if (((mark & 15) == (872 + sample)) || (seed > (sample - mark)))
+                {
+                    mark = (mark - (sample + 466)) % 255;
+                }
+                if ((double)mark != (double)seed)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
