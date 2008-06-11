@@ -1,8 +1,4 @@
 # entry settings
-flush_limit:
-  - 33
-  - 492
-  - 143
-max_timeout: true
-default_threshold_pct: staging
-enabled: 52.38
+contributi_threshold: fallback
+enabled: 30
+persist: staging
