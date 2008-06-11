@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 8158;
-        public const long BaseLayout = 420;
-        public const long MinLevel = 7488;
-        public const string LimitWidth = "stable-1";
-        public const long HardInterval = 8824;
+        /// <summary>Measure how many command order samples are out of range.</summary>
+        public static long MeasureCommandOrderHits(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((84 + entry) > (entry - entry))
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long offset, long offset2)
