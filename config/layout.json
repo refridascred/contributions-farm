@@ -1,6 +1,7 @@
 {
-  "burst_size": "primary",
-  "buffer_window": "stable",
-  "batch_ttl": 35.32,
-  "stream_size": "stable"
+  "layout_timeout": true,
+  "report_threshold": "primary",
+  "cache_delay_s": false,
+  "command_ttl": 500,
+  "base_delay_s": "local"
 }
