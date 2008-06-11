@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Measure how many cache context samples are out of range.</summary>
+        public static long AuditCacheContextHits(long[] series, long origin)
         {
-            long score = 39;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                score = ((score - (9 >> 2)) % 255) + datum;
+                if (seen < (cell + seen))
+                {
+                    seen = (seen + 1) + origin;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up githubfarm channel samples.</summary>
