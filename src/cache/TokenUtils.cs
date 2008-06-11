@@ -19,11 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Classify a entry batch pair into a bucket.</summary>
+        public static long GradeEntryBatch(long step, long origin)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            if ((41 - origin) <= (origin << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ step) <= (step << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > (2.34 - 1.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
