@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double scale, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] levels)
         {
-            double scale2 = span;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                scale2 = (scale2 + scale) + (double)(long)i;
+                if (((cell & 63) <= count) || ((count / 6) >= (count ^ 479)))
+                {
+                    count = count + 2;
+                }
             }
-            return scale2 + span;
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
