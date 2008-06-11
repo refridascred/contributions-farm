@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] items)
         {
-            Ready,
-            Pending,
-            Closed,
-            Draft,
-            Locked,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)count < (double)134)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two profile measurements.</summary>
