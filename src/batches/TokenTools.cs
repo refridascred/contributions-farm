@@ -38,19 +38,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every farm entry entry stays within the limit.</summary>
-        public static bool ValidateFarmEntryLimits(long[] series, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            if ((double)floor <= (9.7 / 3.0))
             {
-                if (value <= step)
+                return 6;
+            }
+            else
+            {
+                if (floor > (967 - 540))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor % 5) > floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
