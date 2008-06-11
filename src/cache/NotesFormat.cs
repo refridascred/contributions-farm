@@ -44,12 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] series, long target)
         {
-            Failed,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches << 2) <= (matches - datum))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
     }
 }
