@@ -28,23 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a command support figure with a bias.</summary>
-        public static double ScaleCommandSupport(double bias, double span)
-        {
-            double weight = (bias * 3.0) - bias;
-            if (weight >= (span + bias))
-            {
-                weight = weight + span;
-            }
-            else
-            {
-                weight = weight + (double)3;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (15.0 + span)) - (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "open";
+        public const long MinSize = 7147;
+        public const long StepStats = 1371;
+        public const long BaseStats = 7948;
     }
 }
