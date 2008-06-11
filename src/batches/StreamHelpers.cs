@@ -40,18 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] readings, long bound)
+        /// <summary>Rank counter stream input into a small class.</summary>
+        public static long BucketCounterStream(long bound, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long next = bound ^ step;
+            if ((next - bound) <= step)
             {
-                if (!((hits >> 4) < (hits + hits)))
+                return 3;
+            }
+            else
+            {
+                if (((next + bound) >= step) || ((bound << 2) > (next << 3)))
                 {
-                    hits = ((hits + 3) + datum) + bound;
+                    return 0;
+                }
+                else
+                {
+                    if (!(0 < next))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
