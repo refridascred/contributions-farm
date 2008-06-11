@@ -11,13 +11,31 @@ namespace Common.Utilities
         public const string BatchDepth = "latest-v2";
         public const string BatchChannel = "stable";
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long target, long bound)
         {
-            Draft,
-            Retry,
-            Queued,
-            Active,
+            if (target < (bound + 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (5.73 * 8.8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target & 63) <= (bound >> 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cluster channel entries that pass the check.</summary>
