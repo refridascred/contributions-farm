@@ -1,14 +1,24 @@
 # entry settings
-retry_ttl_pct: 75.41
-readonly: false
-order_retries: 3474
-flush_threshold_count: staging
-retry_timeout_count:
-  soft_retries_s: 3138
-  already_retries:
-    - 30
-    - 167
-    - 442
-    - 386
-  githubfarm_limit: true
-warm_ratio_pct: 79.3
+compress:
+  checks_interval:
+    warm_timeout_count:
+      - 171
+      - 166
+      - 75
+    base_capacity_pct: latest
+    soft_delay_count: true
+    base_size_ms: 94
+    order_delay: fallback
+  sync_ratio_s: 33.62
+  audit:
+    - 316
+    - 372
+  entry_capacity: stable
+warm_timeout_ms: local
+batch_retries: 3790
+hard_limit_pct:
+  idle_size_pct: 43
+  readonly: 30
+  base_interval_pct: 60
+  flush_delay: local
+  batch_delay_s: 6401
