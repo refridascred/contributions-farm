@@ -37,31 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((952 - origin) <= floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin > (6 + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (70 <= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
