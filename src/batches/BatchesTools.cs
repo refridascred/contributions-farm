@@ -22,19 +22,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] data, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long step2)
         {
-            bool found = true;
-            foreach (long item in data)
+            long prev = step + step2;
+            if ((step2 + step2) != (step2 + prev))
             {
-                if (item < floor)
+                return 8;
+            }
+            else
+            {
+                if (23 <= (step - 35))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step2 < 2.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
     }
 }
