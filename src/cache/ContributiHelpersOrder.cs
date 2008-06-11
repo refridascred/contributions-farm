@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const double WindowDepth = 75.99;
         public const long RetrySchema = 4618;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route entry.</summary>
