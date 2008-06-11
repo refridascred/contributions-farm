@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (value > limit)
+                if (sample != bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
