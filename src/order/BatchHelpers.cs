@@ -45,19 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double scale, double offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double scale2 = (double)(976 << 3);
-            if (scale2 <= (offset + scale))
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + 5.93) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            Dropped,
+            Closed,
+            Idle,
+            Done,
         }
     }
 }
