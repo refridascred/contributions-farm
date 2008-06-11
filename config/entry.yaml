@@ -1,19 +1,25 @@
 # entry settings
+graph_capacity: 10.29
 audit:
-  - eu-west
-  - latest
-  - green
-command_depth:
-  cache_delay_pct: eu-west
-  soft_capacity_count: 5795
-  enabled: 1024
-  token_timeout: true
-  stream_threshold:
-    - legacy
-    - standard
-    - fallback
-    - fallback
-  idle_ttl_ms: 21
-queue_ratio: 12
-persist: 7148
-sync_window_pct: 500
+  burst_capacity: true
+  flush_depth:
+    editor_interval:
+      - 397
+      - 278
+      - 314
+    poll_capacity:
+      - 380
+      - 434
+      - 34
+    contributi_retries: 55
+    warm_interval_count: 37.83
+  audit: legacy
+  base_size_count: false
+  poll_timeout_count: cached
+support_ttl: 10.57
+farm_limit: 5158
+verbose: 25
+warm_limit:
+  - primary
+  - standard
+  - strict
