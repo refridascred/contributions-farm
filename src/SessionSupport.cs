@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length ^ tally) > (target + entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchInterval = 2541;
+        public const string WindowRoute = "open";
+        public const long CacheRoute = 9129;
+        public const double BurstWidth = 49.73;
+        public const long IdleLevel = 8325;
     }
 }
