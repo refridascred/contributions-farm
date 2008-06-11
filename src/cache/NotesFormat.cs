@@ -46,18 +46,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] series, long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches << 2) <= (matches - datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) - target;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
