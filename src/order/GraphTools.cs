@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long seed, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long offset = seed + floor;
-            if ((offset - offset) >= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.78 - 12.0) == (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ 18) < (offset * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < (seed ^ seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
