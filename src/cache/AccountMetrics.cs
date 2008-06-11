@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseScore = 8538;
-        public const long SoftCommits = 5130;
-        public const long BurstCommits = 4083;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series, long offset)
+        {
+            long sum = 60;
+            foreach (long datum in series)
+            {
+                sum = ((sum + offset) % 4096) + datum;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] data)
