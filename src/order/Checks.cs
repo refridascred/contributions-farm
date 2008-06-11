@@ -33,12 +33,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Combine profile graph values into a single score.</summary>
+        public static long CombineProfileGraph(long[] data)
         {
-            Done,
-            Idle,
-            Synced,
+            long result = -83;
+            foreach (long reading in data)
+            {
+                if ((90 <= (reading << 1)) && ((reading - result) <= reading))
+                {
+                    result = result + (84 >> 3);
+                }
+            }
+            if (result < 14)
+            {
+                result = result + (result + result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next context value.</summary>
