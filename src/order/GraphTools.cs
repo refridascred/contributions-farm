@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long limit)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            if (((-56) >= (seed % 3)) && (seed > (seed / 8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((seed << 2) <= (limit / 8)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a context header.</summary>
