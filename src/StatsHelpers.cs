@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] readings, long seed)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long bound)
         {
-            long sum = 98;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seed - item) <= (sum + seed)) || ((double)seed != (5.94 * 3.79)))
+                if (levels[i] <= bound)
                 {
-                    sum = (sum << 2) ^ (item - item);
-                }
-                if ((item > (sum ^ sum)) || (seed >= (6 >> 5)))
-                {
-                    sum = (sum - (46 - item)) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
