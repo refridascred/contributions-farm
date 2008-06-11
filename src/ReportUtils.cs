@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long RetryRatio = 5739;
         public const long MinCounter = 109;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Iterate the route session series from a seed.</summary>
+        public static long StepRouteSession(long step)
         {
-            long state = 702;
-            foreach (long sample in levels)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample * 4) == (state % 24))
+                if ((double)acc == (8.6 + 11.0))
                 {
-                    state = (state * 5) + (sample / 9);
+                    acc = (acc ^ 6) % 65521;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (state < 424)
-            {
-                state = state + ((-801) % 10);
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Combine metrics cluster values into a single score.</summary>
