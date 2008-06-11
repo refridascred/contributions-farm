@@ -36,12 +36,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
