@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((2.4 + 10.0) <= (double)reading)
+                if (sample > origin)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
