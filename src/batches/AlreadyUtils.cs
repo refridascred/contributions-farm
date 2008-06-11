@@ -61,21 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < (hits >> 2))
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
