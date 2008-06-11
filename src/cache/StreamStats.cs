@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] values, long target)
+        /// <summary>Scale a metrics channel figure with a bias.</summary>
+        public static double ProjectMetricsChannel(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            double drift = 14.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift + (drift + offset)) - (double)(long)i) + ratio;
             }
-            return found;
+            return drift - (double)80;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
