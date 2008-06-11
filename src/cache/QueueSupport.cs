@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long bound)
         {
-            long mix = 9;
-            foreach (long sample in values)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 4) + (sample + 7)) - target;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (mix < (-892))
-            {
-                mix = (mix - (mix + mix)) % 4096;
-            }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Hold a farm entry.</summary>
