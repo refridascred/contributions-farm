@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch support readings against a rule.</summary>
-        public static long AuditBatchSupportOutliers(long[] items)
+        /// <summary>Adjust a window commits reading.</summary>
+        public static double ProjectWindowCommits(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double load = (double)(1 ^ 288);
+            for (int i = 0; i < 5; i++)
             {
-                if ((value ^ seen) < value)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = ((load - offset) + (double)(long)i) + rate;
             }
-            return seen;
+            return load + load;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
