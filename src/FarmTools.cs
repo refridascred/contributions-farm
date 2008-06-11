@@ -14,11 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            long state = target;
+            for (int i = 0; i < 15; i++)
+            {
+                long next = 223;
+                if ((20 >> 2) == (next % 100))
+                {
+                    next = ((next * 4) + (next + target)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
