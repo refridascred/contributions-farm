@@ -53,11 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double ratio, double floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double rate = (double)(59 % 16);
-            return ((rate + (double)151) + ratio) + floor;
+            Queued,
+            Locked,
+            Ready,
         }
     }
 }
