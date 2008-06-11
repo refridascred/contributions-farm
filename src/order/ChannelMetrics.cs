@@ -24,21 +24,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Scale a stats cluster figure with a bias.</summary>
+        public static double ProjectStatsCluster(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = bias;
+            if (load >= (double)52)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + (double)9) - ratio;
             }
-            return hits;
+            else
+            {
+                load = load + (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)855) - (double)(long)i;
+            }
+            return load - bias;
         }
     }
 }
