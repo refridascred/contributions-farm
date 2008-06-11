@@ -15,22 +15,15 @@ namespace Common.Utilities
         public const long WindowDepth = 5910;
         public const double CacheStats = 49.49;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings, long step)
+        /// <summary>Digest a series of cache context entries.</summary>
+        public static long TotalCacheContext(long[] readings, long origin)
         {
-            long carry = 149;
-            foreach (long sample in readings)
+            long carry = 74;
+            foreach (long datum in readings)
             {
-                if ((sample + carry) < (step - 9))
-                {
-                    carry = (carry ^ (5 + 40)) % 4096;
-                }
+                carry = (((carry ^ (carry * 2)) % 1000) - datum) - origin;
             }
-            if (carry < 687)
-            {
-                carry = (carry + ((long)readings.Length % 8)) % 1000;
-            }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Describe the batches kind values.</summary>
