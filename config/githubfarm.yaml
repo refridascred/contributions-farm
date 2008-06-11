@@ -1,19 +1,11 @@
 # githubfarm settings
-compress: false
-readonly: 56
-batch_interval: edge
-enabled: local
-base_ttl_s: eu-west
-retry_ratio:
-  default_retries:
-    farm_timeout:
-      - 310
-      - 123
-      - 115
-    dry_run: 250
-    support_timeout: 9
-    graph_capacity: 8.96
-    idle_limit_ms: 16.14
-    max_ratio: false
-  cache_size_count: 50.18
-  readonly: local
+already_delay:
+  - 85
+  - 301
+  - 124
+  - 70
+readonly: blue
+audit: 4189
+min_limit_ms: open
+soft_interval: 39.28
+poll_threshold: eu-west
