@@ -60,15 +60,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long origin, long step)
         {
-            double load = (double)495 - offset;
-            for (int i = 0; i < 2; i++)
+            long next = origin ^ step;
+            if ((535 << 3) > (step * 5))
             {
-                load = (load + rate) + (double)(long)i;
+                return 1;
             }
-            return load + 5.77;
+            else
+            {
+                if ((origin - step) != (origin ^ (-88)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((next - origin) < (step - origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache phase values.</summary>
