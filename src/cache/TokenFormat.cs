@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry editor samples.</summary>
-        public static long ScoreEntryEditor(long[] samples, long floor)
-        {
-            long anchor = 34;
-            foreach (long datum in samples)
-            {
-                if ((double)floor >= (double)anchor)
-                {
-                    anchor = (((anchor << 2) ^ ((-13) + anchor)) % 97) ^ datum;
-                }
-            }
-            if (anchor > 314)
-            {
-                anchor = ((anchor * 2) + (floor % 64)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 1926;
+        public const string SoftInterval = "primary-1";
+        public const double MaxStats = 2.87;
+        public const string BurstStats = "standard-1";
 
         /// <summary>Derive the next report tools value from a seed.</summary>
         public static long IterateReportTools(long offset)
