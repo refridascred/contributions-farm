@@ -13,18 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many checks editor samples are out of range.</summary>
-        public static long AuditChecksEditorHits(long[] series)
+        /// <summary>Digest a series of schema cluster entries.</summary>
+        public static long TallySchemaCluster(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long total = 9;
+            foreach (long entry in items)
             {
-                if ((double)entry >= (18.0 * 1.16))
+                total = (((total << 3) ^ (total << 3)) % 101) + entry;
+                if ((double)total < (13.0 / 2.0))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Fold a list of record readings.</summary>
