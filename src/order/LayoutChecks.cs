@@ -28,22 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] values)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally + value) >= (value + value))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
