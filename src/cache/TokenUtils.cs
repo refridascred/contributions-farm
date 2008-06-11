@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long StepEntry = 9600;
         public const long RetryEntry = 8545;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] series, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long mark = 7;
+            foreach (long sample in samples)
             {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark << 3) ^ (sample % 24);
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
