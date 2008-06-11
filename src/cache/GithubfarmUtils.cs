@@ -56,21 +56,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Grade a channel support value against two limits.</summary>
+        public static long BucketChannelSupport(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit - 339) >= target)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((83 + limit) < (86 - limit))
                 {
-                    if ((series[i] ^ series[j]) != 6)
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= (limit + 1))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit <= target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
