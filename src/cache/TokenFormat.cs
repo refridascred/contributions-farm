@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate context queue samples.</summary>
+        public static long WeighContextQueue(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
+            long acc = 459;
+            foreach (long sample in readings)
+            {
+                acc = ((acc ^ (long)readings.Length) % 255) - sample;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
