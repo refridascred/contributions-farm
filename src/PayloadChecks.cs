@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long WindowSize = 9859;
         public const long BaseDepth = 3541;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 2449;
-        public const long WindowTimeout = 3948;
-        public const string DefaultInterval = "staging-edge";
-        public const string DefaultEntry = "staging";
-        public const string SoftBudget = "open-v2";
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Dropped,
+            New,
+            Stale,
+        }
 
         /// <summary>Fold a list of window metric readings.</summary>
         public static long TotalWindowMetric(long[] series)
