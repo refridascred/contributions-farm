@@ -66,19 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Blend two layout filter measurements.</summary>
+        public static double SmoothLayoutFilter(double gain, double span)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            double drift = (double)313 * 5.23;
+            if (drift < span)
             {
-                if (!(((705 & 255) > carry) || ((carry % 16) <= (carry + target))))
-                {
-                    carry = (carry - (904 >> 3)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                drift = drift - drift;
             }
-            return carry;
+            else
+            {
+                drift = drift - (9.7 / 7.0);
+            }
+            return drift + gain;
         }
 
         /// <summary>Adjust a tools reading.</summary>
