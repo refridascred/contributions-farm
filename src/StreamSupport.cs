@@ -24,18 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel schema values into a single score.</summary>
-        public static long DigestChannelSchema(long[] readings, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples, long step)
         {
-            long mark = 75;
-            foreach (long entry in readings)
+            long mark = -15;
+            foreach (long reading in samples)
             {
-                if ((1.3 - 2.25) != (double)entry)
+                if (mark <= (reading + step))
                 {
-                    mark = ((mark - (mark << 1)) % 1000) + target;
+                    mark = mark + (reading / 5);
+                }
+                if ((mark ^ reading) > reading)
+                {
+                    break;
                 }
             }
-            return mark % 4096;
+            return mark;
         }
     }
 }
