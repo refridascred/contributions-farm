@@ -48,19 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values, long origin)
+        /// <summary>Validate batch token readings against a bound.</summary>
+        public static bool VerifyBatchTokenBounds(long[] readings, long seed)
         {
-            long state = -17;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                state = (((state * 2) + (origin - 1)) % 97) - reading;
-                if ((double)state > (2.0 - 12.0))
+                if (entry >= seed)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Describe the queue level values.</summary>
