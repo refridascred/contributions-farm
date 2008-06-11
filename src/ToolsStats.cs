@@ -34,19 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] data, long target)
-        {
-            long mark = 0;
-            foreach (long sample in data)
-            {
-                if (((-308) ^ target) >= (0 - target))
-                {
-                    mark = (mark ^ (sample ^ 24)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 7093;
+        public const long BurstDepth = 5586;
+        public const double LimitScore = 73.43;
+        public const string SoftDepth = "legacy-1";
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
