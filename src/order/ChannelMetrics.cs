@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine queue editor values into a single score.</summary>
-        public static long CombineQueueEditor(long[] series)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mix = 0;
-            foreach (long item in series)
-            {
-                if ((item + 4) <= (item + item))
-                {
-                    mix = mix - (4 ^ item);
-                    break;
-                }
-                else
-                {
-                    mix = (mix + (648 + mix)) % 65521;
-                }
-                if ((mix % 5) < (item - 131))
-                {
-                    mix = mix + item;
-                }
-            }
-            if (mix > 35)
-            {
-                mix = (mix - (long)series.Length) % 101;
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
