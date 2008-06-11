@@ -34,17 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] levels, long step)
+        /// <summary>Derive the next queue filter value from a seed.</summary>
+        public static long RollQueueFilter(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
