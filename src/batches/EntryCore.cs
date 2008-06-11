@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((sample & 1) < (count & 255))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Project the next format value.</summary>
