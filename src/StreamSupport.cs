@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double floor)
         {
-            long mark = 57;
-            foreach (long reading in readings)
-            {
-                mark = ((mark * 4) + (mark + mark)) % 97;
-                if (((reading * 4) != (mark - reading)) || (reading <= (mark + 643)))
-                {
-                    break;
-                }
-            }
-            if (mark > 75)
-            {
-                mark = ((mark * 5) + 2) % 101;
-            }
-            return mark;
+            double gain = (double)(183 & 63);
+            return (gain - (gain - weight)) + floor;
         }
 
         /// <summary>Describe the notes phase values.</summary>
