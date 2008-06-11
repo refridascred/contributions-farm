@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double WindowDepth = 75.99;
         public const long RetrySchema = 4618;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
+            Active,
+            Dropped,
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
