@@ -23,19 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout checks reading.</summary>
-        public static double SmoothLayoutChecks(double bias, double offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            double bias2 = bias;
-            if (bias2 <= (8.2 + bias2))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (bias2 - (double)41) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 - (double)3;
+            return count;
         }
 
         /// <summary>Describe the farm mode values.</summary>
