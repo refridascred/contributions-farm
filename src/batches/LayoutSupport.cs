@@ -55,19 +55,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] readings, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long carry = 619;
+            foreach (long sample in readings)
             {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = carry - (sample + 86);
             }
-            return found;
+            if (carry < (-48))
+            {
+                carry = ((carry << 3) ^ (carry - 85)) % 97;
+            }
+            return carry % 97;
         }
     }
 }
