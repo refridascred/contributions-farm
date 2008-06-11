@@ -1,6 +1,7 @@
 {
-  "verbose": true,
-  "dry_run": "latest",
-  "persist": "blue",
-  "max_depth": false
+  "graph_threshold": 500,
+  "idle_depth": false,
+  "enabled": true,
+  "flush_size": "edge",
+  "poll_ttl": "green"
 }
