@@ -79,19 +79,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] data, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mix = -829;
-            foreach (long item in data)
-            {
-                mix = (((mix << 2) ^ (4 >> 5)) % 101) ^ item;
-            }
-            if (mix > 812)
-            {
-                mix = ((mix << 2) ^ target) % 255;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
