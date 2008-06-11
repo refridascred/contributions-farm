@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Locked,
+            New,
+            Queued,
+            Stale,
+            Closed,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
