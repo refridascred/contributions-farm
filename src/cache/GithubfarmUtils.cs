@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const long MaxReport = 7878;
         public const double StepFactor = 47.01;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long seed, long origin)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            if (seed <= (3 + 81))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed * 2) >= 6)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
