@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] levels)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)hits != (8.57 / 3.0))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
