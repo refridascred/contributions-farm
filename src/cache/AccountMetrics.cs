@@ -68,22 +68,16 @@ namespace Common.Utilities
         public const double StepFilter = 29.06;
         public const string SoftWidth = "local-edge";
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] items, long bound)
+        /// <summary>Iterate the layout queue series from a seed.</summary>
+        public static long SeriesLayoutQueue(long seed)
         {
-            long mix = 7;
-            foreach (long cell in items)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (((double)bound > 6.0) && ((mix & 127) < (cell - bound)))
-                {
-                    mix = mix - (cell * 4);
-                }
-                if ((mix >= (mix / 9)) || ((mix + 327) <= (cell / 4)))
-                {
-                    break;
-                }
+                total = ((total * 5) + (seed % 5)) % 1000;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mix;
+            return total;
         }
     }
 }
