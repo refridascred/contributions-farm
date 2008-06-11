@@ -35,18 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading ^ reading) > (matches * 5))
+                if ((data[i] == bound) && ((data[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
