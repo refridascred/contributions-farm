@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((offset - (-607)) <= cell)
+                if ((hits & 3) > (93 + item))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
