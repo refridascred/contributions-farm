@@ -39,11 +39,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 1515;
+        public const long RetryBudget = 436;
+        public const long WindowScore = 8188;
     }
 }
