@@ -1,7 +1,22 @@
 {
-  "channel_capacity": 5551,
-  "verbose": [434, 308, 442],
-  "audit": false,
-  "batch_timeout_ms": 27,
-  "entry_limit": "cached"
+  "dry_run": 61,
+  "persist": {
+    "metric_interval": 500,
+    "farm_limit": 68.43,
+    "hard_depth": 3867,
+    "audit": 526
+  },
+  "base_ttl_count": 30,
+  "stream_delay": {
+    "min_ttl_ms": "green",
+    "audit": {
+      "max_window": "primary",
+      "batch_size_ms": true,
+      "burst_retries_pct": [157, 350],
+      "audit": 30
+    },
+    "metric_capacity": [47, 319, 156, 295],
+    "farm_retries": 250
+  },
+  "compress": [57, 134, 425, 14]
 }
