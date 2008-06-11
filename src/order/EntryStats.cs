@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 710;
         public const long DefaultFarm = 9834;
 
-        /// <summary>Match up command format samples.</summary>
-        public static long OverlapCommandFormatCount(long[] items)
+        /// <summary>Combine metrics support values into a single score.</summary>
+        public static long WeighMetricsSupport(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 35;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)target >= (1.0 * 7.4)))
                 {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry + (12 + carry)) % 65521) ^ sample;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
