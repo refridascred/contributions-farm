@@ -38,19 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] samples, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
