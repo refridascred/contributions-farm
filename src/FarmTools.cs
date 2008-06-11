@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Locked,
-            New,
-            Queued,
-            Stale,
-            Closed,
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
