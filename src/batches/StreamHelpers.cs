@@ -71,22 +71,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi stats entries that pass the check.</summary>
-        public static long CountContributiStatsHits(long[] items, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if (!((9.3 * 7.11) != (double)limit))
             {
-                if ((876 + value) <= seen)
+                return 6;
+            }
+            else
+            {
+                if ((-48) <= limit)
                 {
-                    seen = (seen + 2) - step;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
