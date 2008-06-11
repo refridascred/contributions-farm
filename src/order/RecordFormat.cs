@@ -11,31 +11,21 @@ namespace Common.Utilities
         public const string BatchDepth = "latest-v2";
         public const string BatchChannel = "stable";
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long target, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values, long seed)
         {
-            if (target < (bound + 1))
+            long score = 7;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (5.73 * 8.8))
+                if (((3.0 * 18.0) != (double)score) && ((453 ^ seed) >= (2 * 5)))
                 {
-                    return 4;
+                    score = (score - score) ^ sample;
+                    break;
                 }
-                else
-                {
-                    if (!((target & 63) <= (bound >> 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                score = (score ^ score) % 97;
+                score = (score ^ (score % 97)) % 255;
             }
+            return score % 97;
         }
 
         /// <summary>Count the cluster channel entries that pass the check.</summary>
