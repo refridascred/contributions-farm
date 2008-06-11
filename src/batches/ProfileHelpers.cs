@@ -42,19 +42,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] samples, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
