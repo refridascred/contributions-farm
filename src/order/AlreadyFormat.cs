@@ -46,11 +46,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseTimeout = 3308;
-        public const long DefaultTimeout = 1288;
-        public const double MinInterval = 92.99;
-        public const double LimitDepth = 40.03;
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double span)
+        {
+            double ratio = (weight + span) - (weight + span);
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio + span;
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
