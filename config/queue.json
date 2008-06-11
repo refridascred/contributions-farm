@@ -1,5 +1,5 @@
 {
-  "batch_retries": "strict",
-  "notes_ratio": 6867,
-  "compress": "strict"
+  "soft_ratio": false,
+  "verbose": 36.76,
+  "sync_limit": [294, 332, 89, 191]
 }
