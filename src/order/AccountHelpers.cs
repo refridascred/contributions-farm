@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long offset, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long seed, long seed2)
         {
-            long next = offset + bound;
-            if ((double)next < (0.9 - 17.0))
+            long edge = seed + seed2;
+            if ((seed2 << 1) < seed)
             {
                 return 7;
             }
             else
             {
-                if ((next * 3) <= (bound & 3))
+                if (!(seed > (1 >> 5)))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 1;
+                    if (edge > (1 + edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)4 >= (double)edge)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
