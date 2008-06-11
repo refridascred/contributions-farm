@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double scale, double offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long offset)
         {
-            double bias = scale;
-            if (bias < (6.3 + bias))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - (double)56) - offset;
+                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (scale * 14.0);
-            }
-            return bias + (double)37;
+            return -1;
         }
 
         /// <summary>Describe the filter class values.</summary>
