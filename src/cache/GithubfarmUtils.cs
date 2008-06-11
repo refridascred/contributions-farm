@@ -54,14 +54,18 @@ namespace Common.Utilities
             return gain + (offset + offset);
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many order stream samples are out of range.</summary>
+        public static long AuditOrderStreamHits(long[] values, long seed)
         {
-            Paused,
-            Stale,
-            Synced,
-            Failed,
-            Retry,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!!((30 - 15) < (cell + cell)))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
