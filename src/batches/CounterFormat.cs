@@ -33,14 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Done,
-            Dropped,
-            Active,
-            Pending,
-            Closed,
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
