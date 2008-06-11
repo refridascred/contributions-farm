@@ -47,18 +47,13 @@ namespace Common.Utilities
         public const long BaseProfile = 9930;
         public const double LimitProfile = 50.65;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] values, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) == (55 % 12))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Closed,
+            Locked,
         }
     }
 }
