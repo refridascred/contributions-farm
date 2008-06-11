@@ -55,22 +55,31 @@ namespace Common.Utilities
         public const long DefaultFactor = 2217;
         public const long StepAlready = 7434;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] readings, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((double)origin2 != (1.82 * 4.2))
             {
-                if (((double)tally < 3.4) || (73 <= tally))
+                return 7;
+            }
+            else
+            {
+                if (origin <= (origin2 + origin))
                 {
-                    tally = ((tally + 3) + reading) + floor;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((18.0 / 3.0) <= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
