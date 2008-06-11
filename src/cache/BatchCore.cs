@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long state = 87;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 3) ^ (entry + 327)) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (state > 0)
-            {
-                state = (state * 3) + (state + state);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Rank window input into a small class.</summary>
