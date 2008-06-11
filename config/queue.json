@@ -1,5 +1,23 @@
 {
-  "retry_interval": "local",
-  "contributi_interval": 1122,
-  "audit": false
+  "notes_window": {
+    "metric_delay": 82,
+    "verbose": {
+      "farm_retries": "cached",
+      "soft_ttl_pct": "stable",
+      "strict": "green",
+      "enabled": false,
+      "persist": 8.86,
+      "idle_retries_ms": ["fallback", "strict"]
+    },
+    "tools_depth": true,
+    "batch_delay_ms": {
+      "warm_size_s": 71,
+      "tools_ratio": 250,
+      "farm_limit": 3.97
+    },
+    "persist": true
+  },
+  "poll_retries": "green",
+  "enabled": "fallback",
+  "default_window": 55.59
 }
