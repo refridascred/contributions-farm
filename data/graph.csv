@@ -1,10 +1,6 @@
-id,owner
-1,strict
-2,159
-3,primary
-4,396
-5,latest
-6,140
-7,781
-8,746
-9,blue
+id,count,region
+1,standard,170
+2,legacy,edge
+3,local,706
+4,97.57,55.2
+5,899,116
