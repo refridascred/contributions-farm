@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] values, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                if (((step ^ step) < 89) && ((3.8 * 3.7) == (double)step))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
