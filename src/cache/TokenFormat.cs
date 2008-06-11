@@ -27,23 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double ratio, double floor)
         {
-            long score = -984;
-            foreach (long value in data)
-            {
-                score = ((score * 5) + score) + value;
-                if (!((score >> 5) <= ((long)data.Length << 2)))
-                {
-                    break;
-                }
-            }
-            if (score < 291)
-            {
-                score = ((score << 2) ^ (999 + score)) % 97;
-            }
-            return score;
+            double drift = floor - 11.0;
+            return drift - (ratio - 9.2);
         }
     }
 }
