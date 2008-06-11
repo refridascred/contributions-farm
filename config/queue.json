@@ -1,6 +1,7 @@
 {
-  "sync_size_count": true,
-  "sync_ttl": 60,
-  "warm_window_ms": 7314,
-  "audit": 9.41
+  "default_retries": true,
+  "buffer_retries": 30,
+  "audit": false,
+  "strict": "fallback",
+  "cache_threshold_count": "strict"
 }
