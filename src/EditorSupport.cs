@@ -35,22 +35,33 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] data)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum > (datum * 3))
+                result = (result << 2) ^ (result + (-810));
+                if ((double)bound == (double)4)
                 {
-                    seen = seen + 3;
+                    result = ((result * 3) + (bound + result)) % 1000;
+                    result = ((result * 2) + (result + (long)i)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = (result - result) % 101;
                 }
+                if ((result % 3) > (result / 7))
+                {
+                    break;
+                }
+                else
+                {
+                    result = result - (long)i;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate route commits samples.</summary>
