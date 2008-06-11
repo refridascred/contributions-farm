@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            public bool Token { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!!((sum * 2) == (sum >> 3)))
+                {
+                    sum = ((sum << 2) ^ (sum + (long)i)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
