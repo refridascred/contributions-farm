@@ -97,16 +97,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already format counter forward.</summary>
-        public static long IterateAlreadyFormat(long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry * 4) + floor) % 101;
-                carry = ((carry * 4) + (long)i) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
     }
 }
