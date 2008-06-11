@@ -18,11 +18,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitSize = 90.27;
-        public const double BurstBudget = 36.57;
-        public const long WindowAlready = 6414;
-        public const long BaseTimeout = 6978;
-        public const long HardTimeout = 2917;
+        /// <summary>Validate report graph readings against a bound.</summary>
+        public static bool VerifyReportGraphBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
