@@ -32,19 +32,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] values, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
-            bool ready = true;
+            long matches = 0;
             foreach (long reading in values)
             {
-                if (reading <= step)
+                if ((reading ^ reading) > (matches * 5))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Derive the next order cluster value from a seed.</summary>
