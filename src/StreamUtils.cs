@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph window value.</summary>
-        public static double ProjectGraphWindow(double weight, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] levels)
         {
-            double bias2 = (double)(725 - (-96));
-            return bias2 + (weight + bias);
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((8.05 - 5.6) > (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
