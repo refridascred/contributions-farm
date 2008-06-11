@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long BurstCount = 561;
         public const double LimitCache = 3.77;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] values, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (seen >= 256)
-                {
-                    seen = ((seen + 3) ^ entry) + seed;
-                }
-            }
-            return seen;
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the token kind values.</summary>
