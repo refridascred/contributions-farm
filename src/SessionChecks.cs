@@ -17,17 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] series, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((series[i] < limit) && ((series[i] % 2) != 0))
+                if (((long)data.Length << 1) <= (6 + limit))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the graph route entries that pass the check.</summary>
