@@ -1,4 +1,8 @@
 # entry settings
-cache_threshold: 250
-burst_window_s: green
-burst_depth_count: staging
+flush_limit:
+  - 33
+  - 492
+  - 143
+max_timeout: true
+default_threshold_pct: staging
+enabled: 52.38
