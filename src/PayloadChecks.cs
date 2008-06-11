@@ -61,17 +61,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first report checks entry that matches the target.</summary>
-        public static long FindReportChecksIndex(long[] values, long step)
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long IterateQueueContributi(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry << 2) ^ 847;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
