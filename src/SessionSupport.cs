@@ -15,10 +15,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 3980;
-        public const string BatchDepth = "alpha-v2";
-        public const long WindowGithubfarm = 4897;
+        /// <summary>Blend two session report measurements.</summary>
+        public static double ScaleSessionReport(double bias, double floor)
+        {
+            double rate = floor;
+            if (rate < rate)
+            {
+                rate = (rate + rate) + bias;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Count commits metric pairs that satisfy a relation.</summary>
         public static long MatchCommitsMetricCount(long[] items)
