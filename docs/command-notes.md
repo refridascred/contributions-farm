@@ -1,11 +1,15 @@
 # Command notes
 
-When a filter fails, the notes handler retries a few times before giving up.
-Run the schema check before changing any cluster limits.
-The token module keeps githubfarm values in sync with the report cache.
+Run the queue check before changing any githubfarm limits.
+Keep entry and graph names short and lowercase.
+
+When a order fails, the farm handler retries a few times before giving up.
+When a window fails, the channel handler retries a few times before giving up.
+Keep metrics and support names short and lowercase.
 
 ## Guidelines
 
-- Log every cache change
-- Prefer already defaults
-- Validate account input early
+- Document new buffer fields
+- Log every window change
+- Keep window values small
+- Validate format input early
