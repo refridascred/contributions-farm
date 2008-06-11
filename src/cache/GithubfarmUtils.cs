@@ -70,9 +70,32 @@ namespace Common.Utilities
             return gain + (offset + offset);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinBudget = "staging-1";
-        public const double HardFactor = 92.32;
-        public const long IdleBudget = 815;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long seed, long bound)
+        {
+            long edge = seed - bound;
+            if (((edge / 8) >= bound) || (9 > bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (double)18)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)seed <= 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
