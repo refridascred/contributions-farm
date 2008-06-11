@@ -13,18 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the entry channel entries that pass the check.</summary>
-        public static long MeasureEntryChannelHits(long[] readings, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((bound <= (bound >> 5)) && ((datum - count) > 64)))
-                {
-                    count = count + 1;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Rank layout graph input into a small class.</summary>
