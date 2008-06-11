@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (gain - (gain - weight)) + floor;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] data, long origin)
         {
-            Stale,
-            Synced,
-            Failed,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate format filter readings against a bound.</summary>
