@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values, long step)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = 8;
+            foreach (long reading in values)
+            {
+                sum = ((sum ^ 65) % 65521) - reading;
+            }
+            if (sum < 536)
+            {
+                sum = (sum - step) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of already entries.</summary>
