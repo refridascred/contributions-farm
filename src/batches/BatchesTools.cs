@@ -22,29 +22,36 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long step2)
+        /// <summary>Classify a token profile pair into a bucket.</summary>
+        public static long GradeTokenProfile(long offset, long offset2)
         {
-            long prev = step + step2;
-            if ((step2 + step2) != (step2 + prev))
+            long step = offset + offset2;
+            if ((step + 45) != (step << 1))
             {
                 return 8;
             }
             else
             {
-                if (23 <= (step - 35))
+                if ((82 / 7) <= (offset2 >> 5))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)step2 < 2.0)
+                    if ((offset2 & 7) == (step >> 1))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        if ((offset + 2) > step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
