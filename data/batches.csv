@@ -1,6 +1,9 @@
-id,level,score,active
-1,189,774,blue
-2,blue,820,edge
-3,latest,fallback,930
-4,30.08,fallback,16.83
-5,17.24,776,939
+id,token,owner,score,level
+1,4.28,809,strict,37.97
+2,945,2.7,strict,997
+3,local,eu-west,46.68,916
+4,eu-west,legacy,554,970
+5,297,67.67,primary,open
+6,356,50.11,172,724
+7,84.15,64.92,58.05,green
+8,blue,302,28.7,9.58
