@@ -1,12 +1,13 @@
 # githubfarm settings
-warm_retries_pct: legacy
-base_retries_pct: eu-west
-verbose:
-  default_size_count: 95
-  retry_limit_pct: 9276
-  buffer_limit: 100
-burst_capacity_ms: latest
-schema_capacity: 55.65
-route_ttl:
-  - 418
-  - 310
+buffer_ttl: blue
+default_window: blue
+base_threshold_ms: green
+hard_ttl_s: true
+audit:
+  contributi_capacity: primary
+  profile_timeout:
+    warm_capacity_s: 59
+    max_ttl: 30
+    hard_retries_ms: true
+  min_capacity: 36
+poll_threshold_count: true
