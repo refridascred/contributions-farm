@@ -23,21 +23,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long origin, long origin2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = origin + origin2;
+            if ((475 & 7) == (origin2 + origin2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((-8) - cur) > (cur - cur))
                 {
-                    if ((values[i] - values[j]) != 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin > (double)31)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit route queue readings against a rule.</summary>
