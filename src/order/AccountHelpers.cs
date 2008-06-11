@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long score = 60;
+            foreach (long entry in samples)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if (6 < (score % 64))
+                {
+                    score = ((score ^ origin) % 101) + entry;
+                }
             }
-            return state;
+            if (score < (-16))
+            {
+                score = score + (6 / 9);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a window stats.</summary>
