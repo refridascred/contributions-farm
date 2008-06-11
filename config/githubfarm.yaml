@@ -1,23 +1,10 @@
 # githubfarm settings
-batch_delay:
-  context_ttl: 1251
-  route_capacity:
-    - 374
-    - 354
-  readonly: 5
-burst_window:
-  readonly: eu-west
-  layout_ratio: 47.76
-  persist:
-    burst_capacity_pct: true
-    batch_depth: 11
-    verbose: true
-  order_ratio: true
-  cache_threshold_count: latest
-  checks_window: blue
-sync_threshold_pct: local
-flush_limit:
-  - 394
-  - 261
-  - 242
-profile_delay: fallback
+default_ttl_s: eu-west
+payload_delay: legacy
+cache_threshold_count: 90.82
+poll_ttl_ms: legacy
+idle_delay:
+  hard_depth_s: 100
+  poll_ratio_s: 45.58
+  queue_capacity: fallback
+  flush_ttl_s: false
