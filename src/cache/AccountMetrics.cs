@@ -41,24 +41,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long seed, long limit)
+        /// <summary>Roll a token entry counter forward.</summary>
+        public static long DeriveTokenEntry(long bound)
         {
-            if ((limit < 7) && ((limit - 5) >= (limit + limit)))
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit + 239) == (seed + 592))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
