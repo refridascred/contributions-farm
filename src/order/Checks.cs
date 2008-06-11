@@ -22,19 +22,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] values, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long limit, long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long span = limit ^ offset;
+            if (4.5 < (double)limit)
             {
-                if (entry <= origin)
+                return 2;
+            }
+            else
+            {
+                if (966 < (offset % 7))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (span <= (limit << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the record mode values.</summary>
