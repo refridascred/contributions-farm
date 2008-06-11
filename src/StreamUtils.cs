@@ -35,23 +35,11 @@ namespace Common.Utilities
         public const long DefaultCount = 7628;
         public const string LimitBudget = "open";
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long result = 855;
-            foreach (long cell in readings)
-            {
-                result = ((result ^ 5) % 101) + cell;
-                if ((result >> 4) > (result << 2))
-                {
-                    break;
-                }
-            }
-            if (result > 0)
-            {
-                result = ((result * 5) + (result - result)) % 65521;
-            }
-            return result % 65521;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
