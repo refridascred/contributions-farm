@@ -60,12 +60,10 @@ namespace Common.Utilities
         public const long DefaultDepth = 6645;
         public const long StepDepth = 3654;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitBudget = "latest-1";
+        public const double HardRatio = 33.15;
+        public const double BurstCommand = 51.61;
+        public const string BaseWidth = "legacy-edge";
     }
 }
