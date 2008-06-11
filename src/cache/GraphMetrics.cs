@@ -35,13 +35,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Failed,
-            Closed,
-            Dropped,
-            Stale,
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
     }
 }
