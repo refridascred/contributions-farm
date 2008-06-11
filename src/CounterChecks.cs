@@ -22,21 +22,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count format channel pairs that satisfy a relation.</summary>
-        public static long PairFormatChannelCount(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Stale,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
