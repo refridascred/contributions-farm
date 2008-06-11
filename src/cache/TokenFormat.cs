@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftSize = 2795;
-        public const double StepSpan = 10.76;
-        public const string DefaultProfile = "primary-1";
-        public const long SoftProfile = 6917;
-        public const string CacheProfile = "staging-edge";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 7801;
+        public const long DefaultStats = 9044;
+        public const string IdleStats = "standard-edge";
+        public const long DefaultSpan = 8514;
 
         /// <summary>Audit report tools readings against a rule.</summary>
         public static long CountReportToolsHits(long[] series)
