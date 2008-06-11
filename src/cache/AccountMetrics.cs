@@ -23,12 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 354;
-        public const long CacheInterval = 1634;
-        public const long DefaultGraph = 1339;
-        public const string BaseGraph = "stable-edge";
-        public const double HardGraph = 54.89;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] values, long bound)
+        {
+            long mix = 5;
+            foreach (long datum in values)
+            {
+                if ((bound - mix) < bound)
+                {
+                    mix = ((mix << 2) ^ (mix & 1)) ^ datum;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double AdjustEditor(double gain, double floor)
