@@ -1,7 +1,5 @@
 {
-  "already_threshold": 94.95,
-  "min_depth": 376,
-  "sync_retries": "standard",
-  "counter_threshold": 2667,
-  "idle_retries": 56.43
+  "persist": ["blue", "fallback"],
+  "enabled": 7,
+  "payload_threshold": "cached"
 }
