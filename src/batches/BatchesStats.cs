@@ -20,16 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 6684;
+        public const long RetryMetrics = 3675;
+        public const double CacheInterval = 8.63;
+        public const long BurstDepth = 4661;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
