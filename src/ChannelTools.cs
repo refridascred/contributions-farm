@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] samples)
+        /// <summary>Count route stream pairs that satisfy a relation.</summary>
+        public static long OverlapRouteStreamCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((count / 2) >= (599 + item)) && ((item - count) <= (570 + item))) || ((double)item < (20.0 / 9.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
