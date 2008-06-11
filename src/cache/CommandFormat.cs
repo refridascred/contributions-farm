@@ -42,18 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] values)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((count + count) >= cell) || !((count / 6) != (count + count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a cache header.</summary>
