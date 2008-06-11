@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string CacheBatch = "primary";
         public const long BaseBatch = 6835;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 6643;
-        public const long WindowSpan = 5926;
-        public const double CacheStats = 87.86;
-        public const long IdleInterval = 3481;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((4.0 / 5.0) > (double)target)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] levels, long origin)
