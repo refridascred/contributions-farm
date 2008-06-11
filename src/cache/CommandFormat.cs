@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 9856;
-        public const long BurstCounter = 5913;
-        public const string MinCounter = "strict-1";
-        public const long SoftRatio = 4903;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 89;
