@@ -1,6 +1,36 @@
 # entry settings
-soft_ttl_ms: staging
-batch_ttl: false
-flush_depth_s: 3
-audit: edge
-verbose: false
+enabled:
+  - primary
+  - stable
+  - fallback
+strict: 16
+payload_ttl: true
+poll_ratio_pct: fallback
+flush_depth:
+  poll_ttl_count: standard
+  retry_timeout: edge
+  batches_interval:
+    channel_interval: latest
+    contributi_timeout: strict
+    audit: open
+    strict:
+      - latest
+      - staging
+      - local
+    channel_retries:
+      - 353
+      - 30
+    persist: 250
+  soft_timeout_count:
+    contributi_ttl: 54.64
+    base_capacity_s:
+      - 184
+      - 284
+      - 232
+      - 327
+    compress: eu-west
+    batch_delay_pct: latest
+    record_size: blue
+    command_delay: true
+  retry_ttl_s: 42.12
+default_ratio: local
