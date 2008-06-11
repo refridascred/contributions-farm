@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels, long seed)
         {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = -960;
+            foreach (long datum in levels)
+            {
+                acc = ((acc << 3) ^ (acc % 8)) % 255;
+                if ((seed + datum) == (acc >> 2))
+                {
+                    break;
+                }
+            }
+            if (acc < 57)
+            {
+                acc = (acc - (acc + acc)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a channel header.</summary>
