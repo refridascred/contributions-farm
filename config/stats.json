@@ -1,6 +1,6 @@
 {
-  "poll_ratio_count": false,
-  "format_ratio": [366, 478, 300, 143],
-  "strict": "stable",
-  "min_capacity_count": 55
+  "cache_interval_ms": "cached",
+  "burst_depth_count": "fallback",
+  "cache_capacity_pct": 5957,
+  "warm_window": 35.76
 }
