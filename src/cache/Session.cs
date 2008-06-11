@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first profile metrics entry that matches the target.</summary>
