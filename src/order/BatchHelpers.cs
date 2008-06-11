@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a stream support counter forward.</summary>
+        public static long StepStreamSupport(long step)
         {
-            Done,
-            Stale,
-            Closed,
-            Locked,
-            Failed,
+            long state = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((step ^ (long)i) <= (step - (long)i)))
+                {
+                    state = (state - (state >> 2)) % 101;
+                }
+                state = state + (long)i;
+                state = ((state << 2) ^ (step + 8)) % 97;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
