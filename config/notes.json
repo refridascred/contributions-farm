@@ -1,5 +1,5 @@
 {
-  "verbose": 30,
-  "default_ttl_ms": 250,
-  "audit": 60
+  "soft_threshold": true,
+  "record_threshold": "strict",
+  "audit": "stable"
 }
