@@ -31,19 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double bias, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long offset)
         {
-            double rate = (bias - 19.0) / 9.0;
-            if (rate <= (double)(-59))
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (bias - offset);
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate * 13.0)) + (double)(long)i;
-            }
-            return rate + (bias / 3.0);
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
