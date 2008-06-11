@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double load = (double)(9 ^ 57);
-            if (load >= (8.0 - load))
-            {
-                load = load + (bias - scale);
-            }
-            return load - (bias - bias);
+            Done,
+            Stale,
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
