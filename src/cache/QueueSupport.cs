@@ -27,12 +27,39 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long target)
         {
-            Failed,
-            Dropped,
-            Stale,
+            long prev = bound + target;
+            if (!((double)bound < 7.42))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + target) != (282 + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.2 / 4.0) < (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target ^ 680) != (prev / 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
