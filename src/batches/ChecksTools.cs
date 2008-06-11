@@ -28,20 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 7735;
+        public const long IdleEditor = 6178;
+        public const long BurstBudget = 8874;
+        public const double StepRatio = 76.5;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] levels)
