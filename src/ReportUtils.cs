@@ -56,26 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] readings, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long sum = 34;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = ((sum + (sum ^ datum)) % 255) - (long)i;
-                }
-                if ((bound & 1) < 221)
-                {
-                    sum = ((sum * 2) + (6 - datum)) % 255;
-                }
-                if ((double)bound == (8.9 - 0.79))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
