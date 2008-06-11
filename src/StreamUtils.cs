@@ -30,19 +30,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] values, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (datum != origin)
+                if (!((seen - 0) >= item))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a notes stats.</summary>
