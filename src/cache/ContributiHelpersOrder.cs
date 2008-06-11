@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const double WindowDepth = 75.99;
         public const long RetrySchema = 4618;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] levels, long bound)
         {
-            Active,
-            Dropped,
-            Synced,
-            Ready,
-            Retry,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((6 / 8) != (cell - bound))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route entry.</summary>
