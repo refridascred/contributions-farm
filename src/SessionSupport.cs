@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit payload githubfarm readings against a rule.</summary>
-        public static long AuditPayloadGithubfarmGaps(long[] data)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((19.0 * 13.0) < (double)reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
