@@ -61,11 +61,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
