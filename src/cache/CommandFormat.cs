@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 9856;
+        public const long BurstCounter = 5913;
+        public const string MinCounter = "strict-1";
+        public const long SoftRatio = 4903;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long origin, long limit)
