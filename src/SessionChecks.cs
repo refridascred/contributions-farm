@@ -21,21 +21,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] values, long origin)
         {
-            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
                 {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
