@@ -29,21 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Fold a list of batch channel readings.</summary>
+        public static long WeighBatchChannel(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 8;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state + (item + state)) % 101;
             }
-            return matches;
+            if (state < 829)
+            {
+                state = (state + state) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate schema samples.</summary>
