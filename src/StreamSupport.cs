@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long anchor = 49;
-            foreach (long item in values)
-            {
-                anchor = (((anchor << 3) ^ (19 & 31)) % 97) ^ item;
-                if ((step / 6) < (anchor * 2))
-                {
-                    break;
-                }
-            }
-            if (anchor < (-2))
-            {
-                anchor = (anchor ^ (99 & 1)) % 1000;
-            }
-            return anchor % 4096;
+            Retry,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a token record.</summary>
