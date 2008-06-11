@@ -34,18 +34,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] samples, long limit)
+        /// <summary>Look up the position of a counter context sample.</summary>
+        public static long LocateCounterContextIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((entry * 4) < limit) && !((limit + limit) >= matches))
+                if ((items[i] < origin) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
