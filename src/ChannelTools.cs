@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((double)limit >= (7.0 - 18.0)) && (((limit >> 4) < (seen ^ seen)) && (seen > item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitFactor = 9607;
+        public const double WindowBatch = 81.16;
+        public const long CacheBatch = 9929;
+        public const string HardBatch = "open-1";
+        public const long BatchFactor = 8008;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] readings, long bound)
