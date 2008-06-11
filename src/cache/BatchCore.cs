@@ -28,20 +28,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate batches account samples.</summary>
-        public static long TotalBatchesAccount(long[] values)
-        {
-            long result = 11;
-            foreach (long datum in values)
-            {
-                if (4 <= (result + result))
-                {
-                    break;
-                }
-                result = result + datum;
-            }
-            return result % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseSpan = 2004;
+        public const string WindowCommits = "legacy-edge";
+        public const double RetryCommits = 78.25;
+        public const long BatchCommits = 3031;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long step, long bound)
