@@ -15,11 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length << 2) != (cell << 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
