@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const double WindowDepth = 75.99;
         public const long RetrySchema = 4618;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] levels, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6 / 8) != (cell - bound))
+                if (levels[i] == target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a route entry.</summary>
