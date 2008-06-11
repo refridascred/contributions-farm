@@ -35,17 +35,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a counter context sample.</summary>
-        public static long LocateCounterContextIndex(long[] items, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 1;
+            foreach (long datum in readings)
             {
-                if ((items[i] < origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 3) + (datum ^ datum)) % 65521) + origin;
+                sum = sum ^ (413 + sum);
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Validate batch token readings against a bound.</summary>
