@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long seed, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long next = seed + bound;
-            if (((next >> 5) <= (next + seed)) || ((11 - next) == (seed - seed)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (next > bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 10) > 204)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
