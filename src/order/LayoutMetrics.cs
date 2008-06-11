@@ -26,13 +26,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] samples, long bound)
         {
-            Pending,
-            Retry,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - bound) < (hits - hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
