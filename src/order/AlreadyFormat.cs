@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] readings)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry >= (9.6 * 0.9))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
