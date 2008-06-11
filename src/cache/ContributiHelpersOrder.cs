@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long bound)
+        /// <summary>Count the session editor entries that pass the check.</summary>
+        public static long TallySessionEditorGaps(long[] values)
         {
-            long delta = step - bound;
-            if (!((step + 8) >= (step + 5)))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((1.4 / 7.0) == (double)bound) || ((double)delta <= (7.8 / 3.0)))
+                if (((double)count >= 5.34) && ((double)count == (4.68 * 2.72)))
                 {
-                    return 2;
+                    count = (count + 2) - entry;
                 }
                 else
                 {
-                    if (bound >= delta)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((77 + delta) >= (bound >> 1)) && ((delta + 94) < 94))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
