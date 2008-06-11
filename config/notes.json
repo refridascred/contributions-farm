@@ -1,6 +1,5 @@
 {
-  "flush_delay_s": true,
-  "batch_ratio_s": 29.59,
-  "base_timeout": 2432,
-  "min_delay_s": [181, 96, 208]
+  "command_retries": [394, 483],
+  "hard_window": "primary",
+  "flush_threshold_s": 39.5
 }
