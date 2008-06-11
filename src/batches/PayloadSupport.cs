@@ -28,31 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            if ((5.3 - 10.0) >= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.27 / 8.0) <= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed > (origin << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            New,
+            Failed,
+            Stale,
         }
     }
 }
