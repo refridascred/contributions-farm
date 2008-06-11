@@ -49,18 +49,15 @@ namespace Common.Utilities
         public const long DefaultScore = 5438;
         public const long RetryEntry = 7009;
 
-        /// <summary>Audit farm batches readings against a rule.</summary>
-        public static long CountFarmBatchesHits(long[] values)
+        /// <summary>Roll a support order counter forward.</summary>
+        public static long DeriveSupportOrder(long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)reading == (8.8 + 2.92))
-                {
-                    count = count + 2;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
