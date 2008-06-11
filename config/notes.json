@@ -1,7 +1,7 @@
 {
-  "tools_window": "open",
-  "hard_limit_pct": 55.1,
-  "audit": ["fallback", "latest", "local", "green"],
-  "context_size": false,
-  "farm_window": false
+  "min_size_count": true,
+  "cluster_size": "green",
+  "dry_run": "open",
+  "flush_ratio_count": 9909,
+  "strict": 250
 }
