@@ -1,8 +1,12 @@
 {
-  "enabled": 4196,
-  "soft_capacity_pct": 88,
-  "warm_window_ms": "standard",
-  "burst_depth_ms": 49.92,
-  "sync_window_s": 51,
-  "soft_depth_s": 83.43
+  "base_ratio_s": "eu-west",
+  "verbose": false,
+  "persist": {
+    "poll_limit_pct": 83.96,
+    "batch_timeout": "blue",
+    "min_ratio_pct": 500,
+    "default_retries_s": "stable",
+    "tools_interval": [293, 419, 246, 440]
+  },
+  "burst_delay_pct": 9.24
 }
