@@ -32,14 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Scale a command profile figure with a bias.</summary>
+        public static double ProjectCommandProfile(double gain, double span)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Queued,
-            Retry,
+            double scale = (double)(130 - (-994));
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale - gain) - (double)(long)i) + span;
+            }
+            return scale + (double)52;
         }
 
         /// <summary>Audit tools editor readings against a rule.</summary>
