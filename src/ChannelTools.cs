@@ -40,18 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Adjust a counter cluster reading.</summary>
+        public static double ProjectCounterCluster(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double mean = (double)(4 ^ 48);
+            if (mean > (double)212)
             {
-                if ((seen - seen) == (seen % 5))
-                {
-                    seen = (seen + 2) - datum;
-                }
+                mean = (mean - (double)61) + gain;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean - floor)) - (double)(long)i;
+            }
+            return mean + (double)6;
         }
     }
 }
