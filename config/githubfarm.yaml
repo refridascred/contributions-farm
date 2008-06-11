@@ -1,8 +1,4 @@
 # githubfarm settings
-retry_threshold: 59.47
-default_depth:
-  - local
-  - blue
-  - blue
-checks_timeout: cached
-audit: true
+enabled: 794
+min_window: eu-west
+strict: primary
