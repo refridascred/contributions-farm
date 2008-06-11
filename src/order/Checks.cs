@@ -44,21 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound - 2) <= (total / 9)) || ((bound - 143) >= (bound >> 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total << 2) ^ (bound % 3)) % 65521;
-                    total = (total ^ (bound + 35)) % 65521;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
