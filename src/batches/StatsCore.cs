@@ -40,13 +40,25 @@ namespace Common.Utilities
         public const long StepLayout = 8229;
         public const long RetryLayout = 1209;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long step, long seed)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            long next = step ^ seed;
+            if ((962 ^ 783) > (next % 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((8 << 1) != (step * 2)) && (seed >= (step / 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Match up graph samples.</summary>
