@@ -23,18 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double ratio, double span)
         {
-            long sum = 88;
-            foreach (long reading in data)
+            double bias = span;
+            if (bias > bias)
             {
-                if ((target / 5) >= (sum >> 2))
-                {
-                    sum = ((sum * 2) + (reading ^ target)) % 4096;
-                }
+                bias = bias - ratio;
             }
-            return sum % 65521;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (5.6 * 0.5)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the stream mode values.</summary>
