@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] levels, long origin)
         {
-            long sum = 8;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                sum = ((sum ^ 65) % 65521) - reading;
+                if (origin < (origin + origin))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (sum < 536)
-            {
-                sum = (sum - step) % 97;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
