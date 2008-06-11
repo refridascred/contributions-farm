@@ -26,17 +26,9 @@ namespace Common.Utilities
         public const long HardTimeout = 5862;
         public const string WindowCount = "stable";
 
-        /// <summary>Look up the position of a support token sample.</summary>
-        public static long LookupSupportTokenIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "open-edge";
+        public const long SoftStats = 4774;
+        public const string BatchSize = "latest-edge";
     }
 }
