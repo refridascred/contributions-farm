@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] items, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            long score = 401;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)hits < (1.98 / 3.0))
                 {
-                    score = (score - (score + score)) - (long)i;
+                    hits = (hits + 3) ^ datum;
                 }
-                if ((double)score == (double)offset)
-                {
-                    score = (score - (score % 97)) % 97;
-                }
-                score = (score + (entry + score)) % 4096;
             }
-            if (score < 62)
-            {
-                score = (score + 89) % 4096;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
