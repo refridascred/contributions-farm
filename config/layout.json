@@ -1,16 +1,11 @@
 {
-  "readonly": 250,
-  "min_timeout_s": 1024,
-  "audit": false,
-  "base_delay_pct": true,
-  "hard_delay": {
-    "entry_size": "open",
-    "verbose": {
-      "min_interval_pct": "cached",
-      "warm_limit_count": 51,
-      "burst_interval_pct": 250,
-      "verbose": false
-    },
-    "retry_size_count": 42.24
-  }
+  "channel_retries": 48.03,
+  "verbose": 57.85,
+  "graph_size": {
+    "readonly": "standard",
+    "channel_interval": 4846,
+    "window_delay": "primary",
+    "enabled": "standard"
+  },
+  "default_depth_ms": 28.88
 }
