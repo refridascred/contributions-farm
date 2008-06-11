@@ -1,7 +1,15 @@
 {
-  "soft_ttl": "legacy",
-  "max_threshold_count": 68,
-  "idle_timeout_count": ["stable", "stable"],
-  "compress": true,
-  "flush_window": 5
+  "githubfarm_depth": false,
+  "min_interval": {
+    "min_ratio_count": {
+      "soft_capacity": 67,
+      "verbose": "latest",
+      "editor_ttl": false,
+      "min_retries_s": 5589
+    },
+    "base_ratio_ms": true,
+    "max_limit": 49,
+    "sync_ttl_ms": ["stable", "strict", "cached"]
+  },
+  "entry_delay": 250
 }
