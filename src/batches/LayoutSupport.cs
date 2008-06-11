@@ -52,13 +52,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] readings, long limit)
         {
             bool found = true;
-            foreach (long reading in readings)
+            foreach (long value in readings)
             {
-                if (reading != floor)
+                if (value > limit)
                 {
                     found = false;
                     break;
