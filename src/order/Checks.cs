@@ -33,22 +33,39 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine profile graph values into a single score.</summary>
-        public static long CombineProfileGraph(long[] data)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long target)
         {
-            long result = -83;
-            foreach (long reading in data)
+            long cur = seed ^ target;
+            if ((cur ^ cur) >= (target % 8))
             {
-                if ((90 <= (reading << 1)) && ((reading - result) <= reading))
+                return 2;
+            }
+            else
+            {
+                if ((target + seed) == (seed ^ cur))
                 {
-                    result = result + (84 >> 3);
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target < (2.0 * 16.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((cur / 9) != (target - target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (result < 14)
-            {
-                result = result + (result + result);
-            }
-            return result % 4096;
         }
 
         /// <summary>Project the next context value.</summary>
