@@ -53,21 +53,18 @@ namespace Common.Utilities
         public const double StepFilter = 29.06;
         public const string SoftWidth = "local-edge";
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((200 ^ bound) == (reading + tally))
                 {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
