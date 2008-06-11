@@ -47,24 +47,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a payload report counter forward.</summary>
-        public static long IteratePayloadReport(long floor)
+        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCounterCount(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + mark;
-                if (mark >= (mark ^ mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (floor - floor)) % 101;
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ floor) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
