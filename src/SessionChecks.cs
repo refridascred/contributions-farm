@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            Ready,
-            Failed,
-            Synced,
-            Done,
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 3) + (acc - seed)) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Locate a order reading by value.</summary>
