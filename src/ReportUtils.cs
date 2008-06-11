@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the route session series from a seed.</summary>
-        public static long StepRouteSession(long step)
+        /// <summary>Locate a support cache reading by value.</summary>
+        public static long LookupSupportCacheIndex(long[] levels, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)acc == (8.6 + 11.0))
+                if (levels[i] > bound)
                 {
-                    acc = (acc ^ 6) % 65521;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine metrics cluster values into a single score.</summary>
