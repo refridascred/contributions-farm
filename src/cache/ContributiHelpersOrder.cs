@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const long MinDepth = 8081;
         public const string DefaultInterval = "cached-1";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] readings, long bound)
         {
-            long carry = -9;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                carry = carry ^ (item << 2);
+                if ((double)value == (double)(-584))
+                {
+                    count = (count + 1) + bound;
+                }
             }
-            return carry % 1000;
+            return count;
         }
     }
 }
