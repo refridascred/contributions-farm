@@ -27,17 +27,19 @@ namespace Common.Utilities
             return drift + (bias * 6.3);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] values, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                if (cell != bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
