@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Scale a stream contributi figure with a bias.</summary>
+        public static double BlendStreamContributi(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(226 ^ 99);
+            if (load >= (double)6)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + (load + weight)) - floor;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 2.4) + (double)(long)i;
+            }
+            return load + (7.1 / 9.0);
         }
 
         /// <summary>Hold a channel header.</summary>
