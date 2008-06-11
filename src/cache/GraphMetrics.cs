@@ -59,22 +59,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Count checks channel pairs that satisfy a relation.</summary>
+        public static long OverlapChecksChannelCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (9.0 > (double)reading)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
