@@ -41,10 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 4831;
-        public const string MaxWidth = "staging-v2";
-        public const long DefaultSpan = 9197;
-        public const long CacheDepth = 9681;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
