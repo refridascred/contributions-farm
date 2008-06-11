@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleTimeout = 3355;
-        public const long MaxCount = 6250;
-        public const long MaxTimeout = 7301;
-        public const long WindowSize = 9859;
-        public const long BaseDepth = 3541;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double scale, double offset)
+        {
+            double bias = scale;
+            if (bias < (6.3 + bias))
+            {
+                bias = (bias - (double)56) - offset;
+            }
+            else
+            {
+                bias = bias + (scale * 14.0);
+            }
+            return bias + (double)37;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
