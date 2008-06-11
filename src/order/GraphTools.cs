@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "primary-v2";
+        public const long IdleTimeout = 6588;
+        public const long HardScore = 2698;
+        public const long BurstFactor = 222;
+        public const long LimitCount = 8748;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
