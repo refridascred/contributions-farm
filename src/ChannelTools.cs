@@ -37,39 +37,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            long diff = floor - offset;
-            if ((floor - diff) >= floor)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
+                score = (score ^ (score + seed)) % 255;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((offset ^ (-941)) >= diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + 7) < (floor << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((4.0 / 3.0) < (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
