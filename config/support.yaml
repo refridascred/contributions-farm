@@ -1,24 +1,8 @@
 # support settings
-base_timeout_count: 86
-soft_interval_pct: edge
-strict:
-  compress:
-    support_limit: 42.95
-    warm_limit_ms: false
-    checks_capacity: blue
-  min_size_count: 4
-  farm_delay: 1024
-  warm_threshold_pct:
-    - 335
-    - 254
-    - 290
-  counter_ratio: 250
-token_delay: primary
-idle_limit_count:
-  burst_limit_pct: 42
-  soft_ratio: false
-  default_window_s: false
-  sync_interval_ms: 33
-  flush_window_ms: 1024
-  compress: 91
-audit: 1.63
+base_size: 5126
+verbose: 250
+audit:
+  - local
+  - strict
+  - edge
+hard_limit: open
