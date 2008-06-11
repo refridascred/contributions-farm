@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 2927;
-        public const long WindowStats = 4156;
-        public const double HardFactor = 83.01;
-        public const long StepWidth = 5404;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] samples)
