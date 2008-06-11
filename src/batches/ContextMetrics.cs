@@ -65,19 +65,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long limit2)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long prev = limit ^ limit2;
+            if ((double)limit2 <= (1.0 + 12.0))
             {
-                if (((long)i + acc) < (acc ^ acc))
-                {
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (limit > prev)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((prev * 2) >= (limit2 - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi metrics samples.</summary>
