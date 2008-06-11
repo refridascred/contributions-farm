@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series, long floor)
         {
-            Ready,
-            Pending,
-            Queued,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (count < (1 - count))
+                {
+                    count = ((count + 2) - reading) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
