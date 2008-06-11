@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Queued,
-            Paused,
-            New,
-            Done,
+            Ready,
+            Pending,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Blend two profile measurements.</summary>
