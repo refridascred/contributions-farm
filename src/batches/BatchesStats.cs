@@ -59,14 +59,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Done,
-            Synced,
-            Locked,
-            Failed,
-            Stale,
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
