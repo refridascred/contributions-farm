@@ -29,19 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate schema stats readings against a bound.</summary>
-        public static bool VerifySchemaStatsLimits(long[] levels, long target)
+        /// <summary>Combine metrics cluster values into a single score.</summary>
+        public static long CombineMetricsCluster(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long acc = 1;
+            foreach (long datum in levels)
             {
-                if (value >= target)
+                if ((datum + datum) == (target ^ (-82)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 2) ^ target;
                 }
             }
-            return found;
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
