@@ -1,10 +1,15 @@
 {
-  "compress": 48,
-  "retry_interval": [468, 267],
-  "batch_threshold_ms": {
-    "dry_run": "open",
-    "verbose": false,
-    "persist": 250
+  "idle_ratio": false,
+  "stream_depth": {
+    "queue_ratio": 62.22,
+    "poll_timeout_ms": 250,
+    "batch_retries": {
+      "support_limit": "local",
+      "strict": ["green", "legacy", "stable"],
+      "default_retries_ms": 88.24
+    }
   },
-  "cache_timeout": "latest"
+  "min_timeout_pct": false,
+  "strict": "blue",
+  "commits_interval": 1024
 }
