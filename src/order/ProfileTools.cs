@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] items, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score ^ score) % 97;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a token reading by value.</summary>
