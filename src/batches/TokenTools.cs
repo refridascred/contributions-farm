@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const string DefaultChecks = "open-edge";
         public const long IdleBudget = 4177;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 5251;
-        public const double MaxSpan = 82.21;
-        public const long SoftFilter = 6334;
+        /// <summary>Audit profile command readings against a rule.</summary>
+        public static long MeasureProfileCommandOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((-25) + hits) == (hits >> 5))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the stats githubfarm series from a seed.</summary>
         public static long StepStatsGithubfarm(long bound)
