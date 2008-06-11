@@ -14,11 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
