@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 88;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((790 % 3) != (entry - entry)))
                 {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ (mix * 3)) % 97;
                 }
             }
-            return count;
+            if (mix > 970)
+            {
+                mix = (mix + (floor + floor)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
