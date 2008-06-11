@@ -62,21 +62,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -5;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score + score) >= (sample >> 1))
                 {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score * 3) + (86 << 1);
+                }
+                else
+                {
+                    score = score + (8 + sample);
+                }
+                if (!(((double)score != (8.6 - 8.62)) && (sample < (sample % 60))))
+                {
+                    score = (score * 4) + (score + 7);
+                }
+                if (score > (score + sample))
+                {
+                    score = (score + (sample >> 3)) % 4096;
+                }
+                else
+                {
+                    score = (score - (449 + score)) % 4096;
                 }
             }
-            return hits;
+            if (score < (-573))
+            {
+                score = ((score << 3) ^ (score - score)) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
