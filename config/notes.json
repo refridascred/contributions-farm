@@ -1,5 +1,7 @@
 {
-  "batch_ttl_ms": "local",
-  "already_delay": 6734,
-  "support_window": "primary"
+  "tools_window": "open",
+  "hard_limit_pct": 55.1,
+  "audit": ["fallback", "latest", "local", "green"],
+  "context_size": false,
+  "farm_window": false
 }
