@@ -39,9 +39,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 1515;
-        public const long RetryBudget = 436;
-        public const long WindowScore = 8188;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long origin)
+        {
+            long span = step ^ origin;
+            if (step > (step + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((12.0 / 4.0) > (double)span)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
