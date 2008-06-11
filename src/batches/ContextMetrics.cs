@@ -72,15 +72,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double span)
+        /// <summary>Accumulate contributi metrics samples.</summary>
+        public static long TotalContributiMetrics(long[] samples)
         {
-            double bias = span;
-            if (bias > span)
+            long mix = 141;
+            foreach (long cell in samples)
             {
-                bias = (bias - bias) + ratio;
+                if (!((mix + cell) == (cell / 8)))
+                {
+                    mix = (mix << 2) ^ (cell / 3);
+                }
             }
-            return bias - (double)686;
+            if (mix > 608)
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix;
         }
     }
 }
