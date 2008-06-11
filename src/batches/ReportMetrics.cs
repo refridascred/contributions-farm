@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long MeasureFilterProfileMatches(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
             long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches >= (value - value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
