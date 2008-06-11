@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 6684;
-        public const long RetryMetrics = 3675;
-        public const double CacheInterval = 8.63;
-        public const long BurstDepth = 4661;
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double weight, double span)
+        {
+            double mean = 9.24 * 14.0;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (((mean + mean) - (double)(long)i) - weight) + span;
+            }
+            return mean + (double)(-683);
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
