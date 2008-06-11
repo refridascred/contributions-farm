@@ -55,22 +55,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] readings, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long carry = 941;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = (((carry << 3) ^ (carry % 2)) ^ (long)i) + step;
-                }
-                if ((carry / 8) != (reading - carry))
-                {
-                    carry = (carry ^ ((-194) % 60)) % 65521;
-                }
-            }
-            return carry % 1000;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
