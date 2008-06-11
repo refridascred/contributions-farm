@@ -72,17 +72,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] values, long offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = bias - (bias - scale);
+            return drift + (double)288;
         }
     }
 }
