@@ -30,22 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Digest a series of batches batch entries.</summary>
+        public static long ScoreBatchesBatch(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long anchor = 0;
+            foreach (long datum in readings)
             {
-                if (!((seen - 0) >= item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((((anchor * 4) + (long)readings.Length) % 65521) - datum) - offset;
             }
-            return seen;
+            if (anchor > 46)
+            {
+                anchor = (anchor * 2) + (anchor >> 4);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a notes stats.</summary>
