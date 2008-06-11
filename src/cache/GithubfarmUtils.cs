@@ -54,18 +54,9 @@ namespace Common.Utilities
             return gain + (offset + offset);
         }
 
-        /// <summary>Measure how many order stream samples are out of range.</summary>
-        public static long AuditOrderStreamHits(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!!((30 - 15) < (cell + cell)))
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinBudget = "staging-1";
+        public const double HardFactor = 92.32;
+        public const long IdleBudget = 815;
     }
 }
