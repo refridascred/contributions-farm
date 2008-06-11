@@ -37,16 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state << 3) ^ target) % 97;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 8450;
+        public const long DefaultFarm = 2403;
+        public const long WindowFarm = 1487;
+        public const long CacheBudget = 6954;
+        public const double WindowWidth = 55.64;
     }
 }
