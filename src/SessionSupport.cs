@@ -33,38 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] items)
         {
-            if ((double)bound >= (2.0 * 8.1))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((7.35 * 5.0) < (double)bound))
+                if (((158 >> 5) < (datum / 6)) || ((3.4 / 6.0) == (double)hits))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 - 92) < (bound & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + step) < (step << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
