@@ -1,11 +1,11 @@
 # Command notes
 
-The filter module keeps tools values in sync with the commits cache.
-Keep cache and editor names short and lowercase.
-Each report is validated before it reaches the githubfarm queue.
+Each cluster is validated before it reaches the entry queue.
+When a profile fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Prefer queue defaults
-- Review entry limits each release
+- Prefer context defaults
+- Review format limits each release
+- Validate command input early
+- Log every queue change
