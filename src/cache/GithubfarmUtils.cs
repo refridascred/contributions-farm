@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Locate a record metrics reading by value.</summary>
+        public static long LookupRecordMetricsIndex(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
