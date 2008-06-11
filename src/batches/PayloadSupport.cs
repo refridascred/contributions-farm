@@ -23,19 +23,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every metric graph entry stays within the limit.</summary>
-        public static bool GuardMetricGraphBounds(long[] readings, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Blend two window measurements.</summary>
