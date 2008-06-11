@@ -18,39 +18,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a token profile pair into a bucket.</summary>
-        public static long GradeTokenProfile(long offset, long offset2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] series, long origin)
         {
-            long step = offset + offset2;
-            if ((step + 45) != (step << 1))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((82 / 7) <= (offset2 >> 5))
+                if ((tally & 3) < ((-834) + tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset2 & 7) == (step >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + 2) > step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = ((tally + 3) + reading) - origin;
                 }
             }
+            return tally;
         }
     }
 }
