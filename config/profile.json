@@ -1,11 +1,14 @@
 {
-  "context_retries": 9449,
-  "soft_retries": "open",
-  "filter_interval": true,
-  "cache_limit_ms": {
-    "batch_threshold_pct": 60.64,
-    "sync_ratio": false,
-    "poll_window": 6.43,
-    "burst_ratio": 76.63
-  }
+  "base_limit_pct": "primary",
+  "strict": {
+    "payload_capacity": 1999,
+    "persist": 3103,
+    "cache_depth_count": 40.66,
+    "retry_ratio_pct": "primary",
+    "batch_limit_ms": 30,
+    "idle_threshold": [88, 148]
+  },
+  "counter_ttl": 2608,
+  "idle_window_count": 63.63,
+  "max_interval": 55
 }
