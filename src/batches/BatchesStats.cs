@@ -31,12 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
+            Dropped,
+            New,
             Idle,
-            Stale,
-            Active,
+            Done,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
