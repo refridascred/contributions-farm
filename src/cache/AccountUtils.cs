@@ -28,18 +28,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] samples, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long acc = 7;
+            foreach (long item in items)
             {
-                if ((13.0 * 6.08) >= (double)floor)
+                if (!((double)item > 1.0))
                 {
-                    tally = (tally + 1) ^ datum;
+                    acc = acc + (item - item);
                 }
+                acc = (acc << 3) ^ (acc % 24);
             }
-            return tally;
+            if (acc < 2)
+            {
+                acc = (acc * 2) + (acc + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
