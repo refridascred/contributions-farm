@@ -43,19 +43,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)origin >= (0.1 / 4.0))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinCount = 2322;
+        public const string RetryBatches = "cached-v2";
+        public const long StepDepth = 6155;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
