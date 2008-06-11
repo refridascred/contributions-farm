@@ -1,23 +1,6 @@
 {
-  "batch_window_ms": 43.43,
-  "enabled": {
-    "idle_ttl_s": [183, 148],
-    "max_delay": "stable",
-    "default_delay_s": 1024,
-    "soft_interval": 250,
-    "persist": false
-  },
-  "hard_depth_s": {
-    "token_timeout": {
-      "idle_timeout_ms": "primary",
-      "flush_depth_count": "local",
-      "editor_interval": "primary"
-    },
-    "poll_threshold": "eu-west",
-    "sync_size_s": 500,
-    "flush_window_ms": 84.36,
-    "base_size_s": false,
-    "payload_depth": 55.07
-  },
-  "audit": 100
+  "audit": 30,
+  "schema_interval": [441, 90],
+  "githubfarm_capacity": [478, 107, 488],
+  "poll_window": 5660
 }
