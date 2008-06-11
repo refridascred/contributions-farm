@@ -21,18 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first format contributi entry that matches the target.</summary>
-        public static long SeekFormatContributiIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "standard-edge";
+        public const long DefaultTimeout = 3621;
+        public const double CacheLevel = 73.33;
+        public const long StepCommand = 2586;
+        public const long HardDepth = 496;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double weight, double floor)
