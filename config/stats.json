@@ -1,16 +1,7 @@
 {
-  "report_depth": ["eu-west", "local", "stable", "edge"],
-  "githubfarm_threshold": "fallback",
-  "graph_depth": {
-    "hard_interval_s": 17,
-    "cache_threshold_ms": {
-      "poll_ttl": "local",
-      "retry_threshold_count": false,
-      "max_ratio": false
-    },
-    "max_timeout_s": 80
-  },
-  "dry_run": "local",
-  "default_threshold_count": 10.88,
-  "schema_ratio": 59
+  "soft_delay": false,
+  "base_ttl_ms": 8.79,
+  "flush_timeout_count": 13,
+  "retry_window_count": 4720,
+  "compress": 24.83
 }
