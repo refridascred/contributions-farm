@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Blend two metrics report measurements.</summary>
+        public static double SmoothMetricsReport(double rate, double span)
         {
-            Active,
-            New,
-            Draft,
+            double weight = rate - (rate - span);
+            if (weight > (rate - span))
+            {
+                weight = weight - (6.66 / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - (1.7 - rate);
         }
 
         /// <summary>Define window limits and defaults.</summary>
