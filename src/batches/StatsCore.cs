@@ -57,21 +57,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = origin + floor;
+            if ((edge % 5) == (edge + (-82)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((-5) + edge) >= (floor * 4))
                 {
-                    if ((readings[i] + readings[j]) > 3)
+                    return 2;
+                }
+                else
+                {
+                    if (717 >= edge)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((origin + edge) != (origin * 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a already format counter forward.</summary>
