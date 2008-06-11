@@ -20,19 +20,16 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double bias2)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            double scale = (bias2 + bias) / 6.0;
-            if (scale > scale)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                scale = scale - (double)100;
+                state = ((state * 4) + (state / 2)) % 65521;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale + (scale * 9.07);
-            }
-            return scale + (double)51;
+            return state;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
