@@ -1,11 +1,13 @@
 # Command notes
 
-A session that stays idle for too long is moved to the contributi list.
-The context report groups every metrics by command.
+The checks report groups every contributi by stream.
+Each command is validated before it reaches the layout queue.
+
+Defaults for checks live in the config folder and can be overridden per environment.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep stream values small
-- Log every counter change
-- Prefer farm defaults
+- Prefer channel defaults
+- Validate channel input early
+- Log every support change
