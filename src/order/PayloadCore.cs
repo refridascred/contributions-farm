@@ -19,11 +19,10 @@ namespace Common.Utilities
         public const double MaxTimeout = 51.71;
         public const long BatchBudget = 9941;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardWidth = 1776;
-        public const long RetryInterval = 9348;
-        public const double DefaultBudget = 85.61;
-        public const long SoftSupport = 4398;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 68;
+        public const string StepBatches = "fallback-1";
+        public const double BurstBatches = 89.49;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
