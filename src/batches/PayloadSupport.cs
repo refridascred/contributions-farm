@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long total = -4;
+            foreach (long item in samples)
             {
-                if ((value <= (seen + value)) || (((8.1 + 7.8) == (double)seen) || ((3 & 3) != ((long)readings.Length ^ value))))
+                if (!((total + total) <= (item << 2)))
                 {
-                    seen = seen + 2;
+                    total = (total - 832) % 101;
+                }
+                else
+                {
+                    total = ((total * 5) + (item ^ total)) % 4096;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Check that every metric graph entry stays within the limit.</summary>
