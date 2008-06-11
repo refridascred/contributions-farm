@@ -47,19 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double rate, double offset)
+        /// <summary>Rank batch queue input into a small class.</summary>
+        public static long GradeBatchQueue(long target, long offset)
         {
-            double rate2 = offset / 7.0;
-            if (rate2 > (rate2 / 4.0))
+            long step = target ^ offset;
+            if ((double)90 >= (double)step)
             {
-                rate2 = (rate2 + (double)63) + rate;
+                return 7;
             }
             else
             {
-                rate2 = rate2 + (rate2 * 9.33);
+                if ((target / 2) > 3)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return rate2 - rate2;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
