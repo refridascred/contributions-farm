@@ -58,21 +58,12 @@ namespace Common.Utilities
             return load - (9.1 + load);
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Pending,
         }
     }
 }
