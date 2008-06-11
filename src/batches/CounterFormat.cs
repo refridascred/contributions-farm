@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of counter record entries.</summary>
-        public static long TotalCounterRecord(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long anchor = 19;
-            foreach (long value in items)
+            long sum = 84;
+            foreach (long reading in values)
             {
-                if ((anchor >> 3) <= value)
+                for (int i = 0; i < 5; i++)
                 {
-                    anchor = ((anchor << 3) ^ (anchor % 2)) % 1000;
+                    sum = (((sum * 4) + (sum % 2)) % 1000) + (long)i;
                 }
+                sum = ((sum << 2) ^ (reading + reading)) % 255;
+                sum = (sum + (sum ^ sum)) % 97;
             }
-            return anchor % 97;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many checks editor samples are out of range.</summary>
