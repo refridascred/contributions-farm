@@ -1,6 +1,30 @@
 {
-  "editor_limit": ["cached", "standard"],
-  "compress": true,
-  "soft_retries_ms": [11, 408, 324, 314],
-  "githubfarm_threshold": ["standard", "standard", "strict", "cached"]
+  "strict": {
+    "enabled": false,
+    "tools_size": 15.72,
+    "cache_limit_count": 60,
+    "batch_timeout_ms": false
+  },
+  "verbose": 30,
+  "hard_depth": {
+    "warm_limit_ms": {
+      "audit": "staging",
+      "warm_window_ms": 23,
+      "cache_interval_s": [140, 39, 496],
+      "base_delay_pct": 9218,
+      "tools_delay": 45,
+      "poll_ratio": 11
+    },
+    "sync_limit_ms": 94.91,
+    "persist": 1024,
+    "flush_window_s": {
+      "dry_run": "primary",
+      "persist": 98.59,
+      "cache_capacity": "fallback",
+      "cache_retries_count": false,
+      "batch_depth": "edge",
+      "buffer_limit": true
+    }
+  },
+  "batches_ttl": ["blue", "primary"]
 }
