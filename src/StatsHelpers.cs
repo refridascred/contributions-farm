@@ -76,21 +76,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)27 >= (double)sum)
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
