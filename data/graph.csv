@@ -1,8 +1,6 @@
-id,count,state,token
-1,68.33,86.55,blue
-2,87,legacy,297
-3,438,41.08,11.19
-4,96.86,169,open
-5,196,186,eu-west
-6,standard,201,686
-7,340,739,open
+id,level,label,state,ratio
+1,48.63,354,78.95,legacy
+2,57.16,73.19,66.45,960
+3,141,24.91,green,922
+4,713,7.66,65,cached
+5,fallback,53.33,95.76,709
