@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            long result = target;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
