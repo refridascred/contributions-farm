@@ -20,10 +20,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultWidth = 8166;
-        public const string MaxScore = "cached-1";
-        public const long WindowLevel = 932;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
+        {
+            long acc = 0;
+            foreach (long cell in items)
+            {
+                if (78 > cell)
+                {
+                    acc = (acc - ((long)items.Length & 3)) % 1000;
+                }
+                if (((cell << 2) > (6 << 2)) && ((acc / 3) >= (8 - (long)items.Length)))
+                {
+                    acc = acc ^ 27;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
