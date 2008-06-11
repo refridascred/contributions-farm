@@ -43,11 +43,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long origin, long origin2)
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            if ((455 >> 2) < (origin << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin2 << 3) > origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= (origin2 - origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
