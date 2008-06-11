@@ -28,19 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile entry series from a seed.</summary>
-        public static long StepProfileEntry(long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (origin >= (origin - sum))
-                {
-                    sum = (sum - (long)i) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
