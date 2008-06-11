@@ -27,11 +27,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 8450;
-        public const long DefaultFarm = 2403;
-        public const long WindowFarm = 1487;
-        public const long CacheBudget = 6954;
-        public const double WindowWidth = 55.64;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] readings)
+        {
+            long mark = 5;
+            foreach (long sample in readings)
+            {
+                if ((((long)readings.Length - 41) <= (mark - sample)) && ((2.2 * 4.0) <= (double)sample))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = (mark ^ ((-895) >> 1)) % 1000;
+                }
+                if (!(7.95 <= (double)mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 74)
+            {
+                mark = mark - (mark ^ mark);
+            }
+            return mark;
+        }
     }
 }
