@@ -38,19 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double weight, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] samples, long floor)
         {
-            double weight2 = (double)(404 / 4);
-            if (weight2 <= weight2)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                weight2 = (weight2 - weight2) + weight;
+                if ((double)matches < 5.5)
+                {
+                    matches = ((matches + 1) + cell) + floor;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            return weight2 - bias;
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
