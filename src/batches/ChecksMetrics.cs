@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 6401;
         public const long MaxSize = 8432;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftLevel = 8550;
-        public const long WindowScore = 1111;
-        public const double StepLevel = 16.97;
-        public const string CacheTools = "alpha";
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] samples)
