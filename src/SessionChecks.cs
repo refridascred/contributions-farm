@@ -45,10 +45,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryCount = "primary-v2";
-        public const double SoftWindow = 63.64;
-        public const long CacheWindow = 1346;
-        public const long HardWindow = 3781;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
