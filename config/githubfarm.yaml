@@ -1,31 +1,39 @@
 # githubfarm settings
-cache_window_count: blue
-poll_retries_pct: 67
-poll_ratio_ms:
-  hard_depth_count:
-    min_depth_s: 500
-    schema_retries: true
-    cache_capacity_pct: stable
-  flush_depth_s:
-    dry_run:
-      - 57
-      - 359
-      - 178
-    session_size: edge
-    max_delay_ms: 10.79
-    layout_capacity: 7029
-    enabled: latest
-  hard_capacity:
-    - green
-    - local
-    - local
-  idle_size_pct: 12.79
-  poll_limit_pct: false
-idle_retries_ms:
-  - 365
-  - 414
-warm_ratio_pct: 36.21
-default_limit_ms:
-  hard_depth: 250
-  flush_ratio: 250
-  max_interval: 54.52
+warm_size_count:
+  command_timeout:
+    window_capacity: true
+    strict: 55
+    base_timeout_pct: local
+    graph_size: false
+  flush_capacity_ms:
+    idle_limit: false
+    min_size: true
+    buffer_window: true
+    retry_retries: 3
+    readonly: 24.96
+    persist: 500
+  verbose:
+    - strict
+    - strict
+    - edge
+  dry_run: 7532
+  batch_interval_s:
+    poll_ttl_count: 3683
+    readonly: strict
+    default_threshold: 10
+    dry_run: stable
+    soft_delay: edge
+enabled:
+  order_delay:
+    hard_depth: eu-west
+    min_retries: cached
+    batch_retries_count: true
+  hard_timeout: 100
+  poll_delay_s: true
+  order_size:
+    - 183
+    - 476
+  record_depth: green
+  schema_threshold: blue
+batch_ttl: 96.03
+idle_ratio_pct: primary
