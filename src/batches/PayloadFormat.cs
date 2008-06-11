@@ -50,20 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long acc = 8;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (acc - sample) - (long)i;
-                    acc = (acc + (sample ^ step)) % 1000;
-                }
-                acc = acc + step;
-            }
-            return acc;
+            Synced,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
