@@ -42,19 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] data, long target)
+        /// <summary>Match up command format samples.</summary>
+        public static long MatchCommandFormatCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Project the next queue value.</summary>
