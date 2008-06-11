@@ -1,5 +1,9 @@
 {
-  "poll_threshold": 49.34,
-  "poll_capacity_ms": false,
-  "notes_size": false
+  "retry_ratio_s": {
+    "verbose": 6919,
+    "audit": ["eu-west", "stable", "cached", "latest"],
+    "profile_limit": 2555
+  },
+  "poll_capacity_pct": "open",
+  "enabled": 100
 }
