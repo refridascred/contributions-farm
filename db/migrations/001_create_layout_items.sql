@@ -2,12 +2,14 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    count INTEGER NOT NULL DEFAULT 0,
+    state TEXT NOT NULL DEFAULT 'new',
     region TEXT,
-    ratio REAL
+    count INTEGER NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_score ON layout_items (score);
+CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
 
-INSERT INTO layout_items (score, count, region, ratio) VALUES (47.34, 1, 'eu-west', 2.7);
-INSERT INTO layout_items (score, count, region, ratio) VALUES (32.75, 16, 'primary', 63.81);
+INSERT INTO layout_items (score, state, region, count, active) VALUES (46.09, 'primary', 'staging', 51, 17);
+INSERT INTO layout_items (score, state, region, count, active) VALUES (87.08, 'latest', 'strict', 75, 3);
+INSERT INTO layout_items (score, state, region, count, active) VALUES (93.46, 'cached', 'strict', 47, 42);
