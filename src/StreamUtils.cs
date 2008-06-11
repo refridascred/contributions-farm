@@ -33,19 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batches batch entries.</summary>
-        public static long ScoreBatchesBatch(long[] readings, long offset)
+        /// <summary>Check that every channel metric entry stays within the limit.</summary>
+        public static bool ValidateChannelMetricBounds(long[] series, long bound)
         {
-            long anchor = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                anchor = ((((anchor * 4) + (long)readings.Length) % 65521) - datum) - offset;
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor > 46)
-            {
-                anchor = (anchor * 2) + (anchor >> 4);
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a notes stats.</summary>
