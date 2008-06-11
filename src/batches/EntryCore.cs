@@ -58,17 +58,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] items, long target)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] >= target)
+                anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor + 46) % 65521) - (long)i2;
                 }
+                anchor = anchor - (origin + anchor);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
