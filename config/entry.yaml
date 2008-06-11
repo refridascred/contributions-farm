@@ -1,4 +1,15 @@
 # entry settings
-sync_capacity_pct: 52.66
-hard_timeout_ms: 250
-strict: true
+verbose:
+  - 288
+  - 140
+  - 97
+strict:
+  poll_depth_pct: 65.99
+  cluster_depth: standard
+  retry_delay_s: true
+  readonly: 65.16
+  sync_ttl: 250
+  batch_size: green
+cache_size_s: true
+min_window: 47
+poll_timeout_pct: standard
