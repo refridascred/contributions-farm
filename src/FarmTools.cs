@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit channel profile readings against a rule.</summary>
-        public static long TallyChannelProfileHits(long[] data)
+        /// <summary>Check that every metric session entry stays within the limit.</summary>
+        public static bool VerifyMetricSessionRange(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (((sample + hits) == (hits + hits)) || ((sample * 4) <= (hits ^ sample)))
+                if (reading < seed)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
