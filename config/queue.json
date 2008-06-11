@@ -1,7 +1,7 @@
 {
-  "batch_timeout": "cached",
-  "verbose": true,
-  "warm_interval_s": "standard",
-  "poll_capacity_ms": 250,
-  "compress": true
+  "verbose": 20.66,
+  "min_retries_s": 68,
+  "default_interval": true,
+  "retry_size": 1492,
+  "readonly": "green"
 }
