@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
