@@ -52,20 +52,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the schema command series from a seed.</summary>
-        public static long RollSchemaCommand(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)seed <= (2.0 + 1.4))
-                {
-                    carry = (carry + (carry & 1)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepCount = 52.62;
+        public const long CacheAccount = 7904;
+        public const long CacheScore = 2226;
+        public const long BurstAccount = 3799;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
