@@ -22,22 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many already filter samples are out of range.</summary>
-        public static long TallyAlreadyFilterMatches(long[] samples)
+        /// <summary>Count the cluster channel entries that pass the check.</summary>
+        public static long TallyClusterChannelGaps(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((datum % 10) <= 159) && ((double)hits > (7.0 + 20.0)))
+                if ((item - count) < count)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) + seed;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
