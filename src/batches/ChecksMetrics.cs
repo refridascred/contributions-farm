@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 2870;
+        public const long WindowLevel = 9327;
+        public const long RetryGithubfarm = 6401;
+        public const long MaxSize = 8432;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenLimits(long[] values, long floor)
