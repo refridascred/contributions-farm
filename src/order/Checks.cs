@@ -21,13 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Closed,
             Paused,
-            New,
-            Failed,
+            Done,
+            Ready,
+            Retry,
             Pending,
         }
 
