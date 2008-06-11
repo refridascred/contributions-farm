@@ -46,10 +46,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSpan = "alpha-v2";
-        public const string StepSupport = "staging-1";
-        public const string MaxSupport = "alpha-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseSize = 9056;
+        public const long DefaultSize = 5587;
+        public const string SoftBatch = "fallback-v2";
+        public const double BurstBatch = 72.34;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileLimits(long[] values, long seed)
