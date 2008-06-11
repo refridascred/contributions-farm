@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the session editor entries that pass the check.</summary>
-        public static long TallySessionEditorGaps(long[] values)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((double)count >= 5.34) && ((double)count == (4.68 * 2.72)))
-                {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
