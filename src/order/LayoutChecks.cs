@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 200;
-        public const long CacheRatio = 9779;
-        public const long LimitCache = 3474;
+        /// <summary>Count notes commits pairs that satisfy a relation.</summary>
+        public static long MatchNotesCommitsCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long PairStreamCount(long[] series)
