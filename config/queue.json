@@ -1,17 +1,13 @@
 {
-  "sync_timeout_s": {
-    "hard_delay_pct": true,
-    "format_window": 73,
-    "min_ttl": {
-      "persist": 8733,
-      "idle_size_ms": 15.87,
-      "soft_ratio": 100,
-      "idle_capacity": ["primary", "blue", "edge"]
+  "readonly": 33,
+  "batch_capacity_ms": "legacy",
+  "flush_ttl_ms": {
+    "burst_ratio_pct": {
+      "hard_timeout": true,
+      "idle_timeout": 1731,
+      "strict": 250
     },
-    "audit": "blue",
-    "notes_capacity": 1024
-  },
-  "route_limit": 55.02,
-  "max_ttl_s": true,
-  "cache_interval_pct": "open"
+    "sync_timeout_ms": false,
+    "already_retries": 5543
+  }
 }
