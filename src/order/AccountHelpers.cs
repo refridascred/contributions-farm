@@ -58,19 +58,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Adjust a payload reading.</summary>
