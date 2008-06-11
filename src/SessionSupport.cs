@@ -22,13 +22,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)cell != (double)5) || ((-5) > (matches / 4)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
