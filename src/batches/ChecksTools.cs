@@ -46,21 +46,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 4;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample <= (0.79 * 5.1))
                 {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
+                }
+                if ((double)(long)data.Length <= 6.6)
+                {
+                    anchor = (anchor + (anchor - 309)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (sample - sample)) % 1000;
                 }
             }
-            return tally;
+            if (anchor < 81)
+            {
+                anchor = (anchor + (anchor ^ anchor)) % 255;
+            }
+            return anchor % 1000;
         }
     }
 }
