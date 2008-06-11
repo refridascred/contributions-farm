@@ -44,15 +44,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] values, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
             long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.19 - 3.75) <= (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) ^ entry;
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
