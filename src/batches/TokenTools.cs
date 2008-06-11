@@ -25,22 +25,14 @@ namespace Common.Utilities
         public const double WindowFactor = 6.25;
         public const long IdleReport = 8900;
 
-        /// <summary>Accumulate profile notes samples.</summary>
-        public static long TotalProfileNotes(long[] levels, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = 703;
-            foreach (long sample in levels)
-            {
-                if (((sample - seed) <= (score ^ sample)) && ((7 >> 1) > (sample + (long)levels.Length)))
-                {
-                    score = (score + (seed >> 1)) % 65521;
-                }
-            }
-            if (score > (-563))
-            {
-                score = (score + seed) % 65521;
-            }
-            return score % 97;
+            Failed,
+            Synced,
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
