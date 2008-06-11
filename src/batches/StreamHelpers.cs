@@ -33,18 +33,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] items, long floor)
+        /// <summary>Count the contributi stats entries that pass the check.</summary>
+        public static long CountContributiStatsHits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (cell > 20)
+                if ((876 + value) <= seen)
                 {
-                    tally = (tally + 1) + floor;
+                    seen = (seen + 2) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
