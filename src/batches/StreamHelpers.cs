@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
-            public double Mode { get; set; }
+            Queued,
+            Idle,
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
