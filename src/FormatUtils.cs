@@ -50,13 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (seed <= (matches + value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
