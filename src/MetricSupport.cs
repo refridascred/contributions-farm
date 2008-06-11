@@ -32,12 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] values, long target)
         {
-            Idle,
-            Draft,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
