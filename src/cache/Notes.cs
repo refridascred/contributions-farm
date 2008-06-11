@@ -38,12 +38,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 87.57;
-        public const long MinGithubfarm = 8060;
-        public const long RetryGithubfarm = 8852;
-        public const long BaseInterval = 991;
-        public const string MaxGithubfarm = "primary-v2";
+        /// <summary>Match up githubfarm channel samples.</summary>
+        public static long PairGithubfarmChannelCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftSpan = 4007;
