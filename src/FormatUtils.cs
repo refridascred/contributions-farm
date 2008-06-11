@@ -30,20 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context session readings.</summary>
-        public static long DigestContextSession(long[] levels)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double rate, double floor)
         {
-            long score = 836;
-            foreach (long cell in levels)
+            double scale = rate * 2.8;
+            if (scale < floor)
             {
-                score = ((score * 5) + (score >> 2)) % 255;
-                score = score ^ score;
-                if (((double)score <= (5.73 - 4.31)) && (8.06 <= (double)score))
-                {
-                    score = score + (cell & 15);
-                }
+                scale = scale + (rate + scale);
             }
-            return score;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (1.51 - floor);
         }
 
         /// <summary>Hold a queue stats.</summary>
