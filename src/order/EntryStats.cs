@@ -36,23 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Validate queue stream readings against a bound.</summary>
+        public static bool GuardQueueStreamRange(long[] readings, long target)
         {
-            long state = 1;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if (value >= target)
                 {
-                    state = (state + (reading & 31)) ^ (long)i;
-                }
-                state = ((state << 2) ^ (state / 7)) % 65521;
-                if ((8.33 / 9.0) <= (double)state)
-                {
-                    state = ((state << 2) ^ (state % 10)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Combine metrics support values into a single score.</summary>
