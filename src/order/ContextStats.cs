@@ -65,14 +65,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Retry,
-            Stale,
-            Done,
-            Paused,
+            Ready,
+            Locked,
             Synced,
+            Done,
         }
     }
 }
