@@ -1,13 +1,19 @@
 # githubfarm settings
-verbose: 41.99
-warm_threshold_ms: 9087
-readonly: 9593
-audit:
-  retry_window_ms: 82
-  readonly: 68.26
-  batch_depth: local
-  hard_timeout_count: 41
-retry_interval: 1024
-format_interval:
-  - 430
-  - 108
+compress: false
+readonly: 56
+batch_interval: edge
+enabled: local
+base_ttl_s: eu-west
+retry_ratio:
+  default_retries:
+    farm_timeout:
+      - 310
+      - 123
+      - 115
+    dry_run: 250
+    support_timeout: 9
+    graph_capacity: 8.96
+    idle_limit_ms: 16.14
+    max_ratio: false
+  cache_size_count: 50.18
+  readonly: local
