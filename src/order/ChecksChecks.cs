@@ -29,9 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 6498;
-        public const double BatchSchema = 97.18;
-        public const long HardSchema = 5473;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
