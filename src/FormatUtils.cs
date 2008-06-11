@@ -36,19 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double rate, double floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] readings)
         {
-            double scale = rate * 2.8;
-            if (scale < floor)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                scale = scale + (rate + scale);
+                if (((count * 2) >= (datum / 3)) && (((datum ^ count) <= datum) && (count < (count % 16))))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (1.51 - floor);
+            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
