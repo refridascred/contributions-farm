@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph channel readings against a rule.</summary>
-        public static long TallyGraphChannelGaps(long[] series)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value - 6) >= 37)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Failed,
         }
 
         /// <summary>Validate format filter readings against a bound.</summary>
