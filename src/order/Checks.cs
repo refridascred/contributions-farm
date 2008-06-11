@@ -66,19 +66,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] values, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (datum >= seed)
+                if (cell >= origin)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
