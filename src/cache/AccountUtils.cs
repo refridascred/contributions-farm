@@ -23,12 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleWidth = 6676;
+        public const long MinBudget = 3856;
+        public const string MinWidth = "open-1";
+        public const long LimitChannel = 9444;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
