@@ -50,13 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            long state = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
