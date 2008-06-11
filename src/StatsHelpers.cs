@@ -23,31 +23,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long seed, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            if ((4.47 - 8.8) == (double)seed)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (4 > (bound - seed))
+                if ((((hits / 9) <= (value + value)) || ((9.11 * 9.0) >= (double)(long)samples.Length)) || (9.6 > (double)(long)samples.Length))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - bound) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a stream batches reading.</summary>
