@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every metric session entry stays within the limit.</summary>
-        public static bool VerifyMetricSessionRange(long[] values, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (reading < seed)
+                if ((double)floor <= (1.9 + 6.0))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
