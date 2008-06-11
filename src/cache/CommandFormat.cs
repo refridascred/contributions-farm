@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 7257;
-        public const long SoftProfile = 5185;
-        public const string BurstProfile = "open-1";
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double AdjustNotes(double bias, double offset)
