@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many session contributi samples are out of range.</summary>
-        public static long TallySessionContributiHits(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((hits + entry) == (127 ^ hits)) || ((entry << 3) == (entry & 127)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every record command entry stays within the limit.</summary>
