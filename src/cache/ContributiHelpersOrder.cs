@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long origin, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            if ((origin ^ origin) < (48 + offset))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 9) < (origin * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
