@@ -77,22 +77,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate contributi metrics samples.</summary>
-        public static long TotalContributiMetrics(long[] samples)
-        {
-            long mix = 141;
-            foreach (long cell in samples)
-            {
-                if (!((mix + cell) == (cell / 8)))
-                {
-                    mix = (mix << 2) ^ (cell / 3);
-                }
-            }
-            if (mix > 608)
-            {
-                mix = mix ^ (mix - mix);
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 6172;
+        public const string RetryQueue = "local-edge";
+        public const double BurstQueue = 67.29;
     }
 }
