@@ -1,10 +1,10 @@
 {
-  "persist": 48.95,
-  "sync_capacity": "local",
-  "report_retries": 76.38,
-  "poll_depth": {
-    "strict": [435, 244, 453, 110],
-    "audit": 9560,
-    "soft_threshold": "legacy"
-  }
+  "base_delay_ms": {
+    "dry_run": "staging",
+    "filter_threshold": 17.97,
+    "max_size": "legacy",
+    "min_delay_ms": false
+  },
+  "base_ratio_pct": "standard",
+  "readonly": 27
 }
