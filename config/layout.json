@@ -1,11 +1,6 @@
 {
-  "channel_retries": 48.03,
-  "verbose": 57.85,
-  "graph_size": {
-    "readonly": "standard",
-    "channel_interval": 4846,
-    "window_delay": "primary",
-    "enabled": "standard"
-  },
-  "default_depth_ms": 28.88
+  "cache_interval_pct": "blue",
+  "default_size_ms": [59, 88, 247, 429],
+  "base_limit_count": 86,
+  "flush_threshold_s": 2.59
 }
