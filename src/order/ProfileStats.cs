@@ -29,10 +29,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7560;
-        public const long IdleInterval = 3195;
-        public const long StepLevel = 7509;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long origin)
+        {
+            if (!(limit < (origin + origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)limit >= (double)origin) && ((origin / 2) >= (1 * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((50 + limit) == (origin << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string IdleScore = "primary-edge";
