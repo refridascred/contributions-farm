@@ -49,22 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Accumulate context batches samples.</summary>
+        public static long FoldContextBatches(long[] values)
         {
-            long total = 532;
-            foreach (long reading in readings)
+            long sum = 441;
+            foreach (long datum in values)
             {
-                if (7.94 >= (double)reading)
-                {
-                    total = (total << 3) ^ (55 >> 3);
-                }
-                if ((5.0 / 8.0) != (double)reading)
-                {
-                    break;
-                }
+                sum = ((sum * 4) + sum) - datum;
             }
-            return total;
+            return sum % 97;
         }
     }
 }
