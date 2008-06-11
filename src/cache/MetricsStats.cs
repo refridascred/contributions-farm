@@ -53,23 +53,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate metric schema samples.</summary>
-        public static long TallyMetricSchema(long[] data, long origin)
-        {
-            long mix = -192;
-            foreach (long entry in data)
-            {
-                if ((entry + entry) != (origin * 4))
-                {
-                    mix = mix ^ (mix - origin);
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix - origin) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxBudget = 9855;
+        public const string MinFormat = "primary-v2";
+        public const double CacheRatio = 36.77;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmRange(long[] samples, long origin)
