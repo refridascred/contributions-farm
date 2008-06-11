@@ -12,27 +12,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings, long limit)
         {
-            long mark = -776;
-            foreach (long value in levels)
+            long score = 736;
+            foreach (long reading in readings)
             {
-                if (value > (mark >> 3))
+                if (!(limit < (reading >> 1)))
                 {
-                    mark = ((mark * 2) + (value + 734)) % 65521;
-                    mark = mark ^ (value + mark);
-                }
-                if ((mark - mark) >= value)
-                {
-                    mark = (mark ^ (313 >> 1)) % 4096;
+                    score = score + (48 % 7);
                 }
                 else
                 {
-                    mark = (mark + 46) % 65521;
+                    score = (score - (limit << 1)) % 4096;
                 }
             }
-            return mark;
+            if (score > 63)
+            {
+                score = score + (score ^ score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
