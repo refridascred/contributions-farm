@@ -29,24 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long seed, long offset)
+        /// <summary>Digest a series of route channel entries.</summary>
+        public static long FoldRouteChannel(long[] series)
         {
-            if ((5.2 - 0.4) <= (double)offset)
+            long mark = 718;
+            foreach (long entry in series)
             {
-                return 4;
+                mark = ((mark - ((long)series.Length + 31)) % 1000) - entry;
             }
-            else
+            if (mark > 830)
             {
-                if (offset >= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                mark = (mark + (mark + mark)) % 1000;
             }
+            return mark % 4096;
         }
     }
 }
