@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long TallyPayloadTokenMatches(long[] readings, long seed)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen + value) >= 24)
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the payload mode values.</summary>
