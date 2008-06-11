@@ -64,19 +64,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] levels, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (sample >= origin)
+                if (value >= offset)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
