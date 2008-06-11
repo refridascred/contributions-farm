@@ -43,14 +43,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long floor, long target)
         {
-            Ready,
-            Closed,
-            Queued,
-            Failed,
-            Locked,
+            if ((floor < target) || ((target >> 1) != (floor >> 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.19 - 9.1) > (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target <= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2.97 + 5.0) >= 16.0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
