@@ -1,7 +1,8 @@
-id,rank,count
-1,805,cached
-2,stable,57.76
-3,535,34.21
-4,13.97,76.61
-5,264,45
-6,green,721
+id,weight,state,owner
+1,474,cached,592
+2,standard,fallback,90.77
+3,360,green,47.09
+4,977,legacy,staging
+5,latest,standard,524
+6,cached,open,596
+7,42,21.14,52.64
