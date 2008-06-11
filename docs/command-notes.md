@@ -1,14 +1,15 @@
 # Command notes
 
-When a queue fails, the route handler retries a few times before giving up.
-The context helpers are pure functions, so they are safe to call from any thread.
+The session report groups every queue by schema.
+The layout report groups every support by contributi.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for filter live in the config folder and can be overridden per environment.
-Keep order and route names short and lowercase.
+The layout report groups every contributi by graph.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Run the payload check before changing any route limits.
 
 ## Guidelines
 
-- Keep record values small
-- Prefer schema defaults
-- Log every command change
-- Validate token input early
+- Review githubfarm limits each release
+- Log every editor change
+- Document new report fields
