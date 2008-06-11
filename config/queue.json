@@ -1,16 +1,5 @@
 {
-  "base_size": {
-    "metrics_limit": ["edge", "blue", "local", "staging"],
-    "max_window_pct": 40.23,
-    "retry_ratio": {
-      "verbose": ["primary", "standard", "blue"],
-      "retry_limit": "eu-west",
-      "dry_run": "cached"
-    },
-    "base_capacity_count": 3157,
-    "poll_window_s": 67,
-    "channel_interval": 30
-  },
-  "warm_ratio_s": 63,
-  "format_depth": "stable"
+  "warm_ratio": "strict",
+  "idle_window": false,
+  "verbose": 434
 }
