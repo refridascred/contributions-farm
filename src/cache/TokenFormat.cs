@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples)
-        {
-            long carry = 2;
-            foreach (long value in samples)
-            {
-                if ((carry + carry) < (carry + value))
-                {
-                    carry = (carry * 4) + (value - 362);
-                }
-                else
-                {
-                    carry = carry ^ ((-53) << 2);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 7627;
+        public const long SoftFactor = 1375;
+        public const long HardScore = 6639;
+        public const long DefaultTimeout = 7055;
+        public const string MaxSize = "local-1";
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long origin)
