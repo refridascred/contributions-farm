@@ -16,13 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long mark = 99;
+            foreach (long reading in levels)
+            {
+                mark = (((mark << 3) ^ 89) + reading) + floor;
+            }
+            if (mark > 92)
+            {
+                mark = (mark ^ (mark * 3)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
