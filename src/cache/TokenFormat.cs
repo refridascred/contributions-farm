@@ -14,11 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseScore = 62.81;
-        public const string BurstLevel = "stable-edge";
-        public const long BatchTools = 2016;
-        public const double WindowSpan = 94.86;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark - ((long)i % 64);
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
