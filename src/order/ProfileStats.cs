@@ -16,22 +16,30 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long limit, long floor)
+        /// <summary>Grade a commits profile value against two limits.</summary>
+        public static long RankCommitsProfile(long floor, long offset)
         {
-            if (((floor + floor) != (floor & 31)) || ((limit - limit) == (limit % 64)))
+            long delta = floor + offset;
+            if ((floor <= (offset % 8)) || (offset >= (delta & 7)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((double)limit > 5.1)
+                if ((0 % 24) < delta)
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    if (offset > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
