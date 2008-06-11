@@ -51,18 +51,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long target)
         {
-            long carry = 0;
-            foreach (long item in values)
+            if (((-510) + target) != (floor - target))
             {
-                if (carry <= item)
+                return 0;
+            }
+            else
+            {
+                if (((double)target >= 20.0) || ((792 - target) < 29))
                 {
-                    carry = carry + (item + carry);
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the format level values.</summary>
