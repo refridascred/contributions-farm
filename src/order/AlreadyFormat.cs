@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] series, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] values)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long mark = 51;
+            foreach (long reading in values)
             {
-                if (value <= origin)
+                if (0 < (mark / 7))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark ^ (mark << 2)) % 97;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ reading;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Fold a list of stats cache readings.</summary>
