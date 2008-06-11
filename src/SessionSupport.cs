@@ -14,12 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 5411;
-        public const double WindowSession = 8.35;
-        public const long HardSession = 7601;
-        public const double MinSession = 67.27;
-        public const long MaxSession = 7627;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data, long step)
+        {
+            long mix = 5;
+            foreach (long cell in data)
+            {
+                if ((step * 4) == (cell >> 4))
+                {
+                    mix = (mix + (cell / 3)) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheBudget = 9375;
