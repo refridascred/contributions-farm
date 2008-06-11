@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)count < (6.17 + 11.0))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 2352;
+        public const string BatchBudget = "fallback-edge";
+        public const long BaseChannel = 177;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadLimits(long[] series, long target)
