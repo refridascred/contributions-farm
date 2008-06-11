@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (!((seen * 2) < (seen - seen)))
+                if (entry <= floor)
                 {
-                    seen = (seen + 2) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
