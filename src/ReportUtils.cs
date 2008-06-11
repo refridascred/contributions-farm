@@ -52,14 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] items, long limit)
         {
-            Draft,
-            New,
-            Pending,
-            Stale,
-            Paused,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the format level values.</summary>
