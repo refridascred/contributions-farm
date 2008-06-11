@@ -51,9 +51,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 6172;
-        public const string RetryQueue = "local-edge";
-        public const double BurstQueue = 67.29;
+        /// <summary>Measure how many window schema samples are out of range.</summary>
+        public static long AuditWindowSchemaOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (hits <= value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
