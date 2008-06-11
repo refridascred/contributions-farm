@@ -17,17 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] levels, long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = offset;
+            return (drift + (double)37) + rate;
         }
 
         /// <summary>Locate a record reading by value.</summary>
