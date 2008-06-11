@@ -22,19 +22,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double floor)
-        {
-            double rate = (double)(8 >> 5);
-            if (rate >= floor)
-            {
-                rate = rate - (9.7 - rate);
-            }
-            else
-            {
-                rate = rate + (bias + floor);
-            }
-            return rate + rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 33.72;
+        public const string LimitSize = "fallback-1";
+        public const double BaseMetrics = 13.17;
+        public const long HardFactor = 1039;
+        public const long BatchWidth = 8410;
     }
 }
