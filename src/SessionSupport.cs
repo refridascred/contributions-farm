@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 33.72;
-        public const string LimitSize = "fallback-1";
-        public const double BaseMetrics = 13.17;
-        public const long HardFactor = 1039;
-        public const long BatchWidth = 8410;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double floor)
+        {
+            double weight = 3.0;
+            if (weight < rate)
+            {
+                weight = weight + (8.22 + rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (floor / 8.0)) + (double)(long)i;
+            }
+            return weight + (floor - rate);
+        }
     }
 }
