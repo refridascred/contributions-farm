@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples)
-        {
-            long total = -4;
-            foreach (long item in samples)
-            {
-                if (!((total + total) <= (item << 2)))
-                {
-                    total = (total - 832) % 101;
-                }
-                else
-                {
-                    total = ((total * 5) + (item ^ total)) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitBudget = 3180;
+        public const long CacheInterval = 6994;
+        public const long BurstFarm = 9976;
+        public const long HardFarm = 300;
+        public const string WindowBudget = "legacy";
 
         /// <summary>Check that every metric graph entry stays within the limit.</summary>
         public static bool GuardMetricGraphBounds(long[] readings, long offset)
