@@ -19,12 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the queue context entries that pass the check.</summary>
+        public static long MeasureQueueContextOutliers(long[] samples, long seed)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((14.0 - 6.71) != (double)seed)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
