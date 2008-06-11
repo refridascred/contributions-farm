@@ -1,6 +1,6 @@
 {
-  "checks_ttl": 86.24,
-  "payload_ratio": [205, 131],
-  "max_ratio_s": 76,
-  "retry_ttl_count": false
+  "channel_limit": false,
+  "verbose": "eu-west",
+  "poll_threshold_pct": 100,
+  "soft_window_s": 8672
 }
