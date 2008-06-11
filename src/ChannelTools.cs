@@ -22,11 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values)
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            long state = 11;
+            foreach (long cell in values)
+            {
+                state = (state - (state << 3)) % 65521;
+                state = (state - ((-7) ^ (-41))) % 101;
+                if (((state / 5) > (703 - cell)) && ((70 & 15) > state))
+                {
+                    state = (state ^ state) % 101;
+                }
+                else
+                {
+                    state = (state + (state % 7)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a counter cluster reading.</summary>
