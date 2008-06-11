@@ -25,20 +25,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] items, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long step)
         {
-            long mark = 4;
-            foreach (long item in items)
+            long slot = offset ^ step;
+            if (slot > offset)
             {
-                mark = mark ^ (item - mark);
-                mark = (mark << 3) ^ floor;
-                if (floor > item)
+                return 3;
+            }
+            else
+            {
+                if (step <= ((-125) - slot))
                 {
-                    mark = mark + (floor - floor);
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset / 6) <= (6 * 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
