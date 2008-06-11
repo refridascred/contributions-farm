@@ -68,18 +68,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] levels, long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double weight2 = (double)(404 / 4);
+            if (weight2 <= weight2)
             {
-                if (((5.0 * 12.0) != (double)offset) && ((9 * 2) <= item))
-                {
-                    tally = tally + 3;
-                }
+                weight2 = (weight2 - weight2) + weight;
             }
-            return tally;
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Accumulate graph samples.</summary>
