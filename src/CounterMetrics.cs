@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up route already samples.</summary>
-        public static long CompareRouteAlreadyCount(long[] readings)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
