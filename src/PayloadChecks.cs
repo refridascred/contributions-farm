@@ -38,16 +38,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long carry = 0;
+            foreach (long datum in values)
             {
-                mark = (mark << 3) ^ (step + step);
-                mark = ((mark * 5) + (long)i) % 4093;
+                carry = ((carry * 3) + carry) - datum;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Iterate the queue contributi series from a seed.</summary>
