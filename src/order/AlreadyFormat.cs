@@ -54,14 +54,19 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data)
         {
-            Locked,
-            New,
-            Dropped,
-            Queued,
-            Ready,
+            long mix = 863;
+            foreach (long cell in data)
+            {
+                mix = (mix - (cell + mix)) % 255;
+            }
+            if (mix < 66)
+            {
+                mix = (mix - 113) % 97;
+            }
+            return mix;
         }
     }
 }
