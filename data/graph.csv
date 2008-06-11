@@ -1,6 +1,10 @@
-id,owner,label,state
-1,standard,758,stable
-2,edge,98.35,28.69
-3,open,45.59,631
-4,397,79.58,green
-5,631,415,10.54
+id,rank
+1,292
+2,42
+3,staging
+4,523
+5,primary
+6,50.45
+7,open
+8,96.11
+9,36.17
