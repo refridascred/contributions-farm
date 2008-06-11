@@ -43,38 +43,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long origin, long floor)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] readings, long seed)
         {
-            if (49 > (floor + (-401)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - 69) < (origin + origin))
+                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >= (floor >> 3)) || ((origin - 9) <= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - 929) >= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
