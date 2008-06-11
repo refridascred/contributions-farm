@@ -66,12 +66,11 @@ namespace Common.Utilities
             return drift + (span * 6.14);
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Idle,
-            Active,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 70.71;
+        public const long SoftFactor = 766;
+        public const double MinBudget = 66.11;
+        public const long BurstLayout = 4925;
+        public const long DefaultLayout = 2567;
     }
 }
