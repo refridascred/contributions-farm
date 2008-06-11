@@ -59,12 +59,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
