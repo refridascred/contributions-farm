@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 5985;
-        public const long WindowRatio = 8535;
-        public const long SoftAlready = 4943;
-        public const double BurstFactor = 69.3;
-        public const long RetryDepth = 9561;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftDepth = 7876;
+        public const long BurstBudget = 6703;
+        public const long IdleRatio = 2247;
 
         /// <summary>Audit batch commits readings against a rule.</summary>
         public static long AuditBatchCommitsHits(long[] samples)
