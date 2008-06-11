@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next stream support value from a seed.</summary>
-        public static long SeriesStreamSupport(long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long origin, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long delta = origin - limit;
+            if ((delta > (0 & 31)) || ((double)limit > (16.0 + 2.86)))
             {
-                if ((double)(long)i >= (18.0 / 7.0))
-                {
-                    acc = ((acc << 2) ^ ((long)i - 10)) % 97;
-                    acc = ((acc << 2) ^ (offset - acc)) % 1000;
-                }
-                if (!((double)offset < (double)(long)i))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (2.1 >= (double)delta)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the payload status values.</summary>
