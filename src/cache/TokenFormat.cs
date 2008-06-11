@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 7627;
-        public const long SoftFactor = 1375;
-        public const long HardScore = 6639;
-        public const long DefaultTimeout = 7055;
-        public const string MaxSize = "local-1";
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long origin)
