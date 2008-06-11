@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Stale,
-            New,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxSpan = "open-v2";
+        public const long RetryCommand = 7883;
+        public const double StepCommand = 90.81;
+        public const long CacheCommand = 7527;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiHits(long[] series)
