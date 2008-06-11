@@ -14,13 +14,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Look up the position of a report already sample.</summary>
+        public static long SeekReportAlreadyIndex(long[] samples, long offset)
         {
-            Ready,
-            Queued,
-            Dropped,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
