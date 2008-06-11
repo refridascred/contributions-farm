@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double WindowDepth = 75.99;
         public const long RetrySchema = 4618;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] levels, long target)
+        /// <summary>Locate a window farm reading by value.</summary>
+        public static long SeekWindowFarmIndex(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] == target)
+                if ((data[i] > limit) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
