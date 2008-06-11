@@ -1,8 +1,6 @@
 # entry settings
-default_delay_pct:
-  base_capacity_pct: legacy
-  stats_ratio: 628
-  counter_timeout: cached
-  persist: blue
-default_interval_count: 42
-compress: 6702
+hard_depth_s: false
+base_ttl:
+  - standard
+  - standard
+batches_limit: 100
