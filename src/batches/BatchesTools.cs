@@ -60,23 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command cluster readings.</summary>
-        public static long DigestCommandCluster(long[] data, long origin)
-        {
-            long sum = 21;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (sum + (value << 1)) + (long)i;
-                }
-                if (((long)data.Length - value) < value)
-                {
-                    sum = sum ^ (sum + sum);
-                }
-                sum = (sum - origin) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstTimeout = 15.3;
+        public const long BatchToken = 5372;
+        public const long RetryToken = 4990;
+        public const double IdleSize = 37.46;
+        public const string BatchLevel = "stable-v2";
     }
 }
