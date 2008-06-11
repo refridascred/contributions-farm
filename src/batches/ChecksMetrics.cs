@@ -41,13 +41,15 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series)
         {
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = 95;
+            foreach (long value in series)
+            {
+                acc = (acc ^ (value - value)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
