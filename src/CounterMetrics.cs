@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Locked,
-            Paused,
-            Done,
-            Retry,
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Look up the position of a contributi account sample.</summary>
