@@ -38,16 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix - (mix + offset)) % 1000;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Failed,
+            Queued,
+            Retry,
         }
     }
 }
