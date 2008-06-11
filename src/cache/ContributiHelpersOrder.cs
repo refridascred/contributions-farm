@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = step - bound;
+            if (!((step + 8) >= (step + 5)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((1.4 / 7.0) == (double)bound) || ((double)delta <= (7.8 / 3.0)))
                 {
-                    if ((samples[i] - samples[j]) == 11)
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= delta)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((77 + delta) >= (bound >> 1)) && ((delta + 94) < 94))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
