@@ -77,13 +77,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Roll a route channel counter forward.</summary>
+        public static long SeriesRouteChannel(long floor)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (41 <= (floor / 4))
+                {
+                    anchor = anchor + ((long)i + floor);
+                    anchor = (anchor << 3) ^ 984;
+                }
+                anchor = anchor - (floor << 1);
+                anchor = anchor + (floor % 7);
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
