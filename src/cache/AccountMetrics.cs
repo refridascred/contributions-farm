@@ -55,18 +55,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 28.09;
+        public const double HardRecord = 61.05;
+        public const long IdleRecord = 7407;
 
         /// <summary>Iterate the layout queue series from a seed.</summary>
         public static long SeriesLayoutQueue(long seed)
