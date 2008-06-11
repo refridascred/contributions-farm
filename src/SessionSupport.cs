@@ -20,26 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of tools schema entries.</summary>
-        public static long DigestToolsSchema(long[] readings, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] readings)
         {
-            long result = 7;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((entry << 2) > result)
+                if ((1 + tally) <= 251)
                 {
-                    result = result ^ bound;
-                }
-                if ((3.0 - 4.7) > (double)entry)
-                {
-                    break;
+                    tally = (tally + 1) - cell;
                 }
             }
-            if (result > 85)
-            {
-                result = (result * 5) + (bound ^ result);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a notes summary.</summary>
