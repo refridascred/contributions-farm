@@ -59,11 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCommand = 0.53;
-        public const string RetryCommand = "latest";
-        public const long SoftFactor = 3329;
-        public const string IdleTimeout = "open";
-        public const long DefaultSize = 1176;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
