@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double weight, double span)
         {
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            double bias = (double)(212 % 12);
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (weight + span)) + (double)(long)i;
+            }
+            return bias + weight;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
