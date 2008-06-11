@@ -44,15 +44,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] samples, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] items)
         {
             long matches = 0;
-            foreach (long item in samples)
+            foreach (long reading in items)
             {
-                if ((6.1 + 10.0) != (double)matches)
+                if (9.0 > (double)reading)
                 {
-                    matches = ((matches + 1) ^ item) - step;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
