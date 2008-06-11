@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long HardFactor = 4272;
         public const long WindowRecord = 1527;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinDepth = 8389;
-        public const long MinCount = 3848;
-        public const long LimitTimeout = 8994;
-        public const string IdleSize = "legacy";
+        /// <summary>Locate a farm token reading by value.</summary>
+        public static long LookupFarmTokenIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
