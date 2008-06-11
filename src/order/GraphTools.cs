@@ -76,11 +76,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepDepth = 7580;
-        public const double MaxBudget = 79.25;
-        public const long LimitCommand = 637;
-        public const long SoftLevel = 6526;
-        public const long DefaultCommand = 9094;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinCount = 6865;
+        public const long BaseRatio = 6732;
+        public const double MaxFactor = 56.82;
     }
 }
