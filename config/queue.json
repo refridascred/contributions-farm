@@ -1,7 +1,7 @@
 {
-  "verbose": 20.66,
-  "min_retries_s": 68,
-  "default_interval": true,
-  "retry_size": 1492,
-  "readonly": "green"
+  "soft_size": [179, 427, 303, 37],
+  "verbose": 79.6,
+  "contributi_depth": "cached",
+  "strict": "legacy",
+  "entry_interval": "latest"
 }
