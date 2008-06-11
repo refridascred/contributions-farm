@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Combine command already values into a single score.</summary>
+        public static long CombineCommandAlready(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -602;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)carry <= (4.59 / 2.0)) && ((carry - 12) >= (reading * 4)))
                 {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry * 2) + (reading - carry);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the buffer class values.</summary>
