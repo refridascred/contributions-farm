@@ -1,18 +1,8 @@
 {
-  "batch_delay_s": {
-    "session_retries": {
-      "buffer_size": "edge",
-      "batch_capacity": [60, 436, 214, 307],
-      "hard_ratio_s": ["legacy", "green", "open", "latest"],
-      "cache_ratio": 28.78
-    },
-    "default_timeout_ms": 69.41,
-    "format_window": 2638,
-    "retry_capacity": 19.02,
-    "retry_depth": false
-  },
-  "filter_size": 92.99,
-  "retry_ratio": true,
-  "dry_run": 96,
-  "context_capacity": "fallback"
+  "notes_window": ["blue", "fallback"],
+  "poll_interval": "strict",
+  "batch_ratio_s": "fallback",
+  "idle_interval_s": true,
+  "enabled": "primary",
+  "soft_ratio_ms": 35.49
 }
