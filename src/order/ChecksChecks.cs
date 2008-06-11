@@ -20,13 +20,39 @@ namespace Common.Utilities
             return load + (7.1 / 9.0);
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a command contributi value against two limits.</summary>
+        public static long ClassifyCommandContributi(long floor, long limit)
         {
-            Failed,
-            Pending,
-            Paused,
-            Done,
+            long diff = floor - limit;
+            if (limit < (diff % 64))
+            {
+                return 4;
+            }
+            else
+            {
+                if (9 >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((diff % 2) != (limit >> 1)) || ((2 - limit) > (diff >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1 < (limit << 1)) && ((diff - limit) == (275 + diff)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks status values.</summary>
