@@ -14,12 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 21.34;
+        public const long IdleScore = 9275;
+        public const double BurstWindow = 57.94;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchInterval = 2541;
