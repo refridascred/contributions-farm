@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema metrics samples are out of range.</summary>
-        public static long TallySchemaMetricsOutliers(long[] readings, long floor)
+        /// <summary>Audit window graph readings against a rule.</summary>
+        public static long CountWindowGraphGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)floor < (3.0 * 0.1))
+                if ((0.4 / 3.0) <= (double)reading)
                 {
-                    tally = (tally + 1) - sample;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
