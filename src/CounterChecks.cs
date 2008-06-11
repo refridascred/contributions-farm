@@ -53,10 +53,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 94.09;
-        public const long WindowRatio = 2430;
-        public const double DefaultEntry = 64.99;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitDepth = 68.88;
+        public const double LimitChannel = 52.1;
+        public const double BaseInterval = 9.61;
+        public const double BatchLevel = 52.33;
+        public const string CacheSize = "primary";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double DefaultTools = 62.63;
