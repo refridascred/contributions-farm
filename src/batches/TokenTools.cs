@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] values, long seed)
         {
-            long sum = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((sum / 6) > 235)
+                if (743 <= seed)
                 {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                    continue;
+                    matches = (matches + 1) + reading;
                 }
-                sum = ((sum * 4) + (sample + sample)) % 65521;
-                sum = (sum ^ (sum & 15)) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
