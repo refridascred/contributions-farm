@@ -1,7 +1,17 @@
 {
-  "default_retries": true,
-  "buffer_retries": 30,
-  "audit": false,
-  "strict": "fallback",
-  "cache_threshold_count": "strict"
+  "sync_timeout_s": {
+    "hard_delay_pct": true,
+    "format_window": 73,
+    "min_ttl": {
+      "persist": 8733,
+      "idle_size_ms": 15.87,
+      "soft_ratio": 100,
+      "idle_capacity": ["primary", "blue", "edge"]
+    },
+    "audit": "blue",
+    "notes_capacity": 1024
+  },
+  "route_limit": 55.02,
+  "max_ttl_s": true,
+  "cache_interval_pct": "open"
 }
