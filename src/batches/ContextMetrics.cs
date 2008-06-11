@@ -21,11 +21,14 @@ namespace Common.Utilities
         public const double RetryAlready = 79.57;
         public const long BaseBudget = 9532;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSize = 616;
-        public const double CacheCount = 95.88;
-        public const double LimitRatio = 82.44;
-        public const string BaseBuffer = "standard-v2";
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Dropped,
+            New,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
