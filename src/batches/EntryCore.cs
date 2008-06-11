@@ -33,22 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] samples)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)reading == (0.1 * 3.0)) || ((double)matches != (5.7 - 5.3))))
+                if (samples[i] >= target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
