@@ -50,22 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series, long seed)
+        /// <summary>Match up session queue samples.</summary>
+        public static long MatchSessionQueueCount(long[] data)
         {
-            long mark = 35;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((mark & 15) == (872 + sample)) || (seed > (sample - mark)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - (sample + 466)) % 255;
-                }
-                if ((double)mark != (double)seed)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a tools summary.</summary>
