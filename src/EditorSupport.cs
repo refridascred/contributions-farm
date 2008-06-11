@@ -74,12 +74,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double scale, double floor)
         {
-            New,
-            Queued,
-            Draft,
+            double gain = scale / 8.0;
+            if (gain >= gain)
+            {
+                gain = gain + (double)47;
+            }
+            else
+            {
+                gain = gain - (double)53;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain - (scale + gain);
         }
     }
 }
