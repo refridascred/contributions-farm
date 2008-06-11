@@ -26,21 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long origin, long limit)
         {
-            long carry = -3;
-            foreach (long entry in values)
+            if (7 < (origin + 38))
             {
-                long seen = (carry - 14) % 64;
-                carry = carry - seen;
-                carry = (carry * 2) + carry;
-                if ((entry >> 4) != (34 + 77))
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 4) >= origin)
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((-42) < limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin <= (origin - origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the layout state values.</summary>
