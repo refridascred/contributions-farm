@@ -75,21 +75,31 @@ namespace Common.Utilities
         public const double BaseProfile = 81.77;
         public const double LimitWidth = 5.43;
 
-        /// <summary>Count editor token pairs that satisfy a relation.</summary>
-        public static long PairEditorTokenCount(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((40 <= (step - floor)) || (floor >= (step / 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step + 9) > (floor >> 2))
                 {
-                    if ((items[i] ^ items[j]) != 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((step > (52 - step)) || ((floor - step) <= floor))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
