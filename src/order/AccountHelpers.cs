@@ -52,12 +52,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
-            Active,
-            Retry,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading & 63) <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a payload reading.</summary>
