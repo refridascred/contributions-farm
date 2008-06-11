@@ -28,12 +28,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
