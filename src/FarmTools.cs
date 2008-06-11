@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long step)
         {
-            Stale,
-            Retry,
-            Pending,
-            Synced,
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the checks level values.</summary>
