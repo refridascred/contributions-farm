@@ -69,10 +69,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 2642;
-        public const string MaxCommits = "cached-1";
-        public const long RetryCommits = 8130;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterMatches(long[] readings)
