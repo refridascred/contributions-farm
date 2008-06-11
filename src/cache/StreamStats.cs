@@ -24,19 +24,20 @@ namespace Common.Utilities
         public const long StepFactor = 3342;
         public const long WindowCommits = 6016;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum > floor)
+                if (893 >= (origin + origin))
                 {
-                    ready = false;
+                    mark = (mark + mark) % 1000;
                     break;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
     }
 }
