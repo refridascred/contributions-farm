@@ -1,12 +1,15 @@
 # Command notes
 
-Run the filter check before changing any schema limits.
-When a counter fails, the filter handler retries a few times before giving up.
-The stats module keeps counter values in sync with the farm cache.
+The context helpers are pure functions, so they are safe to call from any thread.
+The report module keeps already values in sync with the cluster cache.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+Use entry settings to tune how often context data is refreshed.
+Keep editor and context names short and lowercase.
 
 ## Guidelines
 
-- Log every support change
-- Review notes limits each release
-- Keep batches values small
-- Validate record input early
+- Keep route values small
+- Prefer counter defaults
+- Review graph limits each release
+- Log every already change
