@@ -50,14 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] readings, long floor)
         {
-            Failed,
-            Stale,
-            New,
-            Idle,
-            Draft,
+            long total = -7;
+            foreach (long value in readings)
+            {
+                total = ((total << 2) ^ value) % 255;
+            }
+            if (total > 444)
+            {
+                total = ((total << 3) ^ floor) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
