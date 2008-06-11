@@ -1,4 +1,7 @@
 # githubfarm settings
-enabled: 794
-min_window: eu-west
-strict: primary
+default_depth: fallback
+cluster_window: false
+batch_threshold_pct: latest
+route_window: legacy
+base_limit_count: 250
+sync_capacity_s: 1024
