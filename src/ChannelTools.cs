@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long BaseTimeout = 851;
         public const string SoftSpan = "staging";
 
-        /// <summary>Count the payload batches entries that pass the check.</summary>
-        public static long CountPayloadBatchesHits(long[] items)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((double)tally >= (0.5 * 6.2))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
