@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long acc = 3;
+            foreach (long reading in levels)
             {
-                if ((8.8 * 2.0) == (double)mark)
-                {
-                    mark = mark - limit;
-                    mark = (mark ^ (mark - mark)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                acc = (acc ^ (2 * 4)) + reading;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
