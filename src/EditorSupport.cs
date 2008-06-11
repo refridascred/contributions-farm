@@ -67,19 +67,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double weight, double offset)
-        {
-            double mean = offset * 15.0;
-            if (mean >= (mean - mean))
-            {
-                mean = (mean - offset) - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (double)31) + (double)(long)i;
-            }
-            return mean - (double)443;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 72.77;
+        public const string RetryReport = "standard-v2";
+        public const double HardScore = 67.51;
     }
 }
