@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] samples)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally == (8.0 / 5.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next format value.</summary>
