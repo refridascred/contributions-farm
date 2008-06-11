@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstLevel = 68.09;
+        public const string CacheLevel = "local-v2";
+        public const long BurstCounter = 9153;
+        public const long DefaultSpan = 7083;
+        public const long CacheCounter = 1509;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
