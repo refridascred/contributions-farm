@@ -60,13 +60,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            Retry,
-            New,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (entry << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
