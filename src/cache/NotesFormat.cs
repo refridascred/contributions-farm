@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long CombineFarmSchema(long[] samples, long target)
         {
-            long score = 8;
-            foreach (long value in series)
+            long mix = 31;
+            foreach (long entry in samples)
             {
-                score = ((score + score) % 97) ^ value;
+                if (!((double)mix >= (3.0 / 5.0)))
+                {
+                    mix = (mix + (entry + mix)) % 65521;
+                }
+                if ((double)target >= (double)68)
+                {
+                    mix = (mix << 2) ^ (target ^ target);
+                }
+                if (((mix >> 4) == (mix << 2)) && ((7 << 3) <= (target - target)))
+                {
+                    break;
+                }
             }
-            return score;
+            if (mix > (-70))
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
