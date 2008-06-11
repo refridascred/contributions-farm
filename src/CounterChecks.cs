@@ -42,13 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Derive the next notes command value from a seed.</summary>
+        public static long StepNotesCommand(long limit)
         {
-            Pending,
-            Paused,
-            Synced,
-            New,
+            long total = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
