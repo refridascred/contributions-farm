@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long cur = seed - offset;
-            if ((double)offset <= (6.7 * 16.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed >> 4) < (seed + 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < cur)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
