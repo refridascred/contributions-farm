@@ -19,19 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] items, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long acc = 233;
-            foreach (long entry in items)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((825 % 100) < (acc - bound))
+                if (!(origin >= (origin / 2)))
                 {
-                    acc = (acc * 4) + (entry ^ bound);
+                    score = ((score << 3) ^ (score ^ score)) % 97;
                 }
-                acc = acc + (entry + entry);
+                if ((long)i != ((long)i + score))
+                {
+                    score = ((score * 2) + (origin & 255)) % 97;
+                    score = score - ((long)i + origin);
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
