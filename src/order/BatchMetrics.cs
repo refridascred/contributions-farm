@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] values)
         {
-            if ((target ^ limit) < (limit + target))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(limit < (target / 2)))
+                if ((2.4 + 10.0) <= (double)reading)
                 {
-                    return 6;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (target >= (limit - 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((target ^ target) >= (target % 7)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two entry stats measurements.</summary>
