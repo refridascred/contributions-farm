@@ -42,9 +42,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryFactor = 1150;
-        public const double SoftEditor = 21.34;
-        public const long MaxEditor = 3352;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double offset)
+        {
+            double ratio = (double)(523 + 655);
+            if (ratio > scale)
+            {
+                ratio = (ratio - (double)6) + offset;
+            }
+            else
+            {
+                ratio = ratio + (double)9;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)891) + (double)(long)i;
+            }
+            return ratio - 3.5;
+        }
     }
 }
