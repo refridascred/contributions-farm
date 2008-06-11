@@ -61,10 +61,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 6645;
         public const long StepDepth = 3654;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitBudget = "latest-1";
-        public const double HardRatio = 33.15;
-        public const double BurstCommand = 51.61;
-        public const string BaseWidth = "legacy-edge";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally + reading) <= (reading >> 1))
+                {
+                    tally = (tally + 3) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
