@@ -74,38 +74,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] readings, long bound)
         {
-            if ((bound < ((-415) + target)) || ((6.6 - 5.0) < (double)target))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) > bound)
+                if (((reading + hits) <= (bound << 1)) || (((80 % 10) > (bound - bound)) && ((bound + hits) > (-841))))
                 {
-                    return 8;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((target >> 1) >= (target % 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((45 + bound) == (bound + bound)) || (((-95) + bound) <= (target / 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
