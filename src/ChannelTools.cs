@@ -37,17 +37,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ target) % 97;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
