@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor farm samples are out of range.</summary>
-        public static long MeasureEditorFarmOutliers(long[] readings, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item >= (8.15 - 4.2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + step;
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
