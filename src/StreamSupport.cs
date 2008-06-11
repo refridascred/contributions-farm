@@ -22,13 +22,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
             public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
