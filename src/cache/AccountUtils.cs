@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowBudget = 1386;
-        public const long BurstSession = 7629;
-        public const long IdleSize = 4904;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many schema metrics samples are out of range.</summary>
         public static long TallySchemaMetricsOutliers(long[] readings, long floor)
