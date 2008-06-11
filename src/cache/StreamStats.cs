@@ -34,19 +34,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a farm buffer counter forward.</summary>
-        public static long StepFarmBuffer(long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((state & 63) < 16) || ((state & 63) > (long)i))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
