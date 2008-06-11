@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] items, long limit)
+        /// <summary>Rank stats metric input into a small class.</summary>
+        public static long ClassifyStatsMetric(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = floor ^ step;
+            if (2 >= (lane ^ step))
             {
-                if (items[i] > limit)
+                return 2;
+            }
+            else
+            {
+                if (!((floor + lane) > floor))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (0 <= (lane / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (lane >= (20 & 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the payload status values.</summary>
