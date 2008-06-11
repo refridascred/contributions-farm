@@ -28,19 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every filter account entry stays within the limit.</summary>
-        public static bool VerifyFilterAccountBounds(long[] items, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (reading >= limit)
+                if (datum > floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
