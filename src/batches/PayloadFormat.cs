@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long offset)
+        /// <summary>Roll a checks report counter forward.</summary>
+        public static long RollChecksReport(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (8 + sum)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up cache samples.</summary>
