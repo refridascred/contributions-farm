@@ -1,5 +1,25 @@
 # githubfarm settings
-base_ratio_pct: cached
-tools_ttl: 2038
-batch_timeout_pct: staging
-retry_ratio_s: true
+default_interval:
+  strict:
+    - 255
+    - 266
+    - 3
+    - 3
+  burst_interval_pct:
+    githubfarm_delay:
+      - legacy
+      - primary
+      - fallback
+    burst_retries_s:
+      - 409
+      - 314
+      - 421
+    enabled: 60
+  max_ratio: false
+  cache_delay: 79.8
+idle_size_count: fallback
+flush_limit_ms:
+  editor_ratio: green
+  max_delay_s: true
+  readonly: 1411
+default_limit_ms: fallback
