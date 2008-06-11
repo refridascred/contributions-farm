@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) != (count % 97))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
