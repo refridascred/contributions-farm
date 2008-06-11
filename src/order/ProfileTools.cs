@@ -71,11 +71,14 @@ namespace Common.Utilities
             return load + 5.77;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Retry,
+            Idle,
+            Pending,
+            Dropped,
+            New,
         }
     }
 }
