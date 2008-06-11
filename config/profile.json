@@ -1,6 +1,10 @@
 {
-  "burst_delay_pct": 2424,
-  "min_ttl": 250,
-  "poll_capacity": "strict",
-  "profile_ratio": [211, 25]
+  "compress": 48,
+  "retry_interval": [468, 267],
+  "batch_threshold_ms": {
+    "dry_run": "open",
+    "verbose": false,
+    "persist": 250
+  },
+  "cache_timeout": "latest"
 }
