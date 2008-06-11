@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings, long limit)
+        /// <summary>Digest a series of counter record entries.</summary>
+        public static long TotalCounterRecord(long[] items)
         {
-            long score = -63;
-            foreach (long reading in readings)
+            long anchor = 19;
+            foreach (long value in items)
             {
-                score = (score << 2) ^ (reading * 3);
-                score = (score * 4) + (score + reading);
-                if ((score + reading) > limit)
+                if ((anchor >> 3) <= value)
                 {
-                    score = score - (score & 7);
+                    anchor = ((anchor << 3) ^ (anchor % 2)) % 1000;
                 }
             }
-            if (score < 9)
-            {
-                score = (score << 2) ^ (limit - (-8));
-            }
-            return score % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
