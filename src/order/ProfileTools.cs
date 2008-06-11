@@ -67,11 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the cache phase values.</summary>
