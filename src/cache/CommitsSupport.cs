@@ -70,18 +70,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] values, long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((offset + hits) != (18 ^ offset)))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
