@@ -1,4 +1,7 @@
 # githubfarm settings
-audit: 100
-base_capacity_count: 500
-strict: latest
+strict: 3969
+batch_retries: primary
+account_delay: 53.53
+compress: 43.14
+flush_ttl: 27.89
+sync_timeout_count: true
