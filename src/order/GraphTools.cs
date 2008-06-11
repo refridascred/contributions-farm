@@ -33,22 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 10.51;
+        public const double HardToken = 95.1;
+        public const double IdleWidth = 86.85;
+        public const string MinLevel = "stable-1";
+        public const long HardWidth = 1809;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
