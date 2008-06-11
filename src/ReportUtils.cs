@@ -59,12 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] series, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] <= floor) && ((series[i] % 2) != 0))
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
