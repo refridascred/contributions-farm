@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLayout = "standard-edge";
-        public const long IdleLayout = 8488;
-        public const double RetryLayout = 5.24;
-        public const double BaseLevel = 96.53;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long PairStreamCount(long[] series)
