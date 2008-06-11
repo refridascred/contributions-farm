@@ -1,6 +1,9 @@
 # support settings
-warm_delay:
-  - 242
-  - 338
-audit: 8889
-hard_window: open
+counter_interval: false
+batch_ttl:
+  - 377
+  - 206
+  - 99
+  - 243
+poll_delay_ms: open
+idle_ratio_s: 56
