@@ -57,19 +57,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine cache account values into a single score.</summary>
-        public static long CombineCacheAccount(long[] data)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long anchor = 45;
-            foreach (long item in data)
-            {
-                anchor = (((anchor << 3) ^ anchor) % 65521) ^ item;
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor * 2) + 862;
-            }
-            return anchor % 97;
+            Locked,
+            Draft,
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Locate a format reading by value.</summary>
