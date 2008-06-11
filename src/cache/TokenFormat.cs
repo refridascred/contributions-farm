@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const string IdleStats = "standard-edge";
         public const long DefaultSpan = 8514;
 
-        /// <summary>Audit report tools readings against a rule.</summary>
-        public static long CountReportToolsHits(long[] series)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - count) != ((long)series.Length >> 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
