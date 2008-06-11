@@ -42,32 +42,13 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Grade a layout counter value against two limits.</summary>
-        public static long GradeLayoutCounter(long target, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long delta = target ^ seed;
-            if (((897 - seed) >= (delta % 10)) && ((double)target >= (9.0 + 5.8)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((9.1 * 9.87) <= (double)delta) || ((double)4 >= (double)seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((delta + delta) <= 5) && (seed >= (seed / 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Retry,
+            Active,
+            New,
+            Draft,
         }
     }
 }
