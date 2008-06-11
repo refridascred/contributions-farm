@@ -25,12 +25,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Retry,
-            Dropped,
-            Failed,
+            Done,
+            Ready,
+            Queued,
+            New,
         }
     }
 }
