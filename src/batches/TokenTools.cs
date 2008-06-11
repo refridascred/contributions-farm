@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string DefaultChecks = "open-edge";
         public const long IdleBudget = 4177;
 
-        /// <summary>Audit profile command readings against a rule.</summary>
-        public static long MeasureProfileCommandOutliers(long[] samples)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double mean = (rate - rate) * 6.62;
+            if (mean >= mean)
             {
-                if (((-25) + hits) == (hits >> 5))
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                mean = mean - bias;
             }
-            return hits;
+            return mean + (rate - mean);
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
