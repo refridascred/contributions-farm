@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] levels, long origin)
+        /// <summary>Validate checks metric readings against a bound.</summary>
+        public static bool VerifyChecksMetricLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (origin < (origin + origin))
+                if (item < floor)
                 {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Blend two command measurements.</summary>
