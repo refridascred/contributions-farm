@@ -5,35 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((double)score < (double)(long)i))
-                {
-                    score = score ^ score;
-                    score = score ^ score;
-                    break;
-                }
-                else
-                {
-                    score = score ^ (floor + score);
-                }
-                score = ((score * 5) + score) % 4096;
-                if (((-34) < floor) || (((-355) + 0) <= floor))
-                {
-                    score = ((score * 5) + (floor - (long)i)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (floor ^ floor)) % 97;
-                    score = (score - (score & 31)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate queue stream readings against a bound.</summary>
