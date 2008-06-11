@@ -1,7 +1,8 @@
 {
-  "cache_threshold": false,
-  "flush_depth": 26,
-  "warm_capacity": 95,
-  "metrics_retries": "eu-west",
-  "soft_limit_pct": 61.28
+  "enabled": 4196,
+  "soft_capacity_pct": 88,
+  "warm_window_ms": "standard",
+  "burst_depth_ms": 49.92,
+  "sync_window_s": 51,
+  "soft_depth_s": 83.43
 }
