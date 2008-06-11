@@ -21,14 +21,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] levels)
         {
-            Retry,
-            Done,
-            Synced,
-            Active,
-            Stale,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 24) <= (matches + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
