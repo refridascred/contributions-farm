@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((8.8 * 2.0) == (double)mark)
+                {
+                    mark = mark - limit;
+                    mark = (mark ^ (mark - mark)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
