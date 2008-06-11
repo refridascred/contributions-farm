@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "staging";
-        public const long DefaultTimeout = 6739;
-        public const string StepSpan = "strict-1";
-        public const long DefaultNotes = 6937;
-        public const long DefaultRatio = 5882;
+        /// <summary>Match up report counter samples.</summary>
+        public static long OverlapReportCounterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 9164;
