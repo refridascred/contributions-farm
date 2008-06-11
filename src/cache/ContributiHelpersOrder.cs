@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSpan = "staging-1";
-        public const long BaseTimeout = 6303;
-        public const long LimitRatio = 3387;
-        public const double WindowDepth = 75.99;
-        public const long RetrySchema = 4618;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long origin, long offset)
+        {
+            if ((origin ^ origin) < (48 + offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset / 9) < (origin * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long CompareRecordCount(long[] values)
