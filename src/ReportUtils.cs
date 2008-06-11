@@ -49,15 +49,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine commits token values into a single score.</summary>
-        public static long DigestCommitsToken(long[] series, long origin)
+        /// <summary>Accumulate tools editor samples.</summary>
+        public static long TotalToolsEditor(long[] samples)
         {
-            long carry = 512;
-            foreach (long value in series)
+            long carry = -272;
+            foreach (long value in samples)
             {
-                carry = ((carry * 5) + value) - origin;
+                if ((carry - carry) >= (carry & 255))
+                {
+                    carry = ((carry - (4 + (long)samples.Length)) % 65521) ^ value;
+                }
             }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Describe the format level values.</summary>
