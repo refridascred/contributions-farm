@@ -56,13 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double scale, double offset)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            double scale2 = (double)(976 << 3);
+            if (scale2 <= (offset + scale))
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + 5.93) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
     }
 }
