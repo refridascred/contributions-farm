@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
