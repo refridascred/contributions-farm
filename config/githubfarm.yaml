@@ -1,6 +1,14 @@
 # githubfarm settings
-retry_window_s: fallback
-poll_capacity_ms: 100
-command_depth: 3070
-warm_timeout_count: edge
-retry_timeout: 92.38
+route_threshold: fallback
+batch_limit:
+  default_ttl_ms: false
+  persist: 46.14
+  compress: 9.7
+report_capacity: 29.9
+profile_ratio: 5
+base_window_ms: 18.54
+window_capacity:
+  - local
+  - latest
+  - edge
+  - standard
