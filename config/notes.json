@@ -1,9 +1,15 @@
 {
-  "retry_ratio_s": {
-    "verbose": 6919,
-    "audit": ["eu-west", "stable", "cached", "latest"],
-    "profile_limit": 2555
+  "tools_depth": "open",
+  "dry_run": true,
+  "burst_retries_s": 2723,
+  "max_limit": {
+    "cache_limit_pct": 52.93,
+    "hard_size_count": 73.75,
+    "max_depth": false,
+    "base_window_ms": "open",
+    "default_retries": false,
+    "readonly": [83, 126]
   },
-  "poll_capacity_pct": "open",
-  "enabled": 100
+  "stats_capacity": 22,
+  "readonly": ["blue", "local", "open"]
 }
