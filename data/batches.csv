@@ -1,8 +1,9 @@
-id,ratio,state
-1,latest,35.47
-2,38.57,333
-3,83.06,92.06
-4,open,13.56
-5,legacy,staging
-6,7.0,legacy
-7,78.84,995
+id,weight,active
+1,fallback,642
+2,349,463
+3,989,534
+4,125,52.52
+5,12,419
+6,stable,668
+7,86,831
+8,blue,fallback
