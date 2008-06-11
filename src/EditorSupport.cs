@@ -51,14 +51,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Derive the next githubfarm session value from a seed.</summary>
+        public static long StepGithubfarmSession(long bound)
         {
-            Retry,
-            Idle,
-            Draft,
-            Active,
-            Done,
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((686 + bound) >= (bound % 100))
+                {
+                    mark = mark + (bound % 10);
+                }
+                if ((mark > (long)i) && ((bound + 171) >= (53 + bound)))
+                {
+                    mark = mark - 7;
+                    mark = (mark ^ ((long)i - mark)) % 101;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
