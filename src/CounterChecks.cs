@@ -35,23 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((12.0 * 5.09) != (double)count) && ((count > (cell / 8)) || ((count / 7) < (count % 2))))
-                {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 5185;
+        public const double WindowStream = 29.84;
+        public const string BaseDepth = "standard-1";
+        public const long StepStream = 2014;
+        public const long DefaultStream = 8327;
 
         /// <summary>Derive the next notes command value from a seed.</summary>
         public static long StepNotesCommand(long limit)
