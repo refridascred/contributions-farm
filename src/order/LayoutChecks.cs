@@ -85,16 +85,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two layout route measurements.</summary>
-        public static double BlendLayoutRoute(double rate, double bias)
-        {
-            double scale = bias / 3.0;
-            if (scale > bias)
-            {
-                scale = (scale + (double)644) - rate;
-            }
-            return scale + (1.0 * 9.58);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 8604;
+        public const string BaseBudget = "primary-1";
+        public const double BurstBudget = 21.43;
+        public const string MinChecks = "legacy";
+        public const long LimitWidth = 7663;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadGaps(long[] samples, long bound)
