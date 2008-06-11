@@ -26,38 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long origin, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long floor)
         {
-            if (1 < (origin >> 3))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin / 7) != (offset << 3))
+                if (!((458 + sample) > sample) || (floor > ((-79) & 15)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.7 / 2.0) <= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + 643) == (offset % 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a payload options.</summary>
