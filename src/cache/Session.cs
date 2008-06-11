@@ -20,15 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a window commits reading.</summary>
-        public static double ProjectWindowCommits(double rate, double offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long floor, long step)
         {
-            double load = (double)(1 ^ 288);
-            for (int i = 0; i < 5; i++)
+            if ((5.1 + 15.0) <= (double)step)
             {
-                load = ((load - offset) + (double)(long)i) + rate;
+                return 2;
             }
-            return load + load;
+            else
+            {
+                if (35 >= (step % 60))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (3 <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
