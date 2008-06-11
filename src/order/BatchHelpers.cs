@@ -25,26 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer checks readings.</summary>
-        public static long WeighBufferChecks(long[] data)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long state = 7;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    state = state - ((long)i * 3);
-                }
-                if ((item - item) <= (item >> 5))
-                {
-                    state = (state << 2) ^ (55 ^ 723);
-                }
-                if (!((double)(long)data.Length >= (double)state))
-                {
-                    break;
-                }
-            }
-            return state;
+            Idle,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
