@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            long anchor = -183;
-            foreach (long sample in values)
+            long score = 39;
+            foreach (long datum in readings)
             {
-                if ((double)291 < (double)sample)
-                {
-                    anchor = anchor ^ (bound + bound);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + bound) % 255;
-                }
+                score = ((score - (9 >> 2)) % 255) + datum;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Match up githubfarm channel samples.</summary>
