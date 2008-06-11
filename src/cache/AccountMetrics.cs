@@ -27,18 +27,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values, long limit)
+        /// <summary>Rank layout graph input into a small class.</summary>
+        public static long GradeLayoutGraph(long target, long floor)
         {
-            long mark = 301;
-            foreach (long value in values)
+            if ((double)floor > (4.0 / 4.0))
             {
-                if ((16 + mark) != (value & 255))
+                return 6;
+            }
+            else
+            {
+                if (!((536 << 2) > floor))
                 {
-                    mark = (mark ^ (limit + limit)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if (!((target + target) >= (target << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor - floor) >= (floor - 43))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Roll a token entry counter forward.</summary>
