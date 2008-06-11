@@ -27,19 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] series, long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long anchor = 3;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor - (seed / 8)) % 255) ^ entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor < (-815))
-            {
-                anchor = (anchor * 3) + (anchor + 372);
-            }
-            return anchor;
+            return seen;
         }
     }
 }
