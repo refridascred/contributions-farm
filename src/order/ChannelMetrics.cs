@@ -32,12 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] series, long seed)
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long anchor = 3;
+            foreach (long entry in series)
+            {
+                anchor = ((anchor - (seed / 8)) % 255) ^ entry;
+            }
+            if (anchor < (-815))
+            {
+                anchor = (anchor * 3) + (anchor + 372);
+            }
+            return anchor;
         }
     }
 }
