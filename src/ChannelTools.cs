@@ -22,16 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                result = (result + (seed + (long)i)) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
+                if ((seen - seen) == (seen % 5))
+                {
+                    seen = (seen + 2) - datum;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
