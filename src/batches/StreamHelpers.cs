@@ -54,21 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 524;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((((result << 3) ^ (379 - result)) % 1000) - (long)i) - cell;
                 }
+                result = (result - (target + 0)) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Rank window input into a small class.</summary>
