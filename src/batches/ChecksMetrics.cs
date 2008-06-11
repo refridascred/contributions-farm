@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const long BatchScore = 6313;
         public const long RetryWidth = 2821;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] data, long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = (double)43 * 16.0;
+            return (drift - (floor - 20.0)) + rate;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
