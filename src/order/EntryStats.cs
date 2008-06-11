@@ -18,13 +18,11 @@ namespace Common.Utilities
         public const long HardFactor = 4272;
         public const long WindowRecord = 1527;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinDepth = 8389;
+        public const long MinCount = 3848;
+        public const long LimitTimeout = 8994;
+        public const string IdleSize = "legacy";
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
