@@ -69,18 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools editor readings against a rule.</summary>
-        public static long MeasureToolsEditorHits(long[] samples)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((((seen * 5) >= (62 & 3)) || ((seen >> 4) < value)) || ((seen > (seen + value)) && ((value * 2) >= (seen * 5))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
