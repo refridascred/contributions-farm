@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] samples, long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long target)
         {
-            long score = 10;
-            foreach (long item in samples)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)item > (double)(long)samples.Length))
-                {
-                    score = ((score - 13) % 4096) - target;
-                }
-                score = score - (score + score);
-                if ((7 * 2) <= (score / 4))
-                {
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
             return score;
         }
