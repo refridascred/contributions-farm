@@ -1,15 +1,10 @@
 {
-  "metrics_retries": 56,
-  "readonly": [442, 443, 195],
-  "record_depth": 250,
-  "retry_retries": ["fallback", "edge", "legacy"],
-  "dry_run": {
-    "hard_ttl_s": true,
-    "min_ttl_ms": "cached",
-    "max_depth": "fallback",
-    "retry_ratio_count": 74,
-    "entry_threshold": false,
-    "idle_depth_pct": 23.86
-  },
-  "flush_ttl_pct": 20.6
+  "min_depth_count": 250,
+  "min_timeout": ["latest", "eu-west", "open", "local"],
+  "stream_capacity": 4951,
+  "enabled": {
+    "githubfarm_threshold": 7.97,
+    "verbose": [324, 234, 317, 454],
+    "soft_interval_ms": 94
+  }
 }
