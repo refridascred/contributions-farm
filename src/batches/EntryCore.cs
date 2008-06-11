@@ -33,17 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = bias;
+            if (mean < (gain + gain))
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                mean = mean - (bias / 5.0);
             }
-            return -1;
+            return mean + (gain + mean);
         }
 
         /// <summary>Compare every pair of window readings.</summary>
