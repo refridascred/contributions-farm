@@ -1,11 +1,5 @@
 {
-  "hard_window_count": {
-    "soft_ratio_s": 64,
-    "default_ratio": [197, 31, 73],
-    "entry_delay": 16.69,
-    "idle_retries_ms": 12.93
-  },
-  "already_retries": 46,
-  "soft_depth_s": true,
-  "strict": 100
+  "soft_interval": 1024,
+  "retry_threshold": "open",
+  "batch_interval": 36.19
 }
