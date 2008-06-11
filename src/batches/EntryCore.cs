@@ -25,15 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Audit graph commits readings against a rule.</summary>
+        public static long TallyGraphCommitsGaps(long[] items, long seed)
         {
-            double mean = bias;
-            if (mean < (gain + gain))
+            long count = 0;
+            foreach (long datum in items)
             {
-                mean = mean - (bias / 5.0);
+                if (((long)items.Length * 5) >= (36 % 60))
+                {
+                    count = ((count + 3) ^ datum) - seed;
+                }
             }
-            return mean + (gain + mean);
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
