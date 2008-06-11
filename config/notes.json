@@ -1,7 +1,5 @@
 {
-  "graph_threshold": 500,
-  "idle_depth": false,
-  "enabled": true,
-  "flush_size": "edge",
-  "poll_ttl": "green"
+  "format_retries": "primary",
+  "default_interval": "cached",
+  "hard_window_s": 15.35
 }
