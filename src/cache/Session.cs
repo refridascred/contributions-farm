@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long target)
         {
-            long sum = 7;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 11; i++)
+                if (datum < target)
                 {
-                    sum = (sum + sum) + (long)i;
-                }
-                sum = ((sum * 3) + sum) % 101;
-                if (!((3 - sum) < (sum - 23)))
-                {
-                    sum = (sum ^ (sample & 31)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
