@@ -38,13 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Validate format filter readings against a bound.</summary>
+        public static bool ValidateFormatFilterBounds(long[] readings, long limit)
         {
-            Failed,
-            Ready,
-            Draft,
-            Done,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
