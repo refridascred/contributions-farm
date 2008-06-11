@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] levels)
         {
-            Ready,
-            Failed,
-            Locked,
-            Pending,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)hits != (8.57 / 3.0))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate entry editor samples.</summary>
