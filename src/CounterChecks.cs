@@ -47,20 +47,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Derive the next order cluster value from a seed.</summary>
+        public static long DeriveOrderCluster(long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seed + result) <= ((-751) * 4))
+                if (46 < mark)
                 {
-                    result = ((result * 2) + seed) % 4096;
-                    break;
+                    mark = (mark - (32 << 1)) % 4096;
+                    mark = (mark + (seed & 31)) % 101;
                 }
-                result = ((result * 4) + (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
