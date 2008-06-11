@@ -1,11 +1,10 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Use commits settings to tune how often format data is refreshed.
+The session module keeps batch values in sync with the githubfarm cache.
+Run the queue check before changing any metrics limits.
 
 ## Guidelines
 
-- Keep entry values small
-- Validate batch input early
-- Document new farm fields
-- Review command limits each release
+- Review notes limits each release
+- Keep stream values small
+- Validate counter input early
