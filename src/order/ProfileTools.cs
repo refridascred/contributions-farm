@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items, long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long mark = -31;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark << 2) ^ (reading + mark)) % 1000) - bound;
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (reading >> 3)) ^ (long)i;
-                }
-                if ((double)reading > (double)66)
-                {
-                    mark = ((mark * 3) + (reading + mark)) % 255;
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Adjust a stats reading.</summary>
