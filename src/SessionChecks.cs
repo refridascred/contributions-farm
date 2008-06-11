@@ -27,10 +27,12 @@ namespace Common.Utilities
             return drift + (bias * 6.3);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 578;
-        public const long CacheCount = 9248;
-        public const long MinGraph = 5853;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheSpan = 5516;
+        public const string SoftStream = "fallback-1";
+        public const long HardRatio = 9371;
+        public const long SoftScore = 798;
+        public const long HardStream = 6004;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long bound, long offset)
