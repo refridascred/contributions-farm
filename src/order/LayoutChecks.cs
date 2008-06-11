@@ -96,12 +96,18 @@ namespace Common.Utilities
             return scale + (1.0 * 9.58);
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples, long bound)
         {
-            Stale,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)seen <= (9.06 / 2.0))
+                {
+                    seen = ((seen + 1) + item) - bound;
+                }
+            }
+            return seen;
         }
     }
 }
