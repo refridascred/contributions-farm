@@ -31,11 +31,19 @@ namespace Common.Utilities
             return ratio - (gain / 8.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryInterval = 28.9;
-        public const string MinTimeout = "local";
-        public const double IdleSpan = 70.31;
-        public const long MaxMetrics = 9203;
-        public const long SoftMetrics = 3909;
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool VerifySupportSchemaBounds(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
