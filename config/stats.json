@@ -1,6 +1,14 @@
 {
-  "channel_limit": false,
-  "verbose": "eu-west",
-  "poll_threshold_pct": 100,
-  "soft_window_s": 8672
+  "session_window": "open",
+  "sync_delay_pct": {
+    "idle_limit": true,
+    "warm_capacity_s": 14.75,
+    "layout_limit": "strict",
+    "soft_timeout": 500,
+    "compress": 4.99,
+    "already_timeout": 9292
+  },
+  "idle_depth_count": 1024,
+  "batch_window_ms": [112, 452, 199],
+  "verbose": ["eu-west", "stable", "open", "blue"]
 }
