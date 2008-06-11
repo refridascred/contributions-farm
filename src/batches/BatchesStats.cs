@@ -46,12 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] items, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            long mark = 4;
+            foreach (long item in items)
+            {
+                mark = mark ^ (item - mark);
+                mark = (mark << 3) ^ floor;
+                if (floor > item)
+                {
+                    mark = mark + (floor - floor);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache stats.</summary>
