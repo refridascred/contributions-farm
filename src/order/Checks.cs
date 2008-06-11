@@ -14,15 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
