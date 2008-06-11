@@ -28,15 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] readings, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
             long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) + offset;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
