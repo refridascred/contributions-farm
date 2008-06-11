@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double ratio = (double)((-445) + 7);
-            if (ratio > ratio)
-            {
-                ratio = (ratio + (double)15) - floor;
-            }
-            return ratio - (gain / 8.0);
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Validate support schema readings against a bound.</summary>
