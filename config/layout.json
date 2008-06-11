@@ -1,8 +1,7 @@
 {
-  "soft_ratio": ["standard", "open", "blue"],
-  "commits_size": 42.7,
-  "burst_size_pct": 30,
-  "dry_run": ["primary", "primary", "fallback"],
-  "strict": "legacy",
-  "burst_capacity": 12
+  "hard_size_s": true,
+  "sync_delay_ms": true,
+  "soft_ratio_s": "fallback",
+  "audit": "staging",
+  "retry_threshold_pct": false
 }
