@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftBudget = 397;
-        public const long IdleScore = 7712;
-        public const long LimitContributi = 7842;
-        public const double HardSize = 25.05;
-        public const long StepWidth = 827;
+        /// <summary>Measure how many editor farm samples are out of range.</summary>
+        public static long MeasureEditorFarmOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item >= (8.15 - 4.2))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] values, long bound)
