@@ -43,38 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long floor, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            if ((floor < target) || ((target >> 1) != (floor >> 1)))
+            double weight = 2.25;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                weight = ((weight + (weight + bias)) + (double)(long)i) + floor;
             }
-            else
-            {
-                if ((9.19 - 9.1) > (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2.97 + 5.0) >= 16.0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return weight + (double)269;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
