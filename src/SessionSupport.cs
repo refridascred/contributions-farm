@@ -14,10 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 21.34;
-        public const long IdleScore = 9275;
-        public const double BurstWindow = 57.94;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Closed,
+            Stale,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long CompareQueueCount(long[] samples)
