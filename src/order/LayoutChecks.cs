@@ -47,18 +47,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "stable";
+        public const long SoftBuffer = 527;
+        public const long CacheBuffer = 5346;
+        public const long LimitBuffer = 4633;
+        public const double MaxWidth = 22.36;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] readings)
