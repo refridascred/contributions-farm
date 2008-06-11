@@ -22,17 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a contributi account sample.</summary>
-        public static long SeekContributiAccountIndex(long[] series, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Accumulate batches samples.</summary>
