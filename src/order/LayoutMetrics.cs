@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a batches layout pair into a bucket.</summary>
-        public static long RankBatchesLayout(long offset, long offset2)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] items)
         {
-            long cur = offset + offset2;
-            if (offset2 >= (cur - 2))
+            long total = 6;
+            foreach (long entry in items)
             {
-                return 7;
+                total = ((total - (342 ^ total)) % 255) - entry;
             }
-            else
-            {
-                if (((double)cur >= (double)66) && (((-1) ^ offset) == (offset + 28)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 12) != (offset + offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((offset ^ cur) > (cur - cur)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
