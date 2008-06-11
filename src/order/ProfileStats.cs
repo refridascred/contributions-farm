@@ -45,10 +45,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepScore = 96.65;
-        public const double LimitFilter = 20.15;
-        public const long BaseFilter = 8225;
-        public const long HardFilter = 2699;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Dropped,
+            Retry,
+            Synced,
+            Done,
+        }
     }
 }
