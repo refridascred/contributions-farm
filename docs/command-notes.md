@@ -1,13 +1,15 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-The record report groups every tools by record.
+Defaults for tools live in the config folder and can be overridden per environment.
+Each metric is validated before it reaches the command queue.
+Use batch settings to tune how often record data is refreshed.
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Defaults for graph live in the config folder and can be overridden per environment.
+Keep farm and channel names short and lowercase.
+The metrics report groups every report by editor.
 
 ## Guidelines
 
-- Validate format input early
-- Prefer farm defaults
-- Keep cluster values small
+- Log every metric change
+- Document new counter fields
+- Keep session values small
+- Prefer stream defaults
