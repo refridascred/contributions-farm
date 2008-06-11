@@ -1,8 +1,5 @@
 {
-  "retry_timeout_s": "legacy",
-  "compress": true,
-  "batch_size": "latest",
-  "hard_delay_count": [106, 409, 68],
-  "hard_timeout_ms": 31.2,
-  "checks_size": "cached"
+  "sync_capacity": "cached",
+  "strict": 81,
+  "max_size_count": "legacy"
 }
