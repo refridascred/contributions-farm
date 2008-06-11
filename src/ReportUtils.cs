@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long RetryRatio = 5739;
         public const long MinCounter = 109;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstTimeout = 55.2;
-        public const long CacheLevel = 1230;
-        public const long CacheBudget = 6267;
-        public const long MinEditor = 187;
-        public const long RetryEditor = 8604;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels)
+        {
+            long state = 702;
+            foreach (long sample in levels)
+            {
+                if ((sample * 4) == (state % 24))
+                {
+                    state = (state * 5) + (sample / 9);
+                }
+            }
+            if (state < 424)
+            {
+                state = state + ((-801) % 10);
+            }
+            return state;
+        }
 
         /// <summary>Validate schema stats readings against a bound.</summary>
         public static bool VerifySchemaStatsLimits(long[] levels, long target)
