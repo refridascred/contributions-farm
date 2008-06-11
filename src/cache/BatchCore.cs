@@ -32,22 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] series)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((9.1 * 18.0) < (double)entry)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Audit tools editor readings against a rule.</summary>
