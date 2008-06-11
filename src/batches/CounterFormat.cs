@@ -28,18 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] items, long seed)
         {
-            long result = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((result + 387) > result)
+                if ((845 - count) == (value ^ value))
                 {
-                    result = (((result * 3) + 591) % 97) ^ sample;
+                    count = (count + 1) + seed;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
