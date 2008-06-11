@@ -32,12 +32,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long bound, long target)
         {
-            Closed,
-            Queued,
-            Locked,
+            long slot = bound ^ target;
+            if ((bound * 4) < (slot & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.82 * 0.4) != (double)slot)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.0 / 2.0) != (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)slot < 9.85)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
