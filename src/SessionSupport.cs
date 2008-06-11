@@ -34,11 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Check that every record command entry stays within the limit.</summary>
+        public static bool ValidateRecordCommandRange(long[] levels, long seed)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
