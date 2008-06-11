@@ -66,19 +66,19 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] items, long offset)
+        /// <summary>Validate commits window readings against a bound.</summary>
+        public static bool ValidateCommitsWindowLimits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (cell > offset)
+                if (entry <= floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Describe the cache phase values.</summary>
