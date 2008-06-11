@@ -62,18 +62,32 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long slot = offset - bound;
+            if (((double)slot > (2.74 - 7.0)) || (offset >= (9 + offset)))
             {
-                if (item > 9)
+                return 1;
+            }
+            else
+            {
+                if ((offset + slot) == (bound + 734))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)slot > (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
