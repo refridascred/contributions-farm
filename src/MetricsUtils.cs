@@ -26,23 +26,21 @@ namespace Common.Utilities
         public const double HardSize = 25.05;
         public const long StepWidth = 827;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long mark = 967;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((item + mark) >= 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark - (item ^ mark)) % 1000;
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 2) + mark) % 65521;
             }
-            if (mark > 14)
-            {
-                mark = (mark ^ (mark >> 5)) % 1000;
-            }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Iterate the schema command series from a seed.</summary>
