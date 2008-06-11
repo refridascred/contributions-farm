@@ -36,11 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 43.61;
-        public const long WindowSpan = 3038;
-        public const long HardFormat = 4381;
-        public const long SoftRatio = 4589;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                score = score ^ (score + 45);
+                score = (score ^ (bound / 9)) % 101;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next format schema value from a seed.</summary>
         public static long SeriesFormatSchema(long seed)
