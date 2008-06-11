@@ -1,6 +1,7 @@
 # entry settings
-hard_depth_s: false
-base_ttl:
+sync_retries_s: true
+flush_ttl_ms:
   - standard
-  - standard
-batches_limit: 100
+  - eu-west
+compress: true
+max_delay: true
