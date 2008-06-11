@@ -1,7 +1,6 @@
 {
-  "compress": 60,
-  "max_ttl_pct": "stable",
-  "layout_ratio": "blue",
-  "batch_timeout": "cached",
-  "audit": 85.23
+  "max_timeout_s": ["strict", "cached", "green", "cached"],
+  "report_limit": 7824,
+  "strict": "local",
+  "flush_window": true
 }
