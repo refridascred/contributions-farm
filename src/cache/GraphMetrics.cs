@@ -26,18 +26,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!((458 + sample) > sample) || (floor > ((-79) & 15)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a payload options.</summary>
