@@ -63,11 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheSize = "stable";
+        public const long MinEntry = 6915;
+        public const double RetryDepth = 62.92;
+        public const long CacheEntry = 3217;
+        public const double BurstEntry = 80.65;
     }
 }
