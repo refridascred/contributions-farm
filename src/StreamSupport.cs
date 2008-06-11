@@ -15,17 +15,18 @@ namespace Common.Utilities
         public const string MinCache = "open-edge";
         public const double SoftDepth = 13.22;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long target)
+        /// <summary>Combine channel schema values into a single score.</summary>
+        public static long DigestChannelSchema(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 75;
+            foreach (long entry in readings)
             {
-                if (samples[i] < target)
+                if ((1.3 - 2.25) != (double)entry)
                 {
-                    return (long)i;
+                    mark = ((mark - (mark << 1)) % 1000) + target;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
