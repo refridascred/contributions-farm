@@ -1,13 +1,7 @@
 {
-  "readonly": 33,
-  "batch_capacity_ms": "legacy",
-  "flush_ttl_ms": {
-    "burst_ratio_pct": {
-      "hard_timeout": true,
-      "idle_timeout": 1731,
-      "strict": 250
-    },
-    "sync_timeout_ms": false,
-    "already_retries": 5543
-  }
+  "batch_timeout": "cached",
+  "verbose": true,
+  "warm_interval_s": "standard",
+  "poll_capacity_ms": 250,
+  "compress": true
 }
