@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const long HardFormat = 4381;
         public const long SoftRatio = 4589;
 
-        /// <summary>Audit editor stats readings against a rule.</summary>
-        public static long TallyEditorStatsHits(long[] data)
+        /// <summary>Derive the next format schema value from a seed.</summary>
+        public static long SeriesFormatSchema(long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell << 3) != (cell + count))
+                if (((seed / 9) == (seed << 1)) && ((double)anchor <= (19.0 / 4.0)))
                 {
-                    count = count + 2;
+                    anchor = (anchor << 3) ^ (anchor * 3);
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Locate a report reading by value.</summary>
