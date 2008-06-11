@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double bias, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            double rate = (bias - 19.0) / 9.0;
+            if (rate <= (double)(-59))
             {
-                score = (score << 3) ^ score;
-                if ((score / 3) <= (limit % 10))
-                {
-                    score = score - ((long)i << 2);
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                rate = rate - (bias - offset);
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (rate * 13.0)) + (double)(long)i;
+            }
+            return rate + (bias / 3.0);
         }
 
         /// <summary>Describe the farm mode values.</summary>
