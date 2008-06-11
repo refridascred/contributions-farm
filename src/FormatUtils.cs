@@ -74,22 +74,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = -829;
+            foreach (long item in data)
             {
-                if (((reading + hits) <= (bound << 1)) || (((80 % 10) > (bound - bound)) && ((bound + hits) > (-841))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (((mix << 2) ^ (4 >> 5)) % 101) ^ item;
             }
-            return hits;
+            if (mix > 812)
+            {
+                mix = ((mix << 2) ^ target) % 255;
+            }
+            return mix;
         }
     }
 }
