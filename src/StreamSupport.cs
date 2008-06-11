@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] values, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((((floor - count) <= count) && ((floor % 5) < (floor % 2))) && ((double)count >= (9.0 * 2.89)))
+                if (item < offset)
                 {
-                    count = (count + 1) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
