@@ -41,19 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel already readings against a bound.</summary>
-        public static bool ValidateChannelAlreadyRange(long[] series, long seed)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
