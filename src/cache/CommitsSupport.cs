@@ -37,24 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Check that every support metrics entry stays within the limit.</summary>
+        public static bool ValidateSupportMetricsLimits(long[] values, long seed)
         {
-            long acc = 111;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in values)
             {
-                long span = datum;
-                if (((acc * 5) <= span) || ((acc - span) < (17 << 3)))
+                if (value < seed)
                 {
-                    span = (span * 2) + (acc % 97);
-                    span = span ^ (datum / 9);
-                }
-                if (((-610) ^ 15) >= acc)
-                {
-                    acc = acc ^ ((-33) * 2);
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return stale;
         }
 
         /// <summary>Count the queue context entries that pass the check.</summary>
