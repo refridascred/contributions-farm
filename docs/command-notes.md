@@ -1,15 +1,15 @@
 # Command notes
 
-The payload module keeps schema values in sync with the cluster cache.
-Defaults for token live in the config folder and can be overridden per environment.
-The stream report groups every batch by report.
+Use batch settings to tune how often route data is refreshed.
+Keep metrics and command names short and lowercase.
+Each queue is validated before it reaches the route queue.
 
-Keep context and metrics names short and lowercase.
-The stream module keeps githubfarm values in sync with the buffer cache.
-Keep filter and payload names short and lowercase.
+Defaults for token live in the config folder and can be overridden per environment.
+When a record fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep queue values small
-- Prefer payload defaults
+- Validate channel input early
+- Document new tools fields
+- Keep buffer values small
+- Review already limits each release
