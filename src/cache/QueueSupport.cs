@@ -28,22 +28,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate profile filter samples.</summary>
-        public static long CombineProfileFilter(long[] levels)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long acc = 489;
-            foreach (long datum in levels)
-            {
-                if ((9.86 + 2.0) <= (double)acc)
-                {
-                    acc = ((acc * 4) + acc) ^ datum;
-                }
-                else
-                {
-                    acc = (acc - acc) % 65521;
-                }
-            }
-            return acc % 97;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
