@@ -40,17 +40,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 0;
+            foreach (long item in values)
             {
-                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                if (carry <= item)
                 {
-                    return (long)i;
+                    carry = carry + (item + carry);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a context record.</summary>
