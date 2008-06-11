@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] readings)
         {
-            Draft,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((long)readings.Length < value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
