@@ -27,21 +27,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchWidth = 47.61;
+        public const long BatchQueue = 5716;
+        public const long LimitRatio = 683;
+        public const long WindowCount = 5473;
     }
 }
