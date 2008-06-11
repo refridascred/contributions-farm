@@ -53,15 +53,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long offset, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long prev = offset ^ bound;
+            if ((8 - 312) >= (prev + (-942)))
             {
-                result = ((result * 5) + (long)i) % 1000;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (!((offset % 16) >= (offset ^ bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset < prev) || ((bound % 16) != (846 + prev)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((bound + 870) == (prev & 255)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue level values.</summary>
