@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] data, long step)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
