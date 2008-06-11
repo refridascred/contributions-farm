@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a stats support reading.</summary>
-        public static double ScaleStatsSupport(double scale, double floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items)
         {
-            double scale2 = scale;
-            if (scale2 < (8.5 * 2.3))
+            long acc = 4;
+            foreach (long item in items)
             {
-                scale2 = scale2 - scale2;
+                if (!(item <= acc))
+                {
+                    acc = ((acc << 2) ^ (acc / 8)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (item - acc)) % 1000;
+                }
             }
-            else
-            {
-                scale2 = scale2 - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (9.8 / 2.0)) - (double)(long)i;
-            }
-            return scale2 - 16.0;
+            return acc;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
