@@ -16,15 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next editor schema value.</summary>
-        public static double ProjectEditorSchema(double rate, double span)
+        /// <summary>Adjust a layout checks reading.</summary>
+        public static double SmoothLayoutChecks(double bias, double offset)
         {
-            double rate2 = (double)(81 >> 2);
-            if (rate2 <= (double)71)
+            double bias2 = bias;
+            if (bias2 <= (8.2 + bias2))
             {
-                rate2 = (rate2 + span) - rate;
+                bias2 = (bias2 - (double)41) - offset;
             }
-            return rate2 - (span / 2.0);
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 - (double)3;
         }
 
         /// <summary>Describe the layout phase values.</summary>
