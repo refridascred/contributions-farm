@@ -1,26 +1,7 @@
 # entry settings
-support_retries: stable
-schema_limit:
-  - legacy
-  - strict
-  - fallback
-burst_size_pct: blue
-audit:
-  profile_ttl:
-    - 19
-    - 362
-    - 434
-  contributi_retries: 1024
-  poll_depth_count:
-    - cached
-    - staging
-    - open
-  readonly: 8193
-retry_retries_count:
-  base_limit: true
-  soft_depth_ms: 23.79
-  tools_timeout: 30
-  default_limit_ms: 38.49
-  record_retries: 250
-  githubfarm_timeout: 3
-base_limit: 85.64
+default_interval_pct: green
+entry_ratio: true
+schema_timeout:
+  hard_size_ms: 35
+  persist: false
+  max_interval: edge
