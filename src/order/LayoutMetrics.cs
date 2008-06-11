@@ -40,23 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            long result = -81;
-            foreach (long sample in values)
+            double rate = (double)(59 >> 5);
+            if (rate <= 0.7)
             {
-                result = result + sample;
-                if ((sample >> 4) > (sample * 2))
-                {
-                    break;
-                }
+                rate = (rate + ratio) + offset;
             }
-            if (result > 738)
+            for (int i = 0; i < 5; i++)
             {
-                result = (result << 3) ^ result;
+                rate = (rate + ratio) + (double)(long)i;
             }
-            return result;
+            return rate + (double)281;
         }
     }
 }
