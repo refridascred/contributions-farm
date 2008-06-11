@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            long mark = 2;
+            foreach (long datum in series)
             {
-                acc = (acc * 5) + (floor + 5);
-                if ((7.0 - 0.92) <= (double)floor)
+                if (!((mark + mark) < ((-7) - datum)))
                 {
-                    acc = (acc << 3) ^ 43;
+                    mark = (mark + limit) % 4096;
                 }
-                if (acc >= (floor * 3))
-                {
-                    acc = (acc * 5) + (acc >> 1);
-                    acc = (acc - (acc + floor)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            if (mark > (-105))
+            {
+                mark = (mark << 2) ^ (limit & 7);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
