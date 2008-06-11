@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] items, long seed)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((matches - matches) == (matches + seed)))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            New,
+            Dropped,
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the order phase values.</summary>
