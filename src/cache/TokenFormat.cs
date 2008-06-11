@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseScore = 62.81;
+        public const string BurstLevel = "stable-edge";
+        public const long BatchTools = 2016;
+        public const double WindowSpan = 94.86;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
