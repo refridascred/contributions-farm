@@ -50,11 +50,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public bool Ratio { get; set; }
             public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
