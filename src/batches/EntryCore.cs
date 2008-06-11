@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) != (count % 97))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
