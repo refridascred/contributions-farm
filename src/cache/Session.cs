@@ -45,23 +45,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double weight, double span)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double scale = (double)(158 & 7);
-            if (scale > span)
-            {
-                scale = (scale - scale) + weight;
-            }
-            else
-            {
-                scale = scale + (span + 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (span - 8.0)) - (double)(long)i;
-            }
-            return scale - 7.8;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
