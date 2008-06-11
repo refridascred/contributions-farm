@@ -16,11 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate support graph readings against a bound.</summary>
