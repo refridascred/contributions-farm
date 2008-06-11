@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long seed)
         {
-            if (offset >= (offset + seed))
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset << 2) > (-6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset >= (4.3 - 0.4)) && ((seed >> 5) <= (offset << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset >= (seed * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Project the next editor schema value.</summary>
