@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window graph readings against a rule.</summary>
-        public static long CountWindowGraphGaps(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((0.4 / 3.0) <= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
