@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (((acc * 4) + acc) % 1000) - (long)i2;
                 }
+                if ((floor >> 2) < ((long)i & 1))
+                {
+                    acc = (acc * 2) + ((long)i ^ acc);
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
