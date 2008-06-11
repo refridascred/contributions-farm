@@ -1,7 +1,17 @@
 {
-  "hard_size_s": true,
-  "sync_delay_ms": true,
-  "soft_ratio_s": "fallback",
-  "audit": "staging",
-  "retry_threshold_pct": false
+  "max_ttl_ms": "eu-west",
+  "cache_window_count": 5962,
+  "sync_timeout_s": false,
+  "batches_depth": {
+    "enabled": {
+      "verbose": "strict",
+      "order_threshold": true,
+      "base_ttl_ms": 12
+    },
+    "poll_ratio": 3617,
+    "retry_ratio_count": [335, 360, 412, 133],
+    "readonly": 8540,
+    "soft_depth": 80.08
+  },
+  "idle_ratio_ms": [142, 416, 3, 461]
 }
