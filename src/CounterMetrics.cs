@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            Active,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the graph state values.</summary>
