@@ -28,19 +28,21 @@ namespace Common.Utilities
         public const long DefaultDepth = 710;
         public const long DefaultFarm = 9834;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Match up command format samples.</summary>
+        public static long OverlapCommandFormatCount(long[] items)
         {
-            long state = 661;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state ^ (datum / 9)) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state < 52)
-            {
-                state = (state << 3) ^ (62 - state);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
