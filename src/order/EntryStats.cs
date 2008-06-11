@@ -51,12 +51,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Retry,
-            Ready,
-            Done,
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
