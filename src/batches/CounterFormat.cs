@@ -33,13 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            Done,
+            Dropped,
+            Active,
+            Pending,
+            Closed,
         }
     }
 }
