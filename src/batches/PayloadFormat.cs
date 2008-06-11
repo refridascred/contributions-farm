@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank tools checks input into a small class.</summary>
-        public static long RankToolsChecks(long origin, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] levels, long offset)
         {
-            if (!((limit + 697) >= (limit % 97)))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin == (20.0 * 8.0))
+                if ((double)offset < (3.96 - 0.16))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 1) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
