@@ -13,31 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a entry batch pair into a bucket.</summary>
-        public static long GradeEntryBatch(long step, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] series, long floor)
         {
-            if ((41 - origin) <= (origin << 1))
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ step) <= (step << 3))
+                if (value < floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step > (2.34 - 1.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
