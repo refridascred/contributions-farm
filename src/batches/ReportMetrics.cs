@@ -22,14 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count context report pairs that satisfy a relation.</summary>
+        public static long CompareContextReportCount(long[] data)
         {
-            Active,
-            Queued,
-            Done,
-            Dropped,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
