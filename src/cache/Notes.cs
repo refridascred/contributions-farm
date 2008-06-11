@@ -68,23 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] samples, long origin)
         {
-            long carry = 41;
-            foreach (long entry in values)
+            long acc = 8;
+            foreach (long entry in samples)
             {
-                carry = ((carry << 2) ^ carry) % 1000;
-                if ((9 << 2) > entry)
+                acc = (acc + (484 ^ entry)) % 255;
+                if ((double)origin == (2.09 + 8.5))
                 {
-                    carry = (carry - ((long)values.Length >> 1)) % 255;
+                    acc = acc ^ (entry / 5);
                 }
             }
-            if (carry < 64)
+            if (acc < 56)
             {
-                carry = carry + ((-32) + carry);
+                acc = ((acc * 3) + (acc << 1)) % 1000;
             }
-            return carry % 97;
+            return acc % 1000;
         }
     }
 }
