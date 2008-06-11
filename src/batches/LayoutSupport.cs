@@ -45,10 +45,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 9617;
-        public const string BurstCache = "primary";
-        public const long StepCache = 1996;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Queued,
+            Dropped,
+            Retry,
+            Pending,
+            New,
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] readings, long floor)
