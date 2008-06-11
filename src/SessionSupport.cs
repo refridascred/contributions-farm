@@ -28,9 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheBudget = 9375;
-        public const long LimitDepth = 2402;
-        public const long RetrySession = 7932;
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double bias)
+        {
+            double drift = (bias - bias) + (double)880;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)6) + (double)(long)i;
+            }
+            return drift - (gain * 8.87);
+        }
     }
 }
