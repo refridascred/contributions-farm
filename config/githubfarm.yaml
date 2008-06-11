@@ -1,14 +1,4 @@
 # githubfarm settings
-retry_window_pct:
-  context_ratio: 32.86
-  verbose: 58.68
-  retry_threshold_s:
-    - 437
-    - 409
-    - 49
-    - 215
-  strict: true
-schema_threshold: blue
-poll_retries_s: true
-idle_timeout_s: open
-hard_limit_ms: 9151
+burst_capacity: stable
+base_size_pct: 92
+default_delay_pct: fallback
