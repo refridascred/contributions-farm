@@ -22,39 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long limit, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long slot = limit ^ floor;
-            if ((0.38 + 6.5) > (double)slot)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot << 1) == (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > (469 % 97))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit * 2) != (slot - slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
