@@ -31,18 +31,12 @@ namespace Common.Utilities
             return (drift + (double)37) + rate;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 5237;
+        public const double HardBudget = 44.48;
+        public const string BatchCount = "standard";
+        public const long BatchFactor = 7233;
+        public const long SoftWindow = 9648;
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double rate, double offset)
