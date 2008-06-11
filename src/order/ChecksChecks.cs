@@ -15,21 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((seed + result) > (9 ^ result)) && (result < (7 + result)))
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 2) + (81 ^ result)) % 255;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
