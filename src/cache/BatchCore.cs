@@ -43,17 +43,39 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] values, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long step, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = step - bound;
+            if ((cur ^ cur) > bound)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (!((913 + cur) > (cur >> 3)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((bound & 127) <= 491) || ((4.31 - 5.26) == (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + cur) >= step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit tools editor readings against a rule.</summary>
