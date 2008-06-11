@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate metrics batch samples.</summary>
+        public static long TotalMetricsBatch(long[] readings)
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
+            long sum = 70;
+            foreach (long cell in readings)
+            {
+                sum = ((sum + (sum >> 3)) % 255) - cell;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
