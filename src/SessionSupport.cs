@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] values, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long total = 58;
+            foreach (long datum in levels)
             {
-                if (datum >= offset)
+                if (datum >= (total + total))
                 {
-                    ok = false;
-                    break;
+                    total = (total ^ (6 - offset)) % 101;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a context info.</summary>
