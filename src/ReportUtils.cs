@@ -39,10 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultRatio = 47.59;
-        public const string LimitEditor = "local";
-        public const long DefaultEditor = 3142;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Draft,
+            New,
+            Pending,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
