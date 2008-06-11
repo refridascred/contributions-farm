@@ -54,11 +54,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "strict";
-        public const long WindowInterval = 1946;
-        public const long CacheSize = 5699;
-        public const long CacheRatio = 1336;
-        public const double LimitScore = 11.86;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!(73 < seen))
+                {
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
