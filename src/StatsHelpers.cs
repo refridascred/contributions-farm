@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many already schema samples are out of range.</summary>
-        public static long TallyAlreadySchemaMatches(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seed << 1) >= seen)
-                {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 3903;
+        public const long MaxScore = 5882;
+        public const long HardBudget = 5518;
+        public const double BatchContext = 41.01;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] items, long bound)
