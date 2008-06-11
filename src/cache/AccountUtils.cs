@@ -42,13 +42,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Paused,
-            Done,
-            Ready,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCount = 2408;
+        public const long HardSize = 8083;
+        public const long LimitSpan = 4763;
+        public const double HardDepth = 40.98;
     }
 }
