@@ -45,21 +45,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long seed, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((floor < (floor << 3)) && ((double)seed <= (double)2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor % 8) <= (floor - floor))
                 {
-                    if ((data[i] ^ data[j]) == 9)
+                    return 5;
+                }
+                else
+                {
+                    if (2.0 >= (double)seed)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
