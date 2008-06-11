@@ -25,13 +25,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum & 15) >= (945 + 0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next layout value.</summary>
