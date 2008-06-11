@@ -1,6 +1,7 @@
-id,active,weight
-1,28.7,70.55
-2,blue,114
-3,14.72,780
-4,41.09,legacy
-5,412,423
+id,label,state
+1,staging,67.97
+2,103,stable
+3,185,latest
+4,302,876
+5,227,primary
+6,328,6.94
