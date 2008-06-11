@@ -38,13 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 87.57;
+        public const long MinGithubfarm = 8060;
+        public const long RetryGithubfarm = 8852;
+        public const long BaseInterval = 991;
+        public const string MaxGithubfarm = "primary-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftSpan = 4007;
