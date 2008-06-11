@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Active,
-            Retry,
-            Ready,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 1404;
+        public const double StepOrder = 26.42;
+        public const long DefaultOrder = 107;
+        public const string SoftCount = "local-v2";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] data, long step)
