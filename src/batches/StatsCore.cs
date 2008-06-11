@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Retry,
-            Failed,
-            Pending,
-            Paused,
-            Locked,
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
