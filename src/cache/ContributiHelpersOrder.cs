@@ -39,19 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] items, long bound)
+        /// <summary>Audit route queue readings against a rule.</summary>
+        public static long TallyRouteQueueHits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (sample > bound)
+                if (0 >= (cell + cell))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) - step;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
