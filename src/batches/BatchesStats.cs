@@ -30,13 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultDepth = 1278;
+        public const string WindowSession = "stable-v2";
+        public const double StepLevel = 76.17;
+        public const double BurstSession = 72.28;
 
         /// <summary>Project the next filter value.</summary>
         public static double AdjustFilter(double ratio, double bias)
