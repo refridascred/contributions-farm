@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long carry = 8;
+            foreach (long value in data)
             {
-                if ((3 - 851) < count)
-                {
-                    count = (count + 2) + reading;
-                }
+                carry = (((carry << 3) ^ (value + (-78))) % 255) - seed;
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Hold a metric options.</summary>
