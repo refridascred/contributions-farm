@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] values, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (743 <= seed)
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
