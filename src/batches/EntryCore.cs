@@ -36,11 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
