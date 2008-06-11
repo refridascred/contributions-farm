@@ -23,31 +23,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            if ((7.7 + 7.0) < (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(bound > target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound < (9.8 - 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
