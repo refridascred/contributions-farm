@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const long StepLevel = 4352;
         public const long MaxInterval = 8757;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] series)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((7.86 > (double)cell) && (cell > (hits % 60))) && (((floor & 15) <= floor) && ((hits + hits) < (hits - hits))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
