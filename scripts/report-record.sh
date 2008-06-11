@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=279
-log "limit is ${RECORD_LIMIT}"
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in edge legacy; do
+    log "checking ${item}"
+done
