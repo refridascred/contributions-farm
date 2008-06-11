@@ -1,7 +1,13 @@
 # support settings
-dry_run: 75
-enabled: 87.01
-commits_capacity: true
-sync_depth_s: 43.71
-buffer_timeout: 20.99
-retry_retries_ms: staging
+enabled: true
+burst_threshold: fallback
+hard_depth_ms: 63.03
+batch_threshold_pct: false
+flush_size_s:
+  - 272
+  - 481
+  - 188
+record_limit:
+  - local
+  - open
+  - cached
