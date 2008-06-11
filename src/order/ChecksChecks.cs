@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 5046;
+        public const long MinLevel = 5622;
+        public const long LimitTimeout = 3221;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
