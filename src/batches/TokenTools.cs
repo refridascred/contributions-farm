@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchBudget = 47.87;
-        public const long BurstChecks = 6677;
-        public const double RetryInterval = 54.77;
-        public const string DefaultChecks = "open-edge";
-        public const long IdleBudget = 4177;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
