@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample < (double)hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardLevel = 98.71;
+        public const string LimitQueue = "standard-1";
+        public const long SoftTimeout = 3279;
+        public const long MinSize = 5023;
+        public const double SoftQueue = 9.01;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TallyStream(long[] readings, long offset)
