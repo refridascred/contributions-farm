@@ -37,19 +37,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long bound)
         {
-            long mark = 0;
-            foreach (long reading in levels)
+            if ((bound + bound) < bound)
             {
-                mark = (mark + (mark >> 2)) + reading;
+                return 1;
             }
-            if (mark > (-364))
+            else
             {
-                mark = mark ^ (long)levels.Length;
+                if (seed > bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (440 <= (seed - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return mark % 1000;
         }
     }
 }
