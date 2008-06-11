@@ -1,28 +1,5 @@
 # support settings
-stats_ratio: cached
-flush_threshold:
-  payload_size:
-    flush_window_s: 53.1
-    audit: edge
-    queue_depth: 100
-    idle_timeout_s: 18
-    persist: strict
-  max_retries_ms: fallback
-  queue_size: 7.68
-  idle_threshold_count:
-    default_timeout: 4698
-    enabled: 59.04
-    channel_size: cached
-    burst_ratio_s: legacy
-  base_limit_s: 21
-  persist: 7082
-poll_delay: 6900
-compress:
-  schema_timeout: true
-  min_interval_ms:
-    - 190
-    - 452
-    - 240
-    - 121
-  idle_depth_ms: false
-stream_delay: blue
+retry_size: legacy
+hard_ratio_s: open
+min_capacity: 5931
+audit: 63.74
