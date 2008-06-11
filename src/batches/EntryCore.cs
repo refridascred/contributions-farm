@@ -36,15 +36,10 @@ namespace Common.Utilities
             return mean + (gain + mean);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Idle,
-            Paused,
-            Done,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 84.6;
+        public const long BaseProfile = 9930;
+        public const double LimitProfile = 50.65;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsHits(long[] values, long origin)
