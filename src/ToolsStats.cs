@@ -42,13 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] data, long target)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next queue value.</summary>
