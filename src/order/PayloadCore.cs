@@ -15,12 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 9115;
-        public const long CacheLayout = 7731;
-        public const long StepDepth = 7638;
-        public const long BaseBudget = 456;
-        public const long IdleLayout = 7722;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of counter token readings.</summary>
         public static long TallyCounterToken(long[] readings)
