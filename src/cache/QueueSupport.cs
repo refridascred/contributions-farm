@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache batch readings against a rule.</summary>
-        public static long MeasureCacheBatchMatches(long[] levels)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (sample >= (sample + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
