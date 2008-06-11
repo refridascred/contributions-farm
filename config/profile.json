@@ -1,10 +1,5 @@
 {
-  "base_delay_ms": {
-    "dry_run": "staging",
-    "filter_threshold": 17.97,
-    "max_size": "legacy",
-    "min_delay_ms": false
-  },
-  "base_ratio_pct": "standard",
-  "readonly": 27
+  "format_retries": "edge",
+  "stats_capacity": true,
+  "verbose": "standard"
 }
