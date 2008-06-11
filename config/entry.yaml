@@ -1,10 +1,4 @@
 # entry settings
-flush_ratio_s: 1024
-commits_retries:
-  max_limit: eu-west
-  payload_ttl: cached
-  persist: legacy
-  warm_delay_pct: 96
-  batch_capacity_pct: 41
-  batch_timeout_s: 52.04
-flush_threshold_pct: 22.42
+sync_capacity_pct: 52.66
+hard_timeout_ms: 250
+strict: true
