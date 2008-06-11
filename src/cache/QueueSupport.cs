@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long acc = 0;
-            foreach (long cell in items)
-            {
-                if (78 > cell)
-                {
-                    acc = (acc - ((long)items.Length & 3)) % 1000;
-                }
-                if (((cell << 2) > (6 << 2)) && ((acc / 3) >= (8 - (long)items.Length)))
-                {
-                    acc = acc ^ 27;
-                }
-            }
-            return acc;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
