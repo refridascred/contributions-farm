@@ -12,21 +12,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count channel format pairs that satisfy a relation.</summary>
-        public static long CompareChannelFormatCount(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
