@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] items, long step)
+        /// <summary>Combine layout command values into a single score.</summary>
+        public static long CombineLayoutCommand(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 692;
+            foreach (long reading in series)
             {
-                if ((items[i] > step) && ((items[i] % 5) != 0))
+                mix = ((((mix << 2) ^ 72) % 97) + reading) + origin;
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ ((long)i % 60);
+                    mix = mix ^ ((long)series.Length << 2);
                 }
+                mix = (mix - (mix << 2)) % 255;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
