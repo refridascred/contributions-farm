@@ -19,38 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if (((31 >> 1) <= (floor & 1)) || ((13.0 * 0.6) < (double)floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((88 * 2) == (target + 6)) || ((double)target >= (0.26 - 0.8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((71 * 4) != (target / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor <= (floor - target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of filter stats readings.</summary>
