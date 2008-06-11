@@ -65,15 +65,11 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double bias)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double drift = (double)(936 - 85);
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (((drift - 9.12) + (double)(long)i) + weight) + bias;
-            }
-            return drift - (drift * 4.59);
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
