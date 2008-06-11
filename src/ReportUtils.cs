@@ -22,17 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a support cache reading by value.</summary>
-        public static long LookupSupportCacheIndex(long[] levels, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine metrics cluster values into a single score.</summary>
