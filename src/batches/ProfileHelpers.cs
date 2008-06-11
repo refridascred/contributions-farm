@@ -48,11 +48,13 @@ namespace Common.Utilities
         public const double BatchWidth = 54.19;
         public const long BatchSize = 2442;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardWidth = "local-v2";
-        public const long MinBudget = 8534;
-        public const double MinCounter = 25.15;
-        public const double MaxCounter = 2.56;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double scale, double offset)
