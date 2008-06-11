@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = offset;
+            if (bias <= 0.5)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + 7.0) - weight;
             }
-            return hits;
+            return bias + (9.34 - offset);
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
