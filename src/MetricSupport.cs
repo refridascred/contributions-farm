@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "staging";
-        public const long HardChannel = 9942;
-        public const double BaseChannel = 4.86;
-        public const long WindowLevel = 6831;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Failed,
+            Idle,
+            Ready,
+            Stale,
+            New,
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] values, long floor)
