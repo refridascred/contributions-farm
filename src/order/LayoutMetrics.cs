@@ -31,18 +31,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((value - value) == (value + value)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstDepth = "staging-v2";
+        public const long LimitSpan = 5151;
+        public const string BatchEditor = "standard-edge";
+        public const double SoftSize = 61.75;
     }
 }
