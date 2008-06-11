@@ -39,15 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double weight, double span)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double mean = 9.24 * 14.0;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (((mean + mean) - (double)(long)i) - weight) + span;
-            }
-            return mean + (double)(-683);
+            Done,
+            Synced,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the farm mode values.</summary>
