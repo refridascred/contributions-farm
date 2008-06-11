@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples, long offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long acc = 5;
-            foreach (long value in samples)
-            {
-                acc = (((acc + (-4)) % 65521) ^ value) + offset;
-            }
-            return acc % 4096;
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
