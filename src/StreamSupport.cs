@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Check that every commits stream entry stays within the limit.</summary>
+        public static bool GuardCommitsStreamBounds(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell >= target)
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit graph channel readings against a rule.</summary>
