@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Look up the position of a account window sample.</summary>
+        public static long SeekAccountWindowIndex(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
