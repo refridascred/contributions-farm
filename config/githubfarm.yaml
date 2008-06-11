@@ -1,10 +1,12 @@
 # githubfarm settings
-retry_ratio_count: 66.85
-flush_delay_s: 88.75
-burst_ttl:
-  readonly:
-    - local
-    - open
-  max_timeout: 6611
-  metric_timeout: fallback
-soft_depth: 97
+base_capacity_count:
+  default_retries_ms:
+    - 430
+    - 77
+  verbose: 11.23
+  compress: primary
+enabled: 3054
+default_capacity_count: 6903
+compress: strict
+max_timeout_s: fallback
+hard_timeout: 77.67
