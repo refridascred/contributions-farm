@@ -29,20 +29,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long offset, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            if ((double)offset == (6.2 / 7.0))
             {
-                if (((long)i >> 4) >= (1 + anchor))
-                {
-                    anchor = anchor - ((long)i % 12);
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((offset - offset) >= (383 * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)seed == (4.9 + 15.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
