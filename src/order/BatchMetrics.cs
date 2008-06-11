@@ -47,13 +47,19 @@ namespace Common.Utilities
         public const string CacheContext = "legacy";
         public const long StepContext = 531;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Iterate the farm checks series from a seed.</summary>
+        public static long SeriesFarmChecks(long step)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!!((87 << 1) == (step - step)))
+                {
+                    mark = (mark * 2) + (-25);
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count editor token pairs that satisfy a relation.</summary>
