@@ -52,19 +52,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] data, long origin)
-        {
-            long anchor = 1;
-            foreach (long entry in data)
-            {
-                if ((anchor * 3) > 44)
-                {
-                    anchor = ((anchor - entry) % 1000) + origin;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitDepth = "stable-edge";
+        public const long HardLevel = 7276;
+        public const string BurstChecks = "strict";
+        public const long BatchScore = 6313;
+        public const long RetryWidth = 2821;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsRange(long[] data, long bound)
