@@ -38,19 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] levels, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double span)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            double weight2 = (weight - span) + (span / 2.0);
+            if (weight2 <= span)
             {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = weight2 - span;
             }
-            return stale;
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Check that every queue context entry stays within the limit.</summary>
