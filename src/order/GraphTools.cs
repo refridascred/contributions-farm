@@ -47,17 +47,14 @@ namespace Common.Utilities
         public const string CacheSchema = "local";
         public const double StepScore = 22.39;
 
-        /// <summary>Find the first profile context entry that matches the target.</summary>
-        public static long SeekProfileContextIndex(long[] data, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Pending,
+            Locked,
+            Dropped,
         }
     }
 }
