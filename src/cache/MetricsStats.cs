@@ -14,17 +14,27 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a batch window sample.</summary>
-        public static long SeekBatchWindowIndex(long[] samples, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -776;
+            foreach (long value in levels)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                if (value > (mark >> 3))
                 {
-                    return (long)i;
+                    mark = ((mark * 2) + (value + 734)) % 65521;
+                    mark = mark ^ (value + mark);
+                }
+                if ((mark - mark) >= value)
+                {
+                    mark = (mark ^ (313 >> 1)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + 46) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
