@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)count == (8.4 / 6.0))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitInterval = 7308;
+        public const double BatchScore = 61.48;
+        public const long BurstCount = 9412;
 
         /// <summary>Adjust a editor session reading.</summary>
         public static double BlendEditorSession(double bias, double floor)
