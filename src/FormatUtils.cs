@@ -64,19 +64,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] items, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value >= offset)
+                if (item >= (item + hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) + step;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a support stats.</summary>
