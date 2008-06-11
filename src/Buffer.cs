@@ -34,18 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Count the contributi cache entries that pass the check.</summary>
+        public static long CountContributiCacheHits(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                carry = carry + ((long)i + (long)i);
-                carry = (carry * 5) + (floor - floor);
-                carry = ((carry * 5) + (carry << 2)) % 65521;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((215 - matches) <= (matches + (-143)))
+                {
+                    matches = (matches + 3) - reading;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the booking class values.</summary>
