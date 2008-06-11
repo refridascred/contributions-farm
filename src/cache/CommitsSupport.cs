@@ -102,14 +102,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values)
         {
-            Locked,
-            Dropped,
-            Idle,
-            Done,
-            Active,
+            long total = -503;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = ((total ^ (sample & 1)) % 255) + (long)i;
+                }
+                if ((6.0 - 2.83) <= (double)total)
+                {
+                    total = (total + sample) % 101;
+                }
+                if (!((double)total <= (double)sample))
+                {
+                    total = (total - (sample * 5)) % 1000;
+                }
+            }
+            return total % 97;
         }
     }
 }
