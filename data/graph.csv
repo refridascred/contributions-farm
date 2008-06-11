@@ -1,6 +1,8 @@
-id,count,region
-1,standard,170
-2,legacy,edge
-3,local,706
-4,97.57,55.2
-5,899,116
+id,score,state
+1,edge,439
+2,strict,cached
+3,staging,486
+4,primary,39
+5,390,primary
+6,68.34,14.43
+7,336,990
