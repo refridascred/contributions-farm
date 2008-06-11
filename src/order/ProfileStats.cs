@@ -32,19 +32,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7560;
+        public const long IdleInterval = 3195;
+        public const long StepLevel = 7509;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string IdleScore = "primary-edge";
