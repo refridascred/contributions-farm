@@ -26,16 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
-        public static long StepStatsGithubfarm(long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry ^ ((long)i * 5);
-                carry = ((carry * 3) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
