@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long bound, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            if ((bound << 2) > (seed ^ seed))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)5 <= (double)seed)
+                if (13 > cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed == (double)7)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) >= (seed << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine record values into a single score.</summary>
