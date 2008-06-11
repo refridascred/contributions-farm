@@ -14,17 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = mark - ((long)i % 64);
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleDepth = "cached-1";
+        public const long BaseAccount = 758;
+        public const long BaseDepth = 3443;
+        public const long StepInterval = 1;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] values, long limit)
