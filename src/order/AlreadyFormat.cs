@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 2789;
+        public const long BatchGithubfarm = 6444;
+        public const double StepLevel = 49.18;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long bound)
