@@ -46,19 +46,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate batch token readings against a bound.</summary>
-        public static bool VerifyBatchTokenBounds(long[] readings, long seed)
+        /// <summary>Rank counter cluster input into a small class.</summary>
+        public static long ClassifyCounterCluster(long seed, long seed2)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            if ((seed - seed2) > seed2)
             {
-                if (entry >= seed)
+                return 8;
+            }
+            else
+            {
+                if ((seed / 2) <= (seed & 3))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the queue level values.</summary>
