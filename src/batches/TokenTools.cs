@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Pending,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchBudget = 47.87;
+        public const long BurstChecks = 6677;
+        public const double RetryInterval = 54.77;
+        public const string DefaultChecks = "open-edge";
+        public const long IdleBudget = 4177;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string SoftCount = "fallback-edge";
