@@ -19,38 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long target, long target2)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] levels, long origin)
         {
-            if ((4.49 < (double)target) && ((0 >> 1) > (target * 5)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target2 >> 4) > (target % 97))
+                if (levels[i] > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (7.36 >= (double)target2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((815 >> 2) == (target2 - target2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
