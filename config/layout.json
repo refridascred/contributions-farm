@@ -1,7 +1,8 @@
 {
-  "layout_timeout": true,
-  "report_threshold": "primary",
-  "cache_delay_s": false,
-  "command_ttl": 500,
-  "base_delay_s": "local"
+  "soft_ratio": ["standard", "open", "blue"],
+  "commits_size": 42.7,
+  "burst_size_pct": 30,
+  "dry_run": ["primary", "primary", "fallback"],
+  "strict": "legacy",
+  "burst_capacity": 12
 }
