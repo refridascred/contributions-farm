@@ -45,14 +45,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Ready,
-            Retry,
-            Done,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryCount = "primary-v2";
+        public const double SoftWindow = 63.64;
+        public const long CacheWindow = 1346;
+        public const long HardWindow = 3781;
     }
 }
