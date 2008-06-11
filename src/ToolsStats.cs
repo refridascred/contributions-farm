@@ -39,38 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long origin, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] data, long target)
         {
-            if ((43 * 3) <= (floor / 2))
+            long mark = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) > (origin + 6))
+                if (((-308) ^ target) >= (0 - target))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + floor) < (origin & 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor & 127) >= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = (mark ^ (sample ^ 24)) % 97;
                 }
             }
+            return mark;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
