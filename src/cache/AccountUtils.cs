@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] levels, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (entry >= origin)
+                if (((reading >> 3) <= (count & 7)) && (((-35) / 4) <= (25 - reading)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a contributi entry.</summary>
