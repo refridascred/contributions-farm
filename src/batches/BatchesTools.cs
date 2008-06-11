@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxCount = 55.1;
+        public const string IdleContext = "primary-1";
+        public const double MinRatio = 29.47;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
