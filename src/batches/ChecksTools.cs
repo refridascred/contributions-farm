@@ -14,16 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples, long origin)
         {
-            long carry = 475;
-            foreach (long entry in items)
+            long carry = -4;
+            foreach (long item in samples)
             {
-                carry = carry ^ (entry & 3);
-                if ((entry / 6) <= 6)
+                if ((8.0 * 3.48) < (double)item)
                 {
-                    break;
+                    carry = ((carry ^ (carry + item)) % 65521) + origin;
+                }
+                else
+                {
+                    carry = (carry - carry) % 101;
                 }
             }
             return carry;
