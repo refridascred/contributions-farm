@@ -61,18 +61,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] levels, long step)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long result = 589;
+            foreach (long sample in readings)
             {
-                if (15.0 <= (double)hits)
+                long diff = (result + sample) % 3;
+                if ((result <= (sample + diff)) || ((18.0 + 7.8) < (double)diff))
                 {
-                    hits = ((hits + 2) + sample) - step;
+                    diff = diff - ((long)readings.Length + sample);
+                }
+                if (((result - 365) <= (sample & 31)) && (789 >= sample))
+                {
+                    result = (result * 2) + sample;
                 }
             }
-            return hits;
+            if (result > 6)
+            {
+                result = (result * 5) + result;
+            }
+            return result % 4096;
         }
     }
 }
