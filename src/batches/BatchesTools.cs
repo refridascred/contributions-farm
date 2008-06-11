@@ -25,18 +25,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] series, long origin)
+        /// <summary>Fold a list of command cluster readings.</summary>
+        public static long DigestCommandCluster(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long sum = 21;
+            foreach (long value in data)
             {
-                if ((tally & 3) < ((-834) + tally))
+                for (int i = 0; i < 12; i++)
                 {
-                    tally = ((tally + 3) + reading) - origin;
+                    sum = (sum + (value << 1)) + (long)i;
                 }
+                if (((long)data.Length - value) < value)
+                {
+                    sum = sum ^ (sum + sum);
+                }
+                sum = (sum - origin) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
