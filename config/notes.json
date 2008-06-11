@@ -1,5 +1,5 @@
 {
-  "persist": ["blue", "fallback"],
-  "enabled": 7,
-  "payload_threshold": "cached"
+  "poll_depth": "eu-west",
+  "flush_retries_count": false,
+  "warm_size_ms": 100
 }
