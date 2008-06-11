@@ -75,31 +75,19 @@ namespace Common.Utilities
         public const double BaseProfile = 81.77;
         public const double LimitWidth = 5.43;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long floor, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] readings, long origin)
         {
-            if ((40 <= (step - floor)) || (floor >= (step / 3)))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + 9) > (floor >> 2))
+                if (datum != origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step > (52 - step)) || ((floor - step) <= floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
