@@ -1,8 +1,7 @@
-id,score,level,weight,owner
-1,252,edge,395,latest
-2,844,77.64,152,local
-3,0.07,12.21,104,40.75
-4,59.42,500,staging,48.52
-5,33.99,cached,37.5,blue
-6,441,148,19.61,legacy
-7,strict,local,93.95,718
+id,score,region,weight,count
+1,900,15,65.26,978
+2,green,132,725,43.54
+3,87.15,67.8,40.89,818
+4,767,87.79,656,809
+5,cached,236,edge,eu-west
+6,76.37,35.55,cached,418
