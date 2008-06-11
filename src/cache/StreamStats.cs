@@ -33,18 +33,13 @@ namespace Common.Utilities
             return drift - (double)80;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] readings)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value > (count + count)) && ((0.97 - 8.47) > (double)value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
