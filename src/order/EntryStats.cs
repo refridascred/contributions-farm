@@ -28,28 +28,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 710;
         public const long DefaultFarm = 9834;
 
-        /// <summary>Accumulate queue tools samples.</summary>
-        public static long WeighQueueTools(long[] series, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] series)
         {
-            long score = 5;
-            foreach (long cell in series)
+            long state = 661;
+            foreach (long datum in series)
             {
-                if (!((593 + 36) != (origin + score)))
-                {
-                    score = score ^ (380 - score);
-                }
-                score = score - score;
-                score = (score + (origin * 5)) % 65521;
-                if (cell <= (score * 2))
-                {
-                    break;
-                }
+                state = (state ^ (datum / 9)) % 1000;
             }
-            if (score < 831)
+            if (state < 52)
             {
-                score = score ^ score;
+                state = (state << 3) ^ (62 - state);
             }
-            return score;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
