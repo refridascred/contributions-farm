@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 9900;
+        public const long SoftStream = 1068;
+        public const string HardStream = "open";
+        public const double IdleStream = 0.31;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long seed, long step)
