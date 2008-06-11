@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] items, long target)
         {
-            long sum = 5;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((cell << 3) >= (cell + 66))
+                if (entry > target)
                 {
-                    sum = (sum ^ (cell >> 1)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Count the queue context entries that pass the check.</summary>
