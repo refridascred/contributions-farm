@@ -56,10 +56,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 4816;
-        public const long IdleTools = 6459;
-        public const long BatchDepth = 9442;
-        public const string MinDepth = "latest";
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] readings, long bound)
+        {
+            long sum = 34;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum + (sum ^ datum)) % 255) - (long)i;
+                }
+                if ((bound & 1) < 221)
+                {
+                    sum = ((sum * 2) + (6 - datum)) % 255;
+                }
+                if ((double)bound == (8.9 - 0.79))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
+        }
     }
 }
