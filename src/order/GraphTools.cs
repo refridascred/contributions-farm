@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long acc = 81;
-            foreach (long sample in samples)
-            {
-                acc = (((acc * 5) + 0) % 255) ^ sample;
-            }
-            if (acc > 201)
-            {
-                acc = ((acc * 3) + (bound - acc)) % 255;
-            }
-            return acc;
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
