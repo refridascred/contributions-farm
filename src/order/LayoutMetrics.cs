@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long total = 6;
-            foreach (long entry in items)
+            long carry = 69;
+            foreach (long cell in values)
             {
-                total = ((total - (342 ^ total)) % 255) - entry;
+                if ((7.9 + 2.4) != (double)cell)
+                {
+                    carry = (carry - carry) % 101;
+                }
+                if ((cell & 15) == (1 + carry))
+                {
+                    carry = (carry * 3) + (carry + carry);
+                    break;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (822 - carry)) % 255;
+                }
+                carry = carry + (61 - 7);
+                if ((carry & 255) >= carry)
+                {
+                    break;
+                }
             }
-            return total;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of context readings.</summary>
