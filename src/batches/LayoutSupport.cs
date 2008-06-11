@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] samples, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((step - seen) < (sample << 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up layout record samples.</summary>
