@@ -26,10 +26,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 5763;
-        public const double IdleToken = 8.73;
-        public const double MaxRatio = 84.37;
-        public const string MaxLevel = "cached-v2";
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
