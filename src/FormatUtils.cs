@@ -16,21 +16,18 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > (value << 2))
                 {
-                    if ((values[i] - values[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of context session readings.</summary>
