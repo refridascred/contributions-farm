@@ -63,13 +63,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            Paused,
-            Idle,
-            Active,
-            Draft,
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
