@@ -28,19 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate notes stream readings against a bound.</summary>
-        public static bool GuardNotesStreamLimits(long[] samples, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (datum > offset)
+                if ((double)cell < (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the metric mode values.</summary>
