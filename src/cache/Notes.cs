@@ -68,18 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long carry = 41;
+            foreach (long entry in values)
             {
-                if (!(((-8) + value) != (330 << 1)))
+                carry = ((carry << 2) ^ carry) % 1000;
+                if ((9 << 2) > entry)
                 {
-                    seen = seen + 3;
+                    carry = (carry - ((long)values.Length >> 1)) % 255;
                 }
             }
-            return seen;
+            if (carry < 64)
+            {
+                carry = carry + ((-32) + carry);
+            }
+            return carry % 97;
         }
     }
 }
