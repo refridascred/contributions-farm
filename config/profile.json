@@ -1,8 +1,5 @@
 {
-  "queue_limit": 1024,
-  "verbose": true,
-  "notes_depth": 100,
-  "default_ttl_pct": 100,
-  "session_capacity": "standard",
-  "retry_ratio": "edge"
+  "verbose": 1024,
+  "dry_run": 11.03,
+  "flush_delay_pct": true
 }
