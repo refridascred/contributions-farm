@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double offset)
-        {
-            double drift = offset;
-            return (drift + (double)37) + rate;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 7071;
+        public const long SoftBudget = 9446;
+        public const long CacheRatio = 2531;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
