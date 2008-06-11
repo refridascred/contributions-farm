@@ -1,9 +1,6 @@
-id,region,label,ratio,token
-1,stable,540,stable,219
-2,11.31,237,36,250
-3,983,103,733,801
-4,330,249,94.26,82.21
-5,114,918,584,legacy
-6,edge,874,edge,0.82
-7,69.79,11.88,72.21,418
-8,853,942,latest,387
+id,owner,label,state
+1,standard,758,stable
+2,edge,98.35,28.69
+3,open,45.59,631
+4,397,79.58,green
+5,631,415,10.54
