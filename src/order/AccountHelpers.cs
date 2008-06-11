@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long offset, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = offset + bound;
+            if ((double)next < (0.9 - 17.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((next * 3) <= (bound & 3))
                 {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
