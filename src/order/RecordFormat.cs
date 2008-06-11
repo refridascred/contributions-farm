@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] data, long bound)
         {
-            double load = bias;
-            if (load < (bias / 2.0))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                load = (load - (double)947) - rate;
+                if ((bound + tally) <= bound)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)76) + (double)(long)i;
-            }
-            return load + bias;
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
