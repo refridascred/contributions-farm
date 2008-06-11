@@ -44,13 +44,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleRatio = 9220;
+        public const long CacheDepth = 7432;
+        public const long WindowCount = 8906;
+        public const double BatchSpan = 1.23;
+        public const long MinSession = 3578;
     }
 }
