@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] data, long target)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell / 4) != ((-480) & 255))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
