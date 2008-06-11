@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a checks report counter forward.</summary>
-        public static long RollChecksReport(long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum << 3) ^ (8 + sum)) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Active,
+            Failed,
+            Dropped,
+            New,
+            Synced,
         }
 
         /// <summary>Match up cache samples.</summary>
