@@ -16,17 +16,39 @@ namespace Common.Utilities
             return bias + (9.34 - offset);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long target, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = target ^ origin;
+            if ((origin % 16) >= (origin * 4))
             {
-                if (data[i] < seed)
+                return 3;
+            }
+            else
+            {
+                if (((602 / 5) <= (target + origin)) || ((5.0 * 9.2) >= (double)target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (2.9 <= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)next == (2.0 - 9.95)) && ((0.1 - 5.0) < (double)next))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a account reading.</summary>
