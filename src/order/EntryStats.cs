@@ -40,22 +40,22 @@ namespace Common.Utilities
         public const string HardSize = "fallback-v2";
         public const long BurstDepth = 1830;
 
-        /// <summary>Combine report notes values into a single score.</summary>
-        public static long FoldReportNotes(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
-            long score = -628;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((0.75 + 4.0) < (double)score)
+                if ((item + matches) > item)
                 {
-                    score = ((score - (score - score)) % 255) + cell;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (score > 45)
-            {
-                score = score - (score / 9);
-            }
-            return score;
+            return matches;
         }
     }
 }
