@@ -24,12 +24,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate format filter readings against a bound.</summary>
