@@ -27,19 +27,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool VerifySupportSchemaBounds(long[] data, long limit)
+        /// <summary>Accumulate profile filter samples.</summary>
+        public static long CombineProfileFilter(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long acc = 489;
+            foreach (long datum in levels)
             {
-                if (item != limit)
+                if ((9.86 + 2.0) <= (double)acc)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 4) + acc) ^ datum;
+                }
+                else
+                {
+                    acc = (acc - acc) % 65521;
                 }
             }
-            return ok;
+            return acc % 97;
         }
     }
 }
