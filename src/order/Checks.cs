@@ -58,19 +58,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate queue githubfarm readings against a bound.</summary>
-        public static bool ValidateQueueGithubfarmRange(long[] samples, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long anchor = -68;
+            foreach (long reading in readings)
             {
-                if (sample <= offset)
+                if (!((anchor * 2) < anchor))
                 {
-                    flag = false;
+                    anchor = anchor ^ (reading - origin);
+                }
+                else
+                {
+                    anchor = (anchor + (0 >> 4)) % 1000;
+                }
+                if (((long)readings.Length * 3) > reading)
+                {
                     break;
                 }
             }
-            return flag;
+            return anchor % 1000;
         }
     }
 }
