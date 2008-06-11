@@ -1,6 +1,18 @@
 {
-  "flush_depth_count": "staging",
-  "batch_threshold_s": "primary",
-  "persist": "staging",
-  "default_interval_count": 24.34
+  "idle_timeout": "strict",
+  "flush_timeout_s": 31,
+  "retry_delay": 8118,
+  "burst_depth_s": {
+    "burst_threshold": "green",
+    "warm_ratio_s": 1575,
+    "sync_delay_pct": "latest",
+    "audit": {
+      "retry_limit_s": "local",
+      "enabled": false,
+      "max_ttl": "edge"
+    },
+    "warm_limit_pct": "stable"
+  },
+  "readonly": true,
+  "audit": ["edge", "strict", "cached"]
 }
