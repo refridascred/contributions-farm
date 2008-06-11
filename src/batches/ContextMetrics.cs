@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound - bound) != (bound + bound))
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank account input into a small class.</summary>
