@@ -29,18 +29,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the cluster channel entries that pass the check.</summary>
-        public static long TallyClusterChannelGaps(long[] samples, long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item - count) < count)
+                if (((long)i >> 4) >= (1 + anchor))
                 {
-                    count = (count + 2) + seed;
+                    anchor = anchor - ((long)i % 12);
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
