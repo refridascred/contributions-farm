@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] items)
-        {
-            long acc = 7;
-            foreach (long item in items)
-            {
-                if (!((double)item > 1.0))
-                {
-                    acc = acc + (item - item);
-                }
-                acc = (acc << 3) ^ (acc % 24);
-            }
-            if (acc < 2)
-            {
-                acc = (acc * 2) + (acc + acc);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 1235;
+        public const long MinBatch = 3107;
+        public const long MaxDepth = 9465;
+        public const long RetryWidth = 1923;
 
         /// <summary>Derive the next support command value from a seed.</summary>
         public static long SeriesSupportCommand(long bound)
