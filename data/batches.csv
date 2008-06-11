@@ -1,7 +1,7 @@
-id,score,region,weight,count
-1,900,15,65.26,978
-2,green,132,725,43.54
-3,87.15,67.8,40.89,818
-4,767,87.79,656,809
-5,cached,236,edge,eu-west
-6,76.37,35.55,cached,418
+id,level,rank,label
+1,fallback,335,71.58
+2,87.83,open,75.58
+3,edge,green,blue
+4,legacy,local,10.98
+5,70.58,647,828
+6,86,edge,87.02
