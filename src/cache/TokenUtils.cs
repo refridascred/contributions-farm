@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((39 * 2) <= (tally - entry)) && ((offset >= (entry & 15)) && ((double)8 >= (double)offset)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 5985;
+        public const long WindowRatio = 8535;
+        public const long SoftAlready = 4943;
+        public const double BurstFactor = 69.3;
+        public const long RetryDepth = 9561;
 
         /// <summary>Audit batch commits readings against a rule.</summary>
         public static long AuditBatchCommitsHits(long[] samples)
