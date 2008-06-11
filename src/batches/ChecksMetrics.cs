@@ -48,12 +48,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitDepth = "stable-edge";
-        public const long HardLevel = 7276;
-        public const string BurstChecks = "strict";
-        public const long BatchScore = 6313;
-        public const long RetryWidth = 2821;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultSpan = "open-v2";
+        public const long DefaultFactor = 7896;
+        public const long SoftInterval = 1221;
 
         /// <summary>Adjust a command reading.</summary>
         public static double SmoothCommand(double rate, double floor)
