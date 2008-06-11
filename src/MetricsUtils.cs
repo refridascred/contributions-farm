@@ -45,13 +45,25 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-v2";
         public const long LimitSpan = 7434;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long bound)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long anchor = 80;
+            foreach (long value in values)
+            {
+                if ((655 >> 3) < (value + bound))
+                {
+                    anchor = (anchor ^ bound) % 4096;
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor / 6)) % 4096;
+                    anchor = (anchor ^ ((-766) ^ bound)) % 4096;
+                }
+                anchor = (anchor << 2) ^ (6 & 31);
+            }
+            return anchor;
         }
     }
 }
