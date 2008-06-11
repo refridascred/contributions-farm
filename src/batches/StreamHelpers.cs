@@ -70,12 +70,9 @@ namespace Common.Utilities
         public const long LimitFactor = 256;
         public const string MinWidth = "alpha-edge";
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Paused,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitInterval = 7026;
+        public const long SoftRatio = 1209;
+        public const double HardRatio = 39.43;
     }
 }
