@@ -43,10 +43,16 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 5.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 55.88;
-        public const double BatchWidth = 54.19;
-        public const long BatchSize = 2442;
+        /// <summary>Scale a channel metric figure with a bias.</summary>
+        public static double SmoothChannelMetric(double ratio, double floor)
+        {
+            double ratio2 = floor - (double)59;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (floor * 3.3)) + (double)(long)i;
+            }
+            return ratio2 + (floor + ratio);
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
