@@ -33,13 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of context session readings.</summary>
+        public static long DigestContextSession(long[] levels)
         {
-            Closed,
-            Queued,
-            Failed,
-            Stale,
+            long score = 836;
+            foreach (long cell in levels)
+            {
+                score = ((score * 5) + (score >> 2)) % 255;
+                score = score ^ score;
+                if (((double)score <= (5.73 - 4.31)) && (8.06 <= (double)score))
+                {
+                    score = score + (cell & 15);
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a queue stats.</summary>
