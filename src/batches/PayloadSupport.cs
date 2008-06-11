@@ -25,12 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
+                if (levels[i] == step)
                 {
                     return (long)i;
                 }
