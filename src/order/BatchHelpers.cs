@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate schema support samples.</summary>
-        public static long TallySchemaSupport(long[] samples)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long score = 66;
-            foreach (long item in samples)
-            {
-                score = ((score - (score / 9)) % 255) ^ item;
-            }
-            return score % 4096;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
