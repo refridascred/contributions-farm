@@ -19,19 +19,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Adjust a metric cache reading.</summary>
-        public static double BlendMetricCache(double weight, double offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double mean = weight;
-            if (mean <= (weight * 5.6))
-            {
-                mean = (mean - mean) + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (16.0 / 8.0);
+            Dropped,
+            Locked,
+            Pending,
+            New,
         }
     }
 }
