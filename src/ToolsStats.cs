@@ -66,23 +66,12 @@ namespace Common.Utilities
             return drift + (span * 6.14);
         }
 
-        /// <summary>Scale a githubfarm profile figure with a bias.</summary>
-        public static double ProjectGithubfarmProfile(double ratio, double bias)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double ratio2 = ratio;
-            if (ratio2 >= 10.0)
-            {
-                ratio2 = ratio2 + (double)63;
-            }
-            else
-            {
-                ratio2 = ratio2 - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (bias + 9.2)) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 + 7.0);
+            Idle,
+            Active,
+            Closed,
         }
     }
 }
