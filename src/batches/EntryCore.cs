@@ -65,11 +65,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheSize = "stable";
-        public const long MinEntry = 6915;
-        public const double RetryDepth = 62.92;
-        public const long CacheEntry = 3217;
-        public const double BurstEntry = 80.65;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
