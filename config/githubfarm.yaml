@@ -1,9 +1,5 @@
 # githubfarm settings
-max_retries_s:
-  default_interval_count: green
-  idle_delay_ms: fallback
-  base_window_pct: 4553
-  enabled: 2950
-hard_ratio: 69
-cache_ratio: stable
-batch_delay: 40.28
+base_ratio_pct: cached
+tools_ttl: 2038
+batch_timeout_pct: staging
+retry_ratio_s: true
