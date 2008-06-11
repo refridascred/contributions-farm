@@ -1,11 +1,11 @@
 # Command notes
 
-Run the cache check before changing any buffer limits.
-Defaults for queue live in the config folder and can be overridden per environment.
-The payload module keeps order values in sync with the stats cache.
+The filter module keeps tools values in sync with the commits cache.
+Keep cache and editor names short and lowercase.
+Each report is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Keep session values small
-- Review already limits each release
-- Document new commits fields
+- Validate githubfarm input early
+- Prefer queue defaults
+- Review entry limits each release
