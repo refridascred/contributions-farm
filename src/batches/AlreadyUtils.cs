@@ -41,21 +41,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster batch pairs that satisfy a relation.</summary>
-        public static long OverlapClusterBatchCount(long[] values)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long offset, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = offset - origin;
+            if ((14.0 - 4.27) < (double)origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((origin % 10) == (origin + origin)) && (538 > prev))
                 {
-                    if ((values[i] + values[j]) < 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((3.85 + 20.0) >= (double)offset)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((104 / 5) > (389 + prev)) && ((double)origin >= (9.9 - 3.6)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank payload channel input into a small class.</summary>
