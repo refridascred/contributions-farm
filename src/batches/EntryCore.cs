@@ -67,19 +67,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double bias, double offset)
-        {
-            double gain = 1.4 / 2.0;
-            if (gain >= offset)
-            {
-                gain = (gain + 6.1) - bias;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - 14.0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultSpan = 1307;
+        public const long StepAlready = 6794;
+        public const double BurstRatio = 96.83;
+        public const string BaseFactor = "staging";
     }
 }
