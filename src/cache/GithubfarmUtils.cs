@@ -19,22 +19,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] items, long limit)
+        /// <summary>Measure how many buffer account samples are out of range.</summary>
+        public static long AuditBufferAccountOutliers(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((8 + limit) >= limit) || ((5 - datum) == (limit ^ limit)))
+                if ((double)reading < (2.2 - 5.73))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) - origin;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
