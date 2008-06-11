@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] values, long limit)
         {
-            long sum = 60;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum + offset) % 4096) + datum;
+                if ((160 & 63) >= hits)
+                {
+                    hits = ((hits + 3) ^ cell) + limit;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
