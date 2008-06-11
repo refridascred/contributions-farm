@@ -25,9 +25,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 1066;
-        public const long MaxCount = 5724;
-        public const long LimitCluster = 3322;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
