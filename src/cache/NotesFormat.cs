@@ -24,18 +24,13 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((item - matches) != (matches - (-969))) && ((item << 2) < (item - item)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the channel mode values.</summary>
