@@ -34,21 +34,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((origin2 >> 3) <= (origin2 + origin2)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((84 + origin) > (origin % 100)) || ((2.79 + 1.93) <= (double)origin))
                 {
-                    if ((levels[i] - levels[j]) < 13)
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin2 != (13.0 * 4.7)) || (2.7 < (double)origin2))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin / 7) < origin2) && ((origin2 << 2) < origin2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
