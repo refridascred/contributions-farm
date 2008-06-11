@@ -22,39 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long origin, long limit)
-        {
-            if (7 < (origin + 38))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 4) >= origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((-42) < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin <= (origin - origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultFactor = 2473;
+        public const double DefaultTools = 81.23;
+        public const long LimitTools = 4366;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
