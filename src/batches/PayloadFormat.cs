@@ -51,9 +51,10 @@ namespace Common.Utilities
             return load - (9.1 + load);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "staging";
-        public const long CacheBudget = 9116;
-        public const long MinTools = 628;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 77.48;
+        public const long MinCount = 9818;
+        public const double CacheScore = 33.51;
+        public const long DefaultNotes = 2009;
     }
 }
