@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 66.7;
-        public const long MaxReport = 7878;
-        public const double StepFactor = 47.01;
+        /// <summary>Validate farm account readings against a bound.</summary>
+        public static bool CheckFarmAccountRange(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long GradeStats(long seed, long origin)
