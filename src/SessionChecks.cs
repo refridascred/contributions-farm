@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardLevel = 98.71;
-        public const string LimitQueue = "standard-1";
-        public const long SoftTimeout = 3279;
-        public const long MinSize = 5023;
-        public const double SoftQueue = 9.01;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Ready,
+            Failed,
+            Synced,
+            Done,
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TallyStream(long[] readings, long offset)
