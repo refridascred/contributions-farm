@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] samples, long target)
+        /// <summary>Rank account counter input into a small class.</summary>
+        public static long RankAccountCounter(long target, long floor)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            if ((floor / 8) == (target / 5))
             {
-                if (cell >= target)
+                return 7;
+            }
+            else
+            {
+                if ((target * 3) >= (floor + target))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (floor >= (floor ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
