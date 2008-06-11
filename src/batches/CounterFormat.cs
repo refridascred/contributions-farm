@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] data)
         {
-            Draft,
-            Ready,
-            Stale,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)tally >= (double)value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of schema cluster entries.</summary>
