@@ -21,18 +21,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] data, long offset)
         {
-            long anchor = 835;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset > (double)(-900))
+                if (data[i] > offset)
                 {
-                    anchor = (((anchor * 2) + (offset & 255)) % 1000) + value;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
