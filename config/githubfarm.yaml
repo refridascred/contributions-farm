@@ -1,14 +1,12 @@
 # githubfarm settings
-base_ratio: edge
-soft_depth_ms: 2900
+warm_retries_pct: legacy
+base_retries_pct: eu-west
 verbose:
-  audit: true
-  cache_ttl_count: 49.5
-  cache_timeout_ms:
-    - 157
-    - 228
-    - 172
-  hard_delay_pct: legacy
-  soft_capacity_s: 60
-metric_depth: 30
-min_interval: true
+  default_size_count: 95
+  retry_limit_pct: 9276
+  buffer_limit: 100
+burst_capacity_ms: latest
+schema_capacity: 55.65
+route_ttl:
+  - 418
+  - 310
