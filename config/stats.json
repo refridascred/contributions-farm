@@ -1,5 +1,8 @@
 {
-  "window_size": 93,
-  "strict": 1024,
-  "base_limit_count": "staging"
+  "cache_interval": 33.59,
+  "window_threshold": ["eu-west", "strict", "staging"],
+  "notes_window": ["latest", "open", "stable", "green"],
+  "warm_ttl_s": 250,
+  "sync_window": false,
+  "verbose": true
 }
