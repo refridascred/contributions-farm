@@ -33,14 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values, long limit)
         {
-            Synced,
-            Retry,
-            Active,
-            Draft,
-            Ready,
+            long mark = 301;
+            foreach (long value in values)
+            {
+                if ((16 + mark) != (value & 255))
+                {
+                    mark = (mark ^ (limit + limit)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Roll a payload report counter forward.</summary>
