@@ -7,20 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=318
-log "limit is ${BUFFER_LIMIT}"
