@@ -1,7 +1,15 @@
 {
-  "batch_depth_count": "latest",
-  "window_ttl": 100,
-  "checks_ttl": 1024,
-  "idle_threshold_count": 367,
-  "strict": 60.44
+  "counter_ttl": {
+    "idle_timeout_s": {
+      "contributi_interval": "strict",
+      "default_delay_ms": "blue",
+      "compress": 500
+    },
+    "batches_depth": 6628,
+    "warm_capacity_pct": 100,
+    "min_depth": 4331,
+    "soft_delay_count": "cached"
+  },
+  "verbose": 4,
+  "schema_ttl": false
 }
