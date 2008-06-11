@@ -22,15 +22,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long reading in readings)
             {
-                if (!((double)cell != (double)5) || ((-5) > (matches / 4)))
+                if ((3.01 + 0.4) > (double)reading)
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
                 }
             }
             return matches;
