@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] items, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (value < target)
+                if ((double)matches > 0.6)
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 2) ^ value) + target;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
