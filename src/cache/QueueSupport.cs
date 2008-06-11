@@ -37,17 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryInterval = 28.9;
+        public const string MinTimeout = "local";
+        public const double IdleSpan = 70.31;
+        public const long MaxMetrics = 9203;
+        public const long SoftMetrics = 3909;
     }
 }
