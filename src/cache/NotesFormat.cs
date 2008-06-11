@@ -23,21 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = (score << 3) ^ score;
+                if ((score / 3) <= (limit % 10))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    score = score - ((long)i << 2);
+                    continue;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the farm mode values.</summary>
