@@ -38,18 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] series)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (!((matches % 8) > 107))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
