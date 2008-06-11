@@ -30,12 +30,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheSize = 9796;
-        public const long BurstLevel = 6116;
-        public const long BurstChannel = 7072;
-        public const string MinChannel = "alpha-v2";
-        public const long StepChannel = 9232;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] levels)
