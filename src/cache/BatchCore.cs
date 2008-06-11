@@ -43,15 +43,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Scale a command profile figure with a bias.</summary>
-        public static double ProjectCommandProfile(double gain, double span)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] values, long offset)
         {
-            double scale = (double)(130 - (-994));
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = ((scale - gain) - (double)(long)i) + span;
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)52;
+            return -1;
         }
 
         /// <summary>Audit tools editor readings against a rule.</summary>
