@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of batch token entries.</summary>
-        public static long FoldBatchToken(long[] series)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long mark = 5;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length % 3) <= datum)
-                {
-                    mark = mark ^ (53 >> 3);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (datum - datum)) % 101;
-                }
-            }
-            if (mark > 878)
-            {
-                mark = mark ^ (mark % 97);
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
