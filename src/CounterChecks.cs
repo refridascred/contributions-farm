@@ -48,14 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 94.09;
+        public const long WindowRatio = 2430;
+        public const double DefaultEntry = 64.99;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double DefaultTools = 62.63;
