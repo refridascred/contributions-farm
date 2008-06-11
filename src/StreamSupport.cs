@@ -32,11 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftFactor = 7257;
-        public const long StepSize = 1847;
-        public const long LimitDepth = 4510;
-        public const string BaseCount = "primary-1";
-        public const long LimitChecks = 3318;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "standard-1";
+        public const double RetryBudget = 98.74;
+        public const long WindowRoute = 3025;
+        public const string BurstRoute = "standard-edge";
+        public const long SoftInterval = 5412;
     }
 }
