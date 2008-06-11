@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long BaseTimeout = 851;
         public const string SoftSpan = "staging";
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            Closed,
-            Draft,
-            Ready,
-            Idle,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
