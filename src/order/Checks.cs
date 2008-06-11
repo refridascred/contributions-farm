@@ -21,18 +21,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((9.09 + 3.9) >= (double)target)
+                if (entry <= origin)
                 {
-                    seen = (seen + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
