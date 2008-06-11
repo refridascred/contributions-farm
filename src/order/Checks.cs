@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a window stats counter forward.</summary>
-        public static long RollWindowStats(long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            long anchor = 901;
+            foreach (long item in readings)
             {
-                if ((double)score >= 14.0)
-                {
-                    break;
-                }
-                score = ((score * 3) + (score << 1)) % 1000;
-                score = ((score * 4) + (long)i) % 97;
+                anchor = ((anchor << 3) ^ ((-737) - 323)) + item;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
