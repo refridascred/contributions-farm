@@ -28,12 +28,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((4.0 * 5.28) > (double)bound))
+                {
+                    result = (result ^ (bound >> 4)) % 1000;
+                }
+                result = result ^ ((long)i >> 5);
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
