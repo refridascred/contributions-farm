@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two metrics report measurements.</summary>
-        public static double SmoothMetricsReport(double rate, double span)
+        /// <summary>Audit window token readings against a rule.</summary>
+        public static long MeasureWindowTokenHits(long[] items)
         {
-            double weight = rate - (rate - span);
-            if (weight > (rate - span))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                weight = weight - (6.66 / 2.0);
+                if ((5.84 + 0.7) >= (double)hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - (1.7 - rate);
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
