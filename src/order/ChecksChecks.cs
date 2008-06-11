@@ -47,13 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 6498;
+        public const double BatchSchema = 97.18;
+        public const long HardSchema = 5473;
     }
 }
