@@ -22,13 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double bias, double bias2)
         {
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            double mean = (double)0;
+            if (mean >= bias)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - (double)3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean - mean)) + (double)(long)i;
+            }
+            return mean - bias2;
         }
 
         /// <summary>Hold a cluster summary.</summary>
