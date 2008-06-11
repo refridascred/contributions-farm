@@ -20,10 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardLevel = 9.37;
-        public const long BatchStream = 739;
-        public const long HardStream = 1209;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheScore = 8824;
+        public const long BurstBuffer = 3672;
+        public const long BaseTimeout = 1112;
+        public const long HardTimeout = 5862;
+        public const string WindowCount = "stable";
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long StepEditor(long bound)
