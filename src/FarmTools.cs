@@ -14,20 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                long next = 223;
-                if ((20 >> 2) == (next % 100))
-                {
-                    next = ((next * 4) + (next + target)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Synced,
+            Locked,
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
