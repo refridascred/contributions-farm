@@ -37,19 +37,15 @@ namespace Common.Utilities
         public const string HardSize = "fallback-v2";
         public const long BurstDepth = 1830;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long entry in readings)
             {
-                if ((item + matches) > item)
+                if (((2.0 / 9.0) >= (double)entry) && (((entry << 1) <= entry) || ((matches >> 2) > (matches - matches))))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
