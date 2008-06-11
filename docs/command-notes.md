@@ -1,15 +1,15 @@
 # Command notes
 
-Keep editor and profile names short and lowercase.
-The report helpers are pure functions, so they are safe to call from any thread.
-Each stats is validated before it reaches the payload queue.
+Keep layout and editor names short and lowercase.
+A notes that stays idle for too long is moved to the record list.
+Run the token check before changing any format limits.
 
-Defaults for order live in the config folder and can be overridden per environment.
-The buffer module keeps profile values in sync with the entry cache.
-A metrics that stays idle for too long is moved to the order list.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep session and profile names short and lowercase.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Document new session fields
-- Prefer account defaults
+- Prefer commits defaults
+- Validate report input early
+- Keep stream values small
+- Log every stream change
