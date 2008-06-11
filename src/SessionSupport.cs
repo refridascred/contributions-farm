@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every record command entry stays within the limit.</summary>
-        public static bool ValidateRecordCommandRange(long[] levels, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (datum <= seed)
+                if (((long)samples.Length ^ tally) > (target + entry))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
