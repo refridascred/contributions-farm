@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] values, long target)
         {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((1.05 + 4.99) < (double)target))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank account input into a small class.</summary>
