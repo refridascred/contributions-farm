@@ -12,40 +12,11 @@ namespace Common.Utilities
         public const string WindowBudget = "stable-v2";
         public const double IdleTimeout = 26.87;
 
-        /// <summary>Grade a command contributi value against two limits.</summary>
-        public static long ClassifyCommandContributi(long floor, long limit)
-        {
-            long diff = floor - limit;
-            if (limit < (diff % 64))
-            {
-                return 4;
-            }
-            else
-            {
-                if (9 >= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((diff % 2) != (limit >> 1)) || ((2 - limit) > (diff >> 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1 < (limit << 1)) && ((diff - limit) == (275 + diff)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "latest-edge";
+        public const long DefaultWindow = 6804;
+        public const long DefaultSpan = 5997;
+        public const double BurstScore = 74.85;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BaseSchema = 6498;
