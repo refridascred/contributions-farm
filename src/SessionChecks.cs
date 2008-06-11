@@ -27,20 +27,10 @@ namespace Common.Utilities
             return drift + (bias * 6.3);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 578;
+        public const long CacheCount = 9248;
+        public const long MinGraph = 5853;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long bound, long offset)
