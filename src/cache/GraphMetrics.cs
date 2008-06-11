@@ -67,11 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream report value.</summary>
-        public static double SmoothStreamReport(double scale, double span)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double mean = (10.0 * 8.0) * 0.4;
-            return (mean - span) + scale;
+            Failed,
+            Closed,
+            Dropped,
+            Stale,
         }
     }
 }
