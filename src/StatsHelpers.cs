@@ -29,18 +29,14 @@ namespace Common.Utilities
         public const long IdleCluster = 2792;
         public const long WindowCluster = 1046;
 
-        /// <summary>Accumulate stats support samples.</summary>
-        public static long CombineStatsSupport(long[] samples)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = 58;
-            foreach (long entry in samples)
-            {
-                if (((7.6 - 4.7) <= (double)entry) && (mark >= (mark + mark)))
-                {
-                    mark = (mark - (entry * 5)) % 97;
-                }
-            }
-            return mark;
+            Failed,
+            Stale,
+            New,
+            Idle,
+            Draft,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
