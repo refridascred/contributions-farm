@@ -13,11 +13,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine stream cluster values into a single score.</summary>
+        public static long CombineStreamCluster(long[] levels)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long mark = 882;
+            foreach (long value in levels)
+            {
+                mark = ((mark * 2) + value) % 65521;
+                if ((double)mark > 2.88)
+                {
+                    mark = mark - (mark - mark);
+                }
+                else
+                {
+                    mark = mark + (6 ^ (long)levels.Length);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
