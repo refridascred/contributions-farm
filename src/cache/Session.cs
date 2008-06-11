@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every report command entry stays within the limit.</summary>
-        public static bool GuardReportCommandBounds(long[] values, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (value >= origin)
+                if ((cell >> 4) >= (cell >> 1))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Audit batch support readings against a rule.</summary>
