@@ -69,11 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
+        public static long AuditGithubfarmProfileHits(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches % 64) == (matches & 3))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
