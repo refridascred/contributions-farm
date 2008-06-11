@@ -27,19 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache checks measurements.</summary>
-        public static double ScaleCacheChecks(double bias, double floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double rate = (bias + floor) * 6.4;
-            if (rate > bias)
-            {
-                rate = rate + (floor + floor);
-            }
-            else
-            {
-                rate = rate + 1.0;
-            }
-            return rate + floor;
+            Done,
+            Active,
+            Draft,
+            Ready,
         }
     }
 }
