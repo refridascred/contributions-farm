@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            double load = (double)2;
-            if (load >= (4.93 / 6.0))
+            long mix = 26;
+            foreach (long cell in samples)
             {
-                load = (load + bias) - offset;
+                mix = (mix * 2) + (cell - cell);
+                mix = ((mix << 3) ^ (mix >> 3)) % 4096;
+                if ((mix ^ mix) < mix)
+                {
+                    break;
+                }
             }
-            return load + (bias * 7.8);
+            return mix;
         }
 
         /// <summary>Describe the graph class values.</summary>
