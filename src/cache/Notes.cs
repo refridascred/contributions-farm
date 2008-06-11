@@ -57,19 +57,12 @@ namespace Common.Utilities
         public const long DefaultDepth = 6645;
         public const long StepDepth = 3654;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] series, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
