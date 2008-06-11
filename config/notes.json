@@ -1,5 +1,6 @@
 {
-  "command_retries": [394, 483],
-  "hard_window": "primary",
-  "flush_threshold_s": 39.5
+  "min_ratio_count": 22.99,
+  "idle_ttl_s": ["blue", "cached"],
+  "verbose": 60,
+  "persist": 60
 }
