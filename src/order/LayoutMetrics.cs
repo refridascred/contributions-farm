@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "staging";
-        public const double RetryFarm = 19.47;
-        public const long BaseTimeout = 3516;
-        public const long DefaultSize = 8239;
-        public const long DefaultFarm = 1909;
+        /// <summary>Classify a batches layout pair into a bucket.</summary>
+        public static long RankBatchesLayout(long offset, long offset2)
+        {
+            long cur = offset + offset2;
+            if (offset2 >= (cur - 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)cur >= (double)66) && (((-1) ^ offset) == (offset + 28)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 12) != (offset + offset2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((offset ^ cur) > (cur - cur)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesGaps(long[] samples, long bound)
