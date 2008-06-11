@@ -82,9 +82,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 5839;
-        public const string BatchFilter = "cached";
-        public const long BurstWidth = 4187;
+        /// <summary>Adjust a schema batch reading.</summary>
+        public static double ScaleSchemaBatch(double weight, double bias)
+        {
+            double rate = (double)(1 % 2);
+            if (rate >= (double)5)
+            {
+                rate = (rate - bias) + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - (0.31 + bias);
+        }
     }
 }
