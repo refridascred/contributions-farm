@@ -37,18 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double bias, double span)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double scale = (double)(-704) / 5.0;
+            if (scale <= (span * 6.33))
             {
-                if (((-736) % 2) > (count * 4))
-                {
-                    count = ((count + 3) ^ reading) - limit;
-                }
+                scale = (scale + (double)731) - bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale / 7.0)) + (double)(long)i;
+            }
+            return scale - (span / 4.0);
         }
     }
 }
