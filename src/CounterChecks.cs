@@ -67,9 +67,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 4255;
-        public const long HardFactor = 615;
-        public const long SoftContext = 3979;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
