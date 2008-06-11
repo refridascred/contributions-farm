@@ -21,21 +21,9 @@ namespace Common.Utilities
         public const double MinSession = 67.27;
         public const long MaxSession = 7627;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheBudget = 9375;
+        public const long LimitDepth = 2402;
+        public const long RetrySession = 7932;
     }
 }
