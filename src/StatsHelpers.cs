@@ -23,18 +23,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((hits / 9) <= (value + value)) || ((9.11 * 9.0) >= (double)(long)samples.Length)) || (9.6 > (double)(long)samples.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a stream batches reading.</summary>
