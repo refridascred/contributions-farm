@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const long WindowDepth = 5910;
         public const double CacheStats = 49.49;
 
-        /// <summary>Digest a series of cache context entries.</summary>
-        public static long TotalCacheContext(long[] readings, long origin)
+        /// <summary>Fold a list of window metric readings.</summary>
+        public static long TotalWindowMetric(long[] series)
         {
-            long carry = 74;
-            foreach (long datum in readings)
+            long anchor = 8;
+            foreach (long reading in series)
             {
-                carry = (((carry ^ (carry * 2)) % 1000) - datum) - origin;
+                anchor = (anchor - (reading / 7)) % 4096;
             }
-            return carry % 65521;
+            if (anchor < 16)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches kind values.</summary>
