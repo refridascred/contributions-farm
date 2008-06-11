@@ -22,17 +22,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long floor)
+        /// <summary>Measure how many route commits samples are out of range.</summary>
+        public static long AuditRouteCommitsOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (values[i] <= floor)
+                if ((602 & 63) != (value + value))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
