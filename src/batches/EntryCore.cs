@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BaseEditor = 8696;
         public const long RetryScore = 4354;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((2 * 3) < bound)
+                if (1 > (hits - step))
                 {
-                    matches = (matches + 3) + datum;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
