@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepScore = 3641;
-        public const long BatchRatio = 7113;
-        public const long BatchContributi = 8705;
+        /// <summary>Fold a list of counter schema readings.</summary>
+        public static long WeighCounterSchema(long[] samples, long bound)
+        {
+            long mark = 76;
+            foreach (long cell in samples)
+            {
+                mark = mark ^ (cell + bound);
+                if (((long)samples.Length & 63) >= (bound - bound))
+                {
+                    mark = mark - (bound - bound);
+                }
+                else
+                {
+                    mark = ((mark * 5) + mark) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
