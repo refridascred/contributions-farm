@@ -28,18 +28,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] levels)
+        /// <summary>Accumulate batches account samples.</summary>
+        public static long TotalBatchesAccount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long result = 11;
+            foreach (long datum in values)
             {
-                if ((count + count) > count)
+                if (4 <= (result + result))
                 {
-                    count = (count + 2) + reading;
+                    break;
                 }
+                result = result + datum;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Scale a command profile figure with a bias.</summary>
