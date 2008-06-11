@@ -1,17 +1,14 @@
 # support settings
-soft_capacity:
-  - 190
-  - 97
-  - 370
-  - 13
-warm_size: strict
-max_retries_count: 5690
-soft_window: 47.32
-min_limit: strict
-stream_capacity:
-  context_ttl: cached
-  idle_limit: true
-  soft_window: 100
-  retry_capacity: stable
-  support_ttl: stable
-  compress: 13.69
+persist:
+  - edge
+  - primary
+hard_depth_pct:
+  - 485
+  - 429
+audit: fallback
+flush_window:
+  context_depth: fallback
+  poll_ttl_s: edge
+  retry_ttl_count: open
+token_interval: true
+enabled: false
