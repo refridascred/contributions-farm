@@ -38,13 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] series)
         {
-            Locked,
-            Pending,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((matches % 8) > 107))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
