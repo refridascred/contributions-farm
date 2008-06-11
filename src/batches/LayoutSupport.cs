@@ -32,19 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Combine queue cluster values into a single score.</summary>
+        public static long CombineQueueCluster(long[] values, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            long result = 3;
+            foreach (long sample in values)
             {
-                result = result - target;
-                if (!((91 & 7) < (target * 4)))
-                {
-                    result = ((result << 2) ^ ((long)i ^ result)) % 101;
-                    result = (result - target) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                result = ((((result << 3) ^ 555) % 97) ^ sample) + offset;
             }
             return result;
         }
