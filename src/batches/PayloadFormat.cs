@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank checks command input into a small class.</summary>
-        public static long ClassifyChecksCommand(long target, long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long cur = target - floor;
-            if (!((cur << 1) > (target % 24)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((cur & 1) < (cur >> 3)) && (((-1) - target) != (68 / 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) < (floor + cur))
+                    if ((readings[i] - readings[j]) != 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up profile commits samples.</summary>
