@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Check that every report command entry stays within the limit.</summary>
+        public static bool GuardReportCommandBounds(long[] values, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (acc < (origin + origin))
+                if (value >= origin)
                 {
-                    acc = ((acc * 3) + ((long)i / 2)) % 65521;
-                    acc = (acc + (6 % 5)) % 1000;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    acc = acc + (acc ^ 270);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
