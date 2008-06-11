@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 7801;
-        public const long DefaultStats = 9044;
-        public const string IdleStats = "standard-edge";
-        public const long DefaultSpan = 8514;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Ready,
+            Failed,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
