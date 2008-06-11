@@ -36,19 +36,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double span)
+        /// <summary>Classify a checks profile pair into a bucket.</summary>
+        public static long ClassifyChecksProfile(long step, long floor)
         {
-            double load = span;
-            if (load < bias)
+            long step2 = step + floor;
+            if ((step2 - step2) <= (floor + floor))
             {
-                load = load + 8.8;
+                return 2;
             }
             else
             {
-                load = load - (bias + span);
+                if ((7.7 + 5.4) >= (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step & 127) <= (step2 % 97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step <= (step2 * 3)) || (((-36) << 3) > step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return load + span;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
