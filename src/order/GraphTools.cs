@@ -27,12 +27,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstCount = "local-1";
-        public const long BurstStats = 5140;
-        public const string IdleWidth = "local-v2";
-        public const long LimitStats = 8197;
-        public const long DefaultDepth = 3858;
+        /// <summary>Find the first batch account entry that matches the target.</summary>
+        public static long LocateBatchAccountIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinCount = 6865;
