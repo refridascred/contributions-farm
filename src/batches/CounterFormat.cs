@@ -34,18 +34,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] items, long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((845 - count) == (value ^ value))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            Failed,
+            Idle,
+            Closed,
+            Locked,
+            Ready,
         }
     }
 }
