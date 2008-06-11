@@ -1,14 +1,7 @@
 {
-  "poll_ratio": "open",
-  "batches_window": {
-    "soft_delay_count": [408, 2],
-    "readonly": "edge",
-    "max_retries": [432, 494, 483],
-    "dry_run": [129, 432, 51],
-    "soft_delay": 60
-  },
-  "idle_threshold_ms": 52,
-  "base_timeout_s": true,
-  "flush_threshold_count": "latest",
-  "burst_timeout_pct": ["strict", "staging"]
+  "soft_ttl": "legacy",
+  "max_threshold_count": 68,
+  "idle_timeout_count": ["stable", "stable"],
+  "compress": true,
+  "flush_window": 5
 }
