@@ -57,19 +57,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a record editor reading.</summary>
-        public static double SmoothRecordEditor(double rate, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values, long origin)
         {
-            double weight = (bias - bias) - bias;
-            if (weight >= bias)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                weight = (weight - weight) + rate;
+                if ((reading + reading) == (55 % 12))
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            else
-            {
-                weight = weight + 8.6;
-            }
-            return weight - (2.2 - weight);
+            return tally;
         }
     }
 }
