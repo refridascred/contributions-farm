@@ -1,6 +1,19 @@
 {
-  "min_ratio_count": 22.99,
-  "idle_ttl_s": ["blue", "cached"],
-  "verbose": 60,
-  "persist": 60
+  "layout_interval": "legacy",
+  "burst_threshold": [475, 297, 9, 475],
+  "persist": 30,
+  "entry_timeout": 76.82,
+  "retry_ttl": {
+    "layout_threshold": {
+      "burst_interval_count": 95,
+      "dry_run": 423,
+      "hard_ttl": 657,
+      "tools_interval": 20.79
+    },
+    "warm_timeout_count": "green",
+    "editor_retries": "latest",
+    "base_window_count": "cached",
+    "flush_threshold_s": 4093,
+    "base_delay_s": false
+  }
 }
