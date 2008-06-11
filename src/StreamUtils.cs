@@ -75,9 +75,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 8188;
-        public const long BurstCommand = 6228;
-        public const string WindowWidth = "alpha";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
