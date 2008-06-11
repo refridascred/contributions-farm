@@ -27,17 +27,24 @@ namespace Common.Utilities
             return gain + (gain / 2.0);
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long origin, long origin2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin2 - origin) >= origin)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (origin < (origin2 * 4))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
