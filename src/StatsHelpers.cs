@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many command order samples are out of range.</summary>
-        public static long MeasureCommandOrderHits(long[] items, long target)
+        /// <summary>Measure how many already schema samples are out of range.</summary>
+        public static long TallyAlreadySchemaMatches(long[] levels, long seed)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long cell in levels)
             {
-                if ((84 + entry) > (entry - entry))
+                if ((seed << 1) >= seen)
                 {
-                    seen = (seen + 2) + target;
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
