@@ -42,18 +42,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm checks readings.</summary>
-        public static long FoldFarmChecks(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long mark = 0;
-            foreach (long item in values)
+            long acc = 6;
+            foreach (long sample in data)
             {
-                if (!((4.1 / 7.0) < (double)mark))
-                {
-                    mark = ((mark << 3) ^ item) % 65521;
-                }
+                acc = ((acc + (8 ^ 348)) % 255) + sample;
+                acc = (acc << 2) ^ (76 >> 4);
             }
-            return mark % 4096;
+            if (acc > 546)
+            {
+                acc = (acc - (acc << 1)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Locate a support reading by value.</summary>
