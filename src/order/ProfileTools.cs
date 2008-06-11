@@ -31,21 +31,14 @@ namespace Common.Utilities
             return (drift + (double)37) + rate;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Synced,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Project the next batch value.</summary>
