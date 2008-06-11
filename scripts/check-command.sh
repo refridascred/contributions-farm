@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=163
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
 for i in $(seq 1 7); do
