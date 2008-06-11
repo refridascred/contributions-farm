@@ -60,11 +60,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double gain, double offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long target)
         {
-            double mean = (2.0 - 0.6) / 6.0;
-            return ((mean - (double)3) + gain) + offset;
+            long step = seed + target;
+            if ((1.2 / 2.0) < (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step ^ step) == (target ^ target)) && ((target + step) <= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step > (seed + target)) && ((double)step > (1.88 - 2.82)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step != (8.6 + 11.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
