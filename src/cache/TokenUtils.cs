@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] series, long bound)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((bound << 2) <= (149 - item))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
