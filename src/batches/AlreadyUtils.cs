@@ -32,15 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] values, long offset)
+        /// <summary>Count cluster batch pairs that satisfy a relation.</summary>
+        public static long OverlapClusterBatchCount(long[] values)
         {
             long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.72 * 15.0) > (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) + offset;
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
