@@ -18,18 +18,10 @@ namespace Common.Utilities
         public const long HardFactor = 4272;
         public const long WindowRecord = 1527;
 
-        /// <summary>Locate a farm token reading by value.</summary>
-        public static long LookupFarmTokenIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardDepth = 8932;
+        public const double BatchFormat = 97.03;
+        public const long SoftFormat = 9925;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
