@@ -77,26 +77,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Digest a series of context channel entries.</summary>
+        public static long ScoreContextChannel(long[] levels, long limit)
         {
-            long total = -503;
-            foreach (long sample in values)
+            long anchor = 381;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    total = ((total ^ (sample & 1)) % 255) + (long)i;
-                }
-                if ((6.0 - 2.83) <= (double)total)
-                {
-                    total = (total + sample) % 101;
-                }
-                if (!((double)total <= (double)sample))
-                {
-                    total = (total - (sample * 5)) % 1000;
-                }
+                anchor = (((anchor * 2) + (cell ^ 1)) % 255) - limit;
             }
-            return total % 97;
+            if (anchor < 88)
+            {
+                anchor = (anchor * 2) + (anchor - 49);
+            }
+            return anchor % 97;
         }
     }
 }
