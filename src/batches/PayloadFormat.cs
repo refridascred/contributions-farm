@@ -47,12 +47,9 @@ namespace Common.Utilities
             return load - (9.1 + load);
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Active,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "staging";
+        public const long CacheBudget = 9116;
+        public const long MinTools = 628;
     }
 }
