@@ -23,15 +23,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long bound)
         {
-            long sum = 8;
-            foreach (long item in samples)
+            if ((7.7 + 7.0) < (double)target)
             {
-                sum = sum - (sum + item);
+                return 3;
             }
-            return sum % 4096;
+            else
+            {
+                if (!(bound > target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound < (9.8 - 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
