@@ -49,27 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples, long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = 6;
-            foreach (long item in samples)
-            {
-                mix = ((mix * 2) + (item & 15)) % 65521;
-                if (!((mix + item) > ((long)samples.Length + mix)))
-                {
-                    mix = ((mix << 3) ^ (item + mix)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (step - item)) % 65521;
-                }
-            }
-            if (mix < 77)
-            {
-                mix = (mix - (mix + 8)) % 101;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
