@@ -19,14 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Find the first format contributi entry that matches the target.</summary>
+        public static long SeekFormatContributiIndex(long[] readings, long step)
         {
-            Failed,
-            Idle,
-            Ready,
-            Stale,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of route channel entries.</summary>
