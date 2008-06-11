@@ -13,10 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "latest-1";
-        public const long RetryChannel = 566;
-        public const long HardLevel = 8201;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry > 16.0)
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 4287;
