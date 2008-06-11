@@ -33,17 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] data, long bound)
+        /// <summary>Accumulate profile notes samples.</summary>
+        public static long TotalProfileNotes(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 703;
+            foreach (long sample in levels)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
+                if (((sample - seed) <= (score ^ sample)) && ((7 >> 1) > (sample + (long)levels.Length)))
                 {
-                    return (long)i;
+                    score = (score + (seed >> 1)) % 65521;
                 }
             }
-            return -1;
+            if (score > (-563))
+            {
+                score = (score + seed) % 65521;
+            }
+            return score % 97;
         }
     }
 }
