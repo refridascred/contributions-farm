@@ -27,21 +27,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of filter stats readings.</summary>
-        public static long OverlapFilterStatsCount(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 1;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((((result << 3) ^ result) % 1000) + cell) - target;
             }
-            return seen;
+            if (result > 623)
+            {
+                result = ((result << 2) ^ result) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a editor header.</summary>
