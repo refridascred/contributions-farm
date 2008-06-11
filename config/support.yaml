@@ -1,5 +1,7 @@
 # support settings
-hard_threshold_s: 6132
-idle_threshold: standard
-window_window: green
-readonly: true
+dry_run: 75
+enabled: 87.01
+commits_capacity: true
+sync_depth_s: 43.71
+buffer_timeout: 20.99
+retry_retries_ms: staging
