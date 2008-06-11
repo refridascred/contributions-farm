@@ -23,19 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] readings, long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
