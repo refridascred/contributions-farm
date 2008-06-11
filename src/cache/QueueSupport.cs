@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mix = 9;
+            foreach (long sample in values)
             {
-                if ((sample * 4) != (seen + sample))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 4) + (sample + 7)) - target;
             }
-            return seen;
+            if (mix < (-892))
+            {
+                mix = (mix - (mix + mix)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
