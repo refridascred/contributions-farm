@@ -1,4 +1,13 @@
 # githubfarm settings
-burst_capacity: stable
-base_size_pct: 92
-default_delay_pct: fallback
+verbose: 41.99
+warm_threshold_ms: 9087
+readonly: 9593
+audit:
+  retry_window_ms: 82
+  readonly: 68.26
+  batch_depth: local
+  hard_timeout_count: 41
+retry_interval: 1024
+format_interval:
+  - 430
+  - 108
