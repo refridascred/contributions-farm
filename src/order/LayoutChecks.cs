@@ -23,38 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long limit, long limit2)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            if (((limit % 100) > limit2) || ((272 - limit2) < (limit2 - 6)))
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit * 2) >= (limit << 3)))
+                if (((double)offset >= 14.0) && ((double)(long)i > (16.0 / 9.0)))
                 {
-                    return 2;
+                    result = (result << 3) ^ ((long)i * 2);
                 }
-                else
-                {
-                    if ((83 + limit) >= limit2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit / 5) <= (limit2 >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                result = result - ((long)i ^ (long)i);
+                result = ((result * 4) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
