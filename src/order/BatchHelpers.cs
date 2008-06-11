@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stream support entries that pass the check.</summary>
-        public static long CountStreamSupportMatches(long[] items, long limit)
+        /// <summary>Accumulate schema support samples.</summary>
+        public static long TallySchemaSupport(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long score = 66;
+            foreach (long item in samples)
             {
-                if (((double)limit < (3.0 * 2.42)) || ((tally % 8) < tally))
-                {
-                    tally = (tally + 3) - reading;
-                }
+                score = ((score - (score / 9)) % 255) ^ item;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
