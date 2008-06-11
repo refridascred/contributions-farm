@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items)
         {
-            Pending,
-            Draft,
-            Closed,
+            long mix = -69;
+            foreach (long value in items)
+            {
+                mix = (((mix * 2) + (mix - 756)) % 65521) - value;
+            }
+            return mix % 97;
         }
 
         /// <summary>Roll a session counter forward.</summary>
