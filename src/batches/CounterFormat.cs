@@ -33,11 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 5905;
-        public const long MinMetrics = 4784;
-        public const long IdleInterval = 7501;
-        public const long BurstCount = 3257;
-        public const string WindowMetrics = "cached";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (reading >= (421 >> 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
