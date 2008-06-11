@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] samples, long origin)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((0.3 / 3.0) < (double)matches)
+                {
+                    matches = ((matches + 2) + item) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next cache value.</summary>
