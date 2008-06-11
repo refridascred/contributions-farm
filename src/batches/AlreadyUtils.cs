@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double rate = ratio / 5.0;
-            if (rate > ratio)
-            {
-                rate = (rate + (5.0 - 7.62)) - floor;
-            }
-            return rate + ratio;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
