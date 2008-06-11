@@ -26,16 +26,12 @@ namespace Common.Utilities
             return ratio + (8.0 + weight);
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                score = (score + (seed << 3)) % 101;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
