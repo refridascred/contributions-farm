@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const long BurstCount = 561;
         public const double LimitCache = 3.77;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 914;
-        public const long BaseProfile = 8839;
-        public const long HardProfile = 6464;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen >= 256)
+                {
+                    seen = ((seen + 3) ^ entry) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
