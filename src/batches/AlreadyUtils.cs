@@ -49,18 +49,18 @@ namespace Common.Utilities
         public const long DefaultScore = 5438;
         public const long RetryEntry = 7009;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels, long target)
+        /// <summary>Audit farm batches readings against a rule.</summary>
+        public static long CountFarmBatchesHits(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((52 & 31) > target)
+                if ((double)reading == (8.8 + 2.92))
                 {
-                    seen = (seen + 1) + reading;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
