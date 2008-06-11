@@ -31,32 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long slot = offset ^ step;
-            if (slot > offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (step <= ((-125) - slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset / 6) <= (6 * 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
