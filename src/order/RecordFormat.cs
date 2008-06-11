@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8780;
-        public const long SoftScore = 767;
-        public const string BatchDepth = "latest-v2";
-        public const string BatchChannel = "stable";
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double ratio, double floor)
+        {
+            double scale = (double)1 - floor;
+            return (scale + (double)931) + ratio;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] values, long seed)
