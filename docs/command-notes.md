@@ -1,14 +1,11 @@
 # Command notes
 
-The account module keeps farm values in sync with the layout cache.
-Each layout is validated before it reaches the editor queue.
-Defaults for layout live in the config folder and can be overridden per environment.
-
-Keep already and checks names short and lowercase.
-Each stream is validated before it reaches the farm queue.
+A session that stays idle for too long is moved to the contributi list.
+The context report groups every metrics by command.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Keep context values small
-- Review batches limits each release
+- Review githubfarm limits each release
+- Keep stream values small
+- Log every counter change
+- Prefer farm defaults
