@@ -65,18 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "fallback-v2";
+        public const long LimitFactor = 256;
+        public const string MinWidth = "alpha-edge";
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
