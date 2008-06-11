@@ -23,18 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] values, long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mix = 5;
-            foreach (long datum in values)
-            {
-                if ((bound - mix) < bound)
-                {
-                    mix = ((mix << 2) ^ (mix & 1)) ^ datum;
-                }
-            }
-            return mix % 97;
+            Synced,
+            Retry,
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Roll a payload report counter forward.</summary>
