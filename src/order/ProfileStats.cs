@@ -45,15 +45,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepScore = 96.65;
+        public const double LimitFilter = 20.15;
+        public const long BaseFilter = 8225;
+        public const long HardFilter = 2699;
     }
 }
