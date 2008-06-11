@@ -1,14 +1,12 @@
 # Command notes
 
-The session module keeps entry values in sync with the notes cache.
-The batches report groups every githubfarm by format.
-
-A metrics that stays idle for too long is moved to the githubfarm list.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Run the filter check before changing any schema limits.
+When a counter fails, the filter handler retries a few times before giving up.
+The stats module keeps counter values in sync with the farm cache.
 
 ## Guidelines
 
-- Log every metrics change
-- Keep schema values small
-- Prefer order defaults
-- Document new batches fields
+- Log every support change
+- Review notes limits each release
+- Keep batches values small
+- Validate record input early
