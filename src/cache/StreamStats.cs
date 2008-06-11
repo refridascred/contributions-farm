@@ -19,13 +19,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count stream counter pairs that satisfy a relation.</summary>
+        public static long CompareStreamCounterCount(long[] values)
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
