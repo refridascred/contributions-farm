@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchInterval = 73.63;
-        public const long HardContext = 3436;
-        public const double WindowScore = 53.05;
+        /// <summary>Adjust a editor layout reading.</summary>
+        public static double BlendEditorLayout(double rate, double bias)
+        {
+            double mean = bias;
+            return (mean + (double)68) + rate;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TallyReport(long[] items)
