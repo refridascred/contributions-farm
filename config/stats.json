@@ -1,18 +1,15 @@
 {
-  "soft_capacity": {
-    "idle_interval_pct": "legacy",
-    "dry_run": true,
-    "readonly": 94,
-    "batch_retries": 11.26,
-    "idle_depth_ms": {
-      "sync_retries_pct": "standard",
-      "soft_limit": ["stable", "open", "open", "latest"],
-      "readonly": 65
-    },
-    "default_ratio_count": "blue"
+  "metrics_retries": 56,
+  "readonly": [442, 443, 195],
+  "record_depth": 250,
+  "retry_retries": ["fallback", "edge", "legacy"],
+  "dry_run": {
+    "hard_ttl_s": true,
+    "min_ttl_ms": "cached",
+    "max_depth": "fallback",
+    "retry_ratio_count": 74,
+    "entry_threshold": false,
+    "idle_depth_pct": 23.86
   },
-  "max_capacity": "legacy",
-  "compress": 90.21,
-  "queue_timeout": "open",
-  "context_depth": 59.05
+  "flush_ttl_pct": 20.6
 }
