@@ -11,31 +11,19 @@ namespace Common.Utilities
         public const string HardStream = "open";
         public const double IdleStream = 0.31;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long step)
+        /// <summary>Fold a list of channel format readings.</summary>
+        public static long TotalChannelFormat(long[] items, long limit)
         {
-            if ((double)step >= (double)seed)
+            long acc = 2;
+            foreach (long value in items)
             {
-                return 7;
+                acc = ((acc - (value / 4)) % 97) - limit;
             }
-            else
+            if (acc > 0)
             {
-                if ((step % 12) <= (seed << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)3 > (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                acc = (acc * 4) + (acc / 7);
             }
+            return acc;
         }
 
         /// <summary>Describe the context mode values.</summary>
