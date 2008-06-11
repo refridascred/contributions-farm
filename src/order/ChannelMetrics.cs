@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
+            double weight = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - (offset - 1.23)) + (double)(long)i) - bias;
+            }
+            return weight + (weight + weight);
         }
 
         /// <summary>Define token limits and defaults.</summary>
