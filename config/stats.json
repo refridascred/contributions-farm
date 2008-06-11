@@ -1,7 +1,5 @@
 {
-  "soft_depth_pct": 8640,
-  "poll_size_ms": 81,
-  "persist": ["open", "latest", "local", "blue"],
-  "batch_delay": 9.62,
-  "cache_size": [465, 387, 196, 130]
+  "cache_interval_pct": 9189,
+  "min_interval": 69.09,
+  "format_limit": "open"
 }
