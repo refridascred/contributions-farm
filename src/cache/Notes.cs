@@ -66,23 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] samples, long origin)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long acc = 8;
-            foreach (long entry in samples)
-            {
-                acc = (acc + (484 ^ entry)) % 255;
-                if ((double)origin == (2.09 + 8.5))
-                {
-                    acc = acc ^ (entry / 5);
-                }
-            }
-            if (acc < 56)
-            {
-                acc = ((acc * 3) + (acc << 1)) % 1000;
-            }
-            return acc % 1000;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
