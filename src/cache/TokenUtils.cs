@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] series, long offset)
         {
-            Ready,
-            Failed,
-            Paused,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((39 * 2) <= (tally - entry)) && ((offset >= (entry & 15)) && ((double)8 >= (double)offset)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batch commits readings against a rule.</summary>
