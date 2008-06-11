@@ -13,32 +13,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long bound, long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long slot = bound - origin;
-            if ((slot - origin) < bound)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound > 13.0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >> 4) <= (639 + slot))
+                    if ((levels[i] - levels[j]) < 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
