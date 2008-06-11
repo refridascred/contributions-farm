@@ -29,11 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
