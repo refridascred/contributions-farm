@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long seed, long seed2)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long cur = seed ^ seed2;
-            if ((double)seed >= (9.7 / 4.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 << 2) >= cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
