@@ -16,12 +16,12 @@ namespace Common.Utilities
             return load + (bias * 7.8);
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
