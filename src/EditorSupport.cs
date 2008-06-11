@@ -51,25 +51,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next githubfarm session value from a seed.</summary>
-        public static long StepGithubfarmSession(long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            long acc = 3;
+            foreach (long item in data)
             {
-                if ((686 + bound) >= (bound % 100))
+                if (!((acc + item) > acc))
                 {
-                    mark = mark + (bound % 10);
+                    acc = (acc + item) % 65521;
                 }
-                if ((mark > (long)i) && ((bound + 171) >= (53 + bound)))
-                {
-                    mark = mark - 7;
-                    mark = (mark ^ ((long)i - mark)) % 101;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            if (acc < 73)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
