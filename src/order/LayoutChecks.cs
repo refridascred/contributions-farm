@@ -64,17 +64,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] values, long bound)
+        /// <summary>Blend two layout route measurements.</summary>
+        public static double BlendLayoutRoute(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias / 3.0;
+            if (scale > bias)
             {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + (double)644) - rate;
             }
-            return -1;
+            return scale + (1.0 * 9.58);
         }
 
         /// <summary>Describe the farm status values.</summary>
