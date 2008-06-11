@@ -21,18 +21,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] data, long target)
+        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
+        public static long StepStatsGithubfarm(long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (target < ((long)data.Length / 3))
-                {
-                    hits = (hits + 1) + item;
-                }
+                carry = carry ^ ((long)i * 5);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
     }
 }
