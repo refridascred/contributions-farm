@@ -19,13 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double offset)
         {
-            Stale,
-            Draft,
-            Retry,
-            Failed,
+            double gain = offset + ratio;
+            if (gain >= (double)781)
+            {
+                gain = gain + (5.65 / 5.0);
+            }
+            return gain - (offset - offset);
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
