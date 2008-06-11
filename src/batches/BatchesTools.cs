@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long bound)
         {
-            Failed,
-            Draft,
-            Pending,
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((sum & 31) >= (7 >> 1)) || ((sum + (long)i) == (bound / 8)))
+                {
+                    sum = (sum * 4) + (sum << 3);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
