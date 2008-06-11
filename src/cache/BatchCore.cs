@@ -63,18 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
-        public static long AuditGithubfarmProfileHits(long[] samples)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((matches % 64) == (matches & 3))
+                if (sample < offset)
                 {
-                    matches = (matches + 3) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
