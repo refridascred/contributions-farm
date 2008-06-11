@@ -64,11 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a queue entry.</summary>
