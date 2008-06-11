@@ -50,22 +50,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((datum & 15) >= (945 + 0))
+                if (!((double)item != (double)seed) || (((double)item >= (2.94 / 5.0)) || ((4.0 / 6.0) < (double)seed)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
