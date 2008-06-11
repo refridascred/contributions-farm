@@ -20,17 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] values, long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)((-445) + 7);
+            if (ratio > ratio)
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (double)15) - floor;
             }
-            return -1;
+            return ratio - (gain / 8.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
