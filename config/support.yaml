@@ -1,14 +1,4 @@
 # support settings
-persist:
-  - edge
-  - primary
-hard_depth_pct:
-  - 485
-  - 429
-audit: fallback
-flush_window:
-  context_depth: fallback
-  poll_ttl_s: edge
-  retry_ttl_count: open
-token_interval: true
-enabled: false
+cluster_capacity: stable
+base_ratio: 82.97
+default_threshold: 89.64
