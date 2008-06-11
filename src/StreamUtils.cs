@@ -35,11 +35,26 @@ namespace Common.Utilities
         public const long DefaultCount = 7628;
         public const string LimitBudget = "open";
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples, long seed)
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            long anchor = 482;
+            foreach (long entry in samples)
+            {
+                if ((7.0 >= (double)anchor) && ((15.0 - 7.9) <= (5.0 + 3.19)))
+                {
+                    anchor = ((anchor - (70 + seed)) % 1000) + entry;
+                }
+                else
+                {
+                    anchor = anchor + 561;
+                }
+            }
+            if (anchor > 88)
+            {
+                anchor = ((anchor << 3) ^ ((long)samples.Length % 3)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
