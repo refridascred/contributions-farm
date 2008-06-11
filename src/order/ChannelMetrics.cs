@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const long StepLevel = 4352;
         public const long MaxInterval = 8757;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] data, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (entry != limit)
+                if (((7.86 > (double)cell) && (cell > (hits % 60))) && (((floor & 15) <= floor) && ((hits + hits) < (hits - hits))))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
