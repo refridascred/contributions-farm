@@ -51,18 +51,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many window schema samples are out of range.</summary>
-        public static long AuditWindowSchemaOutliers(long[] items)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits <= value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
