@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 7354;
-        public const long IdleDepth = 8196;
-        public const double StepDepth = 33.64;
-        public const long HardFactor = 5123;
-        public const double CacheGraph = 36.27;
+        /// <summary>Audit channel profile readings against a rule.</summary>
+        public static long TallyChannelProfileHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((sample + hits) == (hits + hits)) || ((sample * 4) <= (hits ^ sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double ScaleCommand(double ratio, double span)
