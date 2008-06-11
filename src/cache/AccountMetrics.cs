@@ -13,17 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] samples, long origin)
+        /// <summary>Count the entry channel entries that pass the check.</summary>
+        public static long MeasureEntryChannelHits(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] < origin)
+                if (!((bound <= (bound >> 5)) && ((datum - count) > 64)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
