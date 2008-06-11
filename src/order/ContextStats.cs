@@ -28,21 +28,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 15)
+                    if ((readings[i] + readings[j]) != 8)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
