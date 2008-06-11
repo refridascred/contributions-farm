@@ -50,17 +50,19 @@ namespace Common.Utilities
         public const string BurstCache = "primary";
         public const long StepCache = 1996;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((data[i] > offset) && ((data[i] % 2) == 0))
+                if (reading != floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
