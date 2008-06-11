@@ -31,18 +31,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] readings, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 258;
+            foreach (long sample in data)
             {
-                if ((double)reading >= (9.78 + 9.29))
+                if ((sample + sample) <= (score % 8))
                 {
-                    hits = (hits + 1) + floor;
+                    score = ((score * 4) + (limit * 2)) % 1000;
+                }
+                if (((double)limit < (double)sample) || ((limit % 7) < (score + sample)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score > 233)
+            {
+                score = score + (467 - limit);
+            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
