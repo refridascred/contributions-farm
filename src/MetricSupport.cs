@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] readings, long bound)
         {
-            double bias = (double)(8 >> 4);
-            if (bias > bias)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                bias = ((bias + bias) - scale) - offset;
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (bias - 3.0);
-            }
-            return bias - bias;
+            return valid;
         }
 
         /// <summary>Count tools report pairs that satisfy a relation.</summary>
