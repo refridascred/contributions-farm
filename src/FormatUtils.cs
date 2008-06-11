@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleTimeout = 9.02;
-        public const long BatchRoute = 6760;
-        public const string CacheLevel = "alpha-v2";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((reading << 2) >= matches) && (13.0 <= (double)(long)data.Length))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] values)
