@@ -22,21 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up profile commits samples.</summary>
-        public static long PairProfileCommitsCount(long[] levels)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Blend two profile measurements.</summary>
