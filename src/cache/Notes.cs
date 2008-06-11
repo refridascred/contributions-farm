@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] samples, long floor)
+        /// <summary>Validate route already readings against a bound.</summary>
+        public static bool ValidateRouteAlreadyRange(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (value != floor)
+                if (datum >= seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
