@@ -41,31 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long limit, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            if (((-4) - limit) > (limit * 5))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 1) == (target << 1))
+                if ((hits - hits) < 559)
                 {
-                    return 0;
+                    hits = (hits + 2) + sample;
                 }
                 else
                 {
-                    if (((double)target != (double)330) || ((double)target != (5.75 / 8.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
