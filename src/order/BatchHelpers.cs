@@ -16,11 +16,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double bias, double span)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double scale, double offset)
         {
-            double scale = span - (span + span);
-            return (scale - 1.0) + bias;
+            double weight = (double)(810 / 2);
+            return ((weight + 17.0) + scale) + offset;
         }
 
         /// <summary>Describe the channel state values.</summary>
