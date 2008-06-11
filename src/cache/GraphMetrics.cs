@@ -36,14 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double span)
         {
-            Idle,
-            New,
-            Failed,
-            Paused,
-            Retry,
+            double load = span;
+            if (load < bias)
+            {
+                load = load + 8.8;
+            }
+            else
+            {
+                load = load - (bias + span);
+            }
+            return load + span;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
