@@ -23,14 +23,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Classify a record format pair into a bucket.</summary>
+        public static long GradeRecordFormat(long origin, long bound)
         {
-            Active,
-            Retry,
-            Ready,
-            Failed,
-            Dropped,
+            long diff = origin + bound;
+            if ((bound + origin) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((590 / 5) >= (bound << 1)) && ((diff - diff) > (diff << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((133 >= origin) && (origin < (origin << 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two profile measurements.</summary>
