@@ -29,14 +29,12 @@ namespace Common.Utilities
         public const long BatchCounter = 9670;
         public const long DefaultInterval = 810;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 53;
+        public const long BurstSpan = 6630;
+        public const long MaxStream = 1010;
+        public const long IdleStream = 2839;
+        public const long BaseStream = 1633;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
