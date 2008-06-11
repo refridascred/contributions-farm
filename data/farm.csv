@@ -1,7 +1,10 @@
-id,label,state
-1,staging,67.97
-2,103,stable
-3,185,latest
-4,302,876
-5,227,primary
-6,328,6.94
+id,label,region
+1,61.53,399
+2,edge,650
+3,4.77,staging
+4,42.15,standard
+5,872,871
+6,52.33,eu-west
+7,edge,436
+8,916,63.94
+9,49.95,43.01
