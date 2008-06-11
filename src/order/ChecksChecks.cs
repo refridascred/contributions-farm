@@ -21,19 +21,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] values, long target)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
