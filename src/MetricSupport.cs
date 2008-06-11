@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] items, long target)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
