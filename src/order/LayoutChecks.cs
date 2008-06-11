@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((double)seen <= (9.06 / 2.0))
+                if ((value - count) >= count)
                 {
-                    seen = ((seen + 1) + item) - bound;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
