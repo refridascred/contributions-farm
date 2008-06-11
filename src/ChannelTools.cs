@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] series, long limit)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((double)limit >= (7.0 - 18.0)) && (((limit >> 4) < (seen ^ seen)) && (seen > item)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
