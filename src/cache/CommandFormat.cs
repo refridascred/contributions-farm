@@ -21,18 +21,20 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)tally >= (double)entry)
+                if ((offset >> 4) > ((long)i * 5))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 4) + (offset & 31)) % 255;
+                    sum = (sum + sum) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Locate a support reading by value.</summary>
