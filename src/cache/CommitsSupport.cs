@@ -12,20 +12,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score + (offset % 100);
-                if (!((offset + score) > (offset << 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score + ((long)i & 31);
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Adjust a buffer notes reading.</summary>
