@@ -1,10 +1,12 @@
 # Command notes
 
-The session module keeps batch values in sync with the githubfarm cache.
-Run the queue check before changing any metrics limits.
+The cache module keeps report values in sync with the format cache.
+Keep stats and schema names short and lowercase.
+Each report is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep stream values small
-- Validate counter input early
+- Prefer report defaults
+- Validate commits input early
+- Log every command change
+- Document new metric fields
