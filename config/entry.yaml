@@ -1,15 +1,9 @@
 # entry settings
-max_capacity_count: primary
-poll_size_s:
-  strict: 60
-  account_capacity: 1024
-  poll_window_pct: cached
-  dry_run:
-    channel_capacity: stable
-    readonly: edge
-    warm_depth:
-      - fallback
-      - green
-      - strict
-      - green
-verbose: false
+persist:
+  batch_timeout: 49.0
+  persist: local
+  min_retries_s: latest
+  warm_limit_count: 34
+support_limit: 35.88
+burst_delay: false
+audit: 69.57
