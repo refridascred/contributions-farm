@@ -26,22 +26,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long limit, long step)
         {
-            long acc = 7;
-            foreach (long item in items)
+            if (7.0 <= (double)step)
             {
-                if (((acc & 127) == (acc * 4)) || ((4 + acc) <= (item + 225)))
+                return 5;
+            }
+            else
+            {
+                if (((-508) + 8) < (2 - limit))
                 {
-                    acc = acc - (acc & 7);
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc ^ acc) % 101;
+                    if ((step * 5) >= 8)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + step) >= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
