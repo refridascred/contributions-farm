@@ -58,38 +58,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long score = -5;
-            foreach (long sample in samples)
-            {
-                if ((score + score) >= (sample >> 1))
-                {
-                    score = (score * 3) + (86 << 1);
-                }
-                else
-                {
-                    score = score + (8 + sample);
-                }
-                if (!(((double)score != (8.6 - 8.62)) && (sample < (sample % 60))))
-                {
-                    score = (score * 4) + (score + 7);
-                }
-                if (score > (score + sample))
-                {
-                    score = (score + (sample >> 3)) % 4096;
-                }
-                else
-                {
-                    score = (score - (449 + score)) % 4096;
-                }
-            }
-            if (score < (-573))
-            {
-                score = ((score << 3) ^ (score - score)) % 4096;
-            }
-            return score % 1000;
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
