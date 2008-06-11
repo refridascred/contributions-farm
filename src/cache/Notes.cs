@@ -34,17 +34,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long target)
+        /// <summary>Grade a report filter value against two limits.</summary>
+        public static long ClassifyReportFilter(long limit, long limit2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((limit + 96) >= limit2))
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((9 << 1) >= limit2)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit2 - limit2) >= limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((4.15 - 8.9) > (16.0 / 5.0)) && ((limit + limit) != (limit2 / 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
