@@ -1,7 +1,6 @@
 # githubfarm settings
-default_depth: fallback
-cluster_window: false
-batch_threshold_pct: latest
-route_window: legacy
-base_limit_count: 250
-sync_capacity_s: 1024
+retry_window_s: fallback
+poll_capacity_ms: 100
+command_depth: 3070
+warm_timeout_count: edge
+retry_timeout: 92.38
