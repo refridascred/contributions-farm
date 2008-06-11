@@ -22,19 +22,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] series, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Locked,
+            Pending,
+            Ready,
+            Idle,
         }
     }
 }
