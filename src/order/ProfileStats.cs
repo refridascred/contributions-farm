@@ -17,12 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values)
         {
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-            public double Region { get; set; }
+            long mix = 8;
+            foreach (long item in values)
+            {
+                if ((item + 1) < (mix - mix))
+                {
+                    mix = ((mix << 3) ^ (9 / 3)) % 65521;
+                }
+                else
+                {
+                    mix = mix + (item + mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate notes stream readings against a bound.</summary>
