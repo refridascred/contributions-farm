@@ -42,10 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseSpan = 1180;
-        public const double MinLevel = 84.18;
-        public const string DefaultLevel = "strict";
+        /// <summary>Fold a list of farm checks readings.</summary>
+        public static long FoldFarmChecks(long[] values)
+        {
+            long mark = 0;
+            foreach (long item in values)
+            {
+                if (!((4.1 / 7.0) < (double)mark))
+                {
+                    mark = ((mark << 3) ^ item) % 65521;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LocateSupportIndex(long[] values, long offset)
