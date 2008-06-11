@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double offset)
+        /// <summary>Grade a cache githubfarm value against two limits.</summary>
+        public static long BucketCacheGithubfarm(long floor, long origin)
         {
-            double drift = offset;
-            if (drift > (drift - drift))
+            long offset = floor - origin;
+            if (offset >= (floor & 255))
             {
-                drift = drift - (gain - 6.0);
+                return 0;
             }
-            return drift - gain;
+            else
+            {
+                if ((floor <= (floor - offset)) || ((offset * 2) <= origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
