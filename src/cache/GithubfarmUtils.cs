@@ -20,24 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long seed, long origin)
+        /// <summary>Match up buffer graph samples.</summary>
+        public static long CompareBufferGraphCount(long[] values)
         {
-            if (seed <= (3 + 81))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 2) >= 6)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a record metrics reading by value.</summary>
