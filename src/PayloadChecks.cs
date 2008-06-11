@@ -41,31 +41,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long origin, long origin2)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            if ((455 >> 2) < (origin << 2))
+            long acc = 866;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 << 3) > origin)
+                long lane = (-385) + 649;
+                if (325 < (lane ^ lane))
                 {
-                    return 3;
+                    lane = (lane - (sample % 3)) % 1000;
                 }
-                else
-                {
-                    if (origin <= (origin2 - origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                acc = ((acc << 3) ^ (7 + 16)) % 65521;
             }
+            return acc % 4096;
         }
 
         /// <summary>Hold a token stats.</summary>
