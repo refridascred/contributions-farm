@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long target, long target2)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if ((76 + target) > (target2 / 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target > (target / 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target / 6) <= (target2 / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target <= (target - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
