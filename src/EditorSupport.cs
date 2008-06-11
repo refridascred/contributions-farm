@@ -18,24 +18,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 5615;
         public const long SoftSupport = 8210;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (sample > bound)
                 {
-                    sum = ((sum - (sum + sum)) % 101) + (long)i2;
+                    ready = false;
+                    break;
                 }
-                if (!(sum < floor))
-                {
-                    sum = ((sum << 2) ^ 206) % 1000;
-                    sum = ((sum * 5) + (7 & 63)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Rank session input into a small class.</summary>
