@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const long BurstCount = 561;
         public const double LimitCache = 3.77;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Paused,
-            Done,
-            Draft,
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
