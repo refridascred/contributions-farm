@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((cell >> 4) >= (cell >> 1))
+                if (sample != origin)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Adjust a window commits reading.</summary>
