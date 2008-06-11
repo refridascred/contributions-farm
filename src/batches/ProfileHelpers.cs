@@ -60,22 +60,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            long score = 7;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)score <= (double)47)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score ^ 53) % 97;
-                }
-                else
-                {
-                    score = (score + entry) % 97;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
