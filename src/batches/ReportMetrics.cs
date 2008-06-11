@@ -22,15 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double weight, double span)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double bias = (double)(212 % 12);
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (weight + span)) + (double)(long)i;
-            }
-            return bias + weight;
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
