@@ -1,7 +1,8 @@
 {
-  "min_size_count": true,
-  "cluster_size": "green",
-  "dry_run": "open",
-  "flush_ratio_count": 9909,
-  "strict": 250
+  "idle_interval": true,
+  "sync_size_s": "green",
+  "sync_timeout": 250,
+  "session_size": "green",
+  "dry_run": 17.98,
+  "enabled": 60
 }
