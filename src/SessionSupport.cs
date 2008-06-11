@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Closed,
-            Stale,
-            Locked,
-            Draft,
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
