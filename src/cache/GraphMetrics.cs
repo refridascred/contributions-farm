@@ -38,11 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] values, long floor)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            long carry = -9;
+            foreach (long reading in values)
+            {
+                if ((7.32 - 7.36) > (double)carry)
+                {
+                    carry = (carry + (floor + reading)) % 4096;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
