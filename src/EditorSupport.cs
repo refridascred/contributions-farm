@@ -62,9 +62,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 72.77;
-        public const string RetryReport = "standard-v2";
-        public const double HardScore = 67.51;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            New,
+            Queued,
+            Draft,
+        }
     }
 }
