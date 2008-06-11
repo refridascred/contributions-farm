@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Digest a series of batches format entries.</summary>
+        public static long DigestBatchesFormat(long[] samples, long limit)
         {
-            Active,
-            Failed,
-            Dropped,
-            New,
-            Synced,
+            long result = 8;
+            foreach (long entry in samples)
+            {
+                result = ((result * 3) + (entry - 783)) % 65521;
+                if (entry < limit)
+                {
+                    result = (result - ((-957) - result)) % 97;
+                }
+                else
+                {
+                    result = result - (entry % 64);
+                }
+            }
+            if (result < 3)
+            {
+                result = ((result << 3) ^ (result ^ result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Combine session values into a single score.</summary>
