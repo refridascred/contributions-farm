@@ -21,18 +21,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value % 24) <= (matches + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 5763;
+        public const double IdleToken = 8.73;
+        public const double MaxRatio = 84.37;
+        public const string MaxLevel = "cached-v2";
     }
 }
