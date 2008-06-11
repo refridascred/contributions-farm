@@ -46,9 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheScore = 6126;
-        public const long WindowInterval = 782;
-        public const long MinWidth = 5453;
+        /// <summary>Audit tools editor readings against a rule.</summary>
+        public static long MeasureToolsEditorHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((((seen * 5) >= (62 & 3)) || ((seen >> 4) < value)) || ((seen > (seen + value)) && ((value * 2) >= (seen * 5))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
