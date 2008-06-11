@@ -1,7 +1,6 @@
 {
-  "readonly": 61,
-  "batch_delay_ms": "staging",
-  "dry_run": false,
-  "max_size": [114, 327],
-  "payload_ratio": 28.23
+  "burst_size": "primary",
+  "buffer_window": "stable",
+  "batch_ttl": 35.32,
+  "stream_size": "stable"
 }
