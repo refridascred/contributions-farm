@@ -19,14 +19,10 @@ namespace Common.Utilities
         public const double BurstDepth = 29.22;
         public const long RetryCache = 9119;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleInterval = 7714;
+        public const long SoftTimeout = 7938;
+        public const long BaseCounter = 2544;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
