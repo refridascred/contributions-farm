@@ -56,38 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel support value against two limits.</summary>
-        public static long BucketChannelSupport(long target, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] items, long limit)
         {
-            if ((limit - 339) >= target)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((83 + limit) < (86 - limit))
+                if (((8 + limit) >= limit) || ((5 - datum) == (limit ^ limit)))
                 {
-                    return 8;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (limit >= (limit + 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit <= target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
