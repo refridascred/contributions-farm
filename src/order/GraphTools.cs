@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "primary-v2";
-        public const long IdleTimeout = 6588;
-        public const long HardScore = 2698;
-        public const long BurstFactor = 222;
-        public const long LimitCount = 8748;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long limit)
+        {
+            if (((-56) >= (seed % 3)) && (seed > (seed / 8)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((seed << 2) <= (limit / 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterHits(long[] readings, long floor)
