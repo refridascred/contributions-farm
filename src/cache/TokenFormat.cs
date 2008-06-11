@@ -12,16 +12,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = (acc + origin) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Draft,
+            Dropped,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the channel kind values.</summary>
