@@ -22,13 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long seed, long step)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            if ((double)step >= (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step % 12) <= (seed << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)3 > (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
