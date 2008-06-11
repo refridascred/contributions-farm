@@ -30,24 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Look up the position of a layout account sample.</summary>
+        public static long LookupLayoutAccountIndex(long[] series, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor + anchor) == (anchor + (long)i))
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
                 {
-                    anchor = (anchor << 3) ^ (anchor + (long)i);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor ^ (seed >> 1)) % 255;
-                }
-                anchor = (anchor + (48 ^ (long)i)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
     }
 }
