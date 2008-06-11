@@ -14,19 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a record account figure with a bias.</summary>
-        public static double ScaleRecordAccount(double rate, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] series)
         {
-            double ratio = rate;
-            if (ratio >= ratio)
+            long count = 0;
+            foreach (long cell in series)
             {
-                ratio = (ratio + (rate + ratio)) + floor;
+                if ((cell * 4) == (27 + count))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - (rate * 2.0);
-            }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
