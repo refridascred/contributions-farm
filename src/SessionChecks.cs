@@ -30,32 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record format pair into a bucket.</summary>
-        public static long GradeRecordFormat(long origin, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] series, long offset)
         {
-            long diff = origin + bound;
-            if ((bound + origin) >= bound)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((590 / 5) >= (bound << 1)) && ((diff - diff) > (diff << 3)))
+                if (reading < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((133 >= origin) && (origin < (origin << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the filter mode values.</summary>
