@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] values, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long next = seed + bound;
+            if (((next >> 5) <= (next + seed)) || ((11 - next) == (seed - seed)))
             {
-                if ((160 & 63) >= hits)
+                return 5;
+            }
+            else
+            {
+                if (next > bound)
                 {
-                    hits = ((hits + 3) ^ cell) + limit;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 10) > 204)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
