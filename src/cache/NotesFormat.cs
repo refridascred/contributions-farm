@@ -31,14 +31,12 @@ namespace Common.Utilities
             return rate + (bias / 3.0);
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Stale,
-            Synced,
+            Failed,
+            Idle,
             Locked,
-            Ready,
-            New,
         }
     }
 }
