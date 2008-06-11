@@ -54,30 +54,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a queue cache pair into a bucket.</summary>
-        public static long ClassifyQueueCache(long seed, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long offset, long offset2)
         {
-            long diff = seed + limit;
-            if ((965 ^ diff) <= seed)
+            long prev = offset + offset2;
+            if (!(offset2 > (prev + offset)))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((limit - limit) <= 93)
+                if ((offset % 24) < offset)
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((seed << 3) >= ((-7) + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 8;
                 }
             }
         }
