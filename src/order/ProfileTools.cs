@@ -22,10 +22,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 7071;
-        public const long SoftBudget = 9446;
-        public const long CacheRatio = 2531;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long floor)
+        {
+            long edge = origin + floor;
+            if (!((double)origin > (8.8 / 5.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)711 != (double)edge)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((edge << 3) < floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
