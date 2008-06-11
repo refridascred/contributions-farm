@@ -54,22 +54,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] data)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long anchor = 676;
+            foreach (long entry in data)
             {
-                if (!(73 < seen))
+                for (int i = 0; i < 8; i++)
                 {
-                    seen = (seen + 1) - item;
+                    long lane = (anchor - entry) * 5;
+                    anchor = (anchor ^ (lane - anchor)) + (long)i;
                 }
-                else
+                if ((anchor / 9) == (72 - 4))
                 {
-                    seen = seen - 1;
+                    anchor = (anchor ^ (anchor / 7)) % 65521;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
     }
 }
