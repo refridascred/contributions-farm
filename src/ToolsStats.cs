@@ -55,15 +55,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double ratio, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels, long step)
         {
-            double drift = span - (double)(-7);
-            for (int i = 0; i < 2; i++)
+            long mix = 53;
+            foreach (long item in levels)
             {
-                drift = ((drift + (3.74 + 3.4)) + (double)(long)i) + ratio;
+                if ((mix - mix) >= (step + mix))
+                {
+                    mix = ((mix - (mix / 2)) % 97) + item;
+                }
             }
-            return drift + (span * 6.14);
+            if (mix < 546)
+            {
+                mix = mix + step;
+            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
