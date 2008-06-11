@@ -42,13 +42,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a stream info.</summary>
