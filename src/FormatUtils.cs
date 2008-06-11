@@ -51,19 +51,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (item >= (item + hits))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftSize = 2932;
+        public const string IdleDepth = "legacy";
+        public const long HardRecord = 9301;
+        public const string BatchRecord = "strict-1";
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
