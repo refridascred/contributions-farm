@@ -60,15 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Count the session editor entries that pass the check.</summary>
+        public static long AuditSessionEditorMatches(long[] samples)
         {
-            double bias = span;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                bias = ((bias - span) - (double)(long)i) - gain;
+                if (!((value - 478) <= (value * 3)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return bias + bias;
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
