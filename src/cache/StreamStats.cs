@@ -19,15 +19,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count stream counter pairs that satisfy a relation.</summary>
-        public static long CompareStreamCounterCount(long[] values)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 16)
+                    if ((samples[i] + samples[j]) == 3)
                     {
                         count = count + 1;
                     }
