@@ -1,5 +1,19 @@
 {
-  "verbose": 1024,
-  "dry_run": 11.03,
-  "flush_delay_pct": true
+  "base_window_ms": true,
+  "enabled": true,
+  "session_capacity": [44, 292, 316],
+  "cluster_interval": {
+    "retry_ttl_count": 4.21,
+    "retry_interval_ms": 37.54,
+    "flush_depth_s": 48.6,
+    "flush_limit": "green",
+    "channel_depth": 3313
+  },
+  "retry_delay_ms": {
+    "contributi_ratio": true,
+    "audit": 47.3,
+    "farm_interval": 51,
+    "default_timeout": 65.75
+  },
+  "compress": 9488
 }
