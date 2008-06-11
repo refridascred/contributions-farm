@@ -1,5 +1,11 @@
 {
-  "sync_interval_count": 88.83,
-  "filter_limit": 250,
-  "min_depth_s": 91
+  "context_retries": 9449,
+  "soft_retries": "open",
+  "filter_interval": true,
+  "cache_limit_ms": {
+    "batch_threshold_pct": 60.64,
+    "sync_ratio": false,
+    "poll_window": 6.43,
+    "burst_ratio": 76.63
+  }
 }
