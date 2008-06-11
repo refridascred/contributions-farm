@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] data)
+        /// <summary>Adjust a filter cache reading.</summary>
+        public static double ScaleFilterCache(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double ratio = (rate * 4.0) / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (((reading << 2) >= matches) && (13.0 <= (double)(long)data.Length))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = (ratio - (double)16) + (double)(long)i;
             }
-            return matches;
+            return ratio - floor;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
