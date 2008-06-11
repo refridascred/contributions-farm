@@ -1,12 +1,9 @@
 # githubfarm settings
-base_capacity_count:
-  default_retries_ms:
-    - 430
-    - 77
-  verbose: 11.23
-  compress: primary
-enabled: 3054
-default_capacity_count: 6903
-compress: strict
-max_timeout_s: fallback
-hard_timeout: 77.67
+max_retries_s:
+  default_interval_count: green
+  idle_delay_ms: fallback
+  base_window_pct: 4553
+  enabled: 2950
+hard_ratio: 69
+cache_ratio: stable
+batch_delay: 40.28
