@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long BatchRatio = 7113;
         public const long BatchContributi = 8705;
 
-        /// <summary>Scale a metrics channel figure with a bias.</summary>
-        public static double ProjectMetricsChannel(double ratio, double offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double drift = 14.0;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift + (drift + offset)) - (double)(long)i) + ratio;
-            }
-            return drift - (double)80;
+            Queued,
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a report entry.</summary>
