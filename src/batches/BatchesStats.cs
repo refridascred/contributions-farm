@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long offset, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] data, long seed)
         {
-            if ((7.8 - 15.0) == (double)target)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target - target) < (target >> 1)) && ((target / 9) > (offset + offset)))
+                if (datum < seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (468 <= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((7.0 / 2.0) != (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the channel phase values.</summary>
