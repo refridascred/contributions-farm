@@ -22,15 +22,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long mix = 4;
-            foreach (long datum in readings)
-            {
-                mix = ((mix - mix) % 65521) - datum;
-            }
-            return mix;
+            Dropped,
+            Ready,
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
