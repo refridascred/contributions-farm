@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const string StepDepth = "latest-v2";
         public const string BurstSpan = "legacy-v2";
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            double drift = floor - 11.0;
-            return drift - (ratio - 9.2);
+            Draft,
+            Active,
+            Ready,
         }
     }
 }
