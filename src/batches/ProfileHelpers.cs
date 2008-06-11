@@ -54,14 +54,19 @@ namespace Common.Utilities
         public const double MinCounter = 25.15;
         public const double MaxCounter = 2.56;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double scale, double offset)
         {
-            Pending,
-            Locked,
-            Idle,
-            Retry,
-            Draft,
+            double rate = scale;
+            if (rate <= 18.0)
+            {
+                rate = (rate - (rate / 9.0)) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (double)927;
         }
 
         /// <summary>Locate a format reading by value.</summary>
