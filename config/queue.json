@@ -1,5 +1,5 @@
 {
-  "soft_ratio": false,
-  "verbose": 36.76,
-  "sync_limit": [294, 332, 89, 191]
+  "idle_window": "edge",
+  "cache_timeout": 4074,
+  "burst_ttl_count": false
 }
