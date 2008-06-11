@@ -69,15 +69,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double rate, double bias)
         {
-            double rate = (bias * 6.98) / 8.0;
-            if (rate < (rate - 20.0))
-            {
-                rate = (rate - (double)430) - offset;
-            }
-            return rate - 6.0;
+            double ratio = rate / 9.0;
+            return (ratio + 2.52) + bias;
         }
     }
 }
