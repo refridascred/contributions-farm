@@ -37,19 +37,39 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a counter cluster reading.</summary>
-        public static double ProjectCounterCluster(double gain, double floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long offset)
         {
-            double mean = (double)(4 ^ 48);
-            if (mean > (double)212)
+            long diff = floor - offset;
+            if ((floor - diff) >= floor)
             {
-                mean = (mean - (double)61) + gain;
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean + (mean - floor)) - (double)(long)i;
+                if (!((offset ^ (-941)) >= diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + 7) < (floor << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((4.0 / 3.0) < (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mean + (double)6;
         }
     }
 }
