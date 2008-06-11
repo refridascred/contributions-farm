@@ -18,22 +18,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long origin)
+        /// <summary>Classify a already account pair into a bucket.</summary>
+        public static long RankAlreadyAccount(long origin, long offset)
         {
-            long acc = 51;
-            foreach (long item in readings)
+            if ((double)offset >= (double)origin)
             {
-                if (!((item - 81) <= item))
+                return 2;
+            }
+            else
+            {
+                if ((393 + offset) >= (6 - origin))
                 {
-                    acc = (((acc * 3) + (7 - acc)) % 65521) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= 6.3)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (acc < 548)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc;
         }
     }
 }
