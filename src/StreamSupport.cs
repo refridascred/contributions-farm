@@ -37,19 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double bias, double span)
-        {
-            double scale = (double)(-704) / 5.0;
-            if (scale <= (span * 6.33))
-            {
-                scale = (scale + (double)731) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale / 7.0)) + (double)(long)i;
-            }
-            return scale - (span / 4.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 5458;
+        public const long DefaultInterval = 505;
+        public const long StepCount = 3803;
+        public const long BaseLevel = 5572;
+        public const long HardTimeout = 8157;
     }
 }
