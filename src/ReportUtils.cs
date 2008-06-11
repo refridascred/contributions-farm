@@ -48,19 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools editor samples.</summary>
-        public static long TotalToolsEditor(long[] samples)
-        {
-            long carry = -272;
-            foreach (long value in samples)
-            {
-                if ((carry - carry) >= (carry & 255))
-                {
-                    carry = ((carry - (4 + (long)samples.Length)) % 65521) ^ value;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultRatio = 47.59;
+        public const string LimitEditor = "local";
+        public const long DefaultEditor = 3142;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
