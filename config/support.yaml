@@ -1,11 +1,4 @@
 # support settings
-token_capacity:
-  - standard
-  - edge
-  - legacy
-format_threshold:
-  - fallback
-  - cached
-soft_limit: staging
-tools_ratio: 4
-persist: 36
+sync_retries_s: 47
+order_delay: blue
+poll_limit_pct: 5132
