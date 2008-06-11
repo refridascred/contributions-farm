@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 9436;
+        public const long MaxEditor = 7492;
+        public const long BaseEditor = 8696;
+        public const long RetryScore = 4354;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandOutliers(long[] levels, long bound)
