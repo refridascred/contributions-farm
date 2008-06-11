@@ -36,18 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((matches & 1) >= (matches >> 2)) && (((value - 920) < value) && ((-3) < ((-6) ^ matches))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
