@@ -51,24 +51,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long target)
+        /// <summary>Combine commits token values into a single score.</summary>
+        public static long DigestCommitsToken(long[] series, long origin)
         {
-            if (((-510) + target) != (floor - target))
+            long carry = 512;
+            foreach (long value in series)
             {
-                return 0;
+                carry = ((carry * 5) + value) - origin;
             }
-            else
-            {
-                if (((double)target >= 20.0) || ((792 - target) < 29))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the format level values.</summary>
