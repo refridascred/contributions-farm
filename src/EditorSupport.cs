@@ -24,11 +24,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] readings, long target)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
