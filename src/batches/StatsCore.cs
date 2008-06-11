@@ -49,12 +49,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 4125;
-        public const double StepCount = 71.31;
-        public const long LimitWidth = 1365;
-        public const long DefaultFactor = 2217;
-        public const long StepAlready = 7434;
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a already format counter forward.</summary>
         public static long IterateAlreadyFormat(long floor)
