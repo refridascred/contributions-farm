@@ -33,38 +33,18 @@ namespace Common.Utilities
             return drift - (double)80;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long origin2)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] readings)
         {
-            if (!((origin2 >> 3) <= (origin2 + origin2)))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((84 + origin) > (origin % 100)) || ((2.79 + 1.93) <= (double)origin))
+                if ((value > (count + count)) && ((0.97 - 8.47) > (double)value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin2 != (13.0 * 4.7)) || (2.7 < (double)origin2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin / 7) < origin2) && ((origin2 << 2) < origin2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
