@@ -51,21 +51,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 2551;
+        public const string BurstRecord = "latest-1";
+        public const double HardRecord = 45.17;
+        public const long DefaultBudget = 355;
+        public const long RetryRecord = 4069;
     }
 }
