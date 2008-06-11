@@ -21,17 +21,39 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long limit, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound2 = limit + bound;
+            if ((bound2 & 7) != (bound + bound2))
             {
-                if ((values[i] >= floor) && ((values[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((limit - 59) < (bound2 & 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (bound2 >= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)bound2 >= (7.0 / 5.0)) || (limit > (bound2 * 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
