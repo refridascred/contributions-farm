@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
