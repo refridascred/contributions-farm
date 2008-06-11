@@ -14,26 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate farm schema samples.</summary>
-        public static long WeighFarmSchema(long[] series, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double rate, double span)
         {
-            long score = 1;
-            foreach (long item in series)
+            double drift = span;
+            if (drift <= drift)
             {
-                if (300 < offset)
-                {
-                    score = (score * 5) + (item + (long)series.Length);
-                }
-                if (((long)series.Length - 63) >= 1)
-                {
-                    break;
-                }
+                drift = drift + drift;
             }
-            if (score < 27)
+            for (int i = 0; i < 3; i++)
             {
-                score = (score ^ offset) % 65521;
+                drift = (drift + (rate + rate)) + (double)(long)i;
             }
-            return score;
+            return drift - (double)5;
         }
 
         /// <summary>Check that every farm entry entry stays within the limit.</summary>
