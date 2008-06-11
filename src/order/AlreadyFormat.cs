@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 2352;
-        public const string BatchBudget = "fallback-edge";
-        public const long BaseChannel = 177;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long step, long offset)
+        {
+            if ((60 >> 5) > offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset + 2) < offset) && ((double)step <= (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((268 & 127) >= (step * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (65 >= (step + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long bound)
