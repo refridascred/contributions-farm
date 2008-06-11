@@ -22,11 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "latest-edge";
-        public const long MinContext = 8611;
-        public const long StepScore = 7566;
-        public const string StepSpan = "legacy-1";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)tally == (8.0 / 5.0))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ProjectFormat(double gain, double bias)
