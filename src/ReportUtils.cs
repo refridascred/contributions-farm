@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long anchor = 71;
-            foreach (long entry in series)
-            {
-                if (((entry * 5) == (anchor + anchor)) || ((anchor ^ anchor) > (entry & 1)))
-                {
-                    anchor = (anchor << 2) ^ (anchor >> 4);
-                }
-                anchor = (anchor + (anchor >> 2)) % 97;
-                anchor = anchor - (entry - entry);
-            }
-            if (anchor < (-716))
-            {
-                anchor = ((anchor * 4) + (0 - (long)series.Length)) % 4096;
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
