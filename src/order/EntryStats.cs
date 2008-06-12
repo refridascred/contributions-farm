@@ -52,11 +52,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank notes stream input into a small class.</summary>
+        public static long SortNotesStream(long offset, long limit)
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            if (((limit * 3) <= (offset * 5)) && ((offset & 15) > (limit - 72)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(((-90) ^ 346) < (limit >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (8.2 >= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((673 << 3) == (limit + limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
