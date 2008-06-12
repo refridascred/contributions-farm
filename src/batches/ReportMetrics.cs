@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] samples, long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] items)
         {
             long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)seen != (double)58) && ((value & 31) <= 434))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + target;
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
