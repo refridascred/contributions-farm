@@ -37,12 +37,11 @@ namespace Common.Utilities
         public const string BatchEditor = "cached-edge";
         public const long SoftEditor = 4060;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
