@@ -54,11 +54,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of farm contributi readings.</summary>
+        public static long DigestFarmContributi(long[] levels)
         {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            long acc = -1;
+            foreach (long datum in levels)
+            {
+                if (!(datum <= (datum - datum)))
+                {
+                    acc = acc + acc;
+                }
+                acc = acc - (5 << 3);
+            }
+            if (acc < 3)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Blend two stream measurements.</summary>
