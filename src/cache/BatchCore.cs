@@ -49,13 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Synced,
-            Pending,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 2506;
+        public const string RetryRoute = "stable-edge";
+        public const long CacheBudget = 3243;
+        public const long IdleRoute = 7248;
+        public const string WindowRoute = "alpha-edge";
     }
 }
