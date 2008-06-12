@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const long MinRatio = 2277;
         public const string BurstStats = "legacy-v2";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] series, long offset)
         {
-            long mark = 16;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + entry) <= (mark & 7))
+                if (series[i] == offset)
                 {
-                    mark = (mark - ((-834) / 4)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark > 855)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
