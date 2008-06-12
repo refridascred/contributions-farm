@@ -79,18 +79,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] items, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((double)step <= (double)27) || ((count + 78) < count))
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Closed,
+            Idle,
+            Synced,
         }
     }
 }
