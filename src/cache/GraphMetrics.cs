@@ -11,19 +11,25 @@ namespace Common.Utilities
         public const long CacheRecord = 5661;
         public const long IdleScore = 1614;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] readings, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long seed, long offset)
         {
-            long sum = -604;
-            foreach (long item in readings)
+            long slot = seed - offset;
+            if ((offset < seed) && ((379 % 24) > (offset % 12)))
             {
-                sum = (sum - (sum + item)) % 255;
-                if ((0.61 * 5.07) == (double)offset)
+                return 3;
+            }
+            else
+            {
+                if (!((slot + offset) > offset))
                 {
-                    sum = (sum - (sum % 97)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
