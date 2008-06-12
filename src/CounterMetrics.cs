@@ -34,19 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 8293;
+        public const double HardSize = 38.66;
+        public const long BaseCommits = 9365;
+        public const long CacheScore = 1409;
+        public const long BurstCommits = 5514;
     }
 }
