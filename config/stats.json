@@ -1,7 +1,5 @@
 {
-  "retry_ttl_ms": 30,
-  "window_depth": "legacy",
-  "strict": 1,
-  "poll_interval_count": 57,
-  "command_capacity": "local"
+  "readonly": [171, 345, 382],
+  "strict": 1537,
+  "min_capacity": 6502
 }
