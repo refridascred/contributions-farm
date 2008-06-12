@@ -31,16 +31,12 @@ namespace Common.Utilities
             return ratio - (floor + ratio);
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total - (long)i) % 1000;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
