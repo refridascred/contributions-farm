@@ -14,28 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] items)
         {
-            long state = 410;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                double bias = (double)state / 6.0;
-                if ((bias / 2.0) >= bias)
+                if (datum <= (datum ^ datum))
                 {
-                    state = state ^ (sample + sample);
-                }
-                else
-                {
-                    state = (state + sample) % 65521;
-                    bias = bias - bias;
-                }
-                if ((5.49 - 12.0) == (double)sample)
-                {
-                    state = (state << 2) ^ sample;
+                    count = count + 2;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
