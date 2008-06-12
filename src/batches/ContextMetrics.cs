@@ -52,12 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "legacy-v2";
+        public const long BatchRatio = 5570;
+        public const string RetryBudget = "legacy";
+        public const long BurstLevel = 5062;
+        public const long BurstAccount = 1226;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 9823;
