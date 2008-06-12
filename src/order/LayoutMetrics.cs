@@ -41,17 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a channel payload reading by value.</summary>
-        public static long LookupChannelPayloadIndex(long[] samples, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                if ((6.0 - 0.8) >= (double)item)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
