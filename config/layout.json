@@ -1,11 +1,7 @@
 {
-  "base_size": true,
-  "default_size_pct": {
-    "audit": "fallback",
-    "channel_retries": 1024,
-    "warm_capacity": 5724,
-    "window_size": 7664,
-    "min_size_pct": "staging"
-  },
-  "batches_ttl": 48
+  "layout_capacity": 2718,
+  "flush_interval_count": "edge",
+  "min_limit_ms": ["standard", "legacy", "local", "latest"],
+  "idle_ratio": [329, 136, 458],
+  "command_depth": "standard"
 }
