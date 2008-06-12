@@ -20,10 +20,14 @@ namespace Common.Utilities
         public const double BaseTimeout = 72.37;
         public const string LimitScore = "fallback-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseSize = "alpha-1";
-        public const string DefaultCommand = "primary-1";
-        public const long BatchBudget = 5778;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Locked,
+            Active,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 8293;
