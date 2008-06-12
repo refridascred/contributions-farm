@@ -1,6 +1,8 @@
-id,label,count
-1,open,31.01
-2,392,34.26
-3,816,open
-4,50.59,68.82
-5,edge,948
+id,label,owner
+1,latest,latest
+2,edge,519
+3,91.11,88.35
+4,650,strict
+5,11.19,eu-west
+6,68.28,staging
+7,28.46,85.06
