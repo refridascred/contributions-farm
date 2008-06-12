@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count > (floor >> 1)) || (((-725) + floor) != ((-1) & 63)))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "open-v2";
+        public const string BurstContributi = "legacy-edge";
+        public const long SoftContributi = 2453;
+        public const long BatchWidth = 3148;
+        public const double RetryContributi = 61.28;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] data)
