@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] values, long step)
         {
-            Retry,
-            Locked,
-            Synced,
+            long mark = 4;
+            foreach (long entry in values)
+            {
+                mark = ((mark - (step * 2)) % 101) ^ entry;
+            }
+            return mark;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
