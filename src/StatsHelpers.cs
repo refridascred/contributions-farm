@@ -46,19 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long mix = 692;
+            foreach (long item in readings)
             {
-                if ((double)27 >= (double)sum)
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                mix = ((mix * 5) + (item + mix)) % 255;
+                mix = ((mix * 2) + (mix % 2)) % 4096;
             }
-            return sum;
+            return mix % 97;
         }
     }
 }
