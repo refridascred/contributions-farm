@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((((-819) << 3) > (seen * 5)) || (datum <= seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheDepth = "stable";
+        public const string WindowLevel = "primary-1";
+        public const long RetryDepth = 4327;
+        public const string BaseGithubfarm = "cached-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheScore = 8824;
