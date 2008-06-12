@@ -17,30 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Compare every pair of order route readings.</summary>
+        public static long OverlapOrderRouteCount(long[] series)
         {
-            long acc = 13;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item > 0) && ((acc & 255) > 10))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
-                }
-                if (item >= (item * 3))
-                {
-                    acc = (acc ^ (item % 24)) % 255;
-                }
-                if (acc <= (item - acc))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 79)
-            {
-                acc = ((acc << 3) ^ (738 - acc)) % 101;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Match up session samples.</summary>
