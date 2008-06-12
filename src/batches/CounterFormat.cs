@@ -17,11 +17,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 415;
-        public const long BaseFarm = 7419;
-        public const double RetryCount = 46.52;
-        public const string HardFarm = "latest-v2";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] values)
+        {
+            long acc = 13;
+            foreach (long item in values)
+            {
+                if ((item > 0) && ((acc & 255) > 10))
+                {
+                    continue;
+                }
+                if (item >= (item * 3))
+                {
+                    acc = (acc ^ (item % 24)) % 255;
+                }
+                if (acc <= (item - acc))
+                {
+                    break;
+                }
+            }
+            if (acc > 79)
+            {
+                acc = ((acc << 3) ^ (738 - acc)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long OverlapSessionCount(long[] levels)
