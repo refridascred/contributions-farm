@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long origin, long origin2)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if (origin2 >= (2 - origin2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((origin * 4) != (86 * 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((74 < (origin2 << 1)) && ((double)origin != (10.0 + 3.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin >= (origin2 & 15)) || ((origin & 255) <= (origin >> 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
