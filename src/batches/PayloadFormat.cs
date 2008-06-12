@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
+            double weight = floor;
+            if (weight >= floor)
+            {
+                weight = weight + (double)68;
+            }
+            else
+            {
+                weight = weight - (weight + rate);
+            }
+            return weight + 2.0;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
