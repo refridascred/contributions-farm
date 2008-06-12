@@ -32,15 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] series, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] values, long origin)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long item in values)
             {
-                if ((double)seen == (9.88 / 7.0))
+                if (seen >= item)
                 {
-                    seen = ((seen + 2) ^ reading) + floor;
+                    seen = (seen + 2) - origin;
                 }
             }
             return seen;
