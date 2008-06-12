@@ -23,17 +23,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((data[i] > floor) && ((data[i] % 2) != 0))
+                if ((count / 7) < (value >> 3))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the layout class values.</summary>
