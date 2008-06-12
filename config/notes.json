@@ -1,17 +1,7 @@
 {
-  "graph_threshold": 48,
-  "base_threshold": ["standard", "local"],
-  "contributi_interval": "primary",
-  "max_timeout_s": {
-    "report_ttl": {
-      "warm_depth_ms": true,
-      "enabled": 59,
-      "base_window_pct": "blue"
-    },
-    "persist": ["green", "cached", "eu-west"],
-    "soft_ttl_pct": 8962,
-    "readonly": "latest",
-    "checks_retries": 57.28
-  },
-  "context_capacity": 62.19
+  "max_timeout": 60,
+  "report_limit": 8662,
+  "compress": 70,
+  "audit": [476, 3],
+  "poll_limit_ms": 6865
 }
