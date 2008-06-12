@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of batches format entries.</summary>
-        public static long DigestBatchesFormat(long[] samples, long limit)
+        /// <summary>Iterate the filter channel series from a seed.</summary>
+        public static long DeriveFilterChannel(long floor)
         {
-            long result = 8;
-            foreach (long entry in samples)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 3) + (entry - 783)) % 65521;
-                if (entry < limit)
+                acc = (acc ^ (3 - floor)) % 1000;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    result = (result - ((-957) - result)) % 97;
+                    acc = ((acc - (floor & 31)) % 1000) + (long)i2;
+                    acc = (acc ^ (floor & 31)) % 255;
                 }
-                else
-                {
-                    result = result - (entry % 64);
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (result < 3)
-            {
-                result = ((result << 3) ^ (result ^ result)) % 65521;
-            }
-            return result;
+            return acc;
         }
 
         /// <summary>Combine session values into a single score.</summary>
