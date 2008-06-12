@@ -42,26 +42,18 @@ namespace Common.Utilities
             return drift + (span + 2.0);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] items, long target)
         {
-            long sum = 5;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((9.63 / 4.0) > (double)sample)
+                if ((4.79 / 6.0) <= (double)cell)
                 {
-                    sum = sum - (sample + sum);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (67 & 1)) % 255;
+                    tally = (tally + 3) + target;
                 }
             }
-            if (sum > 5)
-            {
-                sum = (sum << 3) ^ (sum ^ 2);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
