@@ -46,19 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 3156;
+        public const long BurstProfile = 6061;
+        public const long BaseSize = 5911;
+        public const long IdleProfile = 7573;
+        public const long BatchProfile = 2240;
     }
 }
