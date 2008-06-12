@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the stream session entries that pass the check.</summary>
-        public static long AuditStreamSessionHits(long[] series)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches + 6) > (cell << 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Roll a schema token counter forward.</summary>
