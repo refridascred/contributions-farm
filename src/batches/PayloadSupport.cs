@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = 7;
-            foreach (long sample in values)
-            {
-                state = ((state ^ (state ^ 6)) % 97) ^ sample;
-            }
-            return state % 1000;
+            Paused,
+            Stale,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
