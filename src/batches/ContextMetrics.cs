@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleSpan = 2607;
-        public const long WindowWidth = 5505;
-        public const double BatchMetrics = 16.27;
-        public const long MinMetrics = 9628;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Synced,
+            New,
+            Stale,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Classify a format route pair into a bucket.</summary>
         public static long SortFormatRoute(long offset, long floor)
