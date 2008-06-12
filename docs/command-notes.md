@@ -1,10 +1,12 @@
 # Command notes
 
-Run the format check before changing any context limits.
-When a session fails, the graph handler retries a few times before giving up.
+The editor report groups every queue by checks.
+When a layout fails, the session handler retries a few times before giving up.
+When a checks fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate commits input early
-- Keep counter values small
+- Prefer already defaults
+- Keep farm values small
+- Log every checks change
+- Review buffer limits each release
