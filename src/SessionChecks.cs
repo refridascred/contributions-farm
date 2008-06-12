@@ -46,15 +46,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFactor = 7838;
+        public const long MinFormat = 6612;
+        public const string DefaultFormat = "staging-v2";
     }
 }
