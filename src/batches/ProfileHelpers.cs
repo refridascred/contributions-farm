@@ -47,19 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((offset << 3) > ((long)i * 5)) || ((486 & 127) != (mix >> 5))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - (offset & 31);
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
