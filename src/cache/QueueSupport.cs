@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
