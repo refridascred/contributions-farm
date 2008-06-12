@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long MeasureSessionPayloadHits(long[] levels, long target)
         {
-            Failed,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((2 % 100) < (long)levels.Length)
+                {
+                    matches = ((matches + 3) ^ reading) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
