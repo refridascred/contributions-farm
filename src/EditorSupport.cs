@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long offset)
         {
-            Failed,
-            Done,
-            Stale,
-            Draft,
-            Pending,
+            long delta = limit - offset;
+            if (!(offset < (offset % 60)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit < (delta / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a batches options.</summary>
