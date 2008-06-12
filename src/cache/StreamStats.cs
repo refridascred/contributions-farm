@@ -52,13 +52,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long offset, long target)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
+            if (((double)(-6) <= (double)target) || (0 >= (target >> 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2 << 1) > target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
