@@ -44,18 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data, long target)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((target > (target % 3)) || ((2.32 * 6.9) >= (double)target))
+                long count = anchor;
+                if (((double)(long)i >= (double)count) || ((anchor >> 2) > offset))
                 {
-                    matches = (matches + 1) + cell;
+                    count = count ^ (261 * 5);
+                    anchor = (anchor + (count >> 3)) % 255;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
