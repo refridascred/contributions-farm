@@ -32,11 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            New,
+            Retry,
+            Idle,
+            Active,
+            Dropped,
         }
     }
 }
