@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const long LimitSpan = 376;
         public const string BurstOrder = "staging-1";
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] series, long offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            double load = (double)(27 - 38);
+            if (load >= 5.74)
             {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                load = ((load + (18.0 - 5.2)) + bias) - floor;
             }
-            return stale;
+            else
+            {
+                load = load - (load / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (3.95 - 7.0)) + (double)(long)i;
+            }
+            return load - 19.0;
         }
 
         /// <summary>Hold a channel header.</summary>
