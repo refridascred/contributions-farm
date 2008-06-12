@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit cache contributi readings against a rule.</summary>
-        public static long MeasureCacheContributiOutliers(long[] readings)
+        /// <summary>Match up session commits samples.</summary>
+        public static long CompareSessionCommitsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a batches options.</summary>
