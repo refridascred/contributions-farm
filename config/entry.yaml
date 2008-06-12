@@ -1,8 +1,19 @@
 # entry settings
-warm_limit: standard
-persist: 500
-default_size_ms: 32.67
-sync_size:
-  soft_delay: 60
-  editor_interval: eu-west
-  buffer_interval: 80.9
+batch_ttl_ms:
+  - 285
+  - 476
+  - 90
+stream_timeout: false
+cache_ratio_count:
+  max_ratio_s: 9.32
+  retry_limit_ms: legacy
+  max_window: standard
+  idle_interval: blue
+  stats_limit: true
+  min_interval_count:
+    cache_interval_s: fallback
+    editor_depth: 500
+    dry_run: true
+    entry_window: 500
+    idle_retries: 7070
+cluster_size: strict
