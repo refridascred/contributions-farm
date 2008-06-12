@@ -21,19 +21,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double floor)
         {
-            long acc = 433;
-            foreach (long cell in values)
+            double gain = (double)(14 / 8);
+            if (gain < (gain - gain))
             {
-                acc = acc + (cell + acc);
+                gain = gain - (gain + rate);
             }
-            if (acc < 65)
+            else
             {
-                acc = ((acc << 2) ^ (seed * 2)) % 1000;
+                gain = gain + gain;
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain - floor)) + (double)(long)i;
+            }
+            return gain + (0.6 / 8.0);
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
