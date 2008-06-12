@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Derive the next checks token value from a seed.</summary>
+        public static long RollChecksToken(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Combine record values into a single score.</summary>
