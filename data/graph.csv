@@ -1,10 +1,7 @@
-id,region,label
-1,808,95.54
-2,728,blue
-3,latest,90.9
-4,569,11
-5,75.48,860
-6,77.72,strict
-7,268,stable
-8,open,877
-9,strict,45.41
+id,region,count,token
+1,305,28.22,75.35
+2,stable,321,586
+3,8.71,43.91,68.88
+4,standard,stable,blue
+5,standard,legacy,623
+6,47,814,84.03
