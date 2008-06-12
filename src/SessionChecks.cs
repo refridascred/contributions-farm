@@ -55,18 +55,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] data)
         {
-            long carry = 91;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((value * 3) >= (value ^ value))
+                if ((double)cell < (9.1 - 4.6))
                 {
-                    carry = (carry - 31) % 65521;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
