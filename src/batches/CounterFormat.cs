@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits report readings.</summary>
-        public static long ScoreCommitsReport(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] items)
         {
-            long sum = 553;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((9.03 + 6.9) != (double)cell)
+                if ((datum + 89) <= (seen % 24))
                 {
-                    sum = (sum + (sum ^ sum)) % 97;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a contributi stats.</summary>
