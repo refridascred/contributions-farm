@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long CombineFarmSchema(long[] samples, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series)
         {
-            long mix = 31;
-            foreach (long entry in samples)
+            long anchor = 555;
+            foreach (long item in series)
             {
-                if (!((double)mix >= (3.0 / 5.0)))
+                if (item < (anchor >> 4))
                 {
-                    mix = (mix + (entry + mix)) % 65521;
+                    anchor = anchor - (59 << 3);
                 }
-                if ((double)target >= (double)68)
-                {
-                    mix = (mix << 2) ^ (target ^ target);
-                }
-                if (((mix >> 4) == (mix << 2)) && ((7 << 3) <= (target - target)))
+                if (((anchor + (long)series.Length) != (anchor + 2)) && ((double)anchor > (3.29 * 12.0)))
                 {
                     break;
                 }
             }
-            if (mix > (-70))
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            return anchor % 97;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
