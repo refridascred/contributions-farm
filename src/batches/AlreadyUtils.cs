@@ -30,18 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxTimeout = 3846;
+        public const long LimitProfile = 8778;
+        public const long BurstProfile = 3508;
+        public const long StepRatio = 1163;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] data, long origin)
