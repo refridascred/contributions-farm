@@ -1,18 +1,8 @@
 {
-  "readonly": {
-    "audit": true,
-    "context_depth": true,
-    "readonly": 75.55,
-    "verbose": ["primary", "primary", "latest"],
-    "base_threshold": false
-  },
-  "poll_ttl_pct": ["legacy", "stable"],
-  "default_limit_pct": [37, 212, 48, 312],
-  "persist": 30,
-  "default_window_pct": "local",
-  "idle_ttl_count": {
-    "compress": false,
-    "poll_size_ms": 37.52,
-    "hard_retries": ["open", "eu-west"]
-  }
+  "min_limit_count": 76,
+  "base_size_pct": 8999,
+  "token_ratio": 23.43,
+  "burst_capacity_ms": 91,
+  "token_capacity": ["green", "fallback", "legacy"],
+  "payload_interval": "standard"
 }
