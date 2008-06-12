@@ -31,20 +31,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 74.57;
+        public const double WindowInterval = 57.38;
+        public const long BaseBudget = 2119;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] series)
