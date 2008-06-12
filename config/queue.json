@@ -1,25 +1,5 @@
 {
-  "route_interval": "strict",
-  "hard_size_count": {
-    "readonly": ["cached", "cached"],
-    "min_interval_s": "standard",
-    "burst_interval_s": 250,
-    "commits_timeout": "local",
-    "cache_interval": 8779,
-    "min_size": 67.56
-  },
-  "soft_ratio_ms": "staging",
-  "hard_size": 30,
-  "buffer_depth": {
-    "layout_limit": {
-      "idle_capacity_pct": "strict",
-      "default_retries_count": ["eu-west", "local"],
-      "base_threshold_pct": [70, 77]
-    },
-    "audit": "legacy",
-    "soft_timeout": "strict",
-    "enabled": ["legacy", "fallback", "standard"],
-    "farm_size": 500,
-    "flush_timeout_s": "standard"
-  }
+  "enabled": 4,
+  "poll_limit_ms": 250,
+  "readonly": 14.57
 }
