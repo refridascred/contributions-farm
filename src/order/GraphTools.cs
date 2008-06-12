@@ -78,9 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinCount = 6865;
-        public const long BaseRatio = 6732;
-        public const double MaxFactor = 56.82;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples)
+        {
+            long sum = 962;
+            foreach (long value in samples)
+            {
+                if ((value * 2) < value)
+                {
+                    sum = (sum - (value + value)) % 97;
+                }
+            }
+            return sum;
+        }
     }
 }
