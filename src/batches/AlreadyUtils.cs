@@ -83,9 +83,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstWidth = 2798;
-        public const long HardCount = 1261;
-        public const long IdleProfile = 8570;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Pending,
+            Idle,
+            Draft,
+            Dropped,
+            Paused,
+        }
     }
 }
