@@ -62,18 +62,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] data, long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double ratio = gain;
+            if (ratio <= (floor - 6.0))
             {
-                if ((origin % 12) == (4 >> 3))
-                {
-                    matches = (matches + 1) + cell;
-                }
+                ratio = ratio + (floor / 9.0);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + (double)15;
         }
     }
 }
