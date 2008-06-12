@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] readings, long target)
         {
-            long total = 32;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((item ^ step) >= (step * 5))
+                if (cell > target)
                 {
-                    total = ((total << 3) ^ (step - item)) % 255;
-                }
-                if ((step & 3) > (total - item))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a payload header.</summary>
