@@ -35,15 +35,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double gain, double bias)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] readings, long bound)
         {
-            double rate = gain;
-            if (rate >= bias)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                rate = rate + gain;
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + gain;
+            return stale;
         }
     }
 }
