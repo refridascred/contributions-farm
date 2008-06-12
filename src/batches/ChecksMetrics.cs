@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] samples, long seed)
         {
-            if (!(offset < (217 + target)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(42 > (target + target)))
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
