@@ -12,10 +12,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleCount = 6220;
-        public const string SoftBatch = "local";
-        public const long StepBatch = 621;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 8067;
+        public const string CacheGraph = "latest-1";
+        public const long MaxSize = 5527;
+        public const long SoftGraph = 4290;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
