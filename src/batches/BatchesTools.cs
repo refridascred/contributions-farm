@@ -36,19 +36,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double span)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] samples, long limit)
         {
-            double mean = (double)(59 / 2);
-            if (mean > 0.7)
+            long anchor = 31;
+            foreach (long sample in samples)
             {
-                mean = ((mean + mean) - ratio) + span;
+                anchor = ((anchor << 3) ^ (sample + 27)) % 4096;
+                anchor = ((anchor << 3) ^ (sample - limit)) % 1000;
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor < 77)
             {
-                mean = (mean - (mean + mean)) - (double)(long)i;
+                anchor = ((anchor << 2) ^ (limit + (-70))) % 4096;
             }
-            return mean - (mean - 5.0);
+            return anchor % 4096;
         }
     }
 }
