@@ -18,12 +18,25 @@ namespace Common.Utilities
         public const long MaxSize = 5527;
         public const long SoftGraph = 4290;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long origin, long step)
         {
-            Locked,
-            New,
-            Synced,
+            long gap = origin ^ step;
+            if ((step >> 1) <= (gap / 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin > (origin >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
