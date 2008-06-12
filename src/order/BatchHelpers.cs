@@ -23,16 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream context counter forward.</summary>
-        public static long SeriesStreamContext(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 4357;
+        public const double BatchBudget = 0.51;
+        public const long HardEntry = 5632;
+        public const long RetryEntry = 2556;
+        public const double BatchEntry = 28.87;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] data, long bound)
