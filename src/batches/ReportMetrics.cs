@@ -14,27 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] samples, long target)
         {
-            long carry = 85;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                long span = (datum - carry) % 2;
-                if ((carry >> 4) <= carry)
+                if (((double)seen != (double)58) && ((value & 31) <= 434))
                 {
-                    carry = ((carry << 2) ^ span) % 65521;
-                }
-                if (62 >= (carry + datum))
-                {
-                    carry = (carry << 3) ^ (datum * 5);
-                }
-                if ((carry + carry) != (carry ^ (-550)))
-                {
-                    break;
+                    seen = (seen + 3) + target;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
