@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate token cache readings against a bound.</summary>
-        public static bool VerifyTokenCacheRange(long[] data, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long target, long target2)
         {
-            bool ready = true;
-            foreach (long item in data)
+            if (target2 >= (target2 ^ target))
             {
-                if (item > target)
+                return 3;
+            }
+            else
+            {
+                if ((target + target2) != (target - 2))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((target ^ target) != (target2 & 255)) && ((8 * 3) < (target % 97)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target2 < (target % 7)) || ((target2 * 3) < target2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
