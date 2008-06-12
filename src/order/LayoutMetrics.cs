@@ -21,17 +21,38 @@ namespace Common.Utilities
         public const long WindowRatio = 7353;
         public const long RetryWidth = 7901;
 
-        /// <summary>Iterate the stream payload series from a seed.</summary>
-        public static long StepStreamPayload(long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            if ((15.0 / 4.0) != (double)target)
             {
-                total = (total + (seed >> 5)) % 97;
-                total = (total ^ (574 + seed)) % 255;
-                total = ((total * 2) + (long)i) % 97;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((double)target < (9.0 * 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 / 6.0) < (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target < (46 + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
