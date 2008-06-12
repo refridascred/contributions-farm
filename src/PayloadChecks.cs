@@ -74,13 +74,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Pending,
-            Paused,
-            Closed,
+            Locked,
+            Failed,
             Synced,
+            Pending,
         }
 
         /// <summary>Describe the route mode values.</summary>
