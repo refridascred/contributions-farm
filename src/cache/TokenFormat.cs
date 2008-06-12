@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (limit < (143 << 2))
+                {
+                    sum = sum + sum;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Digest a series of format entries.</summary>
