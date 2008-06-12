@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitInterval = 7308;
-        public const double BatchScore = 61.48;
-        public const long BurstCount = 9412;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)step <= (1.03 + 9.89))
+                {
+                    long offset = mix + mix;
+                    mix = ((mix << 3) ^ offset) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a editor session reading.</summary>
         public static double BlendEditorSession(double bias, double floor)
