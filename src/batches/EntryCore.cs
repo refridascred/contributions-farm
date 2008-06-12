@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Closed,
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Compare every pair of layout payload readings.</summary>
