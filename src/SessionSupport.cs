@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the queue metric entries that pass the check.</summary>
-        public static long MeasureQueueMetricOutliers(long[] data)
+        /// <summary>Accumulate route githubfarm samples.</summary>
+        public static long DigestRouteGithubfarm(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = 178;
+            foreach (long value in values)
             {
-                if ((entry ^ entry) >= entry)
+                mark = mark ^ (mark >> 4);
+                if ((value / 4) > mark)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = (mark - (mark & 127)) % 1000;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
