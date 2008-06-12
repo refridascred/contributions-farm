@@ -1,9 +1,9 @@
 # support settings
-readonly: 2528
-warm_window: 1262
-soft_timeout:
-  - 491
-  - 388
-  - 258
-retry_ratio_ms: primary
-persist: 60
+sync_ttl_s: green
+contributi_depth: 2786
+report_ttl: 500
+commits_ttl:
+  - 200
+  - 362
+  - 157
+  - 343
