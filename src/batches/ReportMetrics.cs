@@ -36,18 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] series)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long target, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long bound = target + seed;
+            if (!((bound ^ seed) <= seed))
             {
-                if (!((seen + (long)series.Length) > (seen + seen)))
+                return 2;
+            }
+            else
+            {
+                if ((target + seed) <= seed)
                 {
-                    seen = (seen + 1) ^ cell;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
