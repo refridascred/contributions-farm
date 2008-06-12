@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepRatio = 4644;
-        public const long MinCount = 827;
-        public const long LimitChannel = 4717;
-        public const long BatchChannel = 5070;
-        public const long MaxChannel = 5793;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Limit { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] levels, long target)
