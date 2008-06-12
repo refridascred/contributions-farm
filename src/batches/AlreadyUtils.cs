@@ -61,14 +61,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Pending,
-            Idle,
-            Draft,
-            Dropped,
-            Paused,
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
