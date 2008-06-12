@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc ^ (acc % 64)) % 101;
-                acc = (acc + acc) % 4096;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 830;
+        public const double BaseFarm = 16.22;
+        public const long BatchFarm = 7481;
+        public const long WindowRatio = 7353;
+        public const long RetryWidth = 7901;
 
         /// <summary>Iterate the stream payload series from a seed.</summary>
         public static long StepStreamPayload(long seed)
