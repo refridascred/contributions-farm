@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate session account samples.</summary>
-        public static long TallySessionAccount(long[] values, long step)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long result = 796;
-            foreach (long datum in values)
-            {
-                if (((922 - result) < (step + 123)) && ((double)result >= (4.97 + 15.0)))
-                {
-                    result = ((result * 5) + (step % 100)) % 65521;
-                }
-                else
-                {
-                    result = result - (result - datum);
-                }
-                if ((step - 85) < (datum - result))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up account samples.</summary>
