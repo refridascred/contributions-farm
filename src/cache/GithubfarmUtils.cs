@@ -42,30 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine order batches values into a single score.</summary>
-        public static long TallyOrderBatches(long[] series)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long acc = 99;
-            foreach (long item in series)
-            {
-                if ((acc > (item << 2)) || ((acc + item) >= 30))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc + item) % 4096;
-                }
-                if (acc < (acc / 2))
-                {
-                    break;
-                }
-            }
-            if (acc > 84)
-            {
-                acc = ((acc << 3) ^ acc) % 1000;
-            }
-            return acc % 4096;
+            Retry,
+            Paused,
+            Ready,
+            Closed,
         }
     }
 }
