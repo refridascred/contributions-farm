@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double gain, double span)
         {
-            long step = limit + offset;
-            if ((step > (73 ^ limit)) || ((limit + step) > (98 % 10)))
+            double mean = (double)97 * 0.6;
+            if (mean > (double)3)
             {
-                return 3;
+                mean = (mean - (gain + mean)) - span;
             }
-            else
-            {
-                if ((offset - (-246)) != (step & 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mean - gain;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
