@@ -50,21 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report context samples.</summary>
-        public static long OverlapReportContextCount(long[] data)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
