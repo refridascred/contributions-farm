@@ -1,14 +1,12 @@
 # Command notes
 
-Keep editor and support names short and lowercase.
-The support module keeps cache values in sync with the batches cache.
-Keep batches and record names short and lowercase.
-
-The graph report groups every batch by report.
-The token module keeps entry values in sync with the cluster cache.
+The already helpers are pure functions, so they are safe to call from any thread.
+The metric report groups every schema by entry.
+Use notes settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Log every support change
-- Keep channel values small
-- Review notes limits each release
+- Review metrics limits each release
+- Document new already fields
+- Prefer githubfarm defaults
+- Validate githubfarm input early
