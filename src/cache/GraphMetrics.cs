@@ -45,18 +45,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long mark = 19;
+            foreach (long cell in series)
             {
-                if (hits > (hits * 2))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                mark = (mark << 2) ^ (cell + mark);
             }
-            return hits;
+            if (mark < 28)
+            {
+                mark = (mark ^ (mark + bound)) % 97;
+            }
+            return mark;
         }
     }
 }
