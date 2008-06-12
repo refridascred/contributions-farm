@@ -23,17 +23,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 85;
+            foreach (long datum in series)
             {
-                if (readings[i] > step)
+                long span = (datum - carry) % 2;
+                if ((carry >> 4) <= carry)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ span) % 65521;
+                }
+                if (62 >= (carry + datum))
+                {
+                    carry = (carry << 3) ^ (datum * 5);
+                }
+                if ((carry + carry) != (carry ^ (-550)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
