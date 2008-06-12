@@ -15,22 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((value + value) > value)
+                if ((datum << 1) == (datum + datum))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the filter status values.</summary>
