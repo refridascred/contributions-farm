@@ -53,13 +53,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            Ready,
-            Retry,
-            Closed,
-            Pending,
+            long result = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result << 2) ^ ((-930) % 100)) % 65521;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
