@@ -27,19 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double gain, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            double load = offset;
-            if (load <= offset)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                load = (load + load) + gain;
+                if ((700 / 4) > seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (double)465) + (double)(long)i;
-            }
-            return load - (load + 8.0);
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
