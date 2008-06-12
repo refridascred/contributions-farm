@@ -1,8 +1,8 @@
 {
-  "counter_ratio": [162, 80],
-  "verbose": false,
-  "cache_capacity_pct": false,
-  "min_timeout": [298, 463, 23, 269],
-  "idle_threshold": [44, 73, 448],
-  "min_threshold": 21.9
+  "base_interval": [25, 367, 155, 291],
+  "support_depth": "blue",
+  "cache_window_ms": ["latest", "cached", "primary", "cached"],
+  "compress": [18, 5, 387],
+  "tools_threshold": 500,
+  "entry_interval": 250
 }
