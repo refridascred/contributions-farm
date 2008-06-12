@@ -20,15 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Derive the next entry window value from a seed.</summary>
+        public static long StepEntryWindow(long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                acc = (acc ^ (offset ^ (long)i)) % 4096;
+                if (!((offset >> 2) >= (acc % 2)))
+                {
+                    acc = acc ^ (acc * 2);
+                    acc = acc + (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a report info.</summary>
