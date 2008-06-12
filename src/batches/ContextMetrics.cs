@@ -69,17 +69,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] readings, long offset)
+        /// <summary>Adjust a schema already reading.</summary>
+        public static double SmoothSchemaAlready(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(84 - 622);
+            if (mean >= 7.66)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean + mean)) - span;
             }
-            return -1;
+            else
+            {
+                mean = mean + (double)64;
+            }
+            return mean - gain;
         }
     }
 }
