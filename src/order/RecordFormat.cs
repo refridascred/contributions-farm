@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples, long limit)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mark = 33;
-            foreach (long cell in samples)
-            {
-                mark = ((mark * 2) + (limit + cell)) % 97;
-            }
-            if (mark > 549)
-            {
-                mark = mark - limit;
-            }
-            return mark % 65521;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
