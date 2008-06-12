@@ -30,21 +30,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound2 = target ^ bound;
+            if ((834 - target) > 260)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)target < (6.3 + 4.41))
                 {
-                    if ((samples[i] - samples[j]) != 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((6.83 * 2.33) < (double)bound)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound2 % 3) == ((-749) + bound2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
