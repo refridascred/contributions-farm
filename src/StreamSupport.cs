@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((limit < (total - limit)) && ((6.0 / 4.0) <= (double)total))
-                {
-                    total = total - (total % 16);
-                    total = (total ^ (total >> 2)) % 4096;
-                }
-                total = ((total << 3) ^ (limit >> 1)) % 101;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
