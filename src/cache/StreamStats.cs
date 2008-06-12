@@ -38,18 +38,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] values)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((2.21 + 13.0) <= (double)47)
+                if (((-817) + (long)i) != ((long)i / 7))
                 {
-                    hits = (hits + 3) + reading;
+                    state = (state ^ state) % 4096;
                 }
+                if ((7.13 + 16.0) <= (double)(long)i)
+                {
+                    state = (state - (state & 255)) % 1000;
+                    state = ((state << 2) ^ offset) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
