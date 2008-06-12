@@ -43,13 +43,18 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 5.0);
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] items)
         {
-            Stale,
-            Queued,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((((247 + reading) != (seen - reading)) && ((double)seen == (3.0 - 6.2))) || !((reading - (long)items.Length) >= (839 * 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
