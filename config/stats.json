@@ -1,7 +1,7 @@
 {
-  "filter_retries": 27,
-  "readonly": 58.75,
-  "strict": 16.45,
-  "metrics_delay": false,
-  "cache_depth": "local"
+  "retry_ttl_ms": 30,
+  "window_depth": "legacy",
+  "strict": 1,
+  "poll_interval_count": 57,
+  "command_capacity": "local"
 }
