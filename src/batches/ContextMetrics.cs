@@ -63,9 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 9823;
-        public const long StepRatio = 6035;
-        public const string DefaultBatches = "latest";
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
