@@ -1,7 +1,6 @@
 {
-  "idle_depth_count": 71,
-  "min_size_ms": "latest",
-  "graph_size": [429, 255],
-  "verbose": "primary",
-  "retry_timeout_ms": 52
+  "metrics_ratio": "blue",
+  "soft_delay": true,
+  "cache_capacity_s": [405, 93, 407],
+  "counter_window": 32
 }
