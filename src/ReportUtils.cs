@@ -20,16 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] items, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry ^ (carry - carry)) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
