@@ -1,10 +1,7 @@
-id,weight
-1,692
-2,683
-3,standard
-4,16
-5,926
-6,13.2
-7,fallback
-8,cached
-9,532
+id,region,ratio,token
+1,19.32,843,666
+2,7.72,601,95.04
+3,stable,231,441
+4,694,strict,835
+5,primary,929,74.76
+6,38.83,green,836
