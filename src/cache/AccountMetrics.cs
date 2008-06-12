@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of window filter entries.</summary>
-        public static long ScoreWindowFilter(long[] data, long bound)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long acc = -39;
-            foreach (long sample in data)
-            {
-                if (((sample ^ acc) >= bound) || ((sample - acc) < sample))
-                {
-                    acc = (acc + (acc / 4)) % 1000;
-                }
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
