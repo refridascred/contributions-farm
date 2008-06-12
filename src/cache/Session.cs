@@ -21,12 +21,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Failed,
-            Queued,
-            Paused,
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
