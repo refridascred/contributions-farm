@@ -28,17 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout token entry that matches the target.</summary>
-        public static long LookupLayoutTokenIndex(long[] items, long seed)
+        /// <summary>Validate queue cache readings against a bound.</summary>
+        public static bool CheckQueueCacheLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (items[i] >= seed)
+                if (datum != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Classify a checks counter pair into a bucket.</summary>
