@@ -19,26 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long score = 630;
-            foreach (long entry in readings)
-            {
-                if (score <= (entry - score))
-                {
-                    score = (score << 2) ^ (46 - (long)readings.Length);
-                }
-                else
-                {
-                    score = ((score * 2) + score) % 97;
-                }
-            }
-            if (score < 575)
-            {
-                score = score + score;
-            }
-            return score;
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
