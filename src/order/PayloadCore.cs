@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long BaseStats = 5836;
         public const string WindowStats = "strict-edge";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 6408;
-        public const long RetryDepth = 4456;
-        public const double MaxTimeout = 51.71;
-        public const long BatchBudget = 9941;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Active,
+            New,
+            Retry,
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandOutliers(long[] items, long target)
