@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double ratio, double offset)
+        /// <summary>Measure how many buffer schema samples are out of range.</summary>
+        public static long MeasureBufferSchemaGaps(long[] levels, long target)
         {
-            double ratio2 = (double)458;
-            if (ratio2 < (ratio2 / 3.0))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                ratio2 = (ratio2 + (offset * 7.51)) - ratio;
+                if ((1.5 - 4.13) <= (double)entry)
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            return ratio2 - (ratio2 / 5.0);
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
