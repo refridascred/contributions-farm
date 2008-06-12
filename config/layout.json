@@ -1,5 +1,5 @@
 {
-  "queue_threshold": "legacy",
-  "batch_limit": 30,
-  "idle_size_s": 60
+  "strict": 8.11,
+  "readonly": false,
+  "batch_delay_pct": 2470
 }
