@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Digest a series of format entries.</summary>
