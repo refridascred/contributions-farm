@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count command account pairs that satisfy a relation.</summary>
-        public static long CompareCommandAccountCount(long[] items)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                long cur = ((long)i - bound) >> 2;
+                total = total + (cur + total);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
