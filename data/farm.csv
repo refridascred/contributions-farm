@@ -1,6 +1,9 @@
-id,active,count
-1,164,standard
-2,18.18,55.19
-3,460,55.27
-4,open,46
-5,open,53.15
+id,state,token,active
+1,legacy,250,fallback
+2,98.09,815,827
+3,6,green,383
+4,558,51.05,322
+5,cached,938,primary
+6,350,open,339
+7,stable,3.27,9
+8,primary,593,31.28
