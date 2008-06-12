@@ -95,13 +95,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            Pending,
-            Done,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >= (hits / 8)) || (hits < (hits * 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
