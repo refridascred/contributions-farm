@@ -55,12 +55,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Grade a checks notes value against two limits.</summary>
+        public static long GradeChecksNotes(long bound, long seed)
         {
-            Ready,
-            Draft,
-            Done,
+            long span = bound - seed;
+            if (((bound + seed) >= bound) || (bound >= (seed + seed)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound >= 7.1) || ((seed * 2) >= span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
