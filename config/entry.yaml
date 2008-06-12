@@ -1,7 +1,14 @@
 # entry settings
-base_timeout_s: 59.19
-burst_interval_ms: 250
-persist: green
-soft_interval:
-  - 405
-  - 287
+layout_depth:
+  notes_capacity: 100
+  min_threshold: 250
+  retry_depth_ms: 16
+  sync_threshold_count:
+    command_delay: true
+    default_ttl_pct: true
+    default_limit: 60
+    default_ratio: 5.77
+max_depth_pct: 0.03
+warm_retries_s: true
+max_size_pct: green
+base_ttl: 30
