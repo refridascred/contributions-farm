@@ -24,23 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double mean = offset;
-            if (mean <= (double)19)
-            {
-                mean = (mean + 9.04) + bias;
-            }
-            else
-            {
-                mean = mean - (4.5 * 5.41);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean - (offset / 7.0);
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
