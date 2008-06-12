@@ -12,17 +12,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] series, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 21;
+            foreach (long entry in samples)
             {
-                if (series[i] <= bound)
+                if ((offset + entry) > (entry + entry))
                 {
-                    return (long)i;
+                    mark = mark ^ (5 - entry);
+                }
+                else
+                {
+                    mark = ((mark * 2) + mark) % 101;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Hold a record record.</summary>
