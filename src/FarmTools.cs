@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheDepth = "stable";
-        public const string WindowLevel = "primary-1";
-        public const long RetryDepth = 4327;
-        public const string BaseGithubfarm = "cached-1";
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheScore = 8824;
