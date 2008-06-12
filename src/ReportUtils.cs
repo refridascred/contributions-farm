@@ -48,21 +48,13 @@ namespace Common.Utilities
         public const string LimitSpan = "standard-edge";
         public const double CacheCount = 33.74;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] levels)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
