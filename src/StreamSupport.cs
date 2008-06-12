@@ -30,17 +30,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] series, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long seed, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset = seed + origin;
+            if (((origin + origin) != (seed + seed)) && ((double)seed <= (7.93 / 9.0)))
             {
-                if (series[i] > limit)
+                return 1;
+            }
+            else
+            {
+                if (((417 + seed) != (origin % 5)) && (((-567) & 15) >= (offset - 72)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin < offset) && ((double)seed < 0.49))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
