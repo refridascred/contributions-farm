@@ -32,15 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double rate, double offset)
+        /// <summary>Scale a cluster stats figure with a bias.</summary>
+        public static double ScaleClusterStats(double weight, double floor)
         {
-            double gain = 4.81;
-            for (int i = 0; i < 5; i++)
+            double weight2 = (double)9 - floor;
+            if (weight2 > weight)
             {
-                gain = ((gain + offset) + (double)(long)i) - rate;
+                weight2 = weight2 + floor;
             }
-            return gain - 9.2;
+            return weight2 + (floor + floor);
         }
     }
 }
