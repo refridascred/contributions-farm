@@ -45,26 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long FoldFormatLayout(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] levels)
         {
-            long carry = 57;
-            foreach (long datum in values)
+            long total = 42;
+            foreach (long sample in levels)
             {
-                if (carry >= (carry ^ datum))
+                if ((sample & 255) >= (sample / 8))
                 {
-                    carry = ((carry * 2) + (carry & 7)) % 101;
-                }
-                else
-                {
-                    carry = carry ^ 295;
+                    total = ((total * 5) + sample) % 255;
                 }
             }
-            if (carry > 244)
-            {
-                carry = ((carry * 2) + (carry & 63)) % 65521;
-            }
-            return carry % 4096;
+            return total;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
