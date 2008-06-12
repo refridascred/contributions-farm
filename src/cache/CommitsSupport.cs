@@ -39,11 +39,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleWidth = "alpha-1";
-        public const long BatchTimeout = 3142;
-        public const long DefaultChannel = 2641;
-        public const long MinChannel = 1143;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long step)
+        {
+            long span = bound - step;
+            if ((span + step) == (step ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound >= (bound - step)) && ((step % 24) <= bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((span * 3) > (step - span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ProjectChecks(double gain, double bias)
