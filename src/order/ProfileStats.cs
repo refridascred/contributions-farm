@@ -63,22 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools metrics readings against a rule.</summary>
-        public static long TallyToolsMetricsHits(long[] items, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((600 + 708) > (hits - item))
+                if ((7.71 / 5.0) >= (double)reading)
                 {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
