@@ -39,13 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels, long origin)
         {
-            Ready,
-            Locked,
-            Synced,
-            Done,
+            long anchor = 1;
+            foreach (long sample in levels)
+            {
+                if ((origin + sample) >= anchor)
+                {
+                    anchor = (anchor + (969 & 3)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ (sample % 60);
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
