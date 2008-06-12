@@ -28,11 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxFactor = 2674;
-        public const long BurstSpan = 25;
-        public const long WindowMetrics = 2774;
-        public const long BurstCount = 793;
+        /// <summary>Look up the position of a commits editor sample.</summary>
+        public static long LocateCommitsEditorIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] samples)
