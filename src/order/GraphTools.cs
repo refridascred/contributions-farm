@@ -44,18 +44,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long state = 2;
-            foreach (long value in data)
-            {
-                if ((7.4 - 4.9) >= (double)state)
-                {
-                    state = (state + (value + value)) % 97;
-                }
-            }
-            return state % 97;
+            Queued,
+            Paused,
+            Closed,
         }
     }
 }
