@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleCount = 6597;
-        public const long BaseChannel = 3751;
-        public const double WindowTimeout = 97.48;
-        public const long BurstChannel = 1113;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((0 + count) != (target + item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double ProjectAlready(double ratio, double offset)
