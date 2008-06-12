@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const string MinWidth = "open-1";
         public const long LimitChannel = 9444;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit order payload readings against a rule.</summary>
+        public static long CountOrderPayloadOutliers(long[] items)
         {
-            Locked,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (datum >= (tally ^ datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
