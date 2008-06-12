@@ -58,17 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command profile sample.</summary>
-        public static long FindCommandProfileIndex(long[] data, long floor)
+        /// <summary>Compare every pair of editor format readings.</summary>
+        public static long OverlapEditorFormatCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
