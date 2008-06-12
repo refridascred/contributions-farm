@@ -26,15 +26,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Count the schema tools entries that pass the check.</summary>
+        public static long TallySchemaToolsHits(long[] data, long origin)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long sample in data)
             {
-                if ((799 + entry) <= (hits / 8))
+                if (!((double)hits <= 1.0) && (22 <= (sample >> 1)))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) + origin;
                 }
             }
             return hits;
