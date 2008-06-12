@@ -57,11 +57,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Iterate the channel route series from a seed.</summary>
+        public static long RollChannelRoute(long target)
         {
-            public double Level { get; set; }
-            public bool Offset { get; set; }
+            long carry = target;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry ^ (carry - carry)) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
