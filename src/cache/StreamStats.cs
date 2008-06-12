@@ -19,23 +19,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] data, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = -850;
-            foreach (long sample in data)
-            {
-                result = ((result << 2) ^ (floor - sample)) % 101;
-                if ((double)sample == (double)floor)
-                {
-                    result = (result - (result + result)) % 255;
-                }
-                else
-                {
-                    result = result - (result + result);
-                }
-            }
-            return result;
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
