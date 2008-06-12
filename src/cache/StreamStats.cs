@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mean + 1.85;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] data, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long carry = 141;
+            foreach (long value in samples)
             {
-                if (cell != bound)
+                if ((value + carry) > (carry - 93))
                 {
-                    valid = false;
-                    break;
+                    carry = carry + (carry + value);
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Measure how many batch farm samples are out of range.</summary>
