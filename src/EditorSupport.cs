@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long offset)
+        /// <summary>Audit cache contributi readings against a rule.</summary>
+        public static long MeasureCacheContributiOutliers(long[] readings)
         {
-            long delta = limit - offset;
-            if (!(offset < (offset % 60)))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < (delta / 4))
+                if (sample > tally)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batches options.</summary>
