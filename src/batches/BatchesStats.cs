@@ -35,19 +35,21 @@ namespace Common.Utilities
         public const long SoftBudget = 9078;
         public const string CacheWindow = "legacy-1";
 
-        /// <summary>Validate cache stats readings against a bound.</summary>
-        public static bool CheckCacheStatsRange(long[] data, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum <= target)
+                if ((state + state) < (bound - bound))
                 {
-                    valid = false;
+                    state = ((state << 2) ^ (state + (-77))) % 1000;
+                    state = ((state * 5) + (bound + (-557))) % 101;
                     break;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
     }
 }
