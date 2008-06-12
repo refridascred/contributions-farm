@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "primary";
+        public const long MaxRatio = 5396;
+        public const long RetrySize = 5267;
+        public const string IdleToken = "cached-v2";
+        public const double MinToken = 92.52;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftChecks = 9651;
