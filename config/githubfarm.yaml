@@ -1,15 +1,43 @@
 # githubfarm settings
-max_size_ms: 500
-batch_delay_ms: local
-commits_delay: open
-max_timeout_pct:
-  - 9
-  - 7
-  - 113
-  - 282
-max_delay_count:
-  - 78
-  - 332
-  - 137
-  - 116
-hard_depth_ms: primary
+hard_threshold_s: 87.28
+retry_ttl_count: 74
+cache_ttl_ms:
+  verbose: true
+  format_ttl: strict
+  cache_depth: 1024
+  base_threshold: open
+  max_ttl_count: false
+  order_threshold: strict
+max_ttl:
+  hard_size_count:
+    - 21
+    - 148
+    - 419
+  flush_window_pct:
+    - 40
+    - 173
+  min_ratio: standard
+  commits_timeout:
+    - stable
+    - open
+  min_threshold_ms: staging
+strict:
+  - 358
+  - 281
+  - 313
+audit:
+  readonly:
+    - 177
+    - 253
+    - 400
+    - 448
+  strict: 60
+  cache_capacity_pct: 93.5
+  poll_ttl_pct: 60.92
+  farm_threshold: 34
+  metrics_ttl:
+    dry_run: 1024
+    default_window_s: green
+    retry_delay_count: 4.43
+    poll_size: 59
+    retry_ttl_s: 3019
