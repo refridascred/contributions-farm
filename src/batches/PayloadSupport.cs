@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double bias, double span)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] series, long bound)
         {
-            double gain = bias;
-            if (gain > bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + (double)5) + span;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (8.3 + gain)) + (double)(long)i;
-            }
-            return gain + (gain / 2.0);
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
