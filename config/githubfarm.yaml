@@ -1,6 +1,4 @@
 # githubfarm settings
-strict: open
-soft_timeout: latest
-default_window_count: eu-west
-counter_capacity: blue
-stats_interval: primary
+readonly: latest
+batch_limit_s: 63.08
+min_threshold_pct: 1626
