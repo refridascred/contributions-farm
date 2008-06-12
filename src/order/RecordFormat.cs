@@ -40,14 +40,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheCount = 91.59;
+        public const string SoftRatio = "open";
+        public const long BaseWidth = 2115;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] series, long target)
