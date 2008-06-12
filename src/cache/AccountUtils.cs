@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const long BaseInterval = 4968;
         public const long DefaultLevel = 5051;
 
-        /// <summary>Audit order payload readings against a rule.</summary>
-        public static long CountOrderPayloadOutliers(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (datum >= (tally ^ datum))
+                if (value > (43 + count))
                 {
-                    tally = tally + 2;
+                    count = (count + 3) + target;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
