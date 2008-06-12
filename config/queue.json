@@ -1,6 +1,7 @@
 {
-  "compress": "stable",
-  "order_size": 60,
-  "poll_ttl_count": "strict",
-  "warm_ttl_count": 100
+  "contributi_delay": 88,
+  "strict": "cached",
+  "burst_limit": 250,
+  "min_retries": "open",
+  "default_ratio_ms": 20.93
 }
