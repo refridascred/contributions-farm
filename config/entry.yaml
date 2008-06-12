@@ -1,5 +1,4 @@
 # entry settings
-flush_interval_pct: cached
-poll_capacity_ms: false
-context_depth: true
-command_capacity: false
+tools_ratio: 88.29
+session_timeout: cached
+account_ttl: strict
