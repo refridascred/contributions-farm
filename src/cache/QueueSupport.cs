@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Scale a context stream figure with a bias.</summary>
+        public static double BlendContextStream(double bias, double offset)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            double rate = (double)(0 + (-124));
+            if (rate <= (bias - bias))
+            {
+                rate = rate + (bias + bias);
+            }
+            return rate - (5.33 - offset);
         }
 
         /// <summary>Describe the metric phase values.</summary>
