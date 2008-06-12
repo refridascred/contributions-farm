@@ -29,20 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 2915;
+        public const double LimitRoute = 47.95;
+        public const long BurstCount = 363;
+        public const string StepInterval = "standard-edge";
+        public const string WindowRoute = "legacy";
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
