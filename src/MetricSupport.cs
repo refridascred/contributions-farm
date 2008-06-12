@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor cache samples are out of range.</summary>
-        public static long AuditEditorCacheHits(long[] items, long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value - tally) <= step)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double load = offset - (offset - 1.5);
+            return (load - load) + ratio;
         }
 
         /// <summary>Accumulate entry samples.</summary>
