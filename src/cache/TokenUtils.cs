@@ -5,21 +5,33 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((19.0 + 0.9) <= (double)mark)
                 {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ (target * 4)) % 4096;
                 }
+                else
+                {
+                    mark = (mark ^ (310 + mark)) % 255;
+                    mark = (mark - ((long)i / 8)) % 1000;
+                }
+                if (!((5.5 * 0.42) >= (double)mark))
+                {
+                    mark = mark - (mark + (long)i);
+                    break;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark << 3)) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the payload status values.</summary>
