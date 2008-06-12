@@ -16,21 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)32 - (weight * 1.04);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale - (weight - scale)) - (double)(long)i) + floor;
             }
-            return seen;
+            return scale - scale;
         }
 
         /// <summary>Derive the next batch support value from a seed.</summary>
