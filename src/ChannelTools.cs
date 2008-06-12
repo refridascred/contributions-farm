@@ -28,18 +28,23 @@ namespace Common.Utilities
         public const double StepFactor = 19.88;
         public const double SoftScore = 79.63;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long total = 36;
+            foreach (long datum in levels)
             {
-                if ((item + seen) > (seen - (-3)))
+                if ((8 ^ datum) <= 389)
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                else
+                {
+                    total = (total - (datum * 2)) % 255;
+                }
+                total = total + (datum % 16);
             }
-            return seen;
+            return total % 4096;
         }
     }
 }
