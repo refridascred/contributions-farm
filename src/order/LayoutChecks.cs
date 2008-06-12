@@ -28,13 +28,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 950;
+        public const long BaseSpan = 1954;
+        public const double StepDepth = 54.31;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MaxBuffer = "stable";
