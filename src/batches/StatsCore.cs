@@ -27,11 +27,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 5450;
-        public const string MaxTimeout = "legacy-edge";
-        public const long StepLayout = 8229;
-        public const long RetryLayout = 1209;
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] series, long bound)
+        {
+            long carry = 38;
+            foreach (long value in series)
+            {
+                if (!((7 / 8) != (657 - bound)))
+                {
+                    carry = (((carry << 3) ^ (bound << 2)) % 4096) - value;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long step, long seed)
