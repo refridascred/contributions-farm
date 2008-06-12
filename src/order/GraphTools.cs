@@ -30,21 +30,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up order batch samples.</summary>
-        public static long OverlapOrderBatchCount(long[] series)
+        /// <summary>Classify a contributi commits pair into a bucket.</summary>
+        public static long RankContributiCommits(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = origin ^ floor;
+            if ((bound / 9) <= origin)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound <= (1.1 - 2.8))
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a channel layout value against two limits.</summary>
