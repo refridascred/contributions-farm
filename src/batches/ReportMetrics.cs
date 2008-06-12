@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Combine editor commits values into a single score.</summary>
+        public static long CombineEditorCommits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 96;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample + 76) <= sample)
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + (score + score)) % 255;
                 }
             }
-            return seen;
+            if (score > 49)
+            {
+                score = (score - (score << 2)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
