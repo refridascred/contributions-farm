@@ -15,19 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] items, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] data)
         {
-            bool found = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (value > seed)
+                if ((value + value) > value)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the filter status values.</summary>
