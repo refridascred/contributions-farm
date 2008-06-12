@@ -14,33 +14,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long floor)
-        {
-            long edge = origin + floor;
-            if (!((double)origin > (8.8 / 5.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)711 != (double)edge)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((edge << 3) < floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchCount = "local-edge";
+        public const long IdleWidth = 7977;
+        public const long IdleSize = 4656;
+        public const long LimitTools = 6207;
 
         /// <summary>Rank batch queue input into a small class.</summary>
         public static long GradeBatchQueue(long target, long offset)
