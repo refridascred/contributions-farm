@@ -55,22 +55,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the entry buffer entries that pass the check.</summary>
-        public static long TallyEntryBufferGaps(long[] data, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item % 2) <= (item >> 2))
-                {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            New,
+            Ready,
+            Retry,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
