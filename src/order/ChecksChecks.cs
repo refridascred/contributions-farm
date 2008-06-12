@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long MaxFactor = 1577;
         public const long CacheDepth = 7971;
 
-        /// <summary>Validate queue graph readings against a bound.</summary>
-        public static bool ValidateQueueGraphLimits(long[] levels, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (sample >= seed)
+                if ((tally - 0) == (tally * 2))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Derive the next batch support value from a seed.</summary>
