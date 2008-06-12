@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = 94;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (((mix << 2) ^ (long)i) % 4096) ^ value;
-                    mix = ((mix << 3) ^ mix) % 1000;
-                }
-                mix = ((mix << 2) ^ (mix << 1)) % 101;
-            }
-            return mix % 1000;
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a editor layout reading.</summary>
