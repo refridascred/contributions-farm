@@ -1,8 +1,6 @@
 {
-  "warm_interval_pct": 99,
-  "soft_window_pct": 17.23,
-  "idle_window_pct": "legacy",
-  "compress": [208, 443, 330],
-  "cluster_window": "edge",
-  "window_window": 1024
+  "enabled": 100,
+  "soft_ttl": 63,
+  "warm_retries": "latest",
+  "dry_run": "open"
 }
