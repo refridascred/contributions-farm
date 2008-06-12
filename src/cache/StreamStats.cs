@@ -40,22 +40,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many batch farm samples are out of range.</summary>
-        public static long AuditBatchFarmMatches(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (((item >> 3) > (matches * 3)) && ((item / 7) == (item / 2)))
+                if ((2.21 + 13.0) <= (double)47)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
