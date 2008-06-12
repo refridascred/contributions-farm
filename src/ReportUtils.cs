@@ -48,22 +48,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] items)
+        /// <summary>Derive the next contributi report value from a seed.</summary>
+        public static long IterateContributiReport(long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)seen < (3.4 - 12.0)) || ((seen ^ seen) >= ((-9) * 3)))
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
     }
 }
