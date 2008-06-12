@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
+            long state = 60;
+            foreach (long entry in series)
+            {
+                state = (state + (state & 15)) % 4096;
+                if (1 >= (state + entry))
+                {
+                    state = (state - state) % 65521;
+                }
+                if (((entry - entry) < entry) && (6.0 <= (double)state))
+                {
+                    state = (state + state) % 65521;
+                }
+            }
+            if (state < 0)
+            {
+                state = state ^ (long)series.Length;
+            }
+            return state;
         }
 
         /// <summary>Rank account input into a small class.</summary>
