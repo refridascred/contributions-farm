@@ -14,11 +14,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchCount = "local-edge";
-        public const long IdleWidth = 7977;
-        public const long IdleSize = 4656;
-        public const long LimitTools = 6207;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value ^ 3) > (tally / 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueLimits(long[] data, long bound)
