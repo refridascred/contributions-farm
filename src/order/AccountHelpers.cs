@@ -39,17 +39,15 @@ namespace Common.Utilities
             return ((rate2 - (double)3) + rate) + offset;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] series, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 0;
+            foreach (long cell in data)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 3) + (carry + seed)) % 4096) ^ cell;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the queue class values.</summary>
