@@ -53,25 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long origin, long origin2)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long edge = origin ^ origin2;
-            if (((35 - edge) == (edge + origin)) && ((origin2 + origin) <= (origin2 - edge)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (6.8 < (double)origin2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Adjust a checks reading.</summary>
