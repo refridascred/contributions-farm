@@ -1,6 +1,11 @@
 {
-  "dry_run": ["strict", "local", "blue", "primary"],
-  "warm_ttl_s": 53.7,
-  "burst_delay_count": 28.98,
-  "batch_depth": true
+  "layout_size": {
+    "audit": ["edge", "primary", "standard"],
+    "account_ratio": [394, 172, 245],
+    "cache_retries_count": "fallback",
+    "batch_window_s": 86.12,
+    "githubfarm_limit": "primary"
+  },
+  "command_limit": ["latest", "legacy", "cached"],
+  "notes_size": false
 }
