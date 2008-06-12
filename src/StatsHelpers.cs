@@ -33,17 +33,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] samples, long origin)
+        /// <summary>Count the entry buffer entries that pass the check.</summary>
+        public static long TallyEntryBufferGaps(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (samples[i] > origin)
+                if ((item % 2) <= (item >> 2))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
