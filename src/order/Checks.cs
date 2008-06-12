@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const double BaseMetrics = 67.96;
         public const long HardMetrics = 6409;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Synced,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
