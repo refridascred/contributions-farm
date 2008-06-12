@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] items)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((seen / 7) > entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
