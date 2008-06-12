@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long StepEntry = 9600;
         public const long RetryEntry = 8545;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] values, long seed)
         {
-            long mark = 7;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                mark = (mark << 3) ^ (sample % 24);
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Measure how many route commits samples are out of range.</summary>
