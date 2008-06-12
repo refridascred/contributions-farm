@@ -41,20 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (offset > ((long)i & 255))
-                {
-                    score = ((score * 3) + (score % 16)) % 4096;
-                    score = (score - ((long)i << 3)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
