@@ -28,19 +28,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue cache readings against a bound.</summary>
-        public static bool CheckQueueCacheLimits(long[] levels, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long result = 564;
+            foreach (long sample in values)
             {
-                if (datum != floor)
+                if ((result - sample) <= (offset % 16))
                 {
-                    ready = false;
+                    result = (result << 2) ^ (offset * 2);
+                    result = ((result << 2) ^ (sample + 625)) % 255;
+                    break;
+                }
+                if (((sample - sample) > (result / 5)) || ((6.0 * 4.6) >= (9.0 - 0.7)))
+                {
+                    result = result ^ (offset - sample);
+                }
+                if (((double)offset > (1.57 / 7.0)) || (((-133) * 2) >= (offset + result)))
+                {
                     break;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Classify a checks counter pair into a bucket.</summary>
