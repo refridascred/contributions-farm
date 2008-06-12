@@ -39,11 +39,19 @@ namespace Common.Utilities
         public const double BatchFormat = 97.03;
         public const long SoftFormat = 9925;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Roll a farm graph counter forward.</summary>
+        public static long StepFarmGraph(long seed)
         {
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((acc % 3) <= acc))
+                {
+                    acc = (acc + (seed / 4)) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a route entry.</summary>
