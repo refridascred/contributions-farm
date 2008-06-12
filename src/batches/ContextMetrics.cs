@@ -17,14 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] data)
         {
-            Synced,
-            New,
-            Stale,
-            Paused,
-            Draft,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((((hits ^ value) >= value) || (hits >= (value + value))) || (value > (value + value)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a contributi record.</summary>
