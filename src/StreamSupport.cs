@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 9.02;
-        public const double CacheDepth = 37.63;
-        public const double BaseBudget = 8.8;
-        public const long DefaultScore = 5011;
-        public const string IdleAlready = "latest-v2";
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long seed, long step)
