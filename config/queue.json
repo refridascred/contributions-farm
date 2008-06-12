@@ -1,18 +1,8 @@
 {
-  "readonly": "edge",
-  "min_ratio_count": 66,
-  "persist": "legacy",
-  "order_window": {
-    "soft_retries_ms": false,
-    "batch_threshold_s": {
-      "githubfarm_capacity": "staging",
-      "soft_delay": "fallback",
-      "verbose": 250,
-      "idle_limit_ms": 6336
-    },
-    "base_retries_s": 100,
-    "soft_interval": "latest"
-  },
-  "order_ttl": 40.46,
-  "min_ttl_ms": false
+  "batch_ttl_s": 4549,
+  "default_size": "edge",
+  "retry_limit_s": 89.38,
+  "base_interval": 74.01,
+  "idle_delay_count": 500,
+  "batches_retries": 1024
 }
