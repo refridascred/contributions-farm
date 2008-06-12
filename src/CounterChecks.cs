@@ -41,25 +41,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks editor input into a small class.</summary>
-        public static long GradeChecksEditor(long floor, long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long seed)
         {
-            long diff = floor + target;
-            if ((floor + target) > (floor - target))
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                result = (result ^ (result + seed)) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((diff << 3) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
