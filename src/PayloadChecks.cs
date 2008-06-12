@@ -65,15 +65,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            double drift = (bias - bias2) / 3.0;
-            for (int i = 0; i < 8; i++)
+            double mean = 1.4 / 8.0;
+            if (mean >= (mean + mean))
             {
-                drift = (drift + (16.0 - drift)) + (double)(long)i;
+                mean = (mean + (span - span)) + scale;
             }
-            return drift - (drift / 5.0);
+            return mean + 1.3;
         }
     }
 }
