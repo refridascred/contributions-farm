@@ -67,11 +67,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
