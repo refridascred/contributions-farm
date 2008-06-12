@@ -13,24 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long step, long offset)
+        /// <summary>Scale a commits cluster figure with a bias.</summary>
+        public static double AdjustCommitsCluster(double gain, double offset)
         {
-            if ((offset / 8) < (offset ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset == (5.0 / 7.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double scale = (double)(5 * 3);
+            return (scale + offset) + gain;
         }
 
         /// <summary>Roll a record window counter forward.</summary>
