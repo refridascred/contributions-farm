@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Locked,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 47.9;
+        public const string WindowCluster = "latest-1";
+        public const double CacheCluster = 98.91;
+        public const long HardCluster = 2159;
+        public const string BurstBudget = "stable";
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] values, long step)
