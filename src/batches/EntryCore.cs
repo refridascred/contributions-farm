@@ -23,19 +23,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] data, long limit)
+        /// <summary>Roll a contributi profile counter forward.</summary>
+        public static long RollContributiProfile(long bound)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ (bound - 8)) % 97;
+                mix = (mix - (mix + (long)i)) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
