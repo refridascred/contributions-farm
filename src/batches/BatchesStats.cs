@@ -51,21 +51,17 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] data, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state + state) < (bound - bound))
+                if ((data[i] == floor) && ((data[i] % 2) != 0))
                 {
-                    state = ((state << 2) ^ (state + (-77))) % 1000;
-                    state = ((state * 5) + (bound + (-557))) % 101;
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
     }
 }
