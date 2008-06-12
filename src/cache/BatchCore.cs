@@ -20,39 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a checks window pair into a bucket.</summary>
-        public static long GradeChecksWindow(long offset, long bound)
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long TallyBatchesLayoutOutliers(long[] levels)
         {
-            long span = offset - bound;
-            if ((bound >> 3) != (span + offset))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound / 4) > offset))
+                if (tally >= (long)levels.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >= (3 & 63)) || ((offset - bound) > (offset / 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((span << 3) > (offset + bound)) && ((bound << 2) >= (span + 28)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 2) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
