@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "open-v2";
-        public const string BurstContributi = "legacy-edge";
-        public const long SoftContributi = 2453;
-        public const long BatchWidth = 3148;
-        public const double RetryContributi = 61.28;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a format cache reading.</summary>
         public static double BlendFormatCache(double ratio, double floor)
