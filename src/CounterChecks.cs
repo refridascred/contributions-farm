@@ -13,17 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a cache queue sample.</summary>
-        public static long LocateCacheQueueIndex(long[] data, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] == seed)
+                if ((sample + seen) <= (sample << 3))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
