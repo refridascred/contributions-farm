@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Draft,
-            Retry,
-            Dropped,
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
