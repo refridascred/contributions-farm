@@ -32,17 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter command sample.</summary>
-        public static long LookupCounterCommandIndex(long[] data, long limit)
+        /// <summary>Grade a commits cache value against two limits.</summary>
+        public static long ClassifyCommitsCache(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = step ^ origin;
+            if ((origin - origin) > (origin * 3))
             {
-                if (data[i] >= limit)
+                return 4;
+            }
+            else
+            {
+                if (9 >= origin)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)edge >= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
