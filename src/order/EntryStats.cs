@@ -17,14 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items, long target)
         {
-            Draft,
-            Ready,
-            Retry,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((target * 2) <= (cell / 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
