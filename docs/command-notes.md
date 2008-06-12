@@ -1,12 +1,15 @@
 # Command notes
 
-Keep farm and contributi names short and lowercase.
-Each schema is validated before it reaches the metric queue.
-Use checks settings to tune how often stats data is refreshed.
+Defaults for filter live in the config folder and can be overridden per environment.
+A layout that stays idle for too long is moved to the context list.
+Run the tools check before changing any token limits.
+
+Each graph is validated before it reaches the stats queue.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Each profile is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Validate format input early
-- Review stats limits each release
-- Log every metric change
+- Prefer account defaults
+- Validate counter input early
+- Log every editor change
