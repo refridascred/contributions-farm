@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((target * 2) <= (cell / 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSpan = 5811;
+        public const long DefaultSchema = 9543;
+        public const string BurstSchema = "standard-1";
+        public const long WindowSchema = 1582;
+        public const double MinSchema = 30.23;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BurstFilter = "primary-1";
