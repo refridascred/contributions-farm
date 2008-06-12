@@ -36,31 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes counter value against two limits.</summary>
-        public static long GradeNotesCounter(long floor, long limit)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if (((6.0 / 8.0) <= (double)floor) || (limit >= (limit / 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - limit) < (floor / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit >= 4.6)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
