@@ -66,15 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] values, long target)
         {
-            double rate = ratio;
-            if (rate > offset)
+            long state = 7;
+            foreach (long entry in values)
             {
-                rate = rate + (double)570;
+                state = ((state + (target + state)) % 65521) ^ entry;
+                if (state < target)
+                {
+                    state = ((state * 5) + (target >> 4)) % 4096;
+                }
             }
-            return rate + (rate - 8.0);
+            return state;
         }
     }
 }
