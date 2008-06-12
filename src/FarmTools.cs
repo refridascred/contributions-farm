@@ -14,22 +14,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] data, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((seen + target) <= (target * 5))
+                if (value >= step)
                 {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
