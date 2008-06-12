@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] items, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
