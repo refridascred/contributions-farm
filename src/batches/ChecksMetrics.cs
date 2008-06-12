@@ -30,21 +30,22 @@ namespace Common.Utilities
         public const long WindowMetrics = 2774;
         public const long BurstCount = 793;
 
-        /// <summary>Count command route pairs that satisfy a relation.</summary>
-        public static long MatchCommandRouteCount(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(12 < (entry ^ (long)items.Length)) && (((long)items.Length - step) == (step + entry)))
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
