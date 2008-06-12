@@ -63,20 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double span)
-        {
-            double weight = (double)256;
-            if (weight < 7.5)
-            {
-                weight = (weight - weight) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (span - weight)) - (double)(long)i;
-            }
-            return weight - (span - weight);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 2034;
+        public const long SoftSchema = 588;
+        public const double CacheBudget = 43.3;
+        public const long CacheCount = 8715;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 9543;
