@@ -1,10 +1,10 @@
 {
-  "idle_size_ms": "edge",
-  "context_capacity": 9214,
-  "retry_ratio_ms": 72,
-  "default_timeout_count": {
-    "hard_retries_pct": true,
-    "compress": 8107,
-    "retry_delay_pct": 4968
+  "batch_limit_count": 500,
+  "entry_ratio": "strict",
+  "flush_threshold_s": {
+    "support_size": 98,
+    "cache_interval_ms": [16, 113, 412, 237],
+    "persist": 3776,
+    "default_limit_s": 32
   }
 }
