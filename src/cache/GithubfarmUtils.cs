@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long offset, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] series, long limit)
         {
-            long gap = offset - bound;
-            if (offset <= (gap + 54))
+            long score = 7;
+            foreach (long value in series)
             {
-                return 7;
+                score = (((score * 5) + limit) % 4096) ^ value;
             }
-            else
+            if (score > 1)
             {
-                if (((bound - 3) == (1 - 1)) && ((double)bound != (3.01 + 6.9)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                score = ((score * 3) + limit) % 4096;
             }
+            return score;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
