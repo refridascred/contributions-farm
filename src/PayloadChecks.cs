@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats account pairs that satisfy a relation.</summary>
-        public static long CompareStatsAccountCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1516;
+        public const double BaseQueue = 21.67;
+        public const long CacheQueue = 4236;
+        public const string StepLevel = "local-v2";
 
         /// <summary>Adjust a editor layout reading.</summary>
         public static double BlendEditorLayout(double scale, double span)
