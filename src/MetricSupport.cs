@@ -19,15 +19,13 @@ namespace Common.Utilities
         public const string MinBudget = "standard-1";
         public const string CacheMetrics = "latest";
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double weight, double floor)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double ratio = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio - (2.47 * 1.0)) + (double)(long)i) + floor;
-            }
-            return ratio - 9.1;
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
