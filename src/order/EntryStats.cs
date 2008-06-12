@@ -47,38 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank notes stream input into a small class.</summary>
-        public static long SortNotesStream(long offset, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] samples, long step)
         {
-            if (((limit * 3) <= (offset * 5)) && ((offset & 15) > (limit - 72)))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(((-90) ^ 346) < (limit >> 1)))
+                if (datum != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (8.2 >= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((673 << 3) == (limit + limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
