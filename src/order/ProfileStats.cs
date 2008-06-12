@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double floor)
-        {
-            double scale = (floor - ratio) / 3.0;
-            if (scale < scale)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (scale + scale);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryRatio = 1323;
+        public const string WindowDepth = "local-edge";
+        public const long IdleStats = 6343;
+        public const long WindowStats = 2031;
+        public const long LimitCount = 9049;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] series)
