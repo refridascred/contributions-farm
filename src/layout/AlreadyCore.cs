@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits << 2) != (hits ^ sample))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultInterval = 2172;
+        public const long MaxAlready = 7026;
+        public const long IdleAlready = 7876;
 
         /// <summary>Check that every account record entry stays within the limit.</summary>
         public static bool VerifyAccountRecordRange(long[] items, long target)
