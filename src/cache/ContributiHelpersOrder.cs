@@ -30,12 +30,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] values, long origin)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
