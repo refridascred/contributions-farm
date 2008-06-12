@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            double ratio = rate;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio - (ratio * 8.9)) + bias;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (ratio / 4.0);
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a report record.</summary>
