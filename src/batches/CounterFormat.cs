@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] data, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
             long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count << 2) > entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) + bound;
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
