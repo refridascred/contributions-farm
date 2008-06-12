@@ -20,12 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryRatio = 1323;
-        public const string WindowDepth = "local-edge";
-        public const long IdleStats = 6343;
-        public const long WindowStats = 2031;
-        public const long LimitCount = 9049;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Synced,
+            Closed,
+            Dropped,
+            Active,
+            Pending,
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] data, long limit)
