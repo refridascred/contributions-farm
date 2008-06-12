@@ -15,15 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double floor)
+        /// <summary>Find the first profile token entry that matches the target.</summary>
+        public static long LocateProfileTokenIndex(long[] data, long limit)
         {
-            double weight = (floor * 8.0) + scale;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + floor) + (double)(long)i;
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (weight - floor);
+            return -1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
