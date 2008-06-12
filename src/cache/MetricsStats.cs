@@ -37,12 +37,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] data, long seed)
         {
-            Ready,
-            Dropped,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
