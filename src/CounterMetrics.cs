@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long step)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
