@@ -50,22 +50,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels, long step)
+        /// <summary>Find the first graph context entry that matches the target.</summary>
+        public static long SeekGraphContextIndex(long[] readings, long bound)
         {
-            long mix = 53;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix - mix) >= (step + mix))
+                if (readings[i] <= bound)
                 {
-                    mix = ((mix - (mix / 2)) % 97) + item;
+                    return (long)i;
                 }
             }
-            if (mix < 546)
-            {
-                mix = mix + step;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
