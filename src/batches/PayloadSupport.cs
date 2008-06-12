@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many format editor samples are out of range.</summary>
+        public static long MeasureFormatEditorMatches(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((target + reading) > reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
