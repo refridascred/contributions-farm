@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard latest cached primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    primary)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,14 @@ case "${mode}" in
         ;;
 esac
 
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
