@@ -32,29 +32,36 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank batch metrics input into a small class.</summary>
-        public static long ClassifyBatchMetrics(long floor, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long target, long offset)
         {
-            long gap = floor + offset;
-            if (!((31 - offset) <= offset))
+            long step = target ^ offset;
+            if ((target << 3) < (step * 3))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((gap << 2) < (offset - offset))
+                if ((2.6 / 3.0) != (double)offset)
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (((gap - gap) < (gap * 2)) && ((offset << 3) != (floor + floor)))
+                    if ((offset >> 2) == (target + offset))
                     {
                         return 7;
                     }
                     else
                     {
-                        return 4;
+                        if ((double)target < (9.99 - 3.9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
