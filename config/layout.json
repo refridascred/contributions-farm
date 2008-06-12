@@ -1,7 +1,12 @@
 {
-  "min_limit": 9935,
-  "max_capacity_pct": 8617,
-  "sync_timeout_ms": 6212,
-  "verbose": 35.6,
-  "githubfarm_depth": 7
+  "soft_window": {
+    "audit": 72,
+    "payload_limit": true,
+    "counter_depth": false,
+    "batch_ttl_pct": "eu-west",
+    "soft_timeout": "strict",
+    "batch_depth_s": 100
+  },
+  "commits_size": false,
+  "max_depth_pct": ["blue", "standard", "green", "standard"]
 }
