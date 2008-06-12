@@ -26,17 +26,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] data, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] >= step)
+                if ((double)matches > (8.2 * 5.7))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + sample) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
