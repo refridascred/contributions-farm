@@ -14,12 +14,25 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleFactor = 2695;
-        public const double MaxRatio = 92.48;
-        public const long DefaultCommand = 6592;
-        public const long BaseInterval = 4968;
-        public const long DefaultLevel = 5051;
+        /// <summary>Grade a window batches value against two limits.</summary>
+        public static long BucketWindowBatches(long target, long target2)
+        {
+            if ((target2 << 3) < target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target2 * 5) != (target * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueGaps(long[] values)
