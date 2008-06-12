@@ -41,9 +41,12 @@ namespace Common.Utilities
         public const double WindowInterval = 57.38;
         public const long BaseBudget = 2119;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "latest-1";
-        public const long BatchCommits = 8308;
-        public const string MaxCommits = "latest-1";
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
