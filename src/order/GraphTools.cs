@@ -25,12 +25,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count account stats pairs that satisfy a relation.</summary>
+        public static long CompareAccountStatsCount(long[] data)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
