@@ -1,6 +1,10 @@
 {
-  "channel_timeout": "edge",
-  "compress": 91.31,
-  "hard_limit_ms": 500,
-  "tools_limit": "open"
+  "idle_size_ms": "edge",
+  "context_capacity": 9214,
+  "retry_ratio_ms": 72,
+  "default_timeout_count": {
+    "hard_retries_pct": true,
+    "compress": 8107,
+    "retry_delay_pct": 4968
+  }
 }
