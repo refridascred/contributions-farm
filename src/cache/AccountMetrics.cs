@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long score = 740;
-            foreach (long reading in series)
-            {
-                if ((double)score != (double)reading)
-                {
-                    score = (score + (score % 60)) % 4096;
-                }
-                if (reading >= (score * 2))
-                {
-                    score = (score + (reading + score)) % 101;
-                }
-            }
-            return score;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
