@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] readings, long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((tally ^ floor) >= (datum << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
