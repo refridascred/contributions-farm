@@ -25,12 +25,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count schema report pairs that satisfy a relation.</summary>
+        public static long CompareSchemaReportCount(long[] items)
         {
-            Idle,
-            Paused,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry mode values.</summary>
