@@ -1,13 +1,15 @@
 # entry settings
-cache_size: edge
-poll_ratio: 47
-command_ratio:
-  - 125
-  - 299
-  - 461
-persist: fallback
-graph_threshold: edge
-min_retries_count:
-  - latest
-  - fallback
-  - open
+idle_capacity: true
+batch_depth_pct: 760
+context_ttl:
+  readonly: 73.79
+  entry_limit:
+    batch_capacity_pct: standard
+    default_retries_count: 60
+    idle_window:
+      - 479
+      - 452
+  support_depth: true
+  githubfarm_ttl: green
+  soft_interval_count: primary
+  burst_ttl_s: true
