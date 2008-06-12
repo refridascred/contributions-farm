@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long target, long seed)
-        {
-            if ((2.5 - 6.5) >= (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target % 2) > (3 >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target - target) == (seed ^ target)) || ((double)seed != (1.0 * 6.88)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3.92 / 4.0) != (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftSpan = 56.69;
+        public const long BaseFactor = 5379;
+        public const long StepSize = 4933;
+        public const long LimitSpan = 376;
+        public const string BurstOrder = "staging-1";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftChannel = 9283;
