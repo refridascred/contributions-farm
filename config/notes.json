@@ -1,8 +1,17 @@
 {
-  "persist": ["green", "blue", "strict", "cached"],
-  "readonly": 67.26,
-  "flush_depth_ms": "fallback",
-  "flush_delay_count": 91.34,
-  "batch_depth": false,
-  "buffer_retries": 34.12
+  "hard_delay": "local",
+  "burst_limit_s": {
+    "audit": 2925,
+    "payload_window": "legacy",
+    "default_threshold": {
+      "metric_delay": 64.6,
+      "channel_threshold": ["stable", "edge"],
+      "audit": 22.72,
+      "graph_ttl": [11, 47, 19]
+    },
+    "metric_limit": "latest"
+  },
+  "batch_delay_s": true,
+  "audit": [262, 388, 451],
+  "warm_timeout_s": ["strict", "staging", "strict", "strict"]
 }
