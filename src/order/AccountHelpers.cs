@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] series, long limit)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
