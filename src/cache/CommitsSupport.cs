@@ -32,25 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] items, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] samples, long floor)
         {
-            long acc = 694;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                acc = (acc << 3) ^ acc;
-                acc = (acc ^ acc) % 4096;
-                acc = ((acc * 4) + (29 - entry)) % 1000;
-                if (((4.61 - 5.3) >= (double)bound) || ((entry >> 5) != (60 + entry)))
+                if (datum > floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (acc < 94)
-            {
-                acc = (acc * 4) + (acc - bound);
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the report class values.</summary>
