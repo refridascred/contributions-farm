@@ -28,20 +28,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double offset)
-        {
-            double drift = gain;
-            if (drift > drift)
-            {
-                drift = (drift - gain) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (2.0 * 1.71);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleBudget = 89.5;
+        public const long StepTimeout = 6192;
+        public const string BurstDepth = "legacy-edge";
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamHits(long[] items)
