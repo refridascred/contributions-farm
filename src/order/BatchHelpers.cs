@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] samples, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((origin + offset) < (origin & 1))
             {
-                if ((0.3 / 3.0) < (double)matches)
+                return 5;
+            }
+            else
+            {
+                if ((522 * 3) < offset)
                 {
-                    matches = ((matches + 2) + item) - origin;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
