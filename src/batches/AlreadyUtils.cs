@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] series, long floor)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((-1) / 6) == (seen * 5))
+                {
+                    seen = ((seen + 1) ^ cell) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
