@@ -31,13 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Locate a graph notes reading by value.</summary>
+        public static long FindGraphNotesIndex(long[] data, long target)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
