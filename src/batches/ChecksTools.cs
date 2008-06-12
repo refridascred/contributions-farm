@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] items, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (reading <= step)
+                if (item >= step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a metric options.</summary>
