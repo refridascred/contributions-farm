@@ -23,21 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cluster batch samples.</summary>
-        public static long MatchClusterBatchCount(long[] values)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
