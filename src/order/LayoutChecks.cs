@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] data, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (value != bound)
+                if ((596 - seed) > seed)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Adjust a entry reading.</summary>
