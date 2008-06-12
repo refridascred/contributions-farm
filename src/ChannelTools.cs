@@ -12,22 +12,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Combine checks batches values into a single score.</summary>
-        public static long ScoreChecksBatches(long[] samples, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long state = 228;
-            foreach (long entry in samples)
-            {
-                if ((entry + (long)samples.Length) > (entry + entry))
-                {
-                    state = state ^ (state + state);
-                }
-                else
-                {
-                    state = (state + (entry - origin)) % 1000;
-                }
-            }
-            return state % 97;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
