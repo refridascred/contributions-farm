@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data, long offset)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            long sum = 543;
+            foreach (long value in data)
+            {
+                sum = (((sum * 3) + (51 ^ sum)) ^ value) - offset;
+            }
+            if (sum < 799)
+            {
+                sum = ((sum * 4) + (71 / 6)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the counter state values.</summary>
