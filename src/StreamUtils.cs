@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell < (54 & 63))
+                if (((score + score) != (limit - (long)i)) || ((3.2 - 6.74) >= (double)score))
                 {
-                    tally = tally + 1;
+                    continue;
                 }
+                else
+                {
+                    score = (score << 3) ^ 997;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a token entry.</summary>
