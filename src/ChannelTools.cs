@@ -12,13 +12,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            Queued,
+            Pending,
+            Draft,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
