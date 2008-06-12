@@ -33,20 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Locate a editor commits reading by value.</summary>
+        public static long FindEditorCommitsIndex(long[] items, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset >> 4) > ((long)i * 5))
+                if ((items[i] == target) && ((items[i] % 5) == 0))
                 {
-                    sum = ((sum * 4) + (offset & 31)) % 255;
-                    sum = (sum + sum) % 65521;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
