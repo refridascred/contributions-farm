@@ -48,12 +48,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] items)
         {
-            Draft,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((double)seen < (3.4 - 12.0)) || ((seen ^ seen) >= ((-9) * 3)))
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
