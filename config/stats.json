@@ -1,5 +1,10 @@
 {
-  "min_interval_ms": ["legacy", "blue", "latest", "latest"],
-  "flush_threshold_count": "edge",
-  "max_depth_s": 81.88
+  "sync_ttl_pct": "cached",
+  "burst_window_count": "local",
+  "batch_threshold_s": {
+    "enabled": "latest",
+    "cache_ttl_ms": ["primary", "eu-west", "eu-west", "stable"],
+    "hard_timeout": 81.58
+  },
+  "dry_run": "eu-west"
 }
