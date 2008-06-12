@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSize = 82.12;
+        public const double DefaultSession = 5.5;
+        public const long HardBudget = 8072;
+        public const long BurstLevel = 5588;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
