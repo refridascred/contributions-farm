@@ -23,11 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1516;
-        public const double BaseQueue = 21.67;
-        public const long CacheQueue = 4236;
-        public const string StepLevel = "local-v2";
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] series, long offset)
+        {
+            long carry = 62;
+            foreach (long cell in series)
+            {
+                carry = ((((carry << 3) ^ ((long)series.Length >> 5)) % 255) + cell) + offset;
+                carry = (carry + carry) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a editor layout reading.</summary>
         public static double BlendEditorLayout(double scale, double span)
