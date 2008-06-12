@@ -23,17 +23,39 @@ namespace Common.Utilities
         public const long MaxBuffer = 6587;
         public const long SoftScore = 8408;
 
-        /// <summary>Locate a cache token reading by value.</summary>
-        public static long LocateCacheTokenIndex(long[] items, long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long target, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = target + limit;
+            if ((target - 738) < (limit >> 3))
             {
-                if (items[i] < step)
+                return 2;
+            }
+            else
+            {
+                if ((limit & 7) > limit)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)lane == (0.73 / 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8 + target) > target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the entry buffer entries that pass the check.</summary>
