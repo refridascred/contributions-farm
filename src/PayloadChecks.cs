@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] samples, long limit)
         {
-            long result = 60;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((bound / 3) < result)
+                if ((limit - cell) != (limit + limit))
                 {
-                    result = ((result - result) % 255) - datum;
+                    hits = hits + 2;
                 }
             }
-            if (result > 3)
-            {
-                result = (result + (bound - result)) % 4096;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
