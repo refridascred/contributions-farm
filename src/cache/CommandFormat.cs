@@ -34,18 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate account payload samples.</summary>
-        public static long TallyAccountPayload(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long mark = 9;
-            foreach (long cell in readings)
+            long score = 2;
+            foreach (long sample in levels)
             {
-                if (((mark & 31) == (cell << 3)) && (mark >= (mark % 100)))
+                if (((double)score >= (double)sample) && (sample > (67 + score)))
                 {
-                    mark = (mark ^ (mark % 8)) % 1000;
+                    score = ((score * 2) + (score - 8)) % 101;
                 }
             }
-            return mark % 4096;
+            return score % 1000;
         }
     }
 }
