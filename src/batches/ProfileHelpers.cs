@@ -33,19 +33,12 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 5.0);
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((((247 + reading) != (seen - reading)) && ((double)seen == (3.0 - 6.2))) || !((reading - (long)items.Length) >= (839 * 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "primary-v2";
+        public const long MinSpan = 7398;
+        public const long SoftDepth = 949;
+        public const long SoftPayload = 7167;
+        public const double HardBudget = 69.98;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] samples)
