@@ -38,10 +38,20 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 3419;
-        public const string IdleReport = "fallback-1";
-        public const long MinReport = 6489;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate notes schema samples.</summary>
         public static long FoldNotesSchema(long[] samples)
