@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "cached-1";
-        public const long SoftDepth = 7722;
-        public const long CacheAccount = 879;
-        public const long BatchInterval = 4262;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Retry,
+            Ready,
+            Pending,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Fold a list of token already readings.</summary>
         public static long ScoreTokenAlready(long[] samples, long limit)
