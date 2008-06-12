@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 9331;
-        public const string HardDepth = "latest-1";
-        public const long BurstWidth = 2257;
-        public const string WindowProfile = "strict-1";
-        public const long BatchProfile = 5822;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepDepth = 7048;
+        public const long SoftMetric = 1779;
+        public const long BaseMetric = 6850;
+        public const long BatchSize = 4591;
+        public const long BatchMetric = 4555;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
