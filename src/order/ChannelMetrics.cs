@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            Draft,
+            Ready,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the account kind values.</summary>
