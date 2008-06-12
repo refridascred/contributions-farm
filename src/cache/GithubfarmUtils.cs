@@ -41,16 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue account value from a seed.</summary>
-        public static long RollQueueAccount(long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix + (long)i) % 1000;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Idle,
+            Paused,
+            Pending,
         }
     }
 }
