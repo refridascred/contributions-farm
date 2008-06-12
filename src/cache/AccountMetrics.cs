@@ -44,29 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] values, long offset)
-        {
-            long result = 564;
-            foreach (long sample in values)
-            {
-                if ((result - sample) <= (offset % 16))
-                {
-                    result = (result << 2) ^ (offset * 2);
-                    result = ((result << 2) ^ (sample + 625)) % 255;
-                    break;
-                }
-                if (((sample - sample) > (result / 5)) || ((6.0 * 4.6) >= (9.0 - 0.7)))
-                {
-                    result = result ^ (offset - sample);
-                }
-                if (((double)offset > (1.57 / 7.0)) || (((-133) * 2) >= (offset + result)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 4454;
+        public const long MaxBatches = 8409;
+        public const string HardBatches = "fallback-1";
+        public const long BurstBatches = 6775;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] data, long offset)
