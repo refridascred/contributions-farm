@@ -38,19 +38,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] items, long target)
+        /// <summary>Iterate the token command series from a seed.</summary>
+        public static long IterateTokenCommand(long seed)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix ^ (45 & 7)) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
     }
 }
