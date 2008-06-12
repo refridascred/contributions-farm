@@ -48,15 +48,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next contributi report value from a seed.</summary>
-        public static long IterateContributiReport(long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
