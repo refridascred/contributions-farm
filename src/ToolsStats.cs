@@ -22,11 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long origin)
         {
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            long step = bound - origin;
+            if ((origin / 4) > step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)step <= (2.75 * 1.7)) && ((3.0 / 6.0) <= (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound % 64) > (step + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
