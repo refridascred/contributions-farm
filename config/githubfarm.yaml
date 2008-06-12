@@ -1,8 +1,6 @@
 # githubfarm settings
-sync_retries_s: 47.67
-warm_interval:
-  - strict
-  - open
-  - latest
-  - eu-west
-githubfarm_size: false
+idle_ratio: green
+strict:
+  - 20
+  - 209
+enabled: false
