@@ -27,12 +27,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitScore = 2414;
+        public const double WindowSize = 74.07;
+        public const double DefaultStream = 73.49;
+        public const long RetryLevel = 4272;
     }
 }
