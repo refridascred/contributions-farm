@@ -20,19 +20,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double scale, double offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double mean = offset * 1.32;
-            if (mean <= 6.0)
-            {
-                mean = (mean + mean) + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 3.97) + (double)(long)i;
-            }
-            return mean - 2.97;
+            Done,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a counter record.</summary>
