@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultRatio = 1650;
-        public const long BatchLayout = 3516;
-        public const long SoftDepth = 977;
-        public const long StepLayout = 3928;
-        public const string CacheWidth = "local-1";
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Stale,
+            Pending,
+            Queued,
+            New,
+            Paused,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 9738;
