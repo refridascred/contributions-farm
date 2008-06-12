@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many tools commits samples are out of range.</summary>
-        public static long AuditToolsCommitsMatches(long[] readings, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long acc = 797;
+            foreach (long cell in levels)
             {
-                if (834 > (44 + step))
+                if ((3 <= acc) && ((cell - 82) == (long)levels.Length))
                 {
-                    tally = (tally + 3) + value;
+                    acc = ((acc << 3) ^ (floor * 3)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = ((acc << 3) ^ (floor + cell)) % 97;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
