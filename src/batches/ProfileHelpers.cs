@@ -86,19 +86,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry githubfarm readings against a bound.</summary>
-        public static bool ValidateEntryGithubfarmLimits(long[] series, long offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
