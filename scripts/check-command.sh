@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in blue latest staging; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 3); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in latest open; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=175
+log "limit is ${COMMAND_LIMIT}"
