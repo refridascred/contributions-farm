@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] items, long floor)
+        /// <summary>Classify a checks command pair into a bucket.</summary>
+        public static long BucketChecksCommand(long bound, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (bound <= (seed + bound))
             {
-                if (items[i] >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((seed >> 2) <= (seed >> 5))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
