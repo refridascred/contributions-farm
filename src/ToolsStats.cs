@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double weight, double bias)
+        /// <summary>Check that every command stats entry stays within the limit.</summary>
+        public static bool GuardCommandStatsRange(long[] items, long offset)
         {
-            double rate = bias + (double)3;
-            return (rate - (double)179) + weight;
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
