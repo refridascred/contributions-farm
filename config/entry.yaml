@@ -1,9 +1,20 @@
 # entry settings
-compress: edge
-retry_capacity_s: false
-enabled:
-  - 184
-  - 252
-max_threshold:
-  - 192
-  - 110
+editor_threshold: 14
+soft_capacity_count: 4874
+burst_ttl_s:
+  max_interval: false
+  burst_delay:
+    - 105
+    - 354
+    - 206
+  cache_delay: open
+  sync_capacity: 60
+  soft_capacity_ms: 36.64
+compress:
+  - 25
+  - 307
+  - 387
+  - 265
+burst_capacity:
+  - 160
+  - 366
