@@ -43,19 +43,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (((sum * 3) + (sum >> 1)) % 1000) - (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Adjust a schema already reading.</summary>
