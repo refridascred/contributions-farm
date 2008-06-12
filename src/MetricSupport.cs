@@ -34,20 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data, long seed)
+        /// <summary>Locate a payload tools reading by value.</summary>
+        public static long LocatePayloadToolsIndex(long[] levels, long bound)
         {
-            long sum = 9;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum - seed;
-                sum = (sum * 5) + datum;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 843)
-            {
-                sum = (sum + (sum % 5)) % 65521;
-            }
-            return sum % 4096;
+            return -1;
         }
     }
 }
