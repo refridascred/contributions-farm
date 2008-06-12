@@ -1,6 +1,7 @@
 {
-  "sync_interval_pct": 28,
-  "batch_timeout_pct": true,
-  "readonly": 100,
-  "burst_window": 92.36
+  "poll_limit_pct": 57.34,
+  "dry_run": "cached",
+  "sync_size_pct": 2,
+  "queue_threshold": 5560,
+  "cache_delay_count": false
 }
