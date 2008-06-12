@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = 74;
+            foreach (long sample in samples)
+            {
+                if ((7 / 8) >= sample)
+                {
+                    mark = (mark - (99 << 3)) % 4096;
+                }
+            }
+            if (mark < 97)
+            {
+                mark = ((mark * 3) + mark) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a report record.</summary>
