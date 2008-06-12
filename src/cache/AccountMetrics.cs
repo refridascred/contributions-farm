@@ -75,19 +75,22 @@ namespace Common.Utilities
         public const long CacheEntry = 830;
         public const long HardFactor = 9197;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] items)
         {
-            long sum = 2;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                sum = (((sum << 3) ^ (long)data.Length) % 97) ^ reading;
+                if ((tally * 4) < (366 * 5))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum > 677)
-            {
-                sum = (sum + (target & 255)) % 97;
-            }
-            return sum % 97;
+            return tally;
         }
     }
 }
