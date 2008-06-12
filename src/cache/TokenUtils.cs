@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSpan = 6743;
-        public const double StepRatio = 18.26;
-        public const long StepEntry = 9600;
-        public const long RetryEntry = 8545;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterLimits(long[] values, long seed)
