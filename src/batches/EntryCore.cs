@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Synced,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
