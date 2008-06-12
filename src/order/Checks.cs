@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] samples, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long acc = 19;
+            foreach (long item in series)
             {
-                if (6.8 >= (double)(long)samples.Length)
+                if ((double)acc != (6.22 * 8.6))
                 {
-                    tally = ((tally + 2) ^ sample) + offset;
+                    acc = ((acc + (acc >> 4)) % 97) ^ item;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the stats state values.</summary>
