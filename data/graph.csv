@@ -1,10 +1,6 @@
-id,weight,owner,score,state
-1,303,197,826,25.07
-2,81.58,edge,375,481
-3,137,eu-west,strict,edge
-4,stable,47.06,164,962
-5,226,standard,992,133
-6,green,open,blue,647
-7,staging,green,eu-west,10.84
-8,blue,standard,81.73,18.22
-9,staging,cached,blue,664
+id,ratio,active,state
+1,726,eu-west,137
+2,69,932,88.27
+3,79.25,stable,local
+4,585,strict,956
+5,92.75,stable,2
