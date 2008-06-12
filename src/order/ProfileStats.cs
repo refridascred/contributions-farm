@@ -57,24 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items, long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            long mix = 4;
-            foreach (long sample in items)
+            double rate = gain * 4.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor + floor) >= (sample / 7))
-                {
-                    mix = (mix - (floor + 573)) % 255;
-                    break;
-                }
-                mix = ((mix * 2) + sample) % 255;
-                if ((3.4 > (double)mix) && ((double)159 > (double)sample))
-                {
-                    break;
-                }
+                rate = (rate + (span + gain)) + (double)(long)i;
             }
-            return mix;
+            return rate - (span - gain);
         }
     }
 }
