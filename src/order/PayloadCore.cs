@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 54.03;
-        public const long RetryProfile = 2788;
-        public const double SoftProfile = 32.05;
-        public const string LimitWidth = "legacy";
-        public const long BurstProfile = 7870;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)mark > (5.7 + 8.0))
+                {
+                    mark = ((mark << 2) ^ (mark - mark)) % 97;
+                }
+                mark = ((mark << 3) ^ (301 + (long)i)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitToken = 6408;
