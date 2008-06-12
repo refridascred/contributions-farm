@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 2915;
-        public const double LimitRoute = 47.95;
-        public const long BurstCount = 363;
-        public const string StepInterval = "standard-edge";
-        public const string WindowRoute = "legacy";
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TallyAlready(long[] readings, long offset)
