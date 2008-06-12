@@ -14,18 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] series, long bound)
+        /// <summary>Measure how many editor cache samples are out of range.</summary>
+        public static long AuditEditorCacheHits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((524 * 3) < bound)
+                if ((value - tally) <= step)
                 {
-                    seen = (seen + 2) - entry;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a already info.</summary>
