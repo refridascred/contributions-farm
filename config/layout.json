@@ -1,5 +1,5 @@
 {
-  "strict": 8.11,
-  "readonly": false,
-  "batch_delay_pct": 2470
+  "metrics_timeout": "eu-west",
+  "enabled": true,
+  "retry_interval": true
 }
