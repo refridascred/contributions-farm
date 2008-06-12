@@ -52,15 +52,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit metrics token readings against a rule.</summary>
-        public static long TallyMetricsTokenGaps(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] samples, long offset)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long entry in samples)
             {
-                if ((5.2 + 20.0) >= (double)hits)
+                if ((double)offset >= (double)entry)
                 {
-                    hits = (hits + 3) ^ cell;
+                    hits = hits + 2;
                 }
             }
             return hits;
