@@ -1,9 +1,8 @@
-id,level,region
-1,22.01,43.3
-2,3.79,370
-3,eu-west,12.06
-4,416,open
-5,525,705
-6,stable,838
-7,10.62,31.21
-8,40.64,blue
+id,rank,level
+1,fallback,59.59
+2,21.59,52.82
+3,78.89,489
+4,259,eu-west
+5,941,7.24
+6,open,75.11
+7,legacy,edge
