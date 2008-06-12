@@ -60,18 +60,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] data)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((item << 2) == (matches ^ matches)) && ((double)item > (19.0 - 12.0))) || ((double)matches == (15.0 * 16.0)))
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
