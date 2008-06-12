@@ -26,10 +26,12 @@ namespace Common.Utilities
         public const string MinWidth = "open-1";
         public const long LimitChannel = 9444;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "staging";
-        public const long HardRatio = 950;
-        public const long BaseBudget = 6766;
-        public const long MinFactor = 5524;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Locked,
+            Draft,
+            Dropped,
+        }
     }
 }
