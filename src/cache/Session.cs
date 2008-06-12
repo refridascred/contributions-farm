@@ -14,17 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            double load = offset;
+            if (load >= offset)
             {
-                mark = ((mark << 3) ^ (mark - 2)) % 101;
-                mark = (mark + ((long)i + mark)) % 255;
-                mark = ((mark * 2) + (long)i) % 1000;
+                load = load - offset;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (rate / 7.0)) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
