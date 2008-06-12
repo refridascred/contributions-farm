@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 2870;
-        public const long WindowLevel = 9327;
-        public const long RetryGithubfarm = 6401;
-        public const long MaxSize = 8432;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long offset)
+        {
+            if (!(offset < (217 + target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(42 > (target + target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] items, long bound)
