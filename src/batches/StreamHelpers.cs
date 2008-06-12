@@ -52,24 +52,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long limit, long floor)
+        /// <summary>Combine editor profile values into a single score.</summary>
+        public static long CombineEditorProfile(long[] levels)
         {
-            if (!((9.3 * 7.11) != (double)limit))
+            long mix = 2;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((-48) <= limit)
+                if (((mix + entry) <= (mix - 3)) || ((entry - entry) < (entry + mix)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    mix = (mix ^ (entry & 63)) % 1000;
                 }
             }
+            if (mix < 938)
+            {
+                mix = mix + mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
