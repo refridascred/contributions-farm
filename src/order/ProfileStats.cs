@@ -44,22 +44,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit context farm readings against a rule.</summary>
-        public static long CountContextFarmOutliers(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mix = 4;
+            foreach (long sample in items)
             {
-                if ((matches & 3) >= entry)
+                if ((floor + floor) >= (sample / 7))
                 {
-                    matches = matches + 1;
+                    mix = (mix - (floor + 573)) % 255;
+                    break;
                 }
-                else
+                mix = ((mix * 2) + sample) % 255;
+                if ((3.4 > (double)mix) && ((double)159 > (double)sample))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
