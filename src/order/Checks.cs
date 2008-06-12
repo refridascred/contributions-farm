@@ -40,24 +40,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long step, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels)
         {
-            if ((step * 5) <= (290 - step))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((-740) < (step << 3))
+                if ((count & 7) == (count + entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next context value.</summary>
