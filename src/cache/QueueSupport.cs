@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] levels, long step)
+        /// <summary>Combine support account values into a single score.</summary>
+        public static long ScoreSupportAccount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = 1;
+            foreach (long value in levels)
             {
-                if (step > (step / 7))
+                if ((double)value > (4.03 * 3.6))
                 {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry * 5) + (63 + carry)) % 101;
                 }
             }
-            return seen;
+            if (carry < 5)
+            {
+                carry = (carry ^ (carry + 5)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
