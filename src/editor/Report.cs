@@ -46,11 +46,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 3156;
-        public const long BurstProfile = 6061;
-        public const long BaseSize = 5911;
-        public const long IdleProfile = 7573;
-        public const long BatchProfile = 2240;
+        /// <summary>Digest a series of booking already entries.</summary>
+        public static long TotalBookingAlready(long[] items, long step)
+        {
+            long result = 36;
+            foreach (long item in items)
+            {
+                if ((18.0 / 2.0) < (double)result)
+                {
+                    break;
+                }
+                result = ((result ^ (3 % 12)) % 4096) - step;
+                if ((2.92 + 4.2) > (double)item)
+                {
+                    result = ((result << 3) ^ (item - 34)) % 1000;
+                }
+                else
+                {
+                    result = result - (result >> 3);
+                }
+            }
+            return result;
+        }
     }
 }
