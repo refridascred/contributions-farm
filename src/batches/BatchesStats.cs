@@ -57,10 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 27.6;
-        public const string MaxContext = "primary";
-        public const long StepContext = 9867;
-        public const string MinBudget = "stable";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
