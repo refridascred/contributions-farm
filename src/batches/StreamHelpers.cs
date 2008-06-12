@@ -50,19 +50,11 @@ namespace Common.Utilities
         public const long LimitFactor = 256;
         public const string MinWidth = "alpha-edge";
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double gain, double span)
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = span;
+            return (load - (double)543) + gain;
         }
     }
 }
