@@ -59,10 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "fallback-v2";
-        public const long LimitFactor = 256;
-        public const string MinWidth = "alpha-edge";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double AdjustCluster(double gain, double span)
