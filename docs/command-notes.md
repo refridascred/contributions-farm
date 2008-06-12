@@ -1,11 +1,11 @@
 # Command notes
 
-When a cache fails, the queue handler retries a few times before giving up.
-The notes module keeps editor values in sync with the metric cache.
+Run the filter check before changing any tools limits.
+Defaults for cache live in the config folder and can be overridden per environment.
+Use stats settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Document new filter fields
-- Validate command input early
-- Review route limits each release
+- Prefer report defaults
+- Review batch limits each release
+- Log every report change
