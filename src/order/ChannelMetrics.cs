@@ -32,24 +32,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long bound, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long target)
         {
-            if (!((10.0 / 6.0) >= (double)origin))
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
+                mix = mix - (target ^ target);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin + bound) < (origin << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
     }
 }
