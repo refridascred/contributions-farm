@@ -30,16 +30,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] data)
         {
-            long score = 6;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                score = (score << 2) ^ (score - item);
-                score = score + (74 + 525);
+                if (datum <= matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
