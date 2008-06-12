@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            long acc = 19;
-            foreach (long item in series)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)acc != (6.22 * 8.6))
-                {
-                    acc = ((acc + (acc >> 4)) % 97) ^ item;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the stats state values.</summary>
