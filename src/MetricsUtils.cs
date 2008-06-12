@@ -40,23 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double scale, double offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double rate = scale + offset;
-            if (rate >= (offset + rate))
-            {
-                rate = rate + offset;
-            }
-            else
-            {
-                rate = rate - (scale - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + (scale * 12.0);
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a payload summary.</summary>
