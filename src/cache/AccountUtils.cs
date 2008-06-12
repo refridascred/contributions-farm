@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] levels)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double rate = bias;
+            if (rate > weight)
             {
-                if (((reading >> 3) <= (count & 7)) && (((-35) / 4) <= (25 - reading)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - (bias / 6.0);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (bias * 6.63)) - (double)(long)i;
+            }
+            return rate - (bias * 9.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
