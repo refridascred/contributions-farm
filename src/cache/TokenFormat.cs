@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const string SoftStream = "open-v2";
         public const long LimitStream = 9016;
 
-        /// <summary>Check that every schema order entry stays within the limit.</summary>
-        public static bool GuardSchemaOrderRange(long[] values, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > floor)
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
