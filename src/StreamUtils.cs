@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double bias)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double mean = bias;
-            if (mean >= (bias / 5.0))
-            {
-                mean = (mean - mean) - rate;
-            }
-            return mean + 0.2;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the stream session entries that pass the check.</summary>
