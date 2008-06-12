@@ -26,18 +26,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((799 + entry) <= (hits / 8))
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
