@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next contributi editor value from a seed.</summary>
-        public static long SeriesContributiEditor(long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 2) + seed) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
