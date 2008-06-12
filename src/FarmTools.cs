@@ -37,22 +37,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] samples)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long gap = bound - origin;
+            if ((17.0 / 6.0) < (double)origin)
             {
-                if ((3.3 / 6.0) <= (double)seen)
+                return 2;
+            }
+            else
+            {
+                if (!((double)origin <= 4.0))
                 {
-                    seen = (seen + 3) - entry;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((-671) % 7) >= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (gap < 8)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
