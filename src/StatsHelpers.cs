@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleScore = 6927;
+        public const long MaxBuffer = 6587;
+        public const long SoftScore = 8408;
 
         /// <summary>Locate a cache token reading by value.</summary>
         public static long LocateCacheTokenIndex(long[] items, long step)
