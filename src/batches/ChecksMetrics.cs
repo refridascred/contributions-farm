@@ -51,17 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batch batches sample.</summary>
-        public static long LocateBatchBatchesIndex(long[] series, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (series[i] <= bound)
+                if (entry >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of tools graph entries.</summary>
