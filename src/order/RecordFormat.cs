@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 499;
-        public const long BaseMetric = 369;
-        public const double MaxMetric = 78.44;
-        public const double BatchSpan = 96.06;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double bias, double bias2)
+        {
+            double weight = bias - bias2;
+            if (weight <= (double)685)
+            {
+                weight = weight - weight;
+            }
+            return weight - (13.0 * 3.0);
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] values)
