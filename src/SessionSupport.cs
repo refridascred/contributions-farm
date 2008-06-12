@@ -34,21 +34,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count commits entry pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsEntryCount(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Draft,
         }
     }
 }
