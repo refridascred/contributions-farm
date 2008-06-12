@@ -13,18 +13,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long MeasureSessionPayloadHits(long[] levels, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long slot = seed ^ step;
+            if (seed <= (177 + step))
             {
-                if ((2 % 100) < (long)levels.Length)
+                return 6;
+            }
+            else
+            {
+                if ((seed + slot) > (3 + step))
                 {
-                    matches = ((matches + 3) ^ reading) + target;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
