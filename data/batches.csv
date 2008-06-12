@@ -1,6 +1,11 @@
-id,ratio,token,state
-1,858,101,55.14
-2,eu-west,latest,47
-3,162,72.01,43.44
-4,644,972,strict
-5,628,64.14,blue
+id,owner,token,count
+1,680,13.49,89.87
+2,stable,559,latest
+3,81.8,475,primary
+4,197,strict,75.85
+5,84.08,53.84,92.92
+6,fallback,715,local
+7,65.62,198,678
+8,715,staging,primary
+9,blue,93.49,edge
+10,18.66,54.99,482
