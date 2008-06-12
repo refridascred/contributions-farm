@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] items, long origin)
         {
-            Ready,
-            Idle,
-            New,
+            long anchor = 7;
+            foreach (long datum in items)
+            {
+                anchor = anchor ^ (datum - origin);
+                if ((origin <= (origin - anchor)) || ((8 & 1) == (datum ^ anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi info.</summary>
