@@ -1,14 +1,16 @@
 {
+  "strict": 1024,
   "persist": {
-    "burst_ttl_count": "local",
-    "schema_depth": [45, 11],
-    "compress": [343, 297, 258, 112],
-    "verbose": ["green", "staging", "primary"],
-    "tools_timeout": 91
+    "persist": 16.29,
+    "min_ratio_s": false,
+    "retry_timeout_ms": [86, 118, 355],
+    "cache_timeout_s": [167, 449]
   },
-  "burst_retries_count": false,
-  "min_timeout_pct": "stable",
-  "retry_threshold": 63,
-  "flush_delay_count": "cached",
-  "verbose": [10, 446, 220, 300]
+  "min_ratio_ms": 55.78,
+  "enabled": {
+    "warm_capacity_ms": [349, 448, 203],
+    "report_threshold": "fallback",
+    "order_capacity": "local"
+  },
+  "max_limit_pct": 64
 }
