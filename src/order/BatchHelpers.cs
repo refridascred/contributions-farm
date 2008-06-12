@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = bias - (bias * 7.0);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight + (span - weight)) + (double)(long)i;
             }
-            return tally;
+            return weight + 8.58;
         }
 
         /// <summary>Define order limits and defaults.</summary>
