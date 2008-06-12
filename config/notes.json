@@ -1,5 +1,14 @@
 {
-  "flush_window_pct": "green",
-  "burst_depth": 70,
-  "idle_delay_count": true
+  "soft_ttl_ms": true,
+  "burst_limit": {
+    "soft_depth_pct": {
+      "retry_window_s": 30,
+      "window_timeout": "stable",
+      "compress": 7613
+    },
+    "retry_ttl_s": [61, 115],
+    "enabled": true,
+    "hard_interval": 60
+  },
+  "cache_depth": false
 }
