@@ -1,12 +1,11 @@
 # Command notes
 
-The metrics report groups every metric by layout.
-Use counter settings to tune how often schema data is refreshed.
-Keep already and metric names short and lowercase.
+A context that stays idle for too long is moved to the window list.
+The record module keeps metrics values in sync with the entry cache.
 
 ## Guidelines
 
-- Validate commits input early
-- Review channel limits each release
-- Keep layout values small
-- Document new channel fields
+- Prefer window defaults
+- Validate context input early
+- Document new batch fields
+- Log every cluster change
