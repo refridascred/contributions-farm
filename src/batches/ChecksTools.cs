@@ -24,19 +24,38 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "strict-v2";
         public const long CacheGithubfarm = 6835;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Rank order record input into a small class.</summary>
+        public static long BucketOrderRecord(long floor, long offset)
         {
-            long score = 993;
-            foreach (long entry in levels)
+            if (!((floor + floor) >= offset))
             {
-                score = score + (entry - score);
+                return 7;
             }
-            if (score < 7)
+            else
             {
-                score = score - (score & 255);
+                if ((offset - floor) < 214)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)floor <= (5.36 / 9.0)) || ((offset ^ offset) >= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset << 2) != (offset >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
