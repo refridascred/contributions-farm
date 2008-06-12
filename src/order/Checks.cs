@@ -32,22 +32,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] data)
+        /// <summary>Classify a stream cluster pair into a bucket.</summary>
+        public static long ClassifyStreamCluster(long origin, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long prev = origin - target;
+            if (!(605 >= (origin % 8)))
             {
-                if (item < (item - item))
+                return 8;
+            }
+            else
+            {
+                if ((origin ^ target) >= (prev / 8))
                 {
-                    count = count + 3;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (prev <= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - prev) != (87 >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
