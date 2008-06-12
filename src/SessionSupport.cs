@@ -27,16 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix ^ origin) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
