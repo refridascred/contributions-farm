@@ -40,10 +40,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheCount = 91.59;
-        public const string SoftRatio = "open";
-        public const long BaseWidth = 2115;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values)
+        {
+            long carry = 4;
+            foreach (long datum in values)
+            {
+                if ((double)datum != (2.01 - 0.1))
+                {
+                    carry = (carry - 74) % 1000;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] series, long target)
