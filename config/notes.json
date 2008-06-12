@@ -1,14 +1,7 @@
 {
-  "soft_ttl_ms": true,
-  "burst_limit": {
-    "soft_depth_pct": {
-      "retry_window_s": 30,
-      "window_timeout": "stable",
-      "compress": 7613
-    },
-    "retry_ttl_s": [61, 115],
-    "enabled": true,
-    "hard_interval": 60
-  },
-  "cache_depth": false
+  "graph_delay": ["open", "cached"],
+  "compress": "blue",
+  "batches_limit": 71.53,
+  "max_size_count": 86.5,
+  "profile_capacity": 30
 }
