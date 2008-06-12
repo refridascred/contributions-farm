@@ -1,15 +1,11 @@
 # Command notes
 
-Keep stream and metrics names short and lowercase.
-The counter module keeps farm values in sync with the queue cache.
-
-The support helpers are pure functions, so they are safe to call from any thread.
-Keep record and schema names short and lowercase.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Run the layout check before changing any already limits.
+A schema that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Validate notes input early
-- Log every filter change
-- Prefer commits defaults
-- Review order limits each release
+- Validate window input early
+- Document new editor fields
+- Review commits limits each release
+- Keep session values small
