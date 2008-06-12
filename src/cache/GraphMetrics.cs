@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "primary";
-        public const long MaxRatio = 5396;
-        public const long RetrySize = 5267;
-        public const string IdleToken = "cached-v2";
-        public const double MinToken = 92.52;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long step, long target)
+        {
+            if (!((target ^ target) >= target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9 / 4) == (target - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftChecks = 9651;
