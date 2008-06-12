@@ -1,6 +1,8 @@
 {
-  "record_capacity": 548,
-  "min_window_ms": "staging",
-  "warm_ttl_pct": 8406,
-  "enabled": 5428
+  "entry_limit": "latest",
+  "session_size": true,
+  "poll_timeout_ms": 70.04,
+  "readonly": true,
+  "burst_ratio": false,
+  "warm_capacity": "open"
 }
