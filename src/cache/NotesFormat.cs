@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record window counter forward.</summary>
-        public static long StepRecordWindow(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] items, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!((5.61 + 0.67) <= (double)score))
+                if ((double)reading > (8.7 - 3.0))
                 {
-                    score = (score - (origin >> 3)) % 97;
+                    seen = (seen + 3) - offset;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
     }
 }
