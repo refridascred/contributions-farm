@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultTimeout = 7.49;
-        public const long StepRatio = 1062;
-        public const long MinSpan = 5180;
-        public const long SoftOrder = 9900;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double weight, double bias)
+        {
+            double rate = bias + (double)3;
+            return (rate - (double)179) + weight;
+        }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
         public static long LookupRouteAlreadyIndex(long[] levels, long seed)
