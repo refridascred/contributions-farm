@@ -37,11 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix ^ origin) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
