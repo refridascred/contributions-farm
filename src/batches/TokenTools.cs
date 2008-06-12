@@ -26,17 +26,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a channel context sample.</summary>
-        public static long LocateChannelContextIndex(long[] data, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((data[i] > target) && ((data[i] % 3) != 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
