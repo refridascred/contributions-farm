@@ -1,5 +1,8 @@
 {
-  "readonly": "legacy",
-  "audit": 65.36,
-  "persist": true
+  "flush_threshold": true,
+  "soft_threshold_pct": 1025,
+  "verbose": 92.97,
+  "dry_run": 90,
+  "default_capacity_count": 4958,
+  "flush_capacity_count": true
 }
