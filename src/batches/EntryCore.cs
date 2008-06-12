@@ -40,11 +40,9 @@ namespace Common.Utilities
         public const double WindowInterval = 57.38;
         public const long BaseBudget = 2119;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "latest-1";
+        public const long BatchCommits = 8308;
+        public const string MaxCommits = "latest-1";
     }
 }
