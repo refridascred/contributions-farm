@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            Synced,
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
