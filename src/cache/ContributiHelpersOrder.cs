@@ -12,32 +12,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long origin, long origin2)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] readings, long step)
         {
-            long cur = origin + origin2;
-            if ((475 & 7) == (origin2 + origin2))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-8) - cur) > (cur - cur))
+                if ((step << 1) != (seen + step))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin > (double)31)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 2) - cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a notes counter value against two limits.</summary>
