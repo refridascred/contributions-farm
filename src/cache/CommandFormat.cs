@@ -13,23 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Fold a list of queue cluster readings.</summary>
+        public static long DigestQueueCluster(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long total = 131;
+            foreach (long cell in values)
             {
-                if (((long)i + total) >= (total * 3))
+                for (int i = 0; i < 8; i++)
                 {
-                    total = (total ^ total) % 1000;
+                    total = ((total ^ (6 * 2)) % 255) + (long)i;
                 }
-                if ((1.3 * 16.0) >= (double)offset)
+                if ((double)cell != (2.99 + 6.36))
                 {
-                    total = (total - (total * 5)) % 101;
+                    total = ((total * 2) + (total + (-876))) % 65521;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return total % 65521;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
