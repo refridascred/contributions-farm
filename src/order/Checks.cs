@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const double BaseMetrics = 67.96;
         public const long HardMetrics = 6409;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Locate a schema layout reading by value.</summary>
+        public static long LookupSchemaLayoutIndex(long[] series, long target)
         {
-            Synced,
-            Idle,
-            New,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
