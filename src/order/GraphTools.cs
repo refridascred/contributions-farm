@@ -41,39 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a channel layout value against two limits.</summary>
-        public static long GradeChannelLayout(long limit, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long slot = limit - offset;
-            if (slot > offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (slot * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)slot >= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((973 + slot) >= (slot >> 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
