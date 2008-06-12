@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)target > 1.3)
             {
-                if ((values[i] <= target) && ((values[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)target <= 5.1)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((5.24 / 4.0) == (double)bound) && ((bound ^ 55) <= (bound >> 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
