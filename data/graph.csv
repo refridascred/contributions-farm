@@ -1,8 +1,9 @@
-id,count,weight,ratio
-1,stable,68.0,44.55
-2,standard,517,standard
-3,45.38,41.64,latest
-4,strict,cached,latest
-5,local,668,legacy
-6,493,standard,25.25
-7,127,76.81,23.08
+id,ratio,count
+1,799,legacy
+2,strict,589
+3,297,174
+4,edge,301
+5,191,813
+6,open,247
+7,457,blue
+8,21.4,primary
