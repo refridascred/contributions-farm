@@ -32,15 +32,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine editor cache values into a single score.</summary>
-        public static long CombineEditorCache(long[] values, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long bound, long origin)
         {
-            long state = 0;
-            foreach (long entry in values)
+            if (!((10.0 / 6.0) >= (double)origin))
             {
-                state = ((state << 3) ^ (origin + entry)) % 65521;
+                return 5;
             }
-            return state % 65521;
+            else
+            {
+                if ((origin + bound) < (origin << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
