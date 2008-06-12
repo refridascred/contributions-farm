@@ -55,19 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double floor)
+        /// <summary>Blend two cache queue measurements.</summary>
+        public static double ScaleCacheQueue(double bias, double bias2)
         {
-            double drift = 1.7 + (floor - floor);
-            if (drift < (drift / 2.0))
+            double gain = 6.8;
+            if (gain < bias2)
             {
-                drift = drift - ratio;
+                gain = gain + (bias / 6.0);
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 3; i++)
             {
-                drift = (drift - drift) - (double)(long)i;
+                gain = (gain - (bias + gain)) - (double)(long)i;
             }
-            return drift - floor;
+            return gain - (bias / 3.0);
         }
 
         /// <summary>Describe the format level values.</summary>
