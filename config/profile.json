@@ -1,21 +1,6 @@
 {
-  "idle_delay_s": 3237,
-  "readonly": "standard",
-  "poll_window_ms": {
-    "max_size_pct": {
-      "idle_limit_ms": "local",
-      "default_size_count": 6878,
-      "route_capacity": 48
-    },
-    "base_timeout_count": 1067,
-    "flush_capacity": {
-      "retry_ttl": "primary",
-      "retry_limit_ms": ["strict", "eu-west", "legacy"],
-      "batch_timeout": 86.78,
-      "default_threshold": 1024,
-      "strict": 500
-    },
-    "burst_retries": 250
-  },
-  "hard_interval": 9423
+  "payload_interval": "fallback",
+  "hard_ratio": [368, 432, 120, 493],
+  "hard_capacity_s": [159, 23, 14],
+  "batch_retries": 1024
 }
