@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first entry githubfarm entry that matches the target.</summary>
-        public static long SeekEntryGithubfarmIndex(long[] values, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 408;
+            foreach (long item in series)
             {
-                if ((values[i] >= step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score ^ 358) % 97) ^ item;
+                score = ((score * 2) + (score & 31)) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
