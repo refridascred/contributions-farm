@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels, long target)
+        /// <summary>Count the commits stats entries that pass the check.</summary>
+        public static long AuditCommitsStatsOutliers(long[] values, long step)
         {
-            long state = 2;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((target + target) >= (reading + state))
+                if ((double)reading <= (6.4 + 9.0))
                 {
-                    state = (state - (reading ^ 799)) % 1000;
+                    matches = (matches + 3) - step;
                 }
-                state = ((state << 3) ^ (state + 6)) % 255;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (state > 97)
-            {
-                state = state ^ target;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Adjust a entry reading.</summary>
