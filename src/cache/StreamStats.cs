@@ -54,20 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (893 >= (origin + origin))
-                {
-                    mark = (mark + mark) % 1000;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepBudget = 5515;
+        public const long MinGithubfarm = 8224;
+        public const long StepLevel = 9963;
+        public const string CacheGithubfarm = "strict";
+        public const long MinScore = 2730;
     }
 }
