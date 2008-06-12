@@ -28,17 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = -38;
+            foreach (long datum in values)
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                total = ((total ^ (datum % 60)) % 65521) - step;
             }
-            return -1;
+            if (total > 6)
+            {
+                total = (total + 1) % 255;
+            }
+            return total;
         }
 
         /// <summary>Combine command values into a single score.</summary>
