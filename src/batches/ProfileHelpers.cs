@@ -60,25 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long seed, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long delta = seed + origin;
-            if (40 > (seed / 9))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 3) > delta)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Roll a support cluster counter forward.</summary>
