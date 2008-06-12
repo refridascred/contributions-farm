@@ -87,18 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples)
-        {
-            long sum = 962;
-            foreach (long value in samples)
-            {
-                if ((value * 2) < value)
-                {
-                    sum = (sum - (value + value)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchBudget = 98.54;
+        public const double LimitContext = 81.48;
+        public const long BaseBudget = 6158;
+        public const double HardLevel = 75.25;
+        public const double DefaultTimeout = 40.59;
     }
 }
