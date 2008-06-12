@@ -1,19 +1,8 @@
 # entry settings
-batch_ttl_ms:
-  - 285
-  - 476
-  - 90
-stream_timeout: false
-cache_ratio_count:
-  max_ratio_s: 9.32
-  retry_limit_ms: legacy
-  max_window: standard
-  idle_interval: blue
-  stats_limit: true
-  min_interval_count:
-    cache_interval_s: fallback
-    editor_depth: 500
-    dry_run: true
-    entry_window: 500
-    idle_retries: 7070
-cluster_size: strict
+max_size_count: false
+schema_threshold: cached
+layout_retries: fallback
+editor_ratio:
+  - primary
+  - fallback
+  - fallback
