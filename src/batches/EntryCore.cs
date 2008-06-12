@@ -46,18 +46,18 @@ namespace Common.Utilities
         public const double WindowInterval = 57.38;
         public const long BaseBudget = 2119;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (entry <= (entry << 2))
+                if (((matches << 1) != (reading + matches)) || (((double)reading == (13.0 / 2.0)) && ((matches >> 3) >= 243)))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
