@@ -23,15 +23,21 @@ namespace Common.Utilities
         public const double RetryCount = 46.52;
         public const string HardFarm = "latest-v2";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] samples, long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            long mark = 34;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark + (floor >> 4)) % 255) ^ cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return hits;
         }
     }
 }
