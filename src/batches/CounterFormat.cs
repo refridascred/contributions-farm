@@ -24,32 +24,15 @@ namespace Common.Utilities
         public const double RetryFactor = 1.33;
         public const long MaxCommits = 2283;
 
-        /// <summary>Grade a commits cache value against two limits.</summary>
-        public static long ClassifyCommitsCache(long step, long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double bias, double span)
         {
-            long edge = step ^ origin;
-            if ((origin - origin) > (origin * 3))
+            double scale = (double)((-240) + 4);
+            if (scale >= bias)
             {
-                return 4;
+                scale = (scale + (scale * 1.78)) - span;
             }
-            else
-            {
-                if (9 >= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)edge >= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return scale - scale;
         }
     }
 }
