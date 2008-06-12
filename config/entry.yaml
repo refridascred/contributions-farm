@@ -1,18 +1,8 @@
 # entry settings
-compress: 23.95
-contributi_ttl: edge
-base_ratio_pct:
-  max_window_count: strict
-  retry_size_count: 91.89
-  persist:
-    - staging
-    - edge
-    - legacy
-    - primary
-flush_ratio_pct: false
-burst_depth_pct: 250
-max_window:
-  cache_retries_ms: true
-  base_size_s: local
-  readonly: 22
-  default_size: 500
+context_timeout: true
+session_limit:
+  - primary
+  - green
+  - stable
+  - fallback
+batch_retries: 7019
