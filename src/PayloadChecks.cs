@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long score = 2;
-            foreach (long datum in values)
-            {
-                score = (score - (841 - datum)) % 101;
-            }
-            if (score > 27)
-            {
-                score = (score + (score - (-790))) % 255;
-            }
-            return score;
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
