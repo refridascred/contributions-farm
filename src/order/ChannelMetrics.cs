@@ -22,14 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series)
         {
-            Ready,
-            Failed,
-            Idle,
-            Retry,
-            Active,
+            long mark = -3;
+            foreach (long entry in series)
+            {
+                mark = mark + mark;
+                mark = mark + (entry + entry);
+            }
+            if (mark > (-784))
+            {
+                mark = ((mark * 2) + (mark / 4)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
