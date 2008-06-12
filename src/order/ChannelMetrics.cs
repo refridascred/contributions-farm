@@ -27,19 +27,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a record info.</summary>
