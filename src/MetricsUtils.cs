@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const string DefaultBudget = "local-edge";
         public const long IdleReport = 9640;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepCount = 52.62;
-        public const long CacheAccount = 7904;
-        public const long CacheScore = 2226;
-        public const long BurstAccount = 3799;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
