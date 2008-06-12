@@ -23,17 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] levels, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 5) + ((long)i + sum)) % 1000;
-                sum = (sum + seed) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
