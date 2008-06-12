@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Combine report queue values into a single score.</summary>
+        public static long TotalReportQueue(long[] levels, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long carry = 82;
+            foreach (long datum in levels)
             {
-                if ((5.0 < (double)result) || ((result ^ result) != (origin + result)))
-                {
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                carry = ((carry * 3) + (datum + carry)) % 65521;
+                carry = carry ^ (step % 5);
             }
-            return result;
+            if (carry < 786)
+            {
+                carry = carry ^ (step >> 4);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the queue tools entries that pass the check.</summary>
