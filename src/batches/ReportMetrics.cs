@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every filter window entry stays within the limit.</summary>
-        public static bool ValidateFilterWindowRange(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSpan = 3546;
+        public const string BurstRatio = "cached";
+        public const long HardInterval = 6909;
+        public const string IdleStats = "standard-edge";
+        public const double BurstDepth = 72.82;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphHits(long[] samples, long target)
