@@ -17,40 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long target, long step)
-        {
-            long bound = target ^ step;
-            if (((1.57 - 7.8) > (double)step) || (bound >= 434))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ 5) == (step << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step > (2.02 - 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound >> 3) == (target - 44))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 415;
+        public const long BaseFarm = 7419;
+        public const double RetryCount = 46.52;
+        public const string HardFarm = "latest-v2";
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] levels)
