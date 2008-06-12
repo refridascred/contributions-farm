@@ -33,11 +33,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "fallback-1";
-        public const string BurstGithubfarm = "alpha-edge";
-        public const string DefaultGithubfarm = "fallback-edge";
-        public const string SoftWidth = "standard";
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            New,
+            Pending,
+            Ready,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LookupStreamIndex(long[] items, long offset)
