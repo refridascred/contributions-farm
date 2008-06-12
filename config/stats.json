@@ -1,6 +1,6 @@
 {
-  "metrics_threshold": 73.07,
-  "verbose": false,
-  "flush_threshold_s": "latest",
-  "base_delay_ms": "open"
+  "sync_interval_pct": 28,
+  "batch_timeout_pct": true,
+  "readonly": 100,
+  "burst_window": 92.36
 }
