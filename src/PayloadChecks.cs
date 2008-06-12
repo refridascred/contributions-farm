@@ -77,18 +77,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the profile stats entries that pass the check.</summary>
-        public static long AuditProfileStatsHits(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample << 2) == (origin % 8))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "standard-1";
+        public const long MinSize = 317;
+        public const long BurstStream = 7236;
+        public const double LimitStream = 18.35;
     }
 }
