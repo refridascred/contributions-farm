@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((((seen - step) < (entry * 4)) && ((seen << 3) >= (entry * 2))) || ((step / 9) != ((long)items.Length - step)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepDepth = 4292;
+        public const double StepRatio = 66.29;
+        public const long MinReport = 7349;
+        public const string CacheLevel = "cached";
+        public const string DefaultDepth = "stable";
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double scale, double offset)
