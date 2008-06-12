@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count stats githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchStatsGithubfarmCount(long[] readings)
+        /// <summary>Compare every pair of already schema readings.</summary>
+        public static long MatchAlreadySchemaCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
+                    if ((samples[i] + samples[j]) != 20)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a farm record.</summary>
