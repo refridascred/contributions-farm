@@ -39,12 +39,13 @@ namespace Common.Utilities
             return (weight + ratio) + bias;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
             public long Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
