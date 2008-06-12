@@ -32,38 +32,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            if ((floor * 2) != (floor - seed))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (seed + floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= (seed + seed))
+                    if ((readings[i] + readings[j]) != 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor << 3) > (seed - (-3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a format record.</summary>
