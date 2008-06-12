@@ -58,12 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 944;
-        public const long MinSize = 5809;
-        public const double MaxFilter = 5.2;
-        public const long LimitFilter = 7760;
-        public const long SoftFilter = 3377;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] data)
