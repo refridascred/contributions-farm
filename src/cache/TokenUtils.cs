@@ -22,15 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long lane = bound ^ origin;
+            if ((6 + lane) > bound)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (!(bound > (origin * 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ lane) != (origin - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound >> 2) < (bound ^ lane))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
