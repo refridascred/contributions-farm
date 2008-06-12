@@ -20,38 +20,19 @@ namespace Common.Utilities
         public const long IdleSize = 4656;
         public const long LimitTools = 6207;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] data, long bound)
         {
-            long mark = 8;
+            bool flag = true;
             foreach (long entry in data)
             {
-                if (!((double)mark > (double)68))
+                if (entry != bound)
                 {
-                    mark = mark - (mark + 3);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ entry;
-                }
-                if (!((double)entry < (4.0 + 7.66)))
-                {
-                    mark = mark + (mark / 8);
-                }
-                if ((mark & 63) < entry)
-                {
-                    mark = ((mark * 5) + (entry ^ origin)) % 255;
-                }
-                if ((2.17 - 4.0) < (double)mark)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (mark < (-4))
-            {
-                mark = (mark ^ (origin + origin)) % 97;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
