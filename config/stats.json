@@ -1,5 +1,6 @@
 {
-  "hard_capacity_pct": "local",
-  "account_retries": true,
-  "verbose": ["latest", "legacy", "stable"]
+  "batch_interval": 100,
+  "poll_size_s": 500,
+  "hard_depth_pct": [317, 292, 393],
+  "audit": 60
 }
