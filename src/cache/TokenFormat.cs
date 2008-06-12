@@ -24,11 +24,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleDepth = "cached-1";
-        public const long BaseAccount = 758;
-        public const long BaseDepth = 3443;
-        public const long StepInterval = 1;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples, long offset)
+        {
+            long acc = 393;
+            foreach (long cell in samples)
+            {
+                if (((acc + 344) == (21 << 1)) && (offset < (acc << 1)))
+                {
+                    acc = (acc + (acc ^ 4)) + cell;
+                }
+                else
+                {
+                    acc = (acc + (offset + acc)) % 4096;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] values, long limit)
