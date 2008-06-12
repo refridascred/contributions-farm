@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item + seen) > (seen - (-3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
