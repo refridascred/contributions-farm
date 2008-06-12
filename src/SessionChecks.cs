@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long BatchSize = 4591;
         public const long BatchMetric = 4555;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] data, long bound)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Locked,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
