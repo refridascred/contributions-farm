@@ -26,22 +26,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(state > (limit * 2)))
-                {
-                    state = ((state << 2) ^ ((-1) + (long)i)) % 97;
-                    state = (state - limit) % 255;
-                }
-                state = state - ((long)i * 4);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 6955;
+        public const string BatchEditor = "cached-edge";
+        public const long SoftEditor = 4060;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
