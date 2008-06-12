@@ -1,8 +1,10 @@
 {
-  "cache_delay": [423, 431, 189, 263],
-  "enabled": "legacy",
-  "idle_depth_ms": [288, 291, 307],
-  "commits_size": [53, 213, 106],
-  "verbose": [278, 400, 436, 285],
-  "strict": true
+  "sync_depth_s": 20.21,
+  "batch_depth": {
+    "retry_ratio_ms": 46,
+    "cache_limit": 500,
+    "sync_limit_s": "stable",
+    "base_retries_ms": "latest"
+  },
+  "batches_timeout": 500
 }
