@@ -80,17 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 4122;
+        public const double StepContributi = 91.03;
+        public const double MinCount = 6.44;
+        public const double BatchSpan = 51.39;
+        public const long HardTimeout = 844;
     }
 }
