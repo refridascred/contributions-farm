@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] samples)
         {
-            Failed,
-            Stale,
-            Locked,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits >= (hits % 97)) || ((224 + hits) == ((long)samples.Length / 5)))
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
