@@ -15,12 +15,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long floor)
         {
-            Queued,
-            Locked,
-            New,
+            if (((double)floor == (9.0 / 6.0)) && ((step + step) != (1 - 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step <= (2 - step)) || (floor > (step + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((90 ^ floor) <= (floor * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up stats samples.</summary>
