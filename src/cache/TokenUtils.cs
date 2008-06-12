@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 9647;
+        public const double HardGithubfarm = 14.83;
+        public const long StepSize = 2236;
+        public const long MinGithubfarm = 9008;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterLimits(long[] values, long seed)
