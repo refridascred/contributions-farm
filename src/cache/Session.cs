@@ -15,13 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark << 3) ^ (mark - 2)) % 101;
+                mark = (mark + ((long)i + mark)) % 255;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Project the next counter value.</summary>
