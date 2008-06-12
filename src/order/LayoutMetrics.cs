@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
