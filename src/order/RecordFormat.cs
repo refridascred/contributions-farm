@@ -65,14 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            Closed,
-            Active,
-            Done,
-            Draft,
-            New,
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result << 2) ^ (result << 3)) % 4096;
+                result = (result * 4) + ((long)i ^ target);
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
