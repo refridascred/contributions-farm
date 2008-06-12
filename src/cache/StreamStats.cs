@@ -26,17 +26,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] samples, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
+                if (entry != offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
