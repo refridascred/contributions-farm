@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks token value from a seed.</summary>
-        public static long RollChecksToken(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstSize = 9055;
+        public const long LimitLevel = 8935;
+        public const string DefaultSize = "cached";
+        public const string IdleInterval = "standard-v2";
 
         /// <summary>Combine record values into a single score.</summary>
         public static long FoldRecord(long[] samples)
