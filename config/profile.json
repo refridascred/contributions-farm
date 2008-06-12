@@ -1,6 +1,14 @@
 {
-  "retry_limit": 98,
-  "default_size_pct": 85.29,
-  "persist": 100,
-  "record_interval": 10.02
+  "flush_interval": [57, 46],
+  "cache_window": "cached",
+  "cache_retries_pct": 17.67,
+  "sync_ratio_pct": {
+    "min_delay_s": 353,
+    "default_retries": "latest",
+    "hard_window_count": false,
+    "verbose": "stable",
+    "route_limit": [463, 330, 146, 388],
+    "poll_timeout": "fallback"
+  },
+  "max_threshold": 64
 }
