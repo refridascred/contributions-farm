@@ -15,21 +15,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count report support pairs that satisfy a relation.</summary>
-        public static long PairReportSupportCount(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long limit, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = limit - seed;
+            if (((7.1 * 5.0) == (double)limit) && ((5.22 + 16.0) >= (double)limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((0.31 + 3.6) != (double)bound)
                 {
-                    if ((samples[i] + samples[j]) > 10)
+                    return 1;
+                }
+                else
+                {
+                    if (((9.0 - 2.06) < (double)bound) || (limit >= (bound + seed)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
