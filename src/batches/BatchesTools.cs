@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long total = 9;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (((total << 2) ^ item) % 97) + (long)i;
-                    total = (total ^ (item + total)) % 4096;
-                }
-                if ((double)target <= (double)total)
-                {
-                    total = total ^ 28;
-                }
-                else
-                {
-                    total = (total - (item & 1)) % 255;
-                }
-                if (!((item - (-1)) > (8 % 24)))
-                {
-                    total = total - item;
-                }
-            }
-            return total % 1000;
+            Paused,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
