@@ -1,5 +1,10 @@
 {
-  "readonly": [171, 345, 382],
-  "strict": 1537,
-  "min_capacity": 6502
+  "batch_interval": {
+    "report_threshold": ["blue", "legacy", "staging", "cached"],
+    "flush_timeout": 8.89,
+    "session_threshold": 45,
+    "sync_capacity_s": 68
+  },
+  "poll_depth": "blue",
+  "retry_retries_s": false
 }
