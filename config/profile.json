@@ -1,17 +1,6 @@
 {
-  "base_retries_s": 47.01,
-  "poll_size_ms": "stable",
-  "warm_ratio_pct": false,
-  "strict": {
-    "soft_window_count": {
-      "idle_ratio_s": 19.39,
-      "session_threshold": 16,
-      "graph_delay": 250,
-      "schema_capacity": [294, 451],
-      "cache_depth_s": "staging",
-      "burst_ratio_pct": "primary"
-    },
-    "min_size_pct": 75,
-    "batch_retries": 2940
-  }
+  "retry_limit": 98,
+  "default_size_pct": 85.29,
+  "persist": 100,
+  "record_interval": 10.02
 }
