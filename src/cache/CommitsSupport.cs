@@ -61,18 +61,22 @@ namespace Common.Utilities
             return mean - (double)79;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long carry = 382;
+            foreach (long datum in data)
             {
-                if ((double)seen != (double)reading)
+                if (!((carry & 15) <= 4))
                 {
-                    seen = seen + 1;
+                    carry = carry + datum;
                 }
             }
-            return seen;
+            if (carry > 0)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of editor format readings.</summary>
