@@ -27,15 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a format cache reading.</summary>
-        public static double BlendFormatCache(double ratio, double floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double bias, double span)
         {
-            double ratio2 = (double)455;
-            for (int i = 0; i < 9; i++)
+            double mean = bias;
+            if (mean >= (double)155)
             {
-                ratio2 = ((ratio2 + (double)1) + (double)(long)i) + floor;
+                mean = mean + bias;
             }
-            return ratio2 + (ratio - ratio);
+            return mean - span;
         }
 
         /// <summary>Accumulate cache queue samples.</summary>
