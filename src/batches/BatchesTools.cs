@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] data, long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long anchor = 9;
-            foreach (long cell in data)
-            {
-                if (offset > (cell & 63))
-                {
-                    anchor = ((anchor * 2) + anchor) % 1000;
-                }
-            }
-            return anchor;
+            Queued,
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
