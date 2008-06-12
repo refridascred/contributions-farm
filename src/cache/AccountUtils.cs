@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank account stats input into a small class.</summary>
-        public static long BucketAccountStats(long seed, long seed2)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long cur = seed + seed2;
-            if ((cur >> 4) != (cur >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((513 + seed) != (seed2 & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
