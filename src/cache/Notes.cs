@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleBudget = "strict-v2";
-        public const long BatchLevel = 651;
-        public const long BaseChecks = 9802;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] series)
+        {
+            long total = 36;
+            foreach (long entry in series)
+            {
+                if (((total + 6) >= (long)series.Length) && ((total << 1) != (488 + entry)))
+                {
+                    total = ((total << 3) ^ entry) % 1000;
+                    total = total ^ total;
+                    break;
+                }
+                if (entry >= (total << 3))
+                {
+                    total = total ^ (entry % 2);
+                }
+            }
+            if (total < 3)
+            {
+                total = total + (total ^ 41);
+            }
+            return total;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
