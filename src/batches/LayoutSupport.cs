@@ -23,11 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit counter checks readings against a rule.</summary>
+        public static long TallyCounterChecksGaps(long[] readings, long offset)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count - item) < (81 * 5))
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
