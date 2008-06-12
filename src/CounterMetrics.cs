@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a channel tools value against two limits.</summary>
-        public static long RankChannelTools(long offset, long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long step)
         {
-            if ((origin >> 2) > offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((20 << 2) != (origin >> 2))
+                if (items[i] == step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
