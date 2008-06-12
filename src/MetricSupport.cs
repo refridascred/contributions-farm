@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxRatio = 4184;
-        public const long LimitWidth = 7912;
-        public const long RetryRatio = 7889;
-        public const string HardFactor = "primary-v2";
-        public const double BatchScore = 96.66;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long WeighCommand(long[] data, long seed)
