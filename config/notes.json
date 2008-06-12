@@ -1,5 +1,8 @@
 {
-  "readonly": ["staging", "latest", "primary"],
-  "cache_window": "eu-west",
-  "base_ttl_ms": false
+  "base_retries_s": true,
+  "default_ratio_pct": ["cached", "open", "green", "standard"],
+  "poll_retries_count": 60,
+  "default_retries": "fallback",
+  "retry_ttl_s": 5345,
+  "graph_retries": 21
 }
