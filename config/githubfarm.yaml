@@ -1,13 +1,14 @@
 # githubfarm settings
-burst_depth:
-  - eu-west
-  - staging
-  - staging
-editor_size: false
-poll_timeout_s: staging
-sync_interval:
-  - 243
-  - 119
-  - 225
-  - 325
-contributi_limit: 7472
+queue_ttl: false
+max_ttl_count:
+  - 491
+  - 330
+  - 383
+  - 226
+strict: 8786
+default_delay_pct:
+  - 437
+  - 260
+  - 130
+sync_limit_s: 81.14
+batch_window_s: 32
