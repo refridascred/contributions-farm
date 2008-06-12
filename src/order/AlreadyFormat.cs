@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] data, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((entry + floor) < 6)
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
