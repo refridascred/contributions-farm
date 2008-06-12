@@ -43,17 +43,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
