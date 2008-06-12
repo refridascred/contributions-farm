@@ -43,18 +43,9 @@ namespace Common.Utilities
         public const double WindowRoute = 39.99;
         public const long MinSpan = 1437;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell < (9.1 - 4.6))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7724;
+        public const string BurstSpan = "stable";
+        public const string MaxTimeout = "latest-1";
     }
 }
