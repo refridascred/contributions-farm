@@ -1,9 +1,18 @@
 # entry settings
-strict: staging
-audit:
-  - 327
-  - 282
-  - 296
-default_timeout_s: blue
-metrics_ratio: fallback
-contributi_ratio: open
+compress: 23.95
+contributi_ttl: edge
+base_ratio_pct:
+  max_window_count: strict
+  retry_size_count: 91.89
+  persist:
+    - staging
+    - edge
+    - legacy
+    - primary
+flush_ratio_pct: false
+burst_depth_pct: 250
+max_window:
+  cache_retries_ms: true
+  base_size_s: local
+  readonly: 22
+  default_size: 500
