@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Accumulate command profile samples.</summary>
+        public static long WeighCommandProfile(long[] data, long origin)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long mix = 68;
+            foreach (long value in data)
+            {
+                mix = ((mix + origin) % 1000) - value;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
