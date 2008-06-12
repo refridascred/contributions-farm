@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long bound, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long step)
         {
-            if ((double)target > 1.3)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= 5.1)
+                if (items[i] < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((5.24 / 4.0) == (double)bound) && ((bound ^ 55) <= (bound >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
