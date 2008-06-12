@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long origin, long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            if ((origin + offset) < (origin & 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((522 * 3) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
