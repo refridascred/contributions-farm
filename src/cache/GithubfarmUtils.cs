@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] series, long limit)
+        /// <summary>Measure how many record queue samples are out of range.</summary>
+        public static long MeasureRecordQueueGaps(long[] levels, long floor)
         {
-            long score = 7;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                score = (((score * 5) + limit) % 4096) ^ value;
+                if (!!((value - floor) >= (floor + (-84))))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (score > 1)
-            {
-                score = ((score * 3) + limit) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a counter info.</summary>
