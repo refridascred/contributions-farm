@@ -48,13 +48,14 @@ namespace Common.Utilities
             return (weight + ratio) + bias;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            Paused,
+            Draft,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
