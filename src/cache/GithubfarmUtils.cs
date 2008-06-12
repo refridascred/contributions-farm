@@ -23,18 +23,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] items)
+        /// <summary>Iterate the commits account series from a seed.</summary>
+        public static long SeriesCommitsAccount(long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((tally - 748) > 945) && ((double)cell == (1.0 * 15.0))))
-                {
-                    tally = tally + 3;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many support already samples are out of range.</summary>
