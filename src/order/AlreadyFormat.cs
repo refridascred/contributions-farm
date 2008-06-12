@@ -24,13 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] series, long origin)
         {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
