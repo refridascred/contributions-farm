@@ -69,17 +69,22 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] data, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] == floor) && ((data[i] % 2) != 0))
+                if ((11.0 * 6.95) == (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
