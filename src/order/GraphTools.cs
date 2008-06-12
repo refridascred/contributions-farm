@@ -25,16 +25,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = acc ^ (acc ^ (long)i);
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
