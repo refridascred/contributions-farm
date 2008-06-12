@@ -34,14 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long step, long limit)
         {
-            Active,
-            Locked,
-            New,
-            Draft,
-            Stale,
+            if ((step >> 4) >= (limit << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step * 3) < (step + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
