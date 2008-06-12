@@ -1,4 +1,7 @@
 # githubfarm settings
-min_window_pct: 50.68
-retry_window_s: 7803
-max_depth: false
+warm_delay:
+  - green
+  - open
+  - strict
+soft_threshold_count: 1570
+commits_depth: 1024
