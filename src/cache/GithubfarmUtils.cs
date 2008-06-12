@@ -61,19 +61,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] readings, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (datum >= floor)
+                if (((origin % 60) <= (76 + cell)) && !(origin >= (cell ^ seen)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
