@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = -3;
-            foreach (long entry in series)
-            {
-                mark = mark + mark;
-                mark = mark + (entry + entry);
-            }
-            if (mark > (-784))
-            {
-                mark = ((mark * 2) + (mark / 4)) % 101;
-            }
-            return mark % 4096;
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
