@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!!((954 + 5) >= floor))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 213;
+        public const double MinBuffer = 10.17;
+        public const double StepFactor = 19.88;
+        public const double SoftScore = 79.63;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] readings)
