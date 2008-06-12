@@ -20,11 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 213;
-        public const double MinBuffer = 10.17;
-        public const double StepFactor = 19.88;
-        public const double SoftScore = 79.63;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TallyNotes(long[] levels)
