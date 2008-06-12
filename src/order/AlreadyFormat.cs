@@ -13,26 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of stats cache readings.</summary>
-        public static long WeighStatsCache(long[] levels)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long sum = -624;
-            foreach (long item in levels)
-            {
-                if (((item >> 2) != (246 - item)) && ((-9) < (sum / 6)))
-                {
-                    sum = sum ^ (item ^ sum);
-                }
-                else
-                {
-                    sum = (sum - 32) % 65521;
-                }
-            }
-            if (sum > 162)
-            {
-                sum = ((sum * 2) + (950 & 31)) % 65521;
-            }
-            return sum % 4096;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the contributi account series from a seed.</summary>
