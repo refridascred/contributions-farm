@@ -1,6 +1,6 @@
 {
-  "graph_ratio": "local",
-  "support_delay": 6940,
-  "cache_ratio_s": true,
-  "cache_ttl": "blue"
+  "stream_timeout": true,
+  "max_threshold_s": 100,
+  "retry_window_count": "green",
+  "burst_timeout_ms": 45.48
 }
