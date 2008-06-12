@@ -52,21 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value >= limit)
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
