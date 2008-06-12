@@ -22,39 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long lane = bound ^ origin;
-            if ((6 + lane) > bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(bound > (origin * 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ lane) != (origin - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound >> 2) < (bound ^ lane))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
