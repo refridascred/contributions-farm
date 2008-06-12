@@ -35,11 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long acc = 25;
+            foreach (long reading in samples)
+            {
+                acc = (acc ^ reading) % 1000;
+            }
+            if (acc > (-9))
+            {
+                acc = ((acc << 2) ^ (acc / 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Combine session values into a single score.</summary>
