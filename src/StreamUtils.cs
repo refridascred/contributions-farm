@@ -29,30 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] series, long origin)
+        /// <summary>Roll a schema token counter forward.</summary>
+        public static long IterateSchemaToken(long offset)
         {
-            long anchor = 9;
-            foreach (long sample in series)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(anchor <= (3 - anchor)))
-                {
-                    anchor = (anchor - 4) - sample;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ 426;
-                }
-                if (anchor < (origin - 4))
+                if ((offset % 8) >= (offset - acc))
                 {
                     break;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (anchor < 6)
-            {
-                anchor = anchor + (origin - anchor);
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
