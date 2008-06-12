@@ -26,19 +26,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two stream farm measurements.</summary>
-        public static double ProjectStreamFarm(double bias, double floor)
+        /// <summary>Compare every pair of entry command readings.</summary>
+        public static long PairEntryCommandCount(long[] readings)
         {
-            double mean = bias;
-            if (mean <= (5.0 * 9.2))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + (floor / 9.0);
+            return hits;
         }
     }
 }
