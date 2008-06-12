@@ -15,17 +15,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 41;
+            foreach (long cell in values)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                if (((carry + carry) > cell) && (carry >= (long)values.Length))
                 {
-                    return (long)i;
+                    carry = (carry ^ carry) % 1000;
+                }
+                if (3.5 <= (double)carry)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < (-684))
+            {
+                carry = carry + (411 + 531);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
