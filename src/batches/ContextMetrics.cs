@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxSpan = 2608;
-        public const long BaseBudget = 8477;
-        public const long BurstWidth = 1532;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long SeriesToken(long bound)
