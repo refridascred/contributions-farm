@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long score = 403;
-            foreach (long sample in data)
-            {
-                score = ((score << 2) ^ (sample ^ score)) % 255;
-            }
-            if (score > 14)
-            {
-                score = score - (score + (-5));
-            }
-            return score;
+            Failed,
+            New,
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
