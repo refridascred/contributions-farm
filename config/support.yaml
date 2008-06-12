@@ -1,4 +1,16 @@
 # support settings
-burst_capacity_ms: 55.28
-burst_ttl_pct: true
-min_retries: 4845
+retry_interval_count: open
+base_timeout: edge
+audit:
+  - 454
+  - 230
+  - 130
+  - 231
+schema_window:
+  default_ttl_count:
+    window_limit: true
+    tools_delay: 35.45
+    max_timeout: 9605
+  retry_window_s: false
+  base_limit_count: 50.46
+min_size: false
