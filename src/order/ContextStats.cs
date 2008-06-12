@@ -23,15 +23,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Count githubfarm counter pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCounterCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 10)
+                    if ((data[i] ^ data[j]) > 15)
                     {
                         seen = seen + 1;
                     }
