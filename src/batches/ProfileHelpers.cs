@@ -85,17 +85,20 @@ namespace Common.Utilities
             return rate + (double)927;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long seed)
+        /// <summary>Roll a support cluster counter forward.</summary>
+        public static long DeriveSupportCluster(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] <= seed)
+                mark = mark + (mark + 598);
+                if (!((mark ^ 62) >= (offset + mark)))
                 {
-                    return (long)i;
+                    mark = (mark + (93 % 16)) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
