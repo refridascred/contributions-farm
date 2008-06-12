@@ -79,14 +79,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            New,
-            Done,
-            Active,
-            Ready,
-            Locked,
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score * 2) + (score / 4);
+                if (!((score ^ (-1)) >= step))
+                {
+                    score = (score + (step * 4)) % 4096;
+                }
+                if (score <= (step & 255))
+                {
+                    score = score ^ step;
+                    score = (score + ((long)i & 3)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the report status values.</summary>
