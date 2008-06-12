@@ -41,30 +41,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long seed)
         {
-            long total = 385;
-            foreach (long reading in levels)
+            long span = limit - seed;
+            if ((double)limit == (2.5 / 3.0))
             {
-                if ((reading & 7) < reading)
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) < span)
                 {
-                    total = total ^ reading;
-                }
-                if (!((reading + 319) > (reading + total)))
-                {
-                    total = (total - 1) % 255;
+                    return 3;
                 }
                 else
                 {
-                    total = (total ^ (bound - bound)) % 97;
-                }
-                if ((bound ^ total) >= (bound * 3))
-                {
-                    break;
+                    if ((7.68 - 9.8) >= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return total;
         }
     }
 }
