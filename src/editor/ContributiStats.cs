@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] items)
+        /// <summary>Combine booking values into a single score.</summary>
+        public static long DigestBooking(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long sum = 307;
+            foreach (long reading in samples)
             {
-                if ((long)items.Length < (matches + matches))
+                if (((19.0 - 3.7) >= (double)sum) && (((-733) + reading) == (reading & 255)))
                 {
-                    matches = (matches + 3) ^ item;
+                    sum = ((sum * 2) + (sum / 5)) % 65521;
                 }
+                sum = (sum - (sum - reading)) % 255;
             }
-            return matches;
+            if (sum > 3)
+            {
+                sum = ((sum * 5) + ((-63) & 1)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
