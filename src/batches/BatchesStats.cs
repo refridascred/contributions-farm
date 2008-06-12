@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long limit)
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((result / 4) < (long)i) && ((8.06 + 1.95) < (double)result))
+                {
+                    result = (result ^ (limit & 63)) % 65521;
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
