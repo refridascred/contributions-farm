@@ -13,13 +13,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i + total) >= (total * 3))
+                {
+                    total = (total ^ total) % 1000;
+                }
+                if ((1.3 * 16.0) >= (double)offset)
+                {
+                    total = (total - (total * 5)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
