@@ -19,25 +19,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long origin, long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long bound = origin - step;
-            if ((origin ^ step) == (bound % 60))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step == (6.55 * 6.7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
