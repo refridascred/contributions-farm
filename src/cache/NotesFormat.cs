@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit editor record readings against a rule.</summary>
-        public static long CountEditorRecordHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (8.73 > (double)count)
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 6630;
+        public const long BatchMetrics = 3699;
+        public const long MaxMetrics = 9077;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
