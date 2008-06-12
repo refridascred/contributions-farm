@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long HardBudget = 8072;
         public const long BurstLevel = 5588;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
