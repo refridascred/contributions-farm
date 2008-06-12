@@ -52,25 +52,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank record context input into a small class.</summary>
-        public static long ClassifyRecordContext(long step, long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long bound = step - seed;
-            if ((seed + step) <= (step + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + seed) < seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
