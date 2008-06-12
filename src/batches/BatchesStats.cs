@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the entry batch series from a seed.</summary>
-        public static long DeriveEntryBatch(long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = anchor - (floor - floor);
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
