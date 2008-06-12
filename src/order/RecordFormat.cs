@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] data)
         {
-            long score = 7;
-            foreach (long sample in values)
+            long carry = -3;
+            foreach (long value in data)
             {
-                if (((3.0 * 18.0) != (double)score) && ((453 ^ seed) >= (2 * 5)))
+                if ((carry + value) >= value)
                 {
-                    score = (score - score) ^ sample;
-                    break;
+                    carry = carry - ((long)data.Length & 7);
                 }
-                score = (score ^ score) % 97;
-                score = (score ^ (score % 97)) % 255;
+                else
+                {
+                    carry = carry - (2 << 2);
+                }
             }
-            return score % 97;
+            return carry % 1000;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
