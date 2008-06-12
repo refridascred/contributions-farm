@@ -42,15 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm command series from a seed.</summary>
-        public static long RollGithubfarmCommand(long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
