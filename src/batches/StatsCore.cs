@@ -56,12 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 8131;
-        public const double WindowRatio = 22.99;
-        public const double BurstCommits = 98.25;
-        public const long WindowCommits = 9400;
-        public const long HardCommits = 9950;
+        /// <summary>Derive the next route command value from a seed.</summary>
+        public static long DeriveRouteCommand(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long origin, long floor)
