@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = acc ^ (long)i;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
