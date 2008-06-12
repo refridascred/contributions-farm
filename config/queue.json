@@ -1,6 +1,12 @@
 {
-  "dry_run": [228, 103, 436],
-  "poll_delay_ms": false,
-  "base_ttl_s": [417, 367, 158, 437],
-  "warm_capacity": 1024
+  "base_limit": {
+    "base_limit": false,
+    "persist": false,
+    "default_ratio_s": "latest",
+    "readonly": 51.95,
+    "burst_ratio_ms": "standard"
+  },
+  "enabled": 75,
+  "cluster_limit": [328, 29],
+  "persist": "eu-west"
 }
