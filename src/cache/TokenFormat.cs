@@ -35,10 +35,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxDepth = 74.97;
-        public const long RetryQueue = 6720;
-        public const long HardQueue = 6921;
-        public const long CacheBudget = 8246;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double offset)
+        {
+            double drift = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)(long)i) + offset;
+            }
+            return drift + drift;
+        }
     }
 }
