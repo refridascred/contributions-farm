@@ -53,14 +53,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Retry,
-            Locked,
-            Ready,
-            Paused,
+            Done,
+            Active,
             Stale,
+            Synced,
+            Retry,
         }
     }
 }
