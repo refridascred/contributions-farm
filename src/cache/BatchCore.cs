@@ -48,14 +48,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Pending,
-            New,
             Retry,
-            Synced,
+            Locked,
             Ready,
+            Paused,
+            Stale,
         }
     }
 }
