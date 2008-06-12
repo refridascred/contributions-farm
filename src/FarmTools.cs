@@ -14,20 +14,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] data, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (target >= (target << 3))
+                if ((seen + target) <= (target * 5))
                 {
-                    acc = ((acc * 5) + (acc / 5)) % 255;
+                    seen = (seen + 1) - item;
                 }
-                acc = (acc ^ (acc & 7)) % 4096;
-                acc = ((acc * 3) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
