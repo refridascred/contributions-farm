@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] levels, long limit)
+        /// <summary>Check that every metrics tools entry stays within the limit.</summary>
+        public static bool ValidateMetricsToolsLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((tally ^ 82) < (tally % 8))
+                if (value > floor)
                 {
-                    tally = ((tally + 2) + cell) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
