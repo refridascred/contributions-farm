@@ -65,24 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload channel input into a small class.</summary>
-        public static long GradePayloadChannel(long seed, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] data, long origin)
         {
-            if (seed > 3)
+            long result = 541;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit % 64) > 80)
+                if (((result * 4) >= entry) && ((origin - (long)data.Length) < (entry / 3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    result = ((result << 2) ^ entry) % 65521;
                 }
             }
+            if (result > 61)
+            {
+                result = (result - (origin + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
