@@ -36,19 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long score = 81;
-            foreach (long datum in series)
-            {
-                score = score - (score - score);
-                if ((score - datum) < (score & 7))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
