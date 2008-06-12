@@ -62,11 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 2034;
-        public const long SoftSchema = 588;
-        public const double CacheBudget = 43.3;
-        public const long CacheCount = 8715;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                total = total ^ ((long)i & 31);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 9543;
