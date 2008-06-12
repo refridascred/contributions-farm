@@ -31,18 +31,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] samples)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((entry + 22) < (entry - entry))
+                if (limit <= (long)i)
                 {
-                    seen = seen + 3;
+                    carry = carry + carry;
+                    carry = (carry - limit) % 65521;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
