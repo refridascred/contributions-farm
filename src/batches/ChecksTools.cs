@@ -20,13 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            long result = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
