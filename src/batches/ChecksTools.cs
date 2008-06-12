@@ -19,20 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 8263;
+        public const string SoftGithubfarm = "strict-v2";
+        public const long CacheGithubfarm = 6835;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] levels)
