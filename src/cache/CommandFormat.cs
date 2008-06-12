@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Fold a list of already session readings.</summary>
+        public static long ScoreAlreadySession(long[] items, long step)
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long sum = 199;
+            foreach (long item in items)
+            {
+                sum = ((sum * 3) + (item * 3)) + step;
+            }
+            if (sum > 41)
+            {
+                sum = ((sum << 3) ^ sum) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of queue cluster readings.</summary>
