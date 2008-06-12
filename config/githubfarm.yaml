@@ -1,10 +1,19 @@
 # githubfarm settings
-readonly: latest
-max_threshold: fallback
-counter_capacity: 44
-editor_capacity: true
-max_timeout: 52.57
-already_timeout:
-  base_capacity_s: 5.44
-  base_delay_count: 22.63
-  hard_window_ms: 5.37
+graph_retries: 43
+checks_ratio: eu-west
+burst_window_pct:
+  sync_capacity_ms: local
+  poll_delay_pct:
+    - staging
+    - staging
+  default_ratio_count:
+    - 198
+    - 357
+    - 244
+    - 26
+batch_threshold_count:
+  - staging
+  - legacy
+  - staging
+route_retries: 2.57
+cache_ttl: 65.79
