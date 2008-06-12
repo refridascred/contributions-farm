@@ -1,7 +1,8 @@
 # support settings
-retry_ttl: 99
-max_interval_pct: blue
-stream_interval: strict
-base_depth_count: legacy
-base_timeout_s: local
-default_ttl: true
+dry_run:
+  - fallback
+  - eu-west
+  - edge
+  - latest
+max_size_ms: true
+soft_delay_pct: 68.78
