@@ -52,19 +52,17 @@ namespace Common.Utilities
             return drift + (span + 2.0);
         }
 
-        /// <summary>Validate order stream readings against a bound.</summary>
-        public static bool CheckOrderStreamBounds(long[] levels, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= limit)
+                if (levels[i] <= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the metric mode values.</summary>
