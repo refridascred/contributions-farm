@@ -19,33 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long floor, long step)
-        {
-            long diff = floor - step;
-            if ((step & 63) == (floor + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > (337 & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)97 <= (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSize = 3694;
+        public const double WindowCounter = 75.4;
+        public const long MinBudget = 7136;
+        public const long MinCounter = 2283;
+        public const long WindowSpan = 9883;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] data, long bound)
