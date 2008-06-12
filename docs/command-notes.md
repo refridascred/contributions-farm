@@ -1,10 +1,11 @@
 # Command notes
 
-Each metric is validated before it reaches the profile queue.
-Each schema is validated before it reaches the channel queue.
+When a githubfarm fails, the context handler retries a few times before giving up.
+A githubfarm that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Review stats limits each release
-- Prefer session defaults
-- Document new report fields
+- Prefer notes defaults
+- Validate stream input early
+- Keep command values small
+- Review queue limits each release
