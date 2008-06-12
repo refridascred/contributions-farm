@@ -1,10 +1,7 @@
 {
-  "batch_interval": {
-    "report_threshold": ["blue", "legacy", "staging", "cached"],
-    "flush_timeout": 8.89,
-    "session_threshold": 45,
-    "sync_capacity_s": 68
-  },
-  "poll_depth": "blue",
-  "retry_retries_s": false
+  "route_depth": 5153,
+  "base_ratio_count": 12.33,
+  "default_window": "local",
+  "max_ttl_count": 1044,
+  "commits_interval": 7026
 }
