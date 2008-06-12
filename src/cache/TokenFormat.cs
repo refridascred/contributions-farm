@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the cache contributi series from a seed.</summary>
-        public static long DeriveCacheContributi(long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Paused,
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
