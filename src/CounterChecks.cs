@@ -13,18 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + seen) <= (sample << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
