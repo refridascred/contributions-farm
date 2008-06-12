@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] values, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
+                if (cell < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Classify a checks window pair into a bucket.</summary>
