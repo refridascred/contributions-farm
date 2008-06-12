@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a commits cluster figure with a bias.</summary>
-        public static double AdjustCommitsCluster(double gain, double offset)
-        {
-            double scale = (double)(5 * 3);
-            return (scale + offset) + gain;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 8376;
+        public const long MinInterval = 8047;
+        public const long StepCount = 3288;
+        public const long IdleSession = 4125;
+        public const long DefaultScore = 7862;
 
         /// <summary>Roll a record window counter forward.</summary>
         public static long StepRecordWindow(long origin)
