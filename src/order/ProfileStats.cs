@@ -39,12 +39,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long MeasureFarmProfileGaps(long[] readings)
         {
-            Done,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches ^ matches) > value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
