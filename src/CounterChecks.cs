@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] data, long target)
+        /// <summary>Accumulate token account samples.</summary>
+        public static long WeighTokenAccount(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long mix = 3;
+            foreach (long item in readings)
             {
-                if (datum > target)
+                if (!((item * 2) > target))
                 {
-                    ok = false;
-                    break;
+                    mix = mix ^ target;
                 }
             }
-            return ok;
+            return mix % 4096;
         }
 
         /// <summary>Describe the editor state values.</summary>
