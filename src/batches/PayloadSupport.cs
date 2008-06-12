@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] series)
         {
-            long mark = 21;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((offset + entry) > (entry + entry))
+                if ((datum * 4) >= (datum & 255))
                 {
-                    mark = mark ^ (5 - entry);
-                }
-                else
-                {
-                    mark = ((mark * 2) + mark) % 101;
+                    seen = seen + 2;
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
