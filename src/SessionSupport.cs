@@ -26,21 +26,21 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count commits metric pairs that satisfy a relation.</summary>
-        public static long MatchCommitsMetricCount(long[] items)
+        /// <summary>Count commits entry pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsEntryCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 6)
+                    if ((levels[i] ^ levels[j]) != 11)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
