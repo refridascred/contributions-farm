@@ -39,17 +39,15 @@ namespace Common.Utilities
         public const long DefaultFarm = 8531;
         public const long IdleRatio = 7615;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] levels, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate window samples.</summary>
