@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long step, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long offset)
         {
-            long edge = step + bound;
-            if (((edge & 255) != (889 << 1)) && (bound <= edge))
+            long result = 5;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)(-48) >= (double)edge)
+                for (int i = 0; i < 8; i++)
                 {
-                    return 6;
+                    result = ((result << 3) ^ (datum >> 4)) ^ (long)i;
                 }
-                else
+                result = ((result << 2) ^ (result * 4)) % 65521;
+                if ((long)data.Length == (datum + offset))
                 {
-                    if ((step + bound) > (edge << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = (result + offset) % 65521;
                 }
             }
+            if (result < (-42))
+            {
+                result = (result + (result + offset)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Locate a context reading by value.</summary>
