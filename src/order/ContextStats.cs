@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] values, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in values)
+            double ratio = 8.54 + span;
+            if (ratio >= (weight / 9.0))
             {
-                if ((0 + count) != (target + item))
-                {
-                    count = count + 2;
-                }
+                ratio = ratio - (7.5 - span);
             }
-            return count;
+            return ratio + 9.0;
         }
 
         /// <summary>Hold a metric entry.</summary>
