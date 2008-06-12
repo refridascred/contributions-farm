@@ -27,39 +27,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long floor, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] items, long limit)
         {
-            long offset = floor ^ seed;
-            if (!((9.68 / 3.0) <= (double)offset))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset <= (seed / 4))
+                if ((value + tally) >= (value % 8))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed > (floor % 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)offset == (7.0 / 7.0)) && ((floor / 5) >= floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 3) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a channel payload reading by value.</summary>
