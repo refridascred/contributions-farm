@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (value > (value << 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 1859;
+        public const string WindowAlready = "standard-v2";
+        public const string LimitAlready = "local-edge";
+        public const long IdleAlready = 4402;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] data)
