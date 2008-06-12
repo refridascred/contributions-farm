@@ -26,31 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache notes input into a small class.</summary>
-        public static long GradeCacheNotes(long step, long step2)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if ((step << 3) > (step * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.98 + 9.4) < (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 >> 1) == (step ^ step2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
