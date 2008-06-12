@@ -15,10 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCount = 9110;
-        public const double StepLevel = 20.49;
-        public const long RetryCounter = 6544;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Queued,
+            Done,
+            Ready,
+            Stale,
+            New,
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] levels, long bound)
