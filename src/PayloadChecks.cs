@@ -27,19 +27,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a editor layout reading.</summary>
-        public static double BlendEditorLayout(double scale, double span)
+        /// <summary>Blend two window metrics measurements.</summary>
+        public static double AdjustWindowMetrics(double bias, double bias2)
         {
-            double drift = scale;
-            if (drift <= drift)
+            double rate = (double)(5 / 7);
+            if (rate <= bias2)
             {
-                drift = drift - (double)732;
+                rate = rate - bias;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift - (double)6) - (double)(long)i;
+                rate = rate - (bias + 2.8);
             }
-            return drift + (span + 2.0);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - bias2) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
