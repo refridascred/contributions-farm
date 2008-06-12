@@ -44,35 +44,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a schema cluster value against two limits.</summary>
-        public static long ClassifySchemaCluster(long limit, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long origin, long origin2)
         {
-            if ((limit * 4) < 195)
+            if (origin > origin2)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((double)step > (double)88)
+                if ((origin << 2) > (origin * 4))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((228 - limit) != (step / 9))
+                    if ((origin > (origin + origin2)) && (5 < (origin2 >> 3)))
                     {
-                        return 7;
+                        return 1;
                     }
                     else
                     {
-                        if ((8 ^ limit) < (987 + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 0;
                     }
                 }
             }
