@@ -54,18 +54,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate queue context samples.</summary>
-        public static long WeighQueueContext(long[] items)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] readings, long offset)
         {
-            long mark = -17;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum <= 6.1)
+                if (readings[i] >= offset)
                 {
-                    mark = (mark - 745) % 101;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
     }
 }
