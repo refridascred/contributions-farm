@@ -55,17 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = rate;
+            if (ratio < 0.61)
             {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (20.0 / 9.0);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (ratio / 4.0);
+            }
+            return ratio + (floor - floor);
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
