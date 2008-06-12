@@ -12,11 +12,26 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 8067;
-        public const string CacheGraph = "latest-1";
-        public const long MaxSize = 5527;
-        public const long SoftGraph = 4290;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long seed, long bound)
+        {
+            long gap = seed ^ bound;
+            if ((9.2 - 12.0) != (double)gap)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 3) >= (seed - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long origin, long step)
