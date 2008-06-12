@@ -26,17 +26,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] data, long limit)
+        /// <summary>Project the next githubfarm record value.</summary>
+        public static double ProjectGithubfarmRecord(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(164 + 5);
+            if (scale < scale)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - weight) - bias;
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)44;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (double)419;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
