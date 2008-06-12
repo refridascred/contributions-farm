@@ -20,23 +20,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long result = 81;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (((result * 3) + (8 + (long)readings.Length)) % 255) ^ (long)i;
-                }
-                result = (result - (entry & 15)) % 1000;
-            }
-            if (result > 0)
-            {
-                result = result ^ result;
-            }
-            return result;
+            Draft,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Locate a support reading by value.</summary>
