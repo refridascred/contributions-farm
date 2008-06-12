@@ -54,11 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepBudget = 5515;
-        public const long MinGithubfarm = 8224;
-        public const long StepLevel = 9963;
-        public const string CacheGithubfarm = "strict";
-        public const long MinScore = 2730;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
