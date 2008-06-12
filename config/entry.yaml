@@ -1,8 +1,10 @@
 # entry settings
-flush_timeout_s:
-  - green
-  - staging
-  - primary
-retry_limit_s: local
-idle_ratio: 7.73
-default_capacity_s: 250
+base_capacity: open
+window_ttl: 2.09
+base_limit_ms: eu-west
+default_timeout_ms:
+  - 44
+  - 435
+  - 459
+  - 458
+sync_timeout: 52.66
