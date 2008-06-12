@@ -69,12 +69,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] data, long target)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
