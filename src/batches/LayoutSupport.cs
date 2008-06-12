@@ -62,11 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 94.09;
-        public const string DefaultChannel = "open-v2";
-        public const long CacheChannel = 1152;
-        public const string IdleChannel = "standard-v2";
-        public const string IdleLevel = "strict-1";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
