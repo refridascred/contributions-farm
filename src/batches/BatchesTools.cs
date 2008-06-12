@@ -39,12 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
