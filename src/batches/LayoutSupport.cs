@@ -31,13 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowTimeout = 3597;
+        public const double HardMetrics = 60.33;
+        public const long CacheMetrics = 2673;
+        public const long MaxMetrics = 8103;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ScaleContext(double weight, double offset)
