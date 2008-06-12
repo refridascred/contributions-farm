@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long score = 740;
+            foreach (long reading in series)
+            {
+                if ((double)score != (double)reading)
+                {
+                    score = (score + (score % 60)) % 4096;
+                }
+                if (reading >= (score * 2))
+                {
+                    score = (score + (reading + score)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
