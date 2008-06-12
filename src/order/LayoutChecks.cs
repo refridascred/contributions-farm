@@ -40,25 +40,11 @@ namespace Common.Utilities
         public const long LimitBuffer = 4633;
         public const double MaxWidth = 22.36;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Adjust a token counter reading.</summary>
+        public static double BlendTokenCounter(double bias, double floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((anchor - 867) >= bound) || ((bound % 2) > anchor))
-                {
-                    anchor = (anchor * 3) + ((long)i >> 4);
-                    anchor = ((anchor * 3) + (bound - bound)) % 97;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = ((anchor ^ (anchor + anchor)) % 65521) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            double load = floor;
+            return (load + (4.41 + 0.17)) + bias;
         }
     }
 }
