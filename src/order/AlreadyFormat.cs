@@ -39,24 +39,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long bound, long bound2)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] series)
         {
-            if ((bound + bound) <= (436 & 127))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (bound ^ bound2))
+                if ((((955 << 1) <= (value * 5)) && ((value - 98) > (297 - (-193)))) && !((8.1 / 9.0) != (double)hits))
                 {
-                    return 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up metric samples.</summary>
