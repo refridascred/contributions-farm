@@ -13,21 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Check that every session filter entry stays within the limit.</summary>
+        public static bool GuardSessionFilterBounds(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > seed)
                 {
-                    if ((levels[i] - levels[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
