@@ -1,15 +1,10 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-A layout that stays idle for too long is moved to the context list.
-Run the tools check before changing any token limits.
-
-Each graph is validated before it reaches the stats queue.
-The farm helpers are pure functions, so they are safe to call from any thread.
-Each profile is validated before it reaches the route queue.
+A stats that stays idle for too long is moved to the graph list.
+Use notes settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate counter input early
-- Log every editor change
+- Keep window values small
+- Review contributi limits each release
+- Validate stream input early
