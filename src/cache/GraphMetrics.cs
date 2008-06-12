@@ -39,11 +39,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            long result = 0;
+            foreach (long datum in series)
+            {
+                if (datum < (229 + 26))
+                {
+                    result = result - result;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
