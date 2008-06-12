@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] series, long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-1) / 6) == (seen * 5))
+                if (levels[i] > limit)
                 {
-                    seen = ((seen + 1) ^ cell) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
