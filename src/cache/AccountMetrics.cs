@@ -53,21 +53,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] data, long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = 788;
-            foreach (long reading in data)
-            {
-                acc = ((acc * 2) + offset) % 101;
-                acc = (acc + (offset & 127)) % 97;
-                acc = acc ^ (reading & 31);
-                if ((double)acc >= (9.0 - 19.0))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the format kind values.</summary>
