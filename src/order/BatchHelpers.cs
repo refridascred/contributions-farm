@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many cache checks samples are out of range.</summary>
-        public static long TallyCacheChecksMatches(long[] readings)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item > (matches - item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
