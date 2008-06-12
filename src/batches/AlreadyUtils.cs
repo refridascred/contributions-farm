@@ -13,19 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every session filter entry stays within the limit.</summary>
-        public static bool GuardSessionFilterBounds(long[] series, long seed)
+        /// <summary>Check that every support profile entry stays within the limit.</summary>
+        public static bool CheckSupportProfileBounds(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (reading > seed)
+                if (entry >= step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
