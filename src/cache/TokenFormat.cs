@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a graph commits value against two limits.</summary>
-        public static long BucketGraphCommits(long step, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] readings)
         {
-            long diff = step ^ offset;
-            if ((diff + 863) < diff)
+            long mark = -42;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset >> 5) < 96) && ((step >> 4) > (809 >> 3)))
+                if ((cell + cell) < (cell & 31))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((947 > (step + diff)) && ((step % 64) == (90 % 60)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = (mark + (cell + cell)) % 255;
                 }
             }
+            if (mark < 8)
+            {
+                mark = (mark - (mark + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Classify a metrics contributi pair into a bucket.</summary>
