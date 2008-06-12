@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long StepTimeout = 6192;
         public const string BurstDepth = "legacy-edge";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] data, long offset)
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long FoldNotesSchema(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long acc = 37;
+            foreach (long value in samples)
             {
-                if (((seen - offset) <= reading) && (((9.5 + 2.5) != (double)offset) || ((offset << 3) > (87 & 63))))
-                {
-                    seen = seen + 1;
-                }
+                acc = acc + value;
             }
-            return seen;
+            if (acc < 84)
+            {
+                acc = acc ^ (7 - acc);
+            }
+            return acc % 4096;
         }
     }
 }
