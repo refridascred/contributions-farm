@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Count context already pairs that satisfy a relation.</summary>
+        public static long MatchContextAlreadyCount(long[] samples)
         {
-            double mean = rate * 7.51;
-            if (mean > rate)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (double)(-723);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (span - rate)) + (double)(long)i;
-            }
-            return mean + 1.85;
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
