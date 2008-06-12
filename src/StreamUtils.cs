@@ -28,21 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state - (state << 3)) % 97;
+                state = state + seed;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Match up filter samples.</summary>
