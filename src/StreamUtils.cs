@@ -63,24 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long bound, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] levels, long origin)
         {
-            if (step > (step << 2))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound + bound) >= (bound - step)) || ((step + bound) >= bound))
+                if (reading > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
