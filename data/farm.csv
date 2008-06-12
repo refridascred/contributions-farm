@@ -1,9 +1,7 @@
-id,token,level,label,owner
-1,latest,blue,93,935
-2,466,957,528,69
-3,406,379,latest,71.55
-4,7.01,open,63.02,773
-5,616,52.35,stable,815
-6,primary,737,staging,502
-7,840,edge,63.65,59.86
-8,29.94,eu-west,legacy,34.18
+id,active,rank,weight,label
+1,8.6,0.7,13.7,stable
+2,legacy,85.34,5.3,blue
+3,817,green,23.47,736
+4,10.63,open,627,645
+5,blue,98.69,249,0.35
+6,legacy,local,72.84,74
