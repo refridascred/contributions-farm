@@ -26,30 +26,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine stream notes values into a single score.</summary>
-        public static long TotalStreamNotes(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            long mark = 582;
-            foreach (long reading in samples)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((9 + 755) > mark))
+                if (offset > ((long)i & 255))
                 {
-                    mark = (mark ^ (0 << 3)) % 1000;
+                    score = ((score * 3) + (score % 16)) % 4096;
+                    score = (score - ((long)i << 3)) % 97;
                 }
-                if (((reading + mark) == (mark + mark)) && (68 <= (reading << 2)))
-                {
-                    mark = (mark * 2) + (reading / 8);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (mark > 366)
-            {
-                mark = (mark ^ (mark - mark)) % 255;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Combine order batches values into a single score.</summary>
