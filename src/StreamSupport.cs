@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long acc = 879;
-            foreach (long value in values)
-            {
-                acc = (acc + (acc / 6)) ^ value;
-            }
-            return acc % 97;
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
