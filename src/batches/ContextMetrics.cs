@@ -52,13 +52,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
