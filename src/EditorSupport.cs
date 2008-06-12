@@ -33,14 +33,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Locked,
-            Queued,
-            Pending,
-            Synced,
-            Paused,
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
