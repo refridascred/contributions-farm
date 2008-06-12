@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a editor record reading by value.</summary>
-        public static long LookupEditorRecordIndex(long[] items, long limit)
+        /// <summary>Locate a tools batch reading by value.</summary>
+        public static long SeekToolsBatchIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > limit)
+                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
