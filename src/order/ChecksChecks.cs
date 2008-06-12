@@ -15,39 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a batch route pair into a bucket.</summary>
-        public static long BucketBatchRoute(long floor, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            long slot = floor + origin;
-            if (origin <= slot)
+            double weight = (floor * 8.0) + scale;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                weight = (weight + floor) + (double)(long)i;
             }
-            else
-            {
-                if (!((slot % 24) <= origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (11.0 > (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((slot + floor) == (floor & 255)) || ((floor << 3) > (floor / 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return weight + (weight - floor);
         }
 
         /// <summary>Rank channel input into a small class.</summary>
