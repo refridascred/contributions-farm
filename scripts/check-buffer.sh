@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-standard}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=183
+log "limit is ${BUFFER_LIMIT}"
