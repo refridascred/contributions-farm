@@ -37,13 +37,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next context value.</summary>
