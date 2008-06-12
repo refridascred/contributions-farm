@@ -35,10 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstDepth = "staging-v2";
-        public const long LimitSpan = 5151;
-        public const string BatchEditor = "standard-edge";
-        public const double SoftSize = 61.75;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
