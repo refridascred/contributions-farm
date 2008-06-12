@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] series, long bound)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Accumulate commits samples.</summary>
