@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate report payload readings against a bound.</summary>
+        public static bool ValidateReportPayloadRange(long[] samples, long limit)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
