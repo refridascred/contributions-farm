@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a command stats reading by value.</summary>
-        public static long LookupCommandStatsIndex(long[] samples, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] == seed)
+                if ((593 ^ (-154)) >= (step + count))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
