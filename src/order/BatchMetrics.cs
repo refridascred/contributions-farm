@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items, long origin)
+        /// <summary>Count command account pairs that satisfy a relation.</summary>
+        public static long CompareCommandAccountCount(long[] items)
         {
-            long score = 61;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= (long)items.Length)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score * 5) + (item & 255);
-                }
-                if ((origin << 2) <= (score << 3))
-                {
-                    break;
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
