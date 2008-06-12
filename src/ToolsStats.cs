@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const long MinSpan = 5180;
         public const long SoftOrder = 9900;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values, long floor)
+        /// <summary>Find the first route already entry that matches the target.</summary>
+        public static long LookupRouteAlreadyIndex(long[] levels, long seed)
         {
-            long anchor = 170;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long lane = ((long)values.Length / 5) - floor;
-                anchor = ((anchor * 4) + (lane + lane)) % 255;
-                if (datum > anchor)
+                if (levels[i] == seed)
                 {
-                    anchor = anchor - floor;
+                    return (long)i;
                 }
             }
-            if (anchor < 911)
-            {
-                anchor = (anchor * 4) + (32 + floor);
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Scale a batches already figure with a bias.</summary>
