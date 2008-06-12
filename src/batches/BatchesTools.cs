@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseWidth = 9628;
-        public const string BaseCommand = "cached-v2";
-        public const double RetryCommand = 36.34;
-        public const double HardCommand = 91.16;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] levels, long target)
