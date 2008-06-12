@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Digest a series of window filter entries.</summary>
+        public static long ScoreWindowFilter(long[] data, long bound)
         {
-            Locked,
-            Synced,
-            Dropped,
-            Retry,
+            long acc = -39;
+            foreach (long sample in data)
+            {
+                if (((sample ^ acc) >= bound) || ((sample - acc) < sample))
+                {
+                    acc = (acc + (acc / 4)) % 1000;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
