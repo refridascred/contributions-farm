@@ -31,15 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double gain, double span)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double bias = span;
-            if (bias >= bias)
-            {
-                bias = (bias - 5.0) - gain;
-            }
-            return bias + 5.85;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
