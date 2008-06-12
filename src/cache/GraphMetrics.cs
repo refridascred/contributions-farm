@@ -51,21 +51,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count checks channel pairs that satisfy a relation.</summary>
-        public static long OverlapChecksChannelCount(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)bound > (0.87 - 16.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ 60) <= limit)
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
+                    return 8;
+                }
+                else
+                {
+                    if ((((-930) - bound) <= limit) && ((limit + limit) < (limit >> 4)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((9.0 * 0.05) != (double)bound) && ((double)bound >= (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
