@@ -39,17 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
+        public static long AuditAlreadyGithubfarmOutliers(long[] levels, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                result = (result + (result >> 1)) % 101;
-                result = result ^ (883 + (long)i);
-                result = ((result * 3) + (long)i) % 97;
+                if ((773 % 100) < (datum << 3))
+                {
+                    seen = (seen + 3) - origin;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
