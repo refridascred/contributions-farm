@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema command readings against a rule.</summary>
-        public static long MeasureSchemaCommandOutliers(long[] levels, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long acc = 694;
+            foreach (long entry in items)
             {
-                if ((offset <= (hits ^ (long)levels.Length)) || !(hits >= (value + value)))
+                acc = (acc << 3) ^ acc;
+                acc = (acc ^ acc) % 4096;
+                acc = ((acc * 4) + (29 - entry)) % 1000;
+                if (((4.61 - 5.3) >= (double)bound) || ((entry >> 5) != (60 + entry)))
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            if (acc < 94)
+            {
+                acc = (acc * 4) + (acc - bound);
+            }
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
