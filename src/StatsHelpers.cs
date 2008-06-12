@@ -19,20 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long seed)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long item in readings)
             {
-                mix = ((mix * 5) + (datum & 15)) % 4096;
-                mix = ((mix * 4) + (81 - mix)) % 97;
-                if ((double)mix >= (18.0 / 3.0))
+                if (item < seed)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Locate a cache token reading by value.</summary>
