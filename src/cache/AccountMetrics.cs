@@ -23,25 +23,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long target, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items, long origin)
         {
-            long span = target ^ limit;
-            if ((limit <= (234 ^ span)) && ((9 + limit) <= (span - 75)))
+            long acc = 76;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((20 & 1) <= span) && ((7.44 + 13.0) < (double)limit))
+                if (acc > (57 >> 5))
                 {
-                    return 0;
+                    break;
                 }
                 else
                 {
-                    return 3;
+                    acc = acc - (origin + value);
+                }
+                if ((acc & 31) != (9 ^ value))
+                {
+                    acc = (acc ^ acc) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the channel state values.</summary>
