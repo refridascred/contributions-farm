@@ -47,13 +47,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long total = 21;
+            foreach (long item in items)
+            {
+                if ((double)item >= (8.9 / 3.0))
+                {
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = (total + (total << 1)) % 65521;
+                }
+                total = ((total << 3) ^ (item * 4)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Match up checks metrics samples.</summary>
