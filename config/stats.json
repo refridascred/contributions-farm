@@ -1,6 +1,6 @@
 {
-  "batch_interval": 100,
-  "poll_size_s": 500,
-  "hard_depth_pct": [317, 292, 393],
-  "audit": 60
+  "dry_run": [258, 107, 87, 355],
+  "min_retries_count": "primary",
+  "burst_timeout_count": "strict",
+  "batch_depth": "standard"
 }
