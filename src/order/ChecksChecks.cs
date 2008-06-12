@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many farm token samples are out of range.</summary>
-        public static long AuditFarmTokenGaps(long[] readings, long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell == (double)bound)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate queue graph readings against a bound.</summary>
