@@ -40,21 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmNotesCount(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry + 22) < (entry - entry))
                 {
-                    if ((levels[i] ^ levels[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
