@@ -32,13 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the queue state values.</summary>
