@@ -65,10 +65,26 @@ namespace Common.Utilities
         public const long LimitFilter = 7760;
         public const long SoftFilter = 3377;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 172;
-        public const long IdleInterval = 416;
-        public const string CacheSize = "primary-v2";
-        public const double MaxStream = 97.92;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data)
+        {
+            long total = 92;
+            foreach (long sample in data)
+            {
+                if (sample < (total ^ (long)data.Length))
+                {
+                    total = total ^ (total + 31);
+                }
+                if ((sample < (sample >> 1)) || ((sample + 624) <= (total << 2)))
+                {
+                    break;
+                }
+            }
+            if (total < (-9))
+            {
+                total = total - (total % 8);
+            }
+            return total;
+        }
     }
 }
