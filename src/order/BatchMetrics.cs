@@ -34,17 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] readings, long floor)
+        /// <summary>Validate metric support readings against a bound.</summary>
+        public static bool GuardMetricSupportBounds(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (readings[i] > floor)
+                if (value != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
