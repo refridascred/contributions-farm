@@ -99,11 +99,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleInterval = 81.69;
-        public const string WindowWidth = "primary-v2";
-        public const long CacheEntry = 830;
-        public const long HardFactor = 9197;
+        /// <summary>Roll a report cache counter forward.</summary>
+        public static long IterateReportCache(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total + (floor ^ floor)) % 1000) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowGaps(long[] items)
