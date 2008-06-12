@@ -1,10 +1,9 @@
 {
-  "compress": 8.31,
-  "sync_retries_pct": {
-    "max_depth_count": "green",
-    "min_window_ms": ["green", "green"],
-    "hard_window_count": 100,
-    "burst_timeout": "blue"
-  },
-  "poll_ttl_s": 60
+  "verbose": "fallback",
+  "burst_interval_pct": false,
+  "audit": {
+    "verbose": ["blue", "strict", "open", "open"],
+    "tools_retries": "fallback",
+    "readonly": "blue"
+  }
 }
