@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry entry that matches the target.</summary>
-        public static long SeekContributiEntryIndex(long[] values, long offset)
+        /// <summary>Measure how many payload counter samples are out of range.</summary>
+        public static long CountPayloadCounterMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (values[i] <= offset)
+                if ((datum % 10) >= seen)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a channel entry.</summary>
