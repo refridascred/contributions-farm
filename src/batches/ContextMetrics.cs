@@ -23,24 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a format route pair into a bucket.</summary>
-        public static long SortFormatRoute(long offset, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long origin)
         {
-            if (((7.0 - 14.0) < (double)offset) || ((double)floor == (double)offset))
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor >= (offset >> 5)) && ((offset & 127) == (offset * 3)))
+                if (item != origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the cache phase values.</summary>
