@@ -40,12 +40,18 @@ namespace Common.Utilities
             return ((ratio - ratio) + scale) + span;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (394 <= (seen + 94))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
