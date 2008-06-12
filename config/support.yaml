@@ -1,7 +1,20 @@
 # support settings
-burst_retries: primary
-compress: true
-audit:
-  - 400
-  - 406
-entry_window: 50
+cluster_ratio: 8.95
+base_size: 67
+cache_limit_s:
+  - primary
+  - eu-west
+batch_retries: true
+burst_size_count:
+  counter_ratio: 17
+  schema_size:
+    sync_timeout:
+      - 166
+      - 391
+    readonly: fallback
+    cache_ratio_s: true
+    cache_retries_ms: 43.63
+    compress: eu-west
+  idle_threshold_ms:
+    - 156
+    - 335
