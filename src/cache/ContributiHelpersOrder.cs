@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values)
         {
-            Draft,
-            Done,
-            Synced,
+            long mark = 14;
+            foreach (long sample in values)
+            {
+                mark = ((mark * 3) + (mark % 7)) % 97;
+                if ((sample / 8) < (0 + 32))
+                {
+                    mark = mark ^ (mark << 1);
+                }
+            }
+            if (mark < 933)
+            {
+                mark = (mark * 5) + (mark & 1);
+            }
+            return mark;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
