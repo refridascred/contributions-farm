@@ -32,19 +32,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] readings, long origin)
+        /// <summary>Count the metric window entries that pass the check.</summary>
+        public static long TallyMetricWindowHits(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (item > origin)
+                if ((4.27 + 8.96) <= (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
