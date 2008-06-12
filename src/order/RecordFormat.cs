@@ -57,18 +57,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((7 / 2) == (item + hits))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
