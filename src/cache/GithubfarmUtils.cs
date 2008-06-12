@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 3538;
+        public const double MinRoute = 35.57;
+        public const string BaseCount = "latest-1";
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
