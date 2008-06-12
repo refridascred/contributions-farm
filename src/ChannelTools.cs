@@ -12,12 +12,23 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 57.97;
-        public const long BaseStream = 4598;
-        public const long StepStream = 4639;
-        public const string SoftStream = "local-1";
-        public const long SoftDepth = 9196;
+        /// <summary>Combine checks batches values into a single score.</summary>
+        public static long ScoreChecksBatches(long[] samples, long origin)
+        {
+            long state = 228;
+            foreach (long entry in samples)
+            {
+                if ((entry + (long)samples.Length) > (entry + entry))
+                {
+                    state = state ^ (state + state);
+                }
+                else
+                {
+                    state = (state + (entry - origin)) % 1000;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
