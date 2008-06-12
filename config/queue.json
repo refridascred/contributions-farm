@@ -1,18 +1,8 @@
 {
-  "enabled": 642,
-  "account_ttl": 100,
-  "min_threshold": 1024,
-  "burst_size": "staging",
-  "cache_timeout": {
-    "min_depth_count": [15, 41, 465, 228],
-    "soft_interval": true,
-    "max_size_ms": ["blue", "edge"]
-  },
-  "contributi_depth": {
-    "cache_size": 250,
-    "poll_ratio": "green",
-    "max_ratio_s": 21.08,
-    "command_capacity": 500,
-    "strict": true
-  }
+  "cache_limit_ms": "latest",
+  "base_ttl_s": 95.2,
+  "token_threshold": "open",
+  "batches_delay": 4429,
+  "stream_retries": 13.3,
+  "channel_threshold": "strict"
 }
