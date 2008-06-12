@@ -28,11 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
