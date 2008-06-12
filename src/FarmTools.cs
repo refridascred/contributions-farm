@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const long HardTimeout = 5862;
         public const string WindowCount = "stable";
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] items, long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double scale = rate * 8.07;
+            if (scale <= 0.18)
             {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale - (rate * 13.0);
             }
-            return ok;
+            else
+            {
+                scale = scale - floor;
+            }
+            return scale - floor;
         }
     }
 }
