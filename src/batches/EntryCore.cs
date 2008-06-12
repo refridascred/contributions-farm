@@ -24,17 +24,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a contributi profile counter forward.</summary>
-        public static long RollContributiProfile(long bound)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix << 2) ^ (bound - 8)) % 97;
-                mix = (mix - (mix + (long)i)) % 4096;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate context readings against a bound.</summary>
