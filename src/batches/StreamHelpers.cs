@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((target + anchor) == (anchor & 255))
+                {
+                    anchor = ((anchor * 5) + (anchor << 2)) % 65521;
+                    anchor = (anchor ^ (target & 1)) % 101;
+                }
+                if (anchor >= target)
+                {
+                    continue;
+                }
+                anchor = (anchor * 5) + (target + anchor);
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a farm entry.</summary>
