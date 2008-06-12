@@ -26,13 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] samples, long step)
         {
-            Locked,
-            Paused,
-            Queued,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a payload options.</summary>
