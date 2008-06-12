@@ -45,24 +45,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long offset, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long bound)
         {
-            if (((double)(-6) <= (double)target) || (0 >= (target >> 4)))
+            long total = 385;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2 << 1) > target)
+                if ((reading & 7) < reading)
                 {
-                    return 6;
+                    total = total ^ reading;
+                }
+                if (!((reading + 319) > (reading + total)))
+                {
+                    total = (total - 1) % 255;
                 }
                 else
                 {
-                    return 5;
+                    total = (total ^ (bound - bound)) % 97;
+                }
+                if ((bound ^ total) >= (bound * 3))
+                {
+                    break;
                 }
             }
+            return total;
         }
     }
 }
