@@ -1,7 +1,11 @@
 {
-  "max_timeout": 60,
-  "report_limit": 8662,
-  "compress": 70,
-  "audit": [476, 3],
-  "poll_limit_ms": 6865
+  "sync_window": 65.43,
+  "contributi_interval": 6862,
+  "min_size": 4.92,
+  "tools_limit": {
+    "soft_timeout_count": "stable",
+    "idle_delay_pct": 60,
+    "warm_size": 500
+  },
+  "commits_window": 31.63
 }
