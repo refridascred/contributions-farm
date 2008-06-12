@@ -70,12 +70,12 @@ namespace Common.Utilities
             return gain - (bias / 3.0);
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Active,
-            Locked,
-            New,
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
