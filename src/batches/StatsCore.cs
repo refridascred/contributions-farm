@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] readings)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((long)readings.Length & 63) == (item - item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank payload farm input into a small class.</summary>
