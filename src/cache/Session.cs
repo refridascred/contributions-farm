@@ -21,22 +21,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long AuditQueueToolsHits(long[] readings)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((730 & 31) < hits)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
