@@ -1,5 +1,8 @@
 {
-  "batch_threshold": "edge",
-  "batch_depth_ms": 250,
-  "readonly": 6507
+  "schema_retries": "legacy",
+  "warm_ttl": 100,
+  "profile_ttl": false,
+  "compress": true,
+  "cache_window_pct": "edge",
+  "poll_interval": "staging"
 }
