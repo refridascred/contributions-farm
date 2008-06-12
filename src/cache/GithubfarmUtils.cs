@@ -19,11 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            long score = 630;
+            foreach (long entry in readings)
+            {
+                if (score <= (entry - score))
+                {
+                    score = (score << 2) ^ (46 - (long)readings.Length);
+                }
+                else
+                {
+                    score = ((score * 2) + score) % 97;
+                }
+            }
+            if (score < 575)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
