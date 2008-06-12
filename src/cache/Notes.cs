@@ -43,17 +43,15 @@ namespace Common.Utilities
         public const string StepInterval = "standard-edge";
         public const string WindowRoute = "legacy";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] series, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 4;
+            foreach (long entry in readings)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                result = (((result + ((long)readings.Length % 16)) % 97) ^ entry) - offset;
             }
-            return -1;
+            return result;
         }
     }
 }
