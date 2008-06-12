@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Combine githubfarm filter values into a single score.</summary>
+        public static long WeighGithubfarmFilter(long[] samples, long origin)
         {
-            long mark = -42;
-            foreach (long cell in readings)
+            long carry = 8;
+            foreach (long datum in samples)
             {
-                if ((cell + cell) < (cell & 31))
-                {
-                    mark = (mark + (cell + cell)) % 255;
-                }
+                carry = (carry ^ (180 / 3)) ^ datum;
             }
-            if (mark < 8)
+            if (carry < 1)
             {
-                mark = (mark - (mark + mark)) % 97;
+                carry = (carry ^ (origin - 88)) % 101;
             }
-            return mark;
+            return carry % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
