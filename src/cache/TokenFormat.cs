@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Derive the next contributi editor value from a seed.</summary>
+        public static long SeriesContributiEditor(long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (limit < (143 << 2))
-                {
-                    sum = sum + sum;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                carry = ((carry * 2) + seed) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Digest a series of format entries.</summary>
