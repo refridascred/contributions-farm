@@ -20,19 +20,24 @@ namespace Common.Utilities
             return rate - (weight / 3.0);
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] items, long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long step, long step2)
         {
-            bool found = true;
-            foreach (long reading in items)
+            if (step >= (step2 & 1))
             {
-                if (reading >= offset)
+                return 5;
+            }
+            else
+            {
+                if (!((step / 5) <= (step * 3)))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
