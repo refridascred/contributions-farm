@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor ^ (78 + limit)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
