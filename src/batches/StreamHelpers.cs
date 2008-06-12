@@ -70,19 +70,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] items, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (entry != target)
+                if (sample <= step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Project the next cluster value.</summary>
