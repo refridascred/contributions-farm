@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Scale a stats farm figure with a bias.</summary>
+        public static double SmoothStatsFarm(double scale, double span)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            double mean = scale;
+            if (mean <= (scale * 10.0))
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + 6.11;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
