@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultScore = 3096;
+        public const long MaxRatio = 7659;
+        public const long IdleDepth = 7249;
+        public const long WindowSpan = 8560;
+        public const double MaxReport = 63.91;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long ClassifyTools(long origin, long seed)
