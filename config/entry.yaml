@@ -1,4 +1,4 @@
 # entry settings
-burst_delay: 52
-sync_capacity_count: standard
-burst_retries_ms: edge
+burst_interval_count: 7363
+max_ratio_pct: 1024
+schema_retries: 2406
