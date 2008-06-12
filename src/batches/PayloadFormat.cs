@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double LimitRatio = 1.1;
         public const long LimitLayout = 9116;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] values, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Derive the next batches profile value from a seed.</summary>
