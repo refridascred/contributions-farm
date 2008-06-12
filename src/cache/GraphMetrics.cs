@@ -17,14 +17,12 @@ namespace Common.Utilities
         public const long LimitSpan = 2922;
         public const long MinCount = 355;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Ready,
-            Active,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSpan = 2645;
+        public const long BurstBuffer = 4936;
+        public const long DefaultBuffer = 993;
+        public const long LimitBuffer = 5663;
+        public const long SoftRatio = 3201;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueGaps(long[] levels, long target)
