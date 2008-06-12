@@ -26,20 +26,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next batch support value from a seed.</summary>
-        public static long StepBatchSupport(long target)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix + ((long)i + target);
-                if (!((double)target >= (8.2 * 7.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix ^ 9;
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
     }
 }
