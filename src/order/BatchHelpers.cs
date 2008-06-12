@@ -23,38 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi buffer pair into a bucket.</summary>
-        public static long BucketContributiBuffer(long bound, long bound2)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            if ((bound2 + bound) == (bound2 - bound2))
+            double weight = bias + gain;
+            if (weight < weight)
             {
-                return 4;
+                weight = weight - (double)7;
             }
             else
             {
-                if ((bound2 ^ bound2) > (bound2 >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + bound2) <= (bound2 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3.5 / 9.0) > (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                weight = weight + bias;
             }
+            return weight + gain;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
