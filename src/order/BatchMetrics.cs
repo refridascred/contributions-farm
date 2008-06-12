@@ -69,19 +69,18 @@ namespace Common.Utilities
             return gain2 + (gain2 / 6.0);
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double bias)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            double scale2 = bias;
-            if (scale2 <= (scale / 8.0))
+            long mark = 40;
+            foreach (long entry in items)
             {
-                scale2 = scale2 + scale;
+                if (((entry + entry) <= entry) && (mark >= (mark >> 2)))
+                {
+                    mark = ((mark << 2) ^ (mark + entry)) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + 18.0) + (double)(long)i;
-            }
-            return scale2 + scale2;
+            return mark % 97;
         }
     }
 }
