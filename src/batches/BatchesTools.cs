@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                if ((items[i] == seed) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
