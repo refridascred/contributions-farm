@@ -30,10 +30,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 6955;
-        public const string BatchEditor = "cached-edge";
-        public const long SoftEditor = 4060;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Synced,
+            New,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
