@@ -1,10 +1,4 @@
 # support settings
-poll_depth_pct: standard
-warm_interval_s: false
-hard_window_s: latest
-cache_delay:
-  - strict
-  - staging
-  - eu-west
-batch_retries_s: 39.38
-hard_ttl_pct: 34
+flush_interval: standard
+burst_capacity: 514
+soft_depth_ms: 47.41
