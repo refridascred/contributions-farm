@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchInterval = "standard-1";
-        public const long CacheFilter = 7810;
-        public const long CacheBudget = 8532;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a order farm sample.</summary>
         public static long SeekOrderFarmIndex(long[] levels, long floor)
