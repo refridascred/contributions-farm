@@ -27,15 +27,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Find the first cache checks entry that matches the target.</summary>
+        public static long SeekCacheChecksIndex(long[] samples, long offset)
         {
-            long state = 28;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - 57) + sample;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Describe the cache phase values.</summary>
