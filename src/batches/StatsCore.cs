@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long HardBudget = 8072;
         public const long BurstLevel = 5588;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
