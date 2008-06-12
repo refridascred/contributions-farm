@@ -22,21 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)floor <= (14.0 * 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (target < floor)
                 {
-                    if ((series[i] ^ series[j]) != 19)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + floor) <= floor)
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor >> 5) != (target << 2)) || (14.0 <= (double)target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
