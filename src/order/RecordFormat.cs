@@ -53,15 +53,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the route support series from a seed.</summary>
-        public static long StepRouteSupport(long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Closed,
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
