@@ -40,15 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Grade a notes counter value against two limits.</summary>
+        public static long GradeNotesCounter(long floor, long limit)
         {
-            double scale = span + (double)18;
-            if (scale >= 2.03)
+            if (((6.0 / 8.0) <= (double)floor) || (limit >= (limit / 4)))
             {
-                scale = (scale - (double)(-10)) + gain;
+                return 1;
             }
-            return scale - 0.66;
+            else
+            {
+                if ((floor - limit) < (floor / 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit >= 4.6)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
