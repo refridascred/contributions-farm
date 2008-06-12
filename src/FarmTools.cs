@@ -30,26 +30,19 @@ namespace Common.Utilities
         public const long HardTimeout = 5862;
         public const string WindowCount = "stable";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] items, long floor)
         {
-            long sum = 26;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((cell ^ target) == (target + sum))
+                if (item <= floor)
                 {
-                    sum = (sum + target) % 65521;
-                }
-                else
-                {
-                    sum = sum + (cell >> 3);
-                }
-                if ((0.8 * 3.0) > (double)cell)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return sum % 97;
+            return ok;
         }
     }
 }
