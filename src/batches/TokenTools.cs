@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long mark = 74;
-            foreach (long sample in samples)
-            {
-                if ((7 / 8) >= sample)
-                {
-                    mark = (mark - (99 << 3)) % 4096;
-                }
-            }
-            if (mark < 97)
-            {
-                mark = ((mark * 3) + mark) % 1000;
-            }
-            return mark % 4096;
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
