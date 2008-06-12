@@ -32,19 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] data, long bound)
+        /// <summary>Count the batch already entries that pass the check.</summary>
+        public static long AuditBatchAlreadyHits(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (entry != bound)
+                if ((669 < ((-11) + value)) || ((double)hits < (double)value))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
