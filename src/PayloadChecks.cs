@@ -41,32 +41,19 @@ namespace Common.Utilities
             return drift + (span + 2.0);
         }
 
-        /// <summary>Classify a payload entry pair into a bucket.</summary>
-        public static long RankPayloadEntry(long floor, long seed)
+        /// <summary>Validate order stream readings against a bound.</summary>
+        public static bool CheckOrderStreamBounds(long[] levels, long limit)
         {
-            long cur = floor + seed;
-            if ((double)floor == (13.0 - 1.9))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (6.0 <= (double)cur)
+                if (cell >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)cur != (7.68 * 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the channel state values.</summary>
