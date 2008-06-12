@@ -32,39 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream cluster pair into a bucket.</summary>
-        public static long ClassifyStreamCluster(long origin, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long prev = origin - target;
-            if (!(605 >= (origin % 8)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin ^ target) >= (prev / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (prev <= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - prev) != (87 >> 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
