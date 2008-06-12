@@ -1,29 +1,13 @@
 # entry settings
-support_interval:
-  strict: 1024
-  cluster_capacity: true
-  warm_ratio_ms: false
-  default_threshold_s: true
-  batch_interval: cached
-enabled:
-  persist: 79
-  entry_delay:
-    - eu-west
-    - primary
-    - edge
-  poll_retries_ms: 94.42
-  filter_size:
-    - 217
-    - 366
-    - 80
-min_interval_count:
-  verbose: 500
-  graph_ratio: local
-  batch_interval_count:
-    - 349
-    - 471
-dry_run:
-  - 78
-  - 166
-compress: open
-flush_retries_pct: open
+cache_size: edge
+poll_ratio: 47
+command_ratio:
+  - 125
+  - 299
+  - 461
+persist: fallback
+graph_threshold: edge
+min_retries_count:
+  - latest
+  - fallback
+  - open
