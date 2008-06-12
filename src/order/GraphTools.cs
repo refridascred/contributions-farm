@@ -54,21 +54,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Grade a channel layout value against two limits.</summary>
+        public static long GradeChannelLayout(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = limit - offset;
+            if (slot > offset)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (offset >= (slot * 4))
                 {
-                    if ((series[i] ^ series[j]) != 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)slot >= (double)offset)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((973 + slot) >= (slot >> 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
