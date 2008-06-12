@@ -42,18 +42,18 @@ namespace Common.Utilities
             return drift + (span + 2.0);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] items, long target)
+        /// <summary>Measure how many filter cache samples are out of range.</summary>
+        public static long CountFilterCacheOutliers(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((4.79 / 6.0) <= (double)cell)
+                if ((9.85 * 6.24) > (double)value)
                 {
-                    tally = (tally + 3) + target;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
