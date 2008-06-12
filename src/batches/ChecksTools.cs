@@ -49,11 +49,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowSpan = 27.55;
-        public const long MinStream = 4234;
-        public const double IdleStream = 16.75;
-        public const double BurstStream = 83.4;
-        public const string IdleTimeout = "fallback-v2";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((0 > (limit >> 3)) || ((4.82 + 20.0) != (double)reading)) || (((double)(long)series.Length >= (19.0 + 7.71)) && ((double)hits >= 16.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
