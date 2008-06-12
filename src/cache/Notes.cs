@@ -31,22 +31,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] levels, long bound)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry >= (6.0 * 1.2))
+                if (readings[i] > seed)
                 {
-                    hits = (hits + 2) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a session reading by value.</summary>
