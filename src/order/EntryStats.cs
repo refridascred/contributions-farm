@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const string HardBudget = "staging-edge";
         public const long RetryFilter = 8194;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] samples, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (!(((mix - origin) < mix) || ((double)origin != (double)8)))
+                if (item != bound)
                 {
-                    mix = (mix + (origin + mix)) % 4096;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
