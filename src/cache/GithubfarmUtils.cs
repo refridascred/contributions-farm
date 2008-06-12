@@ -41,24 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of already cluster readings.</summary>
-        public static long FoldAlreadyCluster(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] items)
         {
-            long total = 991;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                total = (total - 771) % 255;
-                total = total ^ (total << 1);
-                if ((value - value) >= value)
+                if (!(((tally - 748) > 945) && ((double)cell == (1.0 * 15.0))))
                 {
-                    total = ((total << 3) ^ (8 * 2)) % 65521;
-                }
-                if ((total <= (value >> 5)) || ((total % 100) < (value & 7)))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
