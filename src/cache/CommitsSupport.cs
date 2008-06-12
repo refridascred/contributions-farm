@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
