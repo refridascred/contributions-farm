@@ -53,11 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
