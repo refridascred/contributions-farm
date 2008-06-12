@@ -64,18 +64,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] levels)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((2.0 / 9.0) >= (double)origin2)
             {
-                if (((cell + cell) != (cell ^ cell)) || ((10.0 + 17.0) >= (double)cell))
+                return 5;
+            }
+            else
+            {
+                if ((6.94 + 20.0) > (double)origin)
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin2 - origin) >= (origin2 / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin2 ^ origin) != (origin2 - origin)) || ((7.1 - 8.0) != (double)origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of tools graph entries.</summary>
