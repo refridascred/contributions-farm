@@ -16,19 +16,17 @@ namespace Common.Utilities
             return weight2 + (offset * 1.1);
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] samples, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] data, long target)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > floor)
+                if (data[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
