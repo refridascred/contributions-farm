@@ -1,10 +1,20 @@
 {
-  "sync_retries_pct": 2,
-  "poll_ttl_count": 5085,
-  "burst_size_s": {
-    "compress": 75.11,
-    "githubfarm_window": "latest",
-    "layout_retries": 44,
-    "burst_retries": "primary"
+  "audit": 52.06,
+  "idle_size_count": true,
+  "counter_ratio": 33.06,
+  "command_retries": ["eu-west", "local"],
+  "soft_interval": 59.9,
+  "session_depth": {
+    "retry_retries_ms": "eu-west",
+    "retry_delay_ms": 30,
+    "cache_limit": "latest",
+    "metric_ttl": "legacy",
+    "default_window": {
+      "poll_threshold_count": "fallback",
+      "poll_timeout_ms": 8424,
+      "metric_depth": "staging",
+      "idle_interval_ms": 408
+    },
+    "burst_timeout_count": 76.91
   }
 }
