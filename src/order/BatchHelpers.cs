@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double bias)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] data)
         {
-            double weight = bias + gain;
-            if (weight < weight)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                weight = weight - (double)7;
+                if (cell >= (38 * 4))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight + gain;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
