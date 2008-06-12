@@ -1,7 +1,8 @@
 {
-  "audit": 100,
-  "stats_delay": false,
-  "warm_limit_pct": [94, 461, 396, 401],
-  "persist": "latest",
-  "hard_limit": 56.62
+  "persist": ["green", "blue", "strict", "cached"],
+  "readonly": 67.26,
+  "flush_depth_ms": "fallback",
+  "flush_delay_count": 91.34,
+  "batch_depth": false,
+  "buffer_retries": 34.12
 }
