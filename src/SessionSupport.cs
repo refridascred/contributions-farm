@@ -11,14 +11,31 @@ namespace Common.Utilities
         public const long MaxCount = 8553;
         public const string BurstOrder = "primary-edge";
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            Synced,
-            Failed,
-            Ready,
-            New,
-            Locked,
+            long anchor = 11;
+            foreach (long value in readings)
+            {
+                anchor = (anchor << 3) ^ (value * 3);
+                if (!((value ^ anchor) != (value >> 2)))
+                {
+                    anchor = (anchor * 2) + (value * 4);
+                }
+                else
+                {
+                    anchor = (anchor ^ (value - value)) % 1000;
+                }
+                if (anchor <= (value * 2))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
+                }
+            }
+            if (anchor < (-42))
+            {
+                anchor = (anchor - (6 * 2)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
