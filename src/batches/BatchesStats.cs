@@ -44,10 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 60.31;
-        public const string SoftContext = "staging-1";
-        public const long StepContext = 1317;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsGaps(long[] values)
