@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] readings, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long bound = seed + limit;
+            if (((bound + (-387)) < (bound & 127)) || ((double)seed > 1.0))
             {
-                if (((double)matches <= (double)38) && ((datum + 478) != (8 + 9)))
+                return 8;
+            }
+            else
+            {
+                if (((-80) > (seed >> 4)) && (seed < 7))
                 {
-                    matches = (matches + 3) + offset;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit != (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((9.8 - 9.96) < (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a filter options.</summary>
