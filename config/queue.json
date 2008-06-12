@@ -1,12 +1,7 @@
 {
-  "soft_limit_s": "staging",
-  "max_threshold_ms": 3.55,
-  "poll_window": {
-    "base_limit_pct": 8759,
-    "warm_depth": "staging",
-    "flush_limit": 9030,
-    "hard_ttl_s": "edge",
-    "dry_run": "standard",
-    "flush_ratio": [364, 178, 440, 352]
-  }
+  "cache_threshold_count": [385, 146],
+  "sync_limit": 78,
+  "batch_retries": false,
+  "commits_interval": "open",
+  "layout_ttl": false
 }
