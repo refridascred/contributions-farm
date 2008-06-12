@@ -34,14 +34,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Idle,
-            Stale,
-            New,
-            Draft,
-            Retry,
+            Closed,
+            Done,
+            Paused,
         }
     }
 }
