@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepDepth = 4292;
-        public const double StepRatio = 66.29;
-        public const long MinReport = 7349;
-        public const string CacheLevel = "cached";
-        public const string DefaultDepth = "stable";
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Queued,
+            New,
+            Draft,
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double scale, double offset)
