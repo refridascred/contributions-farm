@@ -14,13 +14,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Done,
-            Failed,
             Closed,
-            Dropped,
+            Draft,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
