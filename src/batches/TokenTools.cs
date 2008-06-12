@@ -34,12 +34,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long seed)
         {
-            Closed,
-            Done,
-            Paused,
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
