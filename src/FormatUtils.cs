@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double gain, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            double scale = (floor / 3.0) * 8.18;
-            return (scale - scale) + gain;
+            long score = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                long prev = offset;
+                score = (score << 2) ^ (prev * 4);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
