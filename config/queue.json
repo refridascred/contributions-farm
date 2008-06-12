@@ -1,6 +1,8 @@
 {
-  "metrics_ratio": "blue",
-  "soft_delay": true,
-  "cache_capacity_s": [405, 93, 407],
-  "counter_window": 32
+  "stream_capacity": "local",
+  "compress": "eu-west",
+  "session_interval": 26.02,
+  "min_ttl": 4256,
+  "batch_depth_pct": true,
+  "strict": "standard"
 }
