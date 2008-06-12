@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
-        public static long GradeGithubfarmReport(long limit, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((limit << 2) < seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed & 255) != (limit + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + seed) > (seed / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
