@@ -26,19 +26,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] levels, long limit)
+        /// <summary>Look up the position of a channel context sample.</summary>
+        public static long LocateChannelContextIndex(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item != limit)
+                if ((data[i] > target) && ((data[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
