@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] data, long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > floor)
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
