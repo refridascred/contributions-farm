@@ -87,18 +87,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token order readings against a rule.</summary>
-        public static long AuditTokenOrderGaps(long[] readings, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)limit < (1.7 * 9.0))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            New,
+            Active,
+            Locked,
         }
     }
 }
