@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const long DefaultFarm = 8531;
         public const long IdleRatio = 7615;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (((acc - acc) < (offset - (long)i)) || ((acc * 3) == (acc / 4)))
+                {
+                    acc = acc + (acc + acc);
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Accumulate window samples.</summary>
