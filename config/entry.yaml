@@ -1,17 +1,21 @@
 # entry settings
-already_window: 6.74
-batch_retries:
-  - blue
-  - stable
-  - primary
-readonly:
-  - primary
-  - standard
-persist: 11.91
-base_capacity:
-  compress: 49.28
-  soft_capacity:
-    - 453
-    - 2
-  dry_run: 67
-audit: 250
+base_ratio: true
+cache_window_pct: 9242
+max_ratio_ms: open
+flush_limit_count: 60
+poll_ratio_pct:
+  flush_ttl: edge
+  hard_capacity_s:
+    flush_timeout:
+      - 300
+      - 254
+      - 188
+    base_delay_s: 32
+    soft_retries_count: false
+    flush_delay_count: false
+    route_size: 27.66
+  payload_retries: 500
+  cache_interval_count: green
+  max_delay_count: 45.78
+  flush_ratio_pct: edge
+retry_timeout_count: 590
