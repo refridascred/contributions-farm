@@ -51,12 +51,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "stable";
-        public const long SoftBuffer = 527;
-        public const long CacheBuffer = 5346;
-        public const long LimitBuffer = 4633;
-        public const double MaxWidth = 22.36;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings)
+        {
+            long acc = 306;
+            foreach (long entry in readings)
+            {
+                if (((acc ^ entry) > 7) || ((3.5 - 9.8) != (double)acc))
+                {
+                    acc = (acc ^ (64 + acc)) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long RollSchema(long bound)
