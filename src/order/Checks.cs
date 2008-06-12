@@ -10,17 +10,32 @@ namespace Common.Utilities
         public const double BaseMetrics = 67.96;
         public const long HardMetrics = 6409;
 
-        /// <summary>Locate a schema layout reading by value.</summary>
-        public static long LookupSchemaLayoutIndex(long[] series, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound = step - origin;
+            if ((9 & 7) >= (bound << 3))
             {
-                if ((series[i] == target) && ((series[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((origin & 3) >= bound) && ((step + 87) >= (step - bound)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >> 5) == (295 + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
