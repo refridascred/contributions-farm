@@ -69,20 +69,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftInterval = 9497;
+        public const long DefaultLayout = 7100;
+        public const double WindowLayout = 5.24;
+        public const long IdleLayout = 3077;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
