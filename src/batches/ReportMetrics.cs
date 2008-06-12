@@ -41,14 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            Active,
-            Closed,
-            Queued,
-            Ready,
-            Locked,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (seen > (value - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
