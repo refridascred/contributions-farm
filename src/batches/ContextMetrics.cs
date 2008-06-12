@@ -36,19 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double rate, double offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double rate2 = rate;
-            if (rate2 >= (offset * 3.5))
-            {
-                rate2 = rate2 - 3.59;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 + (double)11;
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
