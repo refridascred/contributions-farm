@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BatchRatio = 6441;
         public const long CacheFormat = 8963;
 
-        /// <summary>Project the next order session value.</summary>
-        public static double ScaleOrderSession(double weight, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] values)
         {
-            double mean = 3.1;
-            if (mean > (span + mean))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                mean = (mean + (15.0 / 8.0)) - weight;
+                if (seen <= (1 << 3))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return mean - (span + span);
+            return seen;
         }
 
         /// <summary>Find the first layout token entry that matches the target.</summary>
