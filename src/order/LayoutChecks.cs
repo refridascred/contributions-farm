@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor ^ (78 + limit)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a session record.</summary>
