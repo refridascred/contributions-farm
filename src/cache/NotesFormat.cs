@@ -23,11 +23,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Rank entry input into a small class.</summary>
