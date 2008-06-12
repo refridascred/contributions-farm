@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Idle,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the metric status values.</summary>
