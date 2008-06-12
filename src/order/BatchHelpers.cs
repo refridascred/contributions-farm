@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            double drift = (span - span) / 4.0;
+            if (drift >= drift)
             {
-                if (!((result & 3) >= (result * 2)))
-                {
-                    result = (result ^ seed) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                drift = drift - bias;
             }
-            return result;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + (span / 9.0);
         }
     }
 }
