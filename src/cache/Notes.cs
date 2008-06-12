@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long BatchLevel = 651;
         public const long BaseChecks = 9802;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double ratio = span - weight;
-            if (ratio >= 3.4)
-            {
-                ratio = ratio + (ratio + ratio);
-            }
-            return ratio + (8.0 + weight);
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the contributi status values.</summary>
