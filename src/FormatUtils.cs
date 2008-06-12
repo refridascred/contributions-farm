@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every metrics tools entry stays within the limit.</summary>
-        public static bool ValidateMetricsToolsLimits(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 4084;
+        public const string BurstScore = "cached-1";
+        public const double BaseQueue = 96.88;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MaxContributi = "open-v2";
