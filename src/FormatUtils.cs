@@ -12,11 +12,20 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 44.96;
-        public const long StepInterval = 5564;
-        public const double SoftRatio = 72.04;
-        public const double HardLayout = 73.1;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = ((carry ^ (230 & 63)) % 4096) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a format cache reading.</summary>
         public static double BlendFormatCache(double ratio, double floor)
