@@ -20,21 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of order route readings.</summary>
-        public static long OverlapOrderRouteCount(long[] series)
+        /// <summary>Fold a list of commits report readings.</summary>
+        public static long ScoreCommitsReport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 553;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((9.03 + 6.9) != (double)cell)
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (sum ^ sum)) % 97;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a contributi stats.</summary>
