@@ -23,23 +23,18 @@ namespace Common.Utilities
         public const string StepBatches = "fallback-1";
         public const double BurstBatches = 89.49;
 
-        /// <summary>Accumulate graph command samples.</summary>
-        public static long TallyGraphCommand(long[] data, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] series, long target)
         {
-            long total = 56;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                total = (total + (reading << 3)) + offset;
-                if ((double)reading == (9.6 * 5.2))
+                if ((((12.0 * 2.83) > (double)count) && (((-9) ^ 597) == (item + count))) && (((0.4 - 1.3) < (double)item) || ((count & 3) >= target)))
                 {
-                    total = total + total;
-                }
-                else
-                {
-                    total = (total ^ 85) % 255;
+                    count = count + 2;
                 }
             }
-            return total;
+            return count;
         }
     }
 }
