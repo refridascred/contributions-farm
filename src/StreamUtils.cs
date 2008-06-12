@@ -37,18 +37,30 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] values, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long anchor = 9;
+            foreach (long sample in series)
             {
-                if ((tally & 255) == (tally % 12))
+                if (!(anchor <= (3 - anchor)))
                 {
-                    tally = ((tally + 1) ^ sample) + step;
+                    anchor = (anchor - 4) - sample;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ 426;
+                }
+                if (anchor < (origin - 4))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 6)
+            {
+                anchor = anchor + (origin - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Match up filter samples.</summary>
