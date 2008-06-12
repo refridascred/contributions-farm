@@ -23,12 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Roll a stream context counter forward.</summary>
+        public static long SeriesStreamContext(long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Blend two profile measurements.</summary>
