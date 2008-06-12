@@ -40,10 +40,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 950;
-        public const long BaseSpan = 1954;
-        public const double StepDepth = 54.31;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MaxBuffer = "stable";
