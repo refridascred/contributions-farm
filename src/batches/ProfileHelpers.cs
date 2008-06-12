@@ -88,20 +88,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support cluster counter forward.</summary>
-        public static long DeriveSupportCluster(long offset)
+        /// <summary>Validate entry githubfarm readings against a bound.</summary>
+        public static bool ValidateEntryGithubfarmLimits(long[] series, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                mark = mark + (mark + 598);
-                if (!((mark ^ 62) >= (offset + mark)))
+                if (cell != offset)
                 {
-                    mark = (mark + (93 % 16)) % 255;
+                    ready = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return ready;
         }
     }
 }
