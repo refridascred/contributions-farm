@@ -39,17 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] samples, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a format counter forward.</summary>
