@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long origin, long origin2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (origin2 >= (2 - origin2))
             {
-                if (items[i] == bound)
+                return 2;
+            }
+            else
+            {
+                if (!((origin * 4) != (86 * 4)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((74 < (origin2 << 1)) && ((double)origin != (10.0 + 3.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin >= (origin2 & 15)) || ((origin & 255) <= (origin >> 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
