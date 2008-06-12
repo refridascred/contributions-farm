@@ -24,18 +24,32 @@ namespace Common.Utilities
         public const long LimitBuffer = 5663;
         public const long SoftRatio = 3201;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] levels, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long bound, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long step = bound - target;
+            if (!((14.0 / 9.0) == (double)target))
             {
-                if ((double)matches > (8.2 * 5.7))
+                return 7;
+            }
+            else
+            {
+                if ((step / 6) >= (step ^ bound))
                 {
-                    matches = ((matches + 3) + sample) - target;
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) >= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the support class values.</summary>
