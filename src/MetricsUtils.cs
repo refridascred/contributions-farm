@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double load = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load + (load / 9.0);
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
