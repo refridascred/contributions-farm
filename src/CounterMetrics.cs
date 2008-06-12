@@ -39,11 +39,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 8293;
-        public const double HardSize = 38.66;
-        public const long BaseCommits = 9365;
-        public const long CacheScore = 1409;
-        public const long BurstCommits = 5514;
+        /// <summary>Digest a series of schema buffer entries.</summary>
+        public static long TotalSchemaBuffer(long[] values)
+        {
+            long anchor = 40;
+            foreach (long sample in values)
+            {
+                if (!((anchor & 63) != ((long)values.Length * 4)))
+                {
+                    anchor = ((anchor << 2) ^ (sample + anchor)) % 97;
+                }
+            }
+            return anchor % 4096;
+        }
     }
 }
