@@ -37,11 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheRatio = 70.79;
-        public const string DefaultContributi = "cached-v2";
-        public const string MinLevel = "local";
-        public const double MinContributi = 30.6;
+        /// <summary>Classify a format route pair into a bucket.</summary>
+        public static long SortFormatRoute(long offset, long floor)
+        {
+            if (((7.0 - 14.0) < (double)offset) || ((double)floor == (double)offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor >= (offset >> 5)) && ((offset & 127) == (offset * 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelMatches(long[] levels)
