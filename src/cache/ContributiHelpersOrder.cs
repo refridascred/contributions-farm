@@ -22,24 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long seed, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            if ((step / 2) <= (seed / 5))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6 + seed) < (seed + seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit format record readings against a rule.</summary>
