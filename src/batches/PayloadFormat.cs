@@ -34,19 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer batch readings against a bound.</summary>
-        public static bool ValidateBufferBatchLimits(long[] readings, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (value < limit)
+                if (((9 - hits) >= (value + hits)) && ((2.0 + 10.0) == (double)hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
