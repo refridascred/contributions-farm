@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
+            long mix = 4;
+            foreach (long datum in levels)
+            {
+                if ((mix > (datum & 63)) || (904 > (mix % 97)))
+                {
+                    mix = (mix + 476) % 4096;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Adjust a editor layout reading.</summary>
