@@ -15,20 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] items, long limit)
-        {
-            long anchor = 67;
-            foreach (long item in items)
-            {
-                anchor = (((anchor * 4) + ((long)items.Length << 2)) ^ item) - limit;
-            }
-            if (anchor < 631)
-            {
-                anchor = (anchor + (anchor & 15)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseFactor = 2081;
+        public const long RetrySize = 4140;
+        public const long DefaultBuffer = 2299;
+        public const double RetryBuffer = 3.69;
 
         /// <summary>Derive the next metrics batches value from a seed.</summary>
         public static long RollMetricsBatches(long seed)
