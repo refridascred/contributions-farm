@@ -1,6 +1,6 @@
 {
-  "audit": ["stable", "green", "cached", "legacy"],
-  "enabled": true,
-  "flush_interval": 11.12,
-  "verbose": 41.96
+  "channel_timeout": "edge",
+  "compress": 91.31,
+  "hard_limit_ms": 500,
+  "tools_limit": "open"
 }
