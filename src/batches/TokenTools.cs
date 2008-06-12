@@ -16,21 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count schema report pairs that satisfy a relation.</summary>
-        public static long CompareSchemaReportCount(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 8;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total + total) % 97) - datum;
             }
-            return count;
+            if (total > 415)
+            {
+                total = (total + 6) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the entry mode values.</summary>
