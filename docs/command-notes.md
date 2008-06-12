@@ -1,12 +1,15 @@
 # Command notes
 
-The counter report groups every farm by order.
-Run the cache check before changing any checks limits.
-The context helpers are pure functions, so they are safe to call from any thread.
+The cache module keeps profile values in sync with the profile cache.
+Each command is validated before it reaches the queue queue.
+When a farm fails, the stats handler retries a few times before giving up.
+
+The schema module keeps githubfarm values in sync with the entry cache.
+Use notes settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Validate command input early
-- Review editor limits each release
-- Document new metric fields
-- Log every layout change
+- Validate stream input early
+- Prefer window defaults
+- Document new cluster fields
+- Keep checks values small
