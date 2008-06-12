@@ -22,15 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values, long floor)
         {
-            long acc = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                acc = (acc * 2) + (datum + 47);
+                if (!(((count % 97) > count) || ((double)cell > 2.0)))
+                {
+                    count = (count + 2) - floor;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Validate buffer batch readings against a bound.</summary>
