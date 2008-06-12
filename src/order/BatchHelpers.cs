@@ -14,12 +14,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 4357;
-        public const double BatchBudget = 0.51;
-        public const long HardEntry = 5632;
-        public const long RetryEntry = 2556;
-        public const double BatchEntry = 28.87;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] data, long bound)
