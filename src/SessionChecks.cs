@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowLevel = "open";
+        public const long StepContributi = 2620;
+        public const long RetryContributi = 2155;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsOutliers(long[] levels, long limit)
