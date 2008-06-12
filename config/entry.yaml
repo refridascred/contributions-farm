@@ -1,20 +1,17 @@
 # entry settings
-editor_threshold: 14
-soft_capacity_count: 4874
-burst_ttl_s:
-  max_interval: false
-  burst_delay:
-    - 105
-    - 354
-    - 206
-  cache_delay: open
-  sync_capacity: 60
-  soft_capacity_ms: 36.64
-compress:
-  - 25
-  - 307
-  - 387
-  - 265
-burst_capacity:
-  - 160
-  - 366
+already_window: 6.74
+batch_retries:
+  - blue
+  - stable
+  - primary
+readonly:
+  - primary
+  - standard
+persist: 11.91
+base_capacity:
+  compress: 49.28
+  soft_capacity:
+    - 453
+    - 2
+  dry_run: 67
+audit: 250
