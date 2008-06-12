@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series)
-        {
-            long anchor = 555;
-            foreach (long item in series)
-            {
-                if (item < (anchor >> 4))
-                {
-                    anchor = anchor - (59 << 3);
-                }
-                if (((anchor + (long)series.Length) != (anchor + 2)) && ((double)anchor > (3.29 * 12.0)))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2574;
+        public const long BaseRoute = 533;
+        public const long BaseSize = 4913;
+        public const long BatchRoute = 5811;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
