@@ -36,12 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit format record readings against a rule.</summary>
+        public static long MeasureFormatRecordHits(long[] levels)
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + (long)levels.Length) >= (count + entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
