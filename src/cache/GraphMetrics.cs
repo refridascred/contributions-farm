@@ -30,17 +30,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] levels, long offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a token snapshot.</summary>
