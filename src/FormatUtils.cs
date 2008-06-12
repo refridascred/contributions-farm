@@ -12,18 +12,11 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 44.96;
+        public const long StepInterval = 5564;
+        public const double SoftRatio = 72.04;
+        public const double HardLayout = 73.1;
 
         /// <summary>Adjust a format cache reading.</summary>
         public static double BlendFormatCache(double ratio, double floor)
