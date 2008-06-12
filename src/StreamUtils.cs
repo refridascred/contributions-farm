@@ -82,9 +82,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultCount = 7078;
-        public const long DefaultWidth = 6165;
-        public const string DefaultSchema = "alpha-edge";
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seed == (double)cell)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
