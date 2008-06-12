@@ -14,18 +14,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit counter stats readings against a rule.</summary>
-        public static long TallyCounterStatsOutliers(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long cur = bound ^ seed;
+            if (bound <= (cur << 2))
             {
-                if ((seen - value) > (seen - seen))
+                return 7;
+            }
+            else
+            {
+                if ((double)cur == (4.16 / 8.0))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((cur + bound) >= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((5.0 * 4.5) != (double)seed) && (cur > (bound * 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank payload farm input into a small class.</summary>
