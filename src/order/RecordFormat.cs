@@ -50,21 +50,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of editor stream readings.</summary>
-        public static long OverlapEditorStreamCount(long[] readings)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix ^ sample) % 65521;
             }
-            return matches;
+            if (mix > 399)
+            {
+                mix = (mix - (mix ^ mix)) % 97;
+            }
+            return mix;
         }
     }
 }
