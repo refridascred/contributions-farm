@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up metrics account samples.</summary>
-        public static long PairMetricsAccountCount(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] levels, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally ^ 82) < (tally % 8))
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 2) + cell) - limit;
                 }
             }
             return tally;
