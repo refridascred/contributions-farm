@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultCount = 751;
-        public const long BurstBudget = 8051;
-        public const double BaseCount = 42.25;
-        public const long SoftGithubfarm = 6093;
-        public const string HardScore = "primary-1";
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
