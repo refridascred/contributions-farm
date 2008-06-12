@@ -40,11 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 9747;
-        public const long BatchWidth = 517;
-        public const long DefaultMetric = 2616;
-        public const double IdleTimeout = 8.59;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
