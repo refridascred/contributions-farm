@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] items, long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
