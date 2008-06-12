@@ -44,14 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Active,
-            Locked,
+            Idle,
             Pending,
-            Ready,
-            Paused,
+            Closed,
+            Done,
         }
     }
 }
