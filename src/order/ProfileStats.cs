@@ -36,12 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit context farm readings against a rule.</summary>
