@@ -29,21 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command batch readings.</summary>
-        public static long PairCommandBatchCount(long[] values)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            New,
+            Locked,
+            Failed,
+            Queued,
         }
     }
 }
