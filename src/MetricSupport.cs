@@ -32,13 +32,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 2;
+            foreach (long datum in samples)
+            {
+                if ((datum + (-122)) > datum)
+                {
+                    sum = sum + (90 << 3);
+                }
+                else
+                {
+                    sum = (sum + (-86)) % 97;
+                }
+            }
+            if (sum > 49)
+            {
+                sum = ((sum << 3) ^ (sum % 10)) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
