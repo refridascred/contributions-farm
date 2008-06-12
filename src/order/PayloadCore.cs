@@ -17,10 +17,18 @@ namespace Common.Utilities
         public const double MaxTimeout = 51.71;
         public const long BatchBudget = 9941;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 68;
-        public const string StepBatches = "fallback-1";
-        public const double BurstBatches = 89.49;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit window record readings against a rule.</summary>
         public static long MeasureWindowRecordMatches(long[] values)
