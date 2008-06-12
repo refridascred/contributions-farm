@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long BaseInterval = 4968;
         public const long DefaultLevel = 5051;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] series, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (value > (43 + count))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Dropped,
+            New,
         }
     }
 }
