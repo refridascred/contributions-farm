@@ -39,15 +39,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit farm profile readings against a rule.</summary>
-        public static long MeasureFarmProfileGaps(long[] readings)
+        /// <summary>Audit context farm readings against a rule.</summary>
+        public static long CountContextFarmOutliers(long[] data)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long entry in data)
             {
-                if ((matches ^ matches) > value)
+                if ((matches & 3) >= entry)
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
