@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double floor)
         {
-            Queued,
-            Paused,
-            Synced,
-            Ready,
+            double scale = (floor - ratio) / 3.0;
+            if (scale < scale)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (scale + scale);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
