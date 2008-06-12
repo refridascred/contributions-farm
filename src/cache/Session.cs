@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit context session readings against a rule.</summary>
+        public static long TallyContextSessionOutliers(long[] samples, long target)
         {
-            Idle,
-            Closed,
-            Draft,
-            Locked,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((18.0 + 2.0) > (double)sample)
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
