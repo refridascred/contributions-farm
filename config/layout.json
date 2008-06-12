@@ -1,21 +1,6 @@
 {
-  "sync_delay_count": 6727,
-  "compress": "standard",
-  "verbose": "green",
-  "batch_interval_ms": {
-    "default_retries_count": {
-      "compress": "fallback",
-      "idle_timeout": 62,
-      "metric_size": "fallback",
-      "buffer_threshold": 52,
-      "command_capacity": ["green", "stable", "stable", "green"],
-      "soft_timeout": [112, 68, 288, 390]
-    },
-    "poll_interval_ms": "fallback",
-    "cache_window_ms": ["stable", "legacy"],
-    "retry_capacity_ms": 4321,
-    "audit": false,
-    "cache_depth": 98.83
-  },
-  "audit": "stable"
+  "sync_delay_ms": true,
+  "contributi_timeout": "latest",
+  "token_delay": 2453,
+  "cache_retries": true
 }
