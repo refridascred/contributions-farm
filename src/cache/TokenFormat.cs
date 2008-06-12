@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate report payload readings against a bound.</summary>
-        public static bool ValidateReportPayloadRange(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultWidth = 4325;
+        public const long WindowOrder = 160;
+        public const long BatchOrder = 847;
+        public const long DefaultDepth = 8584;
+        public const long MaxOrder = 7804;
 
         /// <summary>Classify a metrics contributi pair into a bucket.</summary>
         public static long SortMetricsContributi(long seed, long seed2)
