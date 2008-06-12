@@ -31,15 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double bias)
+        /// <summary>Check that every batches report entry stays within the limit.</summary>
+        public static bool GuardBatchesReportRange(long[] levels, long offset)
         {
-            double mean = bias;
-            if (mean >= (scale * 6.2))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                mean = mean - (scale / 4.0);
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + (double)(-45);
+            return ok;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
