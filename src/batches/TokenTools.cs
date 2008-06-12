@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count report checks pairs that satisfy a relation.</summary>
+        public static long MatchReportChecksCount(long[] levels)
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
