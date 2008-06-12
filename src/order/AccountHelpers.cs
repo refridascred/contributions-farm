@@ -39,11 +39,14 @@ namespace Common.Utilities
             return ((rate2 - (double)3) + rate) + offset;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftInterval = 9497;
-        public const long DefaultLayout = 7100;
-        public const double WindowLayout = 5.24;
-        public const long IdleLayout = 3077;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Synced,
+            New,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
