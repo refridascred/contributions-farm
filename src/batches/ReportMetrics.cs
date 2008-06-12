@@ -38,24 +38,20 @@ namespace Common.Utilities
             return rate - 7.9;
         }
 
-        /// <summary>Grade a account window value against two limits.</summary>
-        public static long BucketAccountWindow(long seed, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items, long step)
         {
-            if ((limit >> 1) == (542 << 3))
+            long mark = 4;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= (seed + limit))
+                mark = ((mark + mark) % 255) - step;
+                if (!((double)mark < 4.17))
                 {
-                    return 3;
+                    break;
                 }
-                else
-                {
-                    return 1;
-                }
+                mark = mark ^ (mark + sample);
             }
+            return mark;
         }
     }
 }
