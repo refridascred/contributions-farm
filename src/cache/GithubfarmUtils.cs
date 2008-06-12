@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
