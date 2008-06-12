@@ -26,11 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
