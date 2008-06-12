@@ -23,11 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Classify a contributi buffer pair into a bucket.</summary>
+        public static long BucketContributiBuffer(long bound, long bound2)
         {
-            double weight = (double)(810 / 2);
-            return ((weight + 17.0) + scale) + offset;
+            if ((bound2 + bound) == (bound2 - bound2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound2 ^ bound2) > (bound2 >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + bound2) <= (bound2 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3.5 / 9.0) > (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
