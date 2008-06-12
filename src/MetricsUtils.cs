@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Check that every format entry entry stays within the limit.</summary>
+        public static bool ValidateFormatEntryRange(long[] values, long bound)
         {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
