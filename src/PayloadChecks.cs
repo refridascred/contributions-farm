@@ -19,16 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] series, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            long carry = 62;
-            foreach (long cell in series)
+            long mix = 94;
+            foreach (long value in levels)
             {
-                carry = ((((carry << 3) ^ ((long)series.Length >> 5)) % 255) + cell) + offset;
-                carry = (carry + carry) % 255;
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (((mix << 2) ^ (long)i) % 4096) ^ value;
+                    mix = ((mix << 3) ^ mix) % 1000;
+                }
+                mix = ((mix << 2) ^ (mix << 1)) % 101;
             }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Adjust a editor layout reading.</summary>
