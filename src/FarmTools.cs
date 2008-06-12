@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a stats farm figure with a bias.</summary>
-        public static double SmoothStatsFarm(double scale, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] items, long step)
         {
-            double mean = scale;
-            if (mean <= (scale * 10.0))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mean = mean - span;
+                if (reading >= (reading - step))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + 6.11;
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
