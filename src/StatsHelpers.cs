@@ -24,14 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 9281;
+        public const double SoftSpan = 26.35;
+        public const double BatchTimeout = 91.71;
+        public const long BaseRoute = 4438;
+        public const long SoftCount = 6017;
 
         /// <summary>Count the entry buffer entries that pass the check.</summary>
         public static long TallyEntryBufferGaps(long[] data, long offset)
