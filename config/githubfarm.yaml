@@ -1,14 +1,7 @@
 # githubfarm settings
-queue_ttl: false
-max_ttl_count:
-  - 491
-  - 330
-  - 383
-  - 226
-strict: 8786
-default_delay_pct:
-  - 437
-  - 260
-  - 130
-sync_limit_s: 81.14
-batch_window_s: 32
+max_timeout_ms: false
+base_capacity_s: latest
+burst_ttl: 55.31
+retry_retries: 35.01
+hard_ttl_pct: open
+sync_depth: 86
