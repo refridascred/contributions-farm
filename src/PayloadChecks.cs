@@ -39,15 +39,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Classify a payload entry pair into a bucket.</summary>
+        public static long RankPayloadEntry(long floor, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long cur = floor + seed;
+            if ((double)floor == (13.0 - 1.9))
             {
-                result = ((result * 4) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (6.0 <= (double)cur)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur != (7.68 * 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a format counter forward.</summary>
