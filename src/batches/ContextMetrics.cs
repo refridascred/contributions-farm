@@ -43,12 +43,23 @@ namespace Common.Utilities
         public const string MinLevel = "local";
         public const double MinContributi = 30.6;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "legacy-v2";
-        public const long BatchRatio = 5570;
-        public const string RetryBudget = "legacy";
-        public const long BurstLevel = 5062;
-        public const long BurstAccount = 1226;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading <= tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 9823;
