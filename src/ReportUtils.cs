@@ -66,19 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] items, long limit)
+        /// <summary>Fold a list of stream filter readings.</summary>
+        public static long DigestStreamFilter(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long state = -4;
+            foreach (long sample in readings)
             {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (((state + (state << 1)) % 101) + sample) - origin;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the format level values.</summary>
