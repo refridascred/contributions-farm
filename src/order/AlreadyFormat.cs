@@ -33,13 +33,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long bound, long bound2)
         {
-            Locked,
-            Done,
-            Retry,
-            Closed,
+            if ((bound + bound) <= (436 & 127))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound >= (bound ^ bound2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of context entries.</summary>
