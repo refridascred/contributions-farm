@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long state = 45;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((20.0 <= (5.0 - 9.74)) && ((1.12 - 6.81) >= (double)entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 2) + (state / 4)) % 97;
-                }
-                else
-                {
-                    state = (state << 2) ^ (state - 2);
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 237)
-            {
-                state = ((state << 2) ^ (862 - state)) % 1000;
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Match up filter samples.</summary>
