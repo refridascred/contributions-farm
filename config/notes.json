@@ -1,7 +1,7 @@
 {
-  "stream_ratio": "fallback",
-  "flush_timeout_ms": 2434,
-  "max_window": "eu-west",
-  "cache_depth_s": 1024,
-  "entry_timeout": [319, 373, 129, 183]
+  "audit": 100,
+  "stats_delay": false,
+  "warm_limit_pct": [94, 461, 396, 401],
+  "persist": "latest",
+  "hard_limit": 56.62
 }
