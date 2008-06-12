@@ -1,6 +1,8 @@
 {
-  "sync_limit_s": "eu-west",
-  "burst_ttl_count": 60,
-  "idle_window": 56.06,
-  "poll_ttl": "eu-west"
+  "base_limit": "stable",
+  "hard_timeout_pct": 7930,
+  "command_ttl": true,
+  "stream_window": true,
+  "burst_window_pct": ["eu-west", "strict", "cached", "cached"],
+  "channel_ratio": "eu-west"
 }
