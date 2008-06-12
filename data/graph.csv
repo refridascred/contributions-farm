@@ -1,8 +1,7 @@
-id,level,region,label
-1,strict,legacy,592
-2,20.38,399,primary
-3,staging,90.64,637
-4,418,strict,39.89
-5,0.71,33.67,905
-6,93.31,447,377
-7,766,primary,6.28
+id,token,count,rank
+1,857,cached,89.04
+2,17,30.52,440
+3,397,179,951
+4,standard,2.52,53.57
+5,89.92,5.34,621
+6,52.03,36.23,local
