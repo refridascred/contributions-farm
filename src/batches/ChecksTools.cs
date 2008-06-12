@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] items, long target)
         {
-            Closed,
-            Retry,
-            Dropped,
-            Queued,
-            Done,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
