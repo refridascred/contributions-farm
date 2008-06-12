@@ -26,21 +26,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
