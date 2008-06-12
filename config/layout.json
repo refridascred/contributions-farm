@@ -1,5 +1,24 @@
 {
-  "flush_timeout_s": 4.99,
-  "editor_threshold": [176, 296],
-  "contributi_interval": [498, 82, 199]
+  "contributi_limit": {
+    "sync_depth_s": "latest",
+    "max_timeout": 6506,
+    "max_depth_pct": [373, 52]
+  },
+  "buffer_ratio": "standard",
+  "compress": 50.83,
+  "max_depth_pct": {
+    "poll_ttl_pct": "edge",
+    "max_limit": [48, 478, 450, 397],
+    "min_window": {
+      "dry_run": true,
+      "max_depth": "standard",
+      "verbose": 100,
+      "min_ratio": 27.4,
+      "retry_ttl": false,
+      "default_ttl": "open"
+    },
+    "editor_interval": 75,
+    "sync_retries": false,
+    "session_timeout": false
+  }
 }
