@@ -48,11 +48,13 @@ namespace Common.Utilities
         public const double MinLevel = 74.09;
         public const long CacheSize = 352;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseScore = 9812;
-        public const long MaxBuffer = 9901;
-        public const double LimitLevel = 4.43;
-        public const string SoftRatio = "latest-1";
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Done,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Look up the position of a command profile sample.</summary>
         public static long FindCommandProfileIndex(long[] data, long floor)
