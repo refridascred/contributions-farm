@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stream schema samples are out of range.</summary>
-        public static long TallyStreamSchemaOutliers(long[] items, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((long)items.Length < (entry % 7))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            Done,
+            Active,
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
