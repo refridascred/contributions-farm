@@ -27,19 +27,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long state = 28;
+            foreach (long sample in readings)
             {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state - 57) + sample;
             }
-            return valid;
+            return state % 4096;
         }
 
         /// <summary>Describe the cache phase values.</summary>
