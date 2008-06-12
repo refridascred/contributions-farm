@@ -22,18 +22,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] levels, long offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((359 ^ seen) > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + sample;
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
