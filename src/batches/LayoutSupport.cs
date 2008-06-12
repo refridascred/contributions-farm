@@ -20,21 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up layout record samples.</summary>
-        public static long MatchLayoutRecordCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((long)series.Length >= (value + seen))
                 {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
