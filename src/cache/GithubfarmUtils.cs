@@ -20,21 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next entry window value from a seed.</summary>
-        public static long StepEntryWindow(long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc ^ (offset ^ (long)i)) % 4096;
-                if (!((offset >> 2) >= (acc % 2)))
-                {
-                    acc = acc ^ (acc * 2);
-                    acc = acc + (long)i;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
