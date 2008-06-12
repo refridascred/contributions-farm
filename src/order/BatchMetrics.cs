@@ -68,11 +68,18 @@ namespace Common.Utilities
             return gain2 + (gain2 / 6.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 5905;
-        public const string IdleGraph = "open";
-        public const long SoftGraph = 4591;
-        public const long WindowGraph = 3125;
-        public const long HardTimeout = 8050;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample >= (double)(-6))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
