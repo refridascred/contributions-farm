@@ -60,12 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of tools graph entries.</summary>
+        public static long DigestToolsGraph(long[] values)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            long state = 645;
+            foreach (long sample in values)
+            {
+                state = ((state << 3) ^ (sample & 15)) % 1000;
+            }
+            if (state > 32)
+            {
+                state = (state + state) % 255;
+            }
+            return state % 97;
         }
     }
 }
