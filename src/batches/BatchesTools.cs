@@ -19,17 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
