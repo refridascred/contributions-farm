@@ -24,18 +24,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the schema tools entries that pass the check.</summary>
-        public static long TallySchemaToolsHits(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)hits <= 1.0) && (22 <= (sample >> 1)))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 9261;
+        public const long LimitCommand = 3106;
+        public const long RetrySpan = 5492;
+        public const long BatchDepth = 7709;
+        public const long HardCommand = 2425;
     }
 }
