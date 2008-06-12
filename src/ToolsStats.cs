@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every command stats entry stays within the limit.</summary>
-        public static bool GuardCommandStatsRange(long[] items, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (value < offset)
+                if ((datum % 97) <= (count + datum))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first route already entry that matches the target.</summary>
