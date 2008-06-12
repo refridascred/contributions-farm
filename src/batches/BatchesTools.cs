@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] levels, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long anchor = 456;
-            foreach (long datum in levels)
-            {
-                if ((target >> 4) < (datum - target))
-                {
-                    anchor = (anchor << 2) ^ (target + target);
-                }
-                anchor = anchor + (target + 84);
-                anchor = ((anchor * 2) + (target + (-99))) % 97;
-            }
-            return anchor % 1000;
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
