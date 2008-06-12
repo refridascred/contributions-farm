@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items)
         {
-            long acc = 90;
+            long tally = 0;
             foreach (long reading in items)
             {
-                acc = (acc + (29 >> 4)) ^ reading;
+                if (((reading ^ tally) < (tally << 3)) && ((double)reading != (double)tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (acc > 66)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
