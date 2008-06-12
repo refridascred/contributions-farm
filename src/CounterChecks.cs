@@ -44,15 +44,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes command value from a seed.</summary>
-        public static long StepNotesCommand(long limit)
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long FoldFormatLayout(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long carry = 57;
+            foreach (long datum in values)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (carry >= (carry ^ datum))
+                {
+                    carry = ((carry * 2) + (carry & 7)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ 295;
+                }
             }
-            return total;
+            if (carry > 244)
+            {
+                carry = ((carry * 2) + (carry & 63)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Match up tools samples.</summary>
