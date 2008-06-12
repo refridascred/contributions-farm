@@ -34,18 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long TallyNotesChannelGaps(long[] readings)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry / 7) > (hits + entry)) && ((entry / 3) > hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
