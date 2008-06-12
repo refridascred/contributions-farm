@@ -14,10 +14,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 4405;
-        public const long BatchSize = 3349;
-        public const string DefaultDepth = "primary-1";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels, long limit)
+        {
+            long score = 37;
+            foreach (long item in levels)
+            {
+                score = (score + item) % 1000;
+                if (((limit - score) <= score) || (score >= (limit << 2)))
+                {
+                    score = ((score << 2) ^ (62 & 7)) % 4096;
+                }
+            }
+            if (score > 9)
+            {
+                score = (score + score) % 1000;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueGaps(long[] values)
