@@ -66,18 +66,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit stream editor readings against a rule.</summary>
-        public static long TallyStreamEditorHits(long[] data, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double mean = weight;
+            if (mean <= bias)
             {
-                if (origin > tally)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                mean = mean - 4.97;
             }
-            return tally;
+            else
+            {
+                mean = mean - weight;
+            }
+            return mean + bias;
         }
 
         /// <summary>Match up token samples.</summary>
