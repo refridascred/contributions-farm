@@ -37,21 +37,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches tools samples.</summary>
-        public static long OverlapBatchesToolsCount(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 5;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)items.Length & 127) > item)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - (-98);
+                    result = result ^ (result * 2);
+                }
+                result = ((result << 2) ^ (item ^ item)) % 97;
+                if (item > (result * 5))
+                {
+                    result = (result + (result - item)) % 1000;
+                }
+                else
+                {
+                    result = result + result;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a batch options.</summary>
