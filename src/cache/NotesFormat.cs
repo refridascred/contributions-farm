@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const long RetryFarm = 9575;
         public const long IdleSize = 5458;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long step, long offset)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            if ((offset / 8) < (offset ^ offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset == (5.0 / 7.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
