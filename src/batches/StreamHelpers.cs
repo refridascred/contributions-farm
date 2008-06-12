@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double floor)
+        /// <summary>Measure how many route cache samples are out of range.</summary>
+        public static long MeasureRouteCacheOutliers(long[] series, long limit)
         {
-            double gain = floor / 3.0;
-            if (gain < (double)541)
+            long count = 0;
+            foreach (long datum in series)
             {
-                gain = (gain + (floor * 17.0)) - weight;
+                if ((limit << 2) <= datum)
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 19.0) + (double)(long)i;
-            }
-            return gain + (double)294;
+            return count;
         }
 
         /// <summary>Combine entry batches values into a single score.</summary>
