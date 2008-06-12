@@ -31,13 +31,21 @@ namespace Common.Utilities
         public const long DefaultCount = 7628;
         public const string LimitBudget = "open";
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
