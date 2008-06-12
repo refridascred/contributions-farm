@@ -23,18 +23,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the batch already entries that pass the check.</summary>
-        public static long AuditBatchAlreadyHits(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((double)bound > (double)81)
             {
-                if ((669 < ((-11) + value)) || ((double)hits < (double)value))
+                return 4;
+            }
+            else
+            {
+                if (((bound % 5) <= 7) && ((803 << 3) == (floor / 4)))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next record githubfarm value.</summary>
