@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Active,
-            Ready,
-            Draft,
-            Locked,
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
