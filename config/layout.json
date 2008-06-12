@@ -1,7 +1,16 @@
 {
-  "support_capacity": 6090,
-  "command_depth": 250,
-  "max_ttl_pct": 93,
-  "enabled": ["strict", "eu-west", "standard", "fallback"],
-  "stream_capacity": "green"
+  "persist": {
+    "warm_timeout_s": 54,
+    "min_timeout_ms": 48.0,
+    "base_size_count": 86.09,
+    "max_threshold_count": [136, 367]
+  },
+  "cache_ratio": 60,
+  "sync_interval": 9384,
+  "min_timeout_ms": ["fallback", "open", "cached"],
+  "poll_size_pct": {
+    "max_window_pct": 100,
+    "default_threshold_count": "staging",
+    "enabled": "eu-west"
+  }
 }
