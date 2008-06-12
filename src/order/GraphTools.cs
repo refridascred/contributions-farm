@@ -44,11 +44,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchBudget = 98.54;
-        public const double LimitContext = 81.48;
-        public const long BaseBudget = 6158;
-        public const double HardLevel = 75.25;
-        public const double DefaultTimeout = 40.59;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] data)
+        {
+            long state = 2;
+            foreach (long value in data)
+            {
+                if ((7.4 - 4.9) >= (double)state)
+                {
+                    state = (state + (value + value)) % 97;
+                }
+            }
+            return state % 97;
+        }
     }
 }
