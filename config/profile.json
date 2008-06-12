@@ -1,22 +1,7 @@
 {
-  "dry_run": "green",
-  "graph_ttl": [331, 379],
-  "base_limit_ms": 45.39,
-  "hard_interval_pct": 7624,
-  "burst_ratio_count": {
-    "already_limit": {
-      "schema_window": true,
-      "persist": "standard",
-      "channel_threshold": "edge",
-      "command_timeout": true,
-      "checks_interval": 2387,
-      "profile_interval": 60
-    },
-    "commits_limit": true,
-    "poll_capacity_pct": [417, 434],
-    "farm_window": 8002,
-    "hard_timeout_pct": "cached",
-    "verbose": ["strict", "staging", "eu-west"]
-  },
-  "graph_interval": "legacy"
+  "verbose": "blue",
+  "flush_threshold_s": 8541,
+  "sync_limit_ms": "edge",
+  "retry_limit": "stable",
+  "persist": [31, 255, 44, 329]
 }
