@@ -1,8 +1,11 @@
 # support settings
-dry_run:
-  - fallback
-  - eu-west
-  - edge
-  - latest
-max_size_ms: true
-soft_delay_pct: 68.78
+max_threshold_ms:
+  - 241
+  - 87
+  - 120
+max_timeout_count:
+  - blue
+  - staging
+  - open
+  - strict
+sync_capacity: true
