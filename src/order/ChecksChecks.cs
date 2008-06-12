@@ -36,38 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long origin, long floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double ratio, double span)
         {
-            if (9 >= floor)
+            double ratio2 = span;
+            if (ratio2 <= (span + span))
             {
-                return 8;
+                ratio2 = (ratio2 + (7.97 * 12.0)) + ratio;
             }
             else
             {
-                if (583 >= (origin + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (47 < origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin <= (floor + 701))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio2 = ratio2 + (1.71 * 3.14);
             }
+            return ratio2 - (span + span);
         }
     }
 }
