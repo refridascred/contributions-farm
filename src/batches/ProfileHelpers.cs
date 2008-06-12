@@ -43,11 +43,14 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 5.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseScore = 79.69;
-        public const long IdleGithubfarm = 3246;
-        public const double SoftGithubfarm = 94.8;
-        public const long DefaultDepth = 9091;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Stale,
+            Queued,
+            Pending,
+            Active,
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
