@@ -1,6 +1,6 @@
 {
-  "metric_window": [127, 445, 293, 176],
-  "flush_retries": "strict",
-  "dry_run": true,
-  "checks_timeout": "standard"
+  "sync_limit_s": "eu-west",
+  "burst_ttl_count": 60,
+  "idle_window": 56.06,
+  "poll_ttl": "eu-west"
 }
