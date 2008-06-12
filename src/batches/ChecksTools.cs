@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the farm tools entries that pass the check.</summary>
-        public static long TallyFarmToolsHits(long[] values)
+        /// <summary>Iterate the command tools series from a seed.</summary>
+        public static long RollCommandTools(long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count + (-54)) <= count)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = (count + 2) - sample;
+                    mix = (((mix * 5) + (mix + 23)) % 97) ^ (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
