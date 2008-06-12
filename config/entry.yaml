@@ -1,29 +1,4 @@
 # entry settings
-context_ttl:
-  checks_retries: 31
-  audit: staging
-  dry_run: true
-entry_timeout:
-  burst_delay_pct: 32.57
-  min_interval_s: 2827
-  readonly: stable
-  sync_size_ms: local
-  githubfarm_window:
-    readonly: 84.85
-    persist:
-      - cached
-      - eu-west
-      - blue
-      - green
-    idle_size_ms:
-      - 299
-      - 488
-      - 66
-      - 80
-    base_interval_ms: 100
-    cache_interval_s: false
-    flush_limit_pct: 55.76
-idle_timeout: 16
-burst_threshold: 59.31
-strict: green
-dry_run: 4.72
+burst_delay: 52
+sync_capacity_count: standard
+burst_retries_ms: edge
