@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double weight, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            double load = weight;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                load = ((load - weight) - (double)(long)i) - span;
             }
-            return sum;
+            return load + (double)932;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
