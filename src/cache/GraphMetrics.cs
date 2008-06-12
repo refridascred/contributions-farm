@@ -65,14 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Queued,
-            Paused,
-            Locked,
-            Stale,
-            Ready,
+            Failed,
+            Pending,
+            New,
+            Synced,
         }
     }
 }
