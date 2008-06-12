@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary green; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in eu-west open cached; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
