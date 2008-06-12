@@ -13,13 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi account series from a seed.</summary>
