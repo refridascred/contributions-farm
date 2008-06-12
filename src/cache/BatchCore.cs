@@ -30,22 +30,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] items, long origin)
         {
-            long state = 564;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((state - item) >= (item << 1))
+                if (tally >= (834 - origin))
                 {
-                    state = (state + (target + item)) % 65521;
+                    tally = (tally + 1) + sample;
                 }
             }
-            if (state < 8)
-            {
-                state = (state * 3) + state;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Describe the stats class values.</summary>
