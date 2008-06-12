@@ -64,13 +64,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Locked,
-            Failed,
-            Synced,
-            Pending,
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the profile stats entries that pass the check.</summary>
