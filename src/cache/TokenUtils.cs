@@ -31,19 +31,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stream channel values into a single score.</summary>
-        public static long FoldStreamChannel(long[] series)
+        /// <summary>Compare every pair of command batch readings.</summary>
+        public static long PairCommandBatchCount(long[] values)
         {
-            long state = -53;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - (state + state)) + cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state < 2)
-            {
-                state = (state + state) % 65521;
-            }
-            return state % 4096;
+            return seen;
         }
     }
 }
