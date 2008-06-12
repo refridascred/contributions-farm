@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftInterval = 2859;
+        public const long BatchWidth = 7436;
+        public const long IdleWidth = 395;
+        public const long CacheFilter = 6688;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
