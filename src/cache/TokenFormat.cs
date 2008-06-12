@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultWidth = 4325;
-        public const long WindowOrder = 160;
-        public const long BatchOrder = 847;
-        public const long DefaultDepth = 8584;
-        public const long MaxOrder = 7804;
+        /// <summary>Grade a graph commits value against two limits.</summary>
+        public static long BucketGraphCommits(long step, long offset)
+        {
+            long diff = step ^ offset;
+            if ((diff + 863) < diff)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset >> 5) < 96) && ((step >> 4) > (809 >> 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((947 > (step + diff)) && ((step % 64) == (90 % 60)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a metrics contributi pair into a bucket.</summary>
         public static long SortMetricsContributi(long seed, long seed2)
