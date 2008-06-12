@@ -60,12 +60,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardWidth = 61.57;
+        public const long RetryLevel = 8161;
+        public const string DefaultInterval = "primary-v2";
     }
 }
