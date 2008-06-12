@@ -25,22 +25,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "fallback-edge";
+        public const double CacheCounter = 7.87;
+        public const long LimitFactor = 527;
+        public const long BaseDepth = 5577;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] data, long origin)
