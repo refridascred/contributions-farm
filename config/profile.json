@@ -1,6 +1,21 @@
 {
-  "max_threshold_pct": "local",
-  "max_window_s": false,
-  "sync_interval_pct": "green",
-  "hard_retries_count": false
+  "idle_delay_s": 3237,
+  "readonly": "standard",
+  "poll_window_ms": {
+    "max_size_pct": {
+      "idle_limit_ms": "local",
+      "default_size_count": 6878,
+      "route_capacity": 48
+    },
+    "base_timeout_count": 1067,
+    "flush_capacity": {
+      "retry_ttl": "primary",
+      "retry_limit_ms": ["strict", "eu-west", "legacy"],
+      "batch_timeout": 86.78,
+      "default_threshold": 1024,
+      "strict": 500
+    },
+    "burst_retries": 250
+  },
+  "hard_interval": 9423
 }
