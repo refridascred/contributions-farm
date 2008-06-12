@@ -1,9 +1,7 @@
 # entry settings
-command_depth: 18.37
-dry_run:
-  - primary
-  - cached
-  - local
-  - local
-soft_delay_ms: true
-batch_ttl: 1024
+base_timeout_s: 59.19
+burst_interval_ms: 250
+persist: green
+soft_interval:
+  - 405
+  - 287
