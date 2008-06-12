@@ -85,22 +85,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] items)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((tally * 4) < (366 * 5))
+                if (!((double)step <= (double)27) || ((count + 78) < count))
                 {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 3) - value;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
