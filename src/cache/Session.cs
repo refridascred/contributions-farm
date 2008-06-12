@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double weight, double bias)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            double gain = (double)((-72) ^ 4);
-            if (gain >= weight)
+            double rate = floor;
+            if (rate < (rate - weight))
             {
-                gain = (gain - (7.96 / 6.0)) + bias;
+                rate = rate + (double)7;
             }
             else
             {
-                gain = gain - 6.99;
+                rate = rate - (floor / 9.0);
             }
-            return gain - weight;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - 12.0) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define report limits and defaults.</summary>
