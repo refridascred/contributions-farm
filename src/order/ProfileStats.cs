@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] data, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample < floor)
+                if ((3.8 + 19.0) > (double)matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a session summary.</summary>
