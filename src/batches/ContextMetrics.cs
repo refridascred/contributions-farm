@@ -43,18 +43,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] readings)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((count - 45) > (count * 2))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = (count + 3) + cell;
+                    sum = (((sum * 3) + (sum >> 1)) % 1000) - (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Adjust a schema already reading.</summary>
