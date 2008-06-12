@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            long acc = 91;
-            foreach (long sample in levels)
+            long acc = 523;
+            foreach (long sample in series)
             {
-                acc = acc + (sample ^ acc);
-            }
-            if (acc < 4)
-            {
-                acc = (acc << 2) ^ (limit ^ acc);
+                acc = ((acc ^ (acc - acc)) % 4096) - sample;
+                acc = acc - (acc ^ acc);
             }
             return acc;
         }
