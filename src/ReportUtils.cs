@@ -38,19 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= (5.5 * 4.31))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "standard-1";
+        public const double RetryTools = 18.11;
+        public const long CacheTools = 7746;
+        public const string DefaultTimeout = "primary-v2";
+        public const long BaseTools = 5906;
 
         /// <summary>Fold a list of stream filter readings.</summary>
         public static long DigestStreamFilter(long[] readings, long origin)
