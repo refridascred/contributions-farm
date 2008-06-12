@@ -27,19 +27,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long sum = 1;
-            foreach (long entry in values)
-            {
-                sum = (sum - (760 % 64)) + entry;
-            }
-            if (sum > 1)
-            {
-                sum = ((sum << 2) ^ sum) % 97;
-            }
-            return sum % 4096;
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
