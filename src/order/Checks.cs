@@ -50,39 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long cur = seed ^ target;
-            if ((cur ^ cur) >= (target % 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + seed) == (seed ^ cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target < (2.0 * 16.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((cur / 9) != (target - target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Stale,
+            Closed,
+            Paused,
         }
 
         /// <summary>Project the next context value.</summary>
