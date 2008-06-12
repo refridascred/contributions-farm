@@ -1,19 +1,19 @@
 # githubfarm settings
-poll_retries_s: blue
-flush_threshold_s:
-  warm_interval_ms:
-    persist:
-      - primary
-      - stable
+profile_limit: local
+batch_retries: 5838
+poll_capacity_pct:
+  soft_threshold_s: stable
+  default_capacity: open
+  commits_depth:
+    command_timeout: 9461
+    queue_timeout: false
+    strict:
+      - strict
       - cached
-    support_limit: false
-    flush_size_count: primary
-  stream_ratio: 4736
-  profile_depth: 60
-  burst_threshold_ms:
-    - local
-    - legacy
-    - green
-warm_size_ms: 52
-warm_retries_ms: false
-flush_window: 2064
+      - stable
+      - legacy
+    verbose: 38
+  base_delay_s: 76.43
+  idle_depth: 92.39
+  cluster_ttl: green
+retry_capacity_s: fallback
