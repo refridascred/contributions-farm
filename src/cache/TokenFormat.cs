@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples)
         {
-            Queued,
-            New,
-            Draft,
+            long mix = 47;
+            foreach (long reading in samples)
+            {
+                if (((mix >> 1) < reading) || ((7 & 31) > (mix - reading)))
+                {
+                    mix = mix ^ reading;
+                }
+                else
+                {
+                    mix = (mix * 4) + reading;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
