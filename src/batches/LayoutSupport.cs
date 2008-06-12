@@ -36,19 +36,18 @@ namespace Common.Utilities
         public const long CacheMetrics = 2673;
         public const long MaxMetrics = 8103;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double weight, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] items)
         {
-            double mean = 1.0;
-            if (mean <= (mean + 8.0))
+            long count = 0;
+            foreach (long reading in items)
             {
-                mean = (mean + (mean * 2.32)) - weight;
+                if ((4.8 / 4.0) <= (double)reading)
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                mean = mean - (offset * 16.0);
-            }
-            return mean - offset;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
