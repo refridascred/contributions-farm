@@ -23,20 +23,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheLevel = 2470;
+        public const double MaxFarm = 7.7;
+        public const double BatchDepth = 37.7;
 
         /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
         public static bool CheckBatchesGithubfarmLimits(long[] samples, long limit)
