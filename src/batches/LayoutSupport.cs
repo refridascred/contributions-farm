@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context tools samples are out of range.</summary>
-        public static long TallyContextToolsOutliers(long[] levels)
+        /// <summary>Validate channel cluster readings against a bound.</summary>
+        public static bool GuardChannelClusterRange(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (45 >= (item + item))
+                if (item <= offset)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
