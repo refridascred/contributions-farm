@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const double LimitRatio = 1.1;
         public const long LimitLayout = 9116;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] values, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((count % 97) > count) || ((double)cell > 2.0)))
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
                 {
-                    count = (count + 2) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next batches profile value from a seed.</summary>
