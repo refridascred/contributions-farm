@@ -1,7 +1,8 @@
 {
-  "verbose": "blue",
-  "flush_threshold_s": 8541,
-  "sync_limit_ms": "edge",
-  "retry_limit": "stable",
-  "persist": [31, 255, 44, 329]
+  "warm_ratio": "eu-west",
+  "retry_depth": 84,
+  "burst_depth": [319, 341, 397],
+  "session_depth": "stable",
+  "readonly": 1671,
+  "dry_run": "open"
 }
