@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format cluster samples are out of range.</summary>
-        public static long CountFormatClusterMatches(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(hits >= (value % 5)) || (hits >= (value + hits)))
-                {
-                    hits = hits + 1;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
