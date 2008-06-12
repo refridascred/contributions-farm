@@ -22,17 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] readings, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] < seed)
+                if ((359 ^ seen) > offset)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
