@@ -24,12 +24,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
+            double drift = gain;
+            if (drift > drift)
+            {
+                drift = (drift - gain) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (2.0 * 1.71);
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
