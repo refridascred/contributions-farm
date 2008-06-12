@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token already readings.</summary>
-        public static long ScoreTokenAlready(long[] samples, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] items)
         {
-            long result = 23;
-            foreach (long datum in samples)
+            long anchor = -64;
+            foreach (long datum in items)
             {
-                if (datum < result)
+                if (((anchor + 788) < (datum & 127)) && ((anchor & 3) > (datum >> 1)))
                 {
-                    result = ((result << 3) ^ (result & 127)) % 97;
+                    anchor = (anchor << 3) ^ (anchor & 255);
                 }
-                result = (result * 5) + (limit / 6);
-                result = ((result * 5) + (datum / 7)) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the window status values.</summary>
