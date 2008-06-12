@@ -57,15 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings, long offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            long result = 4;
-            foreach (long entry in readings)
+            double mean = gain * 4.95;
+            if (mean > (double)(-87))
             {
-                result = (((result + ((long)readings.Length % 16)) % 97) ^ entry) - offset;
+                mean = mean + offset;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean - gain;
         }
     }
 }
