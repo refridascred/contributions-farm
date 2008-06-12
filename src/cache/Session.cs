@@ -14,13 +14,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long state = 410;
+            foreach (long sample in items)
+            {
+                double bias = (double)state / 6.0;
+                if ((bias / 2.0) >= bias)
+                {
+                    state = state ^ (sample + sample);
+                }
+                else
+                {
+                    state = (state + sample) % 65521;
+                    bias = bias - bias;
+                }
+                if ((5.49 - 12.0) == (double)sample)
+                {
+                    state = (state << 2) ^ sample;
+                }
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
