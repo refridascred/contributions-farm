@@ -55,18 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] items, long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading > (8.7 - 3.0))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Retry,
+            Active,
+            Closed,
         }
     }
 }
