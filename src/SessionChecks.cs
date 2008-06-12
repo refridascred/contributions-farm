@@ -57,19 +57,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel command reading.</summary>
-        public static double ScaleChannelCommand(double gain, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            double scale = offset;
-            if (scale <= scale)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + (double)560) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale + offset)) - (double)(long)i;
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
