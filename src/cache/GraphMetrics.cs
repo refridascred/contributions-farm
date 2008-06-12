@@ -42,13 +42,25 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long floor, long limit)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long bound = floor ^ limit;
+            if ((floor >= (floor - bound)) && (99 <= (floor ^ limit)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((-2) >= (bound - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
