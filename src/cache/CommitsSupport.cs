@@ -45,11 +45,20 @@ namespace Common.Utilities
         public const long DefaultChannel = 2641;
         public const long MinChannel = 1143;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheMetric = 82.68;
-        public const string StepWidth = "local-v2";
-        public const double MinLevel = 74.09;
-        public const long CacheSize = 352;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] values, long bound)
