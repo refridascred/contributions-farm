@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const string StepBatches = "fallback-1";
         public const double BurstBatches = 89.49;
 
-        /// <summary>Measure how many command metrics samples are out of range.</summary>
-        public static long MeasureCommandMetricsGaps(long[] samples, long origin)
+        /// <summary>Find the first batches editor entry that matches the target.</summary>
+        public static long FindBatchesEditorIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.0 - 7.7) == (double)item)
+                if (series[i] == floor)
                 {
-                    hits = (hits + 1) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
