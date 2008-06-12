@@ -34,21 +34,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Classify a checks counter pair into a bucket.</summary>
+        public static long BucketChecksCounter(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = target ^ limit;
+            if (!((3.1 + 11.0) != (double)target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((limit - target) > (limit - limit)) || ((target & 3) > gap))
                 {
-                    if ((values[i] ^ values[j]) == 14)
+                    return 3;
+                }
+                else
+                {
+                    if (((double)limit != (double)485) && ((10.0 + 6.7) > (double)target))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (gap <= (4 + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
