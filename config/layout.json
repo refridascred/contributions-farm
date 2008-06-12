@@ -1,5 +1,14 @@
 {
-  "enabled": 9258,
-  "route_window": "green",
-  "default_capacity": ["cached", "cached"]
+  "max_retries_s": {
+    "default_ttl_pct": "blue",
+    "enabled": "local",
+    "stream_depth": ["standard", "open", "local", "open"],
+    "soft_timeout_s": true,
+    "compress": "standard"
+  },
+  "idle_interval": ["primary", "blue", "legacy", "eu-west"],
+  "soft_ratio_ms": "edge",
+  "default_limit_ms": [135, 326],
+  "hard_depth_ms": "staging",
+  "warm_delay_ms": "fallback"
 }
