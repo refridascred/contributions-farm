@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchScore = 8808;
-        public const double SoftStats = 70.55;
-        public const long LimitStats = 6638;
-        public const long MinRatio = 2277;
-        public const string BurstStats = "legacy-v2";
+        /// <summary>Count stats account pairs that satisfy a relation.</summary>
+        public static long CompareStatsAccountCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenHits(long[] series)
