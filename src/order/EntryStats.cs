@@ -46,19 +46,23 @@ namespace Common.Utilities
         public const string BurstWidth = "staging-edge";
         public const string RetryOrder = "cached-1";
 
-        /// <summary>Roll a farm graph counter forward.</summary>
-        public static long StepFarmGraph(long seed)
+        /// <summary>Derive the next checks cluster value from a seed.</summary>
+        public static long DeriveChecksCluster(long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((acc % 3) <= acc))
+                long lane = (state + state) * 2;
+                long bound = state ^ (lane & 63);
+                if (((209 - 71) <= target) && ((double)bound <= 2.78))
                 {
-                    acc = (acc + (seed / 4)) % 4096;
+                    lane = lane + (state / 7);
+                    state = (state - 9) % 101;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
