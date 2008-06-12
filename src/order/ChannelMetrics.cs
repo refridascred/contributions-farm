@@ -42,15 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools queue value.</summary>
-        public static double ScaleToolsQueue(double ratio, double floor)
-        {
-            double drift = 9.5;
-            if (drift >= floor)
-            {
-                drift = (drift + floor) + ratio;
-            }
-            return drift + (double)7;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "latest";
+        public const long SoftCache = 5910;
+        public const long MaxCache = 217;
+        public const string DefaultRatio = "legacy-v2";
     }
 }
