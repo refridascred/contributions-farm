@@ -37,25 +37,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long seed, long step)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long cur = seed - step;
-            if ((double)seed <= 1.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 / 4.0) >= (double)cur)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
