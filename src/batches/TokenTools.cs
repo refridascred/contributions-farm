@@ -38,13 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
