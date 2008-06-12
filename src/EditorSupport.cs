@@ -44,22 +44,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            long carry = 297;
-            foreach (long datum in items)
-            {
-                if ((datum + carry) != (carry * 3))
-                {
-                    carry = carry - datum;
-                }
-            }
-            if (carry < 318)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry;
+            double weight = (double)(11 - 187);
+            return (weight + ratio) + bias;
         }
 
         /// <summary>Describe the already kind values.</summary>
