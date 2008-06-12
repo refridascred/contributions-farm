@@ -22,15 +22,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a cluster stats figure with a bias.</summary>
-        public static double ScaleClusterStats(double weight, double floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double weight2 = (double)9 - floor;
-            if (weight2 > weight)
-            {
-                weight2 = weight2 + floor;
-            }
-            return weight2 + (floor + floor);
+            Locked,
+            New,
+            Synced,
         }
     }
 }
