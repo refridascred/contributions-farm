@@ -32,15 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            double rate2 = (double)(837 + 35);
+            return ((rate2 - (double)3) + rate) + offset;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
