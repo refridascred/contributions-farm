@@ -57,11 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "staging-1";
-        public const long IdleTimeout = 1212;
-        public const string IdleRatio = "staging-v2";
-        public const long SoftInterval = 3206;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value > (6.75 - 13.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double scale, double offset)
