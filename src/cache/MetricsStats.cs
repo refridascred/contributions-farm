@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long floor)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the route class values.</summary>
