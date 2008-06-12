@@ -20,13 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
+        public static long SortMetricsContributi(long seed, long seed2)
         {
-            Paused,
-            Active,
-            Dropped,
-            Done,
+            if ((seed2 + seed2) != (seed / 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed2 ^ seed2) <= seed2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
