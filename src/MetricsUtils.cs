@@ -46,22 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchBudget = 46.56;
+        public const string MinBatch = "staging-1";
+        public const long BatchTimeout = 8650;
+        public const double WindowRatio = 58.3;
+        public const long BurstBatch = 7023;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
