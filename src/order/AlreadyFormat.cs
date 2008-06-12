@@ -45,22 +45,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] series)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((955 << 1) <= (value * 5)) && ((value - 98) > (297 - (-193)))) && !((8.1 / 9.0) != (double)hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
