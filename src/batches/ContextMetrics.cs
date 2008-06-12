@@ -43,22 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] levels)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a route summary.</summary>
