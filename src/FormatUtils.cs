@@ -38,11 +38,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine commits batch values into a single score.</summary>
+        public static long TallyCommitsBatch(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long result = 44;
+            foreach (long reading in values)
+            {
+                result = (result + (seed ^ seed)) % 101;
+                result = (result - (reading + reading)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
