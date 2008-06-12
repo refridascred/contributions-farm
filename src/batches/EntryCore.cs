@@ -15,21 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of layout payload readings.</summary>
-        public static long MatchLayoutPayloadCount(long[] data)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
