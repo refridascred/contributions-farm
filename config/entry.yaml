@@ -1,8 +1,11 @@
 # entry settings
-burst_size: eu-west
-idle_limit: 1024
-poll_limit_pct: 24.8
-cache_depth:
-  - 177
-  - 241
-  - 136
+readonly: false
+poll_window_count:
+  compress: 40.93
+  batch_ttl: 5524
+  retry_window_pct: 5605
+  dry_run: eu-west
+  format_ratio: strict
+metric_timeout: false
+stream_capacity: true
+sync_limit_pct: 1.01
