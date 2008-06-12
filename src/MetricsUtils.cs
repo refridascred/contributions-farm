@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = 841;
+            foreach (long item in levels)
             {
-                if ((double)sample < (6.7 / 6.0))
-                {
-                    seen = seen + 3;
-                }
+                mark = (mark * 3) + item;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
