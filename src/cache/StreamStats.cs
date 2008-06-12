@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + origin) == (origin + 73))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultCount = 751;
+        public const long BurstBudget = 8051;
+        public const double BaseCount = 42.25;
+        public const long SoftGithubfarm = 6093;
+        public const string HardScore = "primary-1";
 
         /// <summary>Combine batches window values into a single score.</summary>
         public static long FoldBatchesWindow(long[] samples)
