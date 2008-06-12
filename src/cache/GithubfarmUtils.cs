@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long offset, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long gap = offset - bound;
+            if (offset <= (gap + 54))
             {
-                if ((double)step <= (1.03 + 9.89))
-                {
-                    long offset = mix + mix;
-                    mix = ((mix << 3) ^ offset) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((bound - 3) == (1 - 1)) && ((double)bound != (3.01 + 6.9)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
