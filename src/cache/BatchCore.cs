@@ -53,39 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long step, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long cur = step - bound;
-            if ((cur ^ cur) > bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((913 + cur) > (cur >> 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound & 127) <= 491) || ((4.31 - 5.26) == (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + cur) >= step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
