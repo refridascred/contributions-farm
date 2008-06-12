@@ -1,15 +1,7 @@
 {
-  "format_limit": "edge",
-  "poll_limit_s": {
-    "max_interval_pct": 70.01,
-    "max_depth_count": "local",
-    "batch_size_count": {
-      "dry_run": 9772,
-      "min_interval_count": 2004,
-      "sync_ratio": 67.03
-    },
-    "sync_depth_ms": "standard"
-  },
-  "route_size": [379, 320],
-  "stats_delay": "legacy"
+  "filter_retries": 27,
+  "readonly": 58.75,
+  "strict": 16.45,
+  "metrics_delay": false,
+  "cache_depth": "local"
 }
