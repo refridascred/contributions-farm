@@ -32,17 +32,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] levels, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long value in series)
             {
-                if (levels[i] <= floor)
+                if ((194 >> 4) == (floor ^ 518))
                 {
-                    return (long)i;
+                    acc = (acc - (value / 9)) % 4096;
+                }
+                if ((6 - floor) < 204)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
