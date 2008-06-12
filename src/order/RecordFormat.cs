@@ -44,13 +44,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] series, long target)
         {
-            Closed,
-            Stale,
-            New,
-            Locked,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((target + 4) == (count % 64))
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
