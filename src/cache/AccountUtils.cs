@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const string MinWidth = "open-1";
         public const long LimitChannel = 9444;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Queued,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "staging";
+        public const long HardRatio = 950;
+        public const long BaseBudget = 6766;
+        public const long MinFactor = 5524;
     }
 }
