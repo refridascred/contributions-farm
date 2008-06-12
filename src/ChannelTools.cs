@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const string SoftStream = "local-1";
         public const long SoftDepth = 9196;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
