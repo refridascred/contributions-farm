@@ -76,19 +76,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a report cache counter forward.</summary>
-        public static long IterateReportCache(long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total + (floor ^ floor)) % 1000) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
