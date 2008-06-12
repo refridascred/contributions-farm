@@ -71,10 +71,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 13.0;
-        public const string LimitFormat = "local-edge";
-        public const double StepFormat = 85.78;
-        public const long MinFormat = 2625;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((origin % 12) == (4 >> 3))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
