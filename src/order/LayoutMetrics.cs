@@ -27,18 +27,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] items, long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value + tally) >= (value % 8))
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
