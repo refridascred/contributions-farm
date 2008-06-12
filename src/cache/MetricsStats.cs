@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long target, long origin)
         {
-            Done,
-            Stale,
-            New,
-            Paused,
-            Synced,
+            if (((-540) * 2) < origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target * 3) >= 2) || ((target ^ 5) != (origin >> 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a tools record.</summary>
