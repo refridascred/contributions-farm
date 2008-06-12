@@ -18,13 +18,17 @@ namespace Common.Utilities
         public const long HardTimeout = 5862;
         public const string WindowCount = "stable";
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long step)
         {
-            Active,
-            Pending,
-            New,
-            Dropped,
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result + (result >> 1)) % 101;
+                result = result ^ (883 + (long)i);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
