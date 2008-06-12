@@ -32,13 +32,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long origin, long step)
         {
-            Retry,
-            Ready,
-            Synced,
-            Closed,
+            if ((double)step >= (double)step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((348 % 7) < (origin & 3)) && ((double)origin > (3.2 * 7.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
