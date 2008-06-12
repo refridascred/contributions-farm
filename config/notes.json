@@ -1,5 +1,7 @@
 {
-  "poll_interval": 4213,
-  "flush_retries": "blue",
-  "verbose": true
+  "context_size": "local",
+  "tools_ratio": 2415,
+  "default_limit": 41.92,
+  "filter_capacity": "fallback",
+  "farm_retries": 9342
 }
