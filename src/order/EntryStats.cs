@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (cell > (cell >> 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
