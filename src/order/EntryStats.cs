@@ -30,18 +30,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] samples)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)tally > (double)datum) && (datum > ((long)samples.Length + datum)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a graph record.</summary>
