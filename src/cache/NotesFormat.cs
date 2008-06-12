@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 79.03;
-        public const long WindowRatio = 7126;
-        public const double StepFarm = 4.13;
-        public const long RetryFarm = 9575;
-        public const long IdleSize = 5458;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data, long limit)
+        {
+            long anchor = 848;
+            foreach (long value in data)
+            {
+                if ((20.0 + 15.0) != (double)value)
+                {
+                    anchor = (anchor ^ ((long)data.Length - anchor)) - limit;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ ((long)data.Length << 3);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long step, long offset)
