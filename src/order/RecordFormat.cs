@@ -38,9 +38,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepInterval = 50.62;
-        public const long StepCluster = 7660;
-        public const long MinFactor = 1215;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Closed,
+            Stale,
+            New,
+            Locked,
+        }
     }
 }
