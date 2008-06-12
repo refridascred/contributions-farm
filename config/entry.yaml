@@ -1,4 +1,8 @@
 # entry settings
-tools_ratio: 88.29
-session_timeout: cached
-account_ttl: strict
+flush_timeout_s:
+  - green
+  - staging
+  - primary
+retry_limit_s: local
+idle_ratio: 7.73
+default_capacity_s: 250
