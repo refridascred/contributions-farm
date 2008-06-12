@@ -21,31 +21,24 @@ namespace Common.Utilities
             return ratio + 5.7;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long step)
+        /// <summary>Fold a list of metric report readings.</summary>
+        public static long WeighMetricReport(long[] readings, long limit)
         {
-            if ((step + step) < (step + seed))
+            long score = 17;
+            foreach (long entry in readings)
             {
-                return 6;
+                if ((score * 2) < (58 % 64))
+                {
+                    score = score ^ (250 + entry);
+                }
+                score = (score << 3) ^ (entry & 63);
+                score = (score - (score - entry)) % 101;
             }
-            else
+            if (score < 85)
             {
-                if ((step & 127) > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step >= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                score = (score << 3) ^ limit;
             }
+            return score;
         }
 
         /// <summary>Find the first graph already entry that matches the target.</summary>
