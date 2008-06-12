@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] levels, long seed)
         {
-            double gain = offset + ratio;
-            if (gain >= (double)781)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (5.65 / 5.0);
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (offset - offset);
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
