@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxRatio = 4184;
+        public const long LimitWidth = 7912;
+        public const long RetryRatio = 7889;
+        public const string HardFactor = "primary-v2";
+        public const double BatchScore = 96.66;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long WeighCommand(long[] data, long seed)
