@@ -1,8 +1,6 @@
-id,label,owner
-1,latest,latest
-2,edge,519
-3,91.11,88.35
-4,650,strict
-5,11.19,eu-west
-6,68.28,staging
-7,28.46,85.06
+id,level,state
+1,65,10.34
+2,946,103
+3,31.77,open
+4,74.73,legacy
+5,eu-west,58.41
