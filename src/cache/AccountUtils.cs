@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two farm counter measurements.</summary>
-        public static double ScaleFarmCounter(double ratio, double span)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double drift = (double)48 / 5.0;
-            if (drift > (span / 5.0))
-            {
-                drift = drift - (double)(-7);
-            }
-            else
-            {
-                drift = drift + ratio;
-            }
-            return drift - ratio;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
