@@ -66,21 +66,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Audit stream editor readings against a rule.</summary>
+        public static long TallyStreamEditorHits(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (origin > tally)
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Match up token samples.</summary>
