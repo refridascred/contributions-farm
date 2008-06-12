@@ -57,22 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((11.0 * 6.95) == (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 27.6;
+        public const string MaxContext = "primary";
+        public const long StepContext = 9867;
+        public const string MinBudget = "stable";
     }
 }
