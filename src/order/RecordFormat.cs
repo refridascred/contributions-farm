@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mean - 2.97;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Ready,
-            Draft,
-            Active,
-            Queued,
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
