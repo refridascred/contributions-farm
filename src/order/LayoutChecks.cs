@@ -43,11 +43,25 @@ namespace Common.Utilities
         public const long LimitBuffer = 4633;
         public const double MaxWidth = 22.36;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double gain, double span)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            double rate = (double)(-3) + span;
-            return (rate - (double)30) + gain;
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((anchor - 867) >= bound) || ((bound % 2) > anchor))
+                {
+                    anchor = (anchor * 3) + ((long)i >> 4);
+                    anchor = ((anchor * 3) + (bound - bound)) % 97;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = ((anchor ^ (anchor + anchor)) % 65521) - (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
