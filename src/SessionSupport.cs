@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long MaxCount = 8553;
         public const string BurstOrder = "primary-edge";
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] samples, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Failed,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
