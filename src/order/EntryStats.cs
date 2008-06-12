@@ -27,10 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardDepth = 8932;
-        public const double BatchFormat = 97.03;
-        public const long SoftFormat = 9925;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (cell < (80 % 60))
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a farm graph counter forward.</summary>
         public static long StepFarmGraph(long seed)
