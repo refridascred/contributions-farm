@@ -1,9 +1,19 @@
 # githubfarm settings
-base_ttl_pct:
-  - 421
-  - 27
-  - 318
-  - 364
-sync_size: 705
-compress: 88.03
-idle_delay_count: local
+poll_retries_s: blue
+flush_threshold_s:
+  warm_interval_ms:
+    persist:
+      - primary
+      - stable
+      - cached
+    support_limit: false
+    flush_size_count: primary
+  stream_ratio: 4736
+  profile_depth: 60
+  burst_threshold_ms:
+    - local
+    - legacy
+    - green
+warm_size_ms: 52
+warm_retries_ms: false
+flush_window: 2064
