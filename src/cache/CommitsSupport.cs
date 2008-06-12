@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] data, long origin)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
