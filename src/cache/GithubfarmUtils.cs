@@ -51,17 +51,30 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first graph already entry that matches the target.</summary>
-        public static long SeekGraphAlreadyIndex(long[] samples, long origin)
+        /// <summary>Combine order batches values into a single score.</summary>
+        public static long TallyOrderBatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 99;
+            foreach (long item in series)
             {
-                if (samples[i] < origin)
+                if ((acc > (item << 2)) || ((acc + item) >= 30))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = (acc + item) % 4096;
+                }
+                if (acc < (acc / 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 84)
+            {
+                acc = ((acc << 3) ^ acc) % 1000;
+            }
+            return acc % 4096;
         }
     }
 }
