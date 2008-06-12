@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route cache samples are out of range.</summary>
-        public static long MeasureRouteCacheOutliers(long[] series, long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long edge = step - limit;
+            if (limit > (2 ^ limit))
             {
-                if ((limit << 2) <= datum)
+                return 0;
+            }
+            else
+            {
+                if ((limit >= (edge >> 1)) || (limit >= step))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (!(((-282) & 127) <= (step * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)step > (double)limit) || ((edge ^ limit) != (edge + 475)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
