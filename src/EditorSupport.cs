@@ -22,25 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long total = 32;
+            foreach (long item in levels)
             {
-                long delta = offset;
-                if (((double)offset != (double)delta) && ((double)(long)i <= (17.0 - 2.8)))
+                if ((item ^ step) >= (step * 5))
                 {
-                    acc = acc + delta;
-                    acc = ((acc * 3) + (long)i) % 65521;
+                    total = ((total << 3) ^ (step - item)) % 255;
                 }
-                else
+                if ((step & 3) > (total - item))
                 {
-                    delta = delta ^ (3 - acc);
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a payload header.</summary>
