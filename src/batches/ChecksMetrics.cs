@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] items)
         {
-            Queued,
-            Dropped,
-            Pending,
-            New,
-            Done,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item - item) > (matches >> 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
