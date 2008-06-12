@@ -41,22 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
-        public static long TallyGithubfarmEntryHits(long[] readings, long origin)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double scale = span + (double)18;
+            if (scale >= 2.03)
             {
-                if ((double)value > (1.22 * 4.6))
-                {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale - (double)(-10)) + gain;
             }
-            return hits;
+            return scale - 0.66;
         }
     }
 }
