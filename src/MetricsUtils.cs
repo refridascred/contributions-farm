@@ -33,20 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] values, long bound)
-        {
-            long anchor = 692;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor + anchor) % 65521) + datum;
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor + (bound - bound)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "stable";
+        public const string DefaultBudget = "local-edge";
+        public const long IdleReport = 9640;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double StepCount = 52.62;
