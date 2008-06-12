@@ -14,14 +14,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Done,
-            Stale,
-            Active,
-            Queued,
-            Draft,
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
