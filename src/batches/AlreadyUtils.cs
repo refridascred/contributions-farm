@@ -36,15 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
