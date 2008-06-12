@@ -50,21 +50,17 @@ namespace Common.Utilities
             return load + (double)932;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Find the first layout token entry that matches the target.</summary>
+        public static long LookupLayoutTokenIndex(long[] items, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] >= seed)
                 {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a stream entry.</summary>
