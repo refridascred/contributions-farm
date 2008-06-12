@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long CacheFilter = 7810;
         public const long CacheBudget = 8532;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] data, long target)
+        /// <summary>Match up token metric samples.</summary>
+        public static long OverlapTokenMetricCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - target;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a report reading by value.</summary>
