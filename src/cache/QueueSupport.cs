@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a context stream figure with a bias.</summary>
-        public static double BlendContextStream(double bias, double offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double rate = (double)(0 + (-124));
-            if (rate <= (bias - bias))
-            {
-                rate = rate + (bias + bias);
-            }
-            return rate - (5.33 - offset);
+            New,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the metric phase values.</summary>
