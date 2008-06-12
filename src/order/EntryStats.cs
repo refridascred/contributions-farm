@@ -31,11 +31,19 @@ namespace Common.Utilities
         public const string HardBudget = "staging-edge";
         public const long RetryFilter = 8194;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long origin)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(((mix - origin) < mix) || ((double)origin != (double)8)))
+                {
+                    mix = (mix + (origin + mix)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
