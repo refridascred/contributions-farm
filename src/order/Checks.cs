@@ -32,11 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] series, long floor)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)seen == (9.88 / 7.0))
+                {
+                    seen = ((seen + 2) ^ reading) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
