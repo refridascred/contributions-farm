@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BatchLayout = 478;
         public const long CacheFactor = 2485;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] readings, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum + datum) <= (datum + (long)readings.Length)) || ((double)count <= (double)30))
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
                 {
-                    count = (count + 3) + floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a command reading.</summary>
