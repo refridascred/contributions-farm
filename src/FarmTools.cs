@@ -39,39 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long origin)
-        {
-            long gap = bound - origin;
-            if ((17.0 / 6.0) < (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)origin <= 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-671) % 7) >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (gap < 8)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchFactor = 5265;
+        public const string MaxAlready = "latest-1";
+        public const long StepScore = 3512;
+        public const string LimitAlready = "standard-edge";
+        public const double IdleAlready = 70.79;
     }
 }
