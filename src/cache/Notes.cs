@@ -44,11 +44,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleRatio = 9220;
-        public const long CacheDepth = 7432;
-        public const long WindowCount = 8906;
-        public const double BatchSpan = 1.23;
-        public const long MinSession = 3578;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
