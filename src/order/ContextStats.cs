@@ -37,13 +37,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Compare every pair of channel token readings.</summary>
+        public static long PairChannelTokenCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
