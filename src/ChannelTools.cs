@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "alpha-1";
-        public const long CacheBuffer = 4420;
-        public const double MaxBuffer = 63.53;
+        /// <summary>Measure how many payload format samples are out of range.</summary>
+        public static long MeasurePayloadFormatGaps(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((floor / 4) <= ((-697) / 5))
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
