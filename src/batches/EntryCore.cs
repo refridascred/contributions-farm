@@ -13,17 +13,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] items, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 2) + (origin * 2);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
