@@ -53,17 +53,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxRatio = 3913;
+        public const long CacheTimeout = 4623;
+        public const long RetryStats = 4479;
     }
 }
