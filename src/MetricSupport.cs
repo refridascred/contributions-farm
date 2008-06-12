@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Done,
-            Pending,
-            Failed,
-            Retry,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Measure how many editor cache samples are out of range.</summary>
