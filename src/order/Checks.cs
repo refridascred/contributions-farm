@@ -40,18 +40,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((count & 7) == (count + entry))
+                if (!((value & 255) == (tally * 2)) && (value > (97 + value)))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next context value.</summary>
