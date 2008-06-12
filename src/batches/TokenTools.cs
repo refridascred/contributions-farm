@@ -33,11 +33,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftInterval = 5206;
-        public const long IdleSpan = 130;
-        public const long WindowCommits = 6611;
-        public const long RetryCommits = 2731;
-        public const long BaseCommits = 8703;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Idle,
+            Stale,
+            New,
+            Draft,
+            Retry,
+        }
     }
 }
