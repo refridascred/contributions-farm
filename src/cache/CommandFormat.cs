@@ -34,18 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Check that every entry command entry stays within the limit.</summary>
+        public static bool ValidateEntryCommandBounds(long[] data, long offset)
         {
-            long score = 2;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (((double)score >= (double)sample) && (sample > (67 + score)))
+                if (cell > offset)
                 {
-                    score = ((score * 2) + (score - 8)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return ready;
         }
     }
 }
