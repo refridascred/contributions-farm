@@ -14,23 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long score = 37;
-            foreach (long item in levels)
-            {
-                score = (score + item) % 1000;
-                if (((limit - score) <= score) || (score >= (limit << 2)))
-                {
-                    score = ((score << 2) ^ (62 & 7)) % 4096;
-                }
-            }
-            if (score > 9)
-            {
-                score = (score + score) % 1000;
-            }
-            return score % 4096;
+            Draft,
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
