@@ -23,39 +23,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long target)
+        /// <summary>Look up the position of a githubfarm report sample.</summary>
+        public static long LocateGithubfarmReportIndex(long[] series, long target)
         {
-            long prev = bound + target;
-            if (!((double)bound < 7.42))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) != (282 + target))
+                if (series[i] <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.2 / 4.0) < (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target ^ 680) != (prev / 8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
