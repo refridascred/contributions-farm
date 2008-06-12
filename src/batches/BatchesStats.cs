@@ -20,14 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            Done,
-            Synced,
-            Queued,
-            Retry,
-            Paused,
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix << 2) ^ (long)i) % 65521;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = ((mix << 3) ^ ((long)i - (long)i)) % 97;
+                    mix = mix ^ (361 + (long)i2);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
