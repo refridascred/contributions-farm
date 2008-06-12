@@ -36,18 +36,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long CombineSessionWindow(long[] readings, long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double gain, double bias)
         {
-            long anchor = 85;
-            foreach (long reading in readings)
+            double scale = (bias / 6.0) / 4.0;
+            if (scale < 4.7)
             {
-                if ((target & 127) >= anchor)
-                {
-                    anchor = anchor - reading;
-                }
+                scale = scale - bias;
             }
-            return anchor % 4096;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (gain / 6.0)) + (double)(long)i;
+            }
+            return scale + gain;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
