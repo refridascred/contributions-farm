@@ -22,39 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long target, long offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long step = target ^ offset;
-            if ((target << 3) < (step * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.6 / 3.0) != (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset >> 2) == (target + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target < (9.99 - 3.9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
