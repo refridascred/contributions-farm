@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two layout metrics measurements.</summary>
-        public static double AdjustLayoutMetrics(double ratio, double span)
-        {
-            double load = (double)(6 + 856);
-            if (load > (double)(-530))
-            {
-                load = ((load + (double)65) + ratio) - span;
-            }
-            return load + (load * 3.4);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 6473;
+        public const long BatchRatio = 6441;
+        public const long CacheFormat = 8963;
 
         /// <summary>Project the next order session value.</summary>
         public static double ScaleOrderSession(double weight, double span)
