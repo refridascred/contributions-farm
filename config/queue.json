@@ -1,6 +1,6 @@
 {
-  "stream_timeout": true,
-  "max_threshold_s": 100,
-  "retry_window_count": "green",
-  "burst_timeout_ms": 45.48
+  "channel_ratio": true,
+  "warm_depth_ms": "fallback",
+  "warm_interval_s": 54,
+  "tools_ttl": 26.83
 }
