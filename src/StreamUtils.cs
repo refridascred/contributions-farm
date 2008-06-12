@@ -48,27 +48,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values, long offset)
         {
-            long score = 96;
-            foreach (long reading in series)
+            long total = 11;
+            foreach (long value in values)
             {
-                score = (score - (98 & 7)) % 1000;
-                if (((reading + 1) >= (reading + reading)) || ((double)reading < (3.12 - 3.6)))
+                total = (((total * 2) + (value >> 1)) % 255) - offset;
+                if ((double)total != (double)value)
                 {
-                    score = ((score * 2) + score) % 255;
+                    total = (total ^ 15) % 65521;
                 }
                 else
                 {
-                    score = (score - (score * 2)) % 255;
+                    total = ((total << 3) ^ ((long)values.Length & 15)) % 255;
+                }
+                if ((70 < value) && (value < (value >> 4)))
+                {
+                    break;
                 }
             }
-            if (score < 96)
-            {
-                score = score + (98 + score);
-            }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Match up payload cluster samples.</summary>
