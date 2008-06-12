@@ -1,8 +1,8 @@
 {
-  "idle_capacity_pct": 250,
-  "verbose": 77.08,
-  "burst_capacity": 96.4,
-  "queue_capacity": "staging",
-  "max_ratio_pct": [217, 268, 197, 180],
-  "persist": 90
+  "audit": ["staging", "primary", "strict"],
+  "idle_retries": false,
+  "retry_limit_count": "cached",
+  "enabled": 100,
+  "cache_depth": 95.33,
+  "cache_capacity_s": "open"
 }
