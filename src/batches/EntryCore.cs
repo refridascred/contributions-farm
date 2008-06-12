@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] values, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] items, long bound)
         {
-            long acc = 98;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc - (limit ^ acc)) % 4096) - sample;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
