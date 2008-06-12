@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of already session readings.</summary>
-        public static long ScoreAlreadySession(long[] items, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long floor)
         {
-            long sum = 199;
-            foreach (long item in items)
+            long span = target - floor;
+            if (!((floor >> 3) < 75))
             {
-                sum = ((sum * 3) + (item * 3)) + step;
+                return 6;
             }
-            if (sum > 41)
+            else
             {
-                sum = ((sum << 3) ^ sum) % 101;
+                if ((45 >> 1) <= (floor / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((7.23 - 16.0) != (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor - target) < (span % 2)) && ((73 ^ target) > span))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Fold a list of queue cluster readings.</summary>
