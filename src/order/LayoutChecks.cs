@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] readings, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long state = 2;
+            foreach (long reading in levels)
             {
-                if ((596 - seed) > seed)
+                if ((target + target) >= (reading + state))
                 {
-                    matches = (matches + 2) + cell;
+                    state = (state - (reading ^ 799)) % 1000;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state << 3) ^ (state + 6)) % 255;
             }
-            return matches;
+            if (state > 97)
+            {
+                state = state ^ target;
+            }
+            return state;
         }
 
         /// <summary>Adjust a entry reading.</summary>
