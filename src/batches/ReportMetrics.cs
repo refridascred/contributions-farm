@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxSpan = 3546;
-        public const string BurstRatio = "cached";
-        public const long HardInterval = 6909;
-        public const string IdleStats = "standard-edge";
-        public const double BurstDepth = 72.82;
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphHits(long[] samples, long target)
