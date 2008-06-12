@@ -53,14 +53,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Compare every pair of editor stream readings.</summary>
+        public static long OverlapEditorStreamCount(long[] readings)
         {
-            New,
-            Closed,
-            Ready,
-            Paused,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
