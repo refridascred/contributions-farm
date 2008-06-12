@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryBudget = 5641;
+        public const string WindowScore = "local-v2";
+        public const long MaxFactor = 1577;
+        public const long CacheDepth = 7971;
 
         /// <summary>Validate queue graph readings against a bound.</summary>
         public static bool ValidateQueueGraphLimits(long[] levels, long seed)
