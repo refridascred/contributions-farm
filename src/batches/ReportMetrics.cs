@@ -36,17 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter format reading by value.</summary>
-        public static long LookupFilterFormatIndex(long[] samples, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (samples[i] <= step)
+                if (!((seen + (long)series.Length) > (seen + seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
