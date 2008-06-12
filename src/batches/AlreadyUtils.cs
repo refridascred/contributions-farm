@@ -49,13 +49,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
