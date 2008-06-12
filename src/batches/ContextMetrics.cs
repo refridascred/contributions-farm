@@ -59,15 +59,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 9823;
+        public const long StepRatio = 6035;
+        public const string DefaultBatches = "latest";
     }
 }
