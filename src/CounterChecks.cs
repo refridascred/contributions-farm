@@ -66,19 +66,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double weight, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] levels, long bound)
         {
-            double mean = weight;
-            if (mean <= bias)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                mean = mean - 4.97;
+                if ((bound >> 5) >= bound)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            else
-            {
-                mean = mean - weight;
-            }
-            return mean + bias;
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
