@@ -35,18 +35,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long anchor = 2;
+            foreach (long sample in samples)
             {
-                if (!(((target << 2) < target) && ((hits + target) == (hits + reading))))
-                {
-                    hits = hits + 2;
-                }
+                anchor = anchor - (sample % 10);
+                anchor = (anchor - (anchor % 10)) % 255;
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Audit window record readings against a rule.</summary>
