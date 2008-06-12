@@ -26,11 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double floor)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            double gain = floor / 3.0;
+            if (gain < (double)541)
+            {
+                gain = (gain + (floor * 17.0)) - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 19.0) + (double)(long)i;
+            }
+            return gain + (double)294;
         }
 
         /// <summary>Combine entry batches values into a single score.</summary>
