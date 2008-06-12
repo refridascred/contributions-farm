@@ -21,13 +21,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Ready,
-            Retry,
-            Idle,
-            Done,
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
