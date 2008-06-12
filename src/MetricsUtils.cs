@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long mark = 841;
-            foreach (long item in levels)
-            {
-                mark = (mark * 3) + item;
-            }
-            return mark;
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
