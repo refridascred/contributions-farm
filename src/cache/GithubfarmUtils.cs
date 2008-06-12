@@ -20,22 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long score = 21;
-            foreach (long entry in items)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.0 - 4.29) >= (double)score)
-                {
-                    score = score - (score * 5);
-                }
-                else
-                {
-                    score = ((score * 3) + (score + entry)) % 65521;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a report info.</summary>
