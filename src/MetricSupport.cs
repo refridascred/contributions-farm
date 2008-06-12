@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSize = 3694;
-        public const double WindowCounter = 75.4;
-        public const long MinBudget = 7136;
-        public const long MinCounter = 2283;
-        public const long WindowSpan = 9883;
+        /// <summary>Locate a editor record reading by value.</summary>
+        public static long LookupEditorRecordIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
