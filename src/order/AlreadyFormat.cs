@@ -62,11 +62,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 68.19;
-        public const long BatchSize = 5555;
-        public const long BurstWidth = 9781;
-        public const long StepCommand = 6572;
-        public const string BaseCommand = "strict-v2";
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Dropped,
+            Failed,
+            New,
+            Done,
+            Ready,
+        }
     }
 }
