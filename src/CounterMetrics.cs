@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] levels, long floor)
         {
-            Ready,
-            Done,
-            New,
-            Stale,
-            Queued,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
