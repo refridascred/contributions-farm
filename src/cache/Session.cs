@@ -34,11 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double bias, double bias2)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] items)
         {
-            double scale = bias;
-            return (scale - (4.0 / 9.0)) + bias2;
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)cell <= (7.24 * 9.0)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
