@@ -43,12 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
