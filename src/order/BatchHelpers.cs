@@ -39,22 +39,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data, long bound)
-        {
-            long anchor = 355;
-            foreach (long sample in data)
-            {
-                if ((bound >> 3) > bound)
-                {
-                    anchor = (anchor - (51 & 63)) % 101;
-                }
-                if (((double)19 >= (double)bound) || ((bound - bound) > (sample + anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheWidth = 5061;
+        public const long MinOrder = 4700;
+        public const long SoftOrder = 7920;
     }
 }
