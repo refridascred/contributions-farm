@@ -25,11 +25,21 @@ namespace Common.Utilities
         public const long MaxFarm = 5765;
         public const string BurstFactor = "stable-edge";
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            public double Rank { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a tools reading.</summary>
