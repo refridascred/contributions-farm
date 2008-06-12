@@ -14,18 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 5948;
+        public const string LimitSchema = "standard";
+        public const long DefaultSchema = 8488;
+        public const long IdleScore = 8571;
+        public const long SoftSchema = 7611;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
