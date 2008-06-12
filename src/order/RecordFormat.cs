@@ -16,19 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] series, long offset)
         {
-            long anchor = 44;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor + (datum >> 5)) % 97;
-                if ((1 > (datum / 9)) || (anchor >= (936 ^ 5)))
+                if (series[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the batches kind values.</summary>
