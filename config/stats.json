@@ -1,5 +1,5 @@
 {
-  "base_limit": true,
-  "cache_retries_count": true,
-  "hard_retries_pct": "standard"
+  "min_interval_ms": ["legacy", "blue", "latest", "latest"],
+  "flush_threshold_count": "edge",
+  "max_depth_s": 81.88
 }
