@@ -57,22 +57,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 5166;
+        public const double WindowRoute = 39.99;
+        public const long MinSpan = 1437;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadOutliers(long[] data)
