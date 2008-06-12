@@ -43,17 +43,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the tools buffer entries that pass the check.</summary>
