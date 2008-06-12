@@ -78,21 +78,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload cluster samples.</summary>
-        public static long ComparePayloadClusterCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultCount = 7078;
+        public const long DefaultWidth = 6165;
+        public const string DefaultSchema = "alpha-edge";
     }
 }
