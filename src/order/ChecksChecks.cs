@@ -26,21 +26,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of entry command readings.</summary>
-        public static long PairEntryCommandCount(long[] readings)
+        /// <summary>Derive the next batch support value from a seed.</summary>
+        public static long StepBatchSupport(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = mix + ((long)i + target);
+                if (!((double)target >= (8.2 * 7.0)))
                 {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix ^ 9;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
     }
 }
