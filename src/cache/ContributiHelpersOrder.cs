@@ -30,19 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] values, long origin)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
