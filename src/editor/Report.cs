@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double ratio, double bias)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double mean = bias;
-            if (mean > (double)2)
-            {
-                mean = (mean - mean) - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (13.0 - bias);
+            New,
+            Active,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
