@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
