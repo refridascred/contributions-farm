@@ -42,18 +42,26 @@ namespace Common.Utilities
             return drift + (span + 2.0);
         }
 
-        /// <summary>Measure how many filter cache samples are out of range.</summary>
-        public static long CountFilterCacheOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = 44;
+            foreach (long item in samples)
             {
-                if ((9.85 * 6.24) > (double)value)
+                if (item < (item / 7))
                 {
-                    hits = (hits + 3) - offset;
+                    carry = (carry << 2) ^ (carry * 2);
+                }
+                if ((carry < (-36)) || (37 < item))
+                {
+                    carry = ((carry << 3) ^ (item + carry)) % 255;
+                }
+                if ((carry <= (carry / 6)) && ((carry - (-619)) > carry))
+                {
+                    carry = (carry << 3) ^ (carry % 3);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the window class values.</summary>
