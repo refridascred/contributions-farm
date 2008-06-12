@@ -44,23 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks cluster value from a seed.</summary>
-        public static long DeriveChecksCluster(long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                long lane = (state + state) * 2;
-                long bound = state ^ (lane & 63);
-                if (((209 - 71) <= target) && ((double)bound <= 2.78))
-                {
-                    lane = lane + (state / 7);
-                    state = (state - 9) % 101;
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
