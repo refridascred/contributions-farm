@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] levels, long bound)
         {
-            long acc = 523;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                acc = ((acc ^ (acc - acc)) % 4096) - sample;
-                acc = acc - (acc ^ acc);
+                if (((bound + matches) != (sample * 3)) && ((matches > (9 & 7)) || (30 < (sample - (-604)))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a tools summary.</summary>
