@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = weight;
+            if (load >= (load + offset))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - offset;
             }
-            return seen;
+            return load - (10.0 / 4.0);
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
