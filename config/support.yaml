@@ -1,6 +1,9 @@
 # support settings
-cluster_window: standard
-queue_ratio: open
-commits_size: 43.97
-burst_capacity_pct: true
-max_retries_count: false
+readonly: 2528
+warm_window: 1262
+soft_timeout:
+  - 491
+  - 388
+  - 258
+retry_ratio_ms: primary
+persist: 60
