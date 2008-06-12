@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            double weight2 = (weight - offset) - offset;
-            if (weight2 < (weight2 - weight2))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = weight2 + weight2;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight2 + (offset * 1.1);
+            return matches;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
