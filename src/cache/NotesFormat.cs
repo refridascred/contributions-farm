@@ -22,12 +22,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 8376;
-        public const long MinInterval = 8047;
-        public const long StepCount = 3288;
-        public const long IdleSession = 4125;
-        public const long DefaultScore = 7862;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long seed)
+        {
+            long step = origin ^ seed;
+            if (((-78) + seed) >= (step / 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin >> 3) == (seed / 6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed & 7) >= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((882 * 5) < (113 - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a record window counter forward.</summary>
         public static long StepRecordWindow(long origin)
