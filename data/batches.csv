@@ -1,9 +1,6 @@
-id,rank,active
-1,633,521
-2,cached,69.65
-3,161,14
-4,17,451
-5,311,80.9
-6,227,green
-7,staging,857
-8,primary,blue
+id,ratio,token,state
+1,858,101,55.14
+2,eu-west,latest,47
+3,162,72.01,43.44
+4,644,972,strict
+5,628,64.14,blue
