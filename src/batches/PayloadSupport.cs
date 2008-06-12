@@ -33,21 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = 4.81;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain + offset) + (double)(long)i) - rate;
             }
-            return hits;
+            return gain - 9.2;
         }
     }
 }
