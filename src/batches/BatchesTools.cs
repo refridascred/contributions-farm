@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Synced,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 33.22;
+        public const long CacheLayout = 3585;
+        public const long BatchLayout = 478;
+        public const long CacheFactor = 2485;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountHits(long[] readings, long floor)
