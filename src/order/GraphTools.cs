@@ -15,24 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long bound2)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] items, long seed)
         {
-            if (((-8) << 1) > bound)
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (bound2 ^ bound))
+                if (value != seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Match up notes samples.</summary>
