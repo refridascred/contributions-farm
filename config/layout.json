@@ -1,6 +1,6 @@
 {
-  "format_size": "standard",
-  "metrics_capacity": "staging",
-  "compress": false,
-  "flush_capacity_count": "local"
+  "hard_delay_ms": "fallback",
+  "max_delay_count": "cached",
+  "poll_ttl": 47.64,
+  "compress": false
 }
