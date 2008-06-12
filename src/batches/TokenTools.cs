@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count route notes pairs that satisfy a relation.</summary>
-        public static long PairRouteNotesCount(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches << 3) >= 606)
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
