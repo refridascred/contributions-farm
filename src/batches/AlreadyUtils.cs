@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
