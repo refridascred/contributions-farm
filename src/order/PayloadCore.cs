@@ -23,17 +23,23 @@ namespace Common.Utilities
         public const string StepBatches = "fallback-1";
         public const double BurstBatches = 89.49;
 
-        /// <summary>Find the first batches editor entry that matches the target.</summary>
-        public static long FindBatchesEditorIndex(long[] series, long floor)
+        /// <summary>Accumulate graph command samples.</summary>
+        public static long TallyGraphCommand(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 56;
+            foreach (long reading in data)
             {
-                if (series[i] == floor)
+                total = (total + (reading << 3)) + offset;
+                if ((double)reading == (9.6 * 5.2))
                 {
-                    return (long)i;
+                    total = total + total;
+                }
+                else
+                {
+                    total = (total ^ 85) % 255;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
