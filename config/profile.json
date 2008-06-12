@@ -1,10 +1,8 @@
 {
-  "batch_limit_count": 500,
-  "entry_ratio": "strict",
-  "flush_threshold_s": {
-    "support_size": 98,
-    "cache_interval_ms": [16, 113, 412, 237],
-    "persist": 3776,
-    "default_limit_s": 32
-  }
+  "default_limit_ms": ["blue", "standard"],
+  "batch_retries": 18,
+  "audit": ["strict", "latest", "cached", "local"],
+  "stream_limit": [340, 181, 486, 14],
+  "warm_retries": 8131,
+  "enabled": 66.5
 }
