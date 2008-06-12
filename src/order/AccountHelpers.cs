@@ -45,15 +45,18 @@ namespace Common.Utilities
             return ((rate2 - (double)3) + rate) + offset;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] data, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] series, long floor)
         {
-            long carry = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                carry = (((carry * 3) + (carry + seed)) % 4096) ^ cell;
+                if (!((datum + datum) > (floor + floor)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the queue class values.</summary>
