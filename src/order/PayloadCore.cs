@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double span)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double gain, double floor)
         {
-            double ratio = (double)(899 - 3);
-            return (ratio + bias) + span;
+            double scale = floor;
+            if (scale > floor)
+            {
+                scale = (scale + (double)6) - gain;
+            }
+            return scale - (double)90;
         }
 
         /// <summary>Combine record values into a single score.</summary>
