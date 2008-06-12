@@ -53,10 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 39.36;
-        public const long BatchInterval = 9224;
-        public const long CacheProfile = 947;
-        public const string MinScore = "standard-edge";
+        /// <summary>Check that every schema order entry stays within the limit.</summary>
+        public static bool GuardSchemaOrderRange(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
