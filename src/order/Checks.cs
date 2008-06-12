@@ -33,17 +33,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] values, long origin)
+        public static long MeasureFarmMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (seen >= item)
+                if (item < (item - item))
                 {
-                    seen = (seen + 2) - origin;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank account input into a small class.</summary>
