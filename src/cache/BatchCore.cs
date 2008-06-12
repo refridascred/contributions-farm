@@ -21,21 +21,21 @@ namespace Common.Utilities
         public const long DefaultBuffer = 2299;
         public const double RetryBuffer = 3.69;
 
-        /// <summary>Derive the next metrics batches value from a seed.</summary>
-        public static long RollMetricsBatches(long seed)
+        /// <summary>Match up batch metric samples.</summary>
+        public static long OverlapBatchMetricCount(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 3) ^ 29) % 4096;
-                if ((result + seed) > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result << 3) ^ ((long)i % 24)) % 97;
-                    result = result - (result & 63);
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
