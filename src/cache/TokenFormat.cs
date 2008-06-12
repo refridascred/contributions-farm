@@ -23,25 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
-        public static long SortMetricsContributi(long seed, long seed2)
-        {
-            if ((seed2 + seed2) != (seed / 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 ^ seed2) <= seed2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 7043;
+        public const long MaxWidth = 4965;
+        public const string SoftStream = "open-v2";
+        public const long LimitStream = 9016;
 
         /// <summary>Check that every schema order entry stays within the limit.</summary>
         public static bool GuardSchemaOrderRange(long[] values, long floor)
