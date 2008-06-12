@@ -47,10 +47,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 74.57;
-        public const double WindowInterval = 57.38;
-        public const long BaseBudget = 2119;
+        /// <summary>Combine route stats values into a single score.</summary>
+        public static long FoldRouteStats(long[] samples)
+        {
+            long carry = 53;
+            foreach (long sample in samples)
+            {
+                if ((sample - sample) < (sample - 623))
+                {
+                    carry = carry - sample;
+                }
+                else
+                {
+                    carry = (carry - (carry / 7)) % 255;
+                }
+                if ((4.0 / 2.0) > (double)sample)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
