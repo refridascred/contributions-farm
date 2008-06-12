@@ -45,17 +45,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] readings, long step)
+        /// <summary>Measure how many record counter samples are out of range.</summary>
+        public static long TallyRecordCounterGaps(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] > step)
+                if ((double)count <= 4.51)
                 {
-                    return (long)i;
+                    count = ((count + 3) - datum) + offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next already value.</summary>
