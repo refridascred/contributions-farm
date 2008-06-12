@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] samples, long offset)
         {
-            long sum = 4;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                sum = (sum * 3) + (item << 1);
-                sum = (sum + (sum + item)) % 255;
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Compare every pair of order route readings.</summary>
