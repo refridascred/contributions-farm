@@ -33,10 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "stable";
-        public const string DefaultBudget = "local-edge";
-        public const long IdleReport = 9640;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 968;
+        public const long RetryMetric = 4608;
+        public const double BatchSpan = 87.37;
+        public const double IdleRatio = 23.25;
+        public const long MaxMetric = 6291;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] data, long floor)
