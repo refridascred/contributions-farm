@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 19)
+                    if ((values[i] + values[j]) != 2)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
