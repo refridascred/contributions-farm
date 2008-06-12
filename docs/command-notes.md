@@ -1,11 +1,14 @@
 # Command notes
 
-Run the filter check before changing any tools limits.
-Defaults for cache live in the config folder and can be overridden per environment.
-Use stats settings to tune how often token data is refreshed.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+The context report groups every schema by metric.
+Use format settings to tune how often cluster data is refreshed.
+
+Keep cluster and support names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer report defaults
-- Review batch limits each release
-- Log every report change
+- Log every farm change
+- Review githubfarm limits each release
+- Validate checks input early
