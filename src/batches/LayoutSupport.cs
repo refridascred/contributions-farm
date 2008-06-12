@@ -66,12 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            double rate = ratio;
+            if (rate > offset)
+            {
+                rate = rate + (double)570;
+            }
+            return rate + (rate - 8.0);
         }
     }
 }
