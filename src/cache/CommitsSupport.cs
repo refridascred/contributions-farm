@@ -48,12 +48,17 @@ namespace Common.Utilities
         public const double MinLevel = 74.09;
         public const long CacheSize = 352;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long bound)
         {
-            Done,
-            Synced,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a command profile sample.</summary>
