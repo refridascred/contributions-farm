@@ -70,19 +70,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] values, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (sample <= step)
+                if (tally > (459 % 7))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
