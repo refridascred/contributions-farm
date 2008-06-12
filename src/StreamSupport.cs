@@ -38,15 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] samples, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long total = 84;
+            foreach (long entry in samples)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((entry + entry) >= (bound + entry))
+                {
+                    total = (total * 5) + (total - bound);
+                }
+                else
+                {
+                    total = total - (bound * 4);
+                }
             }
-            return result;
+            return total;
         }
     }
 }
