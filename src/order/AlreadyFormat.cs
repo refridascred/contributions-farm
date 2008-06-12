@@ -13,19 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next already editor value from a seed.</summary>
-        public static long RollAlreadyEditor(long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (395 > (total * 2))
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Blend two queue measurements.</summary>
