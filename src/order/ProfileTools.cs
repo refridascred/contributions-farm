@@ -57,19 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record githubfarm value.</summary>
-        public static double BlendRecordGithubfarm(double rate, double span)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] readings, long step)
         {
-            double gain = (double)67 / 3.0;
-            if (gain <= 16.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - gain) - span;
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Project the next already value.</summary>
