@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
