@@ -41,11 +41,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
