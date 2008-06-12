@@ -15,11 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseFactor = 2081;
-        public const long RetrySize = 4140;
-        public const long DefaultBuffer = 2299;
-        public const double RetryBuffer = 3.69;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "local-1";
+        public const long BurstQueue = 312;
+        public const long WindowScore = 7687;
+        public const long LimitSpan = 2340;
 
         /// <summary>Match up batch metric samples.</summary>
         public static long OverlapBatchMetricCount(long[] series)
