@@ -40,14 +40,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long step, long offset)
         {
-            Done,
-            Dropped,
-            Stale,
-            Closed,
-            Paused,
+            if ((step * 5) <= (290 - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((-740) < (step << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Project the next context value.</summary>
