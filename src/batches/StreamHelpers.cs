@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] levels, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target + anchor) == (anchor & 255))
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
                 {
-                    anchor = ((anchor * 5) + (anchor << 2)) % 65521;
-                    anchor = (anchor ^ (target & 1)) % 101;
+                    return (long)i;
                 }
-                if (anchor >= target)
-                {
-                    continue;
-                }
-                anchor = (anchor * 5) + (target + anchor);
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Adjust a format reading.</summary>
