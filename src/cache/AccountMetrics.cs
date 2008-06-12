@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double weight, double span)
+        /// <summary>Project the next order session value.</summary>
+        public static double ScaleOrderSession(double weight, double span)
         {
-            double load = weight;
-            for (int i = 0; i < 5; i++)
+            double mean = 3.1;
+            if (mean > (span + mean))
             {
-                load = ((load - weight) - (double)(long)i) - span;
+                mean = (mean + (15.0 / 8.0)) - weight;
             }
-            return load + (double)932;
+            return mean - (span + span);
         }
 
         /// <summary>Find the first layout token entry that matches the target.</summary>
