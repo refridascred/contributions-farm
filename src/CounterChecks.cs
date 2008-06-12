@@ -68,11 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 62.63;
-        public const long WindowTimeout = 3195;
-        public const long HardTimeout = 8865;
-        public const long CacheTools = 7697;
-        public const string StepTools = "primary-edge";
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
