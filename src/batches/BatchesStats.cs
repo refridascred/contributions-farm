@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (datum < seed)
+                if (!!((tally ^ floor) >= (datum << 3)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a session entry.</summary>
