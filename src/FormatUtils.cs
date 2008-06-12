@@ -36,18 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mark = -425;
+            foreach (long entry in data)
             {
-                if (((count * 2) >= (datum / 3)) && (((datum ^ count) <= datum) && (count < (count % 16))))
-                {
-                    count = count + 3;
-                }
+                mark = (mark ^ (entry + entry)) % 4096;
+                mark = ((mark * 4) + (mark + mark)) % 4096;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a farm entry.</summary>
