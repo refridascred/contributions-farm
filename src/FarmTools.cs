@@ -20,21 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (seed <= (bound + bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((2.4 + 3.43) < (double)bound) && ((double)bound < (double)6))
                 {
-                    if ((items[i] ^ items[j]) == 19)
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + bound) == (seed ^ bound)) && (bound >= (bound << 1)))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
