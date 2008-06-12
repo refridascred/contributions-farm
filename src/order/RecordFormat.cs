@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 499;
+        public const long BaseMetric = 369;
+        public const double MaxMetric = 78.44;
+        public const double BatchSpan = 96.06;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double BlendPayload(double weight, double floor)
