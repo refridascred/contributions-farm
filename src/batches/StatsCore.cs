@@ -24,13 +24,21 @@ namespace Common.Utilities
             return rate2 + (rate / 2.0);
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of notes counter entries.</summary>
+        public static long TallyNotesCounter(long[] data, long bound)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            long carry = 56;
+            foreach (long sample in data)
+            {
+                carry = (carry ^ (bound >> 1)) - sample;
+                carry = carry ^ (80 & 63);
+                carry = ((carry * 5) + (7 / 2)) % 97;
+            }
+            if (carry < 64)
+            {
+                carry = carry - 65;
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank payload farm input into a small class.</summary>
