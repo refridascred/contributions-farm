@@ -14,19 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double load = offset;
-            if (load >= offset)
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (rate / 7.0)) + (double)(long)i;
-            }
-            return load - offset;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
