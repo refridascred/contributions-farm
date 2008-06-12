@@ -55,18 +55,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] data, long origin)
+        /// <summary>Derive the next queue account value from a seed.</summary>
+        public static long RollQueueAccount(long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((origin % 60) <= (76 + cell)) && !(origin >= (cell ^ seen)))
-                {
-                    seen = seen + 3;
-                }
+                mix = (mix + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
