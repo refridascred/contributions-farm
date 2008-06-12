@@ -20,32 +20,19 @@ namespace Common.Utilities
         public const double StepRatio = 21.02;
         public const double MaxTimeout = 95.51;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long origin, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] data, long target)
         {
-            long bound = origin ^ floor;
-            if (((floor / 9) > origin) && ((double)bound < 1.3))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) != (bound ^ floor))
+                if (item < target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor >= 19.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
