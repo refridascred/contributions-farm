@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] samples)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (entry <= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define command limits and defaults.</summary>
