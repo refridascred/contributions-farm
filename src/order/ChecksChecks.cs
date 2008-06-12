@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 2428;
-        public const long WindowSupport = 4778;
-        public const long BurstSupport = 6267;
-        public const long HardDepth = 1428;
-        public const long IdleCount = 2279;
+        /// <summary>Validate queue graph readings against a bound.</summary>
+        public static bool ValidateQueueGraphLimits(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two stream farm measurements.</summary>
         public static double ProjectStreamFarm(double bias, double floor)
