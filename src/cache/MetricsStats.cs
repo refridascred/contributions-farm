@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long acc = 3;
-            foreach (long reading in levels)
-            {
-                acc = (acc ^ (2 * 4)) + reading;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
