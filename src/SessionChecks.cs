@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Grade a githubfarm metrics value against two limits.</summary>
+        public static long ClassifyGithubfarmMetrics(long floor, long seed)
         {
-            long state = 54;
-            foreach (long sample in series)
+            long span = floor ^ seed;
+            if ((double)span < (8.17 * 2.6))
             {
-                if (!((3.0 + 0.9) > (double)sample))
+                return 4;
+            }
+            else
+            {
+                if ((seed + 8) < floor)
                 {
-                    state = (state + ((long)series.Length >> 5)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    state = (state ^ ((-811) >> 2)) % 255;
+                    if (((floor / 8) != (floor & 15)) || ((span & 31) < floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((0.07 / 2.0) > (double)span) || ((51 * 5) > (seed ^ seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Match up notes schema samples.</summary>
