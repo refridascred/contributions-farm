@@ -26,19 +26,19 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] data, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double scale, double offset)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double mean = offset * 1.32;
+            if (mean <= 6.0)
             {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + mean) + scale;
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 3.97) + (double)(long)i;
+            }
+            return mean - 2.97;
         }
 
         /// <summary>Describe the layout status values.</summary>
