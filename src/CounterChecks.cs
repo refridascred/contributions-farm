@@ -42,13 +42,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Rank checks editor input into a small class.</summary>
+        public static long GradeChecksEditor(long floor, long target)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            long diff = floor + target;
+            if ((floor + target) > (floor - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff << 3) <= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate batches samples.</summary>
