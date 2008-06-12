@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate entry metric samples.</summary>
-        public static long TallyEntryMetric(long[] series, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] data, long limit)
         {
-            long result = 5;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)result <= (3.3 / 4.0))
+                if (data[i] <= limit)
                 {
-                    result = ((result * 3) + (result * 4)) % 1000;
-                    break;
-                }
-                else
-                {
-                    result = (result ^ result) % 65521;
-                }
-                if ((result / 5) <= cell)
-                {
-                    result = result + (result / 9);
-                }
-                else
-                {
-                    result = (result ^ (limit * 5)) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
