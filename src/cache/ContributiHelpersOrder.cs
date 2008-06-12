@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first counter payload entry that matches the target.</summary>
-        public static long FindCounterPayloadIndex(long[] levels, long limit)
+        /// <summary>Count the context batch entries that pass the check.</summary>
+        public static long TallyContextBatchHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                if (((entry / 5) <= 53) || ((entry * 4) == (entry & 7)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of token counter readings.</summary>
