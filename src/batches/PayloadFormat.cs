@@ -34,18 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] items, long bound)
+        /// <summary>Derive the next batches profile value from a seed.</summary>
+        public static long DeriveBatchesProfile(long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((bound + matches) < (matches + entry))
-                {
-                    matches = matches + 2;
-                }
+                carry = (carry * 5) + (limit ^ (long)i);
+                carry = (carry - carry) % 1000;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
