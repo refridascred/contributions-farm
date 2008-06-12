@@ -1,5 +1,6 @@
 {
-  "cluster_interval": "fallback",
-  "verbose": 100,
-  "notes_capacity": [343, 271, 4]
+  "compress": "stable",
+  "order_size": 60,
+  "poll_ttl_count": "strict",
+  "warm_ttl_count": 100
 }
