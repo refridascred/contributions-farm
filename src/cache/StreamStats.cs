@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile stats values into a single score.</summary>
-        public static long CombineProfileStats(long[] data, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] readings, long offset)
         {
-            long result = -914;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if ((datum - (-510)) != (29 + offset))
                 {
-                    result = ((((result * 3) + result) % 65521) ^ (long)i) + value;
+                    hits = hits + 2;
                 }
-                result = result + (result + seed);
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
