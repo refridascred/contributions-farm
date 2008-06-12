@@ -52,22 +52,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] series, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((target + 4) == (count % 64))
+                if (21 < (cell & 7))
                 {
-                    count = (count + 1) ^ datum;
+                    seen = (seen + 1) - offset;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
