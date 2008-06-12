@@ -32,19 +32,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double gain, double bias)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] items, long origin)
         {
-            double scale = (bias / 6.0) / 4.0;
-            if (scale < 4.7)
+            bool ready = true;
+            foreach (long item in items)
             {
-                scale = scale - bias;
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (gain / 6.0)) + (double)(long)i;
-            }
-            return scale + gain;
+            return ready;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
