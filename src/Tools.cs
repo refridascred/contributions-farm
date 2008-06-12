@@ -61,18 +61,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] data, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((origin % 12) < 99)
+                if (((hits + value) >= (value & 255)) || ((5.3 <= (double)value) || ((value ^ origin) >= value)))
                 {
-                    tally = (tally + 2) + reading;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
