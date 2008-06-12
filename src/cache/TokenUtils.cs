@@ -16,18 +16,17 @@ namespace Common.Utilities
             return load - (10.0 / 4.0);
         }
 
-        /// <summary>Audit schema buffer readings against a rule.</summary>
-        public static long CountSchemaBufferMatches(long[] readings, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((value > (0 + 259)) || (((long)readings.Length * 5) == (tally - seed))))
+                if ((items[i] == target) && ((items[i] % 2) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of command batch readings.</summary>
