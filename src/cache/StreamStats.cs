@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] data, long limit)
+        /// <summary>Combine profile stats values into a single score.</summary>
+        public static long CombineProfileStats(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long result = -914;
+            foreach (long value in data)
             {
-                if (sample >= limit)
+                for (int i = 0; i < 3; i++)
                 {
-                    valid = false;
-                    break;
+                    result = ((((result * 3) + result) % 65521) ^ (long)i) + value;
                 }
+                result = result + (result + seed);
             }
-            return valid;
+            return result % 1000;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
