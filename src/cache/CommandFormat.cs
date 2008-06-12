@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            New,
-            Pending,
-            Dropped,
+            Retry,
+            Idle,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Fold a list of queue cluster readings.</summary>
