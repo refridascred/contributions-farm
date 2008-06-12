@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine order commits values into a single score.</summary>
+        public static long FoldOrderCommits(long[] readings, long step)
         {
-            Pending,
-            Idle,
-            New,
-            Dropped,
-            Retry,
+            long carry = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < (30 & 255))
+                {
+                    carry = ((carry - (sample - 6)) % 65521) - step;
+                    continue;
+                }
+                carry = ((carry << 2) ^ (carry & 127)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine record values into a single score.</summary>
