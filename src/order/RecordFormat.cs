@@ -38,18 +38,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Look up the position of a checks contributi sample.</summary>
+        public static long LocateChecksContributiIndex(long[] items, long step)
         {
-            long carry = 4;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum != (2.01 - 0.1))
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
                 {
-                    carry = (carry - 74) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
