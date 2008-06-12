@@ -37,17 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a graph notes reading by value.</summary>
-        public static long FindGraphNotesIndex(long[] data, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                total = (total - (long)i) % 1000;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
