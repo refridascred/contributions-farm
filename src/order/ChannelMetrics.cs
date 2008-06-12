@@ -42,10 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "latest";
-        public const long SoftCache = 5910;
-        public const long MaxCache = 217;
-        public const string DefaultRatio = "legacy-v2";
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
     }
 }
