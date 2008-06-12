@@ -1,8 +1,6 @@
 {
-  "max_depth_ms": false,
-  "verbose": true,
-  "strict": 500,
-  "persist": "stable",
-  "sync_retries_count": "standard",
-  "audit": "edge"
+  "dry_run": [228, 103, 436],
+  "poll_delay_ms": false,
+  "base_ttl_s": [417, 367, 158, 437],
+  "warm_capacity": 1024
 }
