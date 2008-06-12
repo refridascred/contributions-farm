@@ -57,15 +57,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            double gain2 = span;
-            if (gain2 >= (span * 7.26))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                gain2 = (gain2 - (double)6) - gain;
+                if (entry >= ((long)data.Length + (long)data.Length))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain2 + (gain2 / 6.0);
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
