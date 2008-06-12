@@ -27,18 +27,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] samples, long origin)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((9.3 * 6.26) <= (double)origin)
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
