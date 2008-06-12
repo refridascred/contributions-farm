@@ -59,39 +59,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a checks counter pair into a bucket.</summary>
-        public static long BucketChecksCounter(long target, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] data, long offset)
         {
-            long gap = target ^ limit;
-            if (!((3.1 + 11.0) != (double)target))
+            long acc = 788;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit - target) > (limit - limit)) || ((target & 3) > gap))
+                acc = ((acc * 2) + offset) % 101;
+                acc = (acc + (offset & 127)) % 97;
+                acc = acc ^ (reading & 31);
+                if ((double)acc >= (9.0 - 19.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)limit != (double)485) && ((10.0 + 6.7) > (double)target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (gap <= (4 + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Roll a report cache counter forward.</summary>
