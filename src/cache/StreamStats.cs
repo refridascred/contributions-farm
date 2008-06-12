@@ -19,22 +19,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardWidth = 2839;
+        public const double BatchScore = 11.15;
+        public const long DefaultWidth = 3755;
+        public const long DefaultToken = 6211;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] levels, long bound)
