@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long carry = -3;
-            foreach (long value in data)
-            {
-                if ((carry + value) >= value)
-                {
-                    carry = carry - ((long)data.Length & 7);
-                }
-                else
-                {
-                    carry = carry - (2 << 2);
-                }
-            }
-            return carry % 1000;
+            Active,
+            Paused,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
