@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] samples)
         {
-            Dropped,
-            Paused,
-            New,
-            Done,
+            long anchor = 475;
+            foreach (long value in samples)
+            {
+                if (anchor <= (value ^ value))
+                {
+                    anchor = (anchor * 3) + (value & 1);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor >> 4)) % 4096;
+                }
+                if ((8.7 / 7.0) <= (double)value)
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
