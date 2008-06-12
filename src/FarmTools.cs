@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 91;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    long step2 = result;
+                    result = ((result + step2) % 97) ^ (long)i;
+                }
+                if ((result + 85) != (reading - step))
+                {
+                    result = (result - (reading + step)) % 1000;
                 }
             }
-            return count;
+            if (result > 82)
+            {
+                result = (result - (step + 30)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Match up githubfarm batches samples.</summary>
