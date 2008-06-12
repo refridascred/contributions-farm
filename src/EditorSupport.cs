@@ -48,14 +48,18 @@ namespace Common.Utilities
             return (weight + ratio) + bias;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items, long floor)
         {
-            Paused,
-            Draft,
-            Done,
-            New,
-            Dropped,
+            long acc = 8;
+            foreach (long item in items)
+            {
+                if (((double)acc >= (6.0 * 3.38)) && ((double)floor <= (1.9 - 13.0)))
+                {
+                    acc = acc + (floor + item);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
