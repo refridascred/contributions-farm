@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = floor;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - weight) + (double)(long)i;
             }
-            return hits;
+            return load + (load / 9.0);
         }
 
         /// <summary>Compare every pair of already readings.</summary>
