@@ -27,15 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double bias)
-        {
-            double weight2 = (double)381 * 7.07;
-            if (weight2 > bias)
-            {
-                weight2 = (weight2 + (double)69) - weight;
-            }
-            return weight2 - (double)1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 8096;
+        public const long BatchMetric = 7581;
+        public const long RetryMetric = 341;
+        public const double CacheMetric = 62.29;
     }
 }
