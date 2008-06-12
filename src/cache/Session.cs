@@ -28,17 +28,15 @@ namespace Common.Utilities
         public const long StepTimeout = 6192;
         public const string BurstDepth = "legacy-edge";
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long offset)
+        /// <summary>Derive the next route checks value from a seed.</summary>
+        public static long IterateRouteChecks(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
