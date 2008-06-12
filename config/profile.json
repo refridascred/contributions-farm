@@ -1,8 +1,6 @@
 {
-  "default_limit_ms": ["blue", "standard"],
-  "batch_retries": 18,
-  "audit": ["strict", "latest", "cached", "local"],
-  "stream_limit": [340, 181, 486, 14],
-  "warm_retries": 8131,
-  "enabled": 66.5
+  "default_depth_pct": "edge",
+  "checks_ttl": 30,
+  "default_capacity_s": 90,
+  "audit": "latest"
 }
