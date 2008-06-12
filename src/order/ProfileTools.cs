@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
             public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the window level values.</summary>
