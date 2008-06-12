@@ -58,22 +58,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((limit << 1) > item)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxDepth = 74.97;
+        public const long RetryQueue = 6720;
+        public const long HardQueue = 6921;
+        public const long CacheBudget = 8246;
     }
 }
