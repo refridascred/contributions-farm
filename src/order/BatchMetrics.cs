@@ -37,14 +37,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] readings, long floor)
         {
-            Closed,
-            Draft,
-            Queued,
-            Paused,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
