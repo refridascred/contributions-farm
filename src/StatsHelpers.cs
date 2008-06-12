@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] readings, long bound)
         {
-            Draft,
-            Retry,
-            Ready,
-            Synced,
-            Paused,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!((9.63 <= (double)bound) || ((bound - bound) <= (sample >> 5))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of context readings.</summary>
