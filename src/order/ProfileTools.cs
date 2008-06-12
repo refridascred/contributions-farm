@@ -80,14 +80,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] readings, long bound)
         {
-            Retry,
-            Idle,
-            Pending,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)tally >= (2.0 - 4.1))
+                {
+                    tally = ((tally + 2) + cell) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
