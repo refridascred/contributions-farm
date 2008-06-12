@@ -37,27 +37,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long acc = 763;
-            foreach (long sample in samples)
-            {
-                acc = ((acc << 3) ^ (sample % 16)) % 4096;
-                if (acc > (acc >> 3))
-                {
-                    acc = (acc + ((-935) % 64)) % 97;
-                }
-                if ((4.67 / 7.0) == (double)acc)
-                {
-                    acc = ((acc << 2) ^ sample) % 1000;
-                }
-            }
-            if (acc < 3)
-            {
-                acc = (acc * 4) + (7 * 4);
-            }
-            return acc;
+            Closed,
+            Draft,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
