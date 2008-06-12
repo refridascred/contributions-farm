@@ -35,18 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] series)
+        /// <summary>Adjust a editor layout reading.</summary>
+        public static double BlendEditorLayout(double scale, double span)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double drift = scale;
+            if (drift <= drift)
             {
-                if ((matches + matches) >= (matches * 3))
-                {
-                    matches = (matches + 1) + cell;
-                }
+                drift = drift - (double)732;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)6) - (double)(long)i;
+            }
+            return drift + (span + 2.0);
         }
 
         /// <summary>Classify a payload entry pair into a bucket.</summary>
