@@ -16,18 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] data)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - 0) == (tally * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + reading;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next batch support value from a seed.</summary>
