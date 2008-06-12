@@ -14,17 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (readings[i] <= floor)
+                if ((524 * 3) < bound)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a already info.</summary>
