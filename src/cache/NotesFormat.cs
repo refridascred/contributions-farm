@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 8412;
-        public const string WindowCommits = "primary-1";
-        public const long WindowCount = 7685;
-        public const long HardScore = 3015;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (cell > (target + cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
