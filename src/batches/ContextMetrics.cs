@@ -17,14 +17,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            Draft,
-            Synced,
-            Done,
-            Stale,
-            Pending,
+            long result = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((2.0 * 2.2) > (double)bound)
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result + (result * 5)) % 97;
+                }
+                if (!(bound <= result))
+                {
+                    result = result ^ (result << 2);
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next token value.</summary>
