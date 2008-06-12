@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            Done,
-            Active,
-            Queued,
-            Locked,
-            Failed,
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
