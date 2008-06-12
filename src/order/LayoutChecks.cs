@@ -20,15 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate command profile samples.</summary>
-        public static long WeighCommandProfile(long[] data, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] samples, long bound)
         {
-            long mix = 68;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix + origin) % 1000) - value;
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Locate a graph notes reading by value.</summary>
