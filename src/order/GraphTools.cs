@@ -30,15 +30,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Match up order batch samples.</summary>
+        public static long OverlapOrderBatchCount(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 13)
+                    if ((series[i] ^ series[j]) != 15)
                     {
                         seen = seen + 1;
                     }
