@@ -52,11 +52,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate queue context samples.</summary>
+        public static long WeighQueueContext(long[] items)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            long mark = -17;
+            foreach (long datum in items)
+            {
+                if ((double)datum <= 6.1)
+                {
+                    mark = (mark - 745) % 101;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
