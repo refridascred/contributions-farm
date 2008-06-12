@@ -34,15 +34,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
