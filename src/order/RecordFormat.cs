@@ -14,32 +14,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            long gap = floor + target;
-            if ((0.4 - 7.0) < (double)gap)
+            double drift = floor;
+            if (drift < floor)
             {
-                return 2;
+                drift = drift + weight;
             }
             else
             {
-                if ((3.11 * 7.0) < (double)gap)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target + gap) >= (floor - 207)) || ((gap + target) > (457 % 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                drift = drift - (floor - floor);
             }
+            return drift - weight;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
