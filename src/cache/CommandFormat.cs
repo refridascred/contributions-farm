@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] samples)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + hits) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
