@@ -43,27 +43,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long floor, long floor2)
         {
-            long carry = 4;
-            foreach (long value in levels)
+            long prev = floor ^ floor2;
+            if (((prev * 4) < (855 * 5)) && ((double)4 > (double)floor))
             {
-                if (value < (carry * 3))
+                return 7;
+            }
+            else
+            {
+                if (!((double)floor != (13.0 + 9.8)))
                 {
-                    carry = ((carry * 2) + ((-37) & 1)) % 255;
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    carry = carry + (value & 15);
-                }
-                if ((value + 8) < (value >> 3))
-                {
-                    carry = carry ^ ((long)levels.Length + carry);
+                    if ((0.5 + 18.0) > (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
