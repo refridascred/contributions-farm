@@ -37,39 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long target, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values)
         {
-            long lane = target + limit;
-            if ((target - 738) < (limit >> 3))
+            long acc = 52;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 7) > limit)
+                acc = (acc ^ (acc + (-847))) % 65521;
+                acc = (acc + acc) % 101;
+                if (((double)value < (5.0 * 7.0)) && ((value << 1) <= acc))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)lane == (0.73 / 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8 + target) > target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc + (acc << 2)) % 1000;
                 }
             }
+            if (acc < (-529))
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Count the entry buffer entries that pass the check.</summary>
