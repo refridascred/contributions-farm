@@ -59,27 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long result = 589;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long diff = (result + sample) % 3;
-                if ((result <= (sample + diff)) || ((18.0 + 7.8) < (double)diff))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    diff = diff - ((long)readings.Length + sample);
-                }
-                if (((result - 365) <= (sample & 31)) && (789 >= sample))
-                {
-                    result = (result * 2) + sample;
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 6)
-            {
-                result = (result * 5) + result;
-            }
-            return result % 4096;
+            return seen;
         }
     }
 }
