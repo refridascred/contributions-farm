@@ -28,19 +28,31 @@ namespace Common.Utilities
         public const string HardBudget = "staging-edge";
         public const long RetryFilter = 8194;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] samples, long bound)
+        /// <summary>Grade a filter format value against two limits.</summary>
+        public static long GradeFilterFormat(long step, long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            if (((floor + floor) == (336 + 652)) && ((floor - floor) < ((-9) << 2)))
             {
-                if (item != bound)
+                return 2;
+            }
+            else
+            {
+                if ((17.0 / 6.0) != (double)floor)
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)step != (double)(-375)) || ((2 << 2) == (floor / 9)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first farm cache entry that matches the target.</summary>
