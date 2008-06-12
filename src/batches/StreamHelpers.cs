@@ -32,15 +32,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry batches values into a single score.</summary>
-        public static long CombineEntryBatches(long[] items, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] readings)
         {
-            long result = 0;
-            foreach (long sample in items)
+            long sum = 25;
+            foreach (long datum in readings)
             {
-                result = ((result - (bound + result)) % 65521) ^ sample;
+                if (datum > (sum * 2))
+                {
+                    sum = (sum * 4) + datum;
+                }
+                else
+                {
+                    sum = sum + (sum & 63);
+                }
             }
-            return result;
+            if (sum > 9)
+            {
+                sum = ((sum * 2) + (sum * 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the context kind values.</summary>
