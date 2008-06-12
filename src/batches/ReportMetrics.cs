@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum > floor)
                 {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
