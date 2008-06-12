@@ -27,12 +27,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            Active,
-            Idle,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
