@@ -20,22 +20,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Compare every pair of command metrics readings.</summary>
-        public static long OverlapCommandMetricsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinFactor = 9262;
+        public const long HardContext = 5782;
+        public const string BaseContext = "local-1";
+        public const long BatchWidth = 234;
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] data)
