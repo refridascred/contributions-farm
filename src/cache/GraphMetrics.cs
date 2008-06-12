@@ -39,38 +39,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long bound, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] series)
         {
-            if ((double)bound > (0.87 - 16.0))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ 60) <= limit)
+                if (hits > (hits * 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((((-930) - bound) <= limit) && ((limit + limit) < (limit >> 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((9.0 * 0.05) != (double)bound) && ((double)bound >= (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 3) ^ sample;
                 }
             }
+            return hits;
         }
     }
 }
