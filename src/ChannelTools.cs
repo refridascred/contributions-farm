@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cluster session sample.</summary>
-        public static long LocateClusterSessionIndex(long[] items, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
+                if (!!((954 + 5) >= floor))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a tools options.</summary>
