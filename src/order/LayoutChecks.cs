@@ -40,11 +40,12 @@ namespace Common.Utilities
         public const long LimitBuffer = 4633;
         public const double MaxWidth = 22.36;
 
-        /// <summary>Adjust a token counter reading.</summary>
-        public static double BlendTokenCounter(double bias, double floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double load = floor;
-            return (load + (4.41 + 0.17)) + bias;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
