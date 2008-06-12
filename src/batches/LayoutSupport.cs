@@ -34,13 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double gain, double span)
         {
-            Failed,
-            Dropped,
-            New,
-            Done,
+            double bias = span;
+            if (bias >= bias)
+            {
+                bias = (bias - 5.0) - gain;
+            }
+            return bias + 5.85;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
