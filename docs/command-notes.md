@@ -1,10 +1,11 @@
 # Command notes
 
-A support that stays idle for too long is moved to the payload list.
-Each format is validated before it reaches the format queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any token limits.
 
 ## Guidelines
 
-- Review stream limits each release
-- Validate record input early
-- Keep queue values small
+- Document new profile fields
+- Validate editor input early
+- Prefer metric defaults
+- Log every metric change
