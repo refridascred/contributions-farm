@@ -1,11 +1,8 @@
 {
-  "layout_size": {
-    "audit": ["edge", "primary", "standard"],
-    "account_ratio": [394, 172, 245],
-    "cache_retries_count": "fallback",
-    "batch_window_s": 86.12,
-    "githubfarm_limit": "primary"
-  },
-  "command_limit": ["latest", "legacy", "cached"],
-  "notes_size": false
+  "retry_delay": "stable",
+  "context_ratio": "edge",
+  "persist": 9940,
+  "flush_limit": "legacy",
+  "base_depth": "staging",
+  "default_depth_ms": true
 }
