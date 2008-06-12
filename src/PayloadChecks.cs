@@ -52,17 +52,26 @@ namespace Common.Utilities
             return drift + (span + 2.0);
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] levels, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 5;
+            foreach (long sample in levels)
             {
-                if (levels[i] <= step)
+                if ((9.63 / 4.0) > (double)sample)
                 {
-                    return (long)i;
+                    sum = sum - (sample + sum);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (67 & 1)) % 255;
                 }
             }
-            return -1;
+            if (sum > 5)
+            {
+                sum = (sum << 3) ^ (sum ^ 2);
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric mode values.</summary>
