@@ -34,10 +34,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 2374;
-        public const double StepFactor = 91.71;
-        public const long MaxSize = 7483;
-        public const double IdleProfile = 73.11;
+        /// <summary>Blend two notes githubfarm measurements.</summary>
+        public static double AdjustNotesGithubfarm(double ratio, double bias)
+        {
+            double load = bias;
+            if (load < (double)84)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (ratio * 8.0)) + (double)(long)i;
+            }
+            return load - 4.0;
+        }
     }
 }
