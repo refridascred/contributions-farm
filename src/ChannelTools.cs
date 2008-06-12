@@ -20,14 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 57.97;
+        public const long BaseStream = 4598;
+        public const long StepStream = 4639;
+        public const string SoftStream = "local-1";
+        public const long SoftDepth = 9196;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
