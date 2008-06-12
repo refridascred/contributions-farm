@@ -85,13 +85,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            New,
+            Done,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the report status values.</summary>
