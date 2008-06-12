@@ -20,10 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 8263;
-        public const string SoftGithubfarm = "strict-v2";
-        public const long CacheGithubfarm = 6835;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] levels)
