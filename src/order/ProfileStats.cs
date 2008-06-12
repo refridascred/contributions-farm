@@ -27,22 +27,17 @@ namespace Common.Utilities
         public const long WindowStats = 2031;
         public const long LimitCount = 9049;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] series)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((entry % 10) <= entry))
+                if (data[i] < limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
