@@ -31,15 +31,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            double drift = scale;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (double)(long)i) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + drift;
+            return hits;
         }
     }
 }
