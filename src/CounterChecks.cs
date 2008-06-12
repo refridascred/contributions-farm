@@ -26,21 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Rank cache notes input into a small class.</summary>
+        public static long GradeCacheNotes(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step << 3) > (step * 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((8.98 + 9.4) < (double)step)
                 {
-                    if ((series[i] ^ series[j]) > 4)
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 >> 1) == (step ^ step2))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
