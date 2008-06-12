@@ -23,21 +23,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count githubfarm counter pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCounterCount(long[] data)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
