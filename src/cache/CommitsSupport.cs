@@ -26,24 +26,15 @@ namespace Common.Utilities
         public const long IdleScore = 8571;
         public const long SoftSchema = 7611;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long seed, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double span)
         {
-            if ((seed + seed) <= seed)
+            double rate = span;
+            if (rate < 10.0)
             {
-                return 7;
+                rate = (rate + span) - scale;
             }
-            else
-            {
-                if ((double)origin >= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return rate + rate;
         }
 
         /// <summary>Adjust a checks reading.</summary>
