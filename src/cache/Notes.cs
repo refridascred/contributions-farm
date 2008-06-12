@@ -43,12 +43,12 @@ namespace Common.Utilities
         public const string StepInterval = "standard-edge";
         public const string WindowRoute = "legacy";
 
-        /// <summary>Locate a metric context reading by value.</summary>
-        public static long SeekMetricContextIndex(long[] samples, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
+                if (series[i] >= step)
                 {
                     return (long)i;
                 }
