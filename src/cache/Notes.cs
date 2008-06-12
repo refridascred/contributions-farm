@@ -54,23 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm contributi readings.</summary>
-        public static long DigestFarmContributi(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long acc = -1;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(datum <= (datum - datum)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = acc + acc;
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = acc - (5 << 3);
             }
-            if (acc < 3)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Blend two stream measurements.</summary>
