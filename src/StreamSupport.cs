@@ -38,22 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] samples, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] series, long limit)
         {
-            long total = 84;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + entry) >= (bound + entry))
+                if (series[i] > limit)
                 {
-                    total = (total * 5) + (total - bound);
-                }
-                else
-                {
-                    total = total - (bound * 4);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
