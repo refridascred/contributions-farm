@@ -22,20 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Count report support pairs that satisfy a relation.</summary>
+        public static long PairReportSupportCount(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset / 7) <= (59 << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score + ((long)i + 68);
-                    score = (score ^ offset) % 1000;
+                    if ((samples[i] + samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
