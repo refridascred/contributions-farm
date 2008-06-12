@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 5) + total) % 101;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Dropped,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
