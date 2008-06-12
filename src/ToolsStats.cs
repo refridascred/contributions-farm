@@ -68,17 +68,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first graph context entry that matches the target.</summary>
-        public static long SeekGraphContextIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of route context readings.</summary>
+        public static long OverlapRouteContextCount(long[] readings)
         {
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
