@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double rate, double span)
-        {
-            double gain = (rate / 8.0) + (rate - span);
-            return gain - gain;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "alpha-1";
+        public const long CacheBuffer = 4420;
+        public const double MaxBuffer = 63.53;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
