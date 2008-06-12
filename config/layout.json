@@ -1,8 +1,5 @@
 {
-  "context_ratio": [208, 325, 83],
-  "verbose": "stable",
-  "window_depth": [111, 73, 359, 280],
-  "dry_run": "strict",
-  "readonly": false,
-  "entry_depth": ["primary", "edge", "cached", "eu-west"]
+  "queue_threshold": "legacy",
+  "batch_limit": 30,
+  "idle_size_s": 60
 }
