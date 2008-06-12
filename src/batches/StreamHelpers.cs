@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            Dropped,
+            Draft,
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
