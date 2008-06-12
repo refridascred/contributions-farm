@@ -48,10 +48,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 77.48;
-        public const long MinCount = 9818;
-        public const double CacheScore = 33.51;
-        public const long DefaultNotes = 2009;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchFactor = 1391;
+        public const long StepWindow = 3237;
+        public const long RetryWindow = 2987;
+        public const double LimitCount = 4.39;
     }
 }
