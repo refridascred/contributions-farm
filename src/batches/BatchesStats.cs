@@ -32,10 +32,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 378;
-        public const long SoftBudget = 9078;
-        public const string CacheWindow = "legacy-1";
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Retry,
+            Ready,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long bound)
