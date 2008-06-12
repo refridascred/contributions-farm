@@ -20,21 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((result / 4) < (long)i) && ((8.06 + 1.95) < (double)result))
-                {
-                    result = (result ^ (limit & 63)) % 65521;
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSpan = 9929;
+        public const string MinTools = "legacy-v2";
+        public const long RetrySpan = 9149;
+        public const long MaxFactor = 3482;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double AdjustCounter(double gain, double bias)
