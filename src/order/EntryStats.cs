@@ -22,19 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            double load = (bias * 0.6) / 6.0;
-            if (load >= (span * 7.7))
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                load = load + (bias - load);
+                mix = ((mix * 2) + (mix - (-53))) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (10.0 / 2.0)) + (double)(long)i;
-            }
-            return load - 6.9;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
