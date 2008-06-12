@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue fallback open; do
+CHANNEL_LIMIT=427
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west staging standard legacy; do
     log "checking ${item}"
 done
 
 total=0
 for i in $(seq 1 7); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-mode="${1:-open}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
