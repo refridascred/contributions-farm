@@ -1,14 +1,8 @@
 {
-  "enabled": "fallback",
-  "entry_limit": false,
-  "dry_run": {
-    "cache_timeout_s": 100,
-    "commits_size": false,
-    "poll_ttl_s": 44.63,
-    "retry_window_s": 2548,
-    "audit": 15.53,
-    "idle_ttl_ms": 69
-  },
-  "default_ttl_ms": 88.4,
-  "counter_interval": 5982
+  "idle_capacity_pct": 250,
+  "verbose": 77.08,
+  "burst_capacity": 96.4,
+  "queue_capacity": "staging",
+  "max_ratio_pct": [217, 268, 197, 180],
+  "persist": 90
 }
