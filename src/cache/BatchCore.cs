@@ -30,18 +30,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] items, long origin)
+        /// <summary>Derive the next metrics batches value from a seed.</summary>
+        public static long RollMetricsBatches(long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (tally >= (834 - origin))
+                result = ((result << 3) ^ 29) % 4096;
+                if ((result + seed) > seed)
                 {
-                    tally = (tally + 1) + sample;
+                    result = ((result << 3) ^ ((long)i % 24)) % 97;
+                    result = result - (result & 63);
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
