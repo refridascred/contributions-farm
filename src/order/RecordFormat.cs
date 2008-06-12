@@ -66,21 +66,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Iterate the route support series from a seed.</summary>
+        public static long StepRouteSupport(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
     }
 }
