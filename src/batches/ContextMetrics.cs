@@ -37,22 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheRatio = 70.79;
+        public const string DefaultContributi = "cached-v2";
+        public const string MinLevel = "local";
+        public const double MinContributi = 30.6;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string LimitAccount = "legacy-v2";
