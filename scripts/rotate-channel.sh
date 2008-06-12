@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=191
+CHANNEL_LIMIT=412
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in latest edge; do
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in eu-west latest fallback standard; do
     log "checking ${item}"
 done
