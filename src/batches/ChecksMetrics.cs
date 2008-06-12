@@ -24,22 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxFactor = 2674;
+        public const long BurstSpan = 25;
+        public const long WindowMetrics = 2774;
+        public const long BurstCount = 793;
 
         /// <summary>Count command route pairs that satisfy a relation.</summary>
         public static long MatchCommandRouteCount(long[] items)
