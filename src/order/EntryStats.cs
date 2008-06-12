@@ -22,16 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 2) + (mix - (-53))) % 65521;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Draft,
+            Ready,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
