@@ -1,7 +1,10 @@
 # githubfarm settings
-buffer_timeout:
-  checks_window: 69
-  idle_window: 56
-  warm_delay: true
-flush_ttl_count: false
-min_ratio: staging
+readonly: latest
+max_threshold: fallback
+counter_capacity: 44
+editor_capacity: true
+max_timeout: 52.57
+already_timeout:
+  base_capacity_s: 5.44
+  base_delay_count: 22.63
+  hard_window_ms: 5.37
