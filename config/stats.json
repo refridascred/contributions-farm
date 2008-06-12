@@ -1,29 +1,8 @@
 {
-  "dry_run": 1024,
-  "min_capacity_count": {
-    "batch_retries_ms": true,
-    "audit": 4.19,
-    "compress": 32.43,
-    "cache_window": 60.03,
-    "default_ratio_count": "open",
-    "flush_window_count": 7530
-  },
-  "checks_depth": true,
-  "default_interval_ms": {
-    "flush_ratio_ms": "edge",
-    "base_threshold_ms": 24.38,
-    "verbose": {
-      "poll_ratio_ms": [208, 39, 485, 409],
-      "format_size": 7.86,
-      "sync_delay_pct": "green",
-      "warm_delay_ms": 5101,
-      "flush_size": 250,
-      "command_delay": 60
-    },
-    "burst_retries": "local",
-    "cache_window_pct": false,
-    "idle_depth_pct": "open"
-  },
-  "burst_capacity": 8798,
-  "batch_delay": [391, 262, 242, 386]
+  "persist": "cached",
+  "sync_ttl": [204, 305, 208],
+  "sync_depth": 35.03,
+  "counter_depth": "standard",
+  "default_size": "strict",
+  "commits_window": true
 }
