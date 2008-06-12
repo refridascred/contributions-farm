@@ -35,19 +35,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            long result = 1;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((((result << 3) ^ result) % 1000) + cell) - target;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result > 623)
-            {
-                result = ((result << 2) ^ result) % 65521;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Hold a editor header.</summary>
