@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long origin)
         {
-            Stale,
-            Paused,
-            Failed,
-            Active,
+            long prev = seed - origin;
+            if ((double)seed > 7.58)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((prev << 3) == (origin % 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up metric samples.</summary>
