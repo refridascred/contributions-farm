@@ -33,18 +33,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] items, long limit)
+        /// <summary>Combine entry batches values into a single score.</summary>
+        public static long CombineEntryBatches(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long result = 0;
+            foreach (long sample in items)
             {
-                if ((limit / 3) != (limit + 57))
-                {
-                    hits = (hits + 2) + value;
-                }
+                result = ((result - (bound + result)) % 65521) ^ sample;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Rank window input into a small class.</summary>
