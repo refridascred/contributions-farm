@@ -26,15 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            long mix = 2;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix + (long)items.Length) % 97) ^ cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
