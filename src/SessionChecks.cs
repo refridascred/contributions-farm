@@ -17,24 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank token payload input into a small class.</summary>
-        public static long BucketTokenPayload(long limit, long limit2)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            if (((limit2 & 31) == (limit / 9)) && ((limit2 + limit) <= (limit2 << 1)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (6 <= limit2)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the graph route entries that pass the check.</summary>
