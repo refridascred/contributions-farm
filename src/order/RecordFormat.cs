@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double bias, double bias2)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            double weight = bias - bias2;
-            if (weight <= (double)685)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight - weight;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return weight - (13.0 * 3.0);
+            return sum;
         }
 
         /// <summary>Accumulate batch samples.</summary>
