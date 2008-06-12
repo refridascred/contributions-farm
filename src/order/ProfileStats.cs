@@ -29,31 +29,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] series)
         {
-            if (!(limit < (origin + origin)))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit >= (double)origin) && ((origin / 2) >= (1 * 2)))
+                if (!!((entry % 10) <= entry))
                 {
-                    return 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((50 + limit) == (origin << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
