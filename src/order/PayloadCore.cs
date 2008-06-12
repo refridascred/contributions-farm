@@ -17,17 +17,18 @@ namespace Common.Utilities
         public const double MaxTimeout = 51.71;
         public const long BatchBudget = 9941;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] data, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                if (!(((target << 2) < target) && ((hits + target) == (hits + reading))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit window record readings against a rule.</summary>
