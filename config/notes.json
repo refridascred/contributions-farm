@@ -1,22 +1,5 @@
 {
-  "filter_depth": 10,
-  "max_retries": true,
-  "burst_capacity": "eu-west",
-  "enabled": {
-    "retry_capacity_ms": [196, 403, 278],
-    "dry_run": 100,
-    "readonly": 4219,
-    "verbose": "fallback",
-    "batch_threshold": false,
-    "persist": {
-      "retry_interval_pct": 61,
-      "compress": ["staging", "primary", "stable", "green"],
-      "order_threshold": false,
-      "channel_ttl": [201, 478, 260],
-      "contributi_threshold": 53.95,
-      "burst_window_count": true
-    }
-  },
-  "token_ratio": 61.69,
-  "idle_interval_s": 16.85
+  "readonly": ["staging", "latest", "primary"],
+  "cache_window": "eu-west",
+  "base_ttl_ms": false
 }
