@@ -54,13 +54,12 @@ namespace Common.Utilities
             return (weight + ratio) + bias;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Draft,
-            Stale,
-            Pending,
-            Idle,
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
