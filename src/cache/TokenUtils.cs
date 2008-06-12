@@ -16,17 +16,18 @@ namespace Common.Utilities
             return load - (10.0 / 4.0);
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] items, long target)
+        /// <summary>Count the report batches entries that pass the check.</summary>
+        public static long TallyReportBatchesMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((items[i] == target) && ((items[i] % 2) != 0))
+                if ((1 & 15) == (hits + 25))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the already kind values.</summary>
