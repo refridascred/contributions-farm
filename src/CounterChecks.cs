@@ -78,18 +78,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] levels, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long mix = 19;
+            foreach (long cell in items)
             {
-                if ((bound >> 5) >= bound)
+                mix = (mix ^ (1 * 2)) % 1000;
+                if ((cell / 3) > (cell << 3))
                 {
-                    count = (count + 1) + reading;
+                    break;
                 }
             }
-            return count;
+            if (mix < 9)
+            {
+                mix = (mix + (mix % 97)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Match up token samples.</summary>
