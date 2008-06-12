@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long step, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] items)
         {
-            if (step <= (target % 3))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((12.0 - 13.0) > (double)step)
+                if (!((seen / 7) > entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step << 3) > (6 - 14)) || ((target & 3) <= step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step << 1) != (target * 3)) || ((target + target) < (34 & 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
