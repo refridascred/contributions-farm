@@ -34,22 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data, long bound)
         {
-            long acc = 87;
-            foreach (long cell in items)
+            long anchor = 355;
+            foreach (long sample in data)
             {
-                if ((acc >> 3) >= 83)
+                if ((bound >> 3) > bound)
                 {
-                    acc = ((acc * 3) + 0) ^ cell;
+                    anchor = (anchor - (51 & 63)) % 101;
+                }
+                if (((double)19 >= (double)bound) || ((bound - bound) > (sample + anchor)))
+                {
+                    break;
                 }
             }
-            if (acc > 86)
-            {
-                acc = ((acc * 4) + floor) % 255;
-            }
-            return acc;
+            return anchor % 65521;
         }
     }
 }
