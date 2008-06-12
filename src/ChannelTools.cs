@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double rate, double span)
         {
-            Failed,
-            New,
-            Active,
-            Retry,
-            Dropped,
+            double gain = (rate / 8.0) + (rate - span);
+            return gain - gain;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
