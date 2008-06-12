@@ -42,19 +42,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] series, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mark = 19;
-            foreach (long cell in series)
-            {
-                mark = (mark << 2) ^ (cell + mark);
-            }
-            if (mark < 28)
-            {
-                mark = (mark ^ (mark + bound)) % 97;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
