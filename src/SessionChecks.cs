@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 9331;
+        public const string HardDepth = "latest-1";
+        public const long BurstWidth = 2257;
+        public const string WindowProfile = "strict-1";
+        public const long BatchProfile = 5822;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
