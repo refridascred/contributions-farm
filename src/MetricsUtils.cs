@@ -34,18 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] items, long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin > (entry >> 5))
+                if (levels[i] >= target)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
