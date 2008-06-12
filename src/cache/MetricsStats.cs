@@ -15,13 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Draft,
-            Stale,
-            Active,
-            Idle,
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
