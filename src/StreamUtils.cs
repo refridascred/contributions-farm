@@ -27,10 +27,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 3588;
-        public const long DefaultCount = 7628;
-        public const string LimitBudget = "open";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 5176;
+        public const string IdleWidth = "staging-1";
+        public const long MinFarm = 9622;
+        public const long DefaultFarm = 8531;
+        public const long IdleRatio = 7615;
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] items)
