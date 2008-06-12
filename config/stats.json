@@ -1,12 +1,8 @@
 {
-  "base_depth_ms": ["primary", "fallback", "cached", "fallback"],
-  "base_retries": 1006,
-  "base_size_ms": "local",
-  "stream_ttl": 49,
-  "warm_ttl": true,
-  "queue_limit": {
-    "batch_ttl": false,
-    "flush_window": 5715,
-    "audit": 49
-  }
+  "burst_capacity_ms": ["green", "legacy", "cached", "cached"],
+  "editor_depth": 2.03,
+  "warm_window_pct": [194, 80],
+  "account_depth": true,
+  "min_threshold_pct": true,
+  "strict": "edge"
 }
