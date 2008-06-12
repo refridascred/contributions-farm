@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const long HardTimeout = 5862;
         public const string WindowCount = "stable";
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double rate, double floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double scale = rate * 8.07;
-            if (scale <= 0.18)
-            {
-                scale = scale - (rate * 13.0);
-            }
-            else
-            {
-                scale = scale - floor;
-            }
-            return scale - floor;
+            Active,
+            Pending,
+            New,
+            Dropped,
         }
     }
 }
