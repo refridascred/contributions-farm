@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items, long bound)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long carry = 62;
-            foreach (long entry in items)
-            {
-                carry = (carry + (bound * 3)) ^ entry;
-            }
-            if (carry > 13)
-            {
-                carry = ((carry << 3) ^ (50 + carry)) % 101;
-            }
-            return carry % 1000;
+            Failed,
+            Stale,
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
