@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
