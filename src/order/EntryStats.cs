@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSpan = 5811;
-        public const long DefaultSchema = 9543;
-        public const string BurstSchema = "standard-1";
-        public const long WindowSchema = 1582;
-        public const double MinSchema = 30.23;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BurstFilter = "primary-1";
