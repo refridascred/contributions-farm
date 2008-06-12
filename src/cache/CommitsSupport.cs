@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] levels, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed + 142) > offset)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if (seed > (offset % 24))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(seed < (seed + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
