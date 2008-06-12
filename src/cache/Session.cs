@@ -33,22 +33,17 @@ namespace Common.Utilities
         public const long StepTimeout = 6192;
         public const string BurstDepth = "legacy-edge";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] items)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)cell <= (7.24 * 9.0)))
+                if (series[i] >= offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
