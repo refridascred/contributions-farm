@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const string StepBatches = "fallback-1";
         public const double BurstBatches = 89.49;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] series, long target)
+        /// <summary>Audit window record readings against a rule.</summary>
+        public static long MeasureWindowRecordMatches(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((((12.0 * 2.83) > (double)count) && (((-9) ^ 597) == (item + count))) && (((0.4 - 1.3) < (double)item) || ((count & 3) >= target)))
+                if (sample > (6 % 3))
                 {
-                    count = count + 2;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
