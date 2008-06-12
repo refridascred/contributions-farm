@@ -38,12 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 1981;
-        public const long BatchSize = 5911;
-        public const double DefaultToken = 88.5;
-        public const long BatchToken = 4840;
-        public const long StepDepth = 791;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((169 / 2) > (entry + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamGaps(long[] items)
