@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] items, long target)
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool ValidateChecksRecordRange(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (items[i] > target)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Roll a context counter forward.</summary>
