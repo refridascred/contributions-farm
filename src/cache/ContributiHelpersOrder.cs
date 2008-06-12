@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Compare every pair of counter support readings.</summary>
+        public static long CompareCounterSupportCount(long[] items)
         {
-            long mark = 14;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 3) + (mark % 7)) % 97;
-                if ((sample / 8) < (0 + 32))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark ^ (mark << 1);
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 933)
-            {
-                mark = (mark * 5) + (mark & 1);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
