@@ -41,32 +41,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples, long step)
         {
-            long span = limit - seed;
-            if ((double)limit == (2.5 / 3.0))
+            long total = 35;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) < span)
+                if ((entry + entry) >= (0 >> 3))
                 {
-                    return 3;
+                    total = (total + (1 * 5)) % 101;
                 }
                 else
                 {
-                    if ((7.68 - 9.8) >= (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = ((total * 5) + (step + step)) % 1000;
                 }
             }
+            if (total < 62)
+            {
+                total = ((total << 3) ^ (total & 255)) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
