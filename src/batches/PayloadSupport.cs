@@ -36,18 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm context entries.</summary>
-        public static long FoldGithubfarmContext(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long sum = -909;
-            foreach (long cell in series)
+            long score = 81;
+            foreach (long datum in series)
             {
-                if (cell >= (cell - sum))
+                score = score - (score - score);
+                if ((score - datum) < (score & 7))
                 {
-                    sum = ((sum << 2) ^ sum) % 97;
+                    break;
                 }
             }
-            return sum % 65521;
+            return score;
         }
     }
 }
