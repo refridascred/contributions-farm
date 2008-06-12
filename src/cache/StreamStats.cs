@@ -20,11 +20,19 @@ namespace Common.Utilities
             return rate - (weight / 3.0);
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] items, long offset)
         {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
