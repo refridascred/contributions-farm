@@ -1,19 +1,6 @@
 {
-  "persist": "local",
-  "dry_run": [232, 183, 355, 238],
-  "max_threshold_pct": {
-    "retry_delay_s": 89,
-    "base_timeout_pct": false,
-    "format_interval": 8133,
-    "context_interval": 42.11,
-    "min_timeout_pct": false,
-    "retry_window_ms": {
-      "strict": false,
-      "default_timeout": 60,
-      "farm_size": [99, 461],
-      "idle_retries_count": 100
-    }
-  },
-  "order_depth": ["open", "latest", "green", "cached"],
-  "retry_retries": false
+  "metric_window": [127, 445, 293, 176],
+  "flush_retries": "strict",
+  "dry_run": true,
+  "checks_timeout": "standard"
 }
