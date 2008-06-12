@@ -44,11 +44,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every batch stream entry stays within the limit.</summary>
+        public static bool ValidateBatchStreamLimits(long[] samples, long origin)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
