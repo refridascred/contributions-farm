@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample >= (4.0 - 10.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
