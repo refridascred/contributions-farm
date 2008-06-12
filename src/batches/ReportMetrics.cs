@@ -38,22 +38,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] levels)
+        /// <summary>Grade a account window value against two limits.</summary>
+        public static long BucketAccountWindow(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((limit >> 1) == (542 << 3))
             {
-                if (255 >= reading)
+                return 0;
+            }
+            else
+            {
+                if (seed <= (seed + limit))
                 {
-                    seen = seen + 1;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
