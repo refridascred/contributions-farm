@@ -38,18 +38,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] data, long step)
         {
-            long result = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < (229 + 26))
+                if (data[i] >= step)
                 {
-                    result = result - result;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
