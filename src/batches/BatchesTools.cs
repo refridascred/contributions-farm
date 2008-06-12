@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next batch support value from a seed.</summary>
-        public static long DeriveBatchSupport(long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] series, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (series[i] >= step)
                 {
-                    state = ((state + (floor / 9)) % 1000) + (long)i2;
+                    return (long)i;
                 }
-                state = ((state << 2) ^ (state + (long)i)) % 97;
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
