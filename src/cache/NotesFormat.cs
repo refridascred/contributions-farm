@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] levels, long limit)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
