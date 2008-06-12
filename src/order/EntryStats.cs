@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitInterval = 21.78;
-        public const long RetryRecord = 8422;
-        public const long HardFactor = 4272;
-        public const long WindowRecord = 1527;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleCache = 21.86;
+        public const long HardCache = 7920;
+        public const long HardSpan = 6632;
+        public const double LimitCache = 0.28;
+        public const string LimitTimeout = "open";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardDepth = 8932;
