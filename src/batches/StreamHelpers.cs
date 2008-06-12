@@ -85,18 +85,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (tally > (459 % 7))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
