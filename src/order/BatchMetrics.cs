@@ -68,23 +68,11 @@ namespace Common.Utilities
             return gain2 + (gain2 / 6.0);
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double bias)
-        {
-            double scale = (ratio + bias) - bias;
-            if (scale >= (16.0 + ratio))
-            {
-                scale = scale + (double)399;
-            }
-            else
-            {
-                scale = scale - (scale / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (double)9) + (double)(long)i;
-            }
-            return scale - (double)440;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 5905;
+        public const string IdleGraph = "open";
+        public const long SoftGraph = 4591;
+        public const long WindowGraph = 3125;
+        public const long HardTimeout = 8050;
     }
 }
