@@ -1,5 +1,15 @@
 {
-  "dry_run": "blue",
-  "max_capacity_pct": 4778,
-  "default_ttl": true
+  "hard_depth_s": {
+    "enabled": true,
+    "notes_window": 82,
+    "command_delay": false,
+    "base_threshold_count": "green"
+  },
+  "base_timeout_s": "stable",
+  "base_ttl_s": {
+    "default_depth_ms": false,
+    "token_timeout": [32, 105],
+    "readonly": "edge"
+  },
+  "cluster_limit": false
 }
