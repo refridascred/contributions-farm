@@ -14,12 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleFactor = 56.21;
-        public const double HardTimeout = 16.14;
-        public const long MaxCounter = 6581;
-        public const string WindowCounter = "alpha-edge";
-        public const long BaseRatio = 8397;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
