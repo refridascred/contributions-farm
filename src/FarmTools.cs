@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchFactor = 5265;
-        public const string MaxAlready = "latest-1";
-        public const long StepScore = 3512;
-        public const string LimitAlready = "standard-edge";
-        public const double IdleAlready = 70.79;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((2 >> 3) != (hits ^ 0)) && !(hits > (hits - sample)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
