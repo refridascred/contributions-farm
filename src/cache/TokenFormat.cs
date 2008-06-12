@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long seed, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long step = seed + offset;
+            if (((double)seed < (8.9 + 9.0)) || ((555 + seed) > step))
             {
-                if (!((4.9 * 15.0) != (double)(long)i))
-                {
-                    acc = acc ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc - (210 / 6)) % 101) ^ (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (((offset << 3) > step) && (6.0 < (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((10.0 + 5.1) != (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((9.36 / 8.0) >= (double)offset) && ((step - seed) == (962 + 905)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
