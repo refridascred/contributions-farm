@@ -33,13 +33,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            New,
-            Pending,
-            Ready,
             Locked,
+            Closed,
             Draft,
         }
 
