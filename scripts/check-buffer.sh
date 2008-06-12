@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in legacy standard latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -15,12 +25,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=183
-log "limit is ${BUFFER_LIMIT}"
