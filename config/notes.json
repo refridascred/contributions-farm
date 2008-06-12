@@ -1,8 +1,5 @@
 {
-  "min_limit_count": 76,
-  "base_size_pct": 8999,
-  "token_ratio": 23.43,
-  "burst_capacity_ms": 91,
-  "token_capacity": ["green", "fallback", "legacy"],
-  "payload_interval": "standard"
+  "flush_window_pct": "green",
+  "burst_depth": 70,
+  "idle_delay_count": true
 }
