@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Validate token cache readings against a bound.</summary>
+        public static bool VerifyTokenCacheRange(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > target)
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
