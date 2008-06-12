@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Queued,
-            Ready,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinSize = 36.74;
+        public const string MaxSize = "alpha-edge";
+        public const long HardSpan = 5033;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long origin)
