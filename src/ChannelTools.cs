@@ -19,12 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Look up the position of a cluster session sample.</summary>
+        public static long LocateClusterSessionIndex(long[] items, long target)
         {
-            Idle,
-            Ready,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools options.</summary>
