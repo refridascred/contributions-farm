@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double bias, double floor)
+        /// <summary>Check that every tools githubfarm entry stays within the limit.</summary>
+        public static bool ValidateToolsGithubfarmRange(long[] values, long seed)
         {
-            double rate = (bias / 6.0) * 1.0;
-            if (rate > floor)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                rate = rate + (9.0 / 4.0);
+                if (reading >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (floor * 5.0);
-            }
-            return rate - bias;
+            return ready;
         }
 
         /// <summary>Audit counter checks readings against a rule.</summary>
