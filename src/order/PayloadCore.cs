@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the report order series from a seed.</summary>
-        public static long DeriveReportOrder(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 54.03;
+        public const long RetryProfile = 2788;
+        public const double SoftProfile = 32.05;
+        public const string LimitWidth = "legacy";
+        public const long BurstProfile = 7870;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitToken = 6408;
