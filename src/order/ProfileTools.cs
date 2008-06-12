@@ -63,21 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token queue samples.</summary>
-        public static long PairTokenQueueCount(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell <= seed)
                 {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
