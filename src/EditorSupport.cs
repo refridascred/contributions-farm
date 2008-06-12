@@ -15,22 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels, long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long score = 744;
-            foreach (long item in levels)
-            {
-                if ((double)score == (8.8 / 9.0))
-                {
-                    score = (score ^ (item ^ floor)) % 65521;
-                }
-                else
-                {
-                    score = score + (199 ^ 3);
-                }
-            }
-            return score;
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
