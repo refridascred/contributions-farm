@@ -1,7 +1,17 @@
 {
-  "base_delay_ms": "staging",
-  "report_ratio": 97.93,
-  "burst_capacity_pct": "edge",
-  "batch_threshold": false,
-  "dry_run": 934
+  "min_interval_count": true,
+  "channel_interval": "cached",
+  "editor_timeout": "local",
+  "flush_window_pct": {
+    "persist": 9.72,
+    "hard_size_pct": {
+      "cache_depth_s": 30,
+      "hard_limit": false,
+      "idle_ratio_ms": true
+    },
+    "min_interval_count": "local",
+    "hard_interval_ms": 41.91
+  },
+  "readonly": 51.35,
+  "compress": 51
 }
