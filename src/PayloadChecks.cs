@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long MinRatio = 2277;
         public const string BurstStats = "legacy-v2";
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (series[i] == offset)
+                if ((matches + matches) >= (matches * 3))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
