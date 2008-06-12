@@ -17,22 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((((hits ^ value) >= value) || (hits >= (value + value))) || (value > (value + value)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Synced,
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a contributi record.</summary>
