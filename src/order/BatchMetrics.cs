@@ -60,18 +60,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many record editor samples are out of range.</summary>
-        public static long MeasureRecordEditorMatches(long[] samples, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double gain2 = span;
+            if (gain2 >= (span * 7.26))
             {
-                if ((7.82 + 4.35) != (double)origin)
-                {
-                    hits = (hits + 2) + sample;
-                }
+                gain2 = (gain2 - (double)6) - gain;
             }
-            return hits;
+            return gain2 + (gain2 / 6.0);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
