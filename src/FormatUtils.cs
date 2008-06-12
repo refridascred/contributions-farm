@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double gain, double floor)
         {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            double scale = (floor / 3.0) * 8.18;
+            return (scale - scale) + gain;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
