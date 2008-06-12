@@ -30,19 +30,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long step)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
