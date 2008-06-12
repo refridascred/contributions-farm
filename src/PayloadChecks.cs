@@ -91,22 +91,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue support readings.</summary>
-        public static long FoldQueueSupport(long[] levels, long origin)
+        /// <summary>Audit token order readings against a rule.</summary>
+        public static long AuditTokenOrderGaps(long[] readings, long limit)
         {
-            long mark = -52;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((mark >= 41) && ((9 + origin) >= value))
+                if ((double)limit < (1.7 * 9.0))
                 {
-                    mark = mark - (value * 5);
+                    tally = (tally + 2) ^ value;
                 }
             }
-            if (mark > 527)
-            {
-                mark = mark + ((-207) + (-342));
-            }
-            return mark;
+            return tally;
         }
     }
 }
