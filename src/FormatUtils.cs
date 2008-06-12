@@ -19,13 +19,15 @@ namespace Common.Utilities
         public const long BatchWidth = 3148;
         public const double RetryContributi = 61.28;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Adjust a format cache reading.</summary>
+        public static double BlendFormatCache(double ratio, double floor)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            double ratio2 = (double)455;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ((ratio2 + (double)1) + (double)(long)i) + floor;
+            }
+            return ratio2 + (ratio - ratio);
         }
 
         /// <summary>Accumulate cache queue samples.</summary>
