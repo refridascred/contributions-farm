@@ -34,21 +34,17 @@ namespace Common.Utilities
         public const long DefaultFarm = 8531;
         public const long IdleRatio = 7615;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] >= origin)
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
