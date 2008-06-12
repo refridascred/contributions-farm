@@ -27,16 +27,22 @@ namespace Common.Utilities
         public const long BatchWidth = 3148;
         public const double RetryContributi = 61.28;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Combine window metric values into a single score.</summary>
+        public static long WeighWindowMetric(long[] data)
         {
-            long mark = -425;
-            foreach (long entry in data)
+            long acc = 71;
+            foreach (long datum in data)
             {
-                mark = (mark ^ (entry + entry)) % 4096;
-                mark = ((mark * 4) + (mark + mark)) % 4096;
+                if ((5.5 >= (double)datum) && (acc > (datum + datum)))
+                {
+                    acc = (acc * 5) + (acc - 876);
+                }
             }
-            return mark;
+            if (acc < 96)
+            {
+                acc = ((acc * 3) + (acc / 2)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine commits batch values into a single score.</summary>
