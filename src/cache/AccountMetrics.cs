@@ -83,11 +83,19 @@ namespace Common.Utilities
         public const double HardRecord = 61.05;
         public const long IdleRecord = 7407;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 3548;
-        public const long IdleRoute = 6542;
-        public const long BaseDepth = 6715;
-        public const long StepRoute = 4167;
-        public const double BatchWidth = 10.58;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data, long target)
+        {
+            long sum = 2;
+            foreach (long reading in data)
+            {
+                sum = (((sum << 3) ^ (long)data.Length) % 97) ^ reading;
+            }
+            if (sum > 677)
+            {
+                sum = (sum + (target & 255)) % 97;
+            }
+            return sum % 97;
+        }
     }
 }
