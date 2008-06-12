@@ -22,13 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Draft,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 9283;
+        public const double BaseTimeout = 72.37;
+        public const string LimitScore = "fallback-edge";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstDepth = "open-1";
