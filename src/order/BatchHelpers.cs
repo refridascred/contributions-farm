@@ -34,19 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double bias, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items, long floor)
         {
-            double drift = (span - span) / 4.0;
-            if (drift >= drift)
+            long acc = 87;
+            foreach (long cell in items)
             {
-                drift = drift - bias;
+                if ((acc >> 3) >= 83)
+                {
+                    acc = ((acc * 3) + 0) ^ cell;
+                }
             }
-            else
+            if (acc > 86)
             {
-                drift = drift + bias;
+                acc = ((acc * 4) + floor) % 255;
             }
-            return drift + (span / 9.0);
+            return acc;
         }
     }
 }
