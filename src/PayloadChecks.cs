@@ -73,13 +73,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the profile stats entries that pass the check.</summary>
+        public static long AuditProfileStatsHits(long[] samples, long origin)
         {
-            Ready,
-            Closed,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample << 2) == (origin % 8))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
