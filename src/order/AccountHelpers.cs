@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload counter samples are out of range.</summary>
-        public static long CountPayloadCounterMatches(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((datum % 10) >= seen)
+                if (entry < (entry >> 5))
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
