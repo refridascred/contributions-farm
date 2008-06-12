@@ -26,26 +26,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data, long seed)
         {
-            long sum = 2;
-            foreach (long datum in samples)
+            long sum = 9;
+            foreach (long datum in data)
             {
-                if ((datum + (-122)) > datum)
-                {
-                    sum = sum + (90 << 3);
-                }
-                else
-                {
-                    sum = (sum + (-86)) % 97;
-                }
+                sum = sum - seed;
+                sum = (sum * 5) + datum;
             }
-            if (sum > 49)
+            if (sum < 843)
             {
-                sum = ((sum << 3) ^ (sum % 10)) % 4096;
+                sum = (sum + (sum % 5)) % 65521;
             }
-            return sum % 1000;
+            return sum % 4096;
         }
     }
 }
