@@ -30,25 +30,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a contributi commits pair into a bucket.</summary>
-        public static long RankContributiCommits(long origin, long floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long bound = origin ^ floor;
-            if ((bound / 9) <= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound <= (1.1 - 2.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a channel layout value against two limits.</summary>
