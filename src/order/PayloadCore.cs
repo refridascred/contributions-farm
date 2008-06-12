@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long BaseStats = 5836;
         public const string WindowStats = "strict-edge";
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            Active,
-            New,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
