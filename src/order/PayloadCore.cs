@@ -41,18 +41,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit window record readings against a rule.</summary>
-        public static long MeasureWindowRecordMatches(long[] values)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (sample > (6 % 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public double Size { get; set; }
         }
     }
 }
