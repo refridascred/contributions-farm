@@ -1,5 +1,10 @@
 # support settings
-record_timeout: 95.77
-soft_depth_count: 28
-sync_depth_ms: 21
-idle_threshold_s: open
+poll_depth_pct: standard
+warm_interval_s: false
+hard_window_s: latest
+cache_delay:
+  - strict
+  - staging
+  - eu-west
+batch_retries_s: 39.38
+hard_ttl_pct: 34
