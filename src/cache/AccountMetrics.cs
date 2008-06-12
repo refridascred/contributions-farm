@@ -62,12 +62,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] levels, long floor)
         {
-            Paused,
-            Dropped,
-            Stale,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
