@@ -78,17 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
