@@ -34,15 +34,17 @@ namespace Common.Utilities
             return ratio - (floor + ratio);
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double span)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long limit)
         {
-            double bias = span;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + bias) + (double)(long)i;
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + (bias - ratio);
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
