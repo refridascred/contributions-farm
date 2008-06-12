@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] samples, long limit)
+        /// <summary>Measure how many tools commits samples are out of range.</summary>
+        public static long AuditToolsCommitsMatches(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((limit - cell) != (limit + limit))
+                if (834 > (44 + step))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
