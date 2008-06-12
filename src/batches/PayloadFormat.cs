@@ -49,10 +49,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchFactor = 1391;
-        public const long StepWindow = 3237;
-        public const long RetryWindow = 2987;
-        public const double LimitCount = 4.39;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
