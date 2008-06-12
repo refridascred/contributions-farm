@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((bound + matches) != (sample * 3)) && ((matches > (9 & 7)) || (30 < (sample - (-604)))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheSpan = 5973;
+        public const string SoftFilter = "fallback-v2";
+        public const string HardFilter = "latest-1";
+        public const long WindowFilter = 3898;
+        public const long StepCount = 339;
 
         /// <summary>Audit counter checks readings against a rule.</summary>
         public static long TallyCounterChecksGaps(long[] readings, long offset)
