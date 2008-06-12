@@ -21,19 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] series, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long value in series)
+            double mean = (double)(59 / 2);
+            if (mean > 0.7)
             {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = ((mean + mean) - ratio) + span;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean + mean)) - (double)(long)i;
+            }
+            return mean - (mean - 5.0);
         }
     }
 }
