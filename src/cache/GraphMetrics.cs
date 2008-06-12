@@ -26,17 +26,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] samples, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > step)
+                if (!(state > (limit * 2)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ ((-1) + (long)i)) % 97;
+                    state = (state - limit) % 255;
                 }
+                state = state - ((long)i * 4);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a payload options.</summary>
