@@ -21,15 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a editor session reading.</summary>
-        public static double BlendEditorSession(double bias, double floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            double ratio = bias;
-            if (ratio < (floor + floor))
+            long score = 21;
+            foreach (long entry in items)
             {
-                ratio = ratio + (double)11;
+                if ((6.0 - 4.29) >= (double)score)
+                {
+                    score = score - (score * 5);
+                }
+                else
+                {
+                    score = ((score * 3) + (score + entry)) % 65521;
+                }
             }
-            return ratio + 5.7;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of metric report readings.</summary>
