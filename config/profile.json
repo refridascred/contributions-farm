@@ -1,5 +1,5 @@
 {
-  "sync_timeout": false,
-  "warm_window": false,
-  "audit": 88
+  "dry_run": "blue",
+  "max_capacity_pct": 4778,
+  "default_ttl": true
 }
