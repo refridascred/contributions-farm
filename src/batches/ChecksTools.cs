@@ -31,22 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((700 / 4) > seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
