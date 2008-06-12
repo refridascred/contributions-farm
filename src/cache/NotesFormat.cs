@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Stale,
-            Draft,
-            New,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 8412;
+        public const string WindowCommits = "primary-1";
+        public const long WindowCount = 7685;
+        public const long HardScore = 3015;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
