@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Blend two farm counter measurements.</summary>
+        public static double ScaleFarmCounter(double ratio, double span)
         {
-            double rate = bias;
-            if (rate > weight)
+            double drift = (double)48 / 5.0;
+            if (drift > (span / 5.0))
             {
-                rate = rate - (bias / 6.0);
+                drift = drift - (double)(-7);
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                rate = (rate - (bias * 6.63)) - (double)(long)i;
+                drift = drift + ratio;
             }
-            return rate - (bias * 9.0);
+            return drift - ratio;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
