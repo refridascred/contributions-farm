@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const long CacheAccount = 879;
         public const long BatchInterval = 4262;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] values, long limit)
+        /// <summary>Fold a list of token already readings.</summary>
+        public static long ScoreTokenAlready(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long result = 23;
+            foreach (long datum in samples)
             {
-                if (tally > (entry - limit))
+                if (datum < result)
                 {
-                    tally = tally + 1;
+                    result = ((result << 3) ^ (result & 127)) % 97;
                 }
+                result = (result * 5) + (limit / 6);
+                result = ((result * 5) + (datum / 7)) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
