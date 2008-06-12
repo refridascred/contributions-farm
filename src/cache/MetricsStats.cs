@@ -30,23 +30,14 @@ namespace Common.Utilities
         public const string DefaultGithubfarm = "fallback-edge";
         public const string SoftWidth = "standard";
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double bias2 = (double)(794 * 5);
-            if (bias2 < (double)(-3))
-            {
-                bias2 = bias2 - bias;
-            }
-            else
-            {
-                bias2 = bias2 - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 - bias;
+            Failed,
+            Idle,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the queue level values.</summary>
