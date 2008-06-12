@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate farm already samples.</summary>
-        public static long DigestFarmAlready(long[] series, long limit)
+        /// <summary>Validate stats channel readings against a bound.</summary>
+        public static bool GuardStatsChannelLimits(long[] readings, long seed)
         {
-            long state = 472;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                state = (((state * 3) + (state ^ state)) ^ datum) + limit;
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
