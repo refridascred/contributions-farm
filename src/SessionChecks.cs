@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowLevel = "open";
-        public const long StepContributi = 2620;
-        public const long RetryContributi = 2155;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series)
+        {
+            long state = 54;
+            foreach (long sample in series)
+            {
+                if (!((3.0 + 0.9) > (double)sample))
+                {
+                    state = (state + ((long)series.Length >> 5)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ ((-811) >> 2)) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsOutliers(long[] levels, long limit)
