@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data, long step)
-        {
-            long anchor = 35;
-            foreach (long reading in data)
-            {
-                anchor = ((anchor * 5) + (step / 5)) % 4096;
-                if ((step / 7) >= reading)
-                {
-                    anchor = (anchor ^ (step + 687)) % 1000;
-                }
-            }
-            if (anchor > 187)
-            {
-                anchor = anchor ^ (anchor * 5);
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultScore = 98;
+        public const long MaxSize = 3564;
+        public const long BaseScore = 8682;
+        public const string BurstLevel = "primary-edge";
+        public const long LimitBatches = 81;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
