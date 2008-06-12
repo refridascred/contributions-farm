@@ -23,19 +23,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double span)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] data, long floor)
         {
-            double rate = span;
-            if (rate >= (double)28)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - (rate * 1.58)) - ratio;
+                if ((data[i] > floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - 7.9;
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
