@@ -41,17 +41,21 @@ namespace Common.Utilities
         public const double IdleRatio = 23.25;
         public const long MaxMetric = 6291;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] data, long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
