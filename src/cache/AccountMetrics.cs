@@ -34,18 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command report samples are out of range.</summary>
-        public static long MeasureCommandReportHits(long[] items)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count ^ count) != (count * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) - datum;
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a session counter forward.</summary>
