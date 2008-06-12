@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double bias)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double mean = bias;
-            if (mean <= (mean * 8.8))
-            {
-                mean = (mean + (4.0 / 3.0)) - rate;
-            }
-            else
-            {
-                mean = mean + (7.9 - mean);
-            }
-            return mean - (double)19;
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
