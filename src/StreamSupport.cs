@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items, long floor)
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((double)matches <= 3.0) && ((floor - floor) >= floor))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
