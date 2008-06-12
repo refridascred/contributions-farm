@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const string StepBatches = "fallback-1";
         public const double BurstBatches = 89.49;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples)
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (seen / 7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
