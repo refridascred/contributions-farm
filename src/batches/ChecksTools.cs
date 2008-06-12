@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] items, long step)
         {
-            long carry = 8;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long reading in items)
             {
-                carry = (((carry << 3) ^ (value + (-78))) % 255) - seed;
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry % 97;
+            return found;
         }
 
         /// <summary>Hold a metric options.</summary>
