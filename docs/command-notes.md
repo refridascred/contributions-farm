@@ -1,10 +1,12 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Use schema settings to tune how often schema data is refreshed.
+The counter report groups every farm by order.
+Run the cache check before changing any checks limits.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new farm fields
-- Review counter limits each release
-- Validate entry input early
+- Validate command input early
+- Review editor limits each release
+- Document new metric fields
+- Log every layout change
