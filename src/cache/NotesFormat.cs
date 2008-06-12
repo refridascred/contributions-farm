@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Ready,
-            Dropped,
-            Closed,
-            Idle,
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
