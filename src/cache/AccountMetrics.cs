@@ -14,15 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] data, long step)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long value in data)
             {
-                if ((241 - entry) < (32 * 5))
+                if ((3.1 <= (double)step) || ((tally - value) == ((-818) * 5)))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
