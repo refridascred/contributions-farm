@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Failed,
-            Closed,
-            Dropped,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleCount = 6220;
+        public const string SoftBatch = "local";
+        public const long StepBatch = 621;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
