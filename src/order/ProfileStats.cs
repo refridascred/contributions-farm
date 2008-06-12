@@ -63,12 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
+            Closed,
             Idle,
-            Failed,
-            Dropped,
+            Ready,
         }
     }
 }
