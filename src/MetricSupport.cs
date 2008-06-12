@@ -19,17 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] samples, long floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long floor, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = floor - step;
+            if ((step & 63) == (floor + step))
             {
-                if (samples[i] <= floor)
+                return 1;
+            }
+            else
+            {
+                if (step > (337 & 127))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)97 <= (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
