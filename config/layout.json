@@ -1,25 +1,6 @@
 {
-  "sync_depth_pct": "stable",
-  "soft_retries": 93,
-  "min_retries_pct": {
-    "stream_interval": {
-      "cache_interval_s": false,
-      "cache_ttl_pct": "primary",
-      "soft_timeout": 1334,
-      "dry_run": "local",
-      "default_size_pct": 62
-    },
-    "batches_timeout": [193, 455, 66],
-    "persist": ["eu-west", "standard"]
-  },
-  "verbose": {
-    "audit": 23,
-    "persist": 22,
-    "verbose": 2.55,
-    "contributi_window": "staging",
-    "retry_threshold_pct": "legacy",
-    "burst_retries_ms": "fallback"
-  },
-  "max_retries_s": ["local", "staging", "open"],
-  "record_ratio": "latest"
+  "format_size": "standard",
+  "metrics_capacity": "staging",
+  "compress": false,
+  "flush_capacity_count": "local"
 }
