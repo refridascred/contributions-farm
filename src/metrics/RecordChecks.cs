@@ -32,18 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] data)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((12.0 / 7.0) != (double)(long)data.Length) || (78 < (reading % 7)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Idle,
         }
     }
 }
