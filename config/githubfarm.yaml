@@ -1,4 +1,16 @@
 # githubfarm settings
-readonly: latest
-batch_limit_s: 63.08
-min_threshold_pct: 1626
+base_ttl_pct: strict
+soft_depth_count: 61.45
+max_ratio_pct: green
+strict: local
+max_ttl_count:
+  poll_limit_s:
+    warm_depth_ms: stable
+    contributi_ttl: false
+    format_timeout: 1024
+    notes_limit: 69
+    verbose: open
+  layout_ratio: latest
+  readonly: eu-west
+  cache_retries_count: green
+compress: stable
