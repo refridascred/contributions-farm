@@ -80,18 +80,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] readings, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long total = 6;
+            foreach (long entry in data)
             {
-                if ((double)tally >= (2.0 - 4.1))
-                {
-                    tally = ((tally + 2) + cell) - bound;
-                }
+                total = (total - (312 % 2)) % 4096;
+                total = (total ^ (total & 31)) % 4096;
+                total = (total + entry) % 97;
             }
-            return tally;
+            if (total < 972)
+            {
+                total = ((total * 2) + (total + total)) % 65521;
+            }
+            return total % 97;
         }
     }
 }
