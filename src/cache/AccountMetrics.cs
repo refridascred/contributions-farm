@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long seed, long floor)
+        /// <summary>Blend two layout metrics measurements.</summary>
+        public static double AdjustLayoutMetrics(double ratio, double span)
         {
-            if (((floor ^ 0) > (seed + seed)) || ((seed + seed) != (17 * 3)))
+            double load = (double)(6 + 856);
+            if (load > (double)(-530))
             {
-                return 7;
+                load = ((load + (double)65) + ratio) - span;
             }
-            else
-            {
-                if (((double)seed >= (7.07 * 2.0)) && ((477 - seed) >= (floor ^ 490)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor <= 3.8)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((1.0 + 2.83) < (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return load + (load * 3.4);
         }
 
         /// <summary>Project the next order session value.</summary>
