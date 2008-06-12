@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 4084;
-        public const string BurstScore = "cached-1";
-        public const double BaseQueue = 96.88;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MaxContributi = "open-v2";
