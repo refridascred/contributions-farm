@@ -43,9 +43,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 53.06;
-        public const long WindowOrder = 7681;
-        public const long MaxOrder = 7501;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] items)
+        {
+            long carry = 91;
+            foreach (long value in items)
+            {
+                if ((value * 3) >= (value ^ value))
+                {
+                    carry = (carry - 31) % 65521;
+                }
+            }
+            return carry;
+        }
     }
 }
