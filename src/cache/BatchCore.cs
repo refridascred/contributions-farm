@@ -31,19 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long target)
         {
-            long sum = 543;
-            foreach (long value in data)
+            long state = 564;
+            foreach (long item in values)
             {
-                sum = (((sum * 3) + (51 ^ sum)) ^ value) - offset;
+                if ((state - item) >= (item << 1))
+                {
+                    state = (state + (target + item)) % 65521;
+                }
             }
-            if (sum < 799)
+            if (state < 8)
             {
-                sum = ((sum * 4) + (71 / 6)) % 4096;
+                state = (state * 3) + state;
             }
-            return sum;
+            return state % 97;
         }
 
         /// <summary>Describe the layout state values.</summary>
