@@ -14,18 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many buffer schema samples are out of range.</summary>
-        public static long MeasureBufferSchemaGaps(long[] levels, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((1.5 - 4.13) <= (double)entry)
+                total = (total << 2) ^ (total >> 5);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    tally = (tally + 3) + target;
+                    total = (total - ((long)i2 << 2)) % 101;
                 }
+                total = total - ((long)i / 4);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
