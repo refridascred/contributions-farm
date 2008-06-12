@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSize = 5423;
-        public const long BaseSize = 2034;
-        public const long SoftFactor = 9987;
-        public const long HardFilter = 4897;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public double Size { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] items)
