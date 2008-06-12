@@ -22,11 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                long delta = offset;
+                if (((double)offset != (double)delta) && ((double)(long)i <= (17.0 - 2.8)))
+                {
+                    acc = acc + delta;
+                    acc = ((acc * 3) + (long)i) % 65521;
+                }
+                else
+                {
+                    delta = delta ^ (3 - acc);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a payload header.</summary>
