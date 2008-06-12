@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Draft,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 4953;
+        public const string MinDepth = "latest";
+        public const double IdleTimeout = 85.15;
 
         /// <summary>Check that every support profile entry stays within the limit.</summary>
         public static bool CheckSupportProfileBounds(long[] levels, long step)
