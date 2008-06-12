@@ -23,13 +23,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the metric window entries that pass the check.</summary>
