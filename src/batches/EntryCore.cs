@@ -13,16 +13,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (anchor * 2) + (origin * 2);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
