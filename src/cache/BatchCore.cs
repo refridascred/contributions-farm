@@ -49,19 +49,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate githubfarm context samples.</summary>
-        public static long WeighGithubfarmContext(long[] data)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mix = 701;
-            foreach (long item in data)
-            {
-                mix = (mix - (item << 2)) % 255;
-            }
-            if (mix > 810)
-            {
-                mix = ((mix << 3) ^ (mix / 7)) % 65521;
-            }
-            return mix % 97;
+            Pending,
+            New,
+            Retry,
+            Synced,
+            Ready,
         }
     }
 }
