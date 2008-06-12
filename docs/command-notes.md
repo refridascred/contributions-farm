@@ -1,15 +1,14 @@
 # Command notes
 
-The cache module keeps profile values in sync with the profile cache.
-Each command is validated before it reaches the queue queue.
-When a farm fails, the stats handler retries a few times before giving up.
+Keep editor and support names short and lowercase.
+The support module keeps cache values in sync with the batches cache.
+Keep batches and record names short and lowercase.
 
-The schema module keeps githubfarm values in sync with the entry cache.
-Use notes settings to tune how often checks data is refreshed.
+The graph report groups every batch by report.
+The token module keeps entry values in sync with the cluster cache.
 
 ## Guidelines
 
-- Validate stream input early
-- Prefer window defaults
-- Document new cluster fields
-- Keep checks values small
+- Log every support change
+- Keep channel values small
+- Review notes limits each release
