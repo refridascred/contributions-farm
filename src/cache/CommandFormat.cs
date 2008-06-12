@@ -33,15 +33,32 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long step, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long gap = step - floor;
+            if (((double)step < (13.0 * 5.76)) && ((floor & 127) < (gap + gap)))
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (step > (step ^ 211))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((gap & 31) < floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format record.</summary>
