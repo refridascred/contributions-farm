@@ -23,17 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long step)
+        /// <summary>Match up notes schema samples.</summary>
+        public static long PairNotesSchemaCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a channel command reading.</summary>
