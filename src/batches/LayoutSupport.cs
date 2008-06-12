@@ -42,19 +42,19 @@ namespace Common.Utilities
             return bias + 5.85;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] data, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double mean = 1.0;
+            if (mean <= (mean + 8.0))
             {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + (mean * 2.32)) - weight;
             }
-            return valid;
+            else
+            {
+                mean = mean - (offset * 16.0);
+            }
+            return mean - offset;
         }
 
         /// <summary>Define context limits and defaults.</summary>
