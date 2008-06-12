@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a githubfarm metrics value against two limits.</summary>
-        public static long ClassifyGithubfarmMetrics(long floor, long seed)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long span = floor ^ seed;
-            if ((double)span < (8.17 * 2.6))
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + 8) < floor)
+                if (!((bound % 60) > (5 >> 4)))
                 {
-                    return 3;
+                    score = (score ^ ((long)i >> 4)) % 4096;
                 }
-                else
-                {
-                    if (((floor / 8) != (floor & 15)) || ((span & 31) < floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((0.07 / 2.0) > (double)span) || ((51 * 5) > (seed ^ seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                score = (score ^ ((long)i << 1)) % 4096;
+                score = ((score * 2) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Match up notes schema samples.</summary>
