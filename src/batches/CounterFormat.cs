@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            Stale,
-            Pending,
-            Queued,
-            New,
-            Paused,
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state ^ floor) % 1000;
+                if ((3 + state) <= (floor + state))
+                {
+                    state = ((state << 2) ^ (floor + (long)i)) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
