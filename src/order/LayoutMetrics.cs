@@ -50,9 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitRatio = "open";
-        public const string WindowTimeout = "stable-v2";
-        public const long LimitStats = 42;
+        /// <summary>Locate a channel payload reading by value.</summary>
+        public static long LookupChannelPayloadIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
