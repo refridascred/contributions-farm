@@ -17,28 +17,36 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long floor, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long step)
         {
-            if ((floor * 4) >= (floor << 1))
+            long bound = target ^ step;
+            if (((1.57 - 7.8) > (double)step) || (bound >= 434))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (6.64 <= (double)step)
+                if ((step ^ 5) == (step << 3))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((floor + 32) < (floor << 2))
+                    if ((double)step > (2.02 - 5.0))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        return 7;
+                        if ((bound >> 3) == (target - 44))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
