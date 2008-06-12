@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 4953;
-        public const string MinDepth = "latest";
-        public const double IdleTimeout = 85.15;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + reading) >= (reading - tally))
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every support profile entry stays within the limit.</summary>
         public static bool CheckSupportProfileBounds(long[] levels, long step)
