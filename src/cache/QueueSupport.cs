@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine support account values into a single score.</summary>
-        public static long ScoreSupportAccount(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long step)
         {
-            long carry = 1;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((double)value > (4.03 * 3.6))
+                if (sample != step)
                 {
-                    carry = ((carry * 5) + (63 + carry)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ (carry + 5)) % 4096;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
