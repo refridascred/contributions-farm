@@ -21,13 +21,31 @@ namespace Common.Utilities
             return ratio + 5.7;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long step)
         {
-            Active,
-            Closed,
-            Done,
-            Draft,
+            if ((step + step) < (step + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step & 127) > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step >= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first graph already entry that matches the target.</summary>
