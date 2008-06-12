@@ -21,13 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] levels, long origin)
         {
-            Failed,
-            New,
-            Closed,
-            Synced,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a command reading.</summary>
