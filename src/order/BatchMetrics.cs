@@ -23,24 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a order window pair into a bucket.</summary>
-        public static long RankOrderWindow(long floor, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long seed)
         {
-            if ((double)floor > (1.9 - 3.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor >> 5) >= target) && ((double)floor >= (5.9 * 0.85)))
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
