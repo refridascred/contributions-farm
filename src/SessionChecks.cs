@@ -34,18 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph route entries that pass the check.</summary>
-        public static long MeasureGraphRouteMatches(long[] levels, long origin)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample & 15) > (origin * 2)) && ((seen >= (seen * 5)) || ((97 + 917) != (origin ^ origin))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
