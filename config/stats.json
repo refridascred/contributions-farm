@@ -1,10 +1,15 @@
 {
-  "sync_ttl_pct": "cached",
-  "burst_window_count": "local",
-  "batch_threshold_s": {
-    "enabled": "latest",
-    "cache_ttl_ms": ["primary", "eu-west", "eu-west", "stable"],
-    "hard_timeout": 81.58
+  "format_limit": "edge",
+  "poll_limit_s": {
+    "max_interval_pct": 70.01,
+    "max_depth_count": "local",
+    "batch_size_count": {
+      "dry_run": 9772,
+      "min_interval_count": 2004,
+      "sync_ratio": 67.03
+    },
+    "sync_depth_ms": "standard"
   },
-  "dry_run": "eu-west"
+  "route_size": [379, 320],
+  "stats_delay": "legacy"
 }
