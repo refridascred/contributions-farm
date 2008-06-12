@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const long MinSpan = 5180;
         public const long SoftOrder = 9900;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long anchor = 170;
+            foreach (long datum in values)
+            {
+                long lane = ((long)values.Length / 5) - floor;
+                anchor = ((anchor * 4) + (lane + lane)) % 255;
+                if (datum > anchor)
+                {
+                    anchor = anchor - floor;
+                }
+            }
+            if (anchor < 911)
+            {
+                anchor = (anchor * 4) + (32 + floor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a batches already figure with a bias.</summary>
