@@ -20,38 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank cluster graph input into a small class.</summary>
-        public static long RankClusterGraph(long seed, long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            if (((double)seed < (9.21 - 3.28)) || ((double)target <= (4.6 / 2.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target >= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((67 - seed) != (target % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed << 3) != (seed + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
