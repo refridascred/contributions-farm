@@ -33,23 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double floor)
+        /// <summary>Validate buffer batch readings against a bound.</summary>
+        public static bool ValidateBufferBatchLimits(long[] readings, long limit)
         {
-            double load = (double)5 - (double)23;
-            if (load <= (load - floor))
+            bool flag = true;
+            foreach (long value in readings)
             {
-                load = load - (weight + 9.0);
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (floor / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 3.4) + (double)(long)i;
-            }
-            return load - (9.1 + load);
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
