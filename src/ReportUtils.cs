@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] items, long target)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] < step)
+                if (items[i] > target)
                 {
                     return (long)i;
                 }
