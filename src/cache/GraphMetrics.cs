@@ -65,13 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Failed,
             Pending,
-            New,
-            Synced,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
