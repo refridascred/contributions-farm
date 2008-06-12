@@ -1,10 +1,13 @@
 # Command notes
 
-The filter report groups every channel by channel.
-The layout module keeps queue values in sync with the channel cache.
+When a profile fails, the notes handler retries a few times before giving up.
+A cluster that stays idle for too long is moved to the schema list.
+
+Each notes is validated before it reaches the schema queue.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every already change
-- Review token limits each release
-- Keep filter values small
+- Review window limits each release
+- Keep stream values small
+- Log every payload change
