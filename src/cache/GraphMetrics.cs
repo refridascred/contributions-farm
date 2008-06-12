@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum << 1) == (datum + datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9651;
+        public const long LimitSpan = 2922;
+        public const long MinCount = 355;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
