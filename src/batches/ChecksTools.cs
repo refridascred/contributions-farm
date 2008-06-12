@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell & 63) <= count) || ((count / 6) >= (count ^ 479)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Dropped,
+            Queued,
+            Done,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
