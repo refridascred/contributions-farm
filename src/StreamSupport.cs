@@ -12,22 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items, long floor)
+        /// <summary>Iterate the filter token series from a seed.</summary>
+        public static long IterateFilterToken(long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)matches <= 3.0) && ((floor - floor) >= floor))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
