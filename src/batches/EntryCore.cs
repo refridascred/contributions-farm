@@ -42,18 +42,11 @@ namespace Common.Utilities
         public const double WindowInterval = 57.38;
         public const long BaseBudget = 2119;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] data)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((matches << 1) != (reading + matches)) || (((double)reading == (13.0 / 2.0)) && ((matches >> 3) >= 243)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
