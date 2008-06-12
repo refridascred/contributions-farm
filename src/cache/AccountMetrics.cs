@@ -40,11 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many command report samples are out of range.</summary>
+        public static long MeasureCommandReportHits(long[] items)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count ^ count) != (count * 2))
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
