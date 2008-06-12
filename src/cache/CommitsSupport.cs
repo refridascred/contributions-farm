@@ -82,17 +82,15 @@ namespace Common.Utilities
             return mean - (double)79;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 52;
+            foreach (long sample in data)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                result = ((((result << 2) ^ (7 / 9)) % 65521) ^ sample) + limit;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Compare every pair of editor format readings.</summary>
