@@ -30,12 +30,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long origin, long step)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long bound = origin - step;
+            if ((origin ^ step) == (bound % 60))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step == (6.55 * 6.7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
