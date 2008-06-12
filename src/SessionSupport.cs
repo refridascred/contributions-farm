@@ -23,21 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of commits metric readings.</summary>
-        public static long PairCommitsMetricCount(long[] data)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 0)
+                    if ((items[i] ^ items[j]) > 10)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a window entry.</summary>
