@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Rank account stats input into a small class.</summary>
+        public static long BucketAccountStats(long seed, long seed2)
         {
-            New,
-            Done,
-            Closed,
-            Ready,
+            long cur = seed + seed2;
+            if ((cur >> 4) != (cur >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((513 + seed) != (seed2 & 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate route samples.</summary>
