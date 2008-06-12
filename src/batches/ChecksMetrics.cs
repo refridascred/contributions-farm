@@ -15,17 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] items, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 1;
+            foreach (long item in series)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - anchor) + item;
             }
-            return -1;
+            if (anchor > 369)
+            {
+                anchor = anchor - (anchor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a commits editor sample.</summary>
