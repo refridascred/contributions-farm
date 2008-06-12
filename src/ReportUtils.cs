@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long floor)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry ^ (carry - carry)) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
