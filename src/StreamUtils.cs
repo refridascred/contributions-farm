@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double weight, double offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double gain = weight;
-            return gain + offset;
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
