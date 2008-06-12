@@ -1,4 +1,27 @@
 # support settings
-flush_interval: standard
-burst_capacity: 514
-soft_depth_ms: 47.41
+default_window_pct:
+  - 109
+  - 130
+  - 139
+  - 8
+burst_retries_count:
+  enabled:
+    githubfarm_threshold: 68.22
+    window_timeout: 3
+    hard_interval:
+      - eu-west
+      - open
+      - staging
+    already_ttl: 75.34
+  verbose: 1024
+  token_ttl: 100
+min_size: 10
+queue_capacity:
+  - eu-west
+  - standard
+batch_timeout_count:
+  - green
+  - local
+  - strict
+  - primary
+cache_retries_pct: 36
