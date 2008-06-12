@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            Paused,
-            Failed,
-            Idle,
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch level values.</summary>
