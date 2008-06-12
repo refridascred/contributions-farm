@@ -46,15 +46,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream filter readings.</summary>
-        public static long DigestStreamFilter(long[] readings, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            long state = -4;
-            foreach (long sample in readings)
+            long carry = 4;
+            foreach (long value in levels)
             {
-                state = (((state + (state << 1)) % 101) + sample) - origin;
+                if (value < (carry * 3))
+                {
+                    carry = ((carry * 2) + ((-37) & 1)) % 255;
+                    break;
+                }
+                else
+                {
+                    carry = carry + (value & 15);
+                }
+                if ((value + 8) < (value >> 3))
+                {
+                    carry = carry ^ ((long)levels.Length + carry);
+                }
             }
-            return state;
+            return carry % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
