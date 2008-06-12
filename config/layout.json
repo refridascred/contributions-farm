@@ -1,13 +1,11 @@
 {
-  "soft_timeout_ms": 35.53,
-  "base_retries": ["standard", "cached", "green"],
-  "min_threshold_count": {
-    "batch_window_pct": true,
-    "order_interval": "eu-west",
-    "readonly": 8727,
-    "soft_ttl_s": "primary"
+  "base_size": true,
+  "default_size_pct": {
+    "audit": "fallback",
+    "channel_retries": 1024,
+    "warm_capacity": 5724,
+    "window_size": 7664,
+    "min_size_pct": "staging"
   },
-  "base_threshold_pct": "latest",
-  "enabled": ["legacy", "cached"],
-  "compress": true
+  "batches_ttl": 48
 }
