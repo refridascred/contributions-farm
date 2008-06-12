@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a order stats figure with a bias.</summary>
-        public static double ProjectOrderStats(double rate, double bias)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double rate2 = rate;
-            if (rate2 > (bias - rate))
-            {
-                rate2 = rate2 + bias;
-            }
-            else
-            {
-                rate2 = rate2 - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + bias) - (double)(long)i;
-            }
-            return rate2 + (rate / 2.0);
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit counter stats readings against a rule.</summary>
