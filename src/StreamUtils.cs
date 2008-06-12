@@ -85,22 +85,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)seed == (double)cell)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 4235;
+        public const long RetryInterval = 7551;
+        public const long MaxRatio = 9088;
     }
 }
