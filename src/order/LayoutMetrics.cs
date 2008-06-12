@@ -27,12 +27,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels, long origin)
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches + origin) > (origin & 255))
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
