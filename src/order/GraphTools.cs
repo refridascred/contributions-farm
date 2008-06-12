@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double scale, double floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] samples, long bound)
         {
-            double drift = 4.9;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                drift = ((drift - (double)(long)i) - scale) - floor;
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + (double)72;
+            return valid;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
