@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] items, long target)
+        /// <summary>Count the farm tools entries that pass the check.</summary>
+        public static long TallyFarmToolsHits(long[] values)
         {
-            bool found = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (value < target)
+                if ((count + (-54)) <= count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) - sample;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
