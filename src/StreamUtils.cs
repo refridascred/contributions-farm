@@ -77,13 +77,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Draft,
+            Paused,
             Retry,
             Pending,
-            Failed,
         }
     }
 }
