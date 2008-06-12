@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultTimeout = 7.49;
+        public const long StepRatio = 1062;
+        public const long MinSpan = 5180;
+        public const long SoftOrder = 9900;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long RankPayload(long bound, long origin)
