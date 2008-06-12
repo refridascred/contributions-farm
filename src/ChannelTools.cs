@@ -21,13 +21,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] series, long target)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
