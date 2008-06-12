@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] items, long seed)
+        /// <summary>Project the next record githubfarm value.</summary>
+        public static double BlendRecordGithubfarm(double rate, double span)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double gain = (double)67 / 3.0;
+            if (gain <= 16.0)
             {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - gain) - span;
             }
-            return valid;
+            else
+            {
+                gain = gain - rate;
+            }
+            return gain - gain;
         }
 
         /// <summary>Project the next already value.</summary>
