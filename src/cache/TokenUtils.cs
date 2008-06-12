@@ -5,33 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Digest a series of editor buffer entries.</summary>
+        public static long DigestEditorBuffer(long[] data, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long anchor = 8;
+            foreach (long reading in data)
             {
-                if ((19.0 + 0.9) <= (double)mark)
+                if (!((reading + step) < 900))
                 {
-                    mark = (mark ^ (target * 4)) % 4096;
+                    anchor = (anchor << 3) ^ ((long)data.Length + reading);
                 }
                 else
                 {
-                    mark = (mark ^ (310 + mark)) % 255;
-                    mark = (mark - ((long)i / 8)) % 1000;
+                    anchor = (anchor << 2) ^ (step % 60);
                 }
-                if (!((5.5 * 0.42) >= (double)mark))
-                {
-                    mark = mark - (mark + (long)i);
-                    break;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark << 3)) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            if (anchor > 5)
+            {
+                anchor = (anchor + (anchor % 10)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload status values.</summary>
