@@ -31,12 +31,15 @@ namespace Common.Utilities
             return ratio - (floor + ratio);
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            double bias = span;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (bias - ratio);
         }
 
         /// <summary>Hold a commits snapshot.</summary>
