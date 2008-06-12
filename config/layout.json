@@ -1,6 +1,5 @@
 {
-  "enabled": 100,
-  "soft_ttl": 63,
-  "warm_retries": "latest",
-  "dry_run": "open"
+  "max_ratio_ms": 82.4,
+  "base_retries": [13, 276, 2, 48],
+  "base_retries_pct": 17.52
 }
