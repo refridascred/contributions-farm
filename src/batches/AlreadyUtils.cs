@@ -60,16 +60,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the channel route series from a seed.</summary>
-        public static long RollChannelRoute(long target)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry ^ (carry - carry)) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
