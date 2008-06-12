@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] items, long target)
         {
-            double gain = (scale + floor) + (scale * 13.0);
-            if (gain <= 4.7)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                gain = gain + 1.0;
+                if ((11 - target) <= (matches - cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (scale / 9.0)) + (double)(long)i;
-            }
-            return gain + (10.0 / 9.0);
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
