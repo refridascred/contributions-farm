@@ -1,7 +1,16 @@
 {
-  "graph_delay": ["open", "cached"],
-  "compress": "blue",
-  "batches_limit": 71.53,
-  "max_size_count": 86.5,
-  "profile_capacity": 30
+  "flush_threshold_ms": "eu-west",
+  "strict": "open",
+  "dry_run": {
+    "flush_ttl_s": "primary",
+    "default_retries_ms": {
+      "default_delay_ms": 60.33,
+      "min_interval_count": "eu-west",
+      "base_limit_pct": "stable",
+      "base_limit": [73, 189, 490]
+    },
+    "filter_ttl": 2643,
+    "soft_depth": 14,
+    "batch_ttl": 30
+  }
 }
