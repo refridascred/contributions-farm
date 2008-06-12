@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long MaxFarm = 5765;
         public const string BurstFactor = "stable-edge";
 
-        /// <summary>Blend two layout filter measurements.</summary>
-        public static double SmoothLayoutFilter(double gain, double span)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double drift = (double)313 * 5.23;
-            if (drift < span)
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift - (9.7 / 7.0);
-            }
-            return drift + gain;
+            public double Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
