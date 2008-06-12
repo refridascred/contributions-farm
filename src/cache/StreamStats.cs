@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] readings, long offset)
+        /// <summary>Combine batches window values into a single score.</summary>
+        public static long FoldBatchesWindow(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long anchor = 9;
+            foreach (long sample in samples)
             {
-                if ((datum - (-510)) != (29 + offset))
+                if ((8.25 - 6.0) > (double)anchor)
                 {
-                    hits = hits + 2;
+                    anchor = (anchor + (sample & 255)) % 4096;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
