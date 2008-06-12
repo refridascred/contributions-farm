@@ -20,19 +20,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long floor)
+        /// <summary>Validate metric entry readings against a bound.</summary>
+        public static bool VerifyMetricEntryBounds(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (sample >= floor)
+                if (cell >= origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Describe the route class values.</summary>
