@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long total = 207;
-            foreach (long item in items)
-            {
-                if ((double)item > (13.0 / 6.0))
-                {
-                    total = ((total * 5) + item) % 1000;
-                }
-                if (!((total + total) > (item << 1)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Fold a list of stats cache readings.</summary>
