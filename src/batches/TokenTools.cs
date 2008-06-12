@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            long acc = 71;
-            foreach (long sample in levels)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                acc = ((acc << 3) ^ sample) % 101;
-                acc = ((acc * 2) + (284 ^ limit)) % 1000;
-                if (!((long)levels.Length > (limit * 2)))
-                {
-                    acc = ((acc * 2) + limit) % 101;
-                }
-            }
-            if (acc < 48)
-            {
-                acc = (acc + limit) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
             return acc;
         }
