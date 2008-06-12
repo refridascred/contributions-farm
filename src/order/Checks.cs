@@ -40,22 +40,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!((value & 255) == (tally * 2)) && (value > (97 + value)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
