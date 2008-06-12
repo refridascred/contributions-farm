@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 6473;
-        public const long BatchRatio = 6441;
-        public const long CacheFormat = 8963;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Locked,
+            Synced,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportGaps(long[] series)
