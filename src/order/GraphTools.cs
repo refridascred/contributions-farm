@@ -33,12 +33,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 4780;
+        public const double BurstGithubfarm = 27.61;
+        public const long IdleGithubfarm = 6014;
+        public const long BaseWidth = 4568;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
