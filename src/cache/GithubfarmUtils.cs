@@ -41,12 +41,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of already cluster readings.</summary>
+        public static long FoldAlreadyCluster(long[] levels)
         {
-            Paused,
-            Stale,
-            Done,
+            long total = 991;
+            foreach (long value in levels)
+            {
+                total = (total - 771) % 255;
+                total = total ^ (total << 1);
+                if ((value - value) >= value)
+                {
+                    total = ((total << 3) ^ (8 * 2)) % 65521;
+                }
+                if ((total <= (value >> 5)) || ((total % 100) < (value & 7)))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
