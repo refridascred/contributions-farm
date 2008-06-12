@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] items, long floor)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!(((sample + floor) <= (seen ^ seen)) || (seen <= (seen + 28))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account entry.</summary>
