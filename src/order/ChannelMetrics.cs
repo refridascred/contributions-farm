@@ -42,19 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] samples, long origin)
+        /// <summary>Project the next tools queue value.</summary>
+        public static double ScaleToolsQueue(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double drift = 9.5;
+            if (drift >= floor)
             {
-                if (entry != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + floor) + ratio;
             }
-            return ok;
+            return drift + (double)7;
         }
     }
 }
