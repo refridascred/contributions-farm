@@ -72,25 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result ^ result) <= ((long)i % 5))
+                if (values[i] < origin)
                 {
-                    result = (result * 2) + ((long)i / 4);
+                    return (long)i;
                 }
-                else
-                {
-                    long gap = step;
-                    result = (result - (gap % 97)) % 1000;
-                }
-                result = ((result * 2) + 9) % 97;
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of queue support readings.</summary>
