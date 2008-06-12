@@ -47,27 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route stats values into a single score.</summary>
-        public static long FoldRouteStats(long[] samples)
-        {
-            long carry = 53;
-            foreach (long sample in samples)
-            {
-                if ((sample - sample) < (sample - 623))
-                {
-                    carry = carry - sample;
-                }
-                else
-                {
-                    carry = (carry - (carry / 7)) % 255;
-                }
-                if ((4.0 / 2.0) > (double)sample)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 697;
+        public const string SoftFarm = "local-v2";
+        public const long MinFarm = 6006;
+        public const long BatchTimeout = 7058;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] data, long target)
