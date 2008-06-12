@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double load = weight;
-            if (load >= (load + offset))
-            {
-                load = load - offset;
-            }
-            return load - (10.0 / 4.0);
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
