@@ -40,18 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel token readings.</summary>
-        public static long PairChannelTokenCount(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] series, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (9.71 < (double)(long)series.Length)
                 {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) + item) + origin;
                 }
             }
             return hits;
