@@ -42,13 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the tools buffer entries that pass the check.</summary>
+        public static long CountToolsBufferHits(long[] items, long offset)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((double)matches < (double)7) || !((offset / 9) >= (reading + offset)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
