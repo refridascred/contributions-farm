@@ -1,16 +1,7 @@
 {
-  "checks_limit": "eu-west",
-  "counter_interval": 3350,
-  "readonly": false,
-  "strict": {
-    "counter_depth": ["cached", "green"],
-    "enabled": 6002,
-    "schema_ratio": 22.39,
-    "flush_threshold_ms": {
-      "soft_interval_s": ["strict", "stable"],
-      "enabled": false,
-      "soft_threshold": 22
-    },
-    "stream_ratio": [87, 177, 449, 62]
-  }
+  "stream_ratio": "fallback",
+  "flush_timeout_ms": 2434,
+  "max_window": "eu-west",
+  "cache_depth_s": 1024,
+  "entry_timeout": [319, 373, 129, 183]
 }
