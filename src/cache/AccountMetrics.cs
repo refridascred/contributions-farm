@@ -14,18 +14,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long target, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long span = target ^ limit;
+            if ((limit <= (234 ^ span)) && ((9 + limit) <= (span - 75)))
             {
-                if (hits >= (sample - hits))
+                return 6;
+            }
+            else
+            {
+                if (((20 & 1) <= span) && ((7.44 + 13.0) < (double)limit))
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
