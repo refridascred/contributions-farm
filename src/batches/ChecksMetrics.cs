@@ -54,16 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings)
-        {
-            long sum = 23;
-            foreach (long sample in readings)
-            {
-                sum = (sum - (sum + sample)) % 97;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowTimeout = "primary-edge";
+        public const long BurstSession = 6308;
+        public const long StepSession = 9016;
+        public const long HardDepth = 8938;
+        public const long MinSession = 4806;
 
         /// <summary>Digest a series of tools graph entries.</summary>
         public static long DigestToolsGraph(long[] values)
