@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of counter farm readings.</summary>
-        public static long OverlapCounterFarmCount(long[] data)
+        /// <summary>Compare every pair of metric farm readings.</summary>
+        public static long MatchMetricFarmCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 4)
+                    if ((readings[i] + readings[j]) != 19)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
