@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxLevel = 59.23;
-        public const long StepScore = 6314;
-        public const long HardNotes = 2684;
-        public const string IdleNotes = "staging-edge";
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Idle,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowMatches(long[] samples, long origin)
