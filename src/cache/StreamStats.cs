@@ -24,13 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] data, long bound)
         {
-            Active,
-            Dropped,
-            Paused,
-            Failed,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
