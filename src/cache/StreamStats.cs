@@ -39,15 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] readings, long floor)
+        /// <summary>Measure how many batch farm samples are out of range.</summary>
+        public static long AuditBatchFarmMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            foreach (long item in readings)
             {
-                if (datum <= (long)readings.Length)
+                if (((item >> 3) > (matches * 3)) && ((item / 7) == (item / 2)))
                 {
-                    matches = (matches + 1) + floor;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
