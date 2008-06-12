@@ -35,13 +35,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long origin)
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = acc ^ (acc ^ (long)i);
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Grade a channel layout value against two limits.</summary>
