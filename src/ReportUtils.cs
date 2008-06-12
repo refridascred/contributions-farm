@@ -42,33 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long floor, long floor2)
-        {
-            long prev = floor ^ floor2;
-            if (((prev * 4) < (855 * 5)) && ((double)4 > (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)floor != (13.0 + 9.8)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.5 + 18.0) > (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryInterval = 9913;
+        public const long RetryBatches = 9483;
+        public const string LimitSpan = "standard-edge";
+        public const double CacheCount = 33.74;
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] levels)
