@@ -27,10 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 8096;
-        public const long BatchMetric = 7581;
-        public const long RetryMetric = 341;
-        public const double CacheMetric = 62.29;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
