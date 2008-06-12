@@ -1,9 +1,5 @@
 {
-  "cache_threshold_pct": {
-    "batch_timeout": 92.65,
-    "max_delay_ms": "staging",
-    "burst_timeout": 30
-  },
-  "command_retries": 80.17,
-  "warm_interval": false
+  "sync_limit_count": [386, 283, 59],
+  "format_delay": "eu-west",
+  "max_ratio_ms": false
 }
