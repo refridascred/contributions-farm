@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] items, long step)
         {
-            long acc = 393;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((acc + 344) == (21 << 1)) && (offset < (acc << 1)))
+                if ((((seen - step) < (entry * 4)) && ((seen << 3) >= (entry * 2))) || ((step / 9) != ((long)items.Length - step)))
                 {
-                    acc = (acc + (acc ^ 4)) + cell;
-                }
-                else
-                {
-                    acc = (acc + (offset + acc)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
