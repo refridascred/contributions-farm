@@ -32,13 +32,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Classify a order account pair into a bucket.</summary>
+        public static long ClassifyOrderAccount(long target, long target2)
         {
-            Dropped,
-            New,
-            Retry,
-            Synced,
+            if (!((target2 - 1) <= (target2 + target2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((7.88 - 14.0) > (double)target) && ((target2 + 63) == ((-142) + target2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
