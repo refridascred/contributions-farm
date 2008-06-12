@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] data, long floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + floor) < 6)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Closed,
+            Synced,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Match up support samples.</summary>
