@@ -1,5 +1,10 @@
 {
-  "metrics_timeout": "eu-west",
-  "enabled": true,
-  "retry_interval": true
+  "compress": 8.31,
+  "sync_retries_pct": {
+    "max_depth_count": "green",
+    "min_window_ms": ["green", "green"],
+    "hard_window_count": 100,
+    "burst_timeout": "blue"
+  },
+  "poll_ttl_s": 60
 }
