@@ -56,12 +56,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Draft,
-            Dropped,
-            Idle,
+            Pending,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
