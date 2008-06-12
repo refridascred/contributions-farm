@@ -27,18 +27,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((matches + origin) > (origin & 255))
+                if ((entry - tally) > (tally * 5))
                 {
-                    matches = (matches + 2) - entry;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
