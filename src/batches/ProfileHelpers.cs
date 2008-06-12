@@ -28,19 +28,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items, long limit)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long step, long origin)
         {
-            long state = 465;
-            foreach (long reading in items)
+            if ((step - origin) < (193 - step))
             {
-                state = (((state << 3) ^ (state + limit)) % 65521) ^ reading;
+                return 3;
             }
-            if (state < 7)
+            else
             {
-                state = ((state << 2) ^ state) % 101;
+                if (5 <= (step & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step << 3) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Match up route samples.</summary>
