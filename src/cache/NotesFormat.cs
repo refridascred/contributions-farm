@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Failed,
             Stale,
-            Idle,
-            Retry,
-            Done,
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a order info.</summary>
