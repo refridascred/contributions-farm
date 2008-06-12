@@ -44,15 +44,18 @@ namespace Common.Utilities
             return mean - (double)79;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings)
         {
-            long result = 52;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                result = ((((result << 2) ^ (7 / 9)) % 65521) ^ sample) + limit;
+                if ((double)seen != (double)reading)
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Compare every pair of editor format readings.</summary>
