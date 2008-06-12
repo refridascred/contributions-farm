@@ -1,20 +1,32 @@
 # support settings
-cluster_ratio: 8.95
-base_size: 67
-cache_limit_s:
-  - primary
-  - eu-west
-batch_retries: true
-burst_size_count:
-  counter_ratio: 17
-  schema_size:
-    sync_timeout:
-      - 166
-      - 391
-    readonly: fallback
-    cache_ratio_s: true
-    cache_retries_ms: 43.63
-    compress: eu-west
-  idle_threshold_ms:
-    - 156
-    - 335
+editor_delay:
+  hard_retries_ms: 375
+  enabled: 23.19
+  base_ttl_count: true
+  idle_ratio_count: 29.7
+  batch_ratio: true
+soft_ttl_ms: open
+cluster_depth:
+  default_delay_pct: true
+  batch_ratio: 250
+  retry_ttl: 75.94
+  burst_interval_s: 7795
+  audit: 12
+  command_threshold: false
+context_ttl:
+  token_ratio: true
+  filter_interval:
+    flush_limit_ms: green
+    retry_capacity_count: 100
+    strict: true
+    stream_delay: stable
+  already_threshold: blue
+  enabled:
+    - 77
+    - 359
+    - 331
+editor_retries:
+  - 146
+  - 371
+  - 19
+  - 129
