@@ -33,25 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long origin, long step)
+        /// <summary>Digest a series of githubfarm context entries.</summary>
+        public static long FoldGithubfarmContext(long[] series)
         {
-            long gap = origin ^ step;
-            if ((step >> 1) <= (gap / 4))
+            long sum = -909;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin > (origin >> 3))
+                if (cell >= (cell - sum))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    sum = ((sum << 2) ^ sum) % 97;
                 }
             }
+            return sum % 65521;
         }
     }
 }
