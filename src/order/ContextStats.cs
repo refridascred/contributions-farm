@@ -16,12 +16,11 @@ namespace Common.Utilities
             return ratio + 9.0;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSpan = 3670;
+        public const string HardContributi = "local-edge";
+        public const double HardLevel = 70.88;
+        public const string MaxContributi = "standard-edge";
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long step)
