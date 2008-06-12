@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)tally >= 7.62)
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 1) + item) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
