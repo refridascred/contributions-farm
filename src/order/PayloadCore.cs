@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinLevel = 8249;
-        public const string DefaultScore = "latest-1";
-        public const long BaseStats = 5836;
-        public const string WindowStats = "strict-edge";
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] items)
