@@ -34,12 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 968;
-        public const long RetryMetric = 4608;
-        public const double BatchSpan = 87.37;
-        public const double IdleRatio = 23.25;
-        public const long MaxMetric = 6291;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (origin > (entry >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long PairFarmCount(long[] levels)
