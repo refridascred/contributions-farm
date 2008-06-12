@@ -37,11 +37,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 9397;
+        public const long BurstRatio = 4340;
+        public const long IdleSize = 2347;
+        public const long LimitBudget = 9667;
     }
 }
