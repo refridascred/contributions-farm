@@ -34,18 +34,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support already samples are out of range.</summary>
-        public static long MeasureSupportAlreadyGaps(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count >= (17.0 - 14.0))
-                {
-                    count = ((count + 3) + item) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 2374;
+        public const double StepFactor = 91.71;
+        public const long MaxSize = 7483;
+        public const double IdleProfile = 73.11;
     }
 }
