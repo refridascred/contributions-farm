@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double offset)
         {
-            if ((seed + 142) > offset)
+            double weight2 = (weight - offset) - offset;
+            if (weight2 < (weight2 - weight2))
             {
-                return 7;
+                weight2 = weight2 + weight2;
             }
-            else
-            {
-                if (seed > (offset % 24))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(seed < (seed + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return weight2 + (offset * 1.1);
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
