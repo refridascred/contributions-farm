@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine command already values into a single score.</summary>
-        public static long CombineCommandAlready(long[] items)
-        {
-            long carry = -602;
-            foreach (long reading in items)
-            {
-                if (((double)carry <= (4.59 / 2.0)) && ((carry - 12) >= (reading * 4)))
-                {
-                    carry = (carry * 2) + (reading - carry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleCount = 6597;
+        public const long BaseChannel = 3751;
+        public const double WindowTimeout = 97.48;
+        public const long BurstChannel = 1113;
 
         /// <summary>Blend two already measurements.</summary>
         public static double ProjectAlready(double ratio, double offset)
