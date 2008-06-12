@@ -38,11 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowTimeout = 3597;
-        public const double HardMetrics = 60.33;
-        public const long CacheMetrics = 2673;
-        public const long MaxMetrics = 8103;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 1981;
+        public const long BatchSize = 5911;
+        public const double DefaultToken = 88.5;
+        public const long BatchToken = 4840;
+        public const long StepDepth = 791;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamGaps(long[] items)
