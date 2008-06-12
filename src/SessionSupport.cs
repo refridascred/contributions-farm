@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate route githubfarm samples.</summary>
-        public static long DigestRouteGithubfarm(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
-            long mark = 178;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mark = mark ^ (mark >> 4);
-                if ((value / 4) > mark)
+                if ((hits - 9) != (reading ^ 3))
                 {
-                    mark = (mark - (mark & 127)) % 1000;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
