@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a checks command pair into a bucket.</summary>
-        public static long BucketChecksCommand(long bound, long seed)
+        /// <summary>Compare every pair of counter farm readings.</summary>
+        public static long OverlapCounterFarmCount(long[] data)
         {
-            if (bound <= (seed + bound))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed >> 2) <= (seed >> 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
