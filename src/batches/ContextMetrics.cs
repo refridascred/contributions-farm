@@ -27,17 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first cache checks entry that matches the target.</summary>
-        public static long SeekCacheChecksIndex(long[] samples, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 1;
+            foreach (long entry in values)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum - (760 % 64)) + entry;
             }
-            return -1;
+            if (sum > 1)
+            {
+                sum = ((sum << 2) ^ sum) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the cache phase values.</summary>
