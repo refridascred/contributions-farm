@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Paused,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitLevel = 6818;
+        public const long StepWidth = 9633;
+        public const long HardSession = 4933;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long target, long offset)
