@@ -1,4 +1,8 @@
 # githubfarm settings
-retry_depth_s: false
-verbose: cached
-route_threshold: 99
+sync_retries_s: 47.67
+warm_interval:
+  - strict
+  - open
+  - latest
+  - eu-west
+githubfarm_size: false
