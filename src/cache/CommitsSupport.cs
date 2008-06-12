@@ -32,24 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next githubfarm record value.</summary>
-        public static double ProjectGithubfarmRecord(double weight, double bias)
-        {
-            double scale = (double)(164 + 5);
-            if (scale < scale)
-            {
-                scale = (scale - weight) - bias;
-            }
-            else
-            {
-                scale = scale - (double)44;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - (double)419;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleWidth = "alpha-1";
+        public const long BatchTimeout = 3142;
+        public const long DefaultChannel = 2641;
+        public const long MinChannel = 1143;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double CacheMetric = 82.68;
