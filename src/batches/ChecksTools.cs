@@ -27,21 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = offset;
+            if (load <= offset)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + load) + gain;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (double)465) + (double)(long)i;
+            }
+            return load - (load + 8.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
