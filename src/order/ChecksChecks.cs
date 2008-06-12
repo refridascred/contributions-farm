@@ -15,17 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first profile token entry that matches the target.</summary>
-        public static long LocateProfileTokenIndex(long[] data, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 433;
+            foreach (long cell in values)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = acc + (cell + acc);
             }
-            return -1;
+            if (acc < 65)
+            {
+                acc = ((acc << 2) ^ (seed * 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
