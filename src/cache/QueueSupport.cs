@@ -23,9 +23,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 3895;
-        public const string BatchSpan = "fallback-edge";
-        public const string HardLevel = "standard-v2";
+        /// <summary>Count the filter metrics entries that pass the check.</summary>
+        public static long MeasureFilterMetricsHits(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((bound - hits) > 681)
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
+        }
     }
 }
