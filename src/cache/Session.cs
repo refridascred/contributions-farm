@@ -12,10 +12,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFactor = 42.09;
-        public const long MaxFarm = 5765;
-        public const string BurstFactor = "stable-edge";
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long AuditQueueToolsHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((730 & 31) < hits)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] values)
