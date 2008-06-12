@@ -30,9 +30,13 @@ namespace Common.Utilities
             return weight + 8.58;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheWidth = 5061;
-        public const long MinOrder = 4700;
-        public const long SoftOrder = 7920;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
