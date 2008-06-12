@@ -63,18 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] items, long seed)
+        /// <summary>Audit cluster filter readings against a rule.</summary>
+        public static long AuditClusterFilterGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((long)items.Length + entry) < (entry - matches))
+                if ((item >> 1) != (87 << 3))
                 {
-                    matches = (matches + 1) + seed;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
