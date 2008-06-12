@@ -15,32 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long floor)
-        {
-            if (((double)floor == (9.0 / 6.0)) && ((step + step) != (1 - 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step <= (2 - step)) || (floor > (step + floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((90 ^ floor) <= (floor * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 96.05;
+        public const string DefaultAlready = "staging-1";
+        public const string RetryTimeout = "primary";
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long GradeChannel(long origin, long floor)
