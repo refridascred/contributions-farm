@@ -1,5 +1,17 @@
 {
-  "enabled": 4,
-  "poll_limit_ms": 250,
-  "readonly": 14.57
+  "stream_window": 100,
+  "compress": 79.01,
+  "strict": 55,
+  "base_depth_ms": {
+    "base_size_count": 2,
+    "schema_capacity": [441, 476],
+    "counter_ttl": {
+      "checks_window": true,
+      "idle_delay_ms": ["blue", "blue", "open", "staging"],
+      "strict": false,
+      "audit": "green"
+    }
+  },
+  "profile_delay": true,
+  "poll_delay_ms": "standard"
 }
