@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] items, long target)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((11 - target) <= (matches - cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
