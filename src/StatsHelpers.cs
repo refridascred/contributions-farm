@@ -20,10 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleScore = 6927;
-        public const long MaxBuffer = 6587;
-        public const long SoftScore = 8408;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long target, long limit)
