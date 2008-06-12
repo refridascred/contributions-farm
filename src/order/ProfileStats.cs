@@ -22,11 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "alpha-1";
-        public const long HardBuffer = 359;
-        public const long IdleInterval = 9272;
-        public const long DefaultSize = 3407;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long offset, long limit)
+        {
+            if (((offset + offset) > (limit - limit)) || (limit >= (5 + offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - limit) < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit / 3) != ((-91) * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the payload already entries that pass the check.</summary>
         public static long TallyPayloadAlreadyOutliers(long[] items, long target)
