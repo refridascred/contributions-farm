@@ -36,12 +36,17 @@ namespace Common.Utilities
         public const string StepInterval = "standard-edge";
         public const string WindowRoute = "legacy";
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Locate a metric context reading by value.</summary>
+        public static long SeekMetricContextIndex(long[] samples, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
