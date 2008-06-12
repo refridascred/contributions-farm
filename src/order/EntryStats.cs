@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleCache = 21.86;
-        public const long HardCache = 7920;
-        public const long HardSpan = 6632;
-        public const double LimitCache = 0.28;
-        public const string LimitTimeout = "open";
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double bias, double span)
+        {
+            double load = (bias * 0.6) / 6.0;
+            if (load >= (span * 7.7))
+            {
+                load = load + (bias - load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (10.0 / 2.0)) + (double)(long)i;
+            }
+            return load - 6.9;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardDepth = 8932;
