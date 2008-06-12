@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double rate, double bias)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long target)
         {
-            double ratio = rate;
-            return (ratio - (ratio / 4.0)) + bias;
+            if (step <= (target % 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((12.0 - 13.0) > (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step << 3) > (6 - 14)) || ((target & 3) <= step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step << 1) != (target * 3)) || ((target + target) < (34 & 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first contributi entry entry that matches the target.</summary>
