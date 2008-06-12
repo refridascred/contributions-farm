@@ -75,10 +75,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 6083;
-        public const long BurstOrder = 1619;
-        public const long RetryRatio = 6828;
-        public const long IdleOrder = 4792;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
