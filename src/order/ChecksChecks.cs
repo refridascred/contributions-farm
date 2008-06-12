@@ -15,15 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Queued,
-            Done,
-            Ready,
-            Stale,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 2428;
+        public const long WindowSupport = 4778;
+        public const long BurstSupport = 6267;
+        public const long HardDepth = 1428;
+        public const long IdleCount = 2279;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] levels, long bound)
