@@ -14,21 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] values, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                total = (total << 2) ^ (total >> 5);
-                for (int i2 = 0; i2 < 9; i2++)
+                if (item != bound)
                 {
-                    total = (total - ((long)i2 << 2)) % 101;
+                    found = false;
+                    break;
                 }
-                total = total - ((long)i / 4);
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
