@@ -25,10 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitScore = 2414;
-        public const double WindowSize = 74.07;
-        public const double DefaultStream = 73.49;
-        public const long RetryLevel = 4272;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally >> 5) == (tally * 3))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
+        }
     }
 }
