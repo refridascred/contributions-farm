@@ -1,11 +1,29 @@
 # entry settings
-max_size:
-  - 312
-  - 264
-  - 291
-stream_size: 21.49
-min_size_pct: 7846
-idle_size_s: 51.35
+support_interval:
+  strict: 1024
+  cluster_capacity: true
+  warm_ratio_ms: false
+  default_threshold_s: true
+  batch_interval: cached
 enabled:
-  - primary
-  - open
+  persist: 79
+  entry_delay:
+    - eu-west
+    - primary
+    - edge
+  poll_retries_ms: 94.42
+  filter_size:
+    - 217
+    - 366
+    - 80
+min_interval_count:
+  verbose: 500
+  graph_ratio: local
+  batch_interval_count:
+    - 349
+    - 471
+dry_run:
+  - 78
+  - 166
+compress: open
+flush_retries_pct: open
