@@ -45,13 +45,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Match up batches tools samples.</summary>
+        public static long OverlapBatchesToolsCount(long[] values)
         {
-            Idle,
-            Synced,
-            Active,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch options.</summary>
