@@ -33,11 +33,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 35.67;
-        public const long BatchWindow = 5891;
-        public const long IdleWindow = 2957;
-        public const string DefaultWindow = "stable-edge";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((limit / 3) != (limit + 57))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long limit, long floor)
