@@ -34,12 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "legacy-edge";
-        public const double CacheDepth = 98.09;
-        public const long CacheWidth = 1888;
-        public const long DefaultSpan = 728;
-        public const double BurstSpan = 85.49;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Active,
+            Locked,
+            New,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
