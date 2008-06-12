@@ -37,11 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 8440;
-        public const long BaseTimeout = 8251;
-        public const long MaxFactor = 4690;
-        public const long StepTimeout = 5530;
-        public const long IdleEditor = 5202;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
