@@ -1,11 +1,4 @@
 # support settings
-max_threshold_ms:
-  - 241
-  - 87
-  - 120
-max_timeout_count:
-  - blue
-  - staging
-  - open
-  - strict
-sync_capacity: true
+burst_capacity_ms: 55.28
+burst_ttl_pct: true
+min_retries: 4845
