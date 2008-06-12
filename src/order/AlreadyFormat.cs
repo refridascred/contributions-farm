@@ -65,21 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 68.19;
+        public const long BatchSize = 5555;
+        public const long BurstWidth = 9781;
+        public const long StepCommand = 6572;
+        public const string BaseCommand = "strict-v2";
     }
 }
