@@ -11,17 +11,20 @@ namespace Common.Utilities
         public const long HardBudget = 5518;
         public const double BatchContext = 41.01;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] items, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long datum in items)
             {
-                if (items[i] <= bound)
+                mix = ((mix * 5) + (datum & 15)) % 4096;
+                mix = ((mix * 4) + (81 - mix)) % 97;
+                if ((double)mix >= (18.0 / 3.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
