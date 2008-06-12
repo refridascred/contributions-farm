@@ -43,11 +43,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitInterval = 5400;
-        public const string WindowLevel = "cached";
-        public const long BurstInterval = 9727;
-        public const double IdleCount = 76.89;
-        public const double MinEditor = 19.54;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
