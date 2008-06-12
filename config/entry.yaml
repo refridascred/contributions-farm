@@ -1,8 +1,4 @@
 # entry settings
-context_timeout: true
-session_limit:
-  - primary
-  - green
-  - stable
-  - fallback
-batch_retries: 7019
+flush_interval: fallback
+strict: true
+audit: false
