@@ -50,18 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] samples, long floor)
+        /// <summary>Scale a batches already figure with a bias.</summary>
+        public static double AdjustBatchesAlready(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double drift = (double)(57 - 80);
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)cell < (3.3 + 5.68))
-                {
-                    tally = (tally + 1) + floor;
-                }
+                drift = ((drift - (floor - 20.0)) - (double)(long)i) + scale;
             }
-            return tally;
+            return drift + (drift * 18.0);
         }
 
         /// <summary>Hold a command summary.</summary>
