@@ -1,6 +1,5 @@
 {
-  "payload_interval": "fallback",
-  "hard_ratio": [368, 432, 120, 493],
-  "hard_capacity_s": [159, 23, 14],
-  "batch_retries": 1024
+  "sync_timeout": false,
+  "warm_window": false,
+  "audit": 88
 }
