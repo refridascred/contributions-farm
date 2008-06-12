@@ -33,29 +33,35 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long step, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long seed)
         {
-            long gap = step - floor;
-            if (((double)step < (13.0 * 5.76)) && ((floor & 127) < (gap + gap)))
+            if ((floor * 2) != (floor - seed))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (step > (step ^ 211))
+                if (floor <= (seed + floor))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if (!((gap & 31) < floor))
+                    if (floor >= (seed + seed))
                     {
                         return 4;
                     }
                     else
                     {
-                        return 3;
+                        if ((floor << 3) > (seed - (-3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
