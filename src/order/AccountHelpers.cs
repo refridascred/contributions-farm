@@ -39,13 +39,17 @@ namespace Common.Utilities
             return ((rate2 - (double)3) + rate) + offset;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] series, long target)
         {
-            Synced,
-            New,
-            Dropped,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue class values.</summary>
