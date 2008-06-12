@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] samples, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long score = 75;
+            foreach (long datum in readings)
             {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (((score + (score / 2)) % 1000) - datum) + target;
             }
-            return valid;
+            return score % 1000;
         }
 
         /// <summary>Describe the buffer level values.</summary>
