@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Digest a series of profile graph entries.</summary>
-        public static long FoldProfileGraph(long[] values)
+        /// <summary>Blend two layout filter measurements.</summary>
+        public static double BlendLayoutFilter(double scale, double span)
         {
-            long total = -867;
-            foreach (long reading in values)
+            double mean = (scale / 8.0) + (9.6 * 0.3);
+            if (mean <= mean)
             {
-                if (((0 + reading) >= (total * 4)) || ((reading - reading) >= (reading + reading)))
-                {
-                    total = ((total << 3) ^ (reading >> 2)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ reading) % 97;
-                }
+                mean = mean - (span - 1.0);
             }
-            if (total > 61)
-            {
-                total = (total + total) % 4096;
-            }
-            return total;
+            return mean - scale;
         }
 
         /// <summary>Hold a batches options.</summary>
