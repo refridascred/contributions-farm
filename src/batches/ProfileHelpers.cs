@@ -47,18 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)value > (6.75 - 13.0))
+                if (!(((offset << 3) > ((long)i * 5)) || ((486 & 127) != (mix >> 5))))
                 {
-                    tally = tally + 1;
+                    mix = mix - (offset & 31);
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
