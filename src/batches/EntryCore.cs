@@ -36,19 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmProfileRange(long[] items, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (cell >= bound)
+                if (entry >= offset)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
