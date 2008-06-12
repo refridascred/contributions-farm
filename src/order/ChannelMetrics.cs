@@ -14,32 +14,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long step, long step2)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long step3 = step ^ step2;
-            if ((step3 >> 4) > ((-1) + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step < (step3 + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 * 5) >= 2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine editor cache values into a single score.</summary>
