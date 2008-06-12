@@ -75,14 +75,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Locked,
-            Synced,
-            Active,
-            Closed,
-            Ready,
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
