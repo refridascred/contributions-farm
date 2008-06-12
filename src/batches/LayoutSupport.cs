@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every tools githubfarm entry stays within the limit.</summary>
-        public static bool ValidateToolsGithubfarmRange(long[] values, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (reading >= seed)
+                if (!((3.19 / 7.0) <= (double)item))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
