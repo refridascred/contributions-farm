@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many farm token samples are out of range.</summary>
+        public static long AuditFarmTokenGaps(long[] readings, long bound)
         {
-            Pending,
-            Synced,
-            Retry,
-            Active,
-            Stale,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell == (double)bound)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
