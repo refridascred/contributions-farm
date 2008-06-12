@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
             public double Limit { get; set; }
-            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
