@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultScore = 3096;
-        public const long MaxRatio = 7659;
-        public const long IdleDepth = 7249;
-        public const long WindowSpan = 8560;
-        public const double MaxReport = 63.91;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((542 / 4) >= (tally / 8))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long ClassifyTools(long origin, long seed)
