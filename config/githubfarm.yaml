@@ -1,5 +1,7 @@
 # githubfarm settings
-dry_run: 2124
-cache_ratio_ms: 2.05
-burst_threshold_ms: false
-soft_depth_ms: 17
+default_depth: edge
+poll_size: 3138
+enabled: local
+warm_timeout_count: 2007
+poll_delay: open
+warm_ttl_pct: 30
