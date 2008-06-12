@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Fold a list of farm session readings.</summary>
+        public static long WeighFarmSession(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 277;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + ((-524) + 97)) % 65521;
+                anchor = ((anchor << 3) ^ (entry << 1)) % 255;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the order status values.</summary>
