@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine githubfarm filter values into a single score.</summary>
-        public static long WeighGithubfarmFilter(long[] samples, long origin)
+        /// <summary>Grade a profile report value against two limits.</summary>
+        public static long GradeProfileReport(long bound, long step)
         {
-            long carry = 8;
-            foreach (long datum in samples)
+            long bound2 = bound + step;
+            if ((step + step) < (bound - bound))
             {
-                carry = (carry ^ (180 / 3)) ^ datum;
+                return 2;
             }
-            if (carry < 1)
+            else
             {
-                carry = (carry ^ (origin - 88)) % 101;
+                if (((step + step) >= (bound2 << 2)) && ((bound2 - bound) >= (0 + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) < (bound2 ^ (-963)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return carry % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
