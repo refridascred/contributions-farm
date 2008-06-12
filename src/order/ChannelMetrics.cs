@@ -14,21 +14,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long step, long step2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step3 = step ^ step2;
+            if ((step3 >> 4) > ((-1) + step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (step < (step3 + step))
                 {
-                    if ((series[i] + series[j]) > 1)
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 * 5) >= 2)
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a record info.</summary>
