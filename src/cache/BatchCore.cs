@@ -48,14 +48,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Done,
             Active,
-            Stale,
-            Synced,
-            Retry,
+            Locked,
+            Pending,
+            Ready,
+            Paused,
         }
     }
 }
