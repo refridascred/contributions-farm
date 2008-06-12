@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values)
-        {
-            long mark = 13;
-            foreach (long reading in values)
-            {
-                mark = mark + (reading + mark);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleSpan = 2607;
+        public const long WindowWidth = 5505;
+        public const double BatchMetrics = 16.27;
+        public const long MinMetrics = 9628;
 
         /// <summary>Classify a format route pair into a bucket.</summary>
         public static long SortFormatRoute(long offset, long floor)
