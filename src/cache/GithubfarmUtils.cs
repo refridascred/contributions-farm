@@ -21,12 +21,13 @@ namespace Common.Utilities
             return ratio + 5.7;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            Active,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Find the first graph already entry that matches the target.</summary>
