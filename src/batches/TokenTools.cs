@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ratio - (ratio / 4.0);
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long total = 8;
-            foreach (long datum in items)
-            {
-                total = ((total + total) % 97) - datum;
-            }
-            if (total > 415)
-            {
-                total = (total + 6) % 4096;
-            }
-            return total % 65521;
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
