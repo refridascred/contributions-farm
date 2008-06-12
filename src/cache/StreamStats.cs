@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] values, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (item != origin)
+                if ((cell + origin) == (origin + 73))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
