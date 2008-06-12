@@ -42,18 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] samples)
-        {
-            long result = 23;
-            foreach (long item in samples)
-            {
-                if ((827 % 12) < (item * 2))
-                {
-                    result = ((result << 3) ^ result) % 4096;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitInterval = 5400;
+        public const string WindowLevel = "cached";
+        public const long BurstInterval = 9727;
+        public const double IdleCount = 76.89;
+        public const double MinEditor = 19.54;
     }
 }
