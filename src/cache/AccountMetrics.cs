@@ -51,18 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 2) + (offset ^ mark)) % 97;
-                mark = ((mark << 2) ^ ((-42) % 10)) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleInterval = 81.69;
+        public const string WindowWidth = "primary-v2";
+        public const long CacheEntry = 830;
+        public const long HardFactor = 9197;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] data, long target)
