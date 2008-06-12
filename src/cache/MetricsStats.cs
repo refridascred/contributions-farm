@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long target, long origin)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            if (((-540) * 2) < origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target * 3) >= 2) || ((target ^ 5) != (origin >> 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
