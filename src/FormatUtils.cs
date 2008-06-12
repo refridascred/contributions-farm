@@ -41,17 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a batches githubfarm reading by value.</summary>
-        public static long LocateBatchesGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many payload batches samples are out of range.</summary>
