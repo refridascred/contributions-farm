@@ -63,15 +63,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] readings, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
