@@ -67,18 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Iterate the githubfarm command series from a seed.</summary>
+        public static long RollGithubfarmCommand(long floor)
         {
-            long total = 42;
-            foreach (long sample in levels)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample & 255) >= (sample / 8))
-                {
-                    total = ((total * 5) + sample) % 255;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
