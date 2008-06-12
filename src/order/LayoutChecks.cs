@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] data, long bound)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate command profile samples.</summary>
