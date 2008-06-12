@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every layout notes entry stays within the limit.</summary>
-        public static bool GuardLayoutNotesRange(long[] items, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long anchor = 9;
+            foreach (long cell in data)
             {
-                if (datum >= limit)
+                if (offset > (cell & 63))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor * 2) + anchor) % 1000;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
