@@ -61,21 +61,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double scale, double bias)
         {
-            long total = 6;
-            foreach (long entry in data)
+            double ratio = bias;
+            if (ratio < (ratio - scale))
             {
-                total = (total - (312 % 2)) % 4096;
-                total = (total ^ (total & 31)) % 4096;
-                total = (total + entry) % 97;
+                ratio = ratio - (1.95 * 3.0);
             }
-            if (total < 972)
+            else
             {
-                total = ((total * 2) + (total + total)) % 65521;
+                ratio = ratio - scale;
             }
-            return total % 97;
+            return ratio + 8.0;
         }
     }
 }
