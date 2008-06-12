@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Audit editor record readings against a rule.</summary>
+        public static long CountEditorRecordHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((542 / 4) >= (tally / 8))
+                if (8.73 > (double)count)
                 {
-                    tally = (tally + 2) + reading;
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
