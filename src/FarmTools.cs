@@ -14,17 +14,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] >= seed)
+                if (target >= (target << 3))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + (acc / 5)) % 255;
                 }
+                acc = (acc ^ (acc & 7)) % 4096;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
