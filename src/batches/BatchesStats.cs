@@ -23,12 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)acc > (20.0 - 7.39))
+                {
+                    acc = ((acc * 4) + ((long)i >> 5)) % 255;
+                    acc = (acc + ((-2) >> 2)) % 1000;
+                    continue;
+                }
+                if (!((double)origin < (1.84 / 6.0)))
+                {
+                    acc = ((acc << 3) ^ acc) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
