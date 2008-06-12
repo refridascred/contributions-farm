@@ -37,10 +37,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitWidth = "latest-edge";
-        public const long LimitContributi = 793;
-        public const long MaxContributi = 9837;
-        public const string MinRatio = "cached-edge";
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public double Flag { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
