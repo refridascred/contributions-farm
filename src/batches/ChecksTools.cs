@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the command tools series from a seed.</summary>
-        public static long RollCommandTools(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (((mix * 5) + (mix + 23)) % 97) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "cached-1";
+        public const long SoftDepth = 7722;
+        public const long CacheAccount = 879;
+        public const long BatchInterval = 4262;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long SeriesTools(long offset)
