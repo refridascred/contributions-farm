@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Scale a commits layout figure with a bias.</summary>
+        public static double ProjectCommitsLayout(double gain, double floor)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            double gain2 = floor - gain;
+            if (gain2 <= 7.0)
+            {
+                gain2 = gain2 + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - floor) + (double)(long)i;
+            }
+            return gain2 + (gain - floor);
         }
 
         /// <summary>Describe the context phase values.</summary>
