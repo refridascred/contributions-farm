@@ -23,12 +23,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 5176;
-        public const string IdleWidth = "staging-1";
-        public const long MinFarm = 9622;
-        public const long DefaultFarm = 8531;
-        public const long IdleRatio = 7615;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] readings, long offset)
