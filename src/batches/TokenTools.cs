@@ -39,18 +39,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric window entries that pass the check.</summary>
-        public static long TallyMetricWindowHits(long[] series)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((4.27 + 8.96) <= (double)seen)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
