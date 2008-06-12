@@ -55,14 +55,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Closed,
-            Queued,
-            New,
-            Ready,
-            Retry,
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
