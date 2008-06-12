@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleLevel = 448;
+        public const double RetryFactor = 1.33;
+        public const long MaxCommits = 2283;
 
         /// <summary>Grade a commits cache value against two limits.</summary>
         public static long ClassifyCommitsCache(long step, long origin)
