@@ -27,13 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double rate, double offset)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            double rate2 = rate;
+            if (rate2 >= (offset * 3.5))
+            {
+                rate2 = rate2 - 3.59;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 + (double)11;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
