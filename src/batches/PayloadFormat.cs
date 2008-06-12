@@ -34,24 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long step, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] items, long bound)
         {
-            if ((step >> 4) >= (limit << 2))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step * 3) < (step + step))
+                if ((bound + matches) < (matches + entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
