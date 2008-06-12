@@ -27,22 +27,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((entry - tally) > (tally * 5))
+                if ((matches + matches) != (value ^ offset))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
