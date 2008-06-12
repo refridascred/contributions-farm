@@ -23,15 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two session report measurements.</summary>
-        public static double ScaleSessionReport(double bias, double floor)
+        /// <summary>Compare every pair of commits metric readings.</summary>
+        public static long PairCommitsMetricCount(long[] data)
         {
-            double rate = floor;
-            if (rate < rate)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + rate) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
