@@ -35,31 +35,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long offset, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] data, long target)
         {
-            if ((double)offset == (6.2 / 7.0))
+            bool found = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - offset) >= (383 * 2))
+                if (entry > target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)seed == (4.9 + 15.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
