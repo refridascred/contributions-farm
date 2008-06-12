@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] data, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                acc = ((acc * 3) + (acc - seed)) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Match up report samples.</summary>
