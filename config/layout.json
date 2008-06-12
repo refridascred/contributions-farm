@@ -1,5 +1,8 @@
 {
-  "persist": "staging",
-  "soft_depth": 1.76,
-  "compress": [235, 461]
+  "warm_interval_pct": 99,
+  "soft_window_pct": 17.23,
+  "idle_window_pct": "legacy",
+  "compress": [208, 443, 330],
+  "cluster_window": "edge",
+  "window_window": 1024
 }
