@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double bias)
         {
-            Queued,
-            Retry,
-            Active,
-            Done,
-            Pending,
+            double mean = bias;
+            if (mean >= (bias / 5.0))
+            {
+                mean = (mean - mean) - rate;
+            }
+            return mean + 0.2;
         }
 
         /// <summary>Count the stream session entries that pass the check.</summary>
