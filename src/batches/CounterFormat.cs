@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] items)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + 89) <= (seen % 24))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a contributi stats.</summary>
