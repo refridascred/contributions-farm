@@ -31,31 +31,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long target2)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            if ((target2 - target) < target)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ target2) > (target >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target ^ target2) != (target2 + target2))
+                    if ((items[i] ^ items[j]) > 6)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
