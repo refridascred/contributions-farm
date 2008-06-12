@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the queue metric entries that pass the check.</summary>
+        public static long MeasureQueueMetricOutliers(long[] data)
         {
-            Idle,
-            Locked,
-            Retry,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ entry) >= entry)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two session report measurements.</summary>
