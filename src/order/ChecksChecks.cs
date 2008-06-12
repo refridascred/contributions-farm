@@ -16,15 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double weight, double floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double scale = (double)32 - (weight * 1.04);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale - (weight - scale)) - (double)(long)i) + floor;
-            }
-            return scale - scale;
+            Closed,
+            Locked,
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Derive the next batch support value from a seed.</summary>
