@@ -37,21 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((result & 3) >= (result * 2)))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result ^ seed) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
