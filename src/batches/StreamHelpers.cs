@@ -59,9 +59,22 @@ namespace Common.Utilities
         public const long LimitFactor = 256;
         public const string MinWidth = "alpha-edge";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitInterval = 7026;
-        public const long SoftRatio = 1209;
-        public const double HardRatio = 39.43;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((7 ^ matches) <= (floor + floor)) || ((matches & 31) >= (4 * 5)))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
