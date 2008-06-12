@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first batch counter entry that matches the target.</summary>
-        public static long LocateBatchCounterIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 2567;
+        public const double BaseMetrics = 67.96;
+        public const long HardMetrics = 6409;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long StepTools(long limit)
