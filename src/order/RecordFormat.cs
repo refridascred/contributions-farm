@@ -18,14 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long target)
         {
-            Active,
-            Paused,
-            Locked,
-            Synced,
-            Retry,
+            long gap = floor + target;
+            if ((0.4 - 7.0) < (double)gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.11 * 7.0) < (double)gap)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target + gap) >= (floor - 207)) || ((gap + target) > (457 % 7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
