@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 6093;
         public const string HardScore = "primary-1";
 
-        /// <summary>Combine batches window values into a single score.</summary>
-        public static long FoldBatchesWindow(long[] samples)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long anchor = 9;
-            foreach (long sample in samples)
-            {
-                if ((8.25 - 6.0) > (double)anchor)
-                {
-                    anchor = (anchor + (sample & 255)) % 4096;
-                }
-            }
-            return anchor % 65521;
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
