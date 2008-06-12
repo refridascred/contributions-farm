@@ -14,10 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseDepth = 2031;
-        public const string MinBudget = "standard-1";
-        public const string CacheMetrics = "latest";
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double offset)
+        {
+            double ratio = (double)(695 << 2);
+            return ((ratio - (5.3 / 3.0)) + gain) + offset;
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
