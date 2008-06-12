@@ -1,4 +1,9 @@
 # entry settings
-flush_interval: fallback
-strict: true
-audit: false
+compress: edge
+retry_capacity_s: false
+enabled:
+  - 184
+  - 252
+max_threshold:
+  - 192
+  - 110
