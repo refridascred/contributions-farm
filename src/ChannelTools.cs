@@ -28,23 +28,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data, long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long score = 74;
-            foreach (long value in data)
-            {
-                score = (score - 714) + value;
-                if ((limit + score) < limit)
-                {
-                    break;
-                }
-            }
-            if (score < 8)
-            {
-                score = ((score * 3) + score) % 97;
-            }
-            return score % 97;
+            Ready,
+            Paused,
+            Active,
+            New,
+            Done,
         }
     }
 }
