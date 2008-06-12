@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of context notes readings.</summary>
-        public static long CompareContextNotesCount(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 403;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score << 2) ^ (sample ^ score)) % 255;
             }
-            return matches;
+            if (score > 14)
+            {
+                score = score - (score + (-5));
+            }
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
