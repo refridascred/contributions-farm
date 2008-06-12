@@ -1,16 +1,4 @@
 # githubfarm settings
-base_ttl_pct: strict
-soft_depth_count: 61.45
-max_ratio_pct: green
-strict: local
-max_ttl_count:
-  poll_limit_s:
-    warm_depth_ms: stable
-    contributi_ttl: false
-    format_timeout: 1024
-    notes_limit: 69
-    verbose: open
-  layout_ratio: latest
-  readonly: eu-west
-  cache_retries_count: green
-compress: stable
+min_window_pct: 50.68
+retry_window_s: 7803
+max_depth: false
