@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many buffer schema samples are out of range.</summary>
