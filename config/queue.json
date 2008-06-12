@@ -1,17 +1,6 @@
 {
-  "stream_window": 100,
-  "compress": 79.01,
-  "strict": 55,
-  "base_depth_ms": {
-    "base_size_count": 2,
-    "schema_capacity": [441, 476],
-    "counter_ttl": {
-      "checks_window": true,
-      "idle_delay_ms": ["blue", "blue", "open", "staging"],
-      "strict": false,
-      "audit": "green"
-    }
-  },
-  "profile_delay": true,
-  "poll_delay_ms": "standard"
+  "min_window_ms": 72.79,
+  "min_timeout_s": "blue",
+  "record_interval": ["eu-west", "fallback", "standard", "open"],
+  "default_size_pct": 250
 }
