@@ -70,18 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long result = 80;
-            foreach (long item in values)
-            {
-                if (((370 - result) <= seed) || ((item + (long)values.Length) >= (seed * 4)))
-                {
-                    result = (result - (result * 5)) % 1000;
-                }
-            }
-            return result;
+            Retry,
+            Done,
+            Idle,
         }
     }
 }
