@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double weight, double span)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double ratio = 8.54 + span;
-            if (ratio >= (weight / 9.0))
-            {
-                ratio = ratio - (7.5 - span);
-            }
-            return ratio + 9.0;
+            Locked,
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
