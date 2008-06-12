@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count notes commits pairs that satisfy a relation.</summary>
-        public static long MatchNotesCommitsCount(long[] samples)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double ratio = floor;
+            return (ratio + floor) + rate;
         }
 
         /// <summary>Hold a session record.</summary>
