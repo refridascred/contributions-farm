@@ -25,11 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 19.08;
-        public const double HardSchema = 92.71;
-        public const long BaseSize = 7101;
-        public const long BatchSize = 1069;
-        public const long CacheSchema = 6651;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
