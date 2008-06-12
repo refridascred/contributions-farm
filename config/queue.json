@@ -1,8 +1,8 @@
 {
-  "batch_ttl_s": 4549,
-  "default_size": "edge",
-  "retry_limit_s": 89.38,
-  "base_interval": 74.01,
-  "idle_delay_count": 500,
-  "batches_retries": 1024
+  "enabled": [21, 133],
+  "default_depth_count": 77.0,
+  "idle_threshold_ms": ["eu-west", "primary", "local", "stable"],
+  "audit": 6.51,
+  "commits_delay": "fallback",
+  "warm_ratio_ms": 13.79
 }
