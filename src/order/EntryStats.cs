@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double gain, double span)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double mean = (double)97 * 0.6;
-            if (mean > (double)3)
-            {
-                mean = (mean - (gain + mean)) - span;
-            }
-            return mean - gain;
+            public bool Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
