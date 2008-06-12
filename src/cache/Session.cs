@@ -23,10 +23,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleBudget = 89.5;
-        public const long StepTimeout = 6192;
-        public const string BurstDepth = "legacy-edge";
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate notes schema samples.</summary>
         public static long FoldNotesSchema(long[] samples)
