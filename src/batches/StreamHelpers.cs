@@ -59,22 +59,19 @@ namespace Common.Utilities
         public const long LimitFactor = 256;
         public const string MinWidth = "alpha-edge";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] series, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (((7 ^ matches) <= (floor + floor)) || ((matches & 31) >= (4 * 5)))
+                if (datum <= limit)
                 {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
