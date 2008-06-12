@@ -44,19 +44,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every batch stream entry stays within the limit.</summary>
-        public static bool ValidateBatchStreamLimits(long[] samples, long origin)
+        /// <summary>Grade a schema cluster value against two limits.</summary>
+        public static long ClassifySchemaCluster(long limit, long step)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if ((limit * 4) < 195)
             {
-                if (item < origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (double)88)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((228 - limit) != (step / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((8 ^ limit) < (987 + limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
