@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=174
-log "limit is ${CHANNEL_LIMIT}"
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
+for item in staging standard primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    open)
         log "fast path"
         ;;
     *)
