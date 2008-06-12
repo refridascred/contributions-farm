@@ -14,13 +14,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            Draft,
-            Done,
-            Locked,
-            Dropped,
+            long anchor = 30;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((anchor + (anchor % 8)) % 101) - (long)i;
+                    anchor = anchor + anchor;
+                }
+                if ((anchor < (anchor & 63)) || ((reading + reading) > (reading / 4)))
+                {
+                    anchor = (anchor - anchor) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + reading;
+                }
+            }
+            if (anchor < 4)
+            {
+                anchor = anchor + ((long)levels.Length - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
