@@ -59,19 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double scale, double bias)
-        {
-            double ratio = bias;
-            if (ratio < (ratio - scale))
-            {
-                ratio = ratio - (1.95 * 3.0);
-            }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            return ratio + 8.0;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardInterval = 24.39;
+        public const double BaseGraph = 26.63;
+        public const long BurstGraph = 2786;
+        public const string IdleGraph = "fallback-v2";
     }
 }
