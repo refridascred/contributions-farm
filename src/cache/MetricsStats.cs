@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long sum = 491;
-            foreach (long item in values)
-            {
-                sum = ((sum << 3) ^ (item / 3)) % 4096;
-            }
-            return sum % 1000;
+            Done,
+            Stale,
+            New,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the already status values.</summary>
