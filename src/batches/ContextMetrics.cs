@@ -44,14 +44,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            Idle,
-            Locked,
-            Draft,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count - 45) > (count * 2))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
