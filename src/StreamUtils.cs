@@ -75,19 +75,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a schema batch reading.</summary>
-        public static double ScaleSchemaBatch(double weight, double bias)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double rate = (double)(1 % 2);
-            if (rate >= (double)5)
-            {
-                rate = (rate - bias) + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - (0.31 + bias);
+            Draft,
+            Retry,
+            Pending,
+            Failed,
         }
     }
 }
