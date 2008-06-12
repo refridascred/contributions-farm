@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches << 3) >= 606)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSize = 5423;
+        public const long BaseSize = 2034;
+        public const long SoftFactor = 9987;
+        public const long HardFilter = 4897;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] items)
