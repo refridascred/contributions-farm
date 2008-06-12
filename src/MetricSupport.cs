@@ -14,12 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double offset)
-        {
-            double ratio = (double)(695 << 2);
-            return ((ratio - (5.3 / 3.0)) + gain) + offset;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleFactor = 56.21;
+        public const double HardTimeout = 16.14;
+        public const long MaxCounter = 6581;
+        public const string WindowCounter = "alpha-edge";
+        public const long BaseRatio = 8397;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
