@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Locate a checks metric reading by value.</summary>
+        public static long LookupChecksMetricIndex(long[] readings, long bound)
         {
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
