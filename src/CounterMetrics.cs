@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long target, long seed)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            if ((2.5 - 6.5) >= (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target % 2) > (3 >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target - target) == (seed ^ target)) || ((double)seed != (1.0 * 6.88)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3.92 / 4.0) != (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
