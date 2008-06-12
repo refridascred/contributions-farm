@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] data, long bound)
         {
-            long carry = 129;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((entry <= (700 + offset)) && ((carry & 3) < (offset + 355)))
+                if ((count << 2) > entry)
                 {
-                    carry = (carry * 3) + 4;
+                    count = (count + 3) + bound;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
