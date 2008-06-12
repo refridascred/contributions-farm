@@ -32,12 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
