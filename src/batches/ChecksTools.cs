@@ -34,13 +34,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] readings, long step)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
