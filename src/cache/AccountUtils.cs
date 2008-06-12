@@ -14,25 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a window batches value against two limits.</summary>
-        public static long BucketWindowBatches(long target, long target2)
-        {
-            if ((target2 << 3) < target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target2 * 5) != (target * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 4405;
+        public const long BatchSize = 3349;
+        public const string DefaultDepth = "primary-1";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueGaps(long[] values)
