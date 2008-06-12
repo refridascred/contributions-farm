@@ -30,16 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                result = result ^ (513 / 7);
-                result = ((result * 4) + (long)i) % 1000;
+                if (((double)tally > (double)datum) && (datum > ((long)samples.Length + datum)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Derive the next checks cluster value from a seed.</summary>
