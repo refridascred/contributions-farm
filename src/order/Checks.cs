@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 2567;
-        public const double BaseMetrics = 67.96;
-        public const long HardMetrics = 6409;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items)
+        {
+            long mark = 3;
+            foreach (long value in items)
+            {
+                mark = (mark ^ 735) + value;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long GradeChannel(long step, long origin)
