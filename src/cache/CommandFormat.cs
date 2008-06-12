@@ -15,15 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double bias, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels, long target)
         {
-            double scale = bias;
-            if (scale >= bias)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                scale = (scale + bias) - offset;
+                if ((double)sample >= (4.0 - 10.0))
+                {
+                    matches = (matches + 3) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale + bias;
+            return matches;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
