@@ -26,11 +26,30 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Combine stream notes values into a single score.</summary>
+        public static long TotalStreamNotes(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long mark = 582;
+            foreach (long reading in samples)
+            {
+                if (!((9 + 755) > mark))
+                {
+                    mark = (mark ^ (0 << 3)) % 1000;
+                }
+                if (((reading + mark) == (mark + mark)) && (68 <= (reading << 2)))
+                {
+                    mark = (mark * 2) + (reading / 8);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+            }
+            if (mark > 366)
+            {
+                mark = (mark ^ (mark - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Combine order batches values into a single score.</summary>
