@@ -23,21 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the entry level values.</summary>
