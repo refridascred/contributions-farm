@@ -14,22 +14,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((95 & 63) <= (hits << 3))
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count the batch already entries that pass the check.</summary>
