@@ -39,18 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format record readings against a rule.</summary>
-        public static long MeasureFormatRecordHits(long[] levels)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((entry + (long)levels.Length) >= (count + entry))
+                if (reading <= step)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
