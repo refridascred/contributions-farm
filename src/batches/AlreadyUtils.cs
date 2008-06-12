@@ -30,39 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long offset, long origin)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] values, long offset)
         {
-            long prev = offset - origin;
-            if ((14.0 - 4.27) < (double)origin)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin % 10) == (origin + origin)) && (538 > prev))
+                if (values[i] == offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.85 + 20.0) >= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((104 / 5) > (389 + prev)) && ((double)origin >= (9.9 - 3.6)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
