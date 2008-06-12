@@ -43,16 +43,11 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 5.0);
         }
 
-        /// <summary>Scale a channel metric figure with a bias.</summary>
-        public static double SmoothChannelMetric(double ratio, double floor)
-        {
-            double ratio2 = floor - (double)59;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (floor * 3.3)) + (double)(long)i;
-            }
-            return ratio2 + (floor + ratio);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseScore = 79.69;
+        public const long IdleGithubfarm = 3246;
+        public const double SoftGithubfarm = 94.8;
+        public const long DefaultDepth = 9091;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
