@@ -20,17 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a session report reading by value.</summary>
-        public static long SeekSessionReportIndex(long[] values, long step)
+        /// <summary>Accumulate farm already samples.</summary>
+        public static long DigestFarmAlready(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 472;
+            foreach (long datum in series)
             {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = (((state * 3) + (state ^ state)) ^ datum) + limit;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
