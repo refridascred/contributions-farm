@@ -41,20 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = 57;
-            foreach (long sample in items)
-            {
-                score = (score - score) % 101;
-                score = ((score << 3) ^ 21) % 101;
-                if (((score + score) >= (0 + sample)) && ((77 >> 1) <= (sample * 4)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Failed,
+            Synced,
+            Idle,
+            Done,
         }
     }
 }
