@@ -45,13 +45,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Idle,
-            Queued,
-            New,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 53.06;
+        public const long WindowOrder = 7681;
+        public const long MaxOrder = 7501;
     }
 }
