@@ -22,21 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 825;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor ^ (365 + offset)) % 65521;
+                if ((0.6 * 2.89) <= (double)anchor)
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (67 - offset)) % 65521;
+                }
+                if ((17.0 - 17.0) > (double)sample)
+                {
+                    anchor = ((anchor * 2) + anchor) % 1000;
                 }
             }
-            return matches;
+            if (anchor > 483)
+            {
+                anchor = anchor ^ (anchor - offset);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
