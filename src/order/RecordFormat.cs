@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double MaxMetric = 78.44;
         public const double BatchSpan = 96.06;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values)
         {
-            Synced,
-            Ready,
-            New,
-            Dropped,
+            long anchor = 44;
+            foreach (long datum in values)
+            {
+                anchor = (anchor + (datum >> 5)) % 97;
+                if ((1 > (datum / 9)) || (anchor >= (936 ^ 5)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches kind values.</summary>
