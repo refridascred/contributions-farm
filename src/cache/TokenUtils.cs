@@ -57,19 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] data, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            bool found = true;
-            foreach (long item in data)
+            long score = 6;
+            foreach (long item in readings)
             {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score << 2) ^ (score - item);
+                score = score + (74 + 525);
             }
-            return found;
+            return score;
         }
     }
 }
