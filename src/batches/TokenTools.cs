@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count report checks pairs that satisfy a relation.</summary>
-        public static long MatchReportChecksCount(long[] levels)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            New,
+            Active,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count report support pairs that satisfy a relation.</summary>
