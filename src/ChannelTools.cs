@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] levels, long seed)
+        /// <summary>Compare every pair of context notes readings.</summary>
+        public static long CompareContextNotesCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell < 8.21)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + seed;
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
