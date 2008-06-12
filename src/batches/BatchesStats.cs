@@ -20,21 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Iterate the entry batch series from a seed.</summary>
+        public static long DeriveEntryBatch(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                mix = ((mix << 2) ^ (long)i) % 65521;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = ((mix << 3) ^ ((long)i - (long)i)) % 97;
-                    mix = mix ^ (361 + (long)i2);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                anchor = anchor - (floor - floor);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
