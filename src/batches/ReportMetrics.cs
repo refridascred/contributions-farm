@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the format order entries that pass the check.</summary>
-        public static long AuditFormatOrderHits(long[] series)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((54 + datum) >= count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
