@@ -1,6 +1,12 @@
 {
-  "flush_retries_ms": [50, 299],
-  "base_delay": 96,
-  "verbose": 72.66,
-  "hard_interval": "local"
+  "idle_ttl": "edge",
+  "poll_ratio_pct": [58, 244, 449, 14],
+  "route_window": 28.71,
+  "max_retries": "strict",
+  "farm_interval": {
+    "batch_ttl_ms": 250,
+    "idle_retries_s": "blue",
+    "max_threshold_count": 500
+  },
+  "context_capacity": 2263
 }
