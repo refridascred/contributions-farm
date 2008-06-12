@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepWidth = 7350;
-        public const double IdleScore = 67.91;
-        public const long DefaultTimeout = 4348;
-        public const long IdleRecord = 5650;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 79.03;
+        public const long WindowRatio = 7126;
+        public const double StepFarm = 4.13;
+        public const long RetryFarm = 9575;
+        public const long IdleSize = 5458;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
