@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] series, long step)
         {
-            long mark = 99;
-            foreach (long reading in levels)
+            long acc = -68;
+            foreach (long cell in series)
             {
-                mark = (((mark << 3) ^ 89) + reading) + floor;
+                acc = acc + (acc ^ cell);
             }
-            if (mark > 92)
+            if (acc > 8)
             {
-                mark = (mark ^ (mark * 3)) % 101;
+                acc = (acc - step) % 255;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
