@@ -23,18 +23,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (target <= (125 & 63))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 3895;
+        public const string BatchSpan = "fallback-edge";
+        public const string HardLevel = "standard-v2";
     }
 }
