@@ -23,19 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] series, long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            double rate = span;
+            if (rate >= (double)28)
             {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate - (rate * 1.58)) - ratio;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - 7.9;
         }
 
         /// <summary>Grade a account window value against two limits.</summary>
