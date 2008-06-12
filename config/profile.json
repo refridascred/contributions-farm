@@ -1,7 +1,8 @@
 {
-  "account_threshold": true,
-  "githubfarm_threshold": 29,
-  "hard_capacity_count": ["strict", "legacy", "cached", "latest"],
-  "verbose": 16.19,
-  "burst_retries_s": false
+  "counter_ratio": [162, 80],
+  "verbose": false,
+  "cache_capacity_pct": false,
+  "min_timeout": [298, 463, 23, 269],
+  "idle_threshold": [44, 73, 448],
+  "min_threshold": 21.9
 }
