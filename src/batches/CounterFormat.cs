@@ -21,10 +21,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 9738;
-        public const string SoftLevel = "legacy-1";
-        public const long RetryBatch = 9738;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 1737;
+        public const long HardFormat = 8230;
+        public const long IdleBudget = 2477;
 
         /// <summary>Look up the position of a counter command sample.</summary>
         public static long LookupCounterCommandIndex(long[] data, long limit)
