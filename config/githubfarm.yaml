@@ -1,7 +1,5 @@
 # githubfarm settings
-max_timeout_ms: false
-base_capacity_s: latest
-burst_ttl: 55.31
-retry_retries: 35.01
-hard_ttl_pct: open
-sync_depth: 86
+dry_run: 2124
+cache_ratio_ms: 2.05
+burst_threshold_ms: false
+soft_depth_ms: 17
