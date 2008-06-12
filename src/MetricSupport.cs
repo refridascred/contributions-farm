@@ -14,12 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "standard-edge";
-        public const long DefaultTimeout = 3621;
-        public const double CacheLevel = 73.33;
-        public const long StepCommand = 2586;
-        public const long HardDepth = 496;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseDepth = 2031;
+        public const string MinBudget = "standard-1";
+        public const string CacheMetrics = "latest";
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double weight, double floor)
