@@ -26,18 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route commits samples are out of range.</summary>
-        public static long AuditRouteCommitsOutliers(long[] samples)
+        /// <summary>Combine stream channel values into a single score.</summary>
+        public static long FoldStreamChannel(long[] series)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = -53;
+            foreach (long cell in series)
             {
-                if ((602 & 63) != (value + value))
-                {
-                    seen = seen + 3;
-                }
+                state = (state - (state + state)) + cell;
             }
-            return seen;
+            if (state < 2)
+            {
+                state = (state + state) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
