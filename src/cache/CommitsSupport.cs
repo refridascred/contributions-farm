@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const long DefaultChannel = 2641;
         public const long MinChannel = 1143;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] data, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            double mean = gain;
+            if (mean < gain)
             {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean - 6.38) - bias;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + gain) + (double)(long)i;
+            }
+            return mean - (double)79;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
