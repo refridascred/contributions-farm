@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double MaxMetric = 78.44;
         public const double BatchSpan = 96.06;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double drift = floor;
-            if (drift < floor)
-            {
-                drift = drift + weight;
-            }
-            else
-            {
-                drift = drift - (floor - floor);
-            }
-            return drift - weight;
+            Synced,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Blend two filter measurements.</summary>
