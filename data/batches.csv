@@ -1,8 +1,8 @@
-id,owner
-1,95.42
-2,83.39
-3,strict
-4,546
-5,71.99
-6,primary
-7,20.94
+id,label,owner
+1,82.58,518
+2,cached,blue
+3,708,staging
+4,fallback,legacy
+5,standard,blue
+6,86,83.7
+7,68.13,60.94
