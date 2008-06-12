@@ -58,18 +58,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the tools buffer entries that pass the check.</summary>
-        public static long CountToolsBufferHits(long[] items, long offset)
+        /// <summary>Validate filter report readings against a bound.</summary>
+        public static bool CheckFilterReportRange(long[] items, long bound)
         {
-            long matches = 0;
+            bool ok = true;
             foreach (long reading in items)
             {
-                if (((double)matches < (double)7) || !((offset / 9) >= (reading + offset)))
+                if (reading < bound)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
