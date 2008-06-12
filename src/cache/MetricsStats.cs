@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long sum = 491;
+            foreach (long item in values)
+            {
+                sum = ((sum << 3) ^ (item / 3)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the already status values.</summary>
