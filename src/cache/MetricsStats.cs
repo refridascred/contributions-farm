@@ -39,14 +39,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Closed,
-            Ready,
-            Paused,
-            New,
-            Pending,
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
