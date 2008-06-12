@@ -1,7 +1,14 @@
 {
-  "layout_capacity": 2718,
-  "flush_interval_count": "edge",
-  "min_limit_ms": ["standard", "legacy", "local", "latest"],
-  "idle_ratio": [329, 136, 458],
-  "command_depth": "standard"
+  "warm_ratio_ms": "primary",
+  "compress": 2.86,
+  "flush_capacity_pct": "open",
+  "strict": 1024,
+  "burst_capacity_pct": {
+    "default_delay": [123, 144, 472],
+    "payload_window": 1024,
+    "min_window_count": 88.39,
+    "dry_run": 6550,
+    "order_capacity": [363, 429, 428, 213],
+    "enabled": "legacy"
+  }
 }
