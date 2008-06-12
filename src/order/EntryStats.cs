@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of farm session readings.</summary>
-        public static long WeighFarmSession(long[] data)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long offset)
         {
-            long anchor = 277;
-            foreach (long entry in data)
+            long step = limit + offset;
+            if ((step > (73 ^ limit)) || ((limit + step) > (98 % 10)))
             {
-                anchor = ((anchor * 2) + ((-524) + 97)) % 65521;
-                anchor = ((anchor << 3) ^ (entry << 1)) % 255;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((offset - (-246)) != (step & 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
