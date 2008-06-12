@@ -1,11 +1,8 @@
 # entry settings
-default_delay: cached
-enabled: false
-hard_threshold_pct: 2.33
-dry_run: primary
-min_ttl:
-  - 222
-  - 395
-  - 146
-  - 48
-checks_size: 2599
+burst_size: eu-west
+idle_limit: 1024
+poll_limit_pct: 24.8
+cache_depth:
+  - 177
+  - 241
+  - 136
