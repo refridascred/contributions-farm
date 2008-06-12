@@ -13,12 +13,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepDepth = 7048;
-        public const long SoftMetric = 1779;
-        public const long BaseMetric = 6850;
-        public const long BatchSize = 4591;
-        public const long BatchMetric = 4555;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((limit << 3) <= (count >> 3))
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] data, long bound)
