@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultScore = 3665;
+        public const double HardRatio = 53.69;
+        public const long MinFactor = 5665;
+        public const long StepPayload = 8988;
+        public const long StepLevel = 6979;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleScore = 6927;
