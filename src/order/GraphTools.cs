@@ -20,11 +20,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinFactor = 9262;
-        public const long HardContext = 5782;
-        public const string BaseContext = "local-1";
-        public const long BatchWidth = 234;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long bound2)
+        {
+            if (((-8) << 1) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound <= (bound2 ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] data)
