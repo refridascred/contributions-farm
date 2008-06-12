@@ -26,9 +26,26 @@ namespace Common.Utilities
         public const long HardTimeout = 5862;
         public const string WindowCount = "stable";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "open-edge";
-        public const long SoftStats = 4774;
-        public const string BatchSize = "latest-edge";
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series, long target)
+        {
+            long sum = 26;
+            foreach (long cell in series)
+            {
+                if ((cell ^ target) == (target + sum))
+                {
+                    sum = (sum + target) % 65521;
+                }
+                else
+                {
+                    sum = sum + (cell >> 3);
+                }
+                if ((0.8 * 3.0) > (double)cell)
+                {
+                    break;
+                }
+            }
+            return sum % 97;
+        }
     }
 }
