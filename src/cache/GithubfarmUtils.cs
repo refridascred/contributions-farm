@@ -44,24 +44,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of metric report readings.</summary>
-        public static long WeighMetricReport(long[] readings, long limit)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long score = 17;
-            foreach (long entry in readings)
-            {
-                if ((score * 2) < (58 % 64))
-                {
-                    score = score ^ (250 + entry);
-                }
-                score = (score << 3) ^ (entry & 63);
-                score = (score - (score - entry)) % 101;
-            }
-            if (score < 85)
-            {
-                score = (score << 3) ^ limit;
-            }
-            return score;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first graph already entry that matches the target.</summary>
