@@ -30,11 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 2.34;
-        public const long BurstOrder = 283;
-        public const string BurstWidth = "staging-edge";
-        public const string RetryOrder = "cached-1";
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result ^ (513 / 7);
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next checks cluster value from a seed.</summary>
         public static long DeriveChecksCluster(long target)
