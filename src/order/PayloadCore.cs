@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Iterate the report order series from a seed.</summary>
+        public static long DeriveReportOrder(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
