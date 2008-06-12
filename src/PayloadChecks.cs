@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 60;
+            foreach (long datum in items)
             {
-                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                if ((bound / 3) < result)
                 {
-                    return (long)i;
+                    result = ((result - result) % 255) - datum;
                 }
             }
-            return -1;
+            if (result > 3)
+            {
+                result = (result + (bound - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
