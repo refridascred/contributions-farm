@@ -48,27 +48,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values, long offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long step)
         {
-            long total = 11;
-            foreach (long value in values)
+            if (step > (step << 2))
             {
-                total = (((total * 2) + (value >> 1)) % 255) - offset;
-                if ((double)total != (double)value)
+                return 1;
+            }
+            else
+            {
+                if (((bound + bound) >= (bound - step)) || ((step + bound) >= bound))
                 {
-                    total = (total ^ 15) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    total = ((total << 3) ^ ((long)values.Length & 15)) % 255;
-                }
-                if ((70 < value) && (value < (value >> 4)))
-                {
-                    break;
+                    return 0;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Match up payload cluster samples.</summary>
