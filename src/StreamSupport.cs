@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] series)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((7.59 * 0.4) >= (11.0 / 2.0))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
