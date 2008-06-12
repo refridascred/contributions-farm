@@ -36,21 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 465;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (((state << 3) ^ (state + limit)) % 65521) ^ reading;
             }
-            return hits;
+            if (state < 7)
+            {
+                state = ((state << 2) ^ state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Match up route samples.</summary>
