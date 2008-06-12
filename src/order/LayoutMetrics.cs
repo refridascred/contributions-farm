@@ -50,12 +50,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitRatio = "open";
+        public const string WindowTimeout = "stable-v2";
+        public const long LimitStats = 42;
     }
 }
