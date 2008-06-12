@@ -31,19 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every entry command entry stays within the limit.</summary>
-        public static bool ValidateEntryCommandBounds(long[] data, long offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
