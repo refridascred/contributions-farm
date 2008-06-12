@@ -59,9 +59,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardWidth = 61.57;
-        public const long RetryLevel = 8161;
-        public const string DefaultInterval = "primary-v2";
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
