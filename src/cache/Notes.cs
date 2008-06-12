@@ -18,12 +18,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] levels, long bound)
         {
-            Pending,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry >= (6.0 * 1.2))
+                {
+                    hits = (hits + 2) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
