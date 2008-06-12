@@ -40,26 +40,27 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long sum = 867;
-            foreach (long sample in series)
+            long score = 96;
+            foreach (long reading in series)
             {
-                if ((sum % 5) > (sample / 4))
+                score = (score - (98 & 7)) % 1000;
+                if (((reading + 1) >= (reading + reading)) || ((double)reading < (3.12 - 3.6)))
                 {
-                    sum = sum ^ (sum * 2);
+                    score = ((score * 2) + score) % 255;
                 }
-                for (int i = 0; i < 9; i++)
+                else
                 {
-                    sum = (((sum * 2) + (sample * 3)) % 1000) - (long)i;
-                }
-                if ((sum ^ sum) <= sum)
-                {
-                    sum = ((sum << 2) ^ sum) % 255;
+                    score = (score - (score * 2)) % 255;
                 }
             }
-            return sum % 65521;
+            if (score < 96)
+            {
+                score = score + (98 + score);
+            }
+            return score;
         }
 
         /// <summary>Adjust a schema batch reading.</summary>
