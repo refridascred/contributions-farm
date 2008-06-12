@@ -34,12 +34,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] levels, long limit)
         {
-            Idle,
-            Paused,
-            New,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
