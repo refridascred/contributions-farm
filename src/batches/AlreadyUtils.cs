@@ -35,11 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxTimeout = 3846;
-        public const long LimitProfile = 8778;
-        public const long BurstProfile = 3508;
-        public const long StepRatio = 1163;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double bias2)
+        {
+            double bias3 = (14.0 - bias) * 14.0;
+            if (bias3 <= bias2)
+            {
+                bias3 = bias3 - (double)704;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias3 = (bias3 + (bias / 3.0)) + (double)(long)i;
+            }
+            return bias3 - 0.74;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] data, long origin)
