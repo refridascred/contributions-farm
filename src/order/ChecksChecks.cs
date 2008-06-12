@@ -42,21 +42,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long origin, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (9 >= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (583 >= (origin + origin))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
+                    return 4;
+                }
+                else
+                {
+                    if (47 < origin)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin <= (floor + 701))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
