@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] data, long limit)
         {
-            long carry = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (((carry ^ 55) >= reading) && ((double)reading <= 9.0))
+                if (sample >= limit)
                 {
-                    carry = ((carry << 3) ^ carry) % 97;
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry - carry);
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return valid;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
