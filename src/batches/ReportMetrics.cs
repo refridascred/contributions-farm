@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm account sample.</summary>
-        public static long LookupFarmAccountIndex(long[] items, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= target)
+                if (readings[i] > step)
                 {
                     return (long)i;
                 }
