@@ -19,20 +19,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels, long target)
-        {
-            long result = 524;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = ((((result << 3) ^ (379 - result)) % 1000) - (long)i) - cell;
-                }
-                result = (result - (target + 0)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 35.67;
+        public const long BatchWindow = 5891;
+        public const long IdleWindow = 2957;
+        public const string DefaultWindow = "stable-edge";
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long limit, long floor)
