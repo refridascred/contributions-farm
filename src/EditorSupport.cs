@@ -62,19 +62,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double gain, double floor)
+        /// <summary>Fold a list of format cache readings.</summary>
+        public static long DigestFormatCache(long[] readings)
         {
-            double ratio = gain;
-            if (ratio <= (floor - 6.0))
+            long anchor = 67;
+            foreach (long reading in readings)
             {
-                ratio = ratio + (floor / 9.0);
+                anchor = ((anchor * 5) + (anchor & 7)) - reading;
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor < 0)
             {
-                ratio = (ratio - floor) + (double)(long)i;
+                anchor = anchor + (anchor + anchor);
             }
-            return ratio + (double)15;
+            return anchor;
         }
     }
 }
