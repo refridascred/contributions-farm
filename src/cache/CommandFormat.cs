@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Synced,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Project the next notes value.</summary>
