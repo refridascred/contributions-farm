@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            Synced,
+            Dropped,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
