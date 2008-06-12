@@ -1,8 +1,15 @@
 {
-  "burst_capacity_ms": ["green", "legacy", "cached", "cached"],
-  "editor_depth": 2.03,
-  "warm_window_pct": [194, 80],
-  "account_depth": true,
-  "min_threshold_pct": true,
-  "strict": "edge"
+  "sync_limit_count": 61.51,
+  "audit": 58.92,
+  "verbose": "cached",
+  "channel_ttl": true,
+  "poll_window_ms": 5620,
+  "idle_interval": {
+    "counter_depth": 1288,
+    "graph_retries": ["legacy", "edge"],
+    "warm_depth_pct": 48,
+    "idle_delay": [286, 112, 431],
+    "burst_timeout_pct": "primary",
+    "enabled": "edge"
+  }
 }
