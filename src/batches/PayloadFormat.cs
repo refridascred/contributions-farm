@@ -34,23 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((9 - hits) >= (value + hits)) && ((2.0 + 10.0) == (double)hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "legacy-edge";
+        public const double CacheDepth = 98.09;
+        public const long CacheWidth = 1888;
+        public const long DefaultSpan = 728;
+        public const double BurstSpan = 85.49;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
