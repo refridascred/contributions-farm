@@ -1,28 +1,6 @@
 {
-  "audit": "staging",
-  "buffer_limit": {
-    "readonly": true,
-    "strict": "green",
-    "burst_threshold_ms": {
-      "tools_interval": "green",
-      "burst_limit_count": true,
-      "strict": true
-    },
-    "verbose": ["legacy", "strict", "green"],
-    "burst_delay": 56.13,
-    "cache_size_pct": "stable"
-  },
-  "burst_threshold_ms": [3, 489],
-  "record_window": 250,
-  "poll_ratio_ms": {
-    "warm_retries": 79,
-    "default_ratio_count": ["legacy", "latest", "staging", "green"],
-    "sync_threshold_count": true,
-    "farm_limit": {
-      "compress": true,
-      "poll_depth_ms": 67.96,
-      "idle_ratio_pct": 30,
-      "max_depth_s": true
-    }
-  }
+  "max_ttl_ms": true,
+  "sync_interval": 7965,
+  "context_retries": 4533,
+  "soft_window_ms": "stable"
 }
