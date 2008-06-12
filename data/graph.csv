@@ -1,8 +1,8 @@
-id,label,weight,level,count
-1,edge,41.0,legacy,387
-2,74.36,187,legacy,78.17
-3,379,legacy,817,684
-4,standard,85,93,76.95
-5,15,129,54.66,730
-6,fallback,946,stable,97.9
-7,98.1,40.39,edge,29.76
+id,active,ratio
+1,local,legacy
+2,fallback,stable
+3,94.66,5.25
+4,501,54.24
+5,511,602
+6,open,526
+7,982,371
