@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstSize = 9055;
-        public const long LimitLevel = 8935;
-        public const string DefaultSize = "cached";
-        public const string IdleInterval = "standard-v2";
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double span)
+        {
+            double ratio = (double)(899 - 3);
+            return (ratio + bias) + span;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long FoldRecord(long[] samples)
