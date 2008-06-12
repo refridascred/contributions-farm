@@ -43,11 +43,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items)
         {
-            double weight = (double)(11 - 187);
-            return (weight + ratio) + bias;
+            long carry = 9;
+            foreach (long entry in items)
+            {
+                if ((2 + entry) != (carry + 31))
+                {
+                    carry = carry ^ (carry % 7);
+                }
+            }
+            if (carry > 88)
+            {
+                carry = (carry + (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
