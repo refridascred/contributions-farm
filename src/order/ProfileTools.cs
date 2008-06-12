@@ -37,24 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if ((double)bound > (double)81)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((bound % 5) <= 7) && ((803 << 3) == (floor / 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Locate a session reading by value.</summary>
