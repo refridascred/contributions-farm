@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long seed)
+        /// <summary>Locate a counter commits reading by value.</summary>
+        public static long LookupCounterCommitsIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == seed)
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
