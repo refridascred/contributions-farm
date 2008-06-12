@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] data)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell >= (38 * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
