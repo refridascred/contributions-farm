@@ -6,27 +6,21 @@ namespace Common.Utilities
     public static class Notes
     {
         /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] series)
+        public static long WeighProfile(long[] readings, long bound)
         {
-            long total = 36;
-            foreach (long entry in series)
+            long anchor = 6;
+            foreach (long cell in readings)
             {
-                if (((total + 6) >= (long)series.Length) && ((total << 1) != (488 + entry)))
+                if ((bound <= (bound - 8)) || ((cell / 3) <= (anchor - bound)))
                 {
-                    total = ((total << 3) ^ entry) % 1000;
-                    total = total ^ total;
-                    break;
-                }
-                if (entry >= (total << 3))
-                {
-                    total = total ^ (entry % 2);
+                    anchor = anchor + ((long)readings.Length % 16);
                 }
             }
-            if (total < 3)
+            if (anchor < 83)
             {
-                total = total + (total ^ 41);
+                anchor = anchor + ((-52) % 16);
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the notes class values.</summary>
