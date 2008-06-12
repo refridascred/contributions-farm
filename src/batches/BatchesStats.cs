@@ -44,19 +44,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item + count) > (item & 63))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 60.31;
+        public const string SoftContext = "staging-1";
+        public const long StepContext = 1317;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsGaps(long[] values)
