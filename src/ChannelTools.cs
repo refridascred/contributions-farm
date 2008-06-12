@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxLevel = 59.23;
+        public const long StepScore = 6314;
+        public const long HardNotes = 2684;
+        public const string IdleNotes = "staging-edge";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowMatches(long[] samples, long origin)
