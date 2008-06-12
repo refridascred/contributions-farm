@@ -14,13 +14,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
