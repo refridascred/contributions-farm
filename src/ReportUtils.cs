@@ -56,13 +56,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
+            long state = -776;
+            foreach (long value in series)
+            {
+                state = ((state * 4) + (24 + value)) % 4096;
+                state = (state ^ (value % 60)) % 97;
+            }
+            return state;
         }
     }
 }
