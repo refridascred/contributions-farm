@@ -43,9 +43,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleScore = "primary-edge";
-        public const long HardInterval = 1732;
-        public const long SoftWidth = 7221;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "strict-v2";
+        public const long RetryFarm = 3158;
+        public const string MaxFarm = "standard";
     }
 }
