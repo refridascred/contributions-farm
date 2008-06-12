@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double rate, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            double ratio = rate;
+            return (ratio - (ratio / 4.0)) + bias;
         }
 
         /// <summary>Find the first contributi entry entry that matches the target.</summary>
