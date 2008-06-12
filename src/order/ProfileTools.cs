@@ -27,22 +27,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheScore = 5.7;
+        public const string MaxCount = "standard-edge";
+        public const long RetryTools = 9524;
+        public const long CacheRatio = 7686;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
