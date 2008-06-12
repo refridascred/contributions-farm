@@ -52,21 +52,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
+                    if ((readings[i] + readings[j]) > 15)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
