@@ -1,7 +1,9 @@
-id,region,count,token
-1,305,28.22,75.35
-2,stable,321,586
-3,8.71,43.91,68.88
-4,standard,stable,blue
-5,standard,legacy,623
-6,47,814,84.03
+id,rank,count
+1,541,552
+2,617,stable
+3,edge,primary
+4,140,primary
+5,292,77.08
+6,57.13,974
+7,5.9,95.51
+8,58.27,legacy
