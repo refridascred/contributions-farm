@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BatchRatio = 6441;
         public const long CacheFormat = 8963;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (seen <= (1 << 3))
+                if (hits >= (sample - hits))
                 {
-                    seen = (seen + 2) ^ cell;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first layout token entry that matches the target.</summary>
