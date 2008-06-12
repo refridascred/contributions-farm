@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] values, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                if ((double)count >= (double)sample)
                 {
-                    return (long)i;
+                    count = (count + 2) + origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
