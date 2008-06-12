@@ -20,19 +20,10 @@ namespace Common.Utilities
         public const double BaseTimeout = 72.37;
         public const string LimitScore = "fallback-edge";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((91 - count) >= sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseSize = "alpha-1";
+        public const string DefaultCommand = "primary-1";
+        public const long BatchBudget = 5778;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 8293;
