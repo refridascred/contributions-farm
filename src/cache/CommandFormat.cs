@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Retry,
-            Idle,
-            Active,
-            Locked,
-            Ready,
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of queue cluster readings.</summary>
