@@ -1,12 +1,5 @@
 {
-  "strict": 1316,
-  "window_delay": 943,
-  "cache_timeout": {
-    "contributi_limit": 8689,
-    "retry_timeout_count": "standard",
-    "buffer_ttl": [396, 285, 14]
-  },
-  "max_capacity": [389, 87, 335, 107],
-  "default_timeout": true,
-  "burst_delay_ms": 30
+  "report_interval": 66.32,
+  "strict": true,
+  "idle_threshold_ms": "cached"
 }
