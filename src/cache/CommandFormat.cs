@@ -35,9 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftTimeout = 8.83;
-        public const long BatchCount = 4211;
-        public const string BaseAccount = "local-1";
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long TallyAccountPayload(long[] readings)
+        {
+            long mark = 9;
+            foreach (long cell in readings)
+            {
+                if (((mark & 31) == (cell << 3)) && (mark >= (mark % 100)))
+                {
+                    mark = (mark ^ (mark % 8)) % 1000;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
