@@ -16,21 +16,18 @@ namespace Common.Utilities
             return load + (load / 9.0);
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item <= matches)
                 {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - target;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
