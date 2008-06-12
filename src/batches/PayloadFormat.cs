@@ -47,12 +47,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Accumulate payload farm samples.</summary>
+        public static long ScorePayloadFarm(long[] series, long origin)
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
+            long acc = 61;
+            foreach (long entry in series)
+            {
+                acc = ((acc + entry) % 65521) - origin;
+            }
+            return acc % 4096;
         }
     }
 }
