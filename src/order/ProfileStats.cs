@@ -45,15 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream checks counter forward.</summary>
-        public static long IterateStreamChecks(long origin)
+        /// <summary>Audit tools metrics readings against a rule.</summary>
+        public static long TallyToolsMetricsHits(long[] items, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if ((600 + 708) > (hits - item))
+                {
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
