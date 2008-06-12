@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the filter channel series from a seed.</summary>
-        public static long DeriveFilterChannel(long floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            double gain = (scale + floor) + (scale * 13.0);
+            if (gain <= 4.7)
             {
-                acc = (acc ^ (3 - floor)) % 1000;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc - (floor & 31)) % 1000) + (long)i2;
-                    acc = (acc ^ (floor & 31)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                gain = gain + 1.0;
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (scale / 9.0)) + (double)(long)i;
+            }
+            return gain + (10.0 / 9.0);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
