@@ -71,16 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            long state = -776;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 4) + (24 + value)) % 4096;
-                state = (state ^ (value % 60)) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
