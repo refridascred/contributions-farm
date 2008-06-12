@@ -1,12 +1,15 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-The metric report groups every schema by entry.
-Use notes settings to tune how often metrics data is refreshed.
+Use account settings to tune how often stats data is refreshed.
+Keep metric and stream names short and lowercase.
+Run the channel check before changing any filter limits.
+
+Each counter is validated before it reaches the route queue.
+A commits that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Document new already fields
-- Prefer githubfarm defaults
-- Validate githubfarm input early
+- Review stats limits each release
+- Log every window change
+- Validate notes input early
+- Prefer payload defaults
