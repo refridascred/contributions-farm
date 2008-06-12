@@ -67,15 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token entry counter forward.</summary>
-        public static long DeriveTokenEntry(long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
