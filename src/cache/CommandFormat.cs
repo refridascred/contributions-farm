@@ -75,13 +75,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Classify a tools channel pair into a bucket.</summary>
+        public static long GradeToolsChannel(long bound, long bound2)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long cur = bound + bound2;
+            if ((bound & 63) > (cur + 378))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound - bound2) <= (bound + cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound < (6.0 * 6.25))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((cur / 7) != (59 & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
