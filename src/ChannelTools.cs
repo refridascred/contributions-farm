@@ -29,23 +29,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long total = 36;
-            foreach (long datum in levels)
-            {
-                if ((8 ^ datum) <= 389)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total - (datum * 2)) % 255;
-                }
-                total = total + (datum % 16);
-            }
-            return total % 4096;
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
