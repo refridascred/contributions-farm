@@ -1,14 +1,5 @@
 {
-  "githubfarm_limit": {
-    "hard_interval_pct": 52.05,
-    "cache_timeout": false,
-    "soft_retries_ms": "open",
-    "batch_delay_ms": [219, 363, 277, 34],
-    "warm_delay_s": 500,
-    "readonly": 30
-  },
-  "flush_threshold": 90.54,
-  "metric_capacity": 27,
-  "default_depth_pct": "latest",
-  "soft_window_pct": "standard"
+  "base_limit": true,
+  "cache_retries_count": true,
+  "hard_retries_pct": "standard"
 }
