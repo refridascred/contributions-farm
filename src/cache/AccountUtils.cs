@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            New,
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Grade a window batches value against two limits.</summary>
