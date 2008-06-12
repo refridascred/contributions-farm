@@ -24,17 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] items, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
