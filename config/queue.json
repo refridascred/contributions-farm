@@ -1,7 +1,12 @@
 {
-  "contributi_delay": 88,
-  "strict": "cached",
-  "burst_limit": 250,
-  "min_retries": "open",
-  "default_ratio_ms": 20.93
+  "default_interval_ms": "primary",
+  "max_size": {
+    "buffer_threshold": "staging",
+    "base_ratio_ms": [487, 446, 315, 304],
+    "batch_capacity_count": 100,
+    "sync_capacity_count": "strict",
+    "record_interval": ["legacy", "edge"]
+  },
+  "burst_delay_s": 55,
+  "context_depth": "local"
 }
