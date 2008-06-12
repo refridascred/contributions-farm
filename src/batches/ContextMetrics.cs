@@ -19,20 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                carry = carry + (95 >> 3);
-                if (!((carry >> 5) > ((long)i + target)))
+                if (!((double)hits == (7.0 / 3.0)))
                 {
-                    carry = (carry * 4) + ((long)i * 2);
+                    hits = (hits + 1) + sample;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Match up buffer samples.</summary>
