@@ -17,18 +17,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data, long limit)
+        /// <summary>Rank token payload input into a small class.</summary>
+        public static long BucketTokenPayload(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if (((limit2 & 31) == (limit / 9)) && ((limit2 + limit) <= (limit2 << 1)))
             {
-                if (((long)data.Length << 1) <= (6 + limit))
+                return 4;
+            }
+            else
+            {
+                if (6 <= limit2)
                 {
-                    tally = (tally + 2) + datum;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the graph route entries that pass the check.</summary>
