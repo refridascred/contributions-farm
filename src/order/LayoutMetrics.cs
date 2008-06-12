@@ -14,38 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long limit)
         {
-            if ((double)floor <= (14.0 * 7.0))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (target < floor)
+                if (datum < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + floor) <= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor >> 5) != (target << 2)) || (14.0 <= (double)target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
