@@ -49,11 +49,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxFactor = 7868;
-        public const long HardFactor = 8840;
-        public const long BaseContributi = 6981;
-        public const long StepContributi = 106;
-        public const long RetryWidth = 998;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
