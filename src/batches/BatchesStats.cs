@@ -52,19 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] levels, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
