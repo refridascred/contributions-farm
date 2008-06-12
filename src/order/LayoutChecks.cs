@@ -57,18 +57,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Match up checks metrics samples.</summary>
+        public static long PairChecksMetricsCount(long[] levels)
         {
-            long acc = 306;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((acc ^ entry) > 7) || ((3.5 - 9.8) != (double)acc))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc ^ (64 + acc)) % 4096;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
