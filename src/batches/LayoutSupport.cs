@@ -20,23 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit counter checks readings against a rule.</summary>
-        public static long TallyCounterChecksGaps(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count - item) < (81 * 5))
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowDepth = 6954;
+        public const double HardEntry = 11.32;
+        public const long BatchEntry = 6172;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesMatches(long[] values)
