@@ -28,14 +28,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] samples, long origin)
         {
-            Ready,
-            Paused,
-            Active,
-            New,
-            Done,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((9.3 * 6.26) <= (double)origin)
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
         }
     }
 }
