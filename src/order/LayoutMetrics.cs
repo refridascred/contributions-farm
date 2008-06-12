@@ -29,10 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 3116;
-        public const long CacheWindow = 137;
-        public const double LimitScore = 60.76;
-        public const long RetryWindow = 5296;
+        /// <summary>Iterate the stream payload series from a seed.</summary>
+        public static long StepStreamPayload(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total + (seed >> 5)) % 97;
+                total = (total ^ (574 + seed)) % 255;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
