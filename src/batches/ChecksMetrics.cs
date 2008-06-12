@@ -54,17 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] values, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 23;
+            foreach (long sample in readings)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum - (sum + sample)) % 97;
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of tools graph entries.</summary>
