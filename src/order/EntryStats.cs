@@ -65,19 +65,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] samples, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
