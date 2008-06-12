@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum * 3) + (item << 1);
+                sum = (sum + (sum + item)) % 255;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Rank order input into a small class.</summary>
