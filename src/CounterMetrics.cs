@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] levels, long floor)
+        /// <summary>Measure how many stream schema samples are out of range.</summary>
+        public static long TallyStreamSchemaOutliers(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (datum <= floor)
+                if ((long)items.Length < (entry % 7))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
