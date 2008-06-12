@@ -62,19 +62,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of format cache readings.</summary>
-        public static long DigestFormatCache(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] data)
         {
-            long anchor = 67;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 5) + (anchor & 7)) - reading;
+                if (!((double)seen < 6.0) || (((-261) * 2) == (cell - seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (anchor < 0)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            return seen;
         }
     }
 }
