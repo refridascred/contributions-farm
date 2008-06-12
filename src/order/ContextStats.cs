@@ -43,22 +43,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long limit)
         {
-            long anchor = 1;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin + sample) >= anchor)
+                if (samples[i] <= limit)
                 {
-                    anchor = (anchor + (969 & 3)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ (sample % 60);
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
