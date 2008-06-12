@@ -33,21 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm batches samples.</summary>
-        public static long OverlapGithubfarmBatchesCount(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] >= seed)
                 {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
