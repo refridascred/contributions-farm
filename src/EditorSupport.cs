@@ -66,18 +66,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)seen < 6.0) || (((-261) * 2) == (cell - seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 6083;
+        public const long BurstOrder = 1619;
+        public const long RetryRatio = 6828;
+        public const long IdleOrder = 4792;
     }
 }
