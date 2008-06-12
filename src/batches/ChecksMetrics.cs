@@ -64,19 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (entry >= origin)
+                if (((cell + cell) != (cell ^ cell)) || ((10.0 + 17.0) >= (double)cell))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Digest a series of tools graph entries.</summary>
