@@ -1,21 +1,6 @@
 # support settings
-hard_window:
-  max_capacity_s:
-    - 421
-    - 68
-    - 269
-    - 82
-  warm_delay_ms: 42.8
-  flush_limit: staging
-  compress:
-    - 482
-    - 20
-  strict: true
-  soft_retries: false
-idle_ttl_ms:
-  - 422
-  - 324
-verbose:
-  - 432
-  - 349
-  - 394
+cluster_window: standard
+queue_ratio: open
+commits_size: 43.97
+burst_capacity_pct: true
+max_retries_count: false
