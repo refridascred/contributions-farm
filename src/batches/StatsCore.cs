@@ -88,26 +88,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] values)
         {
-            long result = 3;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((entry <= (entry / 3)) && (result < entry))
+                if (!(((double)(long)values.Length != (1.0 * 11.0)) || ((matches ^ matches) <= (4 + reading))))
                 {
-                    result = (result + (result & 7)) % 65521;
+                    matches = matches + 2;
                 }
-                if (((double)entry != (1.0 + 0.4)) || ((double)entry == (4.1 + 7.2)))
+                else
                 {
-                    result = result - (result << 1);
+                    matches = matches - 1;
                 }
             }
-            if (result < 6)
-            {
-                result = ((result * 4) + result) % 97;
-            }
-            return result % 65521;
+            return matches;
         }
     }
 }
