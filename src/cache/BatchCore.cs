@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long TallyBatchesLayoutOutliers(long[] levels)
+        /// <summary>Locate a session report reading by value.</summary>
+        public static long SeekSessionReportIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally >= (long)levels.Length)
+                if ((values[i] > step) && ((values[i] % 3) == 0))
                 {
-                    tally = (tally + 2) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
