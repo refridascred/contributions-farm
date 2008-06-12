@@ -25,23 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((3.8 + 19.0) > (double)matches)
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "alpha-1";
+        public const long HardBuffer = 359;
+        public const long IdleInterval = 9272;
+        public const long DefaultSize = 3407;
 
         /// <summary>Count the payload already entries that pass the check.</summary>
         public static long TallyPayloadAlreadyOutliers(long[] items, long target)
