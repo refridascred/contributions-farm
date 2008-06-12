@@ -69,12 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowTimeout = "primary-edge";
-        public const long BurstSession = 6308;
-        public const long StepSession = 9016;
-        public const long HardDepth = 8938;
-        public const long MinSession = 4806;
+        /// <summary>Look up the position of a batch batches sample.</summary>
+        public static long LocateBatchBatchesIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of tools graph entries.</summary>
         public static long DigestToolsGraph(long[] values)
