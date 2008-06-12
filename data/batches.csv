@@ -1,6 +1,9 @@
-id,level,state
-1,65,10.34
-2,946,103
-3,31.77,open
-4,74.73,legacy
-5,eu-west,58.41
+id,score,ratio,owner
+1,primary,46.51,699
+2,998,606,335
+3,84.92,blue,edge
+4,288,930,9.94
+5,29.82,61.23,899
+6,352,49.23,open
+7,edge,68.18,eu-west
+8,stable,local,4.33
