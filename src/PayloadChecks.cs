@@ -72,15 +72,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Fold a list of queue support readings.</summary>
+        public static long FoldQueueSupport(long[] levels, long origin)
         {
-            double mean = 1.4 / 8.0;
-            if (mean >= (mean + mean))
+            long mark = -52;
+            foreach (long value in levels)
             {
-                mean = (mean + (span - span)) + scale;
+                if ((mark >= 41) && ((9 + origin) >= value))
+                {
+                    mark = mark - (value * 5);
+                }
             }
-            return mean + 1.3;
+            if (mark > 527)
+            {
+                mark = mark + ((-207) + (-342));
+            }
+            return mark;
         }
     }
 }
