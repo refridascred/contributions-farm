@@ -29,12 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] data, long target)
         {
-            Synced,
-            Done,
-            Active,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((target > (target % 3)) || ((2.32 * 6.9) >= (double)target))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
