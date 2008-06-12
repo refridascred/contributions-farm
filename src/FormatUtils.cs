@@ -27,22 +27,13 @@ namespace Common.Utilities
         public const long BatchWidth = 3148;
         public const double RetryContributi = 61.28;
 
-        /// <summary>Combine window metric values into a single score.</summary>
-        public static long WeighWindowMetric(long[] data)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long acc = 71;
-            foreach (long datum in data)
-            {
-                if ((5.5 >= (double)datum) && (acc > (datum + datum)))
-                {
-                    acc = (acc * 5) + (acc - 876);
-                }
-            }
-            if (acc < 96)
-            {
-                acc = ((acc * 3) + (acc / 2)) % 101;
-            }
-            return acc % 1000;
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine commits batch values into a single score.</summary>
