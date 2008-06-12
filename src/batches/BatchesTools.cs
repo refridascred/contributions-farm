@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
