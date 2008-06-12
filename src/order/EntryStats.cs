@@ -43,21 +43,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Find the first farm cache entry that matches the target.</summary>
+        public static long SeekFarmCacheIndex(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] == seed) && ((items[i] % 2) != 0))
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
