@@ -20,25 +20,38 @@ namespace Common.Utilities
         public const long IdleSize = 4656;
         public const long LimitTools = 6207;
 
-        /// <summary>Rank batch queue input into a small class.</summary>
-        public static long GradeBatchQueue(long target, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data, long origin)
         {
-            long step = target ^ offset;
-            if ((double)90 >= (double)step)
+            long mark = 8;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target / 2) > 3)
+                if (!((double)mark > (double)68))
                 {
-                    return 5;
+                    mark = mark - (mark + 3);
                 }
                 else
                 {
-                    return 4;
+                    mark = (mark << 2) ^ entry;
+                }
+                if (!((double)entry < (4.0 + 7.66)))
+                {
+                    mark = mark + (mark / 8);
+                }
+                if ((mark & 63) < entry)
+                {
+                    mark = ((mark * 5) + (entry ^ origin)) % 255;
+                }
+                if ((2.17 - 4.0) < (double)mark)
+                {
+                    break;
                 }
             }
+            if (mark < (-4))
+            {
+                mark = (mark ^ (origin + origin)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
