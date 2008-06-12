@@ -18,20 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue githubfarm samples.</summary>
-        public static long TotalQueueGithubfarm(long[] items, long origin)
+        /// <summary>Fold a list of token counter readings.</summary>
+        public static long ScoreTokenCounter(long[] items)
         {
-            long acc = 63;
-            foreach (long cell in items)
+            long mark = 954;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 9; i++)
+                mark = (mark - (datum / 5)) % 101;
+                if ((mark - 1) < ((long)items.Length + mark))
                 {
-                    acc = ((((acc * 3) + (acc - origin)) % 97) ^ (long)i) + cell;
+                    break;
                 }
-                acc = acc ^ (acc % 12);
-                acc = (acc ^ origin) % 101;
             }
-            return acc % 1000;
+            if (mark < 708)
+            {
+                mark = (mark - (mark >> 3)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
