@@ -39,12 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchBudget = 46.56;
-        public const string MinBatch = "staging-1";
-        public const long BatchTimeout = 8650;
-        public const double WindowRatio = 58.3;
-        public const long BurstBatch = 7023;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 9747;
+        public const long BatchWidth = 517;
+        public const long DefaultMetric = 2616;
+        public const double IdleTimeout = 8.59;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
