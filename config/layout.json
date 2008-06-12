@@ -1,8 +1,13 @@
 {
-  "warm_ratio": "legacy",
-  "sync_capacity": "standard",
-  "idle_size_count": "cached",
-  "default_capacity_pct": "open",
-  "base_ratio_ms": false,
-  "account_interval": 84
+  "soft_timeout_ms": 35.53,
+  "base_retries": ["standard", "cached", "green"],
+  "min_threshold_count": {
+    "batch_window_pct": true,
+    "order_interval": "eu-west",
+    "readonly": 8727,
+    "soft_ttl_s": "primary"
+  },
+  "base_threshold_pct": "latest",
+  "enabled": ["legacy", "cached"],
+  "compress": true
 }
