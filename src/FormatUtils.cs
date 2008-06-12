@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry ^ (230 & 63)) % 4096) - (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                mark = (mark + mark) % 1000;
+                mark = mark - (floor & 3);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Project the next editor value.</summary>
