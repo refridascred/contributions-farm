@@ -15,19 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate stats channel readings against a bound.</summary>
-        public static bool GuardStatsChannelLimits(long[] readings, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long anchor = 67;
+            foreach (long item in items)
             {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (((anchor * 4) + ((long)items.Length << 2)) ^ item) - limit;
             }
-            return ready;
+            if (anchor < 631)
+            {
+                anchor = (anchor + (anchor & 15)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
