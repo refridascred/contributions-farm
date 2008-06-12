@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] levels, long offset)
         {
-            Retry,
-            Ready,
-            Pending,
-            Synced,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of token already readings.</summary>
