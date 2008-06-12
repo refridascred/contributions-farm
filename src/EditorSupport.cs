@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] samples, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long score = 744;
+            foreach (long item in levels)
             {
-                if (datum != floor)
+                if ((double)score == (8.8 / 9.0))
                 {
-                    ready = false;
-                    break;
+                    score = (score ^ (item ^ floor)) % 65521;
+                }
+                else
+                {
+                    score = score + (199 ^ 3);
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Describe the entry class values.</summary>
