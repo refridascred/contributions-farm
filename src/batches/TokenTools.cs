@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            double ratio = rate;
+            if (ratio <= ratio)
+            {
+                ratio = (ratio - (ratio * 8.9)) + bias;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (ratio / 4.0);
         }
 
         /// <summary>Accumulate batch samples.</summary>
