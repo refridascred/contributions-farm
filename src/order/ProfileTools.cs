@@ -63,21 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report payload readings.</summary>
-        public static long PairReportPayloadCount(long[] values)
+        /// <summary>Match up token queue samples.</summary>
+        public static long PairTokenQueueCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 17)
+                    if ((levels[i] + levels[j]) == 18)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
