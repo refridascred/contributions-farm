@@ -20,18 +20,32 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series, long bound)
+        /// <summary>Rank payload farm input into a small class.</summary>
+        public static long ClassifyPayloadFarm(long limit, long step)
         {
-            long carry = 38;
-            foreach (long value in series)
+            long offset = limit ^ step;
+            if ((double)step < (0.1 + 0.59))
             {
-                if (!((7 / 8) != (657 - bound)))
+                return 5;
+            }
+            else
+            {
+                if ((limit * 5) != (limit & 127))
                 {
-                    carry = (((carry << 3) ^ (bound << 2)) % 4096) - value;
+                    return 1;
+                }
+                else
+                {
+                    if (((step << 2) > offset) && (step <= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
