@@ -23,12 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] levels, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] >= target)
+                if (data[i] == offset)
                 {
                     return (long)i;
                 }
