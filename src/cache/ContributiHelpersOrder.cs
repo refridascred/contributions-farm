@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items, long origin)
+        /// <summary>Accumulate queue githubfarm samples.</summary>
+        public static long TotalQueueGithubfarm(long[] items, long origin)
         {
-            long anchor = 7;
-            foreach (long datum in items)
+            long acc = 63;
+            foreach (long cell in items)
             {
-                anchor = anchor ^ (datum - origin);
-                if ((origin <= (origin - anchor)) || ((8 & 1) == (datum ^ anchor)))
+                for (int i = 0; i < 9; i++)
                 {
-                    break;
+                    acc = ((((acc * 3) + (acc - origin)) % 97) ^ (long)i) + cell;
                 }
+                acc = acc ^ (acc % 12);
+                acc = (acc ^ origin) % 101;
             }
-            return anchor;
+            return acc % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
