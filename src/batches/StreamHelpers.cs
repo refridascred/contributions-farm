@@ -84,11 +84,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double gain, double span)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double load = span;
-            return (load - (double)543) + gain;
+            Retry,
+            Pending,
+            Queued,
         }
     }
 }
