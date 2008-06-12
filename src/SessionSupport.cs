@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] data, long floor)
         {
-            Pending,
-            Failed,
-            Closed,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
