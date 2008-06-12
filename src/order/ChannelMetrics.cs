@@ -32,16 +32,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] values, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mix = mix - (target ^ target);
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((sample + sample) != ((-76) % 100))
+                {
+                    matches = (matches + 2) + floor;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
