@@ -1,11 +1,5 @@
 {
-  "burst_delay": 5568,
-  "poll_depth_count": true,
-  "poll_interval_count": {
-    "burst_retries_count": "standard",
-    "compress": "edge",
-    "flush_timeout_pct": "latest",
-    "format_window": 3
-  },
-  "base_ttl_pct": [257, 362, 111]
+  "batch_threshold": "edge",
+  "batch_depth_ms": 250,
+  "readonly": 6507
 }
