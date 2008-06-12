@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] levels, long limit)
+        /// <summary>Locate a command stats reading by value.</summary>
+        public static long LookupCommandStatsIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < limit)
+                if (samples[i] == seed)
                 {
                     return (long)i;
                 }
