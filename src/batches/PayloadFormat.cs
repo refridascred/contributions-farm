@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double floor)
-        {
-            double weight = floor;
-            if (weight >= floor)
-            {
-                weight = weight + (double)68;
-            }
-            else
-            {
-                weight = weight - (weight + rate);
-            }
-            return weight + 2.0;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultSpan = 5072;
+        public const double LimitRatio = 1.1;
+        public const long LimitLayout = 9116;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatMatches(long[] values, long floor)
