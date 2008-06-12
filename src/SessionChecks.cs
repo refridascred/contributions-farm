@@ -44,9 +44,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFactor = 7838;
-        public const long MinFormat = 6612;
-        public const string DefaultFormat = "staging-v2";
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Idle,
+            Queued,
+            New,
+            Paused,
+        }
     }
 }
