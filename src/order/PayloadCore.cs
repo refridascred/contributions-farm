@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)mark > (5.7 + 8.0))
-                {
-                    mark = ((mark << 2) ^ (mark - mark)) % 97;
-                }
-                mark = ((mark << 3) ^ (301 + (long)i)) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinLevel = 8249;
+        public const string DefaultScore = "latest-1";
+        public const long BaseStats = 5836;
+        public const string WindowStats = "strict-edge";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitToken = 6408;
