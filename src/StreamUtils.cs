@@ -15,26 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Count the stream session entries that pass the check.</summary>
+        public static long AuditStreamSessionHits(long[] series)
         {
-            long carry = 41;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((carry + carry) > cell) && (carry >= (long)values.Length))
+                if ((matches + 6) > (cell << 1))
                 {
-                    carry = (carry ^ carry) % 1000;
-                }
-                if (3.5 <= (double)carry)
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (carry < (-684))
-            {
-                carry = carry + (411 + 531);
-            }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
