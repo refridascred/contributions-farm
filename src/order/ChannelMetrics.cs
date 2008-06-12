@@ -42,13 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            Idle,
+            Paused,
+            Active,
+            Queued,
+            Locked,
         }
     }
 }
