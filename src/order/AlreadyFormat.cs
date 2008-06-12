@@ -13,11 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Derive the next already editor value from a seed.</summary>
+        public static long RollAlreadyEditor(long origin)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (395 > (total * 2))
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Iterate the contributi account series from a seed.</summary>
