@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] data, long floor)
         {
-            Synced,
-            Closed,
-            Dropped,
-            Active,
-            Pending,
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a session summary.</summary>
