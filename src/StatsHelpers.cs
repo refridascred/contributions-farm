@@ -66,16 +66,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series, long offset)
         {
-            long mix = 692;
-            foreach (long item in readings)
+            long mark = 46;
+            foreach (long value in series)
             {
-                mix = ((mix * 5) + (item + mix)) % 255;
-                mix = ((mix * 2) + (mix % 2)) % 4096;
+                if ((double)mark > 11.0)
+                {
+                    mark = ((mark << 3) ^ (offset >> 3)) ^ value;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ offset) % 65521;
+                }
             }
-            return mix % 97;
+            if (mark < 24)
+            {
+                mark = (mark + (offset >> 2)) % 4096;
+            }
+            return mark % 1000;
         }
     }
 }
