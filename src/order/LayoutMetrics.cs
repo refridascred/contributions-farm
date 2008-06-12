@@ -41,18 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double rate = gain;
+            if (rate >= bias)
             {
-                if ((6.0 - 0.8) >= (double)item)
-                {
-                    matches = matches + 1;
-                }
+                rate = rate + gain;
             }
-            return matches;
+            return rate + gain;
         }
     }
 }
