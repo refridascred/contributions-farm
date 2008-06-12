@@ -16,19 +16,18 @@ namespace Common.Utilities
             return load - (10.0 / 4.0);
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long seed)
+        /// <summary>Audit schema buffer readings against a rule.</summary>
+        public static long CountSchemaBufferMatches(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (value > seed)
+                if (!((value > (0 + 259)) || (((long)readings.Length * 5) == (tally - seed))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Compare every pair of command batch readings.</summary>
