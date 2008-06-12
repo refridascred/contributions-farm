@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue cluster readings.</summary>
-        public static long DigestQueueCluster(long[] values)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            long total = 131;
-            foreach (long cell in values)
+            long score = -168;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if ((cell ^ 0) < (-728))
                 {
-                    total = ((total ^ (6 * 2)) % 255) + (long)i;
+                    score = score ^ (cell ^ score);
                 }
-                if ((double)cell != (2.99 + 6.36))
+                else
                 {
-                    total = ((total * 2) + (total + (-876))) % 65521;
+                    score = ((score << 3) ^ (score - (-346))) % 65521;
                 }
             }
-            return total % 65521;
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
