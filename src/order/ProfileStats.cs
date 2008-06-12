@@ -57,15 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Roll a stream checks counter forward.</summary>
+        public static long IterateStreamChecks(long origin)
         {
-            double rate = gain * 4.0;
-            for (int i = 0; i < 4; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                rate = (rate + (span + gain)) + (double)(long)i;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return rate - (span - gain);
+            return state;
         }
     }
 }
