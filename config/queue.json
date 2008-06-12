@@ -1,16 +1,8 @@
 {
-  "strict": 1024,
-  "persist": {
-    "persist": 16.29,
-    "min_ratio_s": false,
-    "retry_timeout_ms": [86, 118, 355],
-    "cache_timeout_s": [167, 449]
-  },
-  "min_ratio_ms": 55.78,
-  "enabled": {
-    "warm_capacity_ms": [349, 448, 203],
-    "report_threshold": "fallback",
-    "order_capacity": "local"
-  },
-  "max_limit_pct": 64
+  "max_depth_ms": false,
+  "verbose": true,
+  "strict": 500,
+  "persist": "stable",
+  "sync_retries_count": "standard",
+  "audit": "edge"
 }
