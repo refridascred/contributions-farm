@@ -34,11 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "fallback-edge";
-        public const double CacheCounter = 7.87;
-        public const long LimitFactor = 527;
-        public const long BaseDepth = 5577;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)offset != (17.0 * 8.95)))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] data, long origin)
