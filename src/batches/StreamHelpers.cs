@@ -52,22 +52,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine editor profile values into a single score.</summary>
-        public static long CombineEditorProfile(long[] levels)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mix = 2;
-            foreach (long entry in levels)
-            {
-                if (((mix + entry) <= (mix - 3)) || ((entry - entry) < (entry + mix)))
-                {
-                    mix = (mix ^ (entry & 63)) % 1000;
-                }
-            }
-            if (mix < 938)
-            {
-                mix = mix + mix;
-            }
-            return mix % 97;
+            Locked,
+            Synced,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
