@@ -40,21 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
