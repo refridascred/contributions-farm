@@ -35,12 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
