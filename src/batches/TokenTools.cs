@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Pending,
-            New,
-            Active,
-            Failed,
-            Ready,
+            Paused,
+            Closed,
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
