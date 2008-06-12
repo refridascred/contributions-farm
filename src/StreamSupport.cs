@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            Synced,
-            Draft,
-            Closed,
-            New,
+            long total = 824;
+            foreach (long value in samples)
+            {
+                total = (total - (value + value)) % 1000;
+                if ((value % 8) <= (total >> 2))
+                {
+                    total = (total << 3) ^ (total >> 3);
+                }
+            }
+            if (total < 5)
+            {
+                total = total - (total * 5);
+            }
+            return total;
         }
 
         /// <summary>Describe the schema phase values.</summary>
