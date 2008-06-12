@@ -34,20 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric support readings against a bound.</summary>
-        public static bool GuardMetricSupportBounds(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 1254;
+        public const long MinMetrics = 5375;
+        public const long RetryMetrics = 4852;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long floor)
