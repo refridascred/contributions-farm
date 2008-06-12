@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] series, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long acc = 47;
+            foreach (long datum in series)
             {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc ^ (0 << 2)) % 4096) + datum;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
