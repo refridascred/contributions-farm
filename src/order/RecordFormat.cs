@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            long mark = 33;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                mark = ((mark * 2) + (limit + cell)) % 97;
             }
-            return sum;
+            if (mark > 549)
+            {
+                mark = mark - limit;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
