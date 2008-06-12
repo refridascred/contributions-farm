@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const double BaseTimeout = 72.37;
         public const string LimitScore = "fallback-edge";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstDepth = "open-1";
-        public const double LimitDepth = 68.76;
-        public const long DefaultMetrics = 7281;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((91 - count) >= sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] levels, long limit)
