@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] data, long target)
         {
-            long prev = seed - origin;
-            if ((double)seed > 7.58)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((prev << 3) == (origin % 5)))
+                if (datum > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the editor state values.</summary>
