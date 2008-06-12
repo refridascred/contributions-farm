@@ -23,17 +23,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] levels, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (target <= ((-4) + bound))
             {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((target - bound) <= (target - target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (2.24 < (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
