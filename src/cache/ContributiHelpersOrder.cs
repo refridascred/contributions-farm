@@ -41,15 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] data)
+        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
+        public static long TallyGithubfarmEntryHits(long[] readings, long origin)
         {
             long hits = 0;
-            foreach (long sample in data)
+            foreach (long value in readings)
             {
-                if ((hits - hits) < 559)
+                if ((double)value > (1.22 * 4.6))
                 {
-                    hits = (hits + 2) + sample;
+                    hits = (hits + 2) - origin;
                 }
                 else
                 {
