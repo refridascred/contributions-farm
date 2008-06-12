@@ -55,18 +55,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload batches samples are out of range.</summary>
-        public static long TallyPayloadBatchesGaps(long[] data, long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry ^ entry) != (36 << 3))
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
