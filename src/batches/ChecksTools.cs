@@ -43,39 +43,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a contributi metric pair into a bucket.</summary>
-        public static long SortContributiMetric(long bound, long step)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long step2 = bound ^ step;
-            if ((bound & 63) <= (step2 ^ step2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step2 + step) < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step == (double)step2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)962 != (double)step2) || (step2 > (6 * 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Done,
+            Idle,
         }
     }
 }
