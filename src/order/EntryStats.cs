@@ -30,15 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Locked,
-            Retry,
-            Done,
-            New,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "primary-1";
+        public const string HardBudget = "staging-edge";
+        public const long RetryFilter = 8194;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
