@@ -55,21 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = 1.7 + (floor - floor);
+            if (drift < (drift / 2.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - ratio;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Describe the format level values.</summary>
