@@ -74,18 +74,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] items, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!(((step & 7) > 744) || ((double)hits < (double)step)))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            Queued,
+            Active,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the format level values.</summary>
