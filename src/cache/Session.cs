@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine report queue values into a single score.</summary>
-        public static long TotalReportQueue(long[] levels, long step)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = 82;
-            foreach (long datum in levels)
-            {
-                carry = ((carry * 3) + (datum + carry)) % 65521;
-                carry = carry ^ (step % 5);
-            }
-            if (carry < 786)
-            {
-                carry = carry ^ (step >> 4);
-            }
-            return carry % 1000;
+            Ready,
+            Draft,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a contributi header.</summary>
