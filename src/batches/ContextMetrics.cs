@@ -52,21 +52,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Rank record context input into a small class.</summary>
+        public static long ClassifyRecordContext(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = step - seed;
+            if ((seed + step) <= (step + bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound + seed) < seed)
                 {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
