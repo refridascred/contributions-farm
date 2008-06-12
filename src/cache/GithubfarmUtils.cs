@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many record queue samples are out of range.</summary>
-        public static long MeasureRecordQueueGaps(long[] levels, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!!((value - floor) >= (floor + (-84))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the metric status values.</summary>
