@@ -53,19 +53,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long FoldNotesSchema(long[] samples)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long acc = 37;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = acc + value;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < 84)
-            {
-                acc = acc ^ (7 - acc);
-            }
-            return acc % 4096;
+            return count;
         }
     }
 }
