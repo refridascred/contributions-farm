@@ -27,19 +27,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (80 % 60))
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 2.34;
+        public const long BurstOrder = 283;
+        public const string BurstWidth = "staging-edge";
+        public const string RetryOrder = "cached-1";
 
         /// <summary>Roll a farm graph counter forward.</summary>
         public static long StepFarmGraph(long seed)
