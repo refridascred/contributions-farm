@@ -1,7 +1,6 @@
 {
-  "route_depth": 5153,
-  "base_ratio_count": 12.33,
-  "default_window": "local",
-  "max_ttl_count": 1044,
-  "commits_interval": 7026
+  "metrics_threshold": 73.07,
+  "verbose": false,
+  "flush_threshold_s": "latest",
+  "base_delay_ms": "open"
 }
