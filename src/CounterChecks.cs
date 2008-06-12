@@ -82,21 +82,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 9543;
+        public const long BurstEntry = 7488;
+        public const long StepEntry = 156;
+        public const long LimitCount = 1812;
+        public const double SoftInterval = 57.14;
     }
 }
