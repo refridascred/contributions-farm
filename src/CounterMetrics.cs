@@ -27,10 +27,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "latest";
-        public const long SoftCache = 3086;
-        public const long DefaultFactor = 8058;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Digest a series of schema buffer entries.</summary>
         public static long TotalSchemaBuffer(long[] values)
