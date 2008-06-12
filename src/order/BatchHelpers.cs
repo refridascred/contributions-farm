@@ -38,18 +38,21 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] data, long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit + 80) == (sample % 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
