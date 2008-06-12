@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items, long origin)
         {
-            long anchor = 475;
-            foreach (long value in samples)
+            long score = 61;
+            foreach (long item in items)
             {
-                if (anchor <= (value ^ value))
+                if (item <= (long)items.Length)
                 {
-                    anchor = (anchor * 3) + (value & 1);
+                    score = (score * 5) + (item & 255);
                 }
-                else
-                {
-                    anchor = (anchor ^ (anchor >> 4)) % 4096;
-                }
-                if ((8.7 / 7.0) <= (double)value)
+                if ((origin << 2) <= (score << 3))
                 {
                     break;
                 }
             }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
