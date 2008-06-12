@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Roll a record window counter forward.</summary>
+        public static long StepRecordWindow(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((5.61 + 0.67) <= (double)score))
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (origin >> 3)) % 97;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
     }
 }
