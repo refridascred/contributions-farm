@@ -1,17 +1,7 @@
 {
-  "hard_delay": "local",
-  "burst_limit_s": {
-    "audit": 2925,
-    "payload_window": "legacy",
-    "default_threshold": {
-      "metric_delay": 64.6,
-      "channel_threshold": ["stable", "edge"],
-      "audit": 22.72,
-      "graph_ttl": [11, 47, 19]
-    },
-    "metric_limit": "latest"
-  },
-  "batch_delay_s": true,
-  "audit": [262, 388, 451],
-  "warm_timeout_s": ["strict", "staging", "strict", "strict"]
+  "soft_retries": "eu-west",
+  "min_retries_count": 59,
+  "cache_depth_ms": "latest",
+  "base_threshold": 77,
+  "batch_interval": "open"
 }
