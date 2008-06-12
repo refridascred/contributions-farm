@@ -36,10 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 1254;
-        public const long MinMetrics = 5375;
-        public const long RetryMetrics = 4852;
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double bias)
+        {
+            double mean = bias;
+            if (mean >= (scale * 6.2))
+            {
+                mean = mean - (scale / 4.0);
+            }
+            return mean + (double)(-45);
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long floor)
