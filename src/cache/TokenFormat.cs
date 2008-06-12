@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long seed, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] data, long target)
         {
-            long step = seed + offset;
-            if (((double)seed < (8.9 + 9.0)) || ((555 + seed) > step))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset << 3) > step) && (6.0 < (double)seed))
+                if (entry >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((10.0 + 5.1) != (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((9.36 / 8.0) >= (double)offset) && ((step - seed) == (962 + 905)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Digest a series of format entries.</summary>
