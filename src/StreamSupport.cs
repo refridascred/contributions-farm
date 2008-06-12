@@ -13,25 +13,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            long slot = seed ^ step;
-            if (seed <= (177 + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + slot) > (3 + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double ratio = (double)26 * 0.39;
+            return ((ratio - ratio) + scale) + span;
         }
 
         /// <summary>Hold a filter header.</summary>
