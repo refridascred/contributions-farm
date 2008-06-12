@@ -54,17 +54,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] series, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                if ((double)entry <= (12.0 / 9.0))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
