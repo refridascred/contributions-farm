@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long CacheFilter = 7810;
         public const long CacheBudget = 8532;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 3635;
-        public const string WindowSpan = "strict";
-        public const double HardInterval = 91.49;
-        public const string LimitBatches = "stable-1";
+        /// <summary>Look up the position of a order farm sample.</summary>
+        public static long SeekOrderFarmIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] levels, long target)
