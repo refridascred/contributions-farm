@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] samples)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double drift = 4.9;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits >= (hits % 97)) || ((224 + hits) == ((long)samples.Length / 5)))
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = ((drift - (double)(long)i) - scale) - floor;
             }
-            return hits;
+            return drift + (double)72;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
