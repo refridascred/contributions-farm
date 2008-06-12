@@ -35,12 +35,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 9281;
-        public const double SoftSpan = 26.35;
-        public const double BatchTimeout = 91.71;
-        public const long BaseRoute = 4438;
-        public const long SoftCount = 6017;
+        /// <summary>Locate a cache token reading by value.</summary>
+        public static long LocateCacheTokenIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the entry buffer entries that pass the check.</summary>
         public static long TallyEntryBufferGaps(long[] data, long offset)
