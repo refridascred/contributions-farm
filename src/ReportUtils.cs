@@ -52,18 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] samples, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((double)offset >= (double)entry)
+                if ((double)reading >= (5.5 * 4.31))
                 {
-                    hits = hits + 2;
+                    count = (count + 3) - origin;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of stream filter readings.</summary>
