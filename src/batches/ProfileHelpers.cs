@@ -36,12 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "primary-v2";
-        public const long MinSpan = 7398;
-        public const long SoftDepth = 949;
-        public const long SoftPayload = 7167;
-        public const double HardBudget = 69.98;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] samples)
