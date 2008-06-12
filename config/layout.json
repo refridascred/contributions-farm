@@ -1,11 +1,11 @@
 {
-  "channel_threshold": 12.3,
-  "default_interval_ms": {
-    "profile_threshold": "strict",
-    "token_ttl": "legacy",
-    "filter_ttl": [406, 178, 102, 202]
+  "idle_timeout_s": "local",
+  "default_depth_s": {
+    "burst_window_s": "standard",
+    "batch_delay": ["latest", "cached"],
+    "format_ratio": 1525
   },
-  "batch_interval": 4764,
-  "readonly": 1593,
-  "strict": [455, 332]
+  "graph_timeout": 8905,
+  "max_ratio_pct": [45, 14],
+  "default_capacity_count": "local"
 }
