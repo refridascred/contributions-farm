@@ -70,26 +70,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series, long offset)
-        {
-            long mark = 46;
-            foreach (long value in series)
-            {
-                if ((double)mark > 11.0)
-                {
-                    mark = ((mark << 3) ^ (offset >> 3)) ^ value;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ offset) % 65521;
-                }
-            }
-            if (mark < 24)
-            {
-                mark = (mark + (offset >> 2)) % 4096;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultBudget = "alpha-edge";
+        public const long BatchCluster = 5700;
+        public const long MinWidth = 7955;
+        public const long MinLevel = 2065;
+        public const long CacheCluster = 5107;
     }
 }
