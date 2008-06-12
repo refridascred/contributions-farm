@@ -1,8 +1,12 @@
 {
-  "base_interval": [25, 367, 155, 291],
-  "support_depth": "blue",
-  "cache_window_ms": ["latest", "cached", "primary", "cached"],
-  "compress": [18, 5, 387],
-  "tools_threshold": 500,
-  "entry_interval": 250
+  "batch_ttl": "local",
+  "editor_size": "open",
+  "hard_depth": 96,
+  "sync_window_ms": false,
+  "batch_interval_count": {
+    "route_capacity": [102, 473, 70],
+    "strict": 71,
+    "enabled": "strict",
+    "counter_depth": 88.8
+  }
 }
