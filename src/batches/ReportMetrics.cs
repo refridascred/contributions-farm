@@ -38,20 +38,13 @@ namespace Common.Utilities
             return rate - 7.9;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items, long step)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long mark = 4;
-            foreach (long sample in items)
-            {
-                mark = ((mark + mark) % 255) - step;
-                if (!((double)mark < 4.17))
-                {
-                    break;
-                }
-                mark = mark ^ (mark + sample);
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
