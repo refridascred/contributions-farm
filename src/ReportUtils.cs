@@ -30,12 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "standard-1";
-        public const double RetryTools = 18.11;
-        public const long CacheTools = 7746;
-        public const string DefaultTimeout = "primary-v2";
-        public const long BaseTools = 5906;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of stream filter readings.</summary>
         public static long DigestStreamFilter(long[] readings, long origin)
