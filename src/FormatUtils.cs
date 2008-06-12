@@ -26,16 +26,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine commits batch values into a single score.</summary>
-        public static long TallyCommitsBatch(long[] values, long seed)
+        /// <summary>Accumulate cache queue samples.</summary>
+        public static long WeighCacheQueue(long[] values, long origin)
         {
-            long result = 44;
-            foreach (long reading in values)
+            long carry = 509;
+            foreach (long sample in values)
             {
-                result = (result + (seed ^ seed)) % 101;
-                result = (result - (reading + reading)) % 1000;
+                carry = (((carry << 2) ^ (origin / 5)) % 65521) - sample;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
