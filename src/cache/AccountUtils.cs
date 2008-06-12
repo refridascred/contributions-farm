@@ -13,31 +13,30 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            long anchor = 30;
-            foreach (long reading in levels)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if (!(score >= (target << 1)))
                 {
-                    anchor = ((anchor + (anchor % 8)) % 101) - (long)i;
-                    anchor = anchor + anchor;
+                    score = (score ^ (7 + target)) % 101;
+                    score = (score ^ target) % 1000;
                 }
-                if ((anchor < (anchor & 63)) || ((reading + reading) > (reading / 4)))
+                if ((8.0 >= (double)(long)i) && ((score >> 3) < (score + (long)i)))
                 {
-                    anchor = (anchor - anchor) % 4096;
+                    score = score ^ target;
+                    break;
                 }
                 else
                 {
-                    anchor = (anchor * 3) + reading;
+                    score = score - target;
+                    score = (score ^ target) % 101;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (anchor < 4)
-            {
-                anchor = anchor + ((long)levels.Length - anchor);
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
