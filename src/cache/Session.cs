@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long StepTimeout = 6192;
         public const string BurstDepth = "legacy-edge";
 
-        /// <summary>Derive the next route checks value from a seed.</summary>
-        public static long IterateRouteChecks(long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] data, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (((seen - offset) <= reading) && (((9.5 + 2.5) != (double)offset) || ((offset << 3) > (87 & 63))))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
