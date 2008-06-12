@@ -15,14 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Compare every pair of payload checks readings.</summary>
+        public static long ComparePayloadChecksCount(long[] levels)
         {
-            Closed,
-            Locked,
-            Dropped,
-            Synced,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
