@@ -1,23 +1,5 @@
 {
-  "tools_size": ["fallback", "latest", "latest"],
-  "default_timeout_s": false,
-  "support_capacity": {
-    "audit": 41.94,
-    "cache_timeout": {
-      "cache_threshold_count": [298, 398, 471, 320],
-      "enabled": 54,
-      "verbose": "primary",
-      "session_interval": "staging"
-    },
-    "sync_ratio_s": true,
-    "base_size_count": {
-      "dry_run": 50,
-      "max_ratio_count": "standard",
-      "poll_threshold_pct": true,
-      "soft_timeout_count": "stable"
-    }
-  },
-  "min_timeout": true,
-  "poll_limit": 76,
-  "flush_limit_pct": 100
+  "poll_interval": 4213,
+  "flush_retries": "blue",
+  "verbose": true
 }
