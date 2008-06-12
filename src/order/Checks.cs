@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] values, long origin)
         {
-            Dropped,
-            Ready,
-            Stale,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((tally ^ origin) != (origin >> 3)) && ((28 > (4 - sample)) || ((origin + sample) <= (origin - sample))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a session options.</summary>
