@@ -22,18 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] readings, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long seed, long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((step / 2) <= (seed / 5))
             {
-                if ((step << 1) != (seen + step))
+                return 5;
+            }
+            else
+            {
+                if ((6 + seed) < (seed + seed))
                 {
-                    seen = (seen + 2) - cell;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit format record readings against a rule.</summary>
