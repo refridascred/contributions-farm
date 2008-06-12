@@ -63,23 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            long mix = 19;
-            foreach (long cell in items)
+            double weight = (double)256;
+            if (weight < 7.5)
             {
-                mix = (mix ^ (1 * 2)) % 1000;
-                if ((cell / 3) > (cell << 3))
-                {
-                    break;
-                }
+                weight = (weight - weight) - bias;
             }
-            if (mix < 9)
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix + (mix % 97)) % 1000;
+                weight = (weight - (span - weight)) - (double)(long)i;
             }
-            return mix;
+            return weight - (span - weight);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
