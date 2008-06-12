@@ -1,8 +1,6 @@
 {
-  "warm_ratio": "eu-west",
-  "retry_depth": 84,
-  "burst_depth": [319, 341, 397],
-  "session_depth": "stable",
-  "readonly": 1671,
-  "dry_run": "open"
+  "audit": ["stable", "green", "cached", "legacy"],
+  "enabled": true,
+  "flush_interval": 11.12,
+  "verbose": 41.96
 }
