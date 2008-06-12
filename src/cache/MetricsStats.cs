@@ -37,19 +37,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] values, long floor)
+        /// <summary>Roll a cluster stats counter forward.</summary>
+        public static long StepClusterStats(long target)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Describe the notes state values.</summary>
