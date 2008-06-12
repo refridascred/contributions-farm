@@ -28,15 +28,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the contributi account series from a seed.</summary>
-        public static long StepContributiAccount(long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            double mean = offset;
+            if (mean <= (double)19)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                mean = (mean + 9.04) + bias;
             }
-            return sum;
+            else
+            {
+                mean = mean - (4.5 * 5.41);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean - (offset / 7.0);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
