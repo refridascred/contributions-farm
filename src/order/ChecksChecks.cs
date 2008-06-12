@@ -15,21 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of payload checks readings.</summary>
-        public static long ComparePayloadChecksCount(long[] levels)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
