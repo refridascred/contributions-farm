@@ -61,12 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Retry,
-            Done,
             Idle,
+            Draft,
+            Synced,
         }
     }
 }
