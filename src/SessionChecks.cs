@@ -23,22 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit << 3) <= (count >> 3))
+                if (items[i] <= step)
                 {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a channel command reading.</summary>
