@@ -17,18 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] series)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((long)series.Length >= (value + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
