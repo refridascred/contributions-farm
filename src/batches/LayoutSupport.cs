@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSpan = 5973;
-        public const string SoftFilter = "fallback-v2";
-        public const string HardFilter = "latest-1";
-        public const long WindowFilter = 3898;
-        public const long StepCount = 339;
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double bias, double floor)
+        {
+            double rate = (bias / 6.0) * 1.0;
+            if (rate > floor)
+            {
+                rate = rate + (9.0 / 4.0);
+            }
+            else
+            {
+                rate = rate - (floor * 5.0);
+            }
+            return rate - bias;
+        }
 
         /// <summary>Audit counter checks readings against a rule.</summary>
         public static long TallyCounterChecksGaps(long[] readings, long offset)
