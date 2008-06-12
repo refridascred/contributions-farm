@@ -71,17 +71,24 @@ namespace Common.Utilities
         public const long MinFarm = 6006;
         public const long BatchTimeout = 7058;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor + floor) > (target + target))
             {
-                if (data[i] < target)
+                return 3;
+            }
+            else
+            {
+                if ((double)target > 4.84)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
