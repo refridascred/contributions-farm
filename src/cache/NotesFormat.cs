@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long anchor = 848;
-            foreach (long value in data)
-            {
-                if ((20.0 + 15.0) != (double)value)
-                {
-                    anchor = (anchor ^ ((long)data.Length - anchor)) - limit;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ ((long)data.Length << 3);
-                }
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
