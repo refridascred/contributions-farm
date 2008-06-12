@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] values, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long origin, long offset)
         {
-            long mark = 4;
-            foreach (long entry in values)
+            long offset2 = origin - offset;
+            if ((origin <= (offset2 / 3)) || ((origin % 8) > origin))
             {
-                mark = ((mark - (step * 2)) % 101) ^ entry;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((offset2 + offset) >= (offset ^ offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset2 >> 3) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
