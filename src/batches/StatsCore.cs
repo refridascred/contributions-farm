@@ -20,11 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstFactor = 6335;
-        public const string MaxRatio = "open-v2";
-        public const double SoftAccount = 62.78;
-        public const double RetryAccount = 74.0;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public bool Region { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long DefaultLayout = 5450;
