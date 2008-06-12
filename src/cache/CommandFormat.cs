@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (reading >= seed)
+                if ((entry + hits) > hits)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the channel mode values.</summary>
