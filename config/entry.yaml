@@ -1,40 +1,9 @@
 # entry settings
-poll_window:
-  - 470
-  - 357
-  - 41
-strict:
-  buffer_delay:
-    already_ttl: latest
-    persist:
-      - local
-      - standard
-      - staging
-      - edge
-    min_timeout: 30
-    min_window_pct: 25.02
-  burst_interval_ms:
-    - latest
-    - standard
-    - eu-west
-    - green
-  batch_capacity:
-    - 491
-    - 147
-    - 159
-  token_capacity:
-    retry_threshold_ms: standard
-    idle_capacity_ms: 33.85
-    batch_interval:
-      - 437
-      - 380
-    record_ttl: 7170
-    record_size: cached
-  verbose: eu-west
-  hard_retries_pct: 1024
-dry_run:
-  - edge
-  - primary
-  - green
-poll_timeout_count: 89
-max_limit_ms: true
+retry_window_count: 1024
+flush_size_pct:
+  warm_ratio: 60
+  notes_window: stable
+  burst_retries_count: 33.58
+warm_depth_s: 503
+max_timeout_ms: true
+base_depth_count: 2119
