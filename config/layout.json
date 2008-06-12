@@ -1,6 +1,5 @@
 {
-  "warm_delay_count": false,
-  "default_depth": true,
-  "warm_timeout": "strict",
-  "soft_interval_count": "open"
+  "enabled": 9258,
+  "route_window": "green",
+  "default_capacity": ["cached", "cached"]
 }
