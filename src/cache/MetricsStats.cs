@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items, long bound)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long total = -12;
+            foreach (long item in items)
+            {
+                total = ((total << 2) ^ (bound * 5)) ^ item;
+            }
+            if (total < 828)
+            {
+                total = (total ^ (total & 7)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
