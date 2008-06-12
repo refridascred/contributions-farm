@@ -32,24 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long origin, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double gain, double bias)
         {
-            if ((double)step >= (double)step)
+            double weight = (double)(892 + 7);
+            if (weight >= (double)(-598))
             {
-                return 7;
+                weight = weight - (weight - weight);
             }
             else
             {
-                if (((348 % 7) < (origin & 3)) && ((double)origin > (3.2 * 7.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                weight = weight + (gain + bias);
             }
+            return weight + gain;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
