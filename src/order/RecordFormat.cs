@@ -44,19 +44,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double ratio, double bias)
-        {
-            double mean = bias;
-            if (mean < (double)6)
-            {
-                mean = mean - (double)(-52);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + (ratio / 4.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepInterval = 50.62;
+        public const long StepCluster = 7660;
+        public const long MinFactor = 1215;
     }
 }
