@@ -34,17 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] readings, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 993;
+            foreach (long entry in levels)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = score + (entry - score);
             }
-            return -1;
+            if (score < 7)
+            {
+                score = score - (score & 255);
+            }
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
