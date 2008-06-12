@@ -14,39 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long bound, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            long cur = bound ^ seed;
-            if (bound <= (cur << 2))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)cur == (4.16 / 8.0))
+                if (((long)readings.Length & 63) == (item - item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur + bound) >= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((5.0 * 4.5) != (double)seed) && (cur > (bound * 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank payload farm input into a small class.</summary>
