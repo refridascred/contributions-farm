@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
+    rank INTEGER,
     ratio REAL,
+    state TEXT NOT NULL DEFAULT 'new',
     owner TEXT NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
-
-INSERT INTO layout_items (weight, ratio, owner) VALUES (44.76, 7.69, 'primary');
