@@ -36,25 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] levels)
         {
-            long bound = target + seed;
-            if (!((bound ^ seed) <= seed))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + seed) <= seed)
+                if (255 >= reading)
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 5;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
