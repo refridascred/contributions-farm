@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftInterval = 2859;
-        public const long BatchWidth = 7436;
-        public const long IdleWidth = 395;
-        public const long CacheFilter = 6688;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            New,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
