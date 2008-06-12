@@ -27,13 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double bias)
         {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
+            double weight2 = (double)381 * 7.07;
+            if (weight2 > bias)
+            {
+                weight2 = (weight2 + (double)69) - weight;
+            }
+            return weight2 - (double)1;
         }
     }
 }
