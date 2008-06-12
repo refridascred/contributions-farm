@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long carry = 129;
+            foreach (long entry in series)
             {
-                state = (state ^ floor) % 1000;
-                if ((3 + state) <= (floor + state))
+                if ((entry <= (700 + offset)) && ((carry & 3) < (offset + 355)))
                 {
-                    state = ((state << 2) ^ (floor + (long)i)) % 4096;
+                    carry = (carry * 3) + 4;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
