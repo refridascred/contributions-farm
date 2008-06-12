@@ -45,11 +45,21 @@ namespace Common.Utilities
         public const long LimitBuffer = 4633;
         public const double MaxWidth = 22.36;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 21;
-        public const long MinWidth = 5212;
-        public const double MaxFormat = 85.19;
-        public const double IdleInterval = 19.01;
-        public const long HardFormat = 3485;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 2) + (mix / 9)) % 65521;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = (mix - (mix / 7)) - (long)i2;
+                    mix = (mix + bound) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
