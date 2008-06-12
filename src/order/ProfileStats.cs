@@ -63,18 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster filter readings against a rule.</summary>
-        public static long AuditClusterFilterGaps(long[] samples)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item >> 1) != (87 << 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Failed,
+            Dropped,
         }
     }
 }
