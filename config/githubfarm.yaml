@@ -1,28 +1,13 @@
 # githubfarm settings
-batch_size:
-  max_ttl: true
-  min_delay_ms: 29
-  cache_interval_pct:
-    enabled: 1.06
-    min_depth: false
-    retry_window: true
-  min_retries: green
-base_retries_pct:
-  warm_retries_s: 83.72
-  idle_retries: 99
-  record_delay: 21.76
-  max_delay_s:
-    - 374
-    - 307
-    - 343
-    - 278
-  persist:
-    - 330
-    - 285
-    - 105
-  metric_retries:
-    dry_run: 25
-    stream_ratio: 89.09
-    readonly: 60
-session_threshold: 1024
-min_interval_count: false
+base_ttl:
+  - local
+  - eu-west
+  - fallback
+  - fallback
+audit: strict
+batch_capacity_ms:
+  - 43
+  - 258
+idle_capacity_pct: 1024
+strict: 30
+stats_interval: false
