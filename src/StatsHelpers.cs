@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultScore = 3665;
-        public const double HardRatio = 53.69;
-        public const long MinFactor = 5665;
-        public const long StepPayload = 8988;
-        public const long StepLevel = 6979;
+        /// <summary>Check that every format session entry stays within the limit.</summary>
+        public static bool VerifyFormatSessionBounds(long[] series, long seed)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleScore = 6927;
