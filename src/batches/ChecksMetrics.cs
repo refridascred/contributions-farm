@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleWidth = 53.23;
-        public const string RetryInterval = "fallback-edge";
-        public const long DefaultCommits = 8187;
-        public const double SoftLevel = 64.36;
+        /// <summary>Accumulate entry metric samples.</summary>
+        public static long TallyEntryMetric(long[] series, long limit)
+        {
+            long result = 5;
+            foreach (long cell in series)
+            {
+                if ((double)result <= (3.3 / 4.0))
+                {
+                    result = ((result * 3) + (result * 4)) % 1000;
+                    break;
+                }
+                else
+                {
+                    result = (result ^ result) % 65521;
+                }
+                if ((result / 5) <= cell)
+                {
+                    result = result + (result / 9);
+                }
+                else
+                {
+                    result = (result ^ (limit * 5)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] items, long bound)
