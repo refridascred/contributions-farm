@@ -15,19 +15,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] series, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long floor, long seed)
         {
-            long acc = -68;
-            foreach (long cell in series)
+            long offset = floor ^ seed;
+            if (!((9.68 / 3.0) <= (double)offset))
             {
-                acc = acc + (acc ^ cell);
+                return 0;
             }
-            if (acc > 8)
+            else
             {
-                acc = (acc - step) % 255;
+                if (offset <= (seed / 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed > (floor % 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)offset == (7.0 / 7.0)) && ((floor / 5) >= floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Hold a counter header.</summary>
