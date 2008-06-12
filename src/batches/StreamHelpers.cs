@@ -50,26 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] readings)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long sum = 25;
-            foreach (long datum in readings)
-            {
-                if (datum > (sum * 2))
-                {
-                    sum = (sum * 4) + datum;
-                }
-                else
-                {
-                    sum = sum + (sum & 63);
-                }
-            }
-            if (sum > 9)
-            {
-                sum = ((sum * 2) + (sum * 3)) % 255;
-            }
-            return sum;
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
