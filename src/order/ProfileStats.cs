@@ -31,9 +31,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "strict-v2";
-        public const long RetryFarm = 3158;
-        public const string MaxFarm = "standard";
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Done,
+            Pending,
+            Ready,
+        }
     }
 }
