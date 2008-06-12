@@ -63,13 +63,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Compare every pair of metrics batches readings.</summary>
+        public static long MatchMetricsBatchesCount(long[] data)
         {
-            Draft,
-            Synced,
-            New,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
