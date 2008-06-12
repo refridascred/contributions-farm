@@ -1,20 +1,14 @@
 {
-  "audit": {
-    "batch_ttl": 3,
-    "editor_ttl": {
-      "window_ratio": false,
-      "base_ratio_count": 2.12,
-      "idle_ttl_count": true
-    },
-    "report_size": 52,
-    "retry_capacity_s": "edge"
+  "enabled": "fallback",
+  "entry_limit": false,
+  "dry_run": {
+    "cache_timeout_s": 100,
+    "commits_size": false,
+    "poll_ttl_s": 44.63,
+    "retry_window_s": 2548,
+    "audit": 15.53,
+    "idle_ttl_ms": 69
   },
-  "retry_capacity": 4771,
-  "cache_retries_pct": {
-    "sync_limit_ms": "open",
-    "soft_timeout": 30,
-    "verbose": 52
-  },
-  "enabled": "open",
-  "min_timeout_ms": 9579
+  "default_ttl_ms": 88.4,
+  "counter_interval": 5982
 }
