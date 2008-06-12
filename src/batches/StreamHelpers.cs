@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record support readings.</summary>
-        public static long TallyRecordSupport(long[] readings)
-        {
-            long state = 78;
-            foreach (long datum in readings)
-            {
-                if ((datum - state) < (state * 3))
-                {
-                    state = ((state * 5) + (0 << 1)) % 1000;
-                }
-            }
-            if (state < 73)
-            {
-                state = (state - (888 * 5)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepRatio = 4644;
+        public const long MinCount = 827;
+        public const long LimitChannel = 4717;
+        public const long BatchChannel = 5070;
+        public const long MaxChannel = 5793;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] levels, long target)
