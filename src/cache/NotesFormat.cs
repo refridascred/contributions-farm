@@ -23,19 +23,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] levels, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a queue stats.</summary>
