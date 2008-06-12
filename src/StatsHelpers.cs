@@ -70,11 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultBudget = "alpha-edge";
-        public const long BatchCluster = 5700;
-        public const long MinWidth = 7955;
-        public const long MinLevel = 2065;
-        public const long CacheCluster = 5107;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 5) >= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
