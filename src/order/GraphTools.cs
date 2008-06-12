@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items, long bound)
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            long carry = 62;
+            foreach (long entry in items)
+            {
+                carry = (carry + (bound * 3)) ^ entry;
+            }
+            if (carry > 13)
+            {
+                carry = ((carry << 3) ^ (50 + carry)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of command metrics readings.</summary>
