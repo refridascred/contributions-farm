@@ -1,10 +1,9 @@
 # entry settings
-base_capacity: open
-window_ttl: 2.09
-base_limit_ms: eu-west
-default_timeout_ms:
-  - 44
-  - 435
-  - 459
-  - 458
-sync_timeout: 52.66
+strict: staging
+audit:
+  - 327
+  - 282
+  - 296
+default_timeout_s: blue
+metrics_ratio: fallback
+contributi_ratio: open
