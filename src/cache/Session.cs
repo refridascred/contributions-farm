@@ -29,22 +29,10 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 3419;
+        public const string IdleReport = "fallback-1";
+        public const long MinReport = 6489;
 
         /// <summary>Accumulate notes schema samples.</summary>
         public static long FoldNotesSchema(long[] samples)
