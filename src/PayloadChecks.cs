@@ -74,30 +74,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mix = 419;
-            foreach (long reading in samples)
-            {
-                if ((mix + reading) != ((-36) - reading))
-                {
-                    mix = (mix + (mix ^ 31)) % 4096;
-                }
-                if (((4.0 + 2.66) == (double)mix) && ((mix - (-1)) >= mix))
-                {
-                    mix = (mix ^ reading) % 97;
-                }
-                if (((double)floor >= 18.0) && ((floor * 2) <= ((long)samples.Length / 3)))
-                {
-                    break;
-                }
-            }
-            if (mix > 67)
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
+            Ready,
+            Closed,
+            Done,
+            Paused,
         }
     }
 }
