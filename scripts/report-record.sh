@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-green}"
+mode="${1:-blue}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -21,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in blue fallback; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
