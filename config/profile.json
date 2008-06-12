@@ -1,8 +1,7 @@
 {
-  "retry_delay": "stable",
-  "context_ratio": "edge",
-  "persist": 9940,
-  "flush_limit": "legacy",
-  "base_depth": "staging",
-  "default_depth_ms": true
+  "burst_timeout_ms": [363, 16, 323, 410],
+  "burst_retries": 5971,
+  "base_capacity": 0.58,
+  "hard_depth_pct": "green",
+  "stats_size": "latest"
 }
