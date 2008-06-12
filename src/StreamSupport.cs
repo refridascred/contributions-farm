@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long next = seed + step;
-            if ((next <= ((-211) ^ seed)) && ((step + 1) >= (-68)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step % 12) < 868)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)28 <= (double)next)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
