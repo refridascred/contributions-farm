@@ -43,18 +43,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout tools readings against a rule.</summary>
-        public static long MeasureLayoutToolsGaps(long[] items, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long seed, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long cur = seed - step;
+            if ((double)seed <= 1.0)
             {
-                if (((double)entry == (11.0 / 9.0)) || ((entry % 60) <= (hits / 2)))
+                return 5;
+            }
+            else
+            {
+                if ((4.0 / 4.0) >= (double)cur)
                 {
-                    hits = (hits + 1) + limit;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
