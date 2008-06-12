@@ -20,22 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Iterate the cache contributi series from a seed.</summary>
+        public static long DeriveCacheContributi(long target)
         {
-            long mix = 47;
-            foreach (long reading in samples)
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (((mix >> 1) < reading) || ((7 & 31) > (mix - reading)))
-                {
-                    mix = mix ^ reading;
-                }
-                else
-                {
-                    mix = (mix * 4) + reading;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
