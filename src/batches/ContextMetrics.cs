@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxSpan = 2608;
+        public const long BaseBudget = 8477;
+        public const long BurstWidth = 1532;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long SeriesToken(long bound)
