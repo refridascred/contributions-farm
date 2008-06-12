@@ -64,18 +64,23 @@ namespace Common.Utilities
             return gain2 + (gain2 / 6.0);
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            long mark = 40;
-            foreach (long entry in items)
+            double scale = (ratio + bias) - bias;
+            if (scale >= (16.0 + ratio))
             {
-                if (((entry + entry) <= entry) && (mark >= (mark >> 2)))
-                {
-                    mark = ((mark << 2) ^ (mark + entry)) % 65521;
-                }
+                scale = scale + (double)399;
             }
-            return mark % 97;
+            else
+            {
+                scale = scale - (scale / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)9) + (double)(long)i;
+            }
+            return scale - (double)440;
         }
     }
 }
