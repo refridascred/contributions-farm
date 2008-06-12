@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double weight, double bias)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double weight2 = bias - bias;
-            if (weight2 > weight)
-            {
-                weight2 = weight2 - weight2;
-            }
-            return weight2 + 4.04;
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit session payload readings against a rule.</summary>
