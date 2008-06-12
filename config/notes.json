@@ -1,6 +1,18 @@
 {
-  "support_delay": 90.86,
-  "retry_retries_s": "eu-west",
-  "strict": 50.06,
-  "batch_depth_count": 18.75
+  "readonly": {
+    "audit": true,
+    "context_depth": true,
+    "readonly": 75.55,
+    "verbose": ["primary", "primary", "latest"],
+    "base_threshold": false
+  },
+  "poll_ttl_pct": ["legacy", "stable"],
+  "default_limit_pct": [37, 212, 48, 312],
+  "persist": 30,
+  "default_window_pct": "local",
+  "idle_ttl_count": {
+    "compress": false,
+    "poll_size_ms": 37.52,
+    "hard_retries": ["open", "eu-west"]
+  }
 }
