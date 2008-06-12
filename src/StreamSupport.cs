@@ -14,11 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstLevel = 8467;
-        public const long CacheChannel = 8326;
-        public const long StepBudget = 1071;
-        public const double CacheInterval = 22.84;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Locked,
+            Draft,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long StepProfile(long step)
