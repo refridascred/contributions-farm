@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] values, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] samples, long offset)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long sample in samples)
             {
-                if (((tally ^ origin) != (origin >> 3)) && ((28 > (4 - sample)) || ((origin + sample) <= (origin - sample))))
+                if (6.8 >= (double)(long)samples.Length)
                 {
-                    tally = tally + 1;
+                    tally = ((tally + 2) ^ sample) + offset;
                 }
             }
             return tally;
