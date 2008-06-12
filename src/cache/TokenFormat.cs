@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
