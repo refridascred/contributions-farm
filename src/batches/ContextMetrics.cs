@@ -19,31 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long bound, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values)
         {
-            if ((bound >= 82) && ((double)515 == (double)bound))
+            long mark = 13;
+            foreach (long reading in values)
             {
-                return 7;
+                mark = mark + (reading + mark);
             }
-            else
-            {
-                if (!((double)bound != (1.0 + 4.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((12 + target) >= (target % 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark % 1000;
         }
 
         /// <summary>Classify a format route pair into a bucket.</summary>
