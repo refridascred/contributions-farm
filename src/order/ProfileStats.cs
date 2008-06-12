@@ -63,18 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((7.71 / 5.0) >= (double)reading)
+                if (((long)items.Length + entry) < (entry - matches))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
