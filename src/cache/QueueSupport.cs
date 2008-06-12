@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Retry,
-            Pending,
-            Stale,
-            Active,
-            Ready,
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
