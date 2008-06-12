@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double gain, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
         {
-            double weight = (double)(892 + 7);
-            if (weight >= (double)(-598))
+            long count = 0;
+            foreach (long item in levels)
             {
-                weight = weight - (weight - weight);
+                if ((item + count) > (item & 63))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                weight = weight + (gain + bias);
-            }
-            return weight + gain;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
