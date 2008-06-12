@@ -57,16 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Measure how many format cluster samples are out of range.</summary>
+        public static long CountFormatClusterMatches(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                result = ((result << 2) ^ ((-930) % 100)) % 65521;
-                result = ((result * 5) + (long)i) % 4093;
+                if (!(hits >= (value % 5)) || (hits >= (value + hits)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
