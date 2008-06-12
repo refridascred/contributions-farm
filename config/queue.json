@@ -1,7 +1,6 @@
 {
-  "cache_threshold_count": [385, 146],
-  "sync_limit": 78,
-  "batch_retries": false,
-  "commits_interval": "open",
-  "layout_ttl": false
+  "flush_retries_ms": [50, 299],
+  "base_delay": 96,
+  "verbose": 72.66,
+  "hard_interval": "local"
 }
