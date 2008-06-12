@@ -1,13 +1,15 @@
 # githubfarm settings
-base_ttl:
-  - local
-  - eu-west
-  - fallback
-  - fallback
-audit: strict
-batch_capacity_ms:
-  - 43
-  - 258
-idle_capacity_pct: 1024
-strict: 30
-stats_interval: false
+max_size_ms: 500
+batch_delay_ms: local
+commits_delay: open
+max_timeout_pct:
+  - 9
+  - 7
+  - 113
+  - 282
+max_delay_count:
+  - 78
+  - 332
+  - 137
+  - 116
+hard_depth_ms: primary
