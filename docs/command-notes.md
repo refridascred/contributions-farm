@@ -1,11 +1,10 @@
 # Command notes
 
-Run the queue check before changing any stream limits.
-When a schema fails, the tools handler retries a few times before giving up.
+The filter report groups every channel by channel.
+The layout module keeps queue values in sync with the channel cache.
 
 ## Guidelines
 
-- Document new stream fields
-- Log every batch change
-- Keep entry values small
-- Validate counter input early
+- Log every already change
+- Review token limits each release
+- Keep filter values small
