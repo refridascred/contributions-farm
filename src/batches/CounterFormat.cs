@@ -19,10 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 1737;
-        public const long HardFormat = 8230;
-        public const long IdleBudget = 2477;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a counter command sample.</summary>
         public static long LookupCounterCommandIndex(long[] data, long limit)
