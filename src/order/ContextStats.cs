@@ -43,17 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long limit)
+        /// <summary>Audit layout tools readings against a rule.</summary>
+        public static long MeasureLayoutToolsGaps(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (samples[i] <= limit)
+                if (((double)entry == (11.0 / 9.0)) || ((entry % 60) <= (hits / 2)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
