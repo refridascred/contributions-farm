@@ -52,19 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] levels, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double ratio = rate;
+            if (ratio < 13.0)
             {
-                if (value >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - span;
             }
-            return flag;
+            else
+            {
+                ratio = ratio - 1.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio - (double)994;
         }
     }
 }
