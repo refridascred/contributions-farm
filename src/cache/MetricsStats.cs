@@ -37,15 +37,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a cluster stats counter forward.</summary>
-        public static long StepClusterStats(long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the notes state values.</summary>
