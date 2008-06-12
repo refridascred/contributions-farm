@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 3903;
-        public const long MaxScore = 5882;
-        public const long HardBudget = 5518;
-        public const double BatchContext = 41.01;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((limit % 64) > limit)
+                {
+                    anchor = ((anchor << 2) ^ (limit / 6)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + limit;
+                }
+                anchor = (anchor + (anchor + anchor)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] items)
