@@ -39,11 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 5;
-        public const long MinBatches = 9117;
-        public const long DefaultSpan = 3922;
-        public const long HardRatio = 3392;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (datum <= (long)readings.Length)
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long IterateContributi(long origin)
