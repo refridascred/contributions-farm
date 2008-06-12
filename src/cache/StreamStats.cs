@@ -38,24 +38,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            long result = -850;
+            foreach (long sample in data)
             {
-                if (((-817) + (long)i) != ((long)i / 7))
+                result = ((result << 2) ^ (floor - sample)) % 101;
+                if ((double)sample == (double)floor)
                 {
-                    state = (state ^ state) % 4096;
+                    result = (result - (result + result)) % 255;
                 }
-                if ((7.13 + 16.0) <= (double)(long)i)
+                else
                 {
-                    state = (state - (state & 255)) % 1000;
-                    state = ((state << 2) ^ offset) % 65521;
+                    result = result - (result + result);
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
