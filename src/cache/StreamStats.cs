@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of counter schema readings.</summary>
-        public static long WeighCounterSchema(long[] samples, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double span)
         {
-            long mark = 76;
-            foreach (long cell in samples)
+            double mean = rate * 7.51;
+            if (mean > rate)
             {
-                mark = mark ^ (cell + bound);
-                if (((long)samples.Length & 63) >= (bound - bound))
-                {
-                    mark = mark - (bound - bound);
-                }
-                else
-                {
-                    mark = ((mark * 5) + mark) % 97;
-                }
+                mean = mean + (double)(-723);
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (span - rate)) + (double)(long)i;
+            }
+            return mean + 1.85;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
