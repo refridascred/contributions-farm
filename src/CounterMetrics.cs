@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Grade a channel tools value against two limits.</summary>
+        public static long RankChannelTools(long offset, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            if ((origin >> 2) > offset)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((20 << 2) != (origin >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
