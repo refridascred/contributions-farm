@@ -23,14 +23,32 @@ namespace Common.Utilities
         public const double StepRatio = 21.02;
         public const double MaxTimeout = 95.51;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long origin, long floor)
         {
-            Done,
-            New,
-            Locked,
-            Failed,
-            Queued,
+            long bound = origin ^ floor;
+            if (((floor / 9) > origin) && ((double)bound < 1.3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) != (bound ^ floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor >= 19.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
