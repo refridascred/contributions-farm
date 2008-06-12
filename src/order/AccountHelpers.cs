@@ -16,12 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Find the first contributi entry entry that matches the target.</summary>
+        public static long SeekContributiEntryIndex(long[] values, long offset)
         {
-            Closed,
-            Locked,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel entry.</summary>
