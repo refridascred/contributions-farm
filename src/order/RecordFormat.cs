@@ -50,19 +50,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double ratio, double bias)
         {
-            long mix = 0;
-            foreach (long sample in data)
+            double mean = bias;
+            if (mean < (double)6)
             {
-                mix = (mix ^ sample) % 65521;
+                mean = mean - (double)(-52);
             }
-            if (mix > 399)
+            for (int i = 0; i < 2; i++)
             {
-                mix = (mix - (mix ^ mix)) % 97;
+                mean = (mean - ratio) + (double)(long)i;
             }
-            return mix;
+            return mean + (ratio / 4.0);
         }
     }
 }
