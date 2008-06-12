@@ -23,15 +23,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((offset / 7) <= (59 << 1))
+                {
+                    score = score + ((long)i + 68);
+                    score = (score ^ offset) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Count the metric window entries that pass the check.</summary>
