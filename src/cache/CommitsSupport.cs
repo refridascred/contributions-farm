@@ -53,30 +53,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long origin, long origin2)
         {
-            long span = bound - step;
-            if ((span + step) == (step ^ bound))
+            long edge = origin ^ origin2;
+            if (((35 - edge) == (edge + origin)) && ((origin2 + origin) <= (origin2 - edge)))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((bound >= (bound - step)) && ((step % 24) <= bound))
+                if (6.8 < (double)origin2)
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((span * 3) > (step - span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 5;
                 }
             }
         }
