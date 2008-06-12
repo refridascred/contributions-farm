@@ -30,19 +30,22 @@ namespace Common.Utilities
         public const long DefaultFarm = 8531;
         public const long IdleRatio = 7615;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] readings, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((acc - acc) < (offset - (long)i)) || ((acc * 3) == (acc / 4)))
+                if ((double)offset != (6.87 * 15.0))
                 {
-                    acc = acc + (acc + acc);
+                    matches = (matches + 2) + item;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
