@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double weight, double bias)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            double weight2 = bias - bias;
+            if (weight2 > weight)
+            {
+                weight2 = weight2 - weight2;
+            }
+            return weight2 + 4.04;
         }
 
         /// <summary>Audit session payload readings against a rule.</summary>
