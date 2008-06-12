@@ -22,27 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] levels, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long anchor = 825;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor ^ (365 + offset)) % 65521;
-                if ((0.6 * 2.89) <= (double)anchor)
-                {
-                    anchor = (anchor ^ (67 - offset)) % 65521;
-                }
-                if ((17.0 - 17.0) > (double)sample)
-                {
-                    anchor = ((anchor * 2) + anchor) % 1000;
-                }
-            }
-            if (anchor > 483)
-            {
-                anchor = anchor ^ (anchor - offset);
-            }
-            return anchor;
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
