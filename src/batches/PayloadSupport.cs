@@ -37,11 +37,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitWidth = "latest-edge";
+        public const long LimitContributi = 793;
+        public const long MaxContributi = 9837;
+        public const string MinRatio = "cached-edge";
     }
 }
