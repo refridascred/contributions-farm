@@ -46,25 +46,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long limit)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long origin)
         {
-            long bound = floor ^ limit;
-            if ((floor >= (floor - bound)) && (99 <= (floor ^ limit)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((-2) >= (bound - bound))
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
