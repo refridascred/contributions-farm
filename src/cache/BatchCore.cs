@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long seed)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Synced,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate stats channel readings against a bound.</summary>
