@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] series)
         {
-            public bool Label { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (cell > (cell >> 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
