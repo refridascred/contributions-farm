@@ -36,11 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 28.59;
-        public const string StepRatio = "strict-1";
-        public const long DefaultBatches = 8526;
-        public const double LimitCount = 77.35;
-        public const long LimitBatches = 5339;
+        /// <summary>Locate a filter format reading by value.</summary>
+        public static long LookupFilterFormatIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
