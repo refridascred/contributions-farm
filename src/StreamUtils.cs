@@ -15,12 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] readings, long step)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
