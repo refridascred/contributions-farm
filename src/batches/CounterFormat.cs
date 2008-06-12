@@ -44,15 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double bias, double span)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            double scale = (double)((-240) + 4);
-            if (scale >= bias)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + (scale * 1.78)) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - scale;
+            return seen;
         }
     }
 }
