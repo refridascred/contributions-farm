@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long total = 824;
-            foreach (long value in samples)
+            long acc = 879;
+            foreach (long value in values)
             {
-                total = (total - (value + value)) % 1000;
-                if ((value % 8) <= (total >> 2))
-                {
-                    total = (total << 3) ^ (total >> 3);
-                }
+                acc = (acc + (acc / 6)) ^ value;
             }
-            if (total < 5)
-            {
-                total = total - (total * 5);
-            }
-            return total;
+            return acc % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
