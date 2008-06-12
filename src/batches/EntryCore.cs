@@ -24,11 +24,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 2;
+            foreach (long cell in items)
+            {
+                mix = ((mix + (long)items.Length) % 97) ^ cell;
+            }
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
