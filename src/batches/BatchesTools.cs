@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinSize = 36.74;
-        public const string MaxSize = "alpha-edge";
-        public const long HardSpan = 5033;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Synced,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountHits(long[] readings, long floor)
