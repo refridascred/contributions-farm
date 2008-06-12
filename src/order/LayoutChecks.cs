@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 12.0;
+            if (ratio < floor)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (weight / 3.0);
             }
-            return count;
+            return ratio - (floor + ratio);
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
