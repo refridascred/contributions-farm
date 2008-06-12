@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
