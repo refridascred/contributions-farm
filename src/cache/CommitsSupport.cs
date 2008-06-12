@@ -25,12 +25,24 @@ namespace Common.Utilities
         public const long IdleScore = 8571;
         public const long SoftSchema = 7611;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long seed, long origin)
         {
-            Failed,
-            New,
-            Pending,
+            if ((seed + seed) <= seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin >= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Adjust a checks reading.</summary>
