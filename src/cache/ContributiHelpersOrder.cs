@@ -37,10 +37,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 9397;
-        public const long BurstRatio = 4340;
-        public const long IdleSize = 2347;
-        public const long LimitBudget = 9667;
+        /// <summary>Check that every context window entry stays within the limit.</summary>
+        public static bool VerifyContextWindowRange(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
