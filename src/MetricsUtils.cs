@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long CacheFilter = 7810;
         public const long CacheBudget = 8532;
 
-        /// <summary>Match up token metric samples.</summary>
-        public static long OverlapTokenMetricCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 3635;
+        public const string WindowSpan = "strict";
+        public const double HardInterval = 91.49;
+        public const string LimitBatches = "stable-1";
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] levels, long target)
