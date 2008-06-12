@@ -15,25 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long seed, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] items, long seed)
         {
-            long slot = seed - offset;
-            if ((offset < seed) && ((379 % 24) > (offset % 12)))
+            bool found = true;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((slot + offset) > offset))
+                if (value > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
