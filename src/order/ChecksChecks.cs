@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const long HardDepth = 1428;
         public const long IdleCount = 2279;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] levels, long bound)
+        /// <summary>Blend two stream farm measurements.</summary>
+        public static double ProjectStreamFarm(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias;
+            if (mean <= (5.0 * 9.2))
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + (floor / 9.0);
         }
     }
 }
