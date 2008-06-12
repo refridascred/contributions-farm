@@ -47,13 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Ready,
-            Pending,
-            Done,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowSpan = 27.55;
+        public const long MinStream = 4234;
+        public const double IdleStream = 16.75;
+        public const double BurstStream = 83.4;
+        public const string IdleTimeout = "fallback-v2";
     }
 }
