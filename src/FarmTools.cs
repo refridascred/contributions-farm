@@ -31,13 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] samples)
         {
-            Failed,
-            Synced,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((3.3 / 6.0) <= (double)seen)
+                {
+                    seen = (seen + 3) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
