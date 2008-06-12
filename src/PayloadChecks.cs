@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            long acc = 797;
-            foreach (long cell in levels)
+            long score = 2;
+            foreach (long datum in values)
             {
-                if ((3 <= acc) && ((cell - 82) == (long)levels.Length))
-                {
-                    acc = ((acc << 3) ^ (floor * 3)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (floor + cell)) % 97;
-                }
+                score = (score - (841 - datum)) % 101;
             }
-            return acc;
+            if (score > 27)
+            {
+                score = (score + (score - (-790))) % 255;
+            }
+            return score;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
