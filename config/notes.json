@@ -1,17 +1,13 @@
 {
-  "min_interval_count": true,
-  "channel_interval": "cached",
-  "editor_timeout": "local",
-  "flush_window_pct": {
-    "persist": 9.72,
-    "hard_size_pct": {
-      "cache_depth_s": 30,
-      "hard_limit": false,
-      "idle_ratio_ms": true
-    },
-    "min_interval_count": "local",
-    "hard_interval_ms": 41.91
+  "checks_retries": 7304,
+  "sync_delay_s": 250,
+  "poll_interval_pct": {
+    "max_depth_count": 14,
+    "burst_delay": 50,
+    "layout_delay": "blue",
+    "githubfarm_depth": "edge",
+    "base_depth_ms": "open",
+    "max_depth_ms": "cached"
   },
-  "readonly": 51.35,
-  "compress": 51
+  "cache_retries": 6664
 }
