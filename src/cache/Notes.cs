@@ -23,12 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Match up cluster batch samples.</summary>
+        public static long MatchClusterBatchCount(long[] values)
         {
-            Locked,
-            Retry,
-            New,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
