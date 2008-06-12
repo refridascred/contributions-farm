@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ((ratio - ratio) + scale) + span;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (394 <= (seen + 94))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
