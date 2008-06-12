@@ -16,32 +16,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long step, long origin)
+        /// <summary>Fold a list of order buffer readings.</summary>
+        public static long WeighOrderBuffer(long[] items)
         {
-            long bound = step - origin;
-            if ((9 & 7) >= (bound << 3))
+            long result = 17;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin & 3) >= bound) && ((step + 87) >= (step - bound)))
+                if ((datum >> 1) < result)
                 {
-                    return 4;
+                    result = ((result * 3) + ((-26) ^ 31)) % 1000;
                 }
                 else
                 {
-                    if ((bound >> 5) == (295 + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result - result) % 65521;
                 }
             }
+            if (result < (-424))
+            {
+                result = (result + (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
