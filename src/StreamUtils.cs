@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((score + score) != (limit - (long)i)) || ((3.2 - 6.74) >= (double)score))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score << 3) ^ 997;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Queued,
+            Retry,
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a token entry.</summary>
