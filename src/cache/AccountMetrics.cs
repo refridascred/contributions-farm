@@ -23,26 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
-            long acc = 76;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (acc > (57 >> 5))
+                if ((241 - entry) < (32 * 5))
                 {
-                    break;
-                }
-                else
-                {
-                    acc = acc - (origin + value);
-                }
-                if ((acc & 31) != (9 ^ value))
-                {
-                    acc = (acc ^ acc) % 101;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up batches tools samples.</summary>
