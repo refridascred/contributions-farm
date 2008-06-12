@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] readings, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((bound - bound) != (bound + bound))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the batch level values.</summary>
