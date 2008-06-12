@@ -63,9 +63,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchInterval = 3669;
-        public const long LimitScore = 6912;
-        public const double CacheSpan = 2.49;
+        /// <summary>Find the first order format entry that matches the target.</summary>
+        public static long FindOrderFormatIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
