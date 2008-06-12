@@ -18,21 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Classify a checks window pair into a bucket.</summary>
+        public static long GradeChecksWindow(long offset, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = offset - bound;
+            if ((bound >> 3) != (span + offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((bound / 4) > offset))
                 {
-                    if ((values[i] - values[j]) > 7)
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >= (3 & 63)) || ((offset - bound) > (offset / 7)))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((span << 3) > (offset + bound)) && ((bound << 2) >= (span + 28)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank window input into a small class.</summary>
