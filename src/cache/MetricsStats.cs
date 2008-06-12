@@ -35,12 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] values, long limit)
         {
-            Locked,
-            Closed,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
