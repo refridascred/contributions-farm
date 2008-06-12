@@ -57,13 +57,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Retry,
-            Paused,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxFactor = 7868;
+        public const long HardFactor = 8840;
+        public const long BaseContributi = 6981;
+        public const long StepContributi = 106;
+        public const long RetryWidth = 998;
     }
 }
