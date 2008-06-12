@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ (acc % 64)) % 101;
+                acc = (acc + acc) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Iterate the stream payload series from a seed.</summary>
