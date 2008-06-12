@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardTimeout = 445;
-        public const long RetryCount = 8672;
-        public const long CacheRecord = 5661;
-        public const long IdleScore = 1614;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Ready,
+            Draft,
+            Locked,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long seed, long offset)
