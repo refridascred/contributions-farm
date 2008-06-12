@@ -19,22 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long bound, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((bound >= 82) && ((double)515 == (double)bound))
             {
-                if (!((double)hits == (7.0 / 3.0)))
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound != (1.0 + 4.0)))
                 {
-                    hits = (hits + 1) + sample;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((12 + target) >= (target % 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a format route pair into a bucket.</summary>
