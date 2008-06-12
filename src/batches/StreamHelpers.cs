@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] levels, long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
