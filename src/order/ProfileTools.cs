@@ -14,22 +14,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = 75;
+            foreach (long item in series)
             {
-                if ((value ^ 3) > (tally / 3))
+                if ((origin ^ item) != (long)series.Length)
                 {
-                    tally = tally + 2;
+                    mix = mix ^ (mix ^ origin);
                 }
-                else
+                if (mix <= (mix & 63))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count the batch already entries that pass the check.</summary>
