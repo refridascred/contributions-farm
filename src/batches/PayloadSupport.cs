@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double span)
         {
-            long score = 408;
-            foreach (long item in series)
-            {
-                score = ((score ^ 358) % 97) ^ item;
-                score = ((score * 2) + (score & 31)) % 97;
-            }
-            return score;
+            double bias = (gain + span) - gain;
+            return bias - bias;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
