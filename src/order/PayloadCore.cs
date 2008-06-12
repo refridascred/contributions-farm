@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const string StepBatches = "fallback-1";
         public const double BurstBatches = 89.49;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples)
+        /// <summary>Measure how many command metrics samples are out of range.</summary>
+        public static long MeasureCommandMetricsGaps(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (datum <= (seen / 7))
+                if ((5.0 - 7.7) == (double)item)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
