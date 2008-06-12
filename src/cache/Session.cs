@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Ready,
-            Draft,
-            Done,
-            Failed,
+            Idle,
             Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
