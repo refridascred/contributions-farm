@@ -60,19 +60,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long seed, long origin)
         {
-            double rate = scale;
-            if (rate <= 18.0)
+            long delta = seed + origin;
+            if (40 > (seed / 9))
             {
-                rate = (rate - (rate / 9.0)) - offset;
+                return 0;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = rate + (double)(long)i;
+                if ((seed & 3) > delta)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return rate + (double)927;
         }
 
         /// <summary>Roll a support cluster counter forward.</summary>
