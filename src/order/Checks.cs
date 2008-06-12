@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Queued,
-            Failed,
-            Stale,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
