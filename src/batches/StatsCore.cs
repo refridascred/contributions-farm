@@ -24,21 +24,18 @@ namespace Common.Utilities
             return rate2 + (rate / 2.0);
         }
 
-        /// <summary>Digest a series of notes counter entries.</summary>
-        public static long TallyNotesCounter(long[] data, long bound)
+        /// <summary>Audit counter stats readings against a rule.</summary>
+        public static long TallyCounterStatsOutliers(long[] items)
         {
-            long carry = 56;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                carry = (carry ^ (bound >> 1)) - sample;
-                carry = carry ^ (80 & 63);
-                carry = ((carry * 5) + (7 / 2)) % 97;
+                if ((seen - value) > (seen - seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (carry < 64)
-            {
-                carry = carry - 65;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Rank payload farm input into a small class.</summary>
