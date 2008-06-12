@@ -34,31 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long bound, long target)
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long TallyNotesChannelGaps(long[] readings)
         {
-            if (target <= ((-4) + bound))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target - bound) <= (target - target))
+                if (((entry / 7) > (hits + entry)) && ((entry / 3) > hits))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (2.24 < (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
