@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            Retry,
+            Pending,
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Look up the position of a githubfarm report sample.</summary>
