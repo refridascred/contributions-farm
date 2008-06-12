@@ -1,6 +1,7 @@
 {
-  "batch_limit_s": 79.06,
-  "graph_threshold": 23,
-  "profile_delay": "legacy",
-  "min_timeout": 53
+  "base_delay_ms": "staging",
+  "report_ratio": 97.93,
+  "burst_capacity_pct": "edge",
+  "batch_threshold": false,
+  "dry_run": 934
 }
