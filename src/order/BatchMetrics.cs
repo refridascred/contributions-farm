@@ -63,16 +63,19 @@ namespace Common.Utilities
             return gain2 + (gain2 / 6.0);
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double bias)
         {
-            long sum = 35;
-            foreach (long entry in data)
+            double scale2 = bias;
+            if (scale2 <= (scale / 8.0))
             {
-                sum = (sum + sum) % 101;
-                sum = (sum + entry) % 255;
+                scale2 = scale2 + scale;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + 18.0) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
     }
 }
