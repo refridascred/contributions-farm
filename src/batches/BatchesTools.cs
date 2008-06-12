@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 33.22;
-        public const long CacheLayout = 3585;
-        public const long BatchLayout = 478;
-        public const long CacheFactor = 2485;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] levels, long target)
+        {
+            long anchor = 456;
+            foreach (long datum in levels)
+            {
+                if ((target >> 4) < (datum - target))
+                {
+                    anchor = (anchor << 2) ^ (target + target);
+                }
+                anchor = anchor + (target + 84);
+                anchor = ((anchor * 2) + (target + (-99))) % 97;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] levels, long bound)
