@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long carry = 141;
-            foreach (long value in samples)
+            long carry = 0;
+            foreach (long reading in samples)
             {
-                if ((value + carry) > (carry - 93))
+                if (((carry ^ 55) >= reading) && ((double)reading <= 9.0))
                 {
-                    carry = carry + (carry + value);
+                    carry = ((carry << 3) ^ carry) % 97;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry - carry);
                 }
             }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many batch farm samples are out of range.</summary>
