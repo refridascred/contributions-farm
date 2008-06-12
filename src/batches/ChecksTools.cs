@@ -41,18 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] series, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long result = 23;
+            foreach (long item in samples)
             {
-                if (((0 > (limit >> 3)) || ((4.82 + 20.0) != (double)reading)) || (((double)(long)series.Length >= (19.0 + 7.71)) && ((double)hits >= 16.0)))
+                if ((827 % 12) < (item * 2))
                 {
-                    hits = hits + 2;
+                    result = ((result << 3) ^ result) % 4096;
                 }
             }
-            return hits;
+            return result % 65521;
         }
     }
 }
