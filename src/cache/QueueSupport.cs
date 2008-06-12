@@ -26,15 +26,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the filter metrics entries that pass the check.</summary>
-        public static long MeasureFilterMetricsHits(long[] values, long bound)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
         {
             long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound - hits) > 681)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) - entry;
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
