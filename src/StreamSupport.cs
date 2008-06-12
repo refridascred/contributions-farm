@@ -12,15 +12,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the filter token series from a seed.</summary>
-        public static long IterateFilterToken(long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                mix = (mix + (target + mix)) % 255;
+                if ((target % 3) < mix)
+                {
+                    mix = ((mix << 3) ^ ((long)i - 9)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
