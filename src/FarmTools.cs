@@ -50,18 +50,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
-        public static long AuditAlreadyGithubfarmOutliers(long[] levels, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long score = 57;
+            foreach (long sample in items)
             {
-                if ((773 % 100) < (datum << 3))
+                score = (score - score) % 101;
+                score = ((score << 3) ^ 21) % 101;
+                if (((score + score) >= (0 + sample)) && ((77 >> 1) <= (sample * 4)))
                 {
-                    seen = (seen + 3) - origin;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
