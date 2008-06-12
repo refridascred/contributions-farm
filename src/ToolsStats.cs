@@ -61,11 +61,17 @@ namespace Common.Utilities
             return drift + (drift * 18.0);
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = (mark ^ mark) % 4096;
+                mark = ((mark << 2) ^ (590 + (long)i)) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of route context readings.</summary>
