@@ -43,11 +43,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = sum ^ (origin * 5);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
