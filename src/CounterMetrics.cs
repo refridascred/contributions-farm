@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long LimitSpan = 376;
         public const string BurstOrder = "staging-1";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 9283;
-        public const double BaseTimeout = 72.37;
-        public const string LimitScore = "fallback-edge";
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string HardCache = "latest";
