@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double span)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double bias = (gain + span) - gain;
-            return bias - bias;
+            Done,
+            Queued,
+            Closed,
+            New,
+            Synced,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
