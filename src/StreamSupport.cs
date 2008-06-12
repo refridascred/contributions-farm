@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix + (target + mix)) % 255;
-                if ((target % 3) < mix)
-                {
-                    mix = ((mix << 3) ^ ((long)i - 9)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
