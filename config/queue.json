@@ -1,8 +1,5 @@
 {
-  "stream_capacity": "local",
-  "compress": "eu-west",
-  "session_interval": 26.02,
-  "min_ttl": 4256,
-  "batch_depth_pct": true,
-  "strict": "standard"
+  "cluster_interval": "fallback",
+  "verbose": 100,
+  "notes_capacity": [343, 271, 4]
 }
