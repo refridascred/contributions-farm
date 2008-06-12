@@ -1,12 +1,20 @@
 {
-  "idle_ttl": "edge",
-  "poll_ratio_pct": [58, 244, 449, 14],
-  "route_window": 28.71,
-  "max_retries": "strict",
-  "farm_interval": {
-    "batch_ttl_ms": 250,
-    "idle_retries_s": "blue",
-    "max_threshold_count": 500
+  "audit": {
+    "batch_ttl": 3,
+    "editor_ttl": {
+      "window_ratio": false,
+      "base_ratio_count": 2.12,
+      "idle_ttl_count": true
+    },
+    "report_size": 52,
+    "retry_capacity_s": "edge"
   },
-  "context_capacity": 2263
+  "retry_capacity": 4771,
+  "cache_retries_pct": {
+    "sync_limit_ms": "open",
+    "soft_timeout": 30,
+    "verbose": 52
+  },
+  "enabled": "open",
+  "min_timeout_ms": 9579
 }
