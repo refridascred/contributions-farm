@@ -1,9 +1,9 @@
 # support settings
-sync_ttl_s: green
-contributi_depth: 2786
-report_ttl: 500
-commits_ttl:
-  - 200
-  - 362
-  - 157
-  - 343
+burst_depth_ms: 34
+idle_threshold_s: 1024
+base_size_pct: 78.99
+warm_interval_count:
+  - standard
+  - legacy
+burst_ratio_count: edge
+cache_ttl_s: false
