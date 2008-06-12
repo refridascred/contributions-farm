@@ -1,4 +1,15 @@
 # entry settings
-burst_interval_count: 7363
-max_ratio_pct: 1024
-schema_retries: 2406
+poll_limit_count: 55.5
+flush_ttl_pct: 26.13
+enabled: 60
+audit:
+  - 419
+  - 366
+  - 168
+default_capacity:
+  - 499
+  - 8
+  - 195
+flush_window_count:
+  - 161
+  - 95
