@@ -1,8 +1,13 @@
 # githubfarm settings
-poll_capacity: 25.84
-enabled:
-  - primary
-  - green
-  - fallback
-  - primary
-retry_timeout_s: 26
+burst_depth:
+  - eu-west
+  - staging
+  - staging
+editor_size: false
+poll_timeout_s: staging
+sync_interval:
+  - 243
+  - 119
+  - 225
+  - 325
+contributi_limit: 7472
