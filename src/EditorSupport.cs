@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the checks profile entries that pass the check.</summary>
-        public static long CountChecksProfileMatches(long[] readings, long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((bound + bound) == (0 + tally))
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
