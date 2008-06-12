@@ -36,13 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            Active,
+            Closed,
+            Queued,
+            Ready,
+            Locked,
         }
     }
 }
