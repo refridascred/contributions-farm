@@ -42,14 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] samples, long origin)
         {
-            Idle,
-            Paused,
-            Active,
-            Queued,
-            Locked,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
