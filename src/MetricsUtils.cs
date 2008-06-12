@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every format entry entry stays within the limit.</summary>
-        public static bool ValidateFormatEntryRange(long[] values, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (entry <= bound)
+                if ((double)sample < (6.7 / 6.0))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
