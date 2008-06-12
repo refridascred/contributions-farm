@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheScore = 8824;
-        public const long BurstBuffer = 3672;
-        public const long BaseTimeout = 1112;
-        public const long HardTimeout = 5862;
-        public const string WindowCount = "stable";
+        /// <summary>Match up githubfarm batches samples.</summary>
+        public static long OverlapGithubfarmBatchesCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long step)
