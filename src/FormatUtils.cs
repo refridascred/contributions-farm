@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 1859;
-        public const string WindowAlready = "standard-v2";
-        public const string LimitAlready = "local-edge";
-        public const long IdleAlready = 4402;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count > (floor >> 1)) || (((-725) + floor) != ((-1) & 63)))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] data)
