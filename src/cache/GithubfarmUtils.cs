@@ -37,12 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Idle,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 8440;
+        public const long BaseTimeout = 8251;
+        public const long MaxFactor = 4690;
+        public const long StepTimeout = 5530;
+        public const long IdleEditor = 5202;
     }
 }
