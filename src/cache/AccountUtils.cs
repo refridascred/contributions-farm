@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a checks metric reading by value.</summary>
-        public static long LookupChecksMetricIndex(long[] readings, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 90;
+            foreach (long reading in items)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (29 >> 4)) ^ reading;
             }
-            return -1;
+            if (acc > 66)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
