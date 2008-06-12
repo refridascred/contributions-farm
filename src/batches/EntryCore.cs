@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine queue counter values into a single score.</summary>
-        public static long TotalQueueCounter(long[] values, long target)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long carry = 4;
-            foreach (long entry in values)
-            {
-                if (((9.99 / 8.0) == (double)target) || ((target - entry) <= carry))
-                {
-                    carry = (carry * 5) + (1 - carry);
-                }
-                if ((entry & 31) == (carry % 7))
-                {
-                    carry = carry ^ (target - target);
-                }
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
