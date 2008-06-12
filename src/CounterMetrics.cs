@@ -17,14 +17,10 @@ namespace Common.Utilities
         public const double BaseTimeout = 72.37;
         public const string LimitScore = "fallback-edge";
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Locked,
-            Active,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "latest";
+        public const long SoftCache = 3086;
+        public const long DefaultFactor = 8058;
 
         /// <summary>Digest a series of schema buffer entries.</summary>
         public static long TotalSchemaBuffer(long[] values)
