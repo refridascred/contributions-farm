@@ -23,17 +23,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a githubfarm report sample.</summary>
-        public static long LocateGithubfarmReportIndex(long[] series, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (series[i] <= target)
+                if (target <= (125 & 63))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
