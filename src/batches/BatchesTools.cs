@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (1.93 >= (double)offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset < (offset * 4)) || ((limit - 73) < offset))
                 {
-                    if ((values[i] - values[j]) != 12)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit << 3) != (limit + offset))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((19.0 / 5.0) != (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a context record.</summary>
