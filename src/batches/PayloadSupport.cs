@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultScore = 98;
-        public const long MaxSize = 3564;
-        public const long BaseScore = 8682;
-        public const string BurstLevel = "primary-edge";
-        public const long LimitBatches = 81;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
