@@ -11,32 +11,11 @@ namespace Common.Utilities
         public const long MinSpan = 5180;
         public const long SoftOrder = 9900;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long origin)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long step = bound - origin;
-            if ((origin / 4) > step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)step <= (2.75 * 1.7)) && ((3.0 / 6.0) <= (double)bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound % 64) > (step + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Scale a batches already figure with a bias.</summary>
