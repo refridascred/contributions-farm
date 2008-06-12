@@ -1,11 +1,7 @@
 # githubfarm settings
-already_delay:
-  - 85
-  - 301
-  - 124
-  - 70
-readonly: blue
-audit: 4189
-min_limit_ms: open
-soft_interval: 39.28
-poll_threshold: eu-west
+buffer_timeout:
+  checks_window: 69
+  idle_window: 56
+  warm_delay: true
+flush_ttl_count: false
+min_ratio: staging
