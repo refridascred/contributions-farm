@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count tools channel pairs that satisfy a relation.</summary>
-        public static long PairToolsChannelCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)cell > 15.0))
                 {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
