@@ -14,15 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
-        public static long StepGithubfarmCluster(long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double weight, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            double gain = (double)((-72) ^ 4);
+            if (gain >= weight)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                gain = (gain - (7.96 / 6.0)) + bias;
             }
-            return mix;
+            else
+            {
+                gain = gain - 6.99;
+            }
+            return gain - weight;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
