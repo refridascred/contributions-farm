@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] series, long step)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
