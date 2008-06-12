@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] samples, long offset)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long carry = 6;
+            foreach (long item in samples)
+            {
+                if ((carry % 100) < (carry / 2))
+                {
+                    carry = (carry + (carry & 1)) - item;
+                }
+                else
+                {
+                    carry = (carry - (carry - offset)) % 101;
+                }
+                if ((5.8 / 2.0) > (double)(long)samples.Length)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
