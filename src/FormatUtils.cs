@@ -64,9 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxDepth = 517;
-        public const double CacheProfile = 2.4;
-        public const long MaxProfile = 7191;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values, long seed)
+        {
+            long result = 80;
+            foreach (long item in values)
+            {
+                if (((370 - result) <= seed) || ((item + (long)values.Length) >= (seed * 4)))
+                {
+                    result = (result - (result * 5)) % 1000;
+                }
+            }
+            return result;
+        }
     }
 }
