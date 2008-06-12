@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 6630;
-        public const long BatchMetrics = 3699;
-        public const long MaxMetrics = 9077;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Failed,
+            Stale,
+            Idle,
+            Retry,
+            Done,
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
