@@ -71,12 +71,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseSpan = 3299;
-        public const long StepSize = 4943;
-        public const long MinBudget = 4097;
-        public const string CacheCommits = "open-v2";
-        public const long HardScore = 4459;
+        /// <summary>Measure how many record editor samples are out of range.</summary>
+        public static long MeasureRecordEditorMatches(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((7.82 + 4.35) != (double)origin)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] data)
