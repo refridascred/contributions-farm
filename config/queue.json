@@ -1,12 +1,7 @@
 {
-  "base_limit": {
-    "base_limit": false,
-    "persist": false,
-    "default_ratio_s": "latest",
-    "readonly": 51.95,
-    "burst_ratio_ms": "standard"
-  },
-  "enabled": 75,
-  "cluster_limit": [328, 29],
-  "persist": "eu-west"
+  "hard_window": true,
+  "persist": "primary",
+  "idle_interval_count": 46.92,
+  "flush_interval_pct": "open",
+  "batches_window": false
 }
