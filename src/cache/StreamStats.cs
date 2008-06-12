@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many filter buffer samples are out of range.</summary>
-        public static long CountFilterBufferMatches(long[] data, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double rate = (offset + weight) + (double)6;
+            if (rate > (double)963)
             {
-                if (((double)bound <= (double)(-44)) && (((cell ^ bound) >= (bound - cell)) || ((double)cell > (double)472)))
-                {
-                    tally = tally + 3;
-                }
+                rate = rate + offset;
             }
-            return tally;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - (weight / 3.0);
         }
 
         /// <summary>Hold a layout entry.</summary>
