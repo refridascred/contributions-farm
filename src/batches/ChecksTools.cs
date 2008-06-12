@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long CacheAccount = 879;
         public const long BatchInterval = 4262;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] values, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (tally > (entry - limit))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
