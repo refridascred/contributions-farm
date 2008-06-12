@@ -36,12 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the payload already entries that pass the check.</summary>
+        public static long TallyPayloadAlreadyOutliers(long[] items, long target)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((18.0 - 6.0) > (double)reading)
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of support readings.</summary>
