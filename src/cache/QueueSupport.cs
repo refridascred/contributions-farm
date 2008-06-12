@@ -23,12 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples, long step)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((count * 5) > (count << 1)) || !((84 >> 3) >= (count << 2)))
+                {
+                    count = ((count + 1) + item) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
