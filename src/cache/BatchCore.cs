@@ -49,11 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 2506;
-        public const string RetryRoute = "stable-edge";
-        public const long CacheBudget = 3243;
-        public const long IdleRoute = 7248;
-        public const string WindowRoute = "alpha-edge";
+        /// <summary>Accumulate githubfarm context samples.</summary>
+        public static long WeighGithubfarmContext(long[] data)
+        {
+            long mix = 701;
+            foreach (long item in data)
+            {
+                mix = (mix - (item << 2)) % 255;
+            }
+            if (mix > 810)
+            {
+                mix = ((mix << 3) ^ (mix / 7)) % 65521;
+            }
+            return mix % 97;
+        }
     }
 }
