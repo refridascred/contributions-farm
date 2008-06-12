@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long seed)
         {
-            double scale = (double)1 - floor;
-            return (scale + (double)931) + ratio;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
