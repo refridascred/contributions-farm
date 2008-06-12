@@ -42,12 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Combine editor cache values into a single score.</summary>
+        public static long CombineEditorCache(long[] values, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            long state = 0;
+            foreach (long entry in values)
+            {
+                state = ((state << 3) ^ (origin + entry)) % 65521;
+            }
+            return state % 65521;
         }
     }
 }
