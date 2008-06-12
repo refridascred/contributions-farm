@@ -52,13 +52,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "staging-1";
+        public const long IdleTimeout = 1212;
+        public const string IdleRatio = "staging-v2";
+        public const long SoftInterval = 3206;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double scale, double offset)
