@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Check that every filter window entry stays within the limit.</summary>
+        public static bool ValidateFilterWindowRange(long[] items, long floor)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
