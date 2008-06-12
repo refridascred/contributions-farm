@@ -14,22 +14,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] series, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            long mix = 75;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((origin ^ item) != (long)series.Length)
+                if ((95 & 63) <= (hits << 3))
                 {
-                    mix = mix ^ (mix ^ origin);
+                    hits = (hits + 2) + reading;
                 }
-                if (mix <= (mix & 63))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the batch already entries that pass the check.</summary>
