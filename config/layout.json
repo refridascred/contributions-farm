@@ -1,12 +1,11 @@
 {
-  "soft_window": {
-    "audit": 72,
-    "payload_limit": true,
-    "counter_depth": false,
-    "batch_ttl_pct": "eu-west",
-    "soft_timeout": "strict",
-    "batch_depth_s": 100
+  "channel_threshold": 12.3,
+  "default_interval_ms": {
+    "profile_threshold": "strict",
+    "token_ttl": "legacy",
+    "filter_ttl": [406, 178, 102, 202]
   },
-  "commits_size": false,
-  "max_depth_pct": ["blue", "standard", "green", "standard"]
+  "batch_interval": 4764,
+  "readonly": 1593,
+  "strict": [455, 332]
 }
