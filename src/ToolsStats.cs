@@ -24,15 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches already figure with a bias.</summary>
-        public static double AdjustBatchesAlready(double scale, double floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] values)
         {
-            double drift = (double)(57 - 80);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                drift = ((drift - (floor - 20.0)) - (double)(long)i) + scale;
+                if (8.5 <= (double)value)
+                {
+                    hits = hits + 3;
+                }
             }
-            return drift + (drift * 18.0);
+            return hits;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
