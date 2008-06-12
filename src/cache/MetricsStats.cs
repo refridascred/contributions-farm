@@ -52,19 +52,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate filter report readings against a bound.</summary>
-        public static bool CheckFilterReportRange(long[] items, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Queued,
+            New,
+            Closed,
         }
     }
 }
