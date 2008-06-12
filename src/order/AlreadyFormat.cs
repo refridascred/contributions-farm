@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit batch githubfarm readings against a rule.</summary>
+        public static long MeasureBatchGithubfarmHits(long[] readings, long step)
         {
-            Locked,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count >> 1) >= (reading + count))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
