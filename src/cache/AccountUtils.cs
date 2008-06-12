@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
             public long Size { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
