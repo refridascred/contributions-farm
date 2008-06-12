@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public bool Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchInterval = "standard-1";
+        public const long CacheFilter = 7810;
+        public const long CacheBudget = 8532;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamGaps(long[] data, long target)
