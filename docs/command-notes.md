@@ -1,11 +1,10 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Run the session check before changing any token limits.
+Run the format check before changing any context limits.
+When a session fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new profile fields
-- Validate editor input early
-- Prefer metric defaults
-- Log every metric change
+- Review layout limits each release
+- Validate commits input early
+- Keep counter values small
