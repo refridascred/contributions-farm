@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Find the first entry githubfarm entry that matches the target.</summary>
+        public static long SeekEntryGithubfarmIndex(long[] values, long step)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
