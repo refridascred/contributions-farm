@@ -24,21 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Scale a cluster stats figure with a bias.</summary>
