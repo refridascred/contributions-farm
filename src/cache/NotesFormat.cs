@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2574;
-        public const long BaseRoute = 533;
-        public const long BaseSize = 4913;
-        public const long BatchRoute = 5811;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepWidth = 7350;
+        public const double IdleScore = 67.91;
+        public const long DefaultTimeout = 4348;
+        public const long IdleRecord = 5650;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
