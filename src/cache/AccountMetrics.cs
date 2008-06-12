@@ -44,11 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 4454;
-        public const long MaxBatches = 8409;
-        public const string HardBatches = "fallback-1";
-        public const long BurstBatches = 6775;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Idle,
+            Synced,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] data, long offset)
