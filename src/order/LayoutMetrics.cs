@@ -27,18 +27,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] data, long offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches + matches) != (value ^ offset))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
