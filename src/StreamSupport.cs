@@ -24,13 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] readings, long limit)
         {
-            Locked,
-            Draft,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!(9 >= (item / 4)))
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
