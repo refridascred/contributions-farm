@@ -23,18 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data, long bound)
+        /// <summary>Look up the position of a farm account sample.</summary>
+        public static long LookupFarmAccountIndex(long[] items, long target)
         {
-            long state = 900;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state <= 79) && ((state & 1) > value))
+                if (items[i] >= target)
                 {
-                    state = ((state * 2) + value) - bound;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
