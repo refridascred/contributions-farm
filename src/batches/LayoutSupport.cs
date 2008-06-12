@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowDepth = 6954;
-        public const double HardEntry = 11.32;
-        public const long BatchEntry = 6172;
+        /// <summary>Measure how many context tools samples are out of range.</summary>
+        public static long TallyContextToolsOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (45 >= (item + item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesMatches(long[] values)
