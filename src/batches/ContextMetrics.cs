@@ -51,19 +51,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Adjust a schema already reading.</summary>
-        public static double SmoothSchemaAlready(double gain, double span)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double mean = (double)(84 - 622);
-            if (mean >= 7.66)
-            {
-                mean = (mean + (mean + mean)) - span;
-            }
-            else
-            {
-                mean = mean + (double)64;
-            }
-            return mean - gain;
+            Pending,
+            Closed,
+            New,
+            Queued,
+            Dropped,
         }
     }
 }
