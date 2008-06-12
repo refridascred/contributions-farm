@@ -32,25 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long step, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] levels, long floor)
         {
-            long next = step ^ seed;
-            if ((962 ^ 783) > (next % 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((8 << 1) != (step * 2)) && (seed >= (step / 3)))
+                if (levels[i] <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
