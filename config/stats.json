@@ -1,8 +1,8 @@
 {
-  "persist": "green",
-  "batch_depth_s": true,
-  "retry_capacity_s": 3164,
-  "hard_timeout_s": "blue",
-  "route_timeout": 73,
-  "max_capacity_pct": [56, 488, 189]
+  "persist": "staging",
+  "retry_delay": ["blue", "local"],
+  "verbose": ["eu-west", "legacy", "eu-west"],
+  "default_retries_ms": 5008,
+  "idle_capacity": "cached",
+  "readonly": 500
 }
