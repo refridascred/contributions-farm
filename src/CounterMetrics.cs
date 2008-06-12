@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double rate, double bias)
+        /// <summary>Count tools channel pairs that satisfy a relation.</summary>
+        public static long PairToolsChannelCount(long[] levels)
         {
-            double load = rate;
-            if (load > (load - rate))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + (bias / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - (3.15 * 0.24);
+            return seen;
         }
 
         /// <summary>Describe the payload status values.</summary>
