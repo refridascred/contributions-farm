@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load - (10.0 / 4.0);
         }
 
-        /// <summary>Count the report batches entries that pass the check.</summary>
-        public static long TallyReportBatchesMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((1 & 15) == (hits + 25))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 3614;
+        public const double StepInterval = 29.68;
+        public const long CachePayload = 2567;
+        public const double StepRatio = 21.02;
+        public const double MaxTimeout = 95.51;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
