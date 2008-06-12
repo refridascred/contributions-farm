@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double load = offset - (offset - 1.5);
-            return (load - load) + ratio;
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
