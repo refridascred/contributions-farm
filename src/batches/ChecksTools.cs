@@ -43,16 +43,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Classify a contributi metric pair into a bucket.</summary>
+        public static long SortContributiMetric(long bound, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long step2 = bound ^ step;
+            if ((bound & 63) <= (step2 ^ step2))
             {
-                sum = sum ^ (origin * 5);
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((step2 + step) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (double)step2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)962 != (double)step2) || (step2 > (6 * 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
