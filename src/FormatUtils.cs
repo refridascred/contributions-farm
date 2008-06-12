@@ -68,10 +68,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 924;
-        public const long BurstWidth = 7743;
-        public const long SoftMetric = 9451;
-        public const string MaxMetric = "staging";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxDepth = 517;
+        public const double CacheProfile = 2.4;
+        public const long MaxProfile = 7191;
     }
 }
