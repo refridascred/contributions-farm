@@ -71,26 +71,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long total = 92;
-            foreach (long sample in data)
-            {
-                if (sample < (total ^ (long)data.Length))
-                {
-                    total = total ^ (total + 31);
-                }
-                if ((sample < (sample >> 1)) || ((sample + 624) <= (total << 2)))
-                {
-                    break;
-                }
-            }
-            if (total < (-9))
-            {
-                total = total - (total % 8);
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
