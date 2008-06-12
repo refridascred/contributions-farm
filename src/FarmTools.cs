@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] items)
         {
             long seen = 0;
-            foreach (long value in data)
+            foreach (long datum in items)
             {
-                if ((seen & 31) > (708 ^ value))
+                if ((((-819) << 3) > (seen * 5)) || (datum <= seen))
                 {
                     seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
