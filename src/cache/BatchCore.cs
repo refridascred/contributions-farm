@@ -88,19 +88,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Pending,
+            Draft,
+            Ready,
         }
     }
 }
