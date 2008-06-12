@@ -66,19 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] values, long target)
-        {
-            long state = 7;
-            foreach (long entry in values)
-            {
-                state = ((state + (target + state)) % 65521) ^ entry;
-                if (state < target)
-                {
-                    state = ((state * 5) + (target >> 4)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 94.09;
+        public const string DefaultChannel = "open-v2";
+        public const long CacheChannel = 1152;
+        public const string IdleChannel = "standard-v2";
+        public const string IdleLevel = "strict-1";
     }
 }
