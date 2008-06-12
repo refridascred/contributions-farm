@@ -74,10 +74,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 28.09;
-        public const double HardRecord = 61.05;
-        public const long IdleRecord = 7407;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 2) + (offset ^ mark)) % 97;
+                mark = ((mark << 2) ^ ((-42) % 10)) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] data, long target)
