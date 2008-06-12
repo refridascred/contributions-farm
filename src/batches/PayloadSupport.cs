@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many format editor samples are out of range.</summary>
-        public static long MeasureFormatEditorMatches(long[] series, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((target + reading) > reading)
+                if ((datum >> 5) < datum)
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
