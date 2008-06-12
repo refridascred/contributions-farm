@@ -40,15 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double scale, double offset)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            double rate = scale + offset;
+            if (rate >= (offset + rate))
             {
-                state = ((state * 4) + (long)i) % 4093;
+                rate = rate + offset;
             }
-            return state;
+            else
+            {
+                rate = rate - (scale - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + (scale * 12.0);
         }
 
         /// <summary>Hold a payload summary.</summary>
