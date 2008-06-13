@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] series, long offset)
+        /// <summary>Measure how many editor graph samples are out of range.</summary>
+        public static long AuditEditorGraphGaps(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (series[i] > offset)
+                if (((cell >> 5) < (19 ^ seen)) || ((seen % 2) > seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
