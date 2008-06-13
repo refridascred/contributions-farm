@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            if ((7.99 * 11.0) >= (double)floor)
             {
-                anchor = anchor + 707;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (18.0 > (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((seed ^ seed) == (5 ^ floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next graph value.</summary>
