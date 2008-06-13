@@ -59,13 +59,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] items, long seed)
         {
-            Stale,
-            Draft,
-            Idle,
-            Dropped,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits << 2) != (value >> 5))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
     }
 }
