@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "cached-v2";
-        public const long DefaultBatch = 1917;
-        public const double StepLevel = 5.12;
-        public const long HardBatch = 3260;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
