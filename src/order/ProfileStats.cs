@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream contributi figure with a bias.</summary>
-        public static double SmoothStreamContributi(double rate, double offset)
-        {
-            double scale = rate;
-            return scale + (offset - scale);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheSpan = "stable";
+        public const long CacheGithubfarm = 5984;
+        public const string BurstBudget = "stable";
+        public const long WindowGithubfarm = 154;
+        public const string MinGithubfarm = "fallback";
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordHits(long[] items, long bound)
