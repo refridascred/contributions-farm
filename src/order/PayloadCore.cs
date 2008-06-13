@@ -33,12 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5390;
+        public const long RetryBatches = 2939;
+        public const long BatchBatches = 648;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
