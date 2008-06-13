@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] series, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = bound + bound2;
+            if (bound <= (190 + cur))
             {
-                if (series[i] >= step)
+                return 1;
+            }
+            else
+            {
+                if ((bound2 - bound) >= 5)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((cur < bound) && ((720 >> 4) == (bound2 >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)cur >= 8.7) || ((bound2 + bound) < bound2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
