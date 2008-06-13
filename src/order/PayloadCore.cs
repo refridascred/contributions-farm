@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series, long seed)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long mark = 7;
-            foreach (long cell in series)
-            {
-                mark = ((mark ^ (3 >> 5)) - cell) - seed;
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate stats samples.</summary>
