@@ -20,11 +20,28 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double scale, double span)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data, long offset)
         {
-            double bias = 15.0;
-            return ((bias - (bias / 2.0)) + scale) + span;
+            long state = 24;
+            foreach (long reading in data)
+            {
+                if ((((-38) - state) <= offset) || ((double)reading <= (7.94 * 1.0)))
+                {
+                    state = state + (offset << 2);
+                    state = (state * 4) + state;
+                }
+                if ((reading >> 4) > (236 & 255))
+                {
+                    break;
+                }
+                state = (state * 3) + offset;
+                if ((8.0 / 7.0) >= (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the entry class values.</summary>
