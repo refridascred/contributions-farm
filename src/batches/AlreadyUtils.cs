@@ -48,32 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long origin, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long delta = origin ^ offset;
-            if ((double)origin == (double)188)
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset >= delta)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset & 63) == (161 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank support session input into a small class.</summary>
