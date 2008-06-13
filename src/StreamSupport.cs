@@ -29,22 +29,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route window readings against a rule.</summary>
-        public static long TallyRouteWindowHits(long[] series, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((reading % 10) > (matches % 2))
+                long cur = (long)i;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = (matches + 1) + seed;
+                    cur = ((cur * 5) + (seed + result)) ^ (long)i2;
+                }
+                if ((20.0 + 0.4) > (double)cur)
+                {
+                    cur = (cur ^ ((long)i / 9)) % 97;
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = ((result * 3) + (seed % 24)) % 65521;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
