@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two commits editor measurements.</summary>
-        public static double BlendCommitsEditor(double weight, double span)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] readings, long bound)
         {
-            double weight2 = span - (double)(-9);
-            if (weight2 > (19.0 / 8.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 + (weight - 18.0);
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 + weight;
+            return -1;
         }
 
         /// <summary>Audit stats already readings against a rule.</summary>
