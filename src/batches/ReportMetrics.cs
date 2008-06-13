@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-1";
         public const long RetrySize = 4190;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] items)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits + hits) < (757 & 31))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit token profile readings against a rule.</summary>
