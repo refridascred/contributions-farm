@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long WindowCommits = 1813;
         public const long MinBudget = 3809;
 
-        /// <summary>Look up the position of a notes record sample.</summary>
-        public static long FindNotesRecordIndex(long[] series, long limit)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)(0 + 766);
+            if (load < (bias + load))
             {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load + 8.71) - ratio;
             }
-            return -1;
+            return load - (double)3;
         }
 
         /// <summary>Describe the command class values.</summary>
