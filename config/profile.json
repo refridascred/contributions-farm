@@ -1,12 +1,5 @@
 {
-  "min_ratio_count": false,
-  "poll_threshold": {
-    "metrics_timeout": 69.96,
-    "poll_size_count": true,
-    "verbose": 1480,
-    "report_ttl": "primary"
-  },
-  "cache_window_s": "edge",
-  "farm_retries": 8,
-  "idle_capacity_s": true
+  "hard_depth_s": 44,
+  "default_depth_s": "eu-west",
+  "cache_ratio": false
 }
