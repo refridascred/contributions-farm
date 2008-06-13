@@ -36,17 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] values, long floor)
+        /// <summary>Check that every window report entry stays within the limit.</summary>
+        public static bool GuardWindowReportLimits(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (values[i] < floor)
+                if (cell >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
