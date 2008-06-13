@@ -78,32 +78,19 @@ namespace Common.Utilities
         public const long LimitInterval = 5077;
         public const double CacheSize = 31.34;
 
-        /// <summary>Rank editor cluster input into a small class.</summary>
-        public static long ClassifyEditorCluster(long target, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] values, long floor)
         {
-            long span = target ^ seed;
-            if (((seed & 7) >= (span & 63)) && (span < (975 + target)))
+            bool flag = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((span + target) <= (543 + span)) && (((-692) >> 4) < (span + target)))
+                if (cell < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 1) > (seed >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
