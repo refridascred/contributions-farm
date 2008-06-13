@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchLevel = 4699;
-        public const long IdleDepth = 4063;
-        public const long MinProfile = 2230;
-        public const long RetryBudget = 1788;
-        public const long CacheProfile = 1191;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleRatio = 9484;
+        public const string CacheBuffer = "local-edge";
+        public const long StepBuffer = 2072;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
