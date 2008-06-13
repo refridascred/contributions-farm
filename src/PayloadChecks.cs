@@ -43,18 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster session readings against a rule.</summary>
-        public static long TallyClusterSessionGaps(long[] items, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)bound >= 8.12)
-                {
-                    count = (count + 2) ^ datum;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
