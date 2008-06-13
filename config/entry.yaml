@@ -1,8 +1,24 @@
 # entry settings
-max_limit: true
-poll_limit:
-  - 33
-  - 200
-  - 109
-cluster_ratio: 96.66
-already_retries: 72.48
+default_size_count:
+  - latest
+  - strict
+  - cached
+  - fallback
+persist: staging
+idle_timeout:
+  stats_retries:
+    metric_window: true
+    min_limit_pct: 99
+    poll_limit: 63
+  readonly: local
+  soft_limit_count: legacy
+  flush_retries_count:
+    - stable
+    - edge
+    - blue
+    - stable
+compress:
+  - 240
+  - 362
+  - 208
+  - 275
