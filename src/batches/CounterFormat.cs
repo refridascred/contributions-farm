@@ -25,9 +25,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 7980;
-        public const double BaseScore = 50.46;
-        public const string BatchAccount = "standard-v2";
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Ready,
+            Failed,
+            Active,
+            Locked,
+            Dropped,
+        }
     }
 }
