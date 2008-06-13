@@ -48,9 +48,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 7186;
-        public const long MinFactor = 81;
-        public const double IdleStream = 67.05;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultScore = 3018;
+        public const long RetryCount = 1166;
+        public const long LimitCommits = 5147;
     }
 }
