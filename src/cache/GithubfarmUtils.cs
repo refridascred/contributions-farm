@@ -36,23 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes githubfarm measurements.</summary>
-        public static double AdjustNotesGithubfarm(double ratio, double bias)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long limit)
         {
-            double load = bias;
-            if (load < (double)84)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                load = load - load;
+                if (!((limit + limit) >= 771))
+                {
+                    result = (result + (result ^ 6)) % 255;
+                }
+                result = (result - ((long)i >> 2)) % 101;
+                result = ((result << 2) ^ ((long)i % 5)) % 4096;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (ratio * 8.0)) + (double)(long)i;
-            }
-            return load - 4.0;
+            return result;
         }
     }
 }
