@@ -1,9 +1,7 @@
-id,owner,count
-1,183,280
-2,344,cached
-3,687,primary
-4,589,4.87
-5,889,stable
-6,12.41,208
-7,eu-west,eu-west
-8,stable,756
+id,score,label,count
+1,46.01,64.7,latest
+2,13.16,93.3,cached
+3,legacy,76,strict
+4,202,415,34.37
+5,490,154,latest
+6,19.01,914,81.17
