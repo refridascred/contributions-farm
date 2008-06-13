@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate buffer cache samples.</summary>
-        public static long CombineBufferCache(long[] levels)
+        /// <summary>Rank metrics metric input into a small class.</summary>
+        public static long RankMetricsMetric(long offset, long floor)
         {
-            long score = 66;
-            foreach (long sample in levels)
+            long prev = offset - floor;
+            if ((719 - floor) > (floor + offset))
             {
-                score = score ^ (sample + 1);
-                score = ((score * 3) + score) % 97;
-                if ((sample & 63) < sample)
+                return 5;
+            }
+            else
+            {
+                if ((prev * 3) <= prev)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
