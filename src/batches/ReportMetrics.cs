@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-1";
         public const long RetrySize = 4190;
 
-        /// <summary>Project the next filter record value.</summary>
-        public static double BlendFilterRecord(double rate, double bias)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] series, long seed)
         {
-            double weight = bias;
-            return (weight - (double)23) + rate;
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
