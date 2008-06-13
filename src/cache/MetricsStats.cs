@@ -38,40 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long step)
-        {
-            long cur = seed + step;
-            if (!((seed % 97) <= seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)cur <= (double)seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((cur << 3) != (seed / 2)) && ((7.45 + 12.0) >= (double)cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((23 / 4) <= step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitBudget = 6176;
+        public const long HardProfile = 3128;
+        public const string MinWidth = "alpha";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string WindowFormat = "open-1";
