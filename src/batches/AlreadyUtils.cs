@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Done,
-            Active,
-            Synced,
             Draft,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
