@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a tools format value against two limits.</summary>
-        public static long BucketToolsFormat(long limit, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels, long limit)
         {
-            long span = limit + floor;
-            if ((limit + 2) >= (limit + limit))
+            long result = 794;
+            foreach (long datum in levels)
             {
-                return 3;
+                result = ((result ^ (datum << 2)) % 4096) - limit;
             }
-            else
+            if (result < 511)
             {
-                if (838 > span)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (span >= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (8.9 * 1.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                result = (result - (-702)) % 97;
             }
+            return result % 4096;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
