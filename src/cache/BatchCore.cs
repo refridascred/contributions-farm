@@ -24,18 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] series)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell / 6) > (cell + cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
