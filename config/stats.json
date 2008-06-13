@@ -1,8 +1,18 @@
 {
-  "dry_run": 92.0,
-  "max_limit_ms": 60,
-  "hard_window": 56.19,
-  "queue_interval": "stable",
-  "audit": 6611,
-  "token_limit": "latest"
+  "audit": {
+    "format_ratio": 500,
+    "retry_limit_s": "open",
+    "sync_depth_count": {
+      "batches_ratio": "stable",
+      "base_capacity_pct": 2,
+      "min_timeout_s": 1,
+      "verbose": true,
+      "cache_timeout_count": "edge",
+      "hard_limit_pct": ["strict", "staging"]
+    }
+  },
+  "retry_limit_count": 60,
+  "retry_limit_s": "green",
+  "sync_size_s": "green",
+  "strict": "strict"
 }
