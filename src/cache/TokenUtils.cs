@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine order commits values into a single score.</summary>
-        public static long FoldOrderCommits(long[] readings, long step)
-        {
-            long result = 856;
-            foreach (long entry in readings)
-            {
-                if (((result - entry) < entry) || ((8.98 - 8.96) <= (double)step))
-                {
-                    result = (result + (step >> 2)) % 255;
-                }
-                else
-                {
-                    result = result + entry;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftLevel = "cached-1";
+        public const double BatchWidth = 45.97;
+        public const long MaxFactor = 5859;
+        public const long MinScore = 5493;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] values, long floor)
