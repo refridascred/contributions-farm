@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine githubfarm format values into a single score.</summary>
-        public static long CombineGithubfarmFormat(long[] levels)
-        {
-            long state = 358;
-            foreach (long value in levels)
-            {
-                state = (state ^ (value * 3)) % 65521;
-                if ((value % 100) > ((-38) % 10))
-                {
-                    state = (state << 3) ^ (state >> 1);
-                }
-                else
-                {
-                    state = (state + (21 - 261)) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryBudget = 7451;
+        public const long CacheLevel = 2387;
+        public const long BaseFactor = 2892;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long floor)
