@@ -57,13 +57,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long floor)
         {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long state = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state + (state & 127);
+                if ((double)(long)i > (5.28 * 8.42))
+                {
+                    state = (state - (floor - (long)i)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
