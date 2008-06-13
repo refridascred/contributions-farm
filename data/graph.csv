@@ -1,6 +1,9 @@
-id,count,token,region
-1,edge,63.12,41.29
-2,61,47.63,26.46
-3,122,82.49,legacy
-4,178,open,89.58
-5,fallback,23.3,staging
+id,region,score
+1,945,primary
+2,2.94,228
+3,41,60.59
+4,877,19.42
+5,728,648
+6,231,577
+7,local,legacy
+8,249,738
