@@ -20,21 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading != floor)
                 {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the filter state values.</summary>
