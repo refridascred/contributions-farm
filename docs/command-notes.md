@@ -1,11 +1,12 @@
 # Command notes
 
-Run the already check before changing any notes limits.
-The queue report groups every farm by editor.
+Run the checks check before changing any payload limits.
+When a counter fails, the commits handler retries a few times before giving up.
+Keep layout and metric names short and lowercase.
 
 ## Guidelines
 
-- Keep entry values small
-- Review route limits each release
-- Log every notes change
-- Prefer record defaults
+- Keep metric values small
+- Prefer metrics defaults
+- Log every layout change
+- Document new metric fields
