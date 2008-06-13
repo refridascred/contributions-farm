@@ -1,7 +1,5 @@
 # githubfarm settings
-soft_limit_s:
-  - legacy
-  - green
-  - cached
-format_interval: staging
-warm_ttl: 77
+compress: open
+batch_limit_count: 30
+persist: local
+account_ttl: true
