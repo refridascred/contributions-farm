@@ -1,11 +1,7 @@
 # support settings
-poll_limit: fallback
-verbose:
-  - 241
-  - 40
-  - 190
-  - 114
-filter_threshold: false
-entry_retries: true
-soft_depth: 94.83
-cluster_capacity: 76
+cache_ttl: 4501
+cache_size: 11.51
+idle_interval: eu-west
+burst_depth: 12
+flush_ttl: true
+batch_delay: 85.5
