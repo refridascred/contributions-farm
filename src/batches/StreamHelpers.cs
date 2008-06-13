@@ -92,19 +92,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc + (acc * 4)) % 4096) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftDepth = 4414;
+        public const string RetrySupport = "latest-edge";
+        public const long SoftSupport = 1561;
+        public const long BaseDepth = 5556;
+        public const double IdleCount = 50.43;
     }
 }
