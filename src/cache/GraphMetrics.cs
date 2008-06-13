@@ -75,18 +75,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum >= (hits / 8)) || (hits < (hits * 3)))
+                if ((target >> 2) < (carry ^ carry))
                 {
-                    hits = hits + 2;
+                    carry = carry + ((long)i - carry);
                 }
+                else
+                {
+                    carry = carry - (target + target);
+                }
+                carry = (carry + 42) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
