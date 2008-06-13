@@ -30,17 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                if (((double)entry >= (5.8 / 6.0)) && !((double)seen > (6.6 + 7.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
