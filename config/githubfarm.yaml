@@ -1,18 +1,4 @@
 # githubfarm settings
-window_size: true
-burst_timeout_s: 83
-channel_capacity: true
-audit:
-  max_limit: 35
-  max_timeout_ms: true
-  audit: 1486
-  verbose: true
-  strict: eu-west
-  buffer_size:
-    - eu-west
-    - blue
-    - eu-west
-readonly: 1357
-sync_ttl:
-  - 11
-  - 96
+context_retries: local
+min_ratio_pct: false
+idle_size_s: staging
