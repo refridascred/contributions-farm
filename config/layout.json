@@ -1,5 +1,7 @@
 {
-  "soft_delay_ms": true,
-  "retry_ttl_s": "green",
-  "base_ttl_pct": "primary"
+  "base_limit": 6785,
+  "buffer_ttl": 26.35,
+  "burst_limit_pct": 67,
+  "max_depth": 250,
+  "hard_window_pct": "primary"
 }
