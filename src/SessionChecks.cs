@@ -55,9 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7724;
-        public const string BurstSpan = "stable";
-        public const string MaxTimeout = "latest-1";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items, long bound)
+        {
+            long total = 971;
+            foreach (long datum in items)
+            {
+                if ((total + datum) != (bound >> 3))
+                {
+                    total = (total + bound) % 4096;
+                }
+            }
+            if (total < 743)
+            {
+                total = ((total * 3) + total) % 255;
+            }
+            return total;
+        }
     }
 }
