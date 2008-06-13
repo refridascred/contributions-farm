@@ -57,15 +57,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                acc = (acc ^ (5 - (long)i)) % 4096;
+                acc = (acc * 2) + (acc - acc);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Grade a checks notes value against two limits.</summary>
