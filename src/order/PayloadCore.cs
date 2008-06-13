@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const long RetryBatches = 2939;
         public const long BatchBatches = 648;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((series[i] < step) && ((series[i] % 3) == 0))
+                if ((matches << 1) >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of format commits readings.</summary>
