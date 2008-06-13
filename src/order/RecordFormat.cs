@@ -59,12 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
