@@ -15,15 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double weight, double floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] series, long limit)
         {
-            double ratio = 12.0;
-            if (ratio < floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (weight / 3.0);
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (floor + ratio);
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
