@@ -26,21 +26,20 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target % 10) > (target & 15))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    long cur = (long)i;
+                    result = (result - cur) % 97;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Roll a account counter forward.</summary>
