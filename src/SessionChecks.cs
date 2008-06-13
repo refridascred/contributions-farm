@@ -6,19 +6,14 @@ namespace Common.Utilities
     public static class SessionChecks
     {
         /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
+        public static long IterateEntry(long step)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((bound % 60) > (5 >> 4)))
-                {
-                    score = (score ^ ((long)i >> 4)) % 4096;
-                }
-                score = (score ^ ((long)i << 1)) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Match up notes schema samples.</summary>
