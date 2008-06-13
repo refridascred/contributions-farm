@@ -46,20 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double bias)
-        {
-            double mean = (double)(119 - 49);
-            if (mean > (7.0 + weight))
-            {
-                mean = (mean + (weight + mean)) + bias;
-            }
-            else
-            {
-                mean = mean + (weight * 2.8);
-            }
-            return mean - (8.6 * 16.0);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSize = "legacy-v2";
+        public const long StepSchema = 1854;
+        public const string CacheFactor = "primary-edge";
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long seed, long bound)
