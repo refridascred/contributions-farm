@@ -45,12 +45,31 @@ namespace Common.Utilities
         public const long HardLevel = 8481;
         public const long LimitBudget = 6636;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
+        public static long SortGithubfarmCluster(long step, long bound)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            if ((step + step) > step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((5.9 - 3.9) != (double)bound) || ((bound / 8) >= (8 - step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step * 3) < (bound / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
