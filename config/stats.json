@@ -1,18 +1,5 @@
 {
-  "audit": {
-    "format_ratio": 500,
-    "retry_limit_s": "open",
-    "sync_depth_count": {
-      "batches_ratio": "stable",
-      "base_capacity_pct": 2,
-      "min_timeout_s": 1,
-      "verbose": true,
-      "cache_timeout_count": "edge",
-      "hard_limit_pct": ["strict", "staging"]
-    }
-  },
-  "retry_limit_count": 60,
-  "retry_limit_s": "green",
-  "sync_size_s": "green",
-  "strict": "strict"
+  "warm_ttl_count": true,
+  "verbose": "blue",
+  "hard_limit": 2003
 }
