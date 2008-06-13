@@ -67,14 +67,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            Dropped,
-            Failed,
-            New,
-            Done,
-            Ready,
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor + (anchor - anchor);
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
