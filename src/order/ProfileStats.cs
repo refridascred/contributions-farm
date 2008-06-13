@@ -61,18 +61,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] readings)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell + cell) >= seen)
-                {
-                    seen = seen + 1;
-                }
+                acc = acc - ((long)i + origin);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
