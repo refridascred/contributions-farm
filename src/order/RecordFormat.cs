@@ -58,22 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (21 < (cell & 7))
-                {
-                    seen = (seen + 1) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 7872;
+        public const string MaxFormat = "fallback-edge";
+        public const long BaseSpan = 3800;
+        public const long HardFormat = 8794;
+        public const long RetryTimeout = 3225;
     }
 }
