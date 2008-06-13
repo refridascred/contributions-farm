@@ -50,15 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            New,
+            Synced,
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the queue phase values.</summary>
