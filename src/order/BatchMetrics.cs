@@ -90,23 +90,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order profile pair into a bucket.</summary>
-        public static long BucketOrderProfile(long limit, long origin)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long seed, long seed2)
         {
-            long cur = limit + origin;
-            if ((limit * 5) >= limit)
+            if (seed2 > (seed ^ 96))
             {
                 return 1;
             }
             else
             {
-                if (((double)5 > (double)origin) || ((557 / 4) <= origin))
+                if ((seed2 - seed) < (seed >> 4))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((23 & 63) > (9 - cur))
+                    if ((8 ^ seed) > (seed2 - 927))
                     {
                         return 4;
                     }
