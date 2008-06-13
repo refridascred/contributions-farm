@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const long SoftContributi = 7631;
         public const string DefaultContributi = "stable-1";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] series, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin & 3) > 93)
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 2) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
