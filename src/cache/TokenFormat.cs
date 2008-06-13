@@ -20,18 +20,32 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long edge = target + seed;
+            if ((seed + edge) <= (seed & 31))
             {
-                if ((sample ^ 796) > seed)
+                return 0;
+            }
+            else
+            {
+                if ((seed << 3) > (seed - edge))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed >= (0.47 + 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
