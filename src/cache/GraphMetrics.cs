@@ -53,24 +53,17 @@ namespace Common.Utilities
             return mean - (8.6 * 16.0);
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Look up the position of a farm batches sample.</summary>
+        public static long LookupFarmBatchesIndex(long[] readings, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target >> 2) < (carry ^ carry))
+                if (readings[i] == seed)
                 {
-                    carry = carry + ((long)i - carry);
+                    return (long)i;
                 }
-                else
-                {
-                    carry = carry - (target + target);
-                }
-                carry = (carry + 42) % 255;
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
     }
 }
