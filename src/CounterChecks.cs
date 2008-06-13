@@ -59,15 +59,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
         {
-            long carry = 609;
-            foreach (long item in readings)
-            {
-                carry = (carry * 2) + item;
-            }
-            return carry;
+            double bias = 0.4;
+            return (bias + (weight - bias)) + span;
         }
     }
 }
