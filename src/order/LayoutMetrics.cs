@@ -14,11 +14,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double offset)
+        /// <summary>Iterate the cluster already series from a seed.</summary>
+        public static long IterateClusterAlready(long offset)
         {
-            double weight = (double)(262 / 3);
-            return ((weight + (double)(-43)) + scale) + offset;
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = acc - ((long)i - (long)i);
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
