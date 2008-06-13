@@ -38,19 +38,12 @@ namespace Common.Utilities
             return ratio2 + (bias + ratio);
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] levels, long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long carry = 405;
-            foreach (long item in levels)
-            {
-                carry = ((carry + (carry ^ bound)) % 255) - item;
-            }
-            if (carry > 79)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
