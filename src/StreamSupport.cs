@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values, long seed)
         {
-            long acc = 5;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((828 - 772) == (acc + 269))
+                if (!((double)item <= 8.9))
                 {
-                    acc = (acc - (3 % 3)) - reading;
+                    hits = (hits + 1) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
