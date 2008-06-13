@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values, long seed)
+        /// <summary>Check that every report farm entry stays within the limit.</summary>
+        public static bool CheckReportFarmLimits(long[] items, long step)
         {
-            long carry = 4;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long sample in items)
             {
-                carry = (carry - 95) % 4096;
-                if ((carry + item) != (item - seed))
+                if (sample > step)
                 {
+                    found = false;
                     break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Adjust a already reading.</summary>
