@@ -27,11 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values, long target)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            long carry = -365;
+            foreach (long value in values)
+            {
+                if ((carry ^ target) == (target / 8))
+                {
+                    carry = ((carry - target) % 255) ^ value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate cache samples.</summary>
