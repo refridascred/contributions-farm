@@ -26,18 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally >> 5) == (tally * 3))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Closed,
         }
     }
 }
