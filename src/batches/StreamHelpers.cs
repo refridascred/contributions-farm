@@ -101,15 +101,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long origin)
         {
-            long mix = 981;
-            foreach (long sample in readings)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix << 3) ^ (4 - sample)) % 4096;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc + (acc * 4)) % 4096) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
     }
 }
