@@ -25,21 +25,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
