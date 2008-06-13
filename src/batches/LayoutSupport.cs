@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!((3.19 / 7.0) <= (double)item))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "cached-v2";
+        public const long DefaultBatch = 1917;
+        public const double StepLevel = 5.12;
+        public const long HardBatch = 3260;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
