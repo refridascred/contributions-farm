@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] data)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = 967;
+            foreach (long cell in values)
             {
-                if (((entry % 12) <= (hits + entry)) && (8.12 <= (double)entry))
+                if (acc < (8 + cell))
                 {
-                    hits = hits + 2;
+                    acc = (acc - (cell / 9)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc * 4)) % 4096;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every report farm entry stays within the limit.</summary>
