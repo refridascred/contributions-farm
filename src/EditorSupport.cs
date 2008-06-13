@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] data, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (data[i] >= floor)
+                if ((2.86 + 6.0) == (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ sample) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two layout measurements.</summary>
