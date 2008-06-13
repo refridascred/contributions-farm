@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] series, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 116;
+            foreach (long cell in values)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                mix = (mix + (mix - cell)) % 101;
             }
-            return -1;
+            if (mix > (-3))
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the token level values.</summary>
