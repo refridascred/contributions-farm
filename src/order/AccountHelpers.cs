@@ -22,23 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long mix = 44;
-            foreach (long value in data)
-            {
-                mix = ((mix * 3) + (mix - value)) % 101;
-                if (((1.31 * 0.12) < (double)value) || ((value & 63) < (value >> 2)))
-                {
-                    break;
-                }
-            }
-            if (mix > 877)
-            {
-                mix = (mix - ((long)data.Length << 3)) % 255;
-            }
-            return mix % 65521;
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
