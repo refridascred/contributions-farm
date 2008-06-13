@@ -51,20 +51,15 @@ namespace Common.Utilities
             return gain - (double)93;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Project the next stats stream value.</summary>
+        public static double ScaleStatsStream(double ratio, double floor)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            double bias = floor;
+            if (bias <= 1.4)
             {
-                mark = (mark + mark) % 4096;
-                if ((target % 12) <= (mark / 7))
-                {
-                    mark = (mark - target) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                bias = bias + ratio;
             }
-            return mark;
+            return bias + (bias / 7.0);
         }
     }
 }
