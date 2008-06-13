@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine order commits values into a single score.</summary>
-        public static long FoldOrderCommits(long[] readings, long step)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long carry = 0;
-            foreach (long sample in readings)
-            {
-                if (sample < (30 & 255))
-                {
-                    carry = ((carry - (sample - 6)) % 65521) - step;
-                    continue;
-                }
-                carry = ((carry << 2) ^ (carry & 127)) % 101;
-            }
-            return carry % 4096;
+            Paused,
+            New,
+            Stale,
         }
 
         /// <summary>Project the next order value.</summary>
