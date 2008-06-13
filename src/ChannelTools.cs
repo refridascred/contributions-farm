@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long bound, long seed)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double offset)
         {
-            long step = bound - seed;
-            if (!(seed > step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (3.5 < (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((bound + bound) >= (bound & 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double ratio = bias;
+            return ratio - offset;
         }
 
         /// <summary>Describe the session level values.</summary>
