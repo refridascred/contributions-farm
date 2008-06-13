@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 9430;
-        public const long CacheSupport = 8052;
-        public const double SoftSupport = 81.01;
+        /// <summary>Combine stats record values into a single score.</summary>
+        public static long TotalStatsRecord(long[] data)
+        {
+            long acc = -3;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = (acc << 3) ^ (long)i;
+                }
+                if ((datum >> 4) >= (acc >> 2))
+                {
+                    acc = (acc * 4) + (acc * 5);
+                }
+                else
+                {
+                    acc = (acc + acc) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] series, long origin)
