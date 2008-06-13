@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the buffer stats entries that pass the check.</summary>
-        public static long MeasureBufferStatsHits(long[] series)
+        /// <summary>Look up the position of a editor command sample.</summary>
+        public static long FindEditorCommandIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (8 > (seen * 4))
+                if (levels[i] >= origin)
                 {
-                    seen = (seen + 3) - entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
