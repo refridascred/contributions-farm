@@ -12,19 +12,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] levels, long origin)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            double ratio = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ((ratio - weight) - (double)(long)i) - bias;
             }
-            return ready;
+            return ratio + weight;
         }
 
         /// <summary>Describe the window level values.</summary>
