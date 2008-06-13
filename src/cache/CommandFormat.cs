@@ -55,11 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultBudget = "local";
-        public const long RetrySize = 6431;
-        public const double RetryWidth = 73.26;
-        public const long DefaultAlready = 4830;
-        public const long BurstWidth = 5212;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
