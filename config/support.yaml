@@ -1,14 +1,20 @@
 # support settings
-flush_retries_count:
-  - primary
-  - latest
-  - open
-  - eu-west
-default_threshold:
-  - 296
-  - 317
-readonly: false
-token_ratio:
-  - 394
-  - 326
-  - 482
+cache_timeout:
+  idle_interval_ms: 2843
+  audit: 37
+  base_depth_pct: 500
+  sync_delay_count: 19
+  queue_capacity: strict
+  sync_interval_ms: 9937
+strict: 3775
+hard_ratio_pct:
+  default_size_ms: true
+  soft_timeout_ms:
+    - eu-west
+    - standard
+    - stable
+  report_timeout: 37.27
+  default_interval_ms: 56.8
+  batch_threshold: false
+  notes_depth: 84.0
+batch_timeout_s: latest
