@@ -38,18 +38,19 @@ namespace Common.Utilities
             return ratio2 + (bias + ratio);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long carry = 405;
+            foreach (long item in levels)
             {
-                if ((tally + tally) < (tally + reading))
-                {
-                    tally = tally + 1;
-                }
+                carry = ((carry + (carry ^ bound)) % 255) - item;
             }
-            return tally;
+            if (carry > 79)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
