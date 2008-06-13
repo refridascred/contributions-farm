@@ -35,17 +35,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] levels, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] > step)
+                anchor = (anchor ^ bound) % 97;
+                if ((anchor / 7) < (bound / 7))
                 {
-                    return (long)i;
+                    anchor = (anchor - (bound & 15)) % 65521;
+                    anchor = ((anchor << 3) ^ 35) % 4096;
+                    break;
                 }
+                else
+                {
+                    anchor = (anchor - (anchor & 7)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
