@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long bound, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] items, long seed)
         {
-            if ((double)origin > (18.0 / 7.0))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.96 / 3.0) < (double)origin)
+                if (datum >= (seed % 12))
                 {
-                    return 8;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (bound <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
