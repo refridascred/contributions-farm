@@ -43,22 +43,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] items, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = 88;
+            foreach (long datum in series)
             {
-                if ((origin << 2) != (value - value))
+                score = ((score * 3) + (score + datum)) % 1000;
+                if (((datum - 7) <= (8 + 1)) || ((8.85 - 9.73) == (double)seed))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the batches status values.</summary>
