@@ -12,6 +12,11 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-for item in cached local legacy; do
-    log "checking ${item}"
+RECORD_LIMIT=97
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
