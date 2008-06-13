@@ -1,5 +1,12 @@
 # githubfarm settings
-token_window: latest
-soft_size_pct: true
-min_threshold_pct: 4141
-idle_threshold: fallback
+soft_depth_ms: false
+poll_threshold_count:
+  default_window_pct: 67
+  idle_limit: blue
+  strict: false
+  persist: 3.2
+  retry_size_ms: 3037
+persist: 39
+sync_retries_s: 1818
+sync_threshold_pct: eu-west
+audit: edge
