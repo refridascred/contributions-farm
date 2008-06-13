@@ -1,14 +1,10 @@
 # Command notes
 
-The batches report groups every buffer by editor.
-Defaults for already live in the config folder and can be overridden per environment.
-Run the cache check before changing any tools limits.
-
-Run the stats check before changing any batches limits.
-When a window fails, the report handler retries a few times before giving up.
+Each commits is validated before it reaches the layout queue.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review support limits each release
-- Validate filter input early
-- Keep record values small
+- Document new token fields
+- Validate contributi input early
+- Keep queue values small
