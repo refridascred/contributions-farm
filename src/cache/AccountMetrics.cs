@@ -65,13 +65,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the profile mode values.</summary>
