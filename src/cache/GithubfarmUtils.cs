@@ -42,21 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((limit + limit) >= 771))
-                {
-                    result = (result + (result ^ 6)) % 255;
-                }
-                result = (result - ((long)i >> 2)) % 101;
-                result = ((result << 2) ^ ((long)i % 5)) % 4096;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 1341;
+        public const long RetrySize = 1987;
+        public const string MaxLevel = "cached-edge";
+        public const string BaseRatio = "fallback-edge";
+        public const long MinFilter = 875;
     }
 }
