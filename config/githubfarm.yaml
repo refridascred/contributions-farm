@@ -1,22 +1,9 @@
 # githubfarm settings
-flush_capacity_count: green
-cache_delay:
-  soft_threshold_count:
-    - 138
-    - 370
-    - 184
-    - 461
-  soft_limit_pct: 1024
-  warm_threshold_s: 0.19
-  audit: 94.42
-max_interval_count: standard
-audit: false
-retry_ttl_count:
-  soft_size_s:
-    - green
-    - staging
-  metric_delay: 1849
-  max_capacity: primary
-  base_depth_pct: 100
-  layout_limit: open
-readonly: 7366
+entry_window: 41
+stream_delay: 29.81
+schema_delay: fallback
+default_retries:
+  flush_timeout_ms: 63.55
+  burst_interval: open
+  dry_run: latest
+  audit: 40.66
