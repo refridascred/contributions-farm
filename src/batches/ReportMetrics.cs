@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values)
         {
-            Dropped,
-            Idle,
-            Paused,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell << 1) < cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
