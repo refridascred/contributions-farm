@@ -23,26 +23,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] values, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] readings)
         {
-            long sum = 466;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!((double)reading < 3.17))
+                if ((double)item == (18.0 + 9.9))
                 {
-                    sum = ((sum << 3) ^ ((long)values.Length * 4)) % 101;
-                }
-                if (((reading & 127) < (bound + sum)) || ((long)values.Length < sum))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (sum < 98)
-            {
-                sum = ((sum << 2) ^ (bound << 2)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
