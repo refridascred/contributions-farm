@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long limit)
+        /// <summary>Grade a batch profile value against two limits.</summary>
+        public static long GradeBatchProfile(long step, long step2)
         {
-            long diff = step + limit;
-            if ((9 << 2) <= diff)
+            long span = step + step2;
+            if ((step2 + 37) != (step - 353))
             {
                 return 6;
             }
             else
             {
-                if (((diff - diff) < (limit - 989)) && ((double)limit != (6.56 + 6.85)))
+                if ((double)span > (double)386)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 5;
+                    if ((span * 4) < (step2 << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step << 3) > (step * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
