@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long total = -69;
+            foreach (long reading in samples)
+            {
+                total = (((total << 2) ^ reading) % 255) + offset;
+            }
+            return total % 97;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
