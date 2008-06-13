@@ -34,18 +34,19 @@ namespace Common.Utilities
             return ratio - (floor + ratio);
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Roll a editor report counter forward.</summary>
+        public static long RollEditorReport(long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                long offset2 = mark << 1;
-                mark = (mark - (offset2 ^ offset2)) % 1000;
-                offset2 = ((offset2 << 3) ^ (offset ^ offset2)) % 1000;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((5 > state) || (5.0 <= (double)state))
+                {
+                    state = state + origin;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Scale a editor cache figure with a bias.</summary>
