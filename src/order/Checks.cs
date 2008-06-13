@@ -22,25 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long bound)
         {
-            long span = target ^ origin;
-            if ((span + 576) < span)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (target >= (target * 2))
+                if (entry != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
