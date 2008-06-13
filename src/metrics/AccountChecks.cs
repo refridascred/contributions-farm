@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the metric token entries that pass the check.</summary>
-        public static long TallyMetricTokenGaps(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((count >= value) && ((value % 64) < (value + count)))
+                if ((hits - hits) <= (cell / 5))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
