@@ -12,21 +12,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cluster channel readings.</summary>
-        public static long PairClusterChannelCount(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 6;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 3) + reading) - floor;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
