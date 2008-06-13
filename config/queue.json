@@ -1,6 +1,7 @@
 {
-  "record_threshold": 82.72,
-  "default_size": 100,
-  "command_timeout": 14.69,
-  "compress": "staging"
+  "hard_interval_count": 6,
+  "cluster_size": 27.07,
+  "default_interval": "staging",
+  "contributi_delay": ["fallback", "green", "open"],
+  "cache_timeout_s": true
 }
