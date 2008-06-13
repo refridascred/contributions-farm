@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel metric samples are out of range.</summary>
-        public static long AuditChannelMetricMatches(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally >= (tally % 24))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) - sample;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
