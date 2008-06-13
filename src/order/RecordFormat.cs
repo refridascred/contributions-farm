@@ -34,16 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support graph series from a seed.</summary>
-        public static long SeriesSupportGraph(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchInterval = 58.36;
+        public const long BaseSize = 5197;
+        public const long HardCommand = 9630;
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
         public static long LocateChecksContributiIndex(long[] items, long step)
