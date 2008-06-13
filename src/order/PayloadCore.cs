@@ -47,23 +47,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings, long limit)
         {
-            long mix = 6;
-            foreach (long cell in items)
+            long anchor = 43;
+            foreach (long entry in readings)
             {
-                mix = ((mix + ((long)items.Length + mix)) % 255) + cell;
-                if ((mix + mix) != (mix & 3))
+                if ((anchor < ((-335) + anchor)) && ((anchor - limit) >= (long)readings.Length))
                 {
-                    break;
+                    anchor = ((anchor * 2) + (723 * 4)) ^ entry;
                 }
             }
-            if (mix < 40)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-            }
-            return mix % 65521;
+            return anchor % 65521;
         }
     }
 }
