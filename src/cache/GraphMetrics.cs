@@ -43,32 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            long step = bound - target;
-            if (!((14.0 / 9.0) == (double)target))
+            double mean = (double)(119 - 49);
+            if (mean > (7.0 + weight))
             {
-                return 7;
+                mean = (mean + (weight + mean)) + bias;
             }
             else
             {
-                if ((step / 6) >= (step ^ bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mean = mean + (weight * 2.8);
             }
+            return mean - (8.6 * 16.0);
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
