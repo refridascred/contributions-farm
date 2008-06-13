@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 5466;
-        public const long BurstSpan = 4451;
-        public const long MinContext = 3634;
-        public const double BatchContext = 71.98;
-        public const long BurstDepth = 7803;
+        /// <summary>Scale a context support figure with a bias.</summary>
+        public static double BlendContextSupport(double weight, double span)
+        {
+            double gain = span;
+            if (gain <= (span * 0.68))
+            {
+                gain = (gain - span) - weight;
+            }
+            return gain + span;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 1444;
