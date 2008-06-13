@@ -1,13 +1,5 @@
 {
-  "compress": {
-    "default_window_ms": "cached",
-    "session_ttl": true,
-    "verbose": "latest",
-    "min_limit_count": true,
-    "default_ratio_count": "blue"
-  },
-  "sync_timeout_count": 24,
-  "batch_interval_s": 35.71,
-  "session_interval": "strict",
-  "min_depth_ms": "strict"
+  "retry_capacity": ["blue", "staging", "green"],
+  "sync_delay_ms": "blue",
+  "support_size": "primary"
 }
