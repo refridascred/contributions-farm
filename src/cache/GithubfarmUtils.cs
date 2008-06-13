@@ -33,17 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session commits entry that matches the target.</summary>
-        public static long SeekSessionCommitsIndex(long[] readings, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (readings[i] == floor)
+                if (value > offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
