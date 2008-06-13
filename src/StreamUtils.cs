@@ -29,18 +29,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)count == (double)59)
+                if (((518 - 836) != (carry % 100)) && ((double)(long)i >= (double)carry))
                 {
-                    count = (count + 3) + cell;
+                    carry = ((carry * 2) + seed) % 255;
+                    continue;
                 }
+                if (((carry << 1) <= seed) || (carry <= (seed ^ seed)))
+                {
+                    carry = carry + (605 - seed);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
