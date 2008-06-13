@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long target)
         {
-            long anchor = 84;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (8 - 74)) % 65521) + reading;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
