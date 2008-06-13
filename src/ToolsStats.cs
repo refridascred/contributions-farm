@@ -47,19 +47,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - cell) < (hits % 100))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchSpan = 93.19;
+        public const string BaseFarm = "local";
+        public const long WindowFarm = 3669;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long SeriesTools(long seed)
