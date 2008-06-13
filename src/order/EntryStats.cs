@@ -66,31 +66,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a filter already pair into a bucket.</summary>
-        public static long RankFilterAlready(long limit, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] series, long seed)
         {
-            if (((double)limit >= (8.0 - 5.0)) && ((limit & 1) <= limit))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit >= (7.8 - 19.0))
+                if (datum > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound > (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the payload state values.</summary>
