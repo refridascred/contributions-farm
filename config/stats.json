@@ -1,6 +1,15 @@
 {
-  "route_capacity": ["staging", "staging"],
-  "retry_capacity_count": false,
-  "cache_depth": "open",
-  "flush_depth_s": 30
+  "retry_capacity": 62,
+  "min_capacity": "latest",
+  "compress": [23, 319, 45, 114],
+  "retry_timeout_pct": false,
+  "verbose": {
+    "soft_size": 48.39,
+    "persist": "legacy",
+    "cache_interval_s": false,
+    "stream_timeout": true,
+    "readonly": ["standard", "open", "latest"],
+    "sync_timeout_count": 60.7
+  },
+  "idle_threshold_s": [13, 476]
 }
