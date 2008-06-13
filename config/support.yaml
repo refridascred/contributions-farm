@@ -1,4 +1,7 @@
 # support settings
-metric_retries: 54.55
-retry_timeout: false
-min_size_ms: 500
+format_window: 250
+burst_interval_count: 72
+hard_capacity: 3537
+max_threshold: false
+max_ttl_ms: 56
+cache_timeout_pct: false
