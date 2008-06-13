@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long result = 0;
+            foreach (long datum in samples)
             {
-                double gain = (double)(long)i;
-                if (((gain * 7.8) > (double)limit) && (((long)i - score) != (limit << 2)))
-                {
-                    break;
-                }
-                else
-                {
-                    score = score - score;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                result = ((result + (result * 5)) % 65521) ^ datum;
             }
-            return score;
+            return result % 97;
         }
 
         /// <summary>Hold a metrics options.</summary>
