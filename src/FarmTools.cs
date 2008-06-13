@@ -28,19 +28,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] series, long floor)
         {
-            long mix = 55;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + (32 + entry)) % 255;
-                if (0 < (mix ^ entry))
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
                 {
-                    mix = ((mix * 3) + mix) % 97;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
