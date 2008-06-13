@@ -62,15 +62,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            long anchor = 897;
-            foreach (long entry in items)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor * 5) + (anchor + entry);
+                if ((acc < 2) && ((acc / 8) <= (8 & 3)))
+                {
+                    acc = ((acc << 3) ^ (acc << 1)) % 101;
+                }
+                else
+                {
+                    acc = (acc + (long)i) % 255;
+                    acc = (acc ^ (819 >> 2)) % 101;
+                }
+                acc = ((acc << 2) ^ (limit - limit)) % 255;
+                if (acc < ((long)i / 8))
+                {
+                    acc = (acc << 2) ^ (158 >> 5);
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a commits options.</summary>
