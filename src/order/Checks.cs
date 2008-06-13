@@ -49,14 +49,19 @@ namespace Common.Utilities
         public const string RetryInterval = "alpha-edge";
         public const double StepTimeout = 56.78;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items, long bound)
         {
-            New,
-            Synced,
-            Closed,
-            Pending,
-            Paused,
+            long state = 3;
+            foreach (long sample in items)
+            {
+                if ((949 >> 1) > state)
+                {
+                    state = state ^ (sample - bound);
+                }
+                state = (state * 5) + (bound + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the queue phase values.</summary>
