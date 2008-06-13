@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] levels, long offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = bias;
+            return (load - (double)3) + floor;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
