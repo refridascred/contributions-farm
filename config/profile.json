@@ -1,8 +1,5 @@
 {
-  "batch_depth_count": 70,
-  "metrics_ttl": ["edge", "local"],
-  "default_timeout_ms": "eu-west",
-  "batches_window": "local",
-  "compress": 100,
-  "hard_timeout_count": "stable"
+  "compress": 10,
+  "cache_size_pct": 23.8,
+  "cache_capacity_pct": 1305
 }
