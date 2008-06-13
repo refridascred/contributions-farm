@@ -30,32 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats channel value against two limits.</summary>
-        public static long RankStatsChannel(long limit, long step)
-        {
-            if (((step + step) == (limit >> 3)) || ((step + limit) <= (limit >> 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.02 <= (double)limit) && (step <= (limit / 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + limit) != (step * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowFactor = "fallback";
+        public const string BurstWidth = "legacy-v2";
+        public const long RetryEntry = 7642;
+        public const double BaseInterval = 30.38;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LookupOrderIndex(long[] readings, long origin)
