@@ -24,11 +24,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 3988;
-        public const double StepBudget = 89.1;
-        public const long CacheGithubfarm = 7531;
-        public const string HardCount = "stable-edge";
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long SortPayload(long offset, long bound)
