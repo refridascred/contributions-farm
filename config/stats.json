@@ -1,7 +1,13 @@
 {
-  "batches_timeout": 3136,
-  "warm_interval_s": [43, 359, 136, 126],
-  "hard_ttl_ms": 64.66,
-  "enabled": 75.17,
-  "base_size": 1024
+  "stats_capacity": 500,
+  "sync_ratio_ms": 25.8,
+  "format_threshold": {
+    "sync_threshold": 5000,
+    "base_threshold_pct": ["local", "staging", "latest"],
+    "batch_delay": ["staging", "strict", "blue", "standard"],
+    "readonly": "stable"
+  },
+  "cache_limit_ms": "eu-west",
+  "readonly": true,
+  "retry_limit": 1024
 }
