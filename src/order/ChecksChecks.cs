@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long step, long seed)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long next = step - seed;
+            if ((double)seed != (double)next)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed - seed) >= (step / 5)) && ((3 + step) > (seed << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step < ((-3) + 94))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((15.0 + 8.0) <= (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a notes session value against two limits.</summary>
