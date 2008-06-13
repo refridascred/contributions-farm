@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] values, long seed)
         {
-            long result = 76;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((4.6 < (double)result) || ((double)(-85) > (double)result))
+                if (cell < seed)
                 {
-                    result = (result * 3) + (29 % 100);
-                }
-                else
-                {
-                    result = (result ^ (reading + reading)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return result % 97;
+            return valid;
         }
 
         /// <summary>Accumulate route payload samples.</summary>
