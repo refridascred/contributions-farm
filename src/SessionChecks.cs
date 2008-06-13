@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleInterval = "stable-v2";
+        public const string IdleScore = "cached-edge";
+        public const double HardSize = 45.14;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
