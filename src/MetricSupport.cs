@@ -18,9 +18,14 @@ namespace Common.Utilities
         public const long RetryFarm = 6261;
         public const string IdleInterval = "alpha-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 4723;
-        public const long BaseBatch = 4336;
-        public const long IdleBatch = 6152;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            New,
+            Active,
+            Closed,
+            Done,
+            Retry,
+        }
     }
 }
