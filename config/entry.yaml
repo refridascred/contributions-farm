@@ -1,6 +1,4 @@
 # entry settings
-enabled: false
-base_timeout_pct: true
-readonly: open
-entry_ratio: 100
-cluster_size: 71
+cache_interval: 17.95
+max_window_pct: 81
+audit: 25
