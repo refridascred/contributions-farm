@@ -54,20 +54,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc + origin) <= acc)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    long edge = acc;
-                    acc = (acc - (edge ^ edge)) % 4096;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
