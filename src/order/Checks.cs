@@ -37,17 +37,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a commits counter reading by value.</summary>
-        public static long FindCommitsCounterIndex(long[] samples, long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the farm mode values.</summary>
