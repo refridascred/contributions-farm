@@ -20,31 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a order checks value against two limits.</summary>
-        public static long BucketOrderChecks(long floor, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] data)
         {
-            if ((floor + 901) < (floor >> 2))
+            long acc = 825;
+            foreach (long datum in data)
             {
-                return 6;
+                acc = ((acc + (acc & 15)) % 4096) + datum;
             }
-            else
-            {
-                if ((double)origin != (1.59 * 12.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (63 < (origin + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
