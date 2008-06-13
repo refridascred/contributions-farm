@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches << 1) == (long)values.Length)
                 {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
