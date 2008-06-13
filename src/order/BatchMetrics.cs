@@ -22,17 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] levels, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (seed % 60)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
