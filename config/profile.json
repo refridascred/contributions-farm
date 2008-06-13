@@ -1,6 +1,5 @@
 {
-  "window_interval": "cached",
-  "flush_capacity_s": [473, 84, 140],
-  "sync_timeout_count": true,
-  "verbose": 62
+  "compress": "standard",
+  "record_capacity": "open",
+  "strict": [452, 117]
 }
