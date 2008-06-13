@@ -60,11 +60,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] items, long seed)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up cluster samples.</summary>
