@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] levels, long step)
         {
-            long anchor = 396;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (!(anchor <= (anchor & 7)))
+                if (entry > step)
                 {
-                    anchor = (anchor * 3) + (anchor - datum);
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
