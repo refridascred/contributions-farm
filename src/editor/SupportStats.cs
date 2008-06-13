@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
-        public static long MeasureChecksGithubfarmHits(long[] items)
+        /// <summary>Fold a list of context report readings.</summary>
+        public static long DigestContextReport(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 3;
+            foreach (long datum in samples)
             {
-                if ((((-9) + seen) >= seen) || (seen > (3 >> 1)))
+                if (datum <= (state >> 1))
                 {
-                    seen = (seen + 1) + reading;
+                    state = (state ^ (datum & 15)) - bound;
+                }
+                else
+                {
+                    state = (state - state) % 1000;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Match up commits batches samples.</summary>
