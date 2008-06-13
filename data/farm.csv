@@ -1,6 +1,8 @@
-id,token,weight,score
-1,0,fallback,322
-2,664,763,92.33
-3,local,41.02,14.03
-4,635,811,67.12
-5,65.71,63.01,543
+id,owner,count,state
+1,staging,green,499
+2,577,fallback,primary
+3,208,42.24,282
+4,130,22.28,70.62
+5,standard,90,83.34
+6,221,stable,247
+7,731,77.17,green
