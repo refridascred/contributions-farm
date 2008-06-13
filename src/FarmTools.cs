@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] levels)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((count + 37) > (cell * 2))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = count + 3;
+                    mix = ((mix - (offset & 255)) % 255) ^ (long)i2;
                 }
-                else
+                if (!(((mix + (long)i) < (mix << 1)) || (offset < (offset % 16))))
                 {
-                    count = count - 1;
+                    mix = mix ^ (long)i;
                 }
+                if ((4.99 - 0.5) == (double)offset)
+                {
+                    mix = ((mix * 2) + (offset / 2)) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
