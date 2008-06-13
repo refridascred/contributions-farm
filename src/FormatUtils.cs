@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 9148;
+        public const long StepFactor = 1358;
+        public const long MinInterval = 2503;
+        public const long WindowFarm = 6925;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
