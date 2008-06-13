@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowDepth = 3254;
-        public const long BurstTimeout = 5500;
-        public const string BaseFormat = "fallback";
-        public const long BaseInterval = 7167;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((374 + floor) == (entry * 5)) && ((entry & 31) == (2 - floor)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
