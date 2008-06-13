@@ -20,32 +20,22 @@ namespace Common.Utilities
             return gain2 + (gain * 0.26);
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long seed, long target)
+        /// <summary>Count the counter route entries that pass the check.</summary>
+        public static long TallyCounterRouteOutliers(long[] data, long limit)
         {
-            long cur = seed ^ target;
-            if ((3.17 * 2.8) != (double)cur)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur * 2) <= ((-7) - seed))
+                if ((datum << 2) < limit)
                 {
-                    return 5;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if (!((0.4 * 3.7) > (double)cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
