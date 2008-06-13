@@ -1,7 +1,18 @@
 # support settings
-enabled: 59
-max_interval_pct: 30
-queue_ttl: strict
-profile_retries: local
-report_depth: latest
-soft_retries_ms: eu-west
+retry_interval:
+  - standard
+  - cached
+  - legacy
+  - eu-west
+account_threshold: green
+entry_capacity: local
+warm_ttl_pct:
+  - stable
+  - stable
+  - fallback
+  - latest
+persist:
+  sync_depth: stable
+  audit: 5
+  max_size_pct: 94
+  sync_interval_s: edge
