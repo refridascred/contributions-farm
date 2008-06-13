@@ -29,18 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] samples, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((double)entry >= (5.8 / 6.0)) && !((double)seen > (6.6 + 7.0)))
+                if (((-65) + tally) > tally)
                 {
-                    seen = (seen + 3) + floor;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
