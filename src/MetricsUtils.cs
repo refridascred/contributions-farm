@@ -59,12 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowSize = 28.58;
-        public const long SoftGithubfarm = 4194;
-        public const long DefaultGithubfarm = 3078;
-        public const long WindowDepth = 6533;
-        public const long WindowGithubfarm = 9577;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Pending,
+            Paused,
+            Stale,
+            Synced,
+            Active,
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsMatches(long[] samples)
