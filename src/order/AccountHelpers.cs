@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] data, long seed)
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (9.05 > (double)count)
+                {
+                    count = ((count + 1) ^ datum) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up profile payload samples.</summary>
