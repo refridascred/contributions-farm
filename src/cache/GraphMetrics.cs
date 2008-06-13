@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
+            Dropped,
+            Failed,
             Retry,
-            Idle,
-            Draft,
-            Locked,
         }
 
         /// <summary>Describe the buffer state values.</summary>
