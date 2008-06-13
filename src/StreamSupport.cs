@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] readings, long origin)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Audit route window readings against a rule.</summary>
