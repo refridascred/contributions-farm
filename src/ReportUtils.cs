@@ -63,9 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 861;
-        public const double MaxOrder = 52.07;
-        public const string HardRatio = "local-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 6910;
+        public const string BatchInterval = "latest-1";
+        public const long StepTimeout = 1989;
+        public const long HardSize = 8243;
+        public const double MinBatches = 30.9;
     }
 }
