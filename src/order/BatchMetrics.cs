@@ -65,39 +65,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metric profile pair into a bucket.</summary>
-        public static long BucketMetricProfile(long offset, long seed)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long target)
         {
-            long lane = offset ^ seed;
-            if ((seed + lane) != (lane & 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((lane & 3) > offset) || (seed <= (offset + lane)))
+                if (samples[i] <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((23 >> 1) >= (seed + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed - lane) != (offset << 1)) && ((2.22 / 3.0) > (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
