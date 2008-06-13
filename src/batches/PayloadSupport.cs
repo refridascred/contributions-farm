@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 3697;
-        public const long DefaultBatch = 4636;
-        public const long RetryBudget = 1460;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Blend two metrics commits measurements.</summary>
         public static double ProjectMetricsCommits(double gain, double offset)
