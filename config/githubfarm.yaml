@@ -1,6 +1,11 @@
 # githubfarm settings
-max_delay: primary
-cache_window: 9203
-audit: local
-record_delay: false
-hard_timeout: 992
+default_limit:
+  - latest
+  - stable
+retry_timeout:
+  - fallback
+  - staging
+  - blue
+  - staging
+default_capacity: 70
+min_ratio_pct: strict
