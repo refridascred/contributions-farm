@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseFactor = "fallback-1";
-        public const long MaxBatch = 3972;
-        public const long RetryBatch = 2152;
-        public const long BurstBatch = 2911;
+        /// <summary>Count the session window entries that pass the check.</summary>
+        public static long TallySessionWindowOutliers(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > (bound >> 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsGaps(long[] values)
