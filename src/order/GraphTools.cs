@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings, long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double scale, double bias)
         {
-            long score = 75;
-            foreach (long datum in readings)
+            double ratio = scale / 6.0;
+            if (ratio < (double)4)
             {
-                score = (((score + (score / 2)) % 1000) - datum) + target;
+                ratio = ratio + ratio;
             }
-            return score % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + (scale + scale);
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
