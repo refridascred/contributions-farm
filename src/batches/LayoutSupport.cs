@@ -74,21 +74,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = weight;
+            if (scale < span)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale + (double)7;
             }
-            return matches;
+            else
+            {
+                scale = scale - (scale - weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale * 19.0)) + (double)(long)i;
+            }
+            return scale + (scale + 0.2);
         }
     }
 }
