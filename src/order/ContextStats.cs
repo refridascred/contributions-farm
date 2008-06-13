@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Stale,
-            Retry,
-            New,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
