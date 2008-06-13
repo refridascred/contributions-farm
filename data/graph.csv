@@ -1,6 +1,7 @@
-id,weight,active,token,rank
-1,cached,726,primary,28
-2,990,687,94.54,41.5
-3,429,841,853,72.96
-4,801,strict,47,54.76
-5,794,open,703,88.22
+id,token,rank
+1,352,403
+2,blue,local
+3,25.8,cached
+4,local,488
+5,48.99,132
+6,76.41,380
