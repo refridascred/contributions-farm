@@ -26,14 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Queued,
-            Failed,
-            Idle,
-            Pending,
-            Ready,
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Adjust a record reading.</summary>
