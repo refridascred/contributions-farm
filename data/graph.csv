@@ -1,8 +1,9 @@
-id,owner,count
-1,cached,cached
-2,192,466
-3,standard,latest
-4,88.51,blue
-5,260,64.64
-6,fallback,41
-7,fallback,primary
+id,weight,score
+1,21.41,711
+2,570,82.13
+3,404,295
+4,357,latest
+5,edge,stable
+6,13.22,499
+7,788,58.12
+8,82.45,69.91
