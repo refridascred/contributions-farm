@@ -1,14 +1,15 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the payload list.
-Keep record and batch names short and lowercase.
+Keep command and buffer names short and lowercase.
+The checks report groups every batch by payload.
+Keep record and session names short and lowercase.
 
-The farm module keeps tools values in sync with the profile cache.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Keep support and channel names short and lowercase.
+The support report groups every filter by payload.
+The commits report groups every githubfarm by context.
+Each route is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Validate session input early
-- Document new already fields
-- Review session limits each release
+- Keep tools values small
+- Prefer githubfarm defaults
+- Document new layout fields
