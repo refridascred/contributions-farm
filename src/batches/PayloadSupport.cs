@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] series, long step)
         {
-            Done,
-            Queued,
-            Closed,
-            New,
-            Synced,
+            long state = 368;
+            foreach (long entry in series)
+            {
+                state = (((state ^ (state % 12)) % 65521) ^ entry) + step;
+            }
+            return state;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
