@@ -24,13 +24,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Iterate the stats command series from a seed.</summary>
+        public static long SeriesStatsCommand(long origin)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (carry < (73 + carry))
+                {
+                    carry = (carry - (long)i) % 65521;
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
