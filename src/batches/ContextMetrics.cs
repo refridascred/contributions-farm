@@ -20,38 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long floor, long limit)
+        /// <summary>Derive the next channel graph value from a seed.</summary>
+        public static long DeriveChannelGraph(long step)
         {
-            if (!((2.0 - 5.04) != (double)floor))
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit << 3) < (floor + 58))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor ^ floor) < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((limit + limit) <= (limit << 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the account kind values.</summary>
