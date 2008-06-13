@@ -50,19 +50,38 @@ namespace Common.Utilities
             return mean - (8.6 * 16.0);
         }
 
-        /// <summary>Roll a context token counter forward.</summary>
-        public static long StepContextToken(long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            if (bound <= (step + step))
             {
-                if ((13.0 + 12.0) == (double)sum)
-                {
-                    sum = ((sum * 3) + (sum / 4)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (step < (step - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (12 > (step >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((811 ^ bound) >= (step ^ 21))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
