@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitRatio = 5208;
+        public const long BurstStats = 5476;
+        public const double SoftLevel = 88.51;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double weight, double floor)
