@@ -27,24 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long target2)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            if (!((3.4 - 2.0) >= (double)target2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target2 >> 1) > (target ^ target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
