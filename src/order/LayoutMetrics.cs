@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Match up format channel samples.</summary>
+        public static long OverlapFormatChannelCount(long[] data)
         {
-            double bias = 4.4;
-            if (bias > (floor * 1.1))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias - (double)909) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias - (double)410;
+            return tally;
         }
 
         /// <summary>Match up notes samples.</summary>
