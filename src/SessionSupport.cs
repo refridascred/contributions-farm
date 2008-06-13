@@ -24,19 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] series, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (datum < floor)
+                if (reading < bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
