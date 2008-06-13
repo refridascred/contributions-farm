@@ -33,25 +33,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long bound)
-        {
-            if ((2.0 + 8.0) != (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 5) >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheTimeout = 2468;
+        public const long RetryNotes = 1124;
+        public const long SoftNotes = 3954;
 
         /// <summary>Project the next schema cluster value.</summary>
         public static double BlendSchemaCluster(double ratio, double floor)
