@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            long sum = 601;
+            long count = 0;
             foreach (long item in samples)
             {
-                sum = ((sum << 2) ^ (2 & 7)) + item;
-                if ((double)bound <= (1.0 * 11.0))
+                if (12.0 <= (double)item)
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
