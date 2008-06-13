@@ -1,4 +1,4 @@
 # githubfarm settings
-context_retries: local
-min_ratio_pct: false
-idle_size_s: staging
+metric_capacity: open
+burst_capacity: 9373
+entry_depth: edge
