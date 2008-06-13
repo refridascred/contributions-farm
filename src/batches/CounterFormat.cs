@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] items, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (1.4 >= (double)seen)
+                if (reading >= seed)
                 {
-                    seen = ((seen + 2) ^ cell) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
