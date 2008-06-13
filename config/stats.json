@@ -1,6 +1,16 @@
 {
-  "soft_window_ms": false,
-  "default_limit": 9,
-  "enabled": "stable",
-  "compress": ["legacy", "blue", "eu-west"]
+  "cache_interval": 45,
+  "batch_size_s": {
+    "persist": 22.89,
+    "sync_window": {
+      "default_ttl": "eu-west",
+      "queue_ratio": ["stable", "green"],
+      "entry_ttl": "local",
+      "soft_timeout_ms": 88
+    },
+    "queue_interval": 30.1,
+    "min_window": 1052,
+    "checks_limit": "eu-west"
+  },
+  "stream_threshold": 4836
 }
