@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double weight, double offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] readings, long bound)
         {
-            double gain = offset;
-            if (gain <= 18.0)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                gain = (gain - 9.0) - weight;
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (double)348;
-            }
-            return gain - 20.0;
+            return ok;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
