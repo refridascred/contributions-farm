@@ -34,19 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batches report entry stays within the limit.</summary>
-        public static bool GuardBatchesReportRange(long[] levels, long offset)
+        /// <summary>Combine buffer record values into a single score.</summary>
+        public static long WeighBufferRecord(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long carry = 644;
+            foreach (long value in values)
             {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry ^ value) % 255) - limit;
             }
-            return ok;
+            return carry % 1000;
         }
 
         /// <summary>Describe the checks level values.</summary>
