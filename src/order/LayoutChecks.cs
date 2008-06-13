@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the commits stats entries that pass the check.</summary>
-        public static long AuditCommitsStatsOutliers(long[] values, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= (6.4 + 9.0))
-                {
-                    matches = (matches + 3) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Adjust a entry reading.</summary>
