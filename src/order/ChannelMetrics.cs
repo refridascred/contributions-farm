@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a contributi account figure with a bias.</summary>
-        public static double ProjectContributiAccount(double bias, double offset)
-        {
-            double ratio = (bias * 20.0) / 9.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - offset;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardSize = 3476;
+        public const string LimitWindow = "cached-v2";
+        public const string HardWindow = "legacy-edge";
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long target)
