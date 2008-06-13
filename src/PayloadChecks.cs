@@ -74,10 +74,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "standard-1";
-        public const long MinSize = 317;
-        public const long BurstStream = 7236;
-        public const double LimitStream = 18.35;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinRatio = 82.92;
+        public const string MaxCount = "standard";
+        public const long IdleFactor = 4272;
     }
 }
