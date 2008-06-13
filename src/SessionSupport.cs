@@ -24,13 +24,10 @@ namespace Common.Utilities
         public const long BatchDepth = 6565;
         public const long MinScore = 5915;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Queued,
-            Active,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "open";
+        public const long CacheScore = 3717;
+        public const string WindowSupport = "local-edge";
+        public const string MinSupport = "primary-1";
     }
 }
