@@ -40,19 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] series, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                score = score - (step / 6);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the schema status values.</summary>
