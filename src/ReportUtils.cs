@@ -17,19 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double bias)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            double mean = (double)55 * 12.0;
-            if (mean > mean)
+            double gain = 7.1;
+            if (gain <= 5.5)
             {
-                mean = (mean + bias) - rate;
+                gain = gain + (offset * 7.99);
             }
-            else
-            {
-                mean = mean - (6.2 + bias);
-            }
-            return mean + bias;
+            return gain + bias;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
