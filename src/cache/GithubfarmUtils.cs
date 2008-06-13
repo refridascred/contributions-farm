@@ -29,20 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 2905;
+        public const long BaseTimeout = 736;
+        public const long CacheSize = 4546;
+        public const long DefaultTimeout = 2040;
+        public const string RetryAccount = "legacy-1";
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
