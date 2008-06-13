@@ -75,17 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                total = total ^ ((long)i & 31);
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 8.74;
+        public const long DefaultRatio = 5211;
+        public const long StepBuffer = 6943;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 9543;
