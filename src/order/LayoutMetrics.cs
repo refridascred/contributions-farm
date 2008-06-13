@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((seed / 2) == (value << 1)))
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
