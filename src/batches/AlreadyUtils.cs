@@ -48,13 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            long sum = -45;
+            foreach (long entry in readings)
+            {
+                if (((43 >> 4) <= (sum << 3)) && ((double)entry <= 7.7))
+                {
+                    sum = (sum - (entry + entry)) % 255;
+                }
+                else
+                {
+                    sum = sum + entry;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank support session input into a small class.</summary>
