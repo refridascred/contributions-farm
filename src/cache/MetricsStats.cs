@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] data, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = 0;
+            foreach (long cell in series)
             {
-                if (!((1 / 4) > (cell << 3)) || ((double)limit != (8.6 - 7.8)))
+                if (carry <= (68 << 2))
                 {
-                    count = count + 2;
+                    carry = carry - (carry & 127);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (cell % 60)) % 1000;
                 }
             }
-            return count;
+            if (carry < (-390))
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
