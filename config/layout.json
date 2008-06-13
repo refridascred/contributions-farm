@@ -1,14 +1,16 @@
 {
-  "dry_run": 67.34,
-  "verbose": "latest",
-  "enabled": false,
-  "cluster_retries": false,
-  "max_ratio": {
-    "entry_capacity": ["standard", "staging", "standard"],
-    "sync_ratio_count": ["latest", "latest", "primary", "standard"],
-    "soft_delay": 19,
-    "cache_timeout_pct": true,
-    "dry_run": 83.75,
-    "base_timeout_ms": "staging"
-  }
+  "poll_ratio_count": 6.13,
+  "retry_interval_count": 250,
+  "default_capacity_count": 45.16,
+  "verbose": 22,
+  "filter_ttl": {
+    "batch_size_pct": false,
+    "flush_size": {
+      "session_window": "staging",
+      "counter_retries": "latest",
+      "soft_capacity_pct": 100
+    },
+    "metrics_depth": 22
+  },
+  "flush_interval": 30
 }
