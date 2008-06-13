@@ -31,13 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            Done,
-            Failed,
-            Locked,
-            New,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
