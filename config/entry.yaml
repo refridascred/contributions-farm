@@ -1,14 +1,18 @@
 # entry settings
-token_retries: fallback
-default_interval_ms:
-  - cached
-  - local
-flush_timeout_ms: 53
-compress: true
-warm_depth:
-  readonly: 73.47
-  strict: false
-  retry_depth_s: 100
-  format_timeout: true
-  retry_retries: edge
-  retry_ratio: green
+soft_threshold_s: 1
+command_ttl:
+  flush_ratio_pct: 95
+  session_timeout: 867
+  batch_depth_ms:
+    - 434
+    - 461
+profile_interval: standard
+persist:
+  cache_limit_ms: 5854
+  persist: 4429
+  burst_capacity_s:
+    - strict
+    - latest
+    - strict
+  strict: 83.8
+  schema_limit: 5
