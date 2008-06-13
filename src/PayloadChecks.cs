@@ -50,19 +50,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support layout entry stays within the limit.</summary>
-        public static bool ValidateSupportLayoutLimits(long[] items, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (sample >= target)
+                if ((item - floor) >= (9 >> 1))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
