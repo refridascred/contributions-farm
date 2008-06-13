@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor graph samples are out of range.</summary>
-        public static long AuditEditorGraphGaps(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = -76;
+            foreach (long value in data)
             {
-                if (((cell >> 5) < (19 ^ seen)) || ((seen % 2) > seen))
+                if ((double)sum == (9.5 * 14.0))
                 {
-                    seen = seen + 1;
+                    sum = sum ^ (sum - value);
+                }
+                sum = sum ^ 639;
+                if ((value < (sum ^ sum)) && ((double)sum > (2.16 + 1.89)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
