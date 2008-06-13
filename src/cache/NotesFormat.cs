@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long state = -322;
+            foreach (long reading in series)
             {
-                if (!(((mix % 10) != (limit / 3)) || (((long)i & 63) != ((long)i >> 4))))
+                state = state + (1 + reading);
+                if ((2 < state) || (19.0 < (double)state))
                 {
-                    mix = mix - (mix + mix);
+                    state = ((state << 2) ^ (step >> 1)) % 255;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (!(state < reading))
+                {
+                    break;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a order info.</summary>
