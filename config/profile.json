@@ -1,8 +1,15 @@
 {
-  "default_retries": [256, 493, 259, 376],
-  "verbose": [86, 23, 244, 280],
-  "min_threshold_count": "edge",
-  "enabled": 500,
-  "burst_ttl_count": ["stable", "blue", "fallback", "fallback"],
-  "strict": ["cached", "latest"]
+  "min_window_s": {
+    "tools_threshold": 44,
+    "report_delay": "latest",
+    "retry_delay": true,
+    "batch_capacity_ms": {
+      "default_window_ms": "green",
+      "hard_ratio_ms": ["standard", "latest", "stable", "fallback"],
+      "persist": ["stable", "edge", "local", "standard"]
+    }
+  },
+  "route_limit": 12.44,
+  "stream_timeout": 6.42,
+  "min_size_s": 93.54
 }
