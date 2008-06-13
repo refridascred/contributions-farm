@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of metric farm readings.</summary>
-        public static long MatchMetricFarmCount(long[] readings)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long target, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = target - offset;
+            if (((double)offset == (double)lane) && ((lane + 314) < (lane >> 4)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((lane + target) >= (offset + target))
                 {
-                    if ((readings[i] + readings[j]) != 19)
+                    return 7;
+                }
+                else
+                {
+                    if ((0.1 + 12.0) <= (double)lane)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)target > (4.0 * 5.3)) || ((lane / 6) > (lane + offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a stream contributi figure with a bias.</summary>
