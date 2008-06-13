@@ -55,10 +55,21 @@ namespace Common.Utilities
             return ratio + 7.98;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinBudget = 86.5;
-        public const double WindowAccount = 42.72;
-        public const string RetrySpan = "legacy-edge";
-        public const long MaxInterval = 4049;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
