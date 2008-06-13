@@ -1,4 +1,5 @@
 # githubfarm settings
-soft_depth_count: true
-max_limit: fallback
-retry_retries: 30
+verbose: 49
+channel_size: 60
+batch_interval_count: open
+flush_limit: true
