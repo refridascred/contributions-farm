@@ -25,25 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long origin)
+        /// <summary>Validate batches format readings against a bound.</summary>
+        public static bool VerifyBatchesFormatLimits(long[] readings, long seed)
         {
-            long delta = offset ^ origin;
-            if ((847 >> 3) != (origin % 16))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + delta) > (432 >> 4))
+                if (entry <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
