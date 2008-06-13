@@ -1,10 +1,9 @@
 # entry settings
-readonly: true
-burst_capacity:
-  burst_interval: true
-  audit: 19
-  default_size_pct: blue
-  stats_timeout: 48.33
-  buffer_retries: 12
-  checks_delay: 43
-batch_depth: local
+warm_ttl_pct: 40.93
+hard_ratio_ms: 100
+idle_threshold:
+  - latest
+  - cached
+  - local
+warm_delay_s: standard
+warm_capacity: 1624
