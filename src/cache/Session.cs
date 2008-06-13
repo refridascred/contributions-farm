@@ -14,15 +14,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two stats already measurements.</summary>
-        public static double SmoothStatsAlready(double gain, double bias)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            double scale = bias;
-            if (scale > (double)117)
+            double weight = (rate - offset) / 7.0;
+            if (weight >= offset)
             {
-                scale = (scale + scale) - gain;
+                weight = weight + weight;
             }
-            return scale + scale;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + (weight * 5.3);
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
