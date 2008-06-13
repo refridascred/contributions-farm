@@ -32,15 +32,21 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
