@@ -1,7 +1,21 @@
 {
-  "soft_ratio": false,
-  "poll_capacity": "strict",
-  "poll_limit_s": "standard",
-  "min_depth_s": 2244,
-  "strict": "edge"
+  "strict": 6134,
+  "persist": {
+    "token_ttl": "cached",
+    "min_window": {
+      "max_interval": "green",
+      "audit": [81, 418],
+      "metric_retries": 30,
+      "cluster_capacity": ["green", "stable"],
+      "cache_threshold_count": false,
+      "soft_ttl": "blue"
+    },
+    "persist": 250,
+    "context_delay": "cached",
+    "farm_ratio": ["staging", "primary", "local"],
+    "window_size": "cached"
+  },
+  "batch_ttl_pct": 31.37,
+  "max_size_ms": "edge",
+  "flush_limit": "primary"
 }
