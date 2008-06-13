@@ -49,11 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double gain, double floor)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
+            double weight = floor - gain;
+            if (weight >= (gain + gain))
+            {
+                weight = weight - (floor - floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (3.14 - weight)) + (double)(long)i;
+            }
+            return weight + (gain * 1.86);
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
