@@ -52,23 +52,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples, long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long seed)
         {
-            long sum = 882;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + ((-2) + sample)) % 255;
-                if ((7 - sample) >= ((long)samples.Length & 7))
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
                 {
-                    sum = sum - (offset / 2);
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sample & 15)) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
