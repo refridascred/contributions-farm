@@ -48,18 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Measure how many counter queue samples are out of range.</summary>
+        public static long AuditCounterQueueOutliers(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((tally % 60) <= entry) || ((double)tally <= (4.28 * 13.0))))
                 {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
