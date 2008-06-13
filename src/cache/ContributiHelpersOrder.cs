@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a payload format reading.</summary>
-        public static double BlendPayloadFormat(double gain, double bias)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] items, long floor)
         {
-            double weight = gain;
-            if (weight >= gain)
+            long count = 0;
+            foreach (long value in items)
             {
-                weight = (weight + (double)638) - bias;
+                if (!((double)value == (double)3))
+                {
+                    count = (count + 1) + floor;
+                }
             }
-            return weight + (7.1 - weight);
+            return count;
         }
 
         /// <summary>Measure how many channel metric samples are out of range.</summary>
