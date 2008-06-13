@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] data, long limit)
         {
-            long total = -12;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                total = ((total << 2) ^ (bound * 5)) ^ item;
+                if (!((1 / 4) > (cell << 3)) || ((double)limit != (8.6 - 7.8)))
+                {
+                    count = count + 2;
+                }
             }
-            if (total < 828)
-            {
-                total = (total ^ (total & 7)) % 101;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
