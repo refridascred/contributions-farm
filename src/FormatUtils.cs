@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] samples, long floor)
         {
-            New,
-            Stale,
-            Dropped,
-            Queued,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
