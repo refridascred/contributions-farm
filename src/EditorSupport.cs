@@ -75,18 +75,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] values)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen / 9) >= (value >> 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
