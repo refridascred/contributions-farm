@@ -38,19 +38,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] items, long origin)
+        /// <summary>Audit route window readings against a rule.</summary>
+        public static long TallyRouteWindowHits(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (cell != origin)
+                if ((reading % 10) > (matches % 2))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
