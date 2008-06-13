@@ -14,12 +14,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
