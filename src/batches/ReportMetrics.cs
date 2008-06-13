@@ -15,39 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long step, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings, long floor)
         {
-            long edge = step - origin;
-            if (!(step < (edge & 31)))
+            long mark = 5;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge << 2) != (edge * 2))
+                if ((sample / 8) < (sample & 15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin % 60) < (edge >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.21 - 5.45) <= (double)edge)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = ((mark << 3) ^ (sample + mark)) % 1000;
                 }
             }
+            if (mark > 92)
+            {
+                mark = ((mark << 3) ^ (floor * 4)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
