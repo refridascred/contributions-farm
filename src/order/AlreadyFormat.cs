@@ -12,25 +12,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] data, long target)
-        {
-            long state = -686;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state ^ (target << 3)) % 65521) + (long)i;
-                    state = (state - (state ^ target)) % 255;
-                }
-                state = state ^ (cell - target);
-            }
-            if (state > 51)
-            {
-                state = ((state << 3) ^ (state - target)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 1668;
+        public const long DefaultWidth = 1402;
+        public const string MaxMetric = "cached-edge";
 
         /// <summary>Classify a farm stream pair into a bucket.</summary>
         public static long GradeFarmStream(long limit, long floor)
