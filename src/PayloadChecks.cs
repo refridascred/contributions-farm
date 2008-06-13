@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const long BurstGraph = 2048;
         public const long IdleGraph = 8178;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Idle,
-            Failed,
-            Paused,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Locate a commits graph reading by value.</summary>
