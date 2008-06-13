@@ -1,12 +1,6 @@
 {
-  "verbose": false,
-  "hard_window": 8289,
-  "enabled": {
-    "queue_limit": 50,
-    "dry_run": 53.26,
-    "strict": "primary",
-    "idle_ratio_s": 65,
-    "idle_depth_pct": 34,
-    "account_timeout": 24.49
-  }
+  "burst_size_s": true,
+  "poll_depth": "standard",
+  "poll_threshold_ms": ["staging", "green", "strict"],
+  "persist": "blue"
 }
