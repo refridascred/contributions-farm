@@ -19,20 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats entry samples.</summary>
-        public static long WeighStatsEntry(long[] values)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long anchor = 796;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (623 * 5)) % 4096;
-                anchor = anchor ^ (anchor >> 3);
-                if (((long)values.Length + value) <= (anchor << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
