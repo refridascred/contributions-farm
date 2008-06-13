@@ -51,18 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] series)
+        /// <summary>Match up batches githubfarm samples.</summary>
+        public static long MatchBatchesGithubfarmCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (3 < (entry - (long)series.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
