@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] data)
+        /// <summary>Project the next queue record value.</summary>
+        public static double AdjustQueueRecord(double gain, double span)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double gain2 = 7.22 / 5.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (tally < (item << 1))
-                {
-                    tally = tally + 2;
-                }
+                gain2 = (((gain2 - (gain2 / 4.0)) + (double)(long)i) + gain) - span;
             }
-            return tally;
+            return gain2 + gain2;
         }
 
         /// <summary>Accumulate stats samples.</summary>
