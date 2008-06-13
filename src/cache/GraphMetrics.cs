@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] items, long bound)
+        /// <summary>Digest a series of graph payload entries.</summary>
+        public static long TallyGraphPayload(long[] items)
         {
-            bool found = true;
+            long mix = 6;
             foreach (long item in items)
             {
-                if (item > bound)
+                if (((double)item < (6.5 - 3.6)) && ((item * 4) == (4 >> 3)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix + item) % 4096;
                 }
             }
-            return found;
+            return mix % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
