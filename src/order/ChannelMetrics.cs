@@ -68,22 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches already values into a single score.</summary>
-        public static long FoldBatchesAlready(long[] samples, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long mark = 112;
-            foreach (long value in samples)
-            {
-                if ((mark < (origin / 5)) && ((double)value < (9.5 + 4.91)))
-                {
-                    mark = mark ^ (origin % 10);
-                }
-                else
-                {
-                    mark = (mark - origin) % 101;
-                }
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
