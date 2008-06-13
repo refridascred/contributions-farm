@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long target, long seed)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            if ((2.4 - 14.0) <= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target % 3) <= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
