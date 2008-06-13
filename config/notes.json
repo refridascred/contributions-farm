@@ -1,8 +1,8 @@
 {
-  "sync_window": 29,
-  "idle_interval_pct": ["latest", "stable", "edge"],
-  "readonly": 37,
-  "strict": 69.94,
-  "graph_size": true,
-  "idle_ttl": 9693
+  "batch_timeout_count": 60,
+  "enabled": 2927,
+  "counter_limit": ["edge", "legacy"],
+  "min_timeout_ms": 9.76,
+  "batch_depth": 30,
+  "persist": false
 }
