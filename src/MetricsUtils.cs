@@ -68,18 +68,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit graph entry readings against a rule.</summary>
-        public static long TallyGraphEntryOutliers(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (count >= (0 ^ item))
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinBudget = 86.5;
+        public const double WindowAccount = 42.72;
+        public const string RetrySpan = "legacy-edge";
+        public const long MaxInterval = 4049;
     }
 }
