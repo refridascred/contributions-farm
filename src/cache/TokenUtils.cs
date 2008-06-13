@@ -23,23 +23,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seed << 1) >= ((long)i / 5)) || (2.45 < (double)total))
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
                 {
-                    total = ((total << 2) ^ (total / 8)) % 1000;
+                    return (long)i;
                 }
-                if (!((72 + seed) >= seed))
-                {
-                    total = ((total * 4) + (355 * 4)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a cluster session value against two limits.</summary>
