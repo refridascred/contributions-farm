@@ -40,18 +40,23 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long state = 23;
+            foreach (long cell in series)
             {
-                if (bound < (bound & 127))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    tally = (tally + 1) ^ cell;
+                    state = (state << 2) ^ ((long)i2 + seed);
+                }
+                state = ((state << 3) ^ (cell & 1)) % 65521;
+                if ((cell / 6) < (cell >> 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
