@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1444;
+        public const double BatchEntry = 80.75;
+        public const string BurstEntry = "fallback-v2";
+        public const string LimitEntry = "cached";
+        public const long HardWidth = 1561;
 
         /// <summary>Audit route window readings against a rule.</summary>
         public static long TallyRouteWindowHits(long[] series, long seed)
