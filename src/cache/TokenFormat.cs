@@ -27,19 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (((sum << 2) ^ sum) % 65521) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Synced,
+            Failed,
+            Locked,
+            Queued,
         }
     }
 }
