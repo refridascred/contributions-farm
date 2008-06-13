@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] samples, long limit)
         {
-            long next = target + floor;
-            if (floor > (6 + next))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.3 / 5.0) < (double)next)
+                if ((seen << 3) > (seen >> 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((next / 8) > next) && ((floor >> 5) < (target ^ 98)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target > 3)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = ((seen + 3) + value) + limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
