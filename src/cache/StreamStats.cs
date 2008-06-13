@@ -55,31 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            if (!((offset - offset) == (11 ^ step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (0.77 - 5.7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)offset > (5.38 - 0.07)) || (2.69 < (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Idle,
         }
     }
 }
