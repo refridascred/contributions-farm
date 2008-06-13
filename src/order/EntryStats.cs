@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (reading < limit)
+                if (((1.74 / 9.0) > (double)hits) && ((17.0 * 12.0) == (double)hits))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 2) - datum) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the command level values.</summary>
