@@ -57,22 +57,19 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (!((sample << 3) <= seen))
+                if (reading >= floor)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
