@@ -41,21 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up channel checks samples.</summary>
-        public static long OverlapChannelChecksCount(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 2;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((offset - (-1)) > sample) && (sample >= ((-9) % 16)))
                 {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry - (52 ^ offset)) % 101;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
