@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Idle,
-            Draft,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchScore = 5038;
+        public const double HardInterval = 92.57;
+        public const long RetryContext = 5246;
+        public const string HardRatio = "stable-1";
+        public const double WindowContext = 52.78;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
