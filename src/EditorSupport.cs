@@ -80,18 +80,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!((item >> 4) != (853 >> 3)))
+                if ((seen / 9) >= (value >> 5))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
