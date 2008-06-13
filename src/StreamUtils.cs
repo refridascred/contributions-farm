@@ -61,13 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double gain, double floor)
         {
-            Done,
-            Active,
-            New,
-            Stale,
+            double drift = floor;
+            if (drift < (floor / 3.0))
+            {
+                drift = (drift + floor) - gain;
+            }
+            return drift + floor;
         }
 
         /// <summary>Hold a report header.</summary>
