@@ -49,19 +49,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double ratio = rate;
-            if (ratio < 0.61)
-            {
-                ratio = ratio - (20.0 / 9.0);
-            }
-            else
-            {
-                ratio = ratio + (ratio / 4.0);
-            }
-            return ratio + (floor - floor);
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
