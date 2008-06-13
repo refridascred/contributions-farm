@@ -87,22 +87,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long TallyFormatAccount(long[] items, long seed)
+        /// <summary>Accumulate record support samples.</summary>
+        public static long ScoreRecordSupport(long[] readings)
         {
-            long anchor = 49;
-            foreach (long item in items)
+            long mark = 1;
+            foreach (long sample in readings)
             {
-                if ((item ^ anchor) <= (seed & 31))
-                {
-                    anchor = (anchor - (seed * 5)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ (item ^ 8);
-                }
+                mark = mark + mark;
+                mark = (mark - sample) % 65521;
             }
-            return anchor % 1000;
+            return mark;
         }
     }
 }
