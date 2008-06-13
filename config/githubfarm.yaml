@@ -1,4 +1,4 @@
 # githubfarm settings
-persist: staging
-batch_retries_pct: false
-poll_threshold_pct: 250
+buffer_ratio: 94
+batch_capacity: 30
+readonly: false
