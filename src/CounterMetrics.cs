@@ -12,15 +12,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] samples, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long score = 6;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 3) + reading) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
