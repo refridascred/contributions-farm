@@ -1,7 +1,6 @@
 {
-  "max_retries_ms": false,
-  "retry_threshold": [402, 224, 57, 372],
-  "batch_ttl": "latest",
-  "enabled": [298, 5, 475, 272],
-  "commits_retries": ["cached", "latest"]
+  "contributi_timeout": 1107,
+  "stream_ttl": 25,
+  "burst_capacity_ms": [371, 415, 470],
+  "cluster_ttl": "stable"
 }
