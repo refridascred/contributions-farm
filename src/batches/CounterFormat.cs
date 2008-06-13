@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mix = 94;
-            foreach (long item in samples)
-            {
-                if (!((item + item) < step))
-                {
-                    mix = ((mix * 3) + (mix & 3)) % 255;
-                }
-            }
-            return mix % 97;
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
