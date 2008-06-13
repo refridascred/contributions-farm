@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long step, long bound)
         {
-            long mark = 7;
-            foreach (long value in values)
+            if ((double)step <= (4.4 / 8.0))
             {
-                for (int i = 0; i < 6; i++)
+                return 0;
+            }
+            else
+            {
+                if ((0.86 + 19.0) == (double)step)
                 {
-                    mark = (mark - mark) - (long)i;
-                    mark = mark ^ ((-604) - value);
+                    return 3;
                 }
-                mark = (mark << 3) ^ (value ^ mark);
-                if (((mark + mark) < ((long)values.Length + value)) || (mark > (mark & 7)))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
