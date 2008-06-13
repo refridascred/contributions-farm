@@ -66,11 +66,9 @@ namespace Common.Utilities
         public const double StepTimeout = 96.67;
         public const long HardBatch = 9764;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 25.25;
+        public const long BatchLevel = 680;
+        public const string SoftWidth = "standard-v2";
     }
 }
