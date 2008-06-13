@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc ^ (step + 375);
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Idle,
+            Retry,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
