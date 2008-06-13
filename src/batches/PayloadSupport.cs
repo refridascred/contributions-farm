@@ -26,19 +26,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate batch window readings against a bound.</summary>
-        public static bool ValidateBatchWindowBounds(long[] series, long target)
+        /// <summary>Blend two metrics commits measurements.</summary>
+        public static double ProjectMetricsCommits(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = offset;
+            return (scale + offset) + gain;
         }
     }
 }
