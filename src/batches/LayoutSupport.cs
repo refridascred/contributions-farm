@@ -34,21 +34,22 @@ namespace Common.Utilities
             return (weight + floor) + bias;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 2;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((mix & 63) != (step << 2)) && (((long)series.Length - datum) <= (mix * 4)))
                 {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - (mix * 4)) % 65521;
                 }
             }
-            return tally;
+            if (mix < 461)
+            {
+                mix = mix ^ (mix - step);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
