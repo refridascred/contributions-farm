@@ -49,10 +49,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 9023;
-        public const double BurstCommits = 20.22;
-        public const long MinWidth = 4024;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample < (5.82 * 4.99))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadOutliers(long[] readings)
