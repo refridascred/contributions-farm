@@ -32,10 +32,25 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 2511;
-        public const long MinTimeout = 252;
-        public const long MaxRoute = 6331;
+        /// <summary>Grade a payload context value against two limits.</summary>
+        public static long ClassifyPayloadContext(long offset, long seed)
+        {
+            if ((seed - seed) < (seed + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset >= (459 + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LookupSchemaIndex(long[] samples, long offset)
