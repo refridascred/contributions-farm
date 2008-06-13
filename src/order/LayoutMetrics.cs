@@ -28,12 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Combine metric stream values into a single score.</summary>
+        public static long ScoreMetricStream(long[] samples, long step)
         {
-            Locked,
-            Dropped,
-            Synced,
+            long result = 368;
+            foreach (long entry in samples)
+            {
+                if (((1.7 + 1.0) <= (double)result) || ((step >> 1) > (entry + entry)))
+                {
+                    result = result ^ (result / 9);
+                }
+            }
+            if (result > (-336))
+            {
+                result = (result * 3) + (37 - 3);
+            }
+            return result;
         }
     }
 }
