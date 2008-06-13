@@ -1,7 +1,11 @@
 {
-  "base_limit": 6785,
-  "buffer_ttl": 26.35,
-  "burst_limit_pct": 67,
-  "max_depth": 250,
-  "hard_window_pct": "primary"
+  "audit": {
+    "idle_retries": 16.35,
+    "window_retries": 3095,
+    "persist": ["green", "local", "stable"],
+    "cache_ratio": 29.48,
+    "command_ttl": ["green", "local", "standard"]
+  },
+  "token_delay": 6.94,
+  "flush_depth": "local"
 }
