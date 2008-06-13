@@ -23,11 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double rate, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long offset)
         {
-            double mean = offset;
-            return (mean + (double)112) + rate;
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((3.0 * 12.0) == (double)offset))
+                {
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
