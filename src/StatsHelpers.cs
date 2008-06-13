@@ -44,17 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long origin)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = (weight * 4.9) * 2.0;
+            if (weight2 <= weight)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + (offset * 8.51);
             }
-            return -1;
+            return weight2 - weight;
         }
 
         /// <summary>Fold a list of report readings.</summary>
