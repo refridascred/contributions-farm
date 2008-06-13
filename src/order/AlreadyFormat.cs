@@ -49,9 +49,21 @@ namespace Common.Utilities
         public const long DefaultFactor = 5013;
         public const double CacheToken = 84.15;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetryFactor = 4.37;
-        public const string MaxWidth = "standard";
-        public const long CacheSchema = 6358;
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
