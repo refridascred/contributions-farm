@@ -26,19 +26,18 @@ namespace Common.Utilities
             return ratio - (floor + ratio);
         }
 
-        /// <summary>Roll a editor report counter forward.</summary>
-        public static long RollEditorReport(long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long total = 14;
+            foreach (long item in readings)
             {
-                if ((5 > state) || (5.0 <= (double)state))
+                if (total >= (item - total))
                 {
-                    state = state + origin;
+                    total = total ^ (total >> 2);
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return total % 1000;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
