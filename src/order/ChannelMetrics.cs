@@ -40,32 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] data, long target)
         {
-            long gap = target - step;
-            if ((target >> 2) > (gap + step))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step / 3) >= (gap + step)) && ((gap - target) > (step + 8)))
+                if ((cell - matches) > (target & 127))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target / 9) >= (target - (-2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a commits reading.</summary>
