@@ -42,10 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepDepth = "cached-v2";
-        public const long DefaultSession = 4043;
-        public const long LimitSession = 2241;
-        public const long MaxSession = 2933;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinSpan = 8096;
+        public const double RetryWidth = 65.54;
+        public const long HardFilter = 3620;
+        public const long LimitFilter = 7528;
+        public const long CacheSpan = 4348;
     }
 }
