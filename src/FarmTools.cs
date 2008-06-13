@@ -14,15 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next batches already value from a seed.</summary>
-        public static long RollBatchesAlready(long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (!((limit - (long)i) <= (long)i))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
