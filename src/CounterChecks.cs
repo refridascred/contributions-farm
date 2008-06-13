@@ -38,19 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] values, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (reading != origin)
+                if (!(((entry - entry) < (entry * 4)) && ((3.38 / 2.0) >= (double)entry)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Project the next contributi value.</summary>
