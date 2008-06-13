@@ -26,19 +26,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate format payload readings against a bound.</summary>
-        public static bool CheckFormatPayloadRange(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultFactor = 1648;
+        public const long BatchRatio = 4002;
+        public const double HardSpan = 17.86;
+        public const double CacheAccount = 22.32;
     }
 }
