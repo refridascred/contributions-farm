@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 3413;
-        public const string BurstFactor = "legacy";
-        public const long MaxCount = 8553;
-        public const string BurstOrder = "primary-edge";
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] readings)
