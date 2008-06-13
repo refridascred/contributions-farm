@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 5765;
-        public const long HardScore = 8118;
-        public const string MaxWidth = "primary-1";
-        public const long RetrySize = 4190;
+        /// <summary>Count already context pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyContextCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxRatio = 7673;
