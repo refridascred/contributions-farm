@@ -42,17 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token account value from a seed.</summary>
-        public static long IterateTokenAccount(long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - result) % 101;
-                result = ((result * 3) + (bound + 5)) % 1000;
-                result = ((result * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit window queue readings against a rule.</summary>
