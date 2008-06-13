@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long span = target - floor;
-            if (!((floor >> 3) < 75))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((45 >> 1) <= (floor / 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((7.23 - 16.0) != (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor - target) < (span % 2)) && ((73 ^ target) > span))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
