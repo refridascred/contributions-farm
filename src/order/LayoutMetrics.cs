@@ -26,19 +26,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] series, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long total = -5;
+            foreach (long value in readings)
             {
-                if (reading < bound)
+                total = (total * 3) + (origin >> 3);
+                if ((double)origin <= (double)6)
                 {
-                    ready = false;
+                    total = (total << 2) ^ (origin ^ origin);
                     break;
                 }
+                if ((value & 127) == (value + origin))
+                {
+                    total = total ^ (value + value);
+                }
             }
-            return ready;
+            return total;
         }
     }
 }
