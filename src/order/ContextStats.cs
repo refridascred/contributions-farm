@@ -23,17 +23,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] series, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = limit - limit2;
+            if ((limit2 - limit2) == (78 % 7))
             {
-                if (series[i] <= limit)
+                return 5;
+            }
+            else
+            {
+                if (1 > (limit * 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((limit - 16) == (limit & 7)) || ((limit / 4) != (diff % 100)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (14.0 > (double)diff)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
