@@ -77,11 +77,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
