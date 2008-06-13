@@ -1,6 +1,6 @@
 # githubfarm settings
-sync_size_ms: 77.88
-support_size: stable
-burst_threshold_count: 5569
-farm_interval: 21.29
-idle_threshold_s: 9625
+max_delay: primary
+cache_window: 9203
+audit: local
+record_delay: false
+hard_timeout: 992
