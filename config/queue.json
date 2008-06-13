@@ -1,15 +1,10 @@
 {
-  "idle_retries_s": ["latest", "edge", "open", "staging"],
-  "warm_window_pct": ["staging", "blue", "open"],
-  "schema_limit": {
-    "dry_run": "edge",
-    "contributi_window": "standard",
-    "editor_threshold": ["local", "green"]
+  "farm_depth": {
+    "enabled": 250,
+    "burst_capacity_ms": 66,
+    "notes_ratio": "open"
   },
-  "hard_delay_ms": "strict",
-  "batch_window_count": {
-    "flush_delay_s": "fallback",
-    "max_window_pct": "open",
-    "sync_timeout_pct": 100
-  }
+  "enabled": "eu-west",
+  "batch_window_s": "stable",
+  "batch_ratio": 46.26
 }
