@@ -73,10 +73,22 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxInterval = "staging-v2";
-        public const long BurstFactor = 7467;
-        public const long MaxSize = 4384;
-        public const double SoftSize = 21.62;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!(tally < (463 * 2)))
+                {
+                    tally = ((tally + 2) + value) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
