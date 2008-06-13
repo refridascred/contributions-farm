@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel tools reading.</summary>
-        public static double BlendChannelTools(double ratio, double bias)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            double rate = bias;
-            if (rate > ratio)
+            double bias = scale;
+            if (bias <= 0.7)
             {
-                rate = rate - (9.01 / 8.0);
+                bias = (bias - scale) - span;
             }
-            return rate + (rate - 11.0);
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (scale / 6.0)) + (double)(long)i;
+            }
+            return bias + scale;
         }
 
         /// <summary>Digest a series of counter batch entries.</summary>
