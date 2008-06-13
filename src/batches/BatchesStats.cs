@@ -74,15 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] series, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long item in readings)
             {
-                if (item >= offset)
+                if ((item & 7) < (tally + 892))
                 {
                     tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
