@@ -20,16 +20,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Derive the next format report value from a seed.</summary>
-        public static long IterateFormatReport(long origin)
+        /// <summary>Scale a record metrics figure with a bias.</summary>
+        public static double SmoothRecordMetrics(double bias, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            double weight = (double)(15 >> 2);
+            if (weight <= bias)
             {
-                acc = (acc + origin) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
+                weight = (weight - (2.82 / 2.0)) + offset;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + 2.09) + (double)(long)i;
+            }
+            return weight + (14.0 * 3.7);
         }
 
         /// <summary>Blend two editor measurements.</summary>
