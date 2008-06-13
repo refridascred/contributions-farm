@@ -49,19 +49,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batches batch entry stays within the limit.</summary>
-        public static bool GuardBatchesBatchRange(long[] series, long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > offset)
+                if (readings[i] >= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
