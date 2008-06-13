@@ -39,22 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] items)
+        /// <summary>Audit stats metric readings against a rule.</summary>
+        public static long AuditStatsMetricGaps(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)370 >= (double)cell)
+                if (!(floor < (seen * 5)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
