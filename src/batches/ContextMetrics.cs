@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count checks payload pairs that satisfy a relation.</summary>
-        public static long CompareChecksPayloadCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstWidth = 83.6;
+        public const long MaxSpan = 3788;
+        public const double MinContext = 37.14;
+        public const long RetryRatio = 8499;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] items, long origin)
