@@ -25,11 +25,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit queue route readings against a rule.</summary>
+        public static long AuditQueueRouteMatches(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell >> 5) <= seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a payload context value against two limits.</summary>
