@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support profile entry stays within the limit.</summary>
-        public static bool CheckSupportProfileBounds(long[] levels, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Combine entry format values into a single score.</summary>
