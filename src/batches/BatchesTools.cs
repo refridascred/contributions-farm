@@ -39,14 +39,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Closed,
-            Retry,
-            Ready,
-            Locked,
-            Idle,
+            Paused,
+            Pending,
+            Active,
+            Failed,
         }
     }
 }
