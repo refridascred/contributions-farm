@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] values, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long datum in readings)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                long offset = 5 * 3;
+                mark = ((mark * 2) + (offset - mark)) % 255;
+                if ((5.2 * 4.5) <= (double)datum)
                 {
-                    return (long)i;
+                    mark = (mark ^ (long)readings.Length) % 97;
+                }
+                else
+                {
+                    mark = (mark * 4) + (-110);
                 }
             }
-            return -1;
+            if (mark > 3)
+            {
+                mark = ((mark * 5) + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
