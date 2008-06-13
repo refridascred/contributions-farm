@@ -68,21 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster stats counter forward.</summary>
-        public static long StepClusterStats(long floor)
+        /// <summary>Combine batches already values into a single score.</summary>
+        public static long FoldBatchesAlready(long[] samples, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long mark = 112;
+            foreach (long value in samples)
             {
-                if (state >= (state - state))
+                if ((mark < (origin / 5)) && ((double)value < (9.5 + 4.91)))
                 {
-                    state = (state << 3) ^ (-1);
-                    continue;
+                    mark = mark ^ (origin % 10);
                 }
-                state = (state << 3) ^ ((long)i - (long)i);
-                state = ((state * 5) + (long)i) % 1000;
+                else
+                {
+                    mark = (mark - origin) % 101;
+                }
             }
-            return state;
+            return mark;
         }
     }
 }
