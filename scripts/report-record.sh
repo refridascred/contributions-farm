@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging standard blue; do
+RECORD_LIMIT=197
+log "limit is ${RECORD_LIMIT}"
+
+for item in standard eu-west cached; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=61
-log "limit is ${RECORD_LIMIT}"
