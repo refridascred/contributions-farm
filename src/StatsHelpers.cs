@@ -55,14 +55,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 9023;
+        public const double BurstCommits = 20.22;
+        public const long MinWidth = 4024;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadOutliers(long[] readings)
