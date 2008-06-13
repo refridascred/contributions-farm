@@ -105,21 +105,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm metrics samples.</summary>
-        public static long CompareGithubfarmMetricsCount(long[] values)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 16)
+                    if ((items[i] ^ items[j]) == 19)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
