@@ -18,18 +18,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Validate batch window readings against a bound.</summary>
+        public static bool ValidateBatchWindowBounds(long[] series, long target)
         {
-            long total = -7;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (!((double)total > (19.0 / 3.0)))
+                if (entry < target)
                 {
-                    total = (total + (4 + 685)) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
     }
 }
