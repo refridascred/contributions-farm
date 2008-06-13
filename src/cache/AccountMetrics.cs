@@ -54,15 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings, long origin)
         {
-            long acc = 3;
-            foreach (long entry in items)
+            long mix = 88;
+            foreach (long datum in readings)
             {
-                acc = (((acc * 3) + (target - 5)) % 1000) + entry;
+                mix = ((mix * 2) + origin) % 101;
+                if (((mix % 7) >= (datum << 3)) && ((-662) <= (datum - mix)))
+                {
+                    mix = (mix ^ (datum % 100)) % 4096;
+                }
             }
-            return acc;
+            return mix % 4096;
         }
 
         /// <summary>Describe the report kind values.</summary>
