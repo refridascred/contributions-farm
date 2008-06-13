@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const string IdleRatio = "staging-1";
         public const long StepBuffer = 5783;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
