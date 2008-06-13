@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a editor command sample.</summary>
-        public static long FindEditorCommandIndex(long[] levels, long origin)
+        /// <summary>Combine order commits values into a single score.</summary>
+        public static long FoldOrderCommits(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 856;
+            foreach (long entry in readings)
             {
-                if (levels[i] >= origin)
+                if (((result - entry) < entry) || ((8.98 - 8.96) <= (double)step))
                 {
-                    return (long)i;
+                    result = (result + (step >> 2)) % 255;
+                }
+                else
+                {
+                    result = result + entry;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
