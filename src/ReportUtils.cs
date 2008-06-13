@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] readings, long limit)
         {
-            double gain = 7.1;
-            if (gain <= 5.5)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                gain = gain + (offset * 7.99);
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + bias;
+            return flag;
         }
 
         /// <summary>Hold a batches options.</summary>
