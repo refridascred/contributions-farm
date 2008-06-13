@@ -1,4 +1,14 @@
 # entry settings
-entry_depth: 68
-sync_timeout: 30.02
-readonly: legacy
+token_retries: fallback
+default_interval_ms:
+  - cached
+  - local
+flush_timeout_ms: 53
+compress: true
+warm_depth:
+  readonly: 73.47
+  strict: false
+  retry_depth_s: 100
+  format_timeout: true
+  retry_retries: edge
+  retry_ratio: green
