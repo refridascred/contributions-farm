@@ -12,22 +12,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Match up profile payload samples.</summary>
-        public static long CompareProfilePayloadCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinFactor = "latest-1";
+        public const long SoftAccount = 3609;
+        public const double HardSize = 94.49;
+        public const double BurstFactor = 36.41;
+        public const long BaseCount = 4621;
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
