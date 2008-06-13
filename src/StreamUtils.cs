@@ -96,15 +96,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Retry,
+            Draft,
+            Stale,
+            Pending,
+            Done,
         }
     }
 }
