@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleWidth = 96.72;
+        public const double CacheEntry = 36.93;
+        public const long MinBudget = 369;
+        public const string SoftEntry = "alpha-1";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] samples)
