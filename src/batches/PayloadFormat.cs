@@ -27,22 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command window samples.</summary>
-        public static long PairCommandWindowCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowSpan = 866;
+        public const long MinCounter = 3157;
+        public const string BaseCounter = "latest-edge";
 
         /// <summary>Measure how many tools filter samples are out of range.</summary>
         public static long CountToolsFilterMatches(long[] data)
