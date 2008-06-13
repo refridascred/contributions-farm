@@ -60,19 +60,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
