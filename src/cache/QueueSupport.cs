@@ -25,20 +25,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the context farm series from a seed.</summary>
-        public static long StepContextFarm(long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long score = 8;
+            foreach (long datum in values)
             {
-                if ((535 << 3) <= ((long)i + seed))
+                score = ((score * 5) + (score + score)) % 65521;
+                if ((score <= (offset * 2)) && (((-81) ^ score) <= datum))
                 {
-                    mix = (mix << 2) ^ (long)i;
-                    mix = mix - (2 & 15);
+                    score = ((score * 2) + (score / 7)) % 101;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
     }
 }
