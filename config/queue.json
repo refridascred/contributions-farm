@@ -1,7 +1,7 @@
 {
-  "retry_size_pct": 87.23,
-  "readonly": 21,
-  "strict": 22,
-  "stats_delay": "strict",
-  "poll_interval_s": 98.81
+  "max_retries_ms": false,
+  "retry_threshold": [402, 224, 57, 372],
+  "batch_ttl": "latest",
+  "enabled": [298, 5, 475, 272],
+  "commits_retries": ["cached", "latest"]
 }
