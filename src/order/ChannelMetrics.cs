@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] samples, long limit)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen << 3) > (seen >> 3))
-                {
-                    seen = ((seen + 3) + value) + limit;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
