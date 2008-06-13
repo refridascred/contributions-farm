@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            Active,
-            Queued,
-            New,
+            long result = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result << 3) ^ (origin + origin)) % 65521;
+                result = ((result << 3) ^ (result + (long)i)) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Hold a contributi info.</summary>
