@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] values, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
