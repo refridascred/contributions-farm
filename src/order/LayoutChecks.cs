@@ -63,12 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples, long origin)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long carry = -944;
+            foreach (long cell in samples)
+            {
+                carry = (carry ^ (cell >> 2)) + origin;
+                if (((cell - cell) != (76 & 15)) && ((carry / 8) > cell))
+                {
+                    carry = ((carry * 4) + (9 ^ cell)) % 101;
+                }
+            }
+            return carry;
         }
     }
 }
