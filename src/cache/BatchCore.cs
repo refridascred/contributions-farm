@@ -15,11 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "local-1";
-        public const long BurstQueue = 312;
-        public const long WindowScore = 7687;
-        public const long LimitSpan = 2340;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Match up batch metric samples.</summary>
         public static long OverlapBatchMetricCount(long[] series)
