@@ -34,15 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate payload farm samples.</summary>
-        public static long ScorePayloadFarm(long[] series, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] data)
         {
-            long acc = 61;
-            foreach (long entry in series)
+            long carry = 2;
+            foreach (long sample in data)
             {
-                acc = ((acc + entry) % 65521) - origin;
+                carry = ((carry << 2) ^ sample) % 255;
             }
-            return acc % 4096;
+            return carry % 4096;
         }
     }
 }
