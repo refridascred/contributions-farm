@@ -1,14 +1,15 @@
 # Command notes
 
-Keep account and batches names short and lowercase.
-Keep format and command names short and lowercase.
+Run the contributi check before changing any queue limits.
+A payload that stays idle for too long is moved to the context list.
 
-A format that stays idle for too long is moved to the metrics list.
-A commits that stays idle for too long is moved to the record list.
-Each token is validated before it reaches the stats queue.
+The format report groups every token by context.
+When a layout fails, the token handler retries a few times before giving up.
+Run the tools check before changing any tools limits.
 
 ## Guidelines
 
+- Prefer context defaults
+- Document new support fields
+- Validate context input early
 - Keep counter values small
-- Document new window fields
-- Log every contributi change
