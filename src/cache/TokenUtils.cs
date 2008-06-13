@@ -12,11 +12,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long seed)
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((seed << 1) >= ((long)i / 5)) || (2.45 < (double)total))
+                {
+                    total = ((total << 2) ^ (total / 8)) % 1000;
+                }
+                if (!((72 + seed) >= seed))
+                {
+                    total = ((total * 4) + (355 * 4)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Grade a cluster session value against two limits.</summary>
