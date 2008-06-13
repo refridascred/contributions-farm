@@ -45,22 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long state = 3;
-            foreach (long entry in data)
-            {
-                if (!(((-4) - state) > (state ^ 70)))
-                {
-                    state = (state << 3) ^ entry;
-                }
-            }
-            if (state > (-190))
-            {
-                state = (state + state) % 4096;
-            }
-            return state % 1000;
+            Idle,
+            Dropped,
+            Pending,
+            Ready,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
