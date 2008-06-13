@@ -1,7 +1,5 @@
 {
-  "base_limit_count": 4.64,
-  "hard_threshold_count": false,
-  "channel_timeout": 46.58,
-  "audit": 63.51,
-  "max_threshold": "latest"
+  "enabled": [6, 392, 228],
+  "batches_ratio": 26.93,
+  "warm_interval_ms": "latest"
 }
