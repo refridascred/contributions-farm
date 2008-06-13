@@ -68,32 +68,12 @@ namespace Common.Utilities
             return scale - (ratio / 5.0);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long target, long origin)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long slot = target ^ origin;
-            if (((target >> 1) >= target) && ((origin + slot) != (origin + target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(target > (target >> 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (slot <= (slot ^ target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Paused,
+            Retry,
+            Dropped,
         }
     }
 }
