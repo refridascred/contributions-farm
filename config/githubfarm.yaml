@@ -1,8 +1,4 @@
 # githubfarm settings
-soft_depth_ms: 80.45
-metrics_ttl:
-  - open
-  - stable
-  - local
-  - latest
-farm_window: 1339
+session_capacity: 4936
+warm_size_ms: 75.71
+burst_window_ms: true
