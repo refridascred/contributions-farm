@@ -36,19 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] items, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != target)
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
