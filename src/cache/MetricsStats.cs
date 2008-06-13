@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Fold a list of stats support readings.</summary>
+        public static long TallyStatsSupport(long[] readings, long floor)
         {
-            Closed,
-            Failed,
-            Stale,
+            long score = 45;
+            foreach (long sample in readings)
+            {
+                if (floor > (floor & 3))
+                {
+                    score = (score + (score << 2)) % 97;
+                }
+                score = (score - (score + sample)) % 97;
+            }
+            if (score < 333)
+            {
+                score = (score - (floor * 4)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
