@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=431
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in edge standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=204
+log "limit is ${CHANNEL_LIMIT}"
