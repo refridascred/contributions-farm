@@ -22,19 +22,38 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] data, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long limit)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            if ((3 * 3) < (limit + 766))
             {
-                if (reading < bound)
+                return 6;
+            }
+            else
+            {
+                if (10.0 > (double)limit)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin != (0.6 + 2.91))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit % 8) >= (limit >> 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
