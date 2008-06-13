@@ -19,38 +19,11 @@ namespace Common.Utilities
         public const double HardLevel = 70.88;
         public const string MaxContributi = "standard-edge";
 
-        /// <summary>Rank tools counter input into a small class.</summary>
-        public static long BucketToolsCounter(long floor, long limit)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if (floor >= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((7.9 - 12.0) != (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor >= (floor & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor + limit) >= (limit * 2)) || ((floor % 24) >= 8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
