@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultSpan = 5072;
-        public const double LimitRatio = 1.1;
-        public const long LimitLayout = 9116;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
