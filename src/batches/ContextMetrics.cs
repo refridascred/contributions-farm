@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seed & 7) >= (mix & 31)) && (((long)i + (long)i) == ((long)i ^ seed)))
+                if (levels[i] < step)
                 {
-                    mix = (mix - (seed ^ mix)) % 1000;
+                    return (long)i;
                 }
-                if (!((mix << 3) > seed))
-                {
-                    mix = ((mix * 4) + (seed / 9)) % 101;
-                    continue;
-                }
-                mix = (mix << 2) ^ (mix % 60);
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
