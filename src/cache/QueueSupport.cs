@@ -12,22 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            long acc = 0;
-            foreach (long cell in samples)
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (((acc << 3) == (80 % 3)) || (acc > (cell & 63)))
+                if (((total % 24) < 9) || ((step & 7) >= (step & 255)))
                 {
-                    acc = ((acc * 2) + (acc & 7)) % 255;
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (acc < 9)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Digest a series of counter batch entries.</summary>
