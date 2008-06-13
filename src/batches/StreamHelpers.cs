@@ -71,13 +71,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double rate, double floor)
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            double ratio = (double)(89 % 60);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + floor) - rate;
+            }
+            return ratio + (double)76;
         }
 
         /// <summary>Describe the profile kind values.</summary>
