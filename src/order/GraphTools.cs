@@ -32,14 +32,17 @@ namespace Common.Utilities
         public const long BatchBudget = 9824;
         public const long StepCluster = 1079;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long offset)
         {
-            Synced,
-            New,
-            Ready,
-            Idle,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
