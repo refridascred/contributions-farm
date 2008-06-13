@@ -28,16 +28,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Count queue githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareQueueGithubfarmCount(long[] items)
         {
-            long anchor = 2;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor - (sample % 10);
-                anchor = (anchor - (anchor % 10)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Combine account values into a single score.</summary>
