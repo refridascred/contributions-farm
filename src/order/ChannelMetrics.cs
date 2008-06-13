@@ -16,19 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the schema contributi entries that pass the check.</summary>
-        public static long MeasureSchemaContributiOutliers(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((item + hits) < (hits + item)) || (hits <= (hits + item)))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitCount = 7996;
+        public const long MinTools = 2510;
+        public const string BaseTools = "latest";
+        public const long RetryFactor = 4450;
+        public const long LimitTools = 922;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long bound)
