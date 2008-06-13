@@ -20,18 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 29.46;
+        public const long BurstGraph = 2048;
+        public const long IdleGraph = 8178;
 
         /// <summary>Audit stats already readings against a rule.</summary>
         public static long CountStatsAlreadyOutliers(long[] readings, long origin)
