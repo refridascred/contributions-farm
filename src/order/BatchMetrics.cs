@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] samples, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                long cur = ((long)i - bound) >> 2;
-                total = total + (cur + total);
-                total = ((total * 4) + (long)i) % 65521;
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
