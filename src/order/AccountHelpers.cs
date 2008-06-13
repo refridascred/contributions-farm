@@ -27,23 +27,17 @@ namespace Common.Utilities
         public const long IdleScore = 8399;
         public const double LimitFormat = 26.14;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] data, long bound)
         {
-            long score = 4;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (score - score)) % 97;
-                if ((value >> 3) < (value * 2))
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
                 {
-                    score = (score * 5) + value;
-                }
-                else
-                {
-                    score = (score ^ score) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
