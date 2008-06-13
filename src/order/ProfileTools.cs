@@ -29,39 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] series)
         {
-            long lane = seed ^ target;
-            if (((seed - 730) >= (143 - target)) && ((target << 3) >= (target / 4)))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 8) >= (target + 3))
+                if (!((count ^ sample) != (sample - (-941))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - target) < (target + lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed % 7) < lane) && ((target ^ 36) != (seed / 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
