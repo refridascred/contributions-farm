@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long limit, long offset)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long edge = limit - offset;
-            if ((offset & 255) <= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit & 127) < (60 + edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit % 24) != (offset - edge)) && ((double)offset >= 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
