@@ -40,15 +40,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two cluster buffer measurements.</summary>
-        public static double SmoothClusterBuffer(double bias, double offset)
-        {
-            double mean = (double)(377 ^ 2);
-            if (mean < 2.2)
-            {
-                mean = (mean - (20.0 * 9.5)) + offset;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "latest-edge";
+        public const long BurstCommits = 7519;
+        public const long MinInterval = 423;
     }
 }
