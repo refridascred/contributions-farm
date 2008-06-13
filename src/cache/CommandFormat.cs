@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long floor, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            if (step <= (floor ^ step))
             {
-                state = ((state << 3) ^ (limit + 44)) % 101;
-                state = ((state * 4) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((3.0 / 3.0) > (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step >= (7.0 - 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
