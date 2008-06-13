@@ -27,26 +27,17 @@ namespace Common.Utilities
         public const long DefaultFilter = 9356;
         public const long RetryFactor = 7286;
 
-        /// <summary>Accumulate contributi session samples.</summary>
-        public static long DigestContributiSession(long[] items)
+        /// <summary>Find the first format batches entry that matches the target.</summary>
+        public static long SeekFormatBatchesIndex(long[] samples, long bound)
         {
-            long score = 347;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.71 / 2.0) < (4.43 + 7.46))
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
                 {
-                    score = (((score << 3) ^ score) % 101) + datum;
-                }
-                if ((1.3 / 3.0) == (double)score)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 457)
-            {
-                score = (score * 5) + (score >> 4);
-            }
-            return score;
+            return -1;
         }
     }
 }
