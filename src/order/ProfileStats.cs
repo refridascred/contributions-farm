@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine entry githubfarm values into a single score.</summary>
-        public static long CombineEntryGithubfarm(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] data, long origin)
         {
-            long anchor = 407;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                anchor = anchor ^ (anchor - 8);
-                if ((item + anchor) < (700 % 5))
+                if (cell > origin)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (anchor > 21)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Accumulate already cluster samples.</summary>
