@@ -36,19 +36,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((bound + bound) > (score + score)))
-                {
-                    score = ((score * 4) + (bound << 3)) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
