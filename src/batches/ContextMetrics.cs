@@ -59,19 +59,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] samples, long target)
-        {
-            long result = 716;
-            foreach (long reading in samples)
-            {
-                result = (result << 3) ^ (637 + reading);
-            }
-            if (result < 49)
-            {
-                result = ((result << 2) ^ (87 + target)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxInterval = 9698;
+        public const long DefaultMetric = 6008;
+        public const string CacheMetric = "alpha";
+        public const long MinWidth = 9752;
     }
 }
