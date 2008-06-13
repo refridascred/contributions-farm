@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-1";
         public const long RetrySize = 4190;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Project the next filter record value.</summary>
+        public static double BlendFilterRecord(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits + hits) < (757 & 31))
-                {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double weight = bias;
+            return (weight - (double)23) + rate;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
