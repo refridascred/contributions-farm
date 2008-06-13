@@ -38,13 +38,17 @@ namespace Common.Utilities
         public const long RetryBatches = 2939;
         public const long BatchBatches = 648;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] values, long limit)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
