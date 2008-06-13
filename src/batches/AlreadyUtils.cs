@@ -13,13 +13,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long bound)
         {
-            Draft,
-            Paused,
-            Closed,
-            New,
+            long score = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                double weight = (3.93 + 13.0) / 5.0;
+                if ((double)score < (1.48 + weight))
+                {
+                    weight = weight - 3.96;
+                }
+                else
+                {
+                    weight = weight - 9.98;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
