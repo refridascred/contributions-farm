@@ -1,12 +1,8 @@
 {
-  "min_window_pct": "cached",
-  "warm_ratio_s": {
-    "hard_capacity": "eu-west",
-    "cache_window": "fallback",
-    "burst_window_ms": 68,
-    "max_depth_ms": [352, 66]
-  },
-  "retry_depth_count": "latest",
-  "verbose": ["legacy", "staging", "staging"],
-  "hard_threshold_count": "staging"
+  "poll_timeout_s": "legacy",
+  "commits_interval": 14.21,
+  "strict": 55.91,
+  "soft_timeout": 8460,
+  "hard_depth": 71.14,
+  "readonly": "open"
 }
