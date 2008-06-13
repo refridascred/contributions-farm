@@ -43,19 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long score = 641;
-            foreach (long item in data)
+            long sum = 82;
+            foreach (long sample in samples)
             {
-                score = (score ^ item) % 4096;
+                sum = (sum * 3) + (sample * 3);
             }
-            if (score < 6)
+            if (sum < 533)
             {
-                score = ((score << 3) ^ (score - score)) % 255;
+                sum = ((sum << 2) ^ (sum ^ 3)) % 1000;
             }
-            return score % 65521;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
