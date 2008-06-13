@@ -25,22 +25,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue route readings against a rule.</summary>
-        public static long AuditQueueRouteMatches(long[] readings)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((cell >> 5) <= seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a filter already pair into a bucket.</summary>
