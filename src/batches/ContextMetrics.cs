@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            double load = bias2 * 10.0;
+            if (load < load)
+            {
+                load = load + (13.0 - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (bias2 - bias2)) + (double)(long)i;
+            }
+            return load + (bias2 / 7.0);
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
