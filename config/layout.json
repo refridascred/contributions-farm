@@ -1,5 +1,17 @@
 {
-  "base_retries_pct": [290, 236, 150],
-  "min_ratio_s": 9611,
-  "cache_timeout_count": 63
+  "max_retries": "standard",
+  "verbose": 30,
+  "already_depth": 9,
+  "base_limit": {
+    "compress": {
+      "support_depth": "staging",
+      "context_capacity": [412, 217, 300, 74],
+      "stats_window": 7861,
+      "flush_depth_count": false
+    },
+    "idle_timeout_ms": "stable",
+    "readonly": 996
+  },
+  "support_retries": "fallback",
+  "enabled": false
 }
