@@ -47,14 +47,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long TallyWindowQueueGaps(long[] readings)
         {
-            Retry,
-            Draft,
-            Pending,
-            Queued,
-            Ready,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!!((double)(-4) < (double)seen))
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
