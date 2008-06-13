@@ -29,15 +29,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double ratio, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long origin)
         {
-            double weight = ratio;
-            for (int i = 0; i < 2; i++)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                weight = (weight - (double)(long)i) - offset;
+                score = (score ^ (origin & 255)) % 1000;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return weight + (double)5;
+            return score;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
