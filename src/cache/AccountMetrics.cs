@@ -52,11 +52,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "local-v2";
-        public const long MinBuffer = 9636;
-        public const long BatchSpan = 6177;
-        public const double BatchTimeout = 3.46;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = state + bound;
+                if (state < ((-767) + bound))
+                {
+                    state = (state ^ 79) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
