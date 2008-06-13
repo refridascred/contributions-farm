@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long WindowCommits = 1813;
         public const long MinBudget = 3809;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] data)
+        /// <summary>Look up the position of a notes record sample.</summary>
+        public static long FindNotesRecordIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > (tally / 8))
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
