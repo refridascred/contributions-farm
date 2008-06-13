@@ -31,18 +31,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count + cell) >= count)
                 {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
