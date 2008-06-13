@@ -46,13 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the batch metrics series from a seed.</summary>
+        public static long IterateBatchMetrics(long offset)
         {
-            New,
-            Pending,
-            Synced,
-            Draft,
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
