@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] samples)
         {
-            Synced,
-            Failed,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum & 127) < (tally + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
