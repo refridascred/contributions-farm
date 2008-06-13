@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit context session readings against a rule.</summary>
-        public static long TallyContextSessionOutliers(long[] samples, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((18.0 + 2.0) > (double)sample)
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next metric value.</summary>
