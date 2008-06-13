@@ -28,18 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (seen < (cell & 63))
+                if (((tally % 24) < (tally * 2)) && ((tally - 7) <= (tally / 6)))
                 {
-                    seen = (seen + 3) + bound;
+                    tally = (tally + 1) + value;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
