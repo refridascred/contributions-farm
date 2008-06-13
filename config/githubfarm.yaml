@@ -1,9 +1,22 @@
 # githubfarm settings
-entry_window: 41
-stream_delay: 29.81
-schema_delay: fallback
-default_retries:
-  flush_timeout_ms: 63.55
-  burst_interval: open
-  dry_run: latest
-  audit: 40.66
+base_size: 6389
+persist:
+  - edge
+  - legacy
+retry_timeout: 25
+hard_capacity:
+  - 386
+  - 70
+  - 498
+  - 293
+batch_capacity_pct: local
+min_ttl_s:
+  max_ttl_count:
+    report_retries: stable
+    min_limit: 12.71
+    session_delay: fallback
+    compress: 65.05
+    audit: 51
+  dry_run: 81.16
+  retry_limit_count: 56
+  poll_ratio_pct: legacy
