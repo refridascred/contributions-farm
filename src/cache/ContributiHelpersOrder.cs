@@ -38,19 +38,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every context window entry stays within the limit.</summary>
-        public static bool VerifyContextWindowRange(long[] series, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            New,
+            Failed,
+            Synced,
+            Draft,
         }
     }
 }
