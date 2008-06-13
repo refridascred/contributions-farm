@@ -60,23 +60,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double ratio = (offset + 15.0) - 8.0;
-            if (ratio >= offset)
-            {
-                ratio = ratio - (ratio * 9.53);
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + gain;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
