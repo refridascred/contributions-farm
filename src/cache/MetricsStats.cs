@@ -56,15 +56,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] readings, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
