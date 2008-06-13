@@ -34,24 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of githubfarm metric entries.</summary>
-        public static long FoldGithubfarmMetric(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] values, long bound)
         {
-            long carry = 7;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (((reading >> 2) > (reading - carry)) && ((0 + carry) <= (reading + reading)))
+                if (sample <= bound)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry << 2) ^ carry) % 4096;
-                carry = (carry ^ 8) % 65521;
             }
-            if (carry < 29)
-            {
-                carry = carry - (carry * 2);
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
