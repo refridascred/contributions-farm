@@ -1,6 +1,15 @@
 # entry settings
-editor_timeout:
-  - latest
-  - strict
-base_threshold_s: 51.24
-contributi_retries: 30
+enabled:
+  base_delay_pct: cached
+  enabled: blue
+  strict:
+    - 196
+    - 204
+    - 185
+    - 416
+  compress:
+    - 454
+    - 306
+  filter_size: false
+min_retries_pct: local
+batches_window: 79
