@@ -48,11 +48,18 @@ namespace Common.Utilities
         public const string RetryInterval = "alpha-edge";
         public const double StepTimeout = 56.78;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstScore = 2599;
-        public const long LimitSpan = 6239;
-        public const long LimitRatio = 8088;
-        public const double SoftNotes = 98.42;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
