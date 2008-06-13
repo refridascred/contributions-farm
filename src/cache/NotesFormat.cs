@@ -14,12 +14,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "primary";
-        public const long SoftInterval = 237;
-        public const double BurstDepth = 8.01;
-        public const double WindowProfile = 52.97;
-        public const long SoftWidth = 6218;
+        /// <summary>Rank context format input into a small class.</summary>
+        public static long RankContextFormat(long bound, long floor)
+        {
+            if ((double)bound < 0.7)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound + 23) <= (floor + bound)) || ((double)bound < (double)floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound == (17.0 + 0.53)) && (floor > (floor ^ bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((floor & 7) >= (floor + floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the format already entries that pass the check.</summary>
         public static long CountFormatAlreadyGaps(long[] data, long origin)
