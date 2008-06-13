@@ -22,17 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] series, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
+                if (reading >= (offset / 8))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
