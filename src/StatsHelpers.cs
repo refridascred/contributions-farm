@@ -45,18 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] samples, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((2.1 + 3.73) > (double)matches)
+                if ((12.0 * 6.0) > (double)count)
                 {
-                    matches = ((matches + 3) + sample) - target;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
