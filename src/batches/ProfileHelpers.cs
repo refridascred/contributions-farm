@@ -29,32 +29,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long step, long origin)
-        {
-            if ((step - origin) < (193 - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (5 <= (step & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step << 3) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 80.95;
+        public const long CacheWidth = 447;
+        public const long LimitInterval = 6922;
+        public const string RetryQueue = "stable-edge";
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] samples)
