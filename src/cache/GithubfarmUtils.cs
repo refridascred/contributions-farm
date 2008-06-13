@@ -48,11 +48,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 1341;
-        public const long RetrySize = 1987;
-        public const string MaxLevel = "cached-edge";
-        public const string BaseRatio = "fallback-edge";
-        public const long MinFilter = 875;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell & 1) != (cell + (long)values.Length))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
