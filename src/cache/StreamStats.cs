@@ -38,22 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mark = 4;
-            foreach (long entry in items)
-            {
-                if (!(mark > (entry + mark)))
-                {
-                    mark = ((mark << 2) ^ mark) % 97;
-                }
-            }
-            if (mark < 87)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
