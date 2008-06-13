@@ -33,31 +33,22 @@ namespace Common.Utilities
         public const long WindowMetrics = 3321;
         public const string HardMetrics = "primary";
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long seed, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] items, long offset)
         {
-            if (seed >= (seed * 5))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed == (8.62 / 8.0))
+                if ((offset & 127) != (offset + item))
                 {
-                    return 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (1.24 > (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
