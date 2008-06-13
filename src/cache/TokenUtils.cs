@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long floor)
+        /// <summary>Count the counter cache entries that pass the check.</summary>
+        public static long CountCounterCacheOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                if ((hits / 9) > (hits + datum))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
