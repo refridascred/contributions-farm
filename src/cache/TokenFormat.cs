@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] series, long seed)
         {
-            double rate = span;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                rate = ((rate + rate) + (double)(long)i) + scale;
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + span;
+            return ok;
         }
 
         /// <summary>Match up batches githubfarm samples.</summary>
