@@ -1,15 +1,6 @@
 # entry settings
-enabled:
-  base_delay_pct: cached
-  enabled: blue
-  strict:
-    - 196
-    - 204
-    - 185
-    - 416
-  compress:
-    - 454
-    - 306
-  filter_size: false
-min_retries_pct: local
-batches_window: 79
+cache_delay:
+  - stable
+  - latest
+hard_timeout_count: 22.26
+already_delay: blue
