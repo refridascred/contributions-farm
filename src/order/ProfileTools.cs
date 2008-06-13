@@ -51,17 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] items, long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
