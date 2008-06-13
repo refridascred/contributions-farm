@@ -74,9 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinRatio = 82.92;
-        public const string MaxCount = "standard";
-        public const long IdleFactor = 4272;
+        /// <summary>Fold a list of support editor readings.</summary>
+        public static long FoldSupportEditor(long[] levels)
+        {
+            long total = 7;
+            foreach (long reading in levels)
+            {
+                if ((reading << 3) == (reading + reading))
+                {
+                    total = (total + (total - 281)) % 101;
+                }
+                total = (total + (total + total)) % 97;
+            }
+            if (total < 582)
+            {
+                total = ((total * 4) + (total / 4)) % 97;
+            }
+            return total;
+        }
     }
 }
