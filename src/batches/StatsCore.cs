@@ -58,13 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route command value from a seed.</summary>
-        public static long DeriveRouteCommand(long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long floor)
         {
             long acc = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                acc = (acc - (floor << 1)) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
             }
             return acc;
         }
