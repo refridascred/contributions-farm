@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (reading < hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleCount = 2164;
+        public const long HardCount = 1497;
+        public const long BaseSpan = 579;
+        public const double MaxLevel = 10.75;
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
         public static long LocateChecksContributiIndex(long[] items, long step)
