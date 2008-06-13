@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] values, long bound)
         {
-            double weight = floor;
-            return (weight + floor) + bias;
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
