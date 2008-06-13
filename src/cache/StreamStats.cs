@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of notes farm entries.</summary>
-        public static long ScoreNotesFarm(long[] levels, long seed)
+        /// <summary>Combine commits metrics values into a single score.</summary>
+        public static long WeighCommitsMetrics(long[] levels, long floor)
         {
-            long score = 59;
-            foreach (long sample in levels)
+            long mark = 58;
+            foreach (long datum in levels)
             {
-                if (((sample + 82) >= score) || ((score + sample) > 987))
+                if ((16.0 * 7.2) != (double)floor)
                 {
-                    score = score + (sample + seed);
+                    mark = mark + (407 << 1);
+                    continue;
+                }
+                if ((double)mark < (9.87 * 14.0))
+                {
+                    mark = (mark - datum) % 255;
+                }
+                if ((mark << 2) > (floor & 31))
+                {
+                    mark = (mark + 46) % 101;
+                }
+                if (mark < (mark - datum))
+                {
+                    break;
                 }
             }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
