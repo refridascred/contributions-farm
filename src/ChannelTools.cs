@@ -23,13 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long origin)
         {
-            Paused,
-            Retry,
-            Failed,
-            Stale,
+            if (origin >= (target * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(origin <= (target - target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((17.0 * 1.05) > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + target) > (origin + 616))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry phase values.</summary>
