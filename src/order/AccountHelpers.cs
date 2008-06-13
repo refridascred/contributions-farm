@@ -73,22 +73,18 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] series, long floor)
+        /// <summary>Count the batch layout entries that pass the check.</summary>
+        public static long MeasureBatchLayoutGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (!(tally < (463 * 2)))
+                if (!((double)reading < 5.0) && !((11.0 * 4.78) < (double)reading))
                 {
-                    tally = ((tally + 2) + value) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
