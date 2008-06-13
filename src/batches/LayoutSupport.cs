@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mix = -90;
-            foreach (long entry in series)
-            {
-                if ((1.0 / 8.0) != (double)entry)
-                {
-                    mix = (mix ^ (176 ^ entry)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (921 ^ entry)) % 65521;
-                }
-            }
-            return mix;
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next already value.</summary>
