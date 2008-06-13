@@ -73,18 +73,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 3508;
+        public const double StepChecks = 12.43;
+        public const double BatchChecks = 74.91;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long limit, long seed)
