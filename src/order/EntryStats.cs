@@ -25,26 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long carry = 83;
-            foreach (long cell in series)
-            {
-                if ((carry + 39) < cell)
-                {
-                    carry = ((carry * 2) + (carry - cell)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (carry / 9)) % 101;
-                }
-            }
-            if (carry < 60)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a command info.</summary>
