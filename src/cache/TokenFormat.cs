@@ -33,31 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter payload value against two limits.</summary>
-        public static long SortFilterPayload(long offset, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings, long limit)
         {
-            if (!((8.0 * 1.2) < (double)origin))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin >= (3.0 + 1.96)) && (origin <= (offset - origin)))
+                if (((-8) % 60) > (hits ^ item))
                 {
-                    return 7;
+                    hits = (hits + 2) + limit;
                 }
                 else
                 {
-                    if (origin <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
