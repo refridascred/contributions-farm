@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cluster stats.</summary>
