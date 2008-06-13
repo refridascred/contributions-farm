@@ -19,21 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = -90;
+            foreach (long entry in series)
             {
-                if ((total / 4) <= ((long)i << 2))
+                if ((1.0 / 8.0) != (double)entry)
                 {
-                    total = total - (total << 1);
-                    total = (total ^ (offset + offset)) % 97;
+                    mix = (mix ^ (176 ^ entry)) % 1000;
                 }
-                total = (total * 2) + (long)i;
-                total = ((total * 2) + (long)i) % 101;
+                else
+                {
+                    mix = (mix + (921 ^ entry)) % 65521;
+                }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Project the next already value.</summary>
