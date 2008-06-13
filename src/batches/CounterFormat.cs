@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 94;
+            foreach (long item in samples)
             {
-                if (series[i] >= offset)
+                if (!((item + item) < step))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + (mix & 3)) % 255;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
