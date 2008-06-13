@@ -23,13 +23,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long limit)
         {
-            Done,
-            Dropped,
-            Pending,
-            Queued,
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                long diff = (long)i;
+                diff = (diff << 2) ^ limit;
+                if ((6 >> 5) >= (diff * 2))
+                {
+                    diff = ((diff * 3) + (diff >> 3)) % 97;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
