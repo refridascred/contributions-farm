@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] levels, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long result = 346;
-            foreach (long item in levels)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (result < item)
+                state = (state - (long)i) % 255;
+                if (!((origin << 2) < ((long)i + state)))
                 {
-                    result = (result - (item + result)) - bound;
+                    state = (state + state) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (result > 7)
-            {
-                result = ((result << 2) ^ (result + result)) % 255;
-            }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Fold a list of report readings.</summary>
