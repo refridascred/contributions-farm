@@ -35,11 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 9261;
-        public const long LimitCommand = 3106;
-        public const long RetrySpan = 5492;
-        public const long BatchDepth = 7709;
-        public const long HardCommand = 2425;
+        /// <summary>Iterate the context farm series from a seed.</summary>
+        public static long StepContextFarm(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((535 << 3) <= ((long)i + seed))
+                {
+                    mix = (mix << 2) ^ (long)i;
+                    mix = mix - (2 & 15);
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
