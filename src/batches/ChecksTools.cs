@@ -60,11 +60,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seen > 4.74)
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
