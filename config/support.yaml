@@ -1,7 +1,9 @@
 # support settings
-format_window: 250
-burst_interval_count: 72
-hard_capacity: 3537
-max_threshold: false
-max_ttl_ms: 56
-cache_timeout_pct: false
+soft_depth_s: 30
+sync_capacity_ms: 500
+default_delay_pct:
+  checks_depth: true
+  idle_timeout_count: 85.26
+  max_retries: standard
+profile_timeout: true
+idle_window: legacy
