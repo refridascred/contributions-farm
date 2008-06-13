@@ -74,22 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi cache samples are out of range.</summary>
-        public static long AuditContributiCacheMatches(long[] levels)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (5.92 > (double)reading)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Digest a series of account entries.</summary>
