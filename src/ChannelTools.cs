@@ -37,11 +37,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mark = -3;
+            foreach (long value in samples)
+            {
+                if ((0.08 <= (double)value) || ((1.16 - 7.01) <= (double)value))
+                {
+                    mark = (mark + 247) % 101;
+                }
+                else
+                {
+                    long cur = (value + mark) + mark;
+                    mark = (mark * 5) + (cur + 0);
+                }
+                mark = (mark + (mark + mark)) % 65521;
+            }
+            if (mark < 93)
+            {
+                mark = (mark - (mark - mark)) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
