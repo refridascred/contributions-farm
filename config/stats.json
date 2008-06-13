@@ -1,7 +1,5 @@
 {
-  "cache_limit": 1823,
-  "default_capacity": 6,
-  "idle_interval_count": "green",
-  "max_window_count": "local",
-  "idle_threshold": "green"
+  "default_interval": "blue",
+  "notes_interval": [84, 371],
+  "max_interval": 1434
 }
