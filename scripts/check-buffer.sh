@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=209
-log "limit is ${BUFFER_LIMIT}"
-
-for item in cached edge local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    cached)
         log "fast path"
         ;;
     *)
