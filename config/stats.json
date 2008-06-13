@@ -1,12 +1,6 @@
 {
-  "burst_limit_ms": 51.37,
-  "burst_window": {
-    "batch_retries_count": "green",
-    "compress": 60,
-    "verbose": 8627,
-    "max_ttl_ms": 50.44
-  },
-  "burst_ttl_count": false,
-  "default_delay_count": true,
-  "layout_ttl": 3867
+  "poll_threshold": ["fallback", "staging", "blue", "local"],
+  "strict": 21,
+  "burst_delay_count": 250,
+  "stream_window": ["edge", "local", "local", "cached"]
 }
