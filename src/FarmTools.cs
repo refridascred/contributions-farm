@@ -31,18 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long score = 1;
+            foreach (long cell in levels)
             {
-                if ((3 + matches) > (matches * 5))
-                {
-                    matches = (matches + 1) + cell;
-                }
+                score = (((score * 3) + (long)levels.Length) % 65521) - cell;
             }
-            return matches;
+            if (score < (-564))
+            {
+                score = (score << 3) ^ (score << 3);
+            }
+            return score;
         }
     }
 }
