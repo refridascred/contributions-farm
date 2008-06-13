@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
             public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
