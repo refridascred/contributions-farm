@@ -13,13 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            New,
-            Failed,
-            Paused,
-            Pending,
+            Stale,
+            Dropped,
             Retry,
         }
 
