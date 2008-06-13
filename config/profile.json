@@ -1,5 +1,7 @@
 {
-  "hard_depth_s": 44,
-  "default_depth_s": "eu-west",
-  "cache_ratio": false
+  "already_limit": 95.9,
+  "max_capacity_pct": "green",
+  "soft_size_ms": 8167,
+  "max_retries_count": 1024,
+  "poll_retries_ms": "cached"
 }
