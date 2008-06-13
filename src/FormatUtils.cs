@@ -18,18 +18,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample - sample) <= (sample & 7))
+                if (limit > (acc % 64))
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                else
+                {
+                    acc = (acc - (acc ^ (-8))) % 1000;
+                }
+                acc = acc - (acc ^ limit);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a profile info.</summary>
