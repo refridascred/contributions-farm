@@ -23,31 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            if ((bound + (-324)) > (81 - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound >= (target + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target < (target - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Measure how many commits token samples are out of range.</summary>
