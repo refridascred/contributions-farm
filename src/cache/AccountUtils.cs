@@ -26,10 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "strict-v2";
-        public const double HardBudget = 0.77;
-        public const long BatchAlready = 7908;
-        public const double CacheInterval = 14.32;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length / 3) <= entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
