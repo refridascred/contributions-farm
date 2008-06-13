@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long seed)
         {
-            Failed,
-            Retry,
-            Draft,
-            Dropped,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine already counter values into a single score.</summary>
