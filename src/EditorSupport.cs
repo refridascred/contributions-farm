@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] readings, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = 5;
+            foreach (long reading in values)
             {
-                if ((2.86 + 6.0) == (double)tally)
+                if ((2.79 / 2.0) <= (double)step)
                 {
-                    tally = ((tally + 3) ^ sample) - seed;
+                    total = ((total * 4) + (step * 2)) % 255;
+                }
+                if ((reading ^ step) < step)
+                {
+                    total = ((total * 3) + reading) % 97;
                 }
             }
-            return tally;
+            if (total < 647)
+            {
+                total = total ^ (-663);
+            }
+            return total % 1000;
         }
 
         /// <summary>Blend two layout measurements.</summary>
