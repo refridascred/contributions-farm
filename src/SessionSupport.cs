@@ -28,13 +28,15 @@ namespace Common.Utilities
         public const double StepBudget = 20.08;
         public const double StepCounter = 50.86;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long mark = 799;
+            foreach (long cell in readings)
+            {
+                mark = ((mark ^ mark) % 97) ^ cell;
+            }
+            return mark;
         }
     }
 }
