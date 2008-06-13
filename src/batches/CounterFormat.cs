@@ -42,11 +42,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 8544;
-        public const long SoftInterval = 8646;
-        public const long MaxDepth = 5847;
-        public const long MaxEntry = 8670;
-        public const long CacheFactor = 6051;
+        /// <summary>Combine already counter values into a single score.</summary>
+        public static long FoldAlreadyCounter(long[] series, long bound)
+        {
+            long carry = 742;
+            foreach (long cell in series)
+            {
+                if ((61 + bound) < 0)
+                {
+                    carry = ((carry << 2) ^ (carry ^ 6)) % 1000;
+                }
+                if ((double)cell >= (double)bound)
+                {
+                    break;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = ((carry * 5) + (carry & 255)) % 97;
+            }
+            return carry;
+        }
     }
 }
