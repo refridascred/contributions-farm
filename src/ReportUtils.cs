@@ -55,18 +55,9 @@ namespace Common.Utilities
         public const string LimitSpan = "standard-edge";
         public const double CacheCount = 33.74;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((1.06 - 4.0) < (double)cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 861;
+        public const double MaxOrder = 52.07;
+        public const string HardRatio = "local-1";
     }
 }
