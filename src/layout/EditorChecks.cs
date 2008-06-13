@@ -20,20 +20,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a batch commits counter forward.</summary>
-        public static long SeriesBatchCommits(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((target - (long)i) > (956 + (long)i))
-                {
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxCount = 1905;
+        public const string MinChannel = "legacy";
+        public const long BaseTimeout = 1098;
+        public const long SoftChannel = 5798;
+        public const double BatchChannel = 55.49;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryMatches(long[] data, long limit)
