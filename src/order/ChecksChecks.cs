@@ -13,21 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count contributi commits pairs that satisfy a relation.</summary>
-        public static long PairContributiCommitsCount(long[] data)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
