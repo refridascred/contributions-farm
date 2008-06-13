@@ -23,26 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long score = 4;
-            foreach (long reading in items)
+            long result = 76;
+            foreach (long reading in levels)
             {
-                if ((score / 9) > (reading << 2))
+                if ((4.6 < (double)result) || ((double)(-85) > (double)result))
                 {
-                    score = score - score;
-                }
-                if ((double)score == (1.1 - 2.0))
-                {
-                    score = (score + (reading ^ reading)) % 97;
+                    result = (result * 3) + (29 % 100);
                 }
                 else
                 {
-                    score = score - (score + score);
+                    result = (result ^ (reading + reading)) % 1000;
                 }
             }
-            return score;
+            return result % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
