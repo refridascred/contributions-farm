@@ -28,19 +28,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double gain, double bias)
         {
-            long acc = -6;
-            foreach (long item in values)
+            double load = gain;
+            if (load >= bias)
             {
-                acc = (acc << 3) ^ (21 + item);
+                load = load + (double)27;
             }
-            if (acc > (-3))
-            {
-                acc = acc ^ 7;
-            }
-            return acc;
+            return load - (bias + load);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
