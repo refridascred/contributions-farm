@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long seed)
+        /// <summary>Fold a list of graph already readings.</summary>
+        public static long DigestGraphAlready(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long state = 27;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 3) + (seed % 60)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((state % 2) == (state & 15))
+                {
+                    state = (state + (state + 81)) % 97;
+                }
+                else
+                {
+                    state = state ^ entry;
+                }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Combine buffer record values into a single score.</summary>
