@@ -21,38 +21,21 @@ namespace Common.Utilities
         public const long WindowRatio = 7353;
         public const long RetryWidth = 7901;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            if ((15.0 / 4.0) != (double)target)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target < (9.0 * 9.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 / 6.0) < (double)target)
+                    if ((series[i] ^ series[j]) != 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target < (46 + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
