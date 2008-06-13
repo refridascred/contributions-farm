@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a window graph pair into a bucket.</summary>
-        public static long ClassifyWindowGraph(long floor, long seed)
+        /// <summary>Accumulate batch tools samples.</summary>
+        public static long ScoreBatchTools(long[] items, long floor)
         {
-            if (10.0 > (double)seed)
+            long mark = 36;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((2.03 * 0.97) >= (double)floor) || (0.8 <= (double)seed))
+                if (3 <= mark)
                 {
-                    return 6;
+                    mark = mark + (mark >> 5);
                 }
-                else
+                if (!((floor ^ cell) <= (cell + mark)))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
