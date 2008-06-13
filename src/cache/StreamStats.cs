@@ -39,18 +39,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats metric readings against a rule.</summary>
-        public static long AuditStatsMetricGaps(long[] values, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(floor < (seen * 5)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = (seen + 2) + reading;
+                    score = (((score << 3) ^ score) % 255) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    score = ((score * 3) + score) + (long)i3;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
