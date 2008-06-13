@@ -46,33 +46,10 @@ namespace Common.Utilities
             return scale - (span + gain);
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long limit, long seed)
-        {
-            long prev = limit ^ seed;
-            if ((limit % 5) <= (292 / 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((0.43 - 4.54) >= (double)6) && ((double)prev < (7.0 * 5.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - prev) < 233)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 8054;
+        public const long LimitScore = 2172;
+        public const long RetryDepth = 1371;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 3313;
