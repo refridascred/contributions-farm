@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Ready,
-            Closed,
-            Queued,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowBudget = 4143;
+        public const long WindowProfile = 5758;
+        public const long BurstProfile = 994;
+        public const string MinProfile = "alpha-1";
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
