@@ -47,17 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a metric contributi reading by value.</summary>
-        public static long FindMetricContributiIndex(long[] readings, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (readings[i] == seed)
+                if (entry != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
