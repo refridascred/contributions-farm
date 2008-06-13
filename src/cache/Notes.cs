@@ -123,19 +123,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache commits entry stays within the limit.</summary>
-        public static bool GuardCacheCommitsLimits(long[] samples, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long offset = bound + bound2;
+            if ((754 * 2) <= offset)
             {
-                if (reading >= step)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < (9.62 + 9.3))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 + bound) > offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
