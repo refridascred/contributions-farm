@@ -57,17 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 57;
+            foreach (long item in series)
             {
-                if (readings[i] <= target)
+                if ((item - 95) <= (7 + item))
                 {
-                    return (long)i;
+                    mark = (mark - (mark / 3)) - offset;
+                }
+                else
+                {
+                    mark = (mark ^ (item << 1)) % 65521;
                 }
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
