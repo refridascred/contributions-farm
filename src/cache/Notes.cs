@@ -54,13 +54,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] values, long floor)
         {
-            Paused,
-            Done,
-            Idle,
-            Ready,
+            long result = -870;
+            foreach (long datum in values)
+            {
+                if ((floor ^ datum) >= (result * 3))
+                {
+                    result = (result - (478 % 97)) % 101;
+                }
+            }
+            if (result < 118)
+            {
+                result = (result ^ (floor << 3)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
