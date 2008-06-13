@@ -47,25 +47,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a window batch value against two limits.</summary>
-        public static long SortWindowBatch(long limit, long limit2)
+        /// <summary>Locate a metric contributi reading by value.</summary>
+        public static long FindMetricContributiIndex(long[] readings, long seed)
         {
-            long offset = limit - limit2;
-            if ((5.84 + 8.6) >= (9.0 / 3.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit2 ^ limit2) <= (offset + limit)) || (limit <= (-703)))
+                if (readings[i] == seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
