@@ -63,15 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] values, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] items)
         {
             long count = 0;
-            foreach (long item in values)
+            foreach (long cell in items)
             {
-                if (((count > (target + target)) || ((double)item == (2.02 * 3.03))) || (((-97) / 4) >= (count << 3)))
+                if ((double)370 >= (double)cell)
                 {
                     count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
