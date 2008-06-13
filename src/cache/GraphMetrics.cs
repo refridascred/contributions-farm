@@ -26,11 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((5.7 * 2.32) >= (double)count)
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
