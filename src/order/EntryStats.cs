@@ -32,22 +32,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count stats report pairs that satisfy a relation.</summary>
-        public static long CompareStatsReportCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 6676;
+        public const long MaxWidth = 8657;
+        public const string StepRatio = "staging-v2";
+        public const long StepNotes = 9873;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] data, long bound)
