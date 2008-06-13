@@ -1,9 +1,6 @@
-id,weight,score
-1,21.41,711
-2,570,82.13
-3,404,295
-4,357,latest
-5,edge,stable
-6,13.22,499
-7,788,58.12
-8,82.45,69.91
+id,count,token,region
+1,edge,63.12,41.29
+2,61,47.63,26.46
+3,122,82.49,legacy
+4,178,open,89.58
+5,fallback,23.3,staging
