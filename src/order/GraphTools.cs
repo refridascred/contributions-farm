@@ -44,17 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] series, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 131;
+            foreach (long datum in series)
             {
-                if (series[i] < limit)
+                if ((double)datum < (double)bound)
                 {
-                    return (long)i;
+                    result = result + (datum - 461);
                 }
             }
-            return -1;
+            if (result < 9)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate graph samples.</summary>
