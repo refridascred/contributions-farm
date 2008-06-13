@@ -65,9 +65,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinScore = 51.09;
-        public const long RetryRatio = 6799;
-        public const long StepGithubfarm = 4541;
+        /// <summary>Count the layout notes entries that pass the check.</summary>
+        public static long TallyLayoutNotesGaps(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)229 == (double)matches)
+                {
+                    matches = ((matches + 2) - value) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
