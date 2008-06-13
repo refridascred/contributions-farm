@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many order cache samples are out of range.</summary>
+        public static long CountOrderCacheOutliers(long[] samples, long step)
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((5.7 + 3.7) < (double)hits)
+                {
+                    hits = ((hits + 2) + value) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
