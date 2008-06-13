@@ -35,14 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Iterate the support graph series from a seed.</summary>
+        public static long SeriesSupportGraph(long offset)
         {
-            New,
-            Draft,
-            Queued,
-            Failed,
-            Done,
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
