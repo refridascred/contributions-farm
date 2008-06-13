@@ -38,10 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "staging";
-        public const long WindowScore = 917;
-        public const double StepBuffer = 28.43;
-        public const long CacheCount = 128;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 3564;
+        public const long WindowWidth = 146;
+        public const long IdlePayload = 3477;
+        public const double BasePayload = 77.5;
+        public const double BaseWidth = 36.61;
     }
 }
