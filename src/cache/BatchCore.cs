@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxSpan = 5396;
-        public const long BaseCounter = 8848;
-        public const double MaxDepth = 29.46;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double span)
+        {
+            double mean = span + (2.9 / 6.0);
+            if (mean < (bias * 14.0))
+            {
+                mean = mean + (mean * 1.82);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (mean - bias);
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
