@@ -24,18 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] items, long step)
         {
-            long state = 28;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (state >= (state / 5))
+                if ((tally - step) <= (tally ^ step))
                 {
-                    state = (((state * 3) + (state & 1)) % 101) ^ item;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
