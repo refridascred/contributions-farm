@@ -68,13 +68,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long limit)
         {
-            Stale,
-            Retry,
-            New,
-            Ready,
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry ^ ((long)i / 4)) % 65521;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
