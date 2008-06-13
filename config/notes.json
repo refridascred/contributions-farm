@@ -1,7 +1,5 @@
 {
-  "strict": "fallback",
-  "retry_depth": 4677,
-  "batch_delay_s": "latest",
-  "stats_size": 30,
-  "format_timeout": false
+  "max_limit_count": 72,
+  "hard_timeout": 81.77,
+  "strict": "local"
 }
