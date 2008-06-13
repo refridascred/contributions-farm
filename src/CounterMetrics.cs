@@ -12,18 +12,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] readings)
+        /// <summary>Compare every pair of cluster channel readings.</summary>
+        public static long PairClusterChannelCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample < (9.73 + 15.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
