@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 6529;
-        public const long IdleTimeout = 7477;
-        public const long LimitMetric = 1977;
-        public const double CacheLevel = 56.49;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long origin, long floor)
+        {
+            if ((floor + floor) >= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((8 ^ floor) != (41 / 9)) && ((double)floor != (8.0 - 9.2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] values)
