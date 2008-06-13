@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long result = 973;
-            foreach (long value in items)
-            {
-                if (value > (90 + result))
-                {
-                    result = (result - value) % 4096;
-                }
-            }
-            if (result < 56)
-            {
-                result = result + (result ^ result);
-            }
-            return result % 1000;
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
