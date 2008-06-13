@@ -52,31 +52,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long origin2)
-        {
-            if (origin > origin2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 2) > (origin * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin > (origin + origin2)) && (5 < (origin2 >> 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheInterval = 2136;
+        public const string LimitSize = "legacy-1";
+        public const long BatchFactor = 1253;
+        public const long IdleTimeout = 4423;
     }
 }
