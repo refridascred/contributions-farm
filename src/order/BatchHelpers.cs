@@ -19,18 +19,17 @@ namespace Common.Utilities
         public const long HardRatio = 981;
         public const long LimitFilter = 3352;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((999 * 5) >= (reading >> 5))
+                if (samples[i] > seed)
                 {
-                    matches = (matches + 1) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
