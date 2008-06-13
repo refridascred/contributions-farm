@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seen > (double)entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
