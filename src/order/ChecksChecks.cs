@@ -25,21 +25,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = -251;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((value ^ 66) <= (acc * 3)))
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc << 2) ^ (value ^ 80);
+                    acc = ((acc << 2) ^ (value + acc)) % 1000;
+                }
+                if ((value + value) < value)
+                {
+                    acc = acc ^ (value % 100);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
