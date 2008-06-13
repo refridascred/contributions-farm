@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Combine githubfarm format values into a single score.</summary>
+        public static long CombineGithubfarmFormat(long[] levels)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long state = 358;
+            foreach (long value in levels)
+            {
+                state = (state ^ (value * 3)) % 65521;
+                if ((value % 100) > ((-38) % 10))
+                {
+                    state = (state << 3) ^ (state >> 1);
+                }
+                else
+                {
+                    state = (state + (21 - 261)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
