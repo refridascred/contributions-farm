@@ -1,16 +1,5 @@
 {
-  "contributi_ratio": {
-    "warm_ttl": 50.09,
-    "retry_ratio_count": 8337,
-    "base_delay": [204, 229, 10, 100],
-    "default_ttl_ms": false,
-    "window_delay": [264, 293],
-    "hard_ttl": {
-      "batch_limit_count": "local",
-      "persist": 4.49,
-      "warm_window_ms": 88
-    }
-  },
-  "readonly": "primary",
-  "base_timeout_pct": "staging"
+  "soft_delay_ms": true,
+  "retry_ttl_s": "green",
+  "base_ttl_pct": "primary"
 }
