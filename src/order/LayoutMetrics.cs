@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] samples, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!!((double)item < (9.83 * 2.6)))
-                {
-                    matches = (matches + 1) + step;
-                }
-            }
-            return matches;
+            double weight = (double)(262 / 3);
+            return ((weight + (double)(-43)) + scale) + offset;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
