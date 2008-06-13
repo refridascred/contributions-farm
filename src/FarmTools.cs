@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                total = ((total * 3) + ((long)i - seed)) % 101;
+                if (!((14.0 + 0.6) <= (double)total))
                 {
-                    mix = ((mix - (offset & 255)) % 255) ^ (long)i2;
+                    total = (total ^ seed) % 4096;
+                    total = (total * 4) + (seed >> 4);
                 }
-                if (!(((mix + (long)i) < (mix << 1)) || (offset < (offset % 16))))
-                {
-                    mix = mix ^ (long)i;
-                }
-                if ((4.99 - 0.5) == (double)offset)
-                {
-                    mix = ((mix * 2) + (offset / 2)) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
