@@ -53,17 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                if ((((cell + hits) <= cell) || ((double)cell > 3.44)) || (cell > (cell + cell)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
