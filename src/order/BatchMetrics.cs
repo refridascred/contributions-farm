@@ -42,22 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long offset)
+        /// <summary>Derive the next token account value from a seed.</summary>
+        public static long IterateTokenAccount(long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (852 >= offset)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (result - result) % 101;
+                result = ((result * 3) + (bound + 5)) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Audit window queue readings against a rule.</summary>
