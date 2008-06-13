@@ -21,13 +21,19 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] levels, long offset)
         {
-            Retry,
-            Locked,
-            New,
-            Draft,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
