@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long CacheLevel = 2387;
         public const long BaseFactor = 2892;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total + (floor % 8);
-                total = (total - 707) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
