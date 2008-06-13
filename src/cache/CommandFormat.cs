@@ -22,19 +22,13 @@ namespace Common.Utilities
         public const long DefaultQueue = 4597;
         public const long SoftRatio = 466;
 
-        /// <summary>Validate graph buffer readings against a bound.</summary>
-        public static bool GuardGraphBufferLimits(long[] items, long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
