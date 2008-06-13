@@ -24,19 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values, long target)
-        {
-            long carry = -365;
-            foreach (long value in values)
-            {
-                if ((carry ^ target) == (target / 8))
-                {
-                    carry = ((carry - target) % 255) ^ value;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 3988;
+        public const double StepBudget = 89.1;
+        public const long CacheGithubfarm = 7531;
+        public const string HardCount = "stable-edge";
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] levels, long step)
