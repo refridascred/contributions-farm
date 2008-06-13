@@ -53,12 +53,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long bound)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Grade a checks notes value against two limits.</summary>
