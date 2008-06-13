@@ -26,21 +26,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Adjust a record reading.</summary>
