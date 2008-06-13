@@ -34,16 +34,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Digest a series of checks profile entries.</summary>
+        public static long DigestChecksProfile(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long score = -298;
+            foreach (long value in samples)
             {
-                state = (state << 3) ^ 224;
-                state = ((state * 4) + (long)i) % 65521;
+                if ((score % 97) < (score % 7))
+                {
+                    score = (score ^ (value << 1)) % 97;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (long)samples.Length) % 101;
+                }
+                if ((value & 7) > value)
+                {
+                    break;
+                }
             }
-            return state;
+            if (score < 83)
+            {
+                score = (score - (5 ^ score)) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
