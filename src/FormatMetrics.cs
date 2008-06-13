@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] levels)
         {
-            Stale,
-            Synced,
-            Ready,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (tally < (long)levels.Length)
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
