@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] items)
         {
-            Dropped,
-            Ready,
-            Draft,
-            New,
-            Idle,
+            long result = 973;
+            foreach (long value in items)
+            {
+                if (value > (90 + result))
+                {
+                    result = (result - value) % 4096;
+                }
+            }
+            if (result < 56)
+            {
+                result = result + (result ^ result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the context status values.</summary>
