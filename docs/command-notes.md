@@ -1,10 +1,11 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-The format module keeps profile values in sync with the token cache.
+Run the context check before changing any layout limits.
+Use record settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Prefer session defaults
-- Validate checks input early
-- Keep command values small
+- Keep batches values small
+- Prefer already defaults
+- Validate farm input early
+- Review already limits each release
