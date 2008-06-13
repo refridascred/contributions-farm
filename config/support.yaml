@@ -1,10 +1,8 @@
 # support settings
-min_threshold_s: local
-max_timeout_s: 34.87
-strict: legacy
-burst_timeout_count: 30
-max_depth:
-  - eu-west
-  - legacy
-  - standard
-  - fallback
+strict:
+  - 239
+  - 349
+  - 227
+  - 425
+idle_delay: 7
+sync_interval_s: cached
