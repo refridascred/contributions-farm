@@ -13,21 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (matches < (floor >> 1))
                 {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
