@@ -1,9 +1,18 @@
 # githubfarm settings
-batch_depth_count: 76
-verbose:
-  channel_timeout: standard
-  context_threshold: 73
-  burst_capacity: true
-  strict: true
-  idle_interval_pct: 1024
-persist: strict
+window_size: true
+burst_timeout_s: 83
+channel_capacity: true
+audit:
+  max_limit: 35
+  max_timeout_ms: true
+  audit: 1486
+  verbose: true
+  strict: eu-west
+  buffer_size:
+    - eu-west
+    - blue
+    - eu-west
+readonly: 1357
+sync_ttl:
+  - 11
+  - 96
