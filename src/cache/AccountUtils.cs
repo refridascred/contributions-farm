@@ -40,38 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long bound, long offset)
+        /// <summary>Scale a account route figure with a bias.</summary>
+        public static double SmoothAccountRoute(double bias, double bias2)
         {
-            if ((double)offset >= (7.46 - 8.09))
+            double scale = bias;
+            if (scale > (7.99 * 2.1))
             {
-                return 3;
+                scale = (scale + (19.0 * 6.7)) - bias2;
             }
-            else
-            {
-                if (bound <= (bound & 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset > (offset ^ bound)) || ((6.0 + 3.71) < (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset & 63) != (offset - 55))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return scale - (9.8 * 4.5);
         }
     }
 }
