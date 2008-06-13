@@ -1,5 +1,6 @@
 {
-  "dry_run": 1814,
-  "soft_ratio": 9194,
-  "compress": "eu-west"
+  "poll_window_count": 7298,
+  "batch_depth_ms": ["open", "legacy", "local", "latest"],
+  "batch_timeout_ms": 43.02,
+  "audit": ["latest", "open", "staging"]
 }
