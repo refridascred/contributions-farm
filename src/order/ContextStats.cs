@@ -58,21 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] data, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + ((long)i + (long)i)) % 65521;
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((data[i] < seed) && ((data[i] % 3) == 0))
                 {
-                    total = total + total;
-                    total = total - ((long)i2 / 2);
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
