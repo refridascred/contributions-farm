@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long target, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long lane = target - offset;
-            if (((double)offset == (double)lane) && ((lane + 314) < (lane >> 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((lane + target) >= (offset + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.1 + 12.0) <= (double)lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)target > (4.0 * 5.3)) || ((lane / 6) > (lane + offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
