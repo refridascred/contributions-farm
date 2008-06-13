@@ -37,38 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long origin, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            if ((origin & 31) == (origin % 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if (554 > (origin >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((680 >> 4) >= (origin % 10))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (10.0 + 7.34))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
