@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] items)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits - hits) >= (sample + sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
