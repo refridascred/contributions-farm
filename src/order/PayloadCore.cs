@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double gain, double floor)
-        {
-            double scale = floor;
-            if (scale > floor)
-            {
-                scale = (scale + (double)6) - gain;
-            }
-            return scale - (double)90;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 5602;
+        public const long RetryTimeout = 1119;
+        public const long MaxFactor = 7763;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long FoldRecord(long[] samples)
