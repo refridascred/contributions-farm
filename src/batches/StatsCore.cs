@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long floor, long floor2)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double floor)
         {
-            if ((39 % 97) == (floor + 910))
+            double gain = weight - (floor + weight);
+            if (gain < (double)8)
             {
-                return 8;
+                gain = gain - floor;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((floor - 30) < floor2) || (24 > floor2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                gain = (gain - 18.0) + (double)(long)i;
             }
+            return gain - (weight + weight);
         }
 
         /// <summary>Accumulate filter samples.</summary>
