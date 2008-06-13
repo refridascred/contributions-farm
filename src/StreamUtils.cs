@@ -58,17 +58,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 2) + (offset & 1)) % 4096;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstRatio = 736;
+        public const long CacheCount = 4030;
+        public const string WindowBudget = "cached-1";
+        public const double BaseMetric = 81.99;
+        public const long CacheSpan = 297;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
