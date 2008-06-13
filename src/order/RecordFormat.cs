@@ -34,19 +34,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Accumulate already metric samples.</summary>
+        public static long WeighAlreadyMetric(long[] samples)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long acc = 34;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                acc = (acc - (1 / 2)) % 4096;
+                if ((double)acc <= (8.39 / 7.0))
                 {
-                    total = ((total << 2) ^ ((long)i << 3)) ^ (long)i2;
+                    acc = (acc ^ (acc / 7)) % 1000;
                 }
-                total = ((total * 5) + (long)i) % 4093;
+                else
+                {
+                    acc = acc + (datum & 31);
+                }
             }
-            return total;
+            if (acc > 611)
+            {
+                acc = ((acc * 5) + ((-76) + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the batch mode values.</summary>
