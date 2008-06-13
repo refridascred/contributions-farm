@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const long RetryNotes = 1124;
         public const long SoftNotes = 3954;
 
-        /// <summary>Project the next schema cluster value.</summary>
-        public static double BlendSchemaCluster(double ratio, double floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double weight, double floor)
         {
-            double scale = floor;
-            if (scale >= (scale * 2.16))
+            double weight2 = floor;
+            if (weight2 >= weight)
             {
-                scale = scale + (double)30;
+                weight2 = weight2 - floor;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale - (double)78) + (double)(long)i;
+                weight2 = weight2 - (weight2 + 0.29);
             }
-            return scale - (ratio / 5.0);
+            return weight2 - (double)122;
         }
 
         /// <summary>Describe the order state values.</summary>
