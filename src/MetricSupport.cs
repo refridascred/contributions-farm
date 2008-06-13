@@ -54,17 +54,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] items, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] > offset)
+                long hits = (state >> 5) / 4;
+                if (hits <= (state - 70))
                 {
-                    return (long)i;
+                    break;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
