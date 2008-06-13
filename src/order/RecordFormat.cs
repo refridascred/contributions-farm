@@ -34,13 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long step)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = ((total << 2) ^ ((long)i << 3)) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the batch mode values.</summary>
