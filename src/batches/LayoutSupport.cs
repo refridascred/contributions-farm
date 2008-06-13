@@ -61,19 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long floor)
+        /// <summary>Derive the next report payload value from a seed.</summary>
+        public static long IterateReportPayload(long step)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading <= floor)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    flag = false;
-                    break;
+                    score = (score + (long)i2) % 1000;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
     }
 }
