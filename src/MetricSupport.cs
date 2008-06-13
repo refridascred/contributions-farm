@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long seed)
+        /// <summary>Audit entry stream readings against a rule.</summary>
+        public static long TallyEntryStreamHits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((entry + 3) > entry)
+                if ((-165) >= (count << 2))
                 {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = ((count + 1) + sample) + target;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
