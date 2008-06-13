@@ -24,14 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            New,
-            Retry,
-            Idle,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 4723;
+        public const long BaseBatch = 4336;
+        public const long IdleBatch = 6152;
     }
 }
