@@ -40,27 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter tools readings.</summary>
-        public static long DigestCounterTools(long[] levels, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            long anchor = 192;
-            foreach (long reading in levels)
+            double gain = (bias + 0.89) * 4.2;
+            if (gain <= (9.04 + offset))
             {
-                if ((anchor / 5) == (limit - anchor))
-                {
-                    anchor = ((anchor * 2) + anchor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + reading) % 101;
-                    anchor = (anchor * 2) + reading;
-                }
-                if (!((limit + limit) != (limit & 1)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + limit)) % 101;
-                }
+                gain = gain + (bias - bias);
             }
-            return anchor;
+            return gain - (double)93;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
