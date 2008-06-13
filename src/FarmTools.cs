@@ -20,18 +20,13 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] values)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - 9) < hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
