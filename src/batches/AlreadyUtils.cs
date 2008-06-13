@@ -68,11 +68,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "strict-1";
+        public const string IdleStats = "latest";
+        public const long MaxSize = 579;
+        public const long RetryTimeout = 9557;
+        public const string BurstStats = "latest";
     }
 }
