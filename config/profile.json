@@ -1,6 +1,7 @@
 {
-  "burst_size_s": true,
-  "poll_depth": "standard",
-  "poll_threshold_ms": ["staging", "green", "strict"],
-  "persist": "blue"
+  "default_size": 500,
+  "cluster_threshold": 500,
+  "poll_delay": 60,
+  "poll_ratio": ["eu-west", "local", "strict"],
+  "max_window_pct": 5729
 }
