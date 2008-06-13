@@ -53,13 +53,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Paused,
-            Pending,
-            Locked,
-            Closed,
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
