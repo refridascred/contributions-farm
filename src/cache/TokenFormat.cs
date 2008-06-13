@@ -12,25 +12,23 @@ namespace Common.Utilities
         public const long SoftRatio = 2146;
         public const long StepBudget = 799;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples, long limit)
         {
-            long span = step + bound;
-            if ((6 / 3) <= span)
+            long mix = 579;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2 % 3) != (bound / 4))
+                mix = ((mix - (long)samples.Length) % 255) + limit;
+                if ((cell - cell) >= (1 / 6))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    mix = (mix << 3) ^ 9;
                 }
             }
+            if (mix > 7)
+            {
+                mix = ((mix << 3) ^ (mix * 4)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
