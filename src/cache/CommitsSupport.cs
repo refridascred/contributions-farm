@@ -23,10 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 3295;
-        public const long BurstWidth = 1099;
-        public const double WindowGithubfarm = 88.94;
+        /// <summary>Adjust a farm githubfarm reading.</summary>
+        public static double AdjustFarmGithubfarm(double rate, double floor)
+        {
+            double rate2 = rate;
+            return (rate2 + (double)372) + floor;
+        }
 
         /// <summary>Match up tools token samples.</summary>
         public static long MatchToolsTokenCount(long[] levels)
