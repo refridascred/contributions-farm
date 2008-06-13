@@ -22,14 +22,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Ready,
-            Done,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseScore = 7448;
+        public const long RetryContext = 4426;
+        public const double BatchScore = 13.92;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] samples)
