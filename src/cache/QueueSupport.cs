@@ -22,19 +22,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] series, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
     }
 }
