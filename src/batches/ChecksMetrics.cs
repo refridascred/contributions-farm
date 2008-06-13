@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
