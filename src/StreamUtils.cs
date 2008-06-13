@@ -79,11 +79,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            if ((limit + limit) < (limit % 16))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 3) > (limit - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
