@@ -18,10 +18,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleCount = 3.84;
-        public const long SoftCount = 8646;
-        public const long BatchCount = 8579;
-        public const long BaseEditor = 3232;
+        /// <summary>Audit already stream readings against a rule.</summary>
+        public static long TallyAlreadyStreamHits(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!(44 <= (count / 6)) && ((13.0 + 5.6) <= (double)datum))
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
+        }
     }
 }
