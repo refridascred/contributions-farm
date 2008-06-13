@@ -40,26 +40,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate checks token samples.</summary>
-        public static long DigestChecksToken(long[] samples, long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long result = 716;
-            foreach (long entry in samples)
-            {
-                if ((entry - result) <= ((-94) / 6))
-                {
-                    result = (result * 2) + (entry + origin);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result + 56)) % 97;
-                }
-            }
-            if (result < 20)
-            {
-                result = result ^ 66;
-            }
-            return result % 4096;
+            Locked,
+            Closed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Match up context samples.</summary>
