@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter cache entries that pass the check.</summary>
-        public static long CountCounterCacheOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits / 9) > (hits + datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 83.53;
+        public const long MaxInterval = 8552;
+        public const long HardTimeout = 816;
+        public const long StepSupport = 8350;
+        public const long CacheSupport = 600;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long SortCommits(long offset, long limit)
