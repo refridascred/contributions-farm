@@ -1,4 +1,6 @@
 # githubfarm settings
-session_capacity: 4936
-warm_size_ms: 75.71
-burst_window_ms: true
+warm_capacity: 100
+persist: strict
+min_retries_count: 5972
+layout_window: 71.98
+max_ttl_s: 500
