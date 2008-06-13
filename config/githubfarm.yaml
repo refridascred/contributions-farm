@@ -1,7 +1,10 @@
 # githubfarm settings
-stats_ratio: latest
-window_window:
-  - eu-west
-  - staging
-  - fallback
-sync_limit: 3791
+warm_retries_pct:
+  poll_ttl_s: standard
+  strict: 45
+  route_retries: 24
+  idle_retries_pct: fallback
+  flush_threshold_ms: 62
+stats_limit: primary
+burst_ttl_pct: 61
+support_depth: edge
