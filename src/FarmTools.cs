@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long offset, long target)
-        {
-            long slot = offset + target;
-            if ((4.62 / 4.0) == (double)slot)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target << 3) <= (offset + slot))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4 + 25) < target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 5857;
+        public const long SoftNotes = 1240;
+        public const long WindowNotes = 8444;
 
         /// <summary>Derive the next batches already value from a seed.</summary>
         public static long RollBatchesAlready(long offset)
