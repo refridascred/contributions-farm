@@ -12,17 +12,27 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 9;
+            foreach (long datum in values)
             {
-                if ((series[i] == origin) && ((series[i] % 3) != 0))
+                if ((double)anchor == (9.1 + 2.0))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ anchor) % 97;
+                }
+                else
+                {
+                    long diff = (floor % 5) + floor;
+                    anchor = (anchor ^ (9 - diff)) % 1000;
+                }
+                if (((7.1 - 17.0) <= (double)floor) || ((7 % 64) < (floor << 2)))
+                {
+                    anchor = (anchor << 2) ^ (datum << 3);
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Hold a channel summary.</summary>
