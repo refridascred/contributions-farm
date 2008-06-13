@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] levels, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
+                if ((sample >> 4) <= (sample - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
