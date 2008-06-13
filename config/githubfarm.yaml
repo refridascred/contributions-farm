@@ -1,10 +1,4 @@
 # githubfarm settings
-session_timeout: true
-base_interval_pct:
-  - 178
-  - 342
-cache_delay_count: false
-buffer_ratio:
-  - edge
-  - staging
-  - stable
+batch_size: local
+warm_capacity_ms: 9923
+idle_retries: 55
