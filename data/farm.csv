@@ -1,8 +1,9 @@
-id,level,token,ratio,active
-1,25.94,fallback,90.73,staging
-2,63.96,92.99,3.76,553
-3,35,6,edge,open
-4,21.16,fallback,704,stable
-5,46.14,15,926,558
-6,700,open,latest,969
-7,366,854,73.75,latest
+id,rank,token,active,level
+1,326,36.97,775,green
+2,867,1.54,822,18.0
+3,blue,84.4,77.81,979
+4,685,green,28.04,cached
+5,434,417,65.63,603
+6,552,stable,589,46.19
+7,692,59,open,213
+8,49.29,33,78,633
