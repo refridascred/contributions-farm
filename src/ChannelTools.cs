@@ -23,10 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 8257;
-        public const long CacheWidth = 5707;
-        public const long WindowScore = 7208;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Paused,
+            Retry,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] readings)
