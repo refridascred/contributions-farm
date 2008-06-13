@@ -13,18 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((hits + hits) >= ((-742) ^ datum))
+                anchor = ((anchor << 2) ^ (anchor * 3)) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    hits = hits + 2;
+                    anchor = (((anchor << 3) ^ (992 + step)) % 101) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
