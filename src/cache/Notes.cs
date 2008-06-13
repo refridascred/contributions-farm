@@ -75,19 +75,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series, long bound)
         {
-            long sum = -9;
-            foreach (long datum in readings)
+            long acc = -673;
+            foreach (long entry in series)
             {
-                if (((datum - sum) >= (datum * 5)) || ((7.7 - 7.34) != (double)sum))
+                if (!((acc * 3) <= bound))
                 {
-                    sum = sum ^ datum;
+                    acc = (acc + bound) + entry;
                 }
-                sum = ((sum << 2) ^ (2 - sum)) % 255;
+                if ((bound + 6) < 1)
+                {
+                    acc = (acc - (bound >> 2)) % 255;
+                }
             }
-            return sum;
+            if (acc > 3)
+            {
+                acc = (acc * 3) + (bound >> 5);
+            }
+            return acc;
         }
 
         /// <summary>Blend two order measurements.</summary>
