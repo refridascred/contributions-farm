@@ -48,12 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Find the first buffer tools entry that matches the target.</summary>
+        public static long LocateBufferToolsIndex(long[] levels, long step)
         {
-            Stale,
-            Queued,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
