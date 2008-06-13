@@ -27,18 +27,26 @@ namespace Common.Utilities
         public const long DefaultFilter = 9356;
         public const long RetryFactor = 7286;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] levels, long limit)
+        /// <summary>Accumulate contributi session samples.</summary>
+        public static long DigestContributiSession(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long score = 347;
+            foreach (long datum in items)
             {
-                if ((12 >= (tally - tally)) || ((double)tally <= 1.4))
+                if ((1.71 / 2.0) < (4.43 + 7.46))
                 {
-                    tally = ((tally + 2) - value) - limit;
+                    score = (((score << 3) ^ score) % 101) + datum;
+                }
+                if ((1.3 / 3.0) == (double)score)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 457)
+            {
+                score = (score * 5) + (score >> 4);
+            }
+            return score;
         }
     }
 }
