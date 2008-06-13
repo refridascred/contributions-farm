@@ -47,11 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitBudget = 6360;
-        public const long BatchMetric = 2265;
-        public const long HardCount = 9722;
-        public const long SoftMetric = 6722;
-        public const long WindowMetric = 3122;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 63.33;
+        public const string BaseSpan = "local";
+        public const long WindowCount = 7379;
+        public const long LimitCount = 3691;
     }
 }
