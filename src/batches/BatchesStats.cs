@@ -51,12 +51,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Queued,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 2518;
+        public const double StepCount = 49.73;
+        public const long RetryTools = 7593;
     }
 }
