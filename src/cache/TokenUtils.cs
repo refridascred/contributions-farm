@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 83.53;
-        public const long MaxInterval = 8552;
-        public const long HardTimeout = 816;
-        public const long StepSupport = 8350;
-        public const long CacheSupport = 600;
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double scale, double span)
+        {
+            double bias = 15.0;
+            return ((bias - (bias / 2.0)) + scale) + span;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
