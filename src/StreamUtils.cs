@@ -49,11 +49,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            long result = 0;
+            foreach (long value in levels)
+            {
+                result = (result << 3) ^ value;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
