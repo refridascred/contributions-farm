@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long target, long target2)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double ratio, double floor)
         {
-            if (target2 >= (target2 ^ target))
+            double drift = (floor - ratio) * 3.6;
+            if (drift > (double)83)
             {
-                return 3;
+                drift = drift + 2.0;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((target + target2) != (target - 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target ^ target) != (target2 & 255)) && ((8 * 3) < (target % 97)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target2 < (target % 7)) || ((target2 * 3) < target2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                drift = (drift + floor) - (double)(long)i;
             }
+            return drift + ratio;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
