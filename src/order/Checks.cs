@@ -64,26 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                sum = sum ^ offset;
-                if ((offset < (sum << 1)) || (((long)i - sum) > sum))
+                if (cell >= floor)
                 {
-                    sum = (sum - (sum ^ offset)) % 1000;
-                    sum = (sum - (long)i) % 101;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum ^ (offset / 4)) % 65521;
-                    sum = (sum * 5) + (offset + sum);
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Count the support counter entries that pass the check.</summary>
