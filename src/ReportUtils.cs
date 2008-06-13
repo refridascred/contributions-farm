@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] levels, long target)
         {
-            if ((7.99 * 11.0) >= (double)floor)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (18.0 > (double)seed)
+                if (reading > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((seed ^ seed) == (5 ^ floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Project the next graph value.</summary>
