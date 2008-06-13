@@ -19,15 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] series, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((double)floor != (6.2 - 1.7))
+                {
+                    tally = (tally + 1) - entry;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
