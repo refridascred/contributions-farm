@@ -35,12 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
