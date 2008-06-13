@@ -46,11 +46,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 4780;
-        public const double BurstGithubfarm = 27.61;
-        public const long IdleGithubfarm = 6014;
-        public const long BaseWidth = 4568;
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double weight, double floor)
+        {
+            double rate = (double)(62 - 2);
+            if (rate <= weight)
+            {
+                rate = rate + (floor + 4.06);
+            }
+            else
+            {
+                rate = rate - (double)319;
+            }
+            return rate - floor;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
