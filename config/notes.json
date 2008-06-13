@@ -1,7 +1,7 @@
 {
-  "flush_window": 60,
-  "verbose": 51,
-  "entry_depth": "latest",
-  "default_ratio_pct": "green",
-  "burst_capacity_s": 60
+  "strict": "fallback",
+  "dry_run": [311, 43, 72],
+  "default_size": 86.04,
+  "default_retries_ms": [264, 113, 390],
+  "warm_depth_ms": true
 }
