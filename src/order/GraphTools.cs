@@ -44,10 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 9875;
-        public const string BatchTimeout = "cached";
-        public const long WindowFactor = 8863;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] items)
