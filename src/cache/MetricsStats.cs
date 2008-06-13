@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of stats support readings.</summary>
-        public static long TallyStatsSupport(long[] readings, long floor)
+        /// <summary>Count batch cache pairs that satisfy a relation.</summary>
+        public static long CompareBatchCacheCount(long[] series)
         {
-            long score = 45;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (floor > (floor & 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score + (score << 2)) % 97;
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score - (score + sample)) % 97;
             }
-            if (score < 333)
-            {
-                score = (score - (floor * 4)) % 65521;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
