@@ -33,32 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long limit, long limit2)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            long cur = limit - limit2;
-            if (!(7.2 <= (double)limit2))
+            double weight = scale;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                weight = (weight - (offset * 12.0)) + (double)(long)i;
             }
-            else
-            {
-                if (!(limit2 >= (cur + 877)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((cur * 5) <= (limit - limit2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return weight + (double)(-18);
         }
     }
 }
