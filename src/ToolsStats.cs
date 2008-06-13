@@ -22,20 +22,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "staging-v2";
+        public const string MinSpan = "primary-edge";
+        public const long IdleSize = 572;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double BlendQueue(double gain, double bias)
