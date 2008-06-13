@@ -37,18 +37,21 @@ namespace Common.Utilities
         public const double BaseStats = 61.03;
         public const long BatchInterval = 3582;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] levels, long bound)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + 93) > (seen >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) - bound;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
