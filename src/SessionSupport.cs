@@ -28,12 +28,13 @@ namespace Common.Utilities
         public const double StepBudget = 20.08;
         public const double StepCounter = 50.86;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Pending,
-            Paused,
-            Dropped,
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
