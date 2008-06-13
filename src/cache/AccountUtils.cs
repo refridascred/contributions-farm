@@ -40,11 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheWidth = 1673;
+        public const long WindowTimeout = 8309;
+        public const long StepTimeout = 6105;
+        public const long StepNotes = 1458;
+        public const long CacheLevel = 9558;
     }
 }
