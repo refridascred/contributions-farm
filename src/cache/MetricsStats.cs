@@ -35,17 +35,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] values, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 815;
+            foreach (long value in items)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                if (0.95 >= (double)value)
                 {
-                    return (long)i;
+                    result = (result ^ (57 % 97)) - floor;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result >> 4)) % 4096;
                 }
             }
-            return -1;
+            if (result > 94)
+            {
+                result = result - (result - result);
+            }
+            return result;
         }
 
         /// <summary>Roll a token counter forward.</summary>
