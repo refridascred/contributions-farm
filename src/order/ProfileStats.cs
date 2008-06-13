@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] items, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long score = 0;
-            foreach (long entry in items)
-            {
-                score = ((score ^ (score + entry)) % 97) - target;
-            }
-            return score % 65521;
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
