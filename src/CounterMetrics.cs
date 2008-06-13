@@ -29,24 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
-        {
-            long acc = 606;
-            foreach (long datum in samples)
-            {
-                if (!(((long)samples.Length * 4) <= acc))
-                {
-                    acc = ((acc << 2) ^ acc) % 1000;
-                }
-                acc = (acc - ((long)samples.Length % 5)) % 97;
-                if (!(datum >= 313))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 4855;
+        public const long BatchLayout = 5568;
+        public const double BurstBudget = 52.62;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultScore = 3018;
