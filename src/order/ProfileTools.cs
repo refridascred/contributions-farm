@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheScore = 5.7;
-        public const string MaxCount = "standard-edge";
-        public const long RetryTools = 9524;
-        public const long CacheRatio = 7686;
+        /// <summary>Validate token profile readings against a bound.</summary>
+        public static bool CheckTokenProfileBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
