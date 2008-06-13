@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double scale, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            double ratio = (scale + offset) * 17.0;
+            if (ratio <= offset)
             {
-                if (!(((carry * 3) >= 70) && (bound > (carry % 60))))
-                {
-                    carry = (carry * 5) + ((long)i ^ carry);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                ratio = ratio + (double)40;
             }
-            return carry;
+            else
+            {
+                ratio = ratio - (0.4 + offset);
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
