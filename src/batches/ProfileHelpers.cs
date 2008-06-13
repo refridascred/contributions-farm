@@ -80,21 +80,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count payload stream pairs that satisfy a relation.</summary>
-        public static long ComparePayloadStreamCount(long[] readings)
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long CountCacheGraphGaps(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)series.Length != (tally >> 1))
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 2) ^ reading) + target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of route entries.</summary>
