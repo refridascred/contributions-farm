@@ -33,20 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long limit, long limit2)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long cur = limit - limit2;
+            if (!(7.2 <= (double)limit2))
             {
-                acc = ((acc * 2) + 6) % 4096;
-                if (((6.0 - 9.61) > (double)acc) && ((9.0 - 19.0) != (double)acc))
-                {
-                    acc = (acc - (target - acc)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (!(limit2 >= (cur + 877)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((cur * 5) <= (limit - limit2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
