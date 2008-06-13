@@ -62,32 +62,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long floor, long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            long delta = floor - bound;
-            if (!((95 - delta) <= (delta % 64)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((4.1 + 1.2) <= (double)bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= (floor >> 5))
+                    if ((levels[i] - levels[j]) != 19)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
