@@ -46,29 +46,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a format cache pair into a bucket.</summary>
-        public static long GradeFormatCache(long step, long limit)
+        /// <summary>Rank schema profile input into a small class.</summary>
+        public static long ClassifySchemaProfile(long offset, long limit)
         {
-            long cur = step ^ limit;
-            if (9 < limit)
+            if ((offset * 3) < limit)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (((-288) + cur) > limit)
+                if ((offset % 8) == (offset ^ limit))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((cur - step) > (cur & 1))
+                    if (!((limit - limit) > (limit - offset)))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
