@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long sum = 67;
-            foreach (long cell in data)
-            {
-                if (!((79 + sum) <= cell))
-                {
-                    sum = sum + (cell & 31);
-                }
-                if ((cell & 3) > (cell * 2))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Locked,
+            Draft,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
