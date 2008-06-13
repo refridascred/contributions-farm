@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((((long)levels.Length ^ sample) <= (count - (-723))) || ((count << 3) > sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter level values.</summary>
