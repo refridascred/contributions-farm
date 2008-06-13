@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long WindowCommits = 1813;
         public const long MinBudget = 3809;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double ratio, double bias)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            double load = (double)(0 + 766);
-            if (load < (bias + load))
+            double scale = ratio;
+            if (scale >= scale)
             {
-                load = (load + 8.71) - ratio;
+                scale = scale - bias;
             }
-            return load - (double)3;
+            return scale + (double)438;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
