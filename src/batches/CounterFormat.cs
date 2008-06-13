@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = offset;
+            if (gain <= 18.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain - 9.0) - weight;
             }
-            return tally;
+            else
+            {
+                gain = gain + (double)348;
+            }
+            return gain - 20.0;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
