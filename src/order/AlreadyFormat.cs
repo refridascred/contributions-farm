@@ -13,27 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values, long floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long anchor = 9;
-            foreach (long datum in values)
-            {
-                if ((double)anchor == (9.1 + 2.0))
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                }
-                else
-                {
-                    long diff = (floor % 5) + floor;
-                    anchor = (anchor ^ (9 - diff)) % 1000;
-                }
-                if (((7.1 - 17.0) <= (double)floor) || ((7 % 64) < (floor << 2)))
-                {
-                    anchor = (anchor << 2) ^ (datum << 3);
-                }
-            }
-            return anchor % 97;
+            Pending,
+            Queued,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a channel summary.</summary>
