@@ -48,11 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of commits checks entries.</summary>
+        public static long DigestCommitsChecks(long[] values, long floor)
         {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
+            long acc = 946;
+            foreach (long reading in values)
+            {
+                acc = ((acc ^ (acc + floor)) % 101) + reading;
+            }
+            if (acc < 120)
+            {
+                acc = ((acc * 4) + (acc << 3)) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Rank support session input into a small class.</summary>
