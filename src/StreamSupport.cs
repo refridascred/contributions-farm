@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values, long seed)
+        /// <summary>Count the channel checks entries that pass the check.</summary>
+        public static long TallyChannelChecksGaps(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (!((double)item <= 8.9))
+                if (entry < (tally / 6))
                 {
-                    hits = (hits + 1) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
