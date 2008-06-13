@@ -32,24 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a order account pair into a bucket.</summary>
-        public static long ClassifyOrderAccount(long target, long target2)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            if (!((target2 - 1) <= (target2 + target2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((7.88 - 14.0) > (double)target) && ((target2 + 63) == ((-142) + target2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Retry,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Adjust a editor reading.</summary>
