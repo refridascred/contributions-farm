@@ -1,5 +1,8 @@
 # githubfarm settings
-burst_capacity_count: 60.63
-soft_interval: 36.51
-warm_timeout: open
-audit: 30
+soft_capacity_s:
+  - local
+  - open
+  - latest
+min_ratio: legacy
+burst_delay: 500
+hard_size_ms: 250
