@@ -25,19 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches format readings against a bound.</summary>
-        public static bool VerifyBatchesFormatLimits(long[] readings, long seed)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
