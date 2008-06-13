@@ -1,14 +1,6 @@
 {
-  "min_delay_pct": 58.52,
-  "burst_size_ms": 4475,
-  "burst_timeout": false,
-  "retry_delay_ms": {
-    "buffer_ratio": "blue",
-    "flush_ratio_s": 16.48,
-    "stats_threshold": "eu-west",
-    "queue_ratio": 63,
-    "persist": 42.05
-  },
-  "default_ratio_s": "stable",
-  "support_depth": false
+  "warm_timeout": "legacy",
+  "default_size_ms": "eu-west",
+  "batch_ttl_ms": 62.85,
+  "enabled": "local"
 }
