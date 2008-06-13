@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] items, long seed)
+        /// <summary>Compare every pair of account stats readings.</summary>
+        public static long MatchAccountStatsCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((43 + seed) < (item + item)) && ((hits + seed) < 0)) && (seed >= (long)items.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
