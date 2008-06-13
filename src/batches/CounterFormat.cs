@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long LimitMetric = 1977;
         public const double CacheLevel = 56.49;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] values, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long score = 7;
+            foreach (long entry in data)
             {
-                if (reading >= seed)
+                if (entry > (score + 68))
                 {
-                    flag = false;
-                    break;
+                    score = ((score << 3) ^ (6 << 3)) % 101;
                 }
             }
-            return flag;
+            if (score < 3)
+            {
+                score = (score * 4) + (score << 3);
+            }
+            return score % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
