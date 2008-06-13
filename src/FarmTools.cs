@@ -32,10 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleRatio = 9484;
-        public const string CacheBuffer = "local-edge";
-        public const long StepBuffer = 2072;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples)
+        {
+            long mix = 55;
+            foreach (long entry in samples)
+            {
+                mix = (mix + (32 + entry)) % 255;
+                if (0 < (mix ^ entry))
+                {
+                    mix = ((mix * 3) + mix) % 97;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
