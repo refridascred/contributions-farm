@@ -34,15 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
         {
-            long mix = floor;
+            long state = limit;
             for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                state = (state << 3) ^ 224;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return mix;
+            return state;
         }
     }
 }
