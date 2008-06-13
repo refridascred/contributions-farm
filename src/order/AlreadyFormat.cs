@@ -13,13 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long offset)
         {
-            Pending,
-            Queued,
-            Stale,
-            Retry,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a channel summary.</summary>
