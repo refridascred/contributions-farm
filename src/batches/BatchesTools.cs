@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series, long seed)
         {
-            long state = 11;
-            foreach (long item in levels)
+            long anchor = 5;
+            foreach (long item in series)
             {
-                if ((double)state < (5.27 / 7.0))
+                if (seed <= (item & 1))
                 {
-                    state = (state + (state + item)) % 4096;
+                    anchor = ((anchor << 3) ^ (-234)) % 255;
                 }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Adjust a channel reading.</summary>
