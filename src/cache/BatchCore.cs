@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] items, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading > (916 * 4)) && (tally <= reading)) || (reading > (origin >> 2)))
+                if (levels[i] > step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
