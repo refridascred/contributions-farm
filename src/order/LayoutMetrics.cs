@@ -26,24 +26,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long total = -5;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total * 3) + (origin >> 3);
-                if ((double)origin <= (double)6)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total << 2) ^ (origin ^ origin);
-                    break;
-                }
-                if ((value & 127) == (value + origin))
-                {
-                    total = total ^ (value + value);
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
