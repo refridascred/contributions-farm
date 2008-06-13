@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (series[i] < seed)
+                if (item <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
