@@ -62,20 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 5978;
+        public const string BurstDepth = "cached-edge";
+        public const double StepTimeout = 96.67;
+        public const long HardBatch = 9764;
 
         /// <summary>Count the token queue entries that pass the check.</summary>
         public static long AuditTokenQueueHits(long[] values)
