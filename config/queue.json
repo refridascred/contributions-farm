@@ -1,5 +1,6 @@
 {
-  "cache_timeout": ["local", "legacy"],
-  "filter_capacity": 2866,
-  "verbose": 250
+  "batches_limit": 60,
+  "retry_ttl": "cached",
+  "cache_capacity_ms": [293, 224],
+  "idle_interval_count": 38.46
 }
