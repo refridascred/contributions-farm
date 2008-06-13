@@ -39,10 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 6944;
-        public const string DefaultMetric = "primary";
-        public const long BatchSpan = 4530;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long origin)
+        {
+            long span = target ^ origin;
+            if ((span + 576) < span)
+            {
+                return 2;
+            }
+            else
+            {
+                if (target >= (target * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 1562;
