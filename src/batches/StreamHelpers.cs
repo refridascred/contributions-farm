@@ -52,13 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double scale, double offset)
         {
-            Draft,
-            Active,
-            Locked,
-            Dropped,
+            double ratio = offset;
+            if (ratio < 15.0)
+            {
+                ratio = (ratio - (double)472) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
