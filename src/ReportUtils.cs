@@ -35,19 +35,19 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] values, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double bias, double span)
         {
-            long total = -38;
-            foreach (long datum in values)
+            double load = bias - span;
+            if (load <= (bias * 13.0))
             {
-                total = ((total ^ (datum % 60)) % 65521) - step;
+                load = load + load;
             }
-            if (total > 6)
+            for (int i = 0; i < 7; i++)
             {
-                total = (total + 1) % 255;
+                load = load + (double)(long)i;
             }
-            return total;
+            return load - 3.0;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
