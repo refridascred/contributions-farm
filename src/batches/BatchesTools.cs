@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long anchor = 5;
-            foreach (long item in series)
-            {
-                if (seed <= (item & 1))
-                {
-                    anchor = ((anchor << 3) ^ (-234)) % 255;
-                }
-            }
-            return anchor;
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
