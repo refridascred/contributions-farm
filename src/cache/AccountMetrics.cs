@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 6320;
-        public const long MinStream = 9928;
-        public const long BatchStream = 3108;
-        public const long BurstStream = 3891;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextHits(long[] values)
