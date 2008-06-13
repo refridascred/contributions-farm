@@ -13,21 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
