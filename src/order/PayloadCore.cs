@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((593 ^ (-154)) >= (step + count))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4283;
+        public const string StepRecord = "stable-v2";
+        public const long IdleWidth = 5846;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
