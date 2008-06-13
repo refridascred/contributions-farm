@@ -32,12 +32,17 @@ namespace Common.Utilities
         public const long SoftStats = 8317;
         public const string BaseStats = "legacy";
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] values, long offset)
         {
-            Failed,
-            Locked,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
