@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheRatio = 88.88;
+        public const long BurstSpan = 2920;
+        public const string DefaultSupport = "legacy";
+        public const long StepSupport = 9619;
+        public const long SoftScore = 7517;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long CacheSpan = 6137;
