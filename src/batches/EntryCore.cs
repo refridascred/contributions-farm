@@ -38,18 +38,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the payload record entries that pass the check.</summary>
-        public static long TallyPayloadRecordMatches(long[] samples, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = 976;
+            foreach (long entry in series)
             {
-                if (((seen + step) < step) && ((seen + entry) < step))
-                {
-                    seen = seen + 1;
-                }
+                total = ((total * 4) + (total + total)) + entry;
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
