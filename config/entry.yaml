@@ -1,12 +1,4 @@
 # entry settings
-compress:
-  audit: standard
-  notes_capacity: fallback
-  poll_timeout_s:
-    default_ttl_pct: fallback
-    max_ratio: stable
-    soft_capacity_ms: false
-default_retries_count: fallback
-batches_ttl: local
-burst_window_pct: 54
-poll_size_count: 1024
+entry_depth: 68
+sync_timeout: 30.02
+readonly: legacy
