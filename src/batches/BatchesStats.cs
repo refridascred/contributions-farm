@@ -53,13 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            Queued,
+            Failed,
+            Dropped,
         }
     }
 }
