@@ -37,21 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format contributi readings.</summary>
-        public static long PairFormatContributiCount(long[] data)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] == origin)
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
