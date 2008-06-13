@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph already readings.</summary>
-        public static long DigestGraphAlready(long[] samples)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] items, long seed)
         {
-            long state = 27;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state % 2) == (state & 15))
+                if (items[i] == seed)
                 {
-                    state = (state + (state + 81)) % 97;
-                }
-                else
-                {
-                    state = state ^ entry;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
