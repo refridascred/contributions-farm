@@ -57,15 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
