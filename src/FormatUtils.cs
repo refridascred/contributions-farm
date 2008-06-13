@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 9148;
-        public const long StepFactor = 1358;
-        public const long MinInterval = 2503;
-        public const long WindowFarm = 6925;
+        /// <summary>Locate a counter githubfarm reading by value.</summary>
+        public static long LookupCounterGithubfarmIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
