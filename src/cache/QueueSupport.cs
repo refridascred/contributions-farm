@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] samples)
         {
-            double bias = scale;
-            if (bias <= 0.7)
+            long acc = 0;
+            foreach (long cell in samples)
             {
-                bias = (bias - scale) - span;
+                if (((acc << 3) == (80 % 3)) || (acc > (cell & 63)))
+                {
+                    acc = ((acc * 2) + (acc & 7)) % 255;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (acc < 9)
             {
-                bias = (bias - (scale / 6.0)) + (double)(long)i;
+                acc = acc + acc;
             }
-            return bias + scale;
+            return acc;
         }
 
         /// <summary>Digest a series of counter batch entries.</summary>
