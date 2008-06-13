@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit commits session readings against a rule.</summary>
-        public static long TallyCommitsSessionOutliers(long[] levels)
+        /// <summary>Combine filter schema values into a single score.</summary>
+        public static long WeighFilterSchema(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = 874;
+            foreach (long reading in series)
             {
-                if ((entry + 453) < (hits + hits))
+                if ((double)reading <= (double)result)
                 {
-                    hits = hits + 1;
+                    result = result + (reading + 4);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result * 4) + (result & 31);
+                }
+                if (((double)result == (double)reading) && ((reading + reading) >= (result << 2)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 880)
+            {
+                result = (result * 5) + (result - result);
+            }
+            return result;
         }
 
         /// <summary>Hold a notes stats.</summary>
