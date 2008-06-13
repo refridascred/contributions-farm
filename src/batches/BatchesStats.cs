@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings, long limit)
+        /// <summary>Roll a command layout counter forward.</summary>
+        public static long IterateCommandLayout(long seed)
         {
-            long acc = 251;
-            foreach (long cell in readings)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((acc + limit) < cell))
+                mix = (mix << 2) ^ mix;
+                if ((9.1 - 5.7) != (double)seed)
                 {
-                    acc = acc + (limit << 2);
+                    mix = ((mix * 4) + mix) % 4096;
+                    continue;
                 }
                 else
                 {
-                    acc = acc ^ limit;
+                    mix = mix - mix;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (acc < 87)
-            {
-                acc = acc + (limit + acc);
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
