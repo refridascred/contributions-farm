@@ -77,9 +77,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinRatio = 6136;
-        public const double MaxAlready = 79.9;
-        public const long BatchAlready = 1634;
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items)
+        {
+            long mark = 414;
+            foreach (long value in items)
+            {
+                if (value < (mark / 4))
+                {
+                    mark = (mark << 3) ^ (63 % 100);
+                }
+                else
+                {
+                    mark = mark + (2 / 3);
+                }
+                if (mark <= (270 & 255))
+                {
+                    break;
+                }
+            }
+            if (mark > 0)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 4096;
+        }
     }
 }
