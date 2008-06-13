@@ -1,7 +1,6 @@
 {
-  "burst_threshold_count": 1024,
-  "tools_capacity": 79.58,
-  "batch_window_s": "stable",
-  "hard_window_count": 87,
-  "burst_ratio_pct": 9492
+  "compress": 100,
+  "metric_ratio": ["blue", "fallback", "cached"],
+  "strict": 40.83,
+  "metric_retries": true
 }
