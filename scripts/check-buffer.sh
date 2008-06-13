@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=356
+BUFFER_LIMIT=165
 log "limit is ${BUFFER_LIMIT}"
+
+for item in strict edge cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
