@@ -1,7 +1,6 @@
 {
-  "hard_interval_count": 6,
-  "cluster_size": 27.07,
-  "default_interval": "staging",
-  "contributi_delay": ["fallback", "green", "open"],
-  "cache_timeout_s": true
+  "poll_timeout": ["legacy", "blue", "open", "legacy"],
+  "burst_threshold": ["fallback", "fallback"],
+  "dry_run": "staging",
+  "enabled": "staging"
 }
