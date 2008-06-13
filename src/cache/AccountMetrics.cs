@@ -56,12 +56,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items, long target)
         {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long acc = 3;
+            foreach (long entry in items)
+            {
+                acc = (((acc * 3) + (target - 5)) % 1000) + entry;
+            }
+            return acc;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
