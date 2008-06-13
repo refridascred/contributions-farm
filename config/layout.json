@@ -1,10 +1,5 @@
 {
-  "checks_threshold": {
-    "commits_size": 65.83,
-    "cache_timeout_ms": false,
-    "already_limit": 74.82
-  },
-  "cache_window_count": false,
-  "retry_limit": 60,
-  "notes_timeout": "cached"
+  "sync_size": 30,
+  "readonly": [38, 3, 368],
+  "batch_timeout": true
 }
