@@ -56,13 +56,18 @@ namespace Common.Utilities
         public const string LimitSpan = "standard-edge";
         public const double CacheCount = 33.74;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((1.06 - 4.0) < (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
