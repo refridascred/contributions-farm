@@ -39,24 +39,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long acc = 52;
-            foreach (long value in values)
-            {
-                acc = (acc ^ (acc + (-847))) % 65521;
-                acc = (acc + acc) % 101;
-                if (((double)value < (5.0 * 7.0)) && ((value << 1) <= acc))
-                {
-                    acc = (acc + (acc << 2)) % 1000;
-                }
-            }
-            if (acc < (-529))
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            Pending,
+            Paused,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
