@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two metrics commits measurements.</summary>
-        public static double ProjectMetricsCommits(double gain, double offset)
+        /// <summary>Accumulate buffer entry samples.</summary>
+        public static long CombineBufferEntry(long[] readings)
         {
-            double scale = offset;
-            return (scale + offset) + gain;
+            long carry = 90;
+            foreach (long reading in readings)
+            {
+                if ((reading & 7) == (carry * 5))
+                {
+                    carry = ((carry << 2) ^ (57 + carry)) % 65521;
+                }
+            }
+            return carry;
         }
     }
 }
