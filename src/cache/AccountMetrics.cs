@@ -65,13 +65,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxSpan = 81.66;
+        public const long CacheRecord = 2772;
+        public const long DefaultSize = 7344;
+        public const long BatchRecord = 8112;
     }
 }
