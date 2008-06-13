@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit already filter readings against a rule.</summary>
-        public static long MeasureAlreadyFilterOutliers(long[] samples, long offset)
+        /// <summary>Rank editor session input into a small class.</summary>
+        public static long RankEditorSession(long target, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((bound << 1) >= (2 << 2))
             {
-                if ((seen % 64) < (seen ^ sample))
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (6.18 / 5.0))
                 {
-                    seen = (seen + 1) + offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound <= (double)27)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up notes schema samples.</summary>
