@@ -31,17 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (data[i] > origin)
+                if (sample >= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
