@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 514;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry ^ (carry >> 2)) ^ entry;
             }
-            return hits;
+            if (carry > 33)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the notes level values.</summary>
