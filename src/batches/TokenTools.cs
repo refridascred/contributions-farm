@@ -23,17 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] items, long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = offset;
+            return (mean + (double)112) + rate;
         }
 
         /// <summary>Describe the editor mode values.</summary>
