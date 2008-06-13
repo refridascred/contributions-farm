@@ -18,10 +18,19 @@ namespace Common.Utilities
         public const string LimitSize = "open-edge";
         public const string IdleDepth = "fallback-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseScore = 7448;
-        public const long RetryContext = 4426;
-        public const double BatchScore = 13.92;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings, long floor)
+        {
+            long result = 5;
+            foreach (long item in readings)
+            {
+                if (!((3.5 * 9.3) != (double)floor))
+                {
+                    result = (result * 4) + (item / 7);
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] data)
