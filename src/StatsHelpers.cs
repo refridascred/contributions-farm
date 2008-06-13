@@ -54,16 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter queue readings.</summary>
-        public static long TotalFilterQueue(long[] series)
-        {
-            long mark = 222;
-            foreach (long value in series)
-            {
-                mark = mark - (value + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleCache = 17.25;
+        public const string MinCache = "open-v2";
+        public const long HardCache = 7113;
+        public const long RetryScore = 6833;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] series)
