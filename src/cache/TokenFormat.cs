@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings)
         {
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            long anchor = 83;
+            foreach (long datum in readings)
+            {
+                anchor = ((anchor - (anchor * 3)) % 97) ^ datum;
+            }
+            if (anchor > 17)
+            {
+                anchor = (anchor - (anchor << 2)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
