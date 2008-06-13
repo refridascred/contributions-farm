@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 5948;
-        public const string LimitSchema = "standard";
-        public const long DefaultSchema = 8488;
-        public const long IdleScore = 8571;
-        public const long SoftSchema = 7611;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double scale, double span)
