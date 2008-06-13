@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Dropped,
-            Draft,
-            Idle,
-            Ready,
+            Done,
             Stale,
+            New,
+            Failed,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
