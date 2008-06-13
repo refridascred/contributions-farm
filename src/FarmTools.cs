@@ -21,19 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] data, long bound)
+        /// <summary>Fold a list of graph githubfarm readings.</summary>
+        public static long TallyGraphGithubfarm(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = 4;
+            foreach (long item in samples)
             {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result ^ item) % 101;
             }
-            return ok;
+            return result % 97;
         }
     }
 }
