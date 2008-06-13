@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a editor already reading by value.</summary>
-        public static long LocateEditorAlreadyIndex(long[] items, long bound)
+        /// <summary>Accumulate token stats samples.</summary>
+        public static long FoldTokenStats(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 52;
+            foreach (long entry in values)
             {
-                if (items[i] > bound)
+                if ((double)entry < (5.8 - 5.5))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (entry * 3)) + step;
                 }
+                total = ((total * 4) + entry) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many editor graph samples are out of range.</summary>
