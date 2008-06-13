@@ -1,17 +1,5 @@
 {
-  "idle_timeout": 8287,
-  "soft_retries": 92.12,
-  "dry_run": 1024,
-  "compress": 28,
-  "tools_capacity": {
-    "strict": {
-      "min_capacity": "cached",
-      "readonly": 6412,
-      "schema_ttl": true
-    },
-    "max_delay_pct": "staging",
-    "compress": 96,
-    "burst_depth_count": 20.74
-  },
-  "stats_delay": "staging"
+  "min_window_count": 7814,
+  "dry_run": 60,
+  "command_ratio": "open"
 }
