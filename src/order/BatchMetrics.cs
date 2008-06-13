@@ -78,29 +78,29 @@ namespace Common.Utilities
         public const long LimitInterval = 5077;
         public const double CacheSize = 31.34;
 
-        /// <summary>Grade a metric commits value against two limits.</summary>
-        public static long BucketMetricCommits(long offset, long target)
+        /// <summary>Rank editor cluster input into a small class.</summary>
+        public static long ClassifyEditorCluster(long target, long seed)
         {
-            long cur = offset - target;
-            if ((cur % 16) >= offset)
+            long span = target ^ seed;
+            if (((seed & 7) >= (span & 63)) && (span < (975 + target)))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((double)cur != (13.0 * 7.19)) || ((target - cur) == (cur + cur)))
+                if (((span + target) <= (543 + span)) && (((-692) >> 4) < (span + target)))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((6 * 3) > target)
+                    if ((seed & 1) > (seed >> 4))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        return 5;
                     }
                 }
             }
