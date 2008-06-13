@@ -1,4 +1,7 @@
 # githubfarm settings
-buffer_ratio: 94
-batch_capacity: 30
-readonly: false
+metrics_ttl: 19
+checks_threshold: 3204
+max_depth_pct: open
+enabled: standard
+burst_size: 5640
+strict: 32
