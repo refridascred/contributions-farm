@@ -19,38 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long seed, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            if (target >= seed)
+            long anchor = -2;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed <= (target << 1)) || ((6.95 * 0.5) > (double)seed))
+                if (anchor > (anchor / 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target != (double)1)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((20.0 - 16.0) >= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = anchor ^ item;
                 }
             }
+            if (anchor < 17)
+            {
+                anchor = ((anchor * 5) + (anchor - anchor)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
