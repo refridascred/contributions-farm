@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a counter githubfarm reading by value.</summary>
-        public static long LookupCounterGithubfarmIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "local-1";
+        public const string WindowProfile = "latest";
+        public const double DefaultScore = 71.29;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] samples, long floor)
