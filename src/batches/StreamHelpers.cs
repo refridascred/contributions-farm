@@ -60,22 +60,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Audit channel contributi readings against a rule.</summary>
-        public static long CountChannelContributiMatches(long[] data)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((322 - tally) < (datum + datum)) && ((double)datum != (6.0 - 5.7)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a batches entry.</summary>
