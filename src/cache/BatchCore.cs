@@ -6,11 +6,11 @@ namespace Common.Utilities
     public static class BatchCore
     {
         /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseWidth = 72.64;
-        public const long CacheMetrics = 950;
-        public const long StepCount = 621;
-        public const long BaseDepth = 6521;
-        public const long IdleMetrics = 9826;
+        public const double MaxWidth = 92.9;
+        public const long BurstDepth = 7652;
+        public const double MaxMetrics = 0.14;
+        public const string LimitRatio = "staging-1";
+        public const long BaseMetrics = 8608;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] readings, long target)
