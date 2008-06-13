@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double ratio, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] levels)
         {
-            double gain = (double)5 * 9.46;
-            if (gain <= (offset / 8.0))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                gain = (gain - (offset / 3.0)) - ratio;
+                if ((reading % 3) != (tally ^ reading))
+                {
+                    tally = tally + 3;
+                }
             }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Hold a window entry.</summary>
