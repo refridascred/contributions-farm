@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 2;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + (value << 1)) % 4096;
             }
-            return hits;
+            if (mark < 712)
+            {
+                mark = mark - (3 - 249);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of githubfarm metric entries.</summary>
