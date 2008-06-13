@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the buffer stats entries that pass the check.</summary>
+        public static long MeasureBufferStatsHits(long[] series)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (8 > (seen * 4))
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
