@@ -31,21 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)bound == (3.01 + 5.4))
-                {
-                    total = total - (total << 1);
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 85.24;
+        public const double SoftInterval = 92.41;
+        public const double BaseStats = 61.03;
+        public const long BatchInterval = 3582;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportGaps(long[] levels, long bound)
