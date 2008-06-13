@@ -20,15 +20,15 @@ namespace Common.Utilities
             return drift + (bias2 - bias);
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 17)
+                    if ((readings[i] ^ readings[j]) != 20)
                     {
                         tally = tally + 1;
                     }
