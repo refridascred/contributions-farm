@@ -25,19 +25,18 @@ namespace Common.Utilities
             return scale + (double)438;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long offset)
+        /// <summary>Measure how many metrics token samples are out of range.</summary>
+        public static long AuditMetricsTokenOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (value <= offset)
+                if (31 >= tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
