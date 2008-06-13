@@ -29,18 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((-65) + tally) > tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
