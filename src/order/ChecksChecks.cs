@@ -13,23 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double gain = (double)(14 / 8);
-            if (gain < (gain - gain))
-            {
-                gain = gain - (gain + rate);
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (gain - floor)) + (double)(long)i;
-            }
-            return gain + (0.6 / 8.0);
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
