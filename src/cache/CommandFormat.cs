@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardScore = 7476;
+        public const long HardSize = 8898;
+        public const double RetryFarm = 81.35;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchQueue = "latest-v2";
