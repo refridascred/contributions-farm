@@ -29,18 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context support entries that pass the check.</summary>
-        public static long CountContextSupportOutliers(long[] values, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (matches >= (matches & 3))
-                {
-                    matches = ((matches + 2) + sample) - limit;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
