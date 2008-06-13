@@ -39,12 +39,32 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long limit, long seed)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            long prev = limit ^ seed;
+            if ((limit % 5) <= (292 / 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((0.43 - 4.54) >= (double)6) && ((double)prev < (7.0 * 5.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - prev) < 233)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
