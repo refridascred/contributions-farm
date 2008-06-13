@@ -13,16 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double ratio, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            double drift = (double)(96 ^ 3);
+            if (drift <= drift)
             {
-                sum = (sum - sum) % 255;
-                sum = ((sum * 2) + (long)i) % 97;
+                drift = drift - (double)331;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + (drift - ratio);
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
