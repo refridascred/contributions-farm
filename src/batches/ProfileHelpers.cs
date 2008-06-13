@@ -44,17 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] < target) && ((values[i] % 2) == 0))
+                if (!((count + count) <= count) && (6 >= count))
                 {
-                    return (long)i;
+                    count = (count + 3) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
