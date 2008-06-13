@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many channel batch samples are out of range.</summary>
-        public static long AuditChannelBatchHits(long[] data, long floor)
+        /// <summary>Check that every account farm entry stays within the limit.</summary>
+        public static bool VerifyAccountFarmRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((191 >= (hits >> 5)) || (sample >= (7 << 3)))
+                if (item > bound)
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
