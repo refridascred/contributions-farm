@@ -27,15 +27,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double span)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double rate = span;
-            if (rate < 10.0)
-            {
-                rate = (rate + span) - scale;
-            }
-            return rate + rate;
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the checks status values.</summary>
