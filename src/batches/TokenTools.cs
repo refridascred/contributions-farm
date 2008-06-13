@@ -38,19 +38,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepDepth = 9108;
+        public const double RetryFormat = 54.94;
+        public const long MinFormat = 9419;
+        public const double BatchFormat = 17.7;
     }
 }
