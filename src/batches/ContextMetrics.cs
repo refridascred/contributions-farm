@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every window stats entry stays within the limit.</summary>
+        public static bool ValidateWindowStatsBounds(long[] values, long floor)
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count checks payload pairs that satisfy a relation.</summary>
