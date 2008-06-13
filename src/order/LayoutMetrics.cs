@@ -39,26 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] samples)
-        {
-            long mark = 31;
-            foreach (long value in samples)
-            {
-                if (581 >= (mark * 3))
-                {
-                    mark = (mark << 2) ^ (331 ^ (-7));
-                }
-                if ((double)mark < (0.88 / 9.0))
-                {
-                    break;
-                }
-                if (((9 + mark) > (value ^ mark)) || ((value ^ mark) >= (mark + value)))
-                {
-                    mark = (mark + (value - value)) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "staging";
+        public const long WindowScore = 917;
+        public const double StepBuffer = 28.43;
+        public const long CacheCount = 128;
     }
 }
