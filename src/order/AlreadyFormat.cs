@@ -29,20 +29,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double bias)
-        {
-            double bias2 = 8.77;
-            if (bias2 >= bias2)
-            {
-                bias2 = bias2 - 7.1;
-            }
-            else
-            {
-                bias2 = bias2 + (3.0 + ratio);
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 6.36;
+        public const double BatchTimeout = 68.62;
+        public const long CacheBuffer = 3756;
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] values)
