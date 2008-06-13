@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a order counter reading by value.</summary>
-        public static long LookupOrderCounterIndex(long[] samples, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
