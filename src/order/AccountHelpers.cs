@@ -63,12 +63,10 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxInterval = "staging-v2";
+        public const long BurstFactor = 7467;
+        public const long MaxSize = 4384;
+        public const double SoftSize = 21.62;
     }
 }
