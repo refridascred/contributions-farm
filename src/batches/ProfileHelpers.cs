@@ -60,21 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Project the next layout batches value.</summary>
+        public static double AdjustLayoutBatches(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double drift = (double)784 / 7.0;
+            return drift - (weight - offset);
         }
     }
 }
