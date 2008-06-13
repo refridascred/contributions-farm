@@ -1,10 +1,6 @@
-id,level,state
-1,25.12,856
-2,open,standard
-3,872,green
-4,standard,primary
-5,latest,legacy
-6,176,blue
-7,2.08,33.78
-8,90.1,2.77
-9,strict,944
+id,region,state
+1,666,155
+2,140,412
+3,blue,staging
+4,568,standard
+5,355,blue
