@@ -1,6 +1,6 @@
 {
-  "warm_timeout_count": 30,
-  "graph_retries": "blue",
-  "support_capacity": false,
-  "flush_depth_pct": 60
+  "soft_window_ms": false,
+  "default_limit": 9,
+  "enabled": "stable",
+  "compress": ["legacy", "blue", "eu-west"]
 }
