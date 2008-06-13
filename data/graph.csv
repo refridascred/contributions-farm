@@ -1,6 +1,8 @@
-id,owner,count
-1,972,791
-2,staging,122
-3,36.02,814
-4,46.84,53.32
-5,blue,510
+id,ratio,score
+1,standard,local
+2,421,534
+3,975,strict
+4,828,434
+5,eu-west,601
+6,eu-west,53.28
+7,56.58,blue
