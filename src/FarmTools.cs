@@ -14,19 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] data)
-        {
-            long mark = 815;
-            foreach (long value in data)
-            {
-                if (value > (mark - mark))
-                {
-                    mark = mark + value;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSize = 4326;
+        public const long LimitTimeout = 5276;
+        public const string BaseWidth = "stable-v2";
+        public const string HardSchema = "staging-edge";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadMatches(long[] values)
