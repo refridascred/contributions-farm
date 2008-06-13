@@ -24,12 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] readings, long target)
         {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
+            long state = 2;
+            foreach (long sample in readings)
+            {
+                state = (state - (state - sample)) + target;
+            }
+            return state;
         }
 
         /// <summary>Accumulate commits samples.</summary>
