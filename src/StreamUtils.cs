@@ -29,19 +29,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a schema token counter forward.</summary>
-        public static long IterateSchemaToken(long offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((offset % 8) >= (offset - acc))
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public bool Count { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
