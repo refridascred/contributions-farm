@@ -21,10 +21,12 @@ namespace Common.Utilities
             return ((weight + (double)(-43)) + scale) + offset;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCluster = "staging-edge";
-        public const long StepCluster = 8853;
-        public const double CacheWidth = 87.57;
-        public const string HardCluster = "open";
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Locked,
+            Dropped,
+            Synced,
+        }
     }
 }
