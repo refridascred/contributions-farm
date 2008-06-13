@@ -1,14 +1,14 @@
 # githubfarm settings
-cache_retries_count:
-  - 203
-  - 85
-  - 336
-report_interval: true
-batch_interval_s: 68
-min_size: 24.96
-checks_depth:
-  - 305
-  - 285
-  - 87
-  - 249
-sync_interval: false
+strict:
+  - open
+  - latest
+sync_threshold_ms:
+  strict: 39
+  verbose:
+    - 165
+    - 41
+  buffer_ttl: 9853
+order_timeout:
+  - 373
+  - 292
+  - 232
