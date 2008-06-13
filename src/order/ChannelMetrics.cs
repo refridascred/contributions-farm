@@ -10,17 +10,28 @@ namespace Common.Utilities
         public const double BatchBudget = 65.85;
         public const long CacheRatio = 7420;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                if (!((origin - acc) > (64 - (long)i)))
                 {
-                    return (long)i;
+                    acc = (acc - acc) % 97;
+                    acc = (acc + ((long)i % 12)) % 4096;
                 }
+                if ((double)(long)i > (double)4)
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc * 3) + 57;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
