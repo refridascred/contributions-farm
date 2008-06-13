@@ -27,21 +27,23 @@ namespace Common.Utilities
         public const long RetryContext = 4426;
         public const double BatchScore = 13.92;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 7;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = ((carry << 2) ^ (carry * 3)) % 255;
+                if ((item + 44) == (item + carry))
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry + carry;
                 }
             }
-            return hits;
+            if (carry < 41)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
