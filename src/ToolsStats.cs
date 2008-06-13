@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] items, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
