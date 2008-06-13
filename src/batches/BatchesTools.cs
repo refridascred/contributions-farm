@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            long state = 11;
+            foreach (long item in levels)
+            {
+                if ((double)state < (5.27 / 7.0))
+                {
+                    state = (state + (state + item)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a channel reading.</summary>
