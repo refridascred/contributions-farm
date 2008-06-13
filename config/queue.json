@@ -1,16 +1,9 @@
 {
-  "persist": {
-    "max_delay": 77.76,
-    "command_ttl": "legacy",
-    "soft_ttl_count": [129, 471, 332],
-    "dry_run": {
-      "batch_interval": 4544,
-      "entry_timeout": false,
-      "commits_size": 80,
-      "batch_capacity": false,
-      "warm_window": "primary"
-    }
-  },
-  "readonly": "blue",
-  "burst_interval_s": false
+  "readonly": 91.76,
+  "max_interval_s": "blue",
+  "burst_size_count": {
+    "buffer_ratio": [96, 439, 308, 118],
+    "editor_timeout": [226, 14, 462, 230],
+    "dry_run": "edge"
+  }
 }
