@@ -1,7 +1,10 @@
 {
-  "already_limit": 95.9,
-  "max_capacity_pct": "green",
-  "soft_size_ms": 8167,
-  "max_retries_count": 1024,
-  "poll_retries_ms": "cached"
+  "min_timeout_pct": {
+    "context_ratio": "edge",
+    "soft_delay_pct": 18.68,
+    "verbose": 58.79
+  },
+  "already_capacity": 4,
+  "retry_threshold": "staging",
+  "base_depth_s": 250
 }
