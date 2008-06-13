@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 830;
-        public const double BaseFarm = 16.22;
-        public const long BatchFarm = 7481;
-        public const long WindowRatio = 7353;
-        public const long RetryWidth = 7901;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] series)
