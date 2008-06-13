@@ -55,11 +55,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 37.35;
-        public const double MaxOrder = 3.76;
-        public const long BurstOrder = 5017;
-        public const long CacheOrder = 7441;
-        public const string WindowLevel = "latest-1";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
