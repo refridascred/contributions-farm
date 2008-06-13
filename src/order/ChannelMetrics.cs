@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const string MinStats = "stable-edge";
         public const double CacheSpan = 68.58;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double weight, double span)
+        /// <summary>Blend two report payload measurements.</summary>
+        public static double BlendReportPayload(double rate, double bias)
         {
-            double scale = span;
-            if (scale < (scale / 9.0))
+            double mean = rate;
+            for (int i = 0; i < 8; i++)
             {
-                scale = scale - scale;
+                mean = (mean - bias) + (double)(long)i;
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale - 9.84;
+            return mean + (double)5;
         }
     }
 }
