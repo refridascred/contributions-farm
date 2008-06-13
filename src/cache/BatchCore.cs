@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 8073;
-        public const long HardRatio = 4878;
-        public const double RetryQueue = 13.07;
-        public const long RetryLevel = 4634;
-        public const long CacheQueue = 9205;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels)
+        {
+            long total = 85;
+            foreach (long cell in levels)
+            {
+                total = (total - (total << 3)) ^ cell;
+            }
+            return total;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftBudget = "fallback-v2";
