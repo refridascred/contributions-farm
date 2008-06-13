@@ -48,13 +48,14 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Retry,
+            Stale,
+            Paused,
+            New,
         }
     }
 }
