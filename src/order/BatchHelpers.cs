@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 5842;
-        public const string LimitBuffer = "legacy-v2";
-        public const long IdleDepth = 2782;
-        public const string IdleRatio = "staging-1";
-        public const long StepBuffer = 5783;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
