@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long step, long step2)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            if ((step >> 4) == (6 << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 4) >= (step ^ 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
