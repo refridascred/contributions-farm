@@ -1,8 +1,15 @@
 {
-  "max_delay_ms": "legacy",
-  "poll_window_s": "staging",
-  "compress": 95.43,
-  "commits_ratio": [309, 326, 426, 367],
-  "graph_limit": 28,
-  "hard_capacity": 32
+  "idle_retries_s": ["latest", "edge", "open", "staging"],
+  "warm_window_pct": ["staging", "blue", "open"],
+  "schema_limit": {
+    "dry_run": "edge",
+    "contributi_window": "standard",
+    "editor_threshold": ["local", "green"]
+  },
+  "hard_delay_ms": "strict",
+  "batch_window_count": {
+    "flush_delay_s": "fallback",
+    "max_window_pct": "open",
+    "sync_timeout_pct": 100
+  }
 }
