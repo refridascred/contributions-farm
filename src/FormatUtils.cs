@@ -64,10 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstSize = "open-edge";
-        public const double SoftInterval = 5.04;
-        public const string WindowStats = "staging-v2";
-        public const long SoftRatio = 8842;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] data)
+        {
+            long result = 0;
+            foreach (long sample in data)
+            {
+                if (!(result >= (result + sample)))
+                {
+                    result = result + (46 / 5);
+                }
+            }
+            return result;
+        }
     }
 }
