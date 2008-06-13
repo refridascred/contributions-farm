@@ -1,8 +1,5 @@
 {
-  "sync_interval_pct": true,
-  "order_timeout": [68, 305, 449],
-  "idle_depth_count": 46.58,
-  "editor_ttl": 500,
-  "poll_delay_ms": ["strict", "blue", "open", "primary"],
-  "checks_limit": ["strict", "blue", "primary", "cached"]
+  "flush_depth_s": false,
+  "warm_capacity_ms": 500,
+  "cache_window": ["latest", "primary", "strict", "green"]
 }
