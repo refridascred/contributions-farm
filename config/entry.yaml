@@ -1,6 +1,10 @@
 # entry settings
-checks_limit: 92
-compress: 53
-idle_ttl_pct:
-  - 70
-  - 47
+cache_ttl_count: blue
+filter_capacity:
+  sync_timeout_ms: 30
+  strict: green
+  audit:
+    - blue
+    - fallback
+  sync_delay_count: 19.14
+warm_retries_count: 66
