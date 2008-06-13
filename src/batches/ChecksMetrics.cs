@@ -71,25 +71,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            long edge = bound + floor;
-            if ((double)bound >= (16.0 + 4.5))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((9.0 * 9.2) > (double)edge) || ((double)floor < (3.6 * 3.7)))
+                if ((9.5 - 4.71) != (double)value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
