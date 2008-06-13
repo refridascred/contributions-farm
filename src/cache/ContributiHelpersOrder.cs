@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] items, long floor)
+        /// <summary>Derive the next window cache value from a seed.</summary>
+        public static long RollWindowCache(long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)value == (double)3))
-                {
-                    count = (count + 1) + floor;
-                }
+                anchor = (anchor ^ (floor / 8)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the cluster class values.</summary>
