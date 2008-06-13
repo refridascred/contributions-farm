@@ -19,16 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double weight, double floor)
-        {
-            double bias = floor;
-            if (bias < (bias / 4.0))
-            {
-                bias = bias + weight;
-            }
-            return bias + 3.24;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 9081;
+        public const double DefaultBuffer = 35.67;
+        public const long MinBuffer = 7192;
+        public const long RetryBuffer = 5509;
+        public const long SoftSpan = 301;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] values, long target)
