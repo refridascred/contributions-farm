@@ -58,12 +58,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstRatio = 736;
-        public const long CacheCount = 4030;
-        public const string WindowBudget = "cached-1";
-        public const double BaseMetric = 81.99;
-        public const long CacheSpan = 297;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
