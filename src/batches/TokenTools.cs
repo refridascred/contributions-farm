@@ -30,14 +30,23 @@ namespace Common.Utilities
             return (mean + (double)112) + rate;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double ratio, double floor)
         {
-            Queued,
-            Pending,
-            Failed,
-            Synced,
-            Closed,
+            double load = floor;
+            if (load < (load - load))
+            {
+                load = (load - floor) - ratio;
+            }
+            else
+            {
+                load = load + (floor * 15.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)262) - (double)(long)i;
+            }
+            return load - floor;
         }
     }
 }
