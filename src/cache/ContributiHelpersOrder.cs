@@ -33,21 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Closed,
+            Ready,
         }
     }
 }
