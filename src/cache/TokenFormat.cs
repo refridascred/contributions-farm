@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] levels, long floor)
         {
-            long anchor = 83;
-            foreach (long datum in readings)
+            long acc = 171;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor - (anchor * 3)) % 97) ^ datum;
+                if ((double)cell == (5.8 * 6.79))
+                {
+                    acc = (acc ^ floor) % 4096;
+                }
             }
-            if (anchor > 17)
-            {
-                anchor = (anchor - (anchor << 2)) % 101;
-            }
-            return anchor % 4096;
+            return acc % 1000;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
