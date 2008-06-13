@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double LimitTimeout = 13.39;
         public const double BatchEntry = 98.71;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((score ^ seed) < score) || ((score * 5) <= (seed - 24)))
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 5) + (score - score)) % 65521;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
