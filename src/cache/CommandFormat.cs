@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state << 3) ^ (limit + 44)) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
