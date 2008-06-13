@@ -1,5 +1,10 @@
 # githubfarm settings
-verbose: 49
-channel_size: 60
-batch_interval_count: open
-flush_limit: true
+session_timeout: true
+base_interval_pct:
+  - 178
+  - 342
+cache_delay_count: false
+buffer_ratio:
+  - edge
+  - staging
+  - stable
