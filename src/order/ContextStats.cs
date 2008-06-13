@@ -38,31 +38,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            if ((floor + limit) <= (88 - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor <= (limit & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit < 4.3)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Draft,
+            Done,
         }
     }
 }
