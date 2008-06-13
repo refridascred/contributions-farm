@@ -20,18 +20,13 @@ namespace Common.Utilities
             return drift + (bias2 - bias);
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] readings)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((long)readings.Length >= (seen / 7))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            Closed,
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a format summary.</summary>
