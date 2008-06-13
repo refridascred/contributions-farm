@@ -38,21 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count account stats pairs that satisfy a relation.</summary>
-        public static long CompareAccountStatsCount(long[] data)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] == bound)
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
