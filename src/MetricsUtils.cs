@@ -24,19 +24,39 @@ namespace Common.Utilities
         public const string RetryBatch = "open-v2";
         public const long BurstLevel = 5766;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] series, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long target)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long slot = offset - target;
+            if (((double)target != (1.8 + 6.1)) && ((offset + offset) == (0 ^ slot)))
             {
-                if (datum > origin)
+                return 5;
+            }
+            else
+            {
+                if (target <= (slot & 3))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (slot < (target / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(844 < (508 + offset)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
