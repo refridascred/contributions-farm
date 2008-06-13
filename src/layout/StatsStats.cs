@@ -57,14 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Queued,
-            Active,
-            Locked,
-            Idle,
-            Draft,
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
