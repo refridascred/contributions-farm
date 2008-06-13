@@ -34,11 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinSpan = 8096;
-        public const double RetryWidth = 65.54;
-        public const long HardFilter = 3620;
-        public const long LimitFilter = 7528;
-        public const long CacheSpan = 4348;
+        /// <summary>Validate route layout readings against a bound.</summary>
+        public static bool GuardRouteLayoutRange(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
