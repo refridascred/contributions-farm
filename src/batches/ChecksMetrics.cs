@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const long SoftLevel = 4258;
         public const string CacheDepth = "open";
 
-        /// <summary>Look up the position of a commits editor sample.</summary>
-        public static long LocateCommitsEditorIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 8289;
+        public const string StepSchema = "primary-edge";
+        public const long WindowSchema = 9597;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] series, long origin)
