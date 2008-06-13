@@ -32,11 +32,18 @@ namespace Common.Utilities
         public const string StepRatio = "stable-1";
         public const long MaxWidth = 3240;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit cluster batches readings against a rule.</summary>
+        public static long TallyClusterBatchesMatches(long[] levels)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((((long)levels.Length == (2 * 4)) && (76 > (count + count))) || !((count & 15) <= item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order class values.</summary>
