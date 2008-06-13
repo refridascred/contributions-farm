@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Count the record metrics entries that pass the check.</summary>
+        public static long MeasureRecordMetricsHits(long[] levels)
         {
-            Failed,
-            Closed,
-            Synced,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item + tally) <= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
