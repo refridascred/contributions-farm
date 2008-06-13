@@ -66,15 +66,17 @@ namespace Common.Utilities
             return rate - 1.5;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] data, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
