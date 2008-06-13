@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long MinNotes = 115;
         public const long RetrySize = 8894;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 513;
+        public const double SoftFilter = 33.11;
+        public const long WindowFilter = 4526;
+        public const long HardRatio = 981;
+        public const long LimitFilter = 3352;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheGaps(long[] items, long floor)
