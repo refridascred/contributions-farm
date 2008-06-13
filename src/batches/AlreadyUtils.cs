@@ -87,11 +87,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "strict-1";
-        public const string IdleStats = "latest";
-        public const long MaxSize = 579;
-        public const long RetryTimeout = 9557;
-        public const string BurstStats = "latest";
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long TallyFormatAccount(long[] items, long seed)
+        {
+            long anchor = 49;
+            foreach (long item in items)
+            {
+                if ((item ^ anchor) <= (seed & 31))
+                {
+                    anchor = (anchor - (seed * 5)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (item ^ 8);
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
