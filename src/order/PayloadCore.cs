@@ -37,18 +37,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings, long limit)
+        /// <summary>Classify a stats metrics pair into a bucket.</summary>
+        public static long GradeStatsMetrics(long origin, long seed)
         {
-            long anchor = 43;
-            foreach (long entry in readings)
+            long prev = origin ^ seed;
+            if (16.0 > (double)prev)
             {
-                if ((anchor < ((-335) + anchor)) && ((anchor - limit) >= (long)readings.Length))
+                return 2;
+            }
+            else
+            {
+                if (!(prev < (origin % 12)))
                 {
-                    anchor = ((anchor * 2) + (723 * 4)) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)prev == (13.0 - 8.8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return anchor % 65521;
         }
     }
 }
