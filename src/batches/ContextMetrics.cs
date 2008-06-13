@@ -59,10 +59,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxInterval = 9698;
-        public const long DefaultMetric = 6008;
-        public const string CacheMetric = "alpha";
-        public const long MinWidth = 9752;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
