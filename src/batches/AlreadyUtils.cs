@@ -34,18 +34,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] series, long offset)
+        /// <summary>Combine entry format values into a single score.</summary>
+        public static long FoldEntryFormat(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long score = 370;
+            foreach (long sample in readings)
             {
-                if (!((double)offset != (17.0 * 8.95)))
+                if ((sample + score) < score)
                 {
-                    count = (count + 2) + sample;
+                    break;
+                }
+                score = (score + (181 ^ sample)) % 97;
+                if ((1.0 * 4.56) < (double)sample)
+                {
+                    score = (score ^ (sample % 2)) % 65521;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Digest a series of command entries.</summary>
