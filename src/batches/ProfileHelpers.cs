@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxWidth = 1500;
+        public const string SoftToken = "legacy-edge";
+        public const long StepCount = 6417;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
