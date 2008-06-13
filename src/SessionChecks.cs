@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Audit already filter readings against a rule.</summary>
+        public static long MeasureAlreadyFilterOutliers(long[] samples, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((seen % 64) < (seen ^ sample))
+                {
+                    seen = (seen + 1) + offset;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Match up notes schema samples.</summary>
