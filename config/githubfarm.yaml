@@ -1,11 +1,7 @@
 # githubfarm settings
-default_limit:
-  - latest
-  - stable
-retry_timeout:
-  - fallback
-  - staging
-  - blue
-  - staging
-default_capacity: 70
-min_ratio_pct: strict
+flush_ratio_s: true
+max_delay: 59
+default_ratio: 577
+default_timeout_s: 1796
+audit: primary
+idle_capacity_pct: true
