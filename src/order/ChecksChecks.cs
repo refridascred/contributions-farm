@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long mix = -552;
-            foreach (long cell in data)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                long edge = (bound * 3) % 24;
-                mix = (mix ^ (edge & 127)) ^ cell;
-                if (!(((long)data.Length >> 5) <= mix))
+                if (!((result - origin) <= 898))
                 {
-                    mix = mix ^ (520 * 5);
+                    result = (result * 3) + (251 + origin);
                 }
-                if (!((24 / 5) > bound))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
