@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate token account samples.</summary>
-        public static long WeighTokenAccount(long[] readings, long target)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long mix = 3;
-            foreach (long item in readings)
-            {
-                if (!((item * 2) > target))
-                {
-                    mix = mix ^ target;
-                }
-            }
-            return mix % 4096;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the queue contributi series from a seed.</summary>
