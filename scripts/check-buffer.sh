@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+BUFFER_LIMIT=209
+log "limit is ${BUFFER_LIMIT}"
+
+for item in cached edge local; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy staging latest blue; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=78
-log "limit is ${BUFFER_LIMIT}"
