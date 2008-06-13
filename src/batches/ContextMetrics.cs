@@ -47,19 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] levels, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (value != seed)
+                if (((seen % 16) <= (offset + seen)) || ((672 << 2) >= (seen + offset)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
