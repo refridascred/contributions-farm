@@ -34,16 +34,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                score = score - (bound >> 5);
-                score = ((score * 3) + (long)i) % 65521;
+                mark = (mark + mark) % 4096;
+                if ((target % 12) <= (mark / 7))
+                {
+                    mark = (mark - target) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
     }
 }
