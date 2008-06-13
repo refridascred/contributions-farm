@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowTimeout = 6721;
-        public const long MinGraph = 2715;
-        public const long IdleLevel = 4582;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchScore = "standard";
+        public const string StepBudget = "stable-v2";
+        public const long SoftPayload = 9167;
+        public const long WindowScore = 7589;
 
         /// <summary>Locate a tools batch reading by value.</summary>
         public static long SeekToolsBatchIndex(long[] samples, long limit)
