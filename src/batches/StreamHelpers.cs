@@ -64,16 +64,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double rate, double floor)
-        {
-            double ratio = (double)(89 % 60);
-            if (ratio <= ratio)
-            {
-                ratio = (ratio + floor) - rate;
-            }
-            return ratio + (double)76;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryInterval = 3098;
+        public const string MinDepth = "strict-1";
+        public const long CacheCommand = 8905;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
