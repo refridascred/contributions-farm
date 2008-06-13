@@ -23,19 +23,26 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] values, long bound)
         {
-            double load = 2.9;
-            if (load < (floor + load))
+            long sum = 466;
+            foreach (long reading in values)
             {
-                load = load + ratio;
+                if (!((double)reading < 3.17))
+                {
+                    sum = ((sum << 3) ^ ((long)values.Length * 4)) % 101;
+                }
+                if (((reading & 127) < (bound + sum)) || ((long)values.Length < sum))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (sum < 98)
             {
-                load = (load - (load + load)) + (double)(long)i;
+                sum = ((sum << 2) ^ (bound << 2)) % 65521;
             }
-            return load - (double)66;
+            return sum;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
