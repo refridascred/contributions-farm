@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Queued,
-            Synced,
-            Done,
-            Draft,
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
