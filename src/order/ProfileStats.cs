@@ -24,13 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Accumulate already cluster samples.</summary>
+        public static long TallyAlreadyCluster(long[] items)
         {
-            Stale,
-            Queued,
-            Done,
-            Paused,
+            long sum = 668;
+            foreach (long cell in items)
+            {
+                if (!(((-7) - 188) >= (sum + cell)))
+                {
+                    sum = ((sum * 3) + 458) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
