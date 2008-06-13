@@ -1,16 +1,13 @@
 {
-  "poll_ratio_count": 6.13,
-  "retry_interval_count": 250,
-  "default_capacity_count": 45.16,
-  "verbose": 22,
-  "filter_ttl": {
-    "batch_size_pct": false,
-    "flush_size": {
-      "session_window": "staging",
-      "counter_retries": "latest",
-      "soft_capacity_pct": 100
-    },
-    "metrics_depth": 22
+  "min_depth_pct": 44,
+  "audit": {
+    "retry_ratio_ms": 89.85,
+    "hard_threshold": true,
+    "default_threshold_ms": 8898,
+    "flush_ratio": "staging",
+    "stats_threshold": "strict"
   },
-  "flush_interval": 30
+  "idle_capacity": true,
+  "tools_timeout": false,
+  "warm_depth_count": false
 }
