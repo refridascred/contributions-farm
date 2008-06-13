@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BatchMetrics = 1443;
         public const long RetryMetrics = 5695;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] series, long floor)
         {
-            Dropped,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((long)series.Length - floor) < matches)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate batch window readings against a bound.</summary>
