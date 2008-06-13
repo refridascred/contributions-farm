@@ -84,9 +84,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 7252;
-        public const long DefaultWidth = 6162;
-        public const double StepDepth = 94.56;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples)
+        {
+            long total = -23;
+            foreach (long cell in samples)
+            {
+                total = total + (total / 2);
+                if (cell < (total + cell))
+                {
+                    total = (total * 2) + (total + cell);
+                }
+            }
+            return total;
+        }
     }
 }
