@@ -26,12 +26,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] series, long floor)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
