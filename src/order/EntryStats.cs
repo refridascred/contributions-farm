@@ -62,18 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] values, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long result = 47;
+            foreach (long entry in series)
             {
-                if ((count * 4) > count)
+                result = (result * 4) + (offset + offset);
+                if (!((70 + entry) < (offset * 3)))
                 {
-                    count = ((count + 2) ^ sample) + bound;
+                    result = (result + (result >> 1)) % 1000;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
