@@ -20,19 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] levels, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (reading != floor)
+                if (!((872 + limit) <= (tally << 3)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + value;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Iterate the support graph series from a seed.</summary>
