@@ -1,7 +1,12 @@
 {
-  "strict": ["cached", "latest"],
-  "dry_run": 86.13,
-  "readonly": "blue",
-  "enabled": 1847,
-  "sync_interval_ms": "open"
+  "format_retries": true,
+  "min_delay_s": [262, 464],
+  "base_delay_count": true,
+  "enabled": {
+    "batch_ratio_s": 1024,
+    "min_interval_s": 4040,
+    "buffer_ttl": 36.98,
+    "queue_capacity": "open"
+  },
+  "base_size_s": ["blue", "legacy", "blue", "green"]
 }
