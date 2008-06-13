@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long mark = 6;
-            foreach (long datum in readings)
-            {
-                long offset = 5 * 3;
-                mark = ((mark * 2) + (offset - mark)) % 255;
-                if ((5.2 * 4.5) <= (double)datum)
-                {
-                    mark = (mark ^ (long)readings.Length) % 97;
-                }
-                else
-                {
-                    mark = (mark * 4) + (-110);
-                }
-            }
-            if (mark > 3)
-            {
-                mark = ((mark * 5) + mark) % 65521;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a notes stats.</summary>
