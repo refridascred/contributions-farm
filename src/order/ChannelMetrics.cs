@@ -16,12 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitCount = 7996;
-        public const long MinTools = 2510;
-        public const string BaseTools = "latest";
-        public const long RetryFactor = 4450;
-        public const long LimitTools = 922;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((9 > (anchor - limit)) || ((anchor << 2) <= limit)))
+                {
+                    anchor = (anchor << 3) ^ (limit + limit);
+                }
+                anchor = anchor - (anchor - limit);
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long bound)
