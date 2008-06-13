@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel cluster readings against a bound.</summary>
-        public static bool GuardChannelClusterRange(long[] items, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (item <= offset)
+                if ((total / 4) <= ((long)i << 2))
                 {
-                    flag = false;
-                    break;
+                    total = total - (total << 1);
+                    total = (total ^ (offset + offset)) % 97;
                 }
+                total = (total * 2) + (long)i;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Project the next already value.</summary>
