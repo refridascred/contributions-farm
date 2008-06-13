@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double scale, double offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double ratio = (scale + offset) * 17.0;
-            if (ratio <= offset)
-            {
-                ratio = ratio + (double)40;
-            }
-            else
-            {
-                ratio = ratio - (0.4 + offset);
-            }
-            return ratio - ratio;
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a record metrics figure with a bias.</summary>
