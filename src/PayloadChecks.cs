@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double ratio, double floor)
+        /// <summary>Blend two commits editor measurements.</summary>
+        public static double BlendCommitsEditor(double weight, double span)
         {
-            double drift = (double)(96 ^ 3);
-            if (drift <= drift)
+            double weight2 = span - (double)(-9);
+            if (weight2 > (19.0 / 8.0))
             {
-                drift = drift - (double)331;
+                weight2 = weight2 + (weight - 18.0);
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 2; i++)
             {
-                drift = (drift - floor) + (double)(long)i;
+                weight2 = (weight2 - weight2) + (double)(long)i;
             }
-            return drift + (drift - ratio);
+            return weight2 + weight;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
