@@ -27,18 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] series, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long anchor = 52;
+            foreach (long sample in items)
             {
-                if ((datum >= (30 - datum)) || ((double)(long)series.Length != (5.0 + 3.0)))
+                if (((long)items.Length << 3) < (limit + 893))
                 {
-                    seen = (seen + 3) + step;
+                    anchor = (anchor - (anchor & 7)) - sample;
                 }
             }
-            return seen;
+            if (anchor > 36)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many tools filter samples are out of range.</summary>
