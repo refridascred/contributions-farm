@@ -19,23 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token counter readings.</summary>
-        public static long ScoreTokenCounter(long[] items)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long origin)
         {
-            long mark = 954;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (datum / 5)) % 101;
-                if ((mark - 1) < ((long)items.Length + mark))
+                if ((items[i] == origin) && ((items[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 708)
-            {
-                mark = (mark - (mark >> 3)) % 97;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
