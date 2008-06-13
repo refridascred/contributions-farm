@@ -1,10 +1,7 @@
 # githubfarm settings
-warm_retries_pct:
-  poll_ttl_s: standard
-  strict: 45
-  route_retries: 24
-  idle_retries_pct: fallback
-  flush_threshold_ms: 62
-stats_limit: primary
-burst_ttl_pct: 61
-support_depth: edge
+burst_delay: 500
+min_interval_s:
+  - 368
+  - 300
+hard_depth_s: 24.09
+channel_threshold: 71
