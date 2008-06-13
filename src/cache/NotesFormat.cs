@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 1869;
-        public const long CacheProfile = 6884;
-        public const string HardSize = "staging-1";
-        public const string WindowProfile = "alpha-1";
-        public const string BurstCount = "local-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "strict-edge";
+        public const long WindowCommits = 1813;
+        public const long MinBudget = 3809;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] series, long bound)
