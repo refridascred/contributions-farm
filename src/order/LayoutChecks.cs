@@ -62,22 +62,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = 48;
+            foreach (long cell in items)
             {
-                if (!((5.1 / 5.0) >= (double)seen))
+                mix = (mix + 5) % 97;
+                mix = (mix + (cell >> 2)) % 255;
+                if (((cell * 2) <= (159 * 3)) || ((mix + 5) != (mix + mix)))
                 {
-                    seen = (seen + 2) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
