@@ -60,17 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                score = score - (step / 6);
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardDepth = 4503;
+        public const long HardLayout = 2076;
+        public const long IdleLayout = 5812;
+        public const long RetryCount = 7862;
+        public const long BaseScore = 4606;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
