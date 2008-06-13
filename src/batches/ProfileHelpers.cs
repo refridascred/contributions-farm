@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxWidth = 1500;
-        public const string SoftToken = "legacy-edge";
-        public const long StepCount = 6417;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Synced,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
