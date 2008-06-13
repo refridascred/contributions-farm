@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] values, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (values[i] == origin)
+                if ((step - 80) < (matches - item))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
