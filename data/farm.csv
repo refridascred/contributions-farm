@@ -1,8 +1,7 @@
-id,ratio,level,count,weight
-1,edge,424,835,72.61
-2,308,open,102,811
-3,72,13.77,eu-west,11.26
-4,local,130,eu-west,733
-5,134,825,75.17,88.74
-6,standard,blue,989,10.98
-7,145,23.19,660,local
+id,weight,label,score
+1,622,stable,69.66
+2,31.71,508,81.08
+3,596,45.74,9.56
+4,standard,79.24,98.23
+5,4.93,259,90.88
+6,994,741,primary
