@@ -28,14 +28,21 @@ namespace Common.Utilities
         public const long BurstWidth = 1099;
         public const double WindowGithubfarm = 88.94;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            Synced,
-            Pending,
-            Stale,
-            Retry,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
