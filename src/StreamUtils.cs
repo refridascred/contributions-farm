@@ -20,13 +20,12 @@ namespace Common.Utilities
             return gain2 + (gain - floor);
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Stale,
-            Pending,
-            Locked,
-            Dropped,
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
