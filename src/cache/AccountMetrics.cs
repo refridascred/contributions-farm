@@ -54,19 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] levels, long floor)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the profile mode values.</summary>
