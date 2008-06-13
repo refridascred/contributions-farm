@@ -1,8 +1,7 @@
-id,token,level
-1,51.06,796
-2,41.21,strict
-3,40.11,445
-4,local,661
-5,2.87,854
-6,staging,local
-7,550,latest
+id,token,state,owner
+1,primary,83.42,8.63
+2,771,82.8,74.78
+3,cached,88.66,strict
+4,75.15,0,edge
+5,53.59,3.58,812
+6,25.58,693,134
