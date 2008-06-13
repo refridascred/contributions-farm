@@ -43,12 +43,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items)
         {
-            Draft,
-            Pending,
-            Retry,
+            long mix = 6;
+            foreach (long cell in items)
+            {
+                mix = ((mix + ((long)items.Length + mix)) % 255) + cell;
+                if ((mix + mix) != (mix & 3))
+                {
+                    break;
+                }
+            }
+            if (mix < 40)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix % 65521;
         }
     }
 }
