@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate batch tools samples.</summary>
-        public static long ScoreBatchTools(long[] items, long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mark = 36;
-            foreach (long cell in items)
-            {
-                if (3 <= mark)
-                {
-                    mark = mark + (mark >> 5);
-                }
-                if (!((floor ^ cell) <= (cell + mark)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
