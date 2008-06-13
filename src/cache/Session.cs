@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ (limit ^ anchor)) - (long)i2;
                 }
+                anchor = anchor + (limit % 2);
+                if (limit <= (limit - limit))
+                {
+                    anchor = (anchor ^ (limit + 609)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
