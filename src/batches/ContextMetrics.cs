@@ -50,15 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] levels, long seed)
         {
-            long score = 8;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                score = (score + score) ^ reading;
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
