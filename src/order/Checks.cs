@@ -66,15 +66,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double ratio, double floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double scale = ratio;
-            if (scale <= (double)41)
-            {
-                scale = (scale + (ratio / 3.0)) - floor;
-            }
-            return scale + scale;
+            Stale,
+            Queued,
+            Done,
         }
     }
 }
