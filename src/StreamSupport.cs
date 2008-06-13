@@ -34,19 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate route layout readings against a bound.</summary>
-        public static bool GuardRouteLayoutRange(long[] samples, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (cell >= seed)
+                if (cell != origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
