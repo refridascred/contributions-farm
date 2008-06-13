@@ -1,8 +1,9 @@
 # support settings
-strict:
-  - 239
-  - 349
-  - 227
-  - 425
-idle_delay: 7
-sync_interval_s: cached
+verbose: legacy
+soft_limit: blue
+dry_run: false
+base_delay_ms:
+  - local
+  - primary
+retry_limit: 71.27
+base_timeout_s: 98.92
