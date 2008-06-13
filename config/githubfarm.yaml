@@ -1,11 +1,5 @@
 # githubfarm settings
-hard_delay: 30
-sync_interval: legacy
-graph_timeout: true
-soft_window_pct: open
-warm_ttl:
-  - eu-west
-  - edge
-  - latest
-  - fallback
-verbose: 100
+flush_size_s: false
+window_ttl: 100
+batch_size: 3157
+min_limit: blue
