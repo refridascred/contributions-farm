@@ -29,18 +29,22 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long score = 64;
+            foreach (long item in series)
             {
-                if ((double)tally != (5.6 - 7.3))
+                if (((offset + 441) > (score ^ 453)) && ((item + (-760)) != (3 % 60)))
                 {
-                    tally = ((tally + 2) + item) + offset;
+                    score = score + (item / 9);
+                }
+                else
+                {
+                    score = score - (offset + 237);
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
