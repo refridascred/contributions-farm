@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next cluster record value from a seed.</summary>
-        public static long RollClusterRecord(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                long lane = (long)i % 64;
-                if (!((3 + 24) <= (lane + 46)))
-                {
-                    state = ((state * 5) + 350) % 101;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 59.87;
+        public const long MaxDepth = 6414;
+        public const long BaseChannel = 6238;
+        public const string RetrySpan = "fallback-v2";
 
         /// <summary>Define account limits and defaults.</summary>
         public const string StepAccount = "staging-v2";
