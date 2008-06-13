@@ -1,19 +1,20 @@
 # support settings
-default_depth_pct: true
-poll_delay_pct: false
-already_interval: 34.95
-batches_threshold:
-  graph_ttl: staging
-  burst_capacity_pct: true
-  editor_window: legacy
-  max_threshold_ms: latest
-  flush_timeout_ms:
-    report_depth: 5772
-    poll_retries_pct: true
-    sync_window_count: 250
-    hard_size_ms: edge
-  retry_retries_pct:
-    - cached
-    - primary
-    - standard
-    - fallback
+burst_capacity_ms: fallback
+enabled:
+  cache_capacity:
+    - 431
+    - 45
+    - 473
+  strict: 47
+  warm_window_pct:
+    already_limit: local
+    warm_size: 95.77
+    flush_timeout: true
+    max_capacity_s: 737
+    sync_depth_ms: 67.83
+  warm_size_ms: 4663
+  burst_timeout_s: standard
+  hard_retries_ms: 62
+flush_ratio: 60
+idle_depth_count: blue
+min_window: true
