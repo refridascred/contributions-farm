@@ -32,10 +32,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepDepth = 9108;
-        public const double RetryFormat = 54.94;
-        public const long MinFormat = 9419;
-        public const double BatchFormat = 17.7;
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double weight, double offset)
+        {
+            double load = weight * 4.73;
+            if (load <= weight)
+            {
+                load = load - (offset + weight);
+            }
+            else
+            {
+                load = load - (offset * 5.5);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (weight * 3.98)) - (double)(long)i;
+            }
+            return load - weight;
+        }
     }
 }
