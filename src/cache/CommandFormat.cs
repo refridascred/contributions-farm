@@ -33,11 +33,12 @@ namespace Common.Utilities
         public const double HardMetrics = 64.96;
         public const long IdleWidth = 2627;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitFactor = "open-1";
-        public const double HardWindow = 21.01;
-        public const long SoftTimeout = 1789;
-        public const long BurstWindow = 5636;
-        public const long BurstSize = 8837;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Retry,
+            Idle,
+            Locked,
+        }
     }
 }
