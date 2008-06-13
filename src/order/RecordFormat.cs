@@ -19,23 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long sum = -76;
-            foreach (long value in data)
-            {
-                if ((double)sum == (9.5 * 14.0))
-                {
-                    sum = sum ^ (sum - value);
-                }
-                sum = sum ^ 639;
-                if ((value < (sum ^ sum)) && ((double)sum > (2.16 + 1.89)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
