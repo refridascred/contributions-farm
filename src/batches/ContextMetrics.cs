@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] values, long limit)
+        /// <summary>Check that every stats order entry stays within the limit.</summary>
+        public static bool ValidateStatsOrderBounds(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (sample > limit)
+                if (item != target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Derive the next channel graph value from a seed.</summary>
