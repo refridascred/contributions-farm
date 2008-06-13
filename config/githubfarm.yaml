@@ -1,5 +1,14 @@
 # githubfarm settings
-flush_size_s: false
-window_ttl: 100
-batch_size: 3157
-min_limit: blue
+cache_retries_count:
+  - 203
+  - 85
+  - 336
+report_interval: true
+batch_interval_s: 68
+min_size: 24.96
+checks_depth:
+  - 305
+  - 285
+  - 87
+  - 249
+sync_interval: false
