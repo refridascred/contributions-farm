@@ -14,17 +14,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Fold a list of order readings.</summary>
