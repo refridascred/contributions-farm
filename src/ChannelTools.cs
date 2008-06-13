@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long bound, long origin)
         {
-            double ratio = bias;
-            return ratio - offset;
+            if ((double)origin > (18.0 / 7.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.96 / 3.0) < (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session level values.</summary>
