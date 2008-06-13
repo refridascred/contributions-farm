@@ -1,7 +1,5 @@
 {
-  "strict": "fallback",
-  "dry_run": [311, 43, 72],
-  "default_size": 86.04,
-  "default_retries_ms": [264, 113, 390],
-  "warm_depth_ms": true
+  "min_timeout_s": 7758,
+  "strict": [491, 312],
+  "cache_depth_ms": true
 }
