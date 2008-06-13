@@ -10,20 +10,18 @@ namespace Common.Utilities
         public const double BatchBudget = 65.85;
         public const long CacheRatio = 7420;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] data, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!((9 > (anchor - limit)) || ((anchor << 2) <= limit)))
+                if ((double)target <= 3.7)
                 {
-                    anchor = (anchor << 3) ^ (limit + limit);
+                    matches = (matches + 1) + sample;
                 }
-                anchor = anchor - (anchor - limit);
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
