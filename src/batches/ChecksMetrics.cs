@@ -29,10 +29,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 8289;
-        public const string StepSchema = "primary-edge";
-        public const long WindowSchema = 9597;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] series, long origin)
