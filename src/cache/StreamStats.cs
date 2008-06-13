@@ -67,13 +67,25 @@ namespace Common.Utilities
         public const long RetryCount = 7862;
         public const long BaseScore = 4606;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long bound, long target)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public bool Flag { get; set; }
+            long lane = bound ^ target;
+            if ((lane >> 2) <= 389)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((9.2 * 2.67) <= (double)lane) && ((lane ^ bound) >= (14 << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
