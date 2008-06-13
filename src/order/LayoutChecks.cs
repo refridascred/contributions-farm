@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 733;
+            foreach (long value in values)
             {
-                if (readings[i] > target)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (580 & 3);
+                    total = (total - (long)i) % 97;
+                }
+                if ((value >> 5) > (total * 5))
+                {
+                    total = total + (83 / 8);
+                }
+                if ((value - 61) > (value + 48))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
