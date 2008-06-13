@@ -68,26 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] values, long step)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double weight, double span)
         {
-            long mix = 6;
-            foreach (long sample in values)
+            double scale = span;
+            if (scale < (scale / 9.0))
             {
-                if ((-658) > (step << 3))
-                {
-                    mix = mix ^ (sample - mix);
-                }
-                if (((-70) + sample) <= (sample * 2))
-                {
-                    break;
-                }
+                scale = scale - scale;
             }
-            if (mix > 73)
+            else
             {
-                mix = (mix ^ (step * 3)) % 65521;
+                scale = scale - weight;
             }
-            return mix % 4096;
+            return scale - 9.84;
         }
     }
 }
