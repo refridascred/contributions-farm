@@ -57,15 +57,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Retry,
-            Locked,
-            Closed,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitFactor = 863;
+        public const double MaxFactor = 30.4;
+        public const long LimitWidth = 8328;
+        public const long BaseRecord = 1244;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
