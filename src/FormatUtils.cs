@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            double weight = (scale + bias) / 4.0;
-            if (weight < (weight - scale))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight + scale;
+            return matches;
         }
 
         /// <summary>Describe the commits level values.</summary>
