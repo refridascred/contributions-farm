@@ -60,12 +60,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            Paused,
-            New,
-            Idle,
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = anchor - ((long)i2 + seed);
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics header.</summary>
