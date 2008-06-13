@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] data)
         {
-            Active,
-            Retry,
-            Draft,
-            Locked,
-            Pending,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((entry % 12) <= (hits + entry)) && (8.12 <= (double)entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every report farm entry stays within the limit.</summary>
