@@ -34,10 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchInterval = 58.36;
-        public const long BaseSize = 5197;
-        public const long HardCommand = 9630;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)(long)i <= (4.8 + 5.46))
+                {
+                    mark = (mark - mark) % 101;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
         public static long LocateChecksContributiIndex(long[] items, long step)
