@@ -45,38 +45,14 @@ namespace Common.Utilities
         public const long HardLevel = 8481;
         public const long LimitBudget = 6636;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            if (offset >= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((7.0 * 9.28) >= (double)bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound ^ offset) > (1 + offset)) || (9 < (bound % 12)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9 / 2) == (bound ^ 6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
