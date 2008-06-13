@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Roll a channel graph counter forward.</summary>
+        public static long IterateChannelGraph(long origin)
         {
-            Locked,
-            Dropped,
-            Active,
-            Stale,
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
