@@ -25,11 +25,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchBudget = "fallback-v2";
-        public const long IdleScore = 8576;
-        public const long LimitCommand = 2327;
-        public const long HardScore = 1510;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "fallback";
+        public const long CacheMetrics = 7665;
+        public const long BurstScore = 5617;
+        public const string StepRatio = "stable-1";
+        public const long MaxWidth = 3240;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
