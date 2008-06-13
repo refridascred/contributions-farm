@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long acc = 967;
-            foreach (long cell in values)
-            {
-                if (acc < (8 + cell))
-                {
-                    acc = (acc - (cell / 9)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc * 4)) % 4096;
-                }
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
