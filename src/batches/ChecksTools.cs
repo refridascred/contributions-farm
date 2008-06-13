@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every account farm entry stays within the limit.</summary>
-        public static bool VerifyAccountFarmRange(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardEntry = "local-1";
+        public const long RetryEntry = 6075;
+        public const long CacheLevel = 8565;
+        public const double LimitTimeout = 13.39;
+        public const double BatchEntry = 98.71;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] samples, long origin)
