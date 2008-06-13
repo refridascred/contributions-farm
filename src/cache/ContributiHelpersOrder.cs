@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -84;
+            foreach (long value in values)
             {
-                if ((levels[i] < limit) && ((levels[i] % 3) != 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ ((-188) & 1)) + (long)i;
+                }
+                if ((7.49 * 4.74) != (double)value)
+                {
+                    carry = carry + (carry + carry);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Fold a list of profile notes readings.</summary>
