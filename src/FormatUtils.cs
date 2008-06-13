@@ -53,17 +53,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] samples, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ (5 - (long)i)) % 4096;
-                acc = (acc * 2) + (acc - acc);
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Grade a checks notes value against two limits.</summary>
