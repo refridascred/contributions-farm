@@ -21,26 +21,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long mix = 80;
-            foreach (long sample in samples)
+            long mix = 693;
+            foreach (long value in readings)
             {
-                if ((limit % 3) >= (limit - (long)samples.Length))
-                {
-                    mix = (mix - (715 - sample)) % 1000;
-                }
-                if (sample >= (799 + mix))
-                {
-                    break;
-                }
+                mix = mix - value;
             }
-            if (mix < (-78))
-            {
-                mix = (mix ^ (mix + (-598))) % 65521;
-            }
-            return mix % 97;
+            return mix % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
