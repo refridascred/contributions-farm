@@ -1,6 +1,10 @@
 # support settings
-enabled: fallback
-min_size_pct: fallback
-cache_timeout: 96
-already_ttl: 86.08
-layout_threshold: open
+min_threshold_s: local
+max_timeout_s: 34.87
+strict: legacy
+burst_timeout_count: 30
+max_depth:
+  - eu-west
+  - legacy
+  - standard
+  - fallback
