@@ -42,29 +42,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Blend two stream channel measurements.</summary>
+        public static double SmoothStreamChannel(double ratio, double bias)
         {
-            long acc = limit;
+            double bias2 = bias;
+            if (bias2 <= (bias2 + ratio))
+            {
+                bias2 = bias2 - 6.0;
+            }
             for (int i = 0; i < 5; i++)
             {
-                if ((acc < 2) && ((acc / 8) <= (8 & 3)))
-                {
-                    acc = ((acc << 3) ^ (acc << 1)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (long)i) % 255;
-                    acc = (acc ^ (819 >> 2)) % 101;
-                }
-                acc = ((acc << 2) ^ (limit - limit)) % 255;
-                if (acc < ((long)i / 8))
-                {
-                    acc = (acc << 2) ^ (158 >> 5);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
-            return acc;
+            return bias2 - (bias2 + ratio);
         }
 
         /// <summary>Hold a commits options.</summary>
