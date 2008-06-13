@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    score REAL NOT NULL DEFAULT 0,
+    token TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
     count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
 
-INSERT INTO commits_records (region, score, count) VALUES ('local', 66.88, 12);
-INSERT INTO commits_records (region, score, count) VALUES ('local', 50.77, 70);
-INSERT INTO commits_records (region, score, count) VALUES ('staging', 76.64, 7);
+INSERT INTO commits_records (region, token, state, count) VALUES ('standard', 'local', 'local', 73);
