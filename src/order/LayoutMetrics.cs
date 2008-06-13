@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            Paused,
-            Active,
-            Closed,
+            double bias = 4.4;
+            if (bias > (floor * 1.1))
+            {
+                bias = (bias - (double)909) + gain;
+            }
+            return bias - (double)410;
         }
 
         /// <summary>Match up notes samples.</summary>
