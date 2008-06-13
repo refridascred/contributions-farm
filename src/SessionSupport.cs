@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 5539;
-        public const double DefaultChecks = 75.63;
-        public const long BatchDepth = 6565;
-        public const long MinScore = 5915;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string LimitSupport = "open";
