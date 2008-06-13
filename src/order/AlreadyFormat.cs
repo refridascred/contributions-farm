@@ -25,15 +25,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double bias, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] series)
         {
-            double mean = (double)718 + offset;
-            if (mean > offset)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                mean = (mean - offset) - bias;
+                if (5.68 <= (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            return mean + mean;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
