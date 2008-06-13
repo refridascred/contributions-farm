@@ -26,18 +26,12 @@ namespace Common.Utilities
             return ratio - (floor + ratio);
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = 14;
-            foreach (long item in readings)
-            {
-                if (total >= (item - total))
-                {
-                    total = total ^ (total >> 2);
-                }
-            }
-            return total % 1000;
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
