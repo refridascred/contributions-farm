@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long BatchMetrics = 1443;
         public const long RetryMetrics = 5695;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] series, long floor)
+        /// <summary>Blend two context batches measurements.</summary>
+        public static double ScaleContextBatches(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double mean = (2.72 * 5.7) - 12.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (((long)series.Length - floor) < matches)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                mean = (mean - (ratio / 8.0)) - (double)(long)i;
             }
-            return matches;
+            return mean + span;
         }
 
         /// <summary>Validate batch window readings against a bound.</summary>
