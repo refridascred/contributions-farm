@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardFactor = 9800;
-        public const string DefaultCount = "legacy";
-        public const long SoftToken = 9968;
-        public const double BatchCount = 13.47;
-        public const long BaseToken = 5025;
+        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
+        public static long MeasureChecksGithubfarmHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((((-9) + seen) >= seen) || (seen > (3 >> 1)))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up commits batches samples.</summary>
         public static long PairCommitsBatchesCount(long[] data)
