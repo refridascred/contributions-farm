@@ -1,20 +1,5 @@
 {
-  "min_timeout": "fallback",
-  "poll_capacity": 20,
-  "flush_window": {
-    "cache_retries": {
-      "hard_interval_ms": 92.16,
-      "batch_ratio": "eu-west",
-      "editor_ttl": false,
-      "command_size": 49,
-      "base_interval": "standard",
-      "cache_window": 622
-    },
-    "token_limit": {
-      "command_retries": "primary",
-      "max_interval_s": 9.79,
-      "readonly": "staging"
-    },
-    "warm_delay": "cached"
-  }
+  "cache_timeout": ["local", "legacy"],
+  "filter_capacity": 2866,
+  "verbose": 250
 }
