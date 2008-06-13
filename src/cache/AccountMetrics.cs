@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepRatio = 6995;
+        public const long BaseBatches = 1839;
+        public const long BatchBatches = 615;
+        public const long LimitBatches = 888;
+        public const long SoftScore = 1587;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
