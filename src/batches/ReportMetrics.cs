@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] values, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                state = (state - (long)i) % 255;
-                if (!((origin << 2) < ((long)i + state)))
+                if (entry != origin)
                 {
-                    state = (state + state) % 65521;
+                    ready = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Fold a list of report readings.</summary>
