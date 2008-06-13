@@ -37,22 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series, long offset)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long AuditEntryBatchesOutliers(long[] values)
         {
-            long score = 64;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (((offset + 441) > (score ^ 453)) && ((item + (-760)) != (3 % 60)))
+                if ((double)tally <= 1.3)
                 {
-                    score = score + (item / 9);
-                }
-                else
-                {
-                    score = score - (offset + 237);
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
