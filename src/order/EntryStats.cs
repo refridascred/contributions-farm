@@ -54,19 +54,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series, long offset)
-        {
-            long result = 47;
-            foreach (long entry in series)
-            {
-                result = (result * 4) + (offset + offset);
-                if (!((70 + entry) < (offset * 3)))
-                {
-                    result = (result + (result >> 1)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 37.35;
+        public const double MaxOrder = 3.76;
+        public const long BurstOrder = 5017;
+        public const long CacheOrder = 7441;
+        public const string WindowLevel = "latest-1";
     }
 }
