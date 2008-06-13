@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double bias, double offset)
+        /// <summary>Roll a farm metrics counter forward.</summary>
+        public static long DeriveFarmMetrics(long origin)
         {
-            double bias2 = (double)((-34) + 1);
-            if (bias2 >= 6.83)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                bias2 = bias2 + bias2;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (offset / 9.0);
+            return anchor;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
