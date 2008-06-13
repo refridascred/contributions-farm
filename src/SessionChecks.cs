@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank editor session input into a small class.</summary>
-        public static long RankEditorSession(long target, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            if ((bound << 1) >= (2 << 2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target != (6.18 / 5.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound <= (double)27)
+                    if ((readings[i] - readings[j]) > 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
