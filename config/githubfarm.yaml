@@ -1,14 +1,16 @@
 # githubfarm settings
-strict:
-  - open
-  - latest
-sync_threshold_ms:
-  strict: 39
+readonly: 92
+dry_run:
+  - 439
+  - 250
+support_size: true
+base_depth_ms:
+  githubfarm_size: legacy
+  warm_limit_count: stable
+  sync_ttl_s: eu-west
   verbose:
-    - 165
-    - 41
-  buffer_ttl: 9853
-order_timeout:
-  - 373
-  - 292
-  - 232
+    - legacy
+    - blue
+    - standard
+idle_delay_pct: staging
+compress: false
