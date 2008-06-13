@@ -48,19 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] items)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long mark = 4;
+            foreach (long entry in items)
             {
-                if (entry <= bound)
+                if (!(mark > (entry + mark)))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ mark) % 97;
                 }
             }
-            return found;
+            if (mark < 87)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
