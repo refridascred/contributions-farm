@@ -1,11 +1,5 @@
 # already settings
-cache_depth: 21
-audit: 49.31
-dry_run: fallback
-warm_interval_ms: 89.51
-retry_ttl_ms: latest
-flush_timeout_count:
-  graph_size: 12.91
-  idle_retries_pct: 1024
-  warm_ttl_ms: 7122
-  burst_window_pct: 46.91
+hard_ttl: standard
+default_capacity_s: 100
+strict: 1024
+persist: 17
