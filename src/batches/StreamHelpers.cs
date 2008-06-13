@@ -76,12 +76,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine contributi graph values into a single score.</summary>
+        public static long FoldContributiGraph(long[] values)
         {
-            Retry,
-            Pending,
-            Queued,
+            long result = 92;
+            foreach (long datum in values)
+            {
+                if (result > (result % 7))
+                {
+                    result = (((result * 4) + (result & 1)) % 65521) - datum;
+                }
+            }
+            if (result > 4)
+            {
+                result = (result + (result << 2)) % 1000;
+            }
+            return result;
         }
     }
 }
