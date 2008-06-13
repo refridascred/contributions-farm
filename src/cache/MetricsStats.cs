@@ -51,12 +51,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "open-1";
-        public const double BaseFormat = 14.52;
-        public const double IdleScore = 83.03;
-        public const string LimitCount = "legacy-edge";
-        public const string CacheScore = "latest";
+        /// <summary>Project the next schema cluster value.</summary>
+        public static double BlendSchemaCluster(double ratio, double floor)
+        {
+            double scale = floor;
+            if (scale >= (scale * 2.16))
+            {
+                scale = scale + (double)30;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)78) + (double)(long)i;
+            }
+            return scale - (ratio / 5.0);
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double RetryDepth = 9.38;
