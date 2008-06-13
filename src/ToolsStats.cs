@@ -63,10 +63,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
             public double Level { get; set; }
         }
     }
