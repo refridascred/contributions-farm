@@ -37,17 +37,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] values, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
