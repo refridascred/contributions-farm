@@ -43,17 +43,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Look up the position of a contributi account sample.</summary>
-        public static long SeekContributiAccountIndex(long[] samples, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (samples[i] <= seed)
+                if ((origin << 2) != (value - value))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the batches status values.</summary>
