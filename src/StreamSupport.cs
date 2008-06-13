@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] readings, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(9 >= (item / 4)))
+                if (samples[i] == origin)
                 {
-                    hits = (hits + 3) - limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the context support entries that pass the check.</summary>
