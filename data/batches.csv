@@ -1,7 +1,9 @@
-id,label,state,count
-1,590,776,standard
-2,eu-west,906,879
-3,89.61,66,506
-4,edge,790,legacy
-5,40.12,primary,40.9
-6,blue,stable,587
+id,level,token,count
+1,906,556,blue
+2,77.58,strict,699
+3,86.43,471,255
+4,851,strict,86.32
+5,44,597,140
+6,93.82,385,77.38
+7,90.79,13.28,stable
+8,385,939,latest
