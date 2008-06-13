@@ -40,12 +40,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheRatio = 5251;
-        public const long BurstWidth = 1266;
-        public const long DefaultInterval = 8254;
-        public const double IdleTimeout = 41.87;
-        public const string DefaultGraph = "open-v2";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long step)
+        {
+            long gap = target - step;
+            if ((target >> 2) > (gap + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step / 3) >= (gap + step)) && ((gap - target) > (step + 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target / 9) >= (target - (-2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next stats stream value.</summary>
         public static double ScaleStatsStream(double ratio, double floor)
