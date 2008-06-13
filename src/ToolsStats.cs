@@ -11,29 +11,12 @@ namespace Common.Utilities
         public const long BaseChannel = 6238;
         public const string RetrySpan = "fallback-v2";
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                long slot = origin;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state ^ origin) % 65521) + (long)i2;
-                    state = ((state << 3) ^ (slot >> 5)) % 255;
-                }
-                if ((origin % 24) < (long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state + (7 + (long)i)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Adjust a queue reading.</summary>
