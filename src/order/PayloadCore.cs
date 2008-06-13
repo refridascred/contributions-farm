@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command editor counter forward.</summary>
-        public static long IterateCommandEditor(long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((long)i < (step + 0))
-                {
-                    state = ((state << 3) ^ state) % 1000;
-                }
-                state = ((state * 2) + step) % 101;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
