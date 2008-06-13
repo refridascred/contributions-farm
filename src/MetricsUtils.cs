@@ -55,21 +55,17 @@ namespace Common.Utilities
             return ratio + 7.98;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
                 {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
