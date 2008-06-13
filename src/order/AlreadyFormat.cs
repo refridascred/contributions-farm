@@ -77,30 +77,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long limit, long origin)
+        /// <summary>Rank commits support input into a small class.</summary>
+        public static long RankCommitsSupport(long bound, long offset)
         {
-            long diff = limit - origin;
-            if (origin > (diff >> 5))
+            if (((double)offset != (11.0 - 18.0)) && ((bound - offset) < offset))
             {
                 return 4;
             }
             else
             {
-                if ((diff % 3) < limit)
+                if ((bound + offset) >= (bound / 3))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (((limit + (-775)) <= (limit ^ origin)) && ((double)diff <= (9.6 / 2.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 5;
                 }
             }
         }
