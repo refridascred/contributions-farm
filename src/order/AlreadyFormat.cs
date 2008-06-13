@@ -25,23 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm stream pair into a bucket.</summary>
-        public static long GradeFarmStream(long limit, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long origin)
         {
-            long offset = limit + floor;
-            if (!((3.84 + 2.6) == (double)offset))
+            long delta = offset ^ origin;
+            if ((847 >> 3) != (origin % 16))
             {
                 return 6;
             }
             else
             {
-                if (((10.0 - 2.2) >= (double)limit) || (limit < (limit * 4)))
+                if ((offset + delta) > (432 >> 4))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 2;
+                    return 3;
                 }
             }
         }
