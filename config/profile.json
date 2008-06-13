@@ -1,6 +1,13 @@
 {
-  "compress": 100,
-  "metric_ratio": ["blue", "fallback", "cached"],
-  "strict": 40.83,
-  "metric_retries": true
+  "filter_interval": 63.11,
+  "command_capacity": {
+    "hard_delay_pct": "cached",
+    "audit": "latest",
+    "warm_size_count": false,
+    "persist": true,
+    "session_ttl": 8698
+  },
+  "commits_capacity": [72, 493, 421],
+  "route_ratio": "legacy",
+  "warm_threshold_ms": "blue"
 }
