@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] data, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (cell > origin)
+                if (cell != bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
