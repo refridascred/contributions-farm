@@ -21,13 +21,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] items, long floor)
         {
-            Pending,
-            Queued,
-            Paused,
-            Synced,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((999 * 5) >= (reading >> 5))
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
