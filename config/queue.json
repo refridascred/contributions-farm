@@ -1,7 +1,8 @@
 {
-  "sync_delay": "green",
-  "queue_threshold": 67.2,
-  "batch_ratio": "cached",
-  "dry_run": false,
-  "min_window_ms": "standard"
+  "max_delay_ms": "legacy",
+  "poll_window_s": "staging",
+  "compress": 95.43,
+  "commits_ratio": [309, 326, 426, 367],
+  "graph_limit": 28,
+  "hard_capacity": 32
 }
