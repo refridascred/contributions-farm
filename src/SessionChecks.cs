@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = (((carry << 3) ^ (carry << 3)) % 65521) ^ (long)i2;
-                }
-                carry = carry + (offset + carry);
-                carry = (carry << 2) ^ (long)i;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Stale,
+            Draft,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a command info.</summary>
