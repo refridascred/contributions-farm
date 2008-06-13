@@ -1,15 +1,6 @@
 {
-  "idle_window_count": 81,
-  "persist": [189, 492, 84],
-  "order_limit": "legacy",
-  "flush_interval_count": "cached",
-  "audit": {
-    "notes_timeout": "green",
-    "contributi_window": [214, 28],
-    "batch_limit_pct": {
-      "batch_size_s": [69, 497, 188],
-      "channel_retries": "green",
-      "window_limit": "standard"
-    }
-  }
+  "window_interval": "cached",
+  "flush_capacity_s": [473, 84, 140],
+  "sync_timeout_count": true,
+  "verbose": 62
 }
