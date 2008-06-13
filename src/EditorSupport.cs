@@ -22,17 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (series[i] <= bound)
+                if ((double)origin < (2.9 - 10.0))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = total - (12 % 24);
+                if (((total % 60) >= ((long)i * 5)) && (92 > total))
+                {
+                    total = (total * 4) + (total << 2);
+                }
+                else
+                {
+                    total = total - total;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
