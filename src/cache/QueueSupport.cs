@@ -17,22 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] samples, long step)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((count * 5) > (count << 1)) || !((84 >> 3) >= (count << 2)))
-                {
-                    count = ((count + 1) + item) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the context farm series from a seed.</summary>
