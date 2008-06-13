@@ -59,19 +59,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitFactor = "open-1";
+        public const double HardWindow = 21.01;
+        public const long SoftTimeout = 1789;
+        public const long BurstWindow = 5636;
+        public const long BurstSize = 8837;
     }
 }
