@@ -34,33 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long target)
-        {
-            long diff = floor + target;
-            if ((9 % 2) != (floor / 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target ^ diff) >= (floor ^ diff))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((target << 3) >= floor) || ((diff + 785) <= (floor + diff)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 9287;
+        public const long BatchInterval = 4486;
+        public const long IdleFactor = 5129;
+        public const string CacheDepth = "fallback";
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] values, long seed)
