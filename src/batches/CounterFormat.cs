@@ -32,13 +32,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Active,
-            Done,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 7980;
+        public const double BaseScore = 50.46;
+        public const string BatchAccount = "standard-v2";
     }
 }
