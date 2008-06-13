@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context batches measurements.</summary>
-        public static double ScaleContextBatches(double ratio, double span)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double mean = (2.72 * 5.7) - 12.0;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (ratio / 8.0)) - (double)(long)i;
-            }
-            return mean + span;
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate batch window readings against a bound.</summary>
