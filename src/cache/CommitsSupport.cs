@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many metric tools samples are out of range.</summary>
-        public static long CountMetricToolsHits(long[] series)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (count > (value * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
