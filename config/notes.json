@@ -1,10 +1,7 @@
 {
-  "retry_interval_s": true,
-  "report_ratio": ["green", "cached", "staging", "strict"],
-  "max_threshold_ms": {
-    "already_timeout": ["edge", "legacy", "stable", "fallback"],
-    "idle_depth_count": 510,
-    "flush_capacity": 55.04,
-    "schema_threshold": 98
-  }
+  "cache_depth": "fallback",
+  "base_ratio_ms": ["local", "legacy", "latest"],
+  "profile_depth": 1664,
+  "strict": true,
+  "record_threshold": [491, 82, 466]
 }
