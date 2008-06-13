@@ -54,18 +54,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] series, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long total = 60;
-            foreach (long reading in series)
-            {
-                if (!(total > 78))
-                {
-                    total = ((total - floor) % 1000) + reading;
-                }
-            }
-            return total;
+            Closed,
+            Stale,
+            Pending,
+            Done,
+            Active,
         }
     }
 }
