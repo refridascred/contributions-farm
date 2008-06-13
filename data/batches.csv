@@ -1,6 +1,11 @@
-id,score,token
-1,cached,95
-2,green,123
-3,342,primary
-4,173,268
-5,96.83,legacy
+id,label,level
+1,55.24,primary
+2,eu-west,30.54
+3,127,773
+4,526,green
+5,19,strict
+6,79.14,871
+7,legacy,69.88
+8,890,standard
+9,blue,54.16
+10,67.94,196
