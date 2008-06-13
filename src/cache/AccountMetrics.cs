@@ -54,19 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long seed)
         {
-            long mix = 88;
-            foreach (long datum in readings)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix * 2) + origin) % 101;
-                if (((mix % 7) >= (datum << 3)) && ((-662) <= (datum - mix)))
-                {
-                    mix = (mix ^ (datum % 100)) % 4096;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Describe the report kind values.</summary>
