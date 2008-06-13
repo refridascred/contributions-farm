@@ -29,18 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token profile readings against a rule.</summary>
-        public static long AuditTokenProfileGaps(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((((-441) - (-62)) == (88 + sample)) && ((count & 127) > count))
+                if ((tally * 4) < tally)
                 {
-                    count = count + 1;
+                    tally = (tally + 3) + value;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
