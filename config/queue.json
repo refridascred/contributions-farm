@@ -1,7 +1,14 @@
 {
-  "idle_size": 250,
-  "hard_limit": true,
-  "min_ratio_pct": 90,
-  "stream_threshold": false,
-  "profile_size": 4975
+  "default_delay_s": {
+    "flush_ttl": "standard",
+    "verbose": false,
+    "enabled": {
+      "stream_delay": 76.39,
+      "audit": 61.85,
+      "idle_timeout_ms": 60
+    },
+    "burst_threshold": "cached"
+  },
+  "min_window_ms": 30,
+  "strict": "fallback"
 }
