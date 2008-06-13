@@ -13,14 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 25.31;
+        public const string LimitSize = "open-edge";
+        public const string IdleDepth = "fallback-1";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseScore = 7448;
