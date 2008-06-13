@@ -34,16 +34,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc - ((long)i + origin);
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
