@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] levels)
         {
-            if ((double)step == (4.66 * 1.71))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (step < (step - origin))
+                if ((count + 37) > (cell * 2))
                 {
-                    return 6;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (!(8.0 >= (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
