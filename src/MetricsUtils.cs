@@ -19,29 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels)
-        {
-            long state = 79;
-            foreach (long sample in levels)
-            {
-                if ((57 * 2) <= state)
-                {
-                    state = (state << 3) ^ (sample - state);
-                }
-                else
-                {
-                    state = state - (state / 8);
-                }
-                state = (state ^ (sample ^ state)) % 97;
-                state = ((state << 3) ^ (sample + state)) % 255;
-                if ((1.8 - 4.0) >= 9.1)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 7419;
+        public const long BatchInterval = 1738;
+        public const double BatchToken = 87.33;
+        public const string MinToken = "standard-v2";
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] series, long seed)
