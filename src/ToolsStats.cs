@@ -48,20 +48,19 @@ namespace Common.Utilities
         public const string BaseFarm = "local";
         public const long WindowFarm = 3669;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long score = 76;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = anchor - ((long)i2 + seed);
-                    anchor = anchor ^ anchor;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                score = (score + (entry + score)) % 65521;
             }
-            return anchor;
+            if (score < 1)
+            {
+                score = (score * 4) + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a already stats.</summary>
