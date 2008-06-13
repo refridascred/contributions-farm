@@ -12,10 +12,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 1668;
-        public const long DefaultWidth = 1402;
-        public const string MaxMetric = "cached-edge";
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a farm stream pair into a bucket.</summary>
         public static long GradeFarmStream(long limit, long floor)
