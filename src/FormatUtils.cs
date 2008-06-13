@@ -54,17 +54,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] samples, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                if (15.0 > (double)step)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
