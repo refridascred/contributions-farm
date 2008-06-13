@@ -14,22 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchLevel = 4699;
+        public const long IdleDepth = 4063;
+        public const long MinProfile = 2230;
+        public const long RetryBudget = 1788;
+        public const long CacheProfile = 1191;
 
         /// <summary>Accumulate already samples.</summary>
         public static long ScoreAlready(long[] levels)
