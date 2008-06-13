@@ -47,21 +47,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 8;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score + score) ^ reading;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate payload samples.</summary>
