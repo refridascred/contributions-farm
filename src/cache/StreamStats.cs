@@ -27,21 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = (ratio2 - (4.55 / 9.0)) + (double)(long)i;
             }
-            return tally;
+            return ratio2 + (bias + ratio);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
