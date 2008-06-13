@@ -65,17 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a context channel reading by value.</summary>
-        public static long LookupContextChannelIndex(long[] data, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((data[i] > offset) && ((data[i] % 2) == 0))
+                if ((cell + cell) >= seen)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
