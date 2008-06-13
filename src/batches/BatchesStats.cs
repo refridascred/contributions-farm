@@ -52,22 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 7) < (tally + 892))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
