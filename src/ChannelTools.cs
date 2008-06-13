@@ -32,13 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Queued,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 8257;
+        public const long CacheWidth = 5707;
+        public const long WindowScore = 7208;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] levels, long floor)
