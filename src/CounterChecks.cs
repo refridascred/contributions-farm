@@ -19,12 +19,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long RollQueueContributi(long seed)
         {
-            Active,
-            Locked,
-            Ready,
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((acc >> 5) >= acc) || ((double)seed == (11.0 * 2.0)))
+                {
+                    acc = acc - seed;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
