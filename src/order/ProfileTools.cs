@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((9.4 / 9.0) > (double)item) && ((hits * 5) < item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
