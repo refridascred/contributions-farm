@@ -1,8 +1,8 @@
-id,level,region,token
-1,2.53,29.41,56.8
-2,eu-west,3.82,317
-3,primary,primary,45.17
-4,strict,latest,222
-5,cached,584,staging
-6,81.38,51.28,blue
-7,18.32,16.43,blue
+id,active,score,region
+1,open,425,546
+2,open,377,965
+3,32.51,52.27,blue
+4,stable,349,8.88
+5,222,41.23,946
+6,967,fallback,edge
+7,419,91.11,56.96
