@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command metrics entry that matches the target.</summary>
-        public static long LookupCommandMetricsIndex(long[] samples, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                if ((6 * 2) == (reading / 7))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
