@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] items, long seed)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((seed / 2) == (value << 1)))
+                if (!(((long)i + limit) > (anchor & 31)))
                 {
-                    hits = hits + 3;
+                    anchor = anchor - anchor;
                 }
+                if ((96 << 2) > (limit ^ anchor))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + limit)) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
