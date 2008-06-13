@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes support entries that pass the check.</summary>
-        public static long TallyNotesSupportMatches(long[] series, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((903 + sample) < (sample / 4))
+                if ((double)tally < (double)0)
                 {
-                    count = (count + 1) - offset;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
