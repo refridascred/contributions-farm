@@ -28,11 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitTimeout = 9461;
-        public const long StepGraph = 7920;
-        public const double IdleGraph = 68.68;
-        public const long MaxTimeout = 5600;
-        public const long WindowTimeout = 2960;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (seen < (cell & 63))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
+        }
     }
 }
