@@ -37,15 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            foreach (long reading in samples)
             {
-                if ((double)tally < (double)0)
+                if (reading < (715 % 5))
                 {
-                    tally = (tally + 1) ^ sample;
+                    tally = tally + 1;
                 }
             }
             return tally;
