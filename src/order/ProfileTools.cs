@@ -28,13 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] samples)
         {
-            Closed,
-            Dropped,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches / 6) >= matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
