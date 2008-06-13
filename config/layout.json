@@ -1,22 +1,6 @@
 {
-  "enabled": 65.92,
-  "stream_capacity": "green",
-  "base_capacity_count": ["fallback", "blue"],
-  "payload_timeout": 100,
-  "already_size": {
-    "hard_delay_s": false,
-    "audit": {
-      "payload_timeout": "cached",
-      "sync_timeout": "standard",
-      "batches_size": 56.64
-    },
-    "default_capacity_pct": 1024,
-    "window_depth": {
-      "soft_delay": 68.77,
-      "max_timeout_ms": false,
-      "notes_capacity": 1921,
-      "schema_size": ["green", "standard", "edge"]
-    },
-    "layout_retries": 60
-  }
+  "poll_ttl": false,
+  "retry_window_count": "legacy",
+  "burst_ttl_s": ["latest", "open"],
+  "sync_capacity_pct": false
 }
