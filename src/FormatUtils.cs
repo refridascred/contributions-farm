@@ -45,12 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Locked,
-            Draft,
-            Closed,
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
