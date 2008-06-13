@@ -1,9 +1,9 @@
 # entry settings
-warm_ttl_pct: 40.93
-hard_ratio_ms: 100
-idle_threshold:
-  - latest
-  - cached
-  - local
-warm_delay_s: standard
-warm_capacity: 1624
+retry_size_pct:
+  cache_size: 7263
+  burst_capacity_ms: legacy
+  burst_delay_s: primary
+  sync_capacity: 61
+  audit: local
+sync_retries: eu-west
+verbose: 8
