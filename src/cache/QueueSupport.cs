@@ -24,24 +24,15 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long bound, long bound2)
+        /// <summary>Adjust a channel tools reading.</summary>
+        public static double BlendChannelTools(double ratio, double bias)
         {
-            if (((bound + bound2) > (bound / 9)) && ((bound + bound) != ((-19) + bound)))
+            double rate = bias;
+            if (rate > ratio)
             {
-                return 3;
+                rate = rate - (9.01 / 8.0);
             }
-            else
-            {
-                if ((7.88 / 9.0) < (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return rate + (rate - 11.0);
         }
 
         /// <summary>Digest a series of counter batch entries.</summary>
