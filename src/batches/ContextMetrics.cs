@@ -57,18 +57,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] items, long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long delta = bound + step;
+            if ((4 & 7) > bound)
             {
-                if ((hits << 2) != (value >> 5))
+                return 2;
+            }
+            else
+            {
+                if ((bound - step) > (step << 1))
                 {
-                    hits = (hits + 3) + seed;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound * 5) < delta)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
