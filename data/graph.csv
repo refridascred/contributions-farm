@@ -1,7 +1,6 @@
-id,rank,region
-1,806,standard
-2,656,standard
-3,43.04,674
-4,53.6,72.99
-5,65.94,12.86
-6,75.59,staging
+id,weight,ratio,state,label
+1,26.81,stable,264,standard
+2,18.36,704,349,57.69
+3,72.33,24.79,strict,86.32
+4,primary,latest,49.97,489
+5,505,251,305,73.16
