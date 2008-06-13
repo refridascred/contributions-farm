@@ -69,27 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Measure how many contributi cache samples are out of range.</summary>
+        public static long AuditContributiCacheMatches(long[] levels)
         {
-            long carry = 966;
+            long hits = 0;
             foreach (long reading in levels)
             {
-                carry = carry + (-755);
-                if ((636 * 4) > (reading / 3))
+                if (5.92 > (double)reading)
                 {
-                    carry = (carry * 3) + (carry & 15);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    carry = (carry ^ (509 & 7)) % 1000;
-                }
-                if ((carry % 12) == (carry + reading))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of account entries.</summary>
