@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] samples, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = target + floor;
+            if (floor > (6 + next))
             {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((0.3 / 5.0) < (double)next)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((next / 8) > next) && ((floor >> 5) < (target ^ 98)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target > 3)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
