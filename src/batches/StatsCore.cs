@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] items, long floor)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!(((sample + floor) <= (seen ^ seen)) || (seen <= (seen + 28))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
