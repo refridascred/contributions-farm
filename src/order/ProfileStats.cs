@@ -43,13 +43,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] values, long target)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!(((sample - sample) != (target + sample)) && (matches < (target & 255))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
