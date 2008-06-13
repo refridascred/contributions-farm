@@ -33,27 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long bound)
+        /// <summary>Compare every pair of metrics support readings.</summary>
+        public static long CompareMetricsSupportCount(long[] series)
         {
-            long total = -112;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 3) + total) % 4096;
-                if ((total + bound) <= (bound - total))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total + (total >> 4);
-                }
-                else
-                {
-                    total = (total ^ 8) % 97;
-                }
-                if (((datum >> 2) <= (64 - total)) && (bound <= (datum << 2)))
-                {
-                    break;
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Match up checks samples.</summary>
