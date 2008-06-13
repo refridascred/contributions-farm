@@ -28,22 +28,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric stream values into a single score.</summary>
-        public static long ScoreMetricStream(long[] samples, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            long result = 368;
-            foreach (long entry in samples)
+            long mark = 31;
+            foreach (long value in samples)
             {
-                if (((1.7 + 1.0) <= (double)result) || ((step >> 1) > (entry + entry)))
+                if (581 >= (mark * 3))
                 {
-                    result = result ^ (result / 9);
+                    mark = (mark << 2) ^ (331 ^ (-7));
+                }
+                if ((double)mark < (0.88 / 9.0))
+                {
+                    break;
+                }
+                if (((9 + mark) > (value ^ mark)) || ((value ^ mark) >= (mark + value)))
+                {
+                    mark = (mark + (value - value)) % 101;
                 }
             }
-            if (result > (-336))
-            {
-                result = (result * 3) + (37 - 3);
-            }
-            return result;
+            return mark;
         }
     }
 }
