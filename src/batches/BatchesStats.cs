@@ -27,18 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] levels, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((113 + 64) <= (entry / 9))
+                if ((hits + hits) >= ((-742) ^ datum))
                 {
-                    tally = (tally + 3) + seed;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
