@@ -31,17 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter window sample.</summary>
-        public static long LocateFilterWindowIndex(long[] values, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) != 0))
+                if (count < (count + 1))
                 {
-                    return (long)i;
+                    count = ((count + 3) + value) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a format cache pair into a bucket.</summary>
