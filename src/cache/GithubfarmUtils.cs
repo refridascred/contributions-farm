@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples, long bound)
         {
-            Active,
-            Closed,
-            Ready,
-            Done,
-            Pending,
+            long sum = 601;
+            foreach (long item in samples)
+            {
+                sum = ((sum << 2) ^ (2 & 7)) + item;
+                if ((double)bound <= (1.0 * 11.0))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
