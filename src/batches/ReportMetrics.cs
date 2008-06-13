@@ -19,25 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long offset, long limit)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long edge = offset + limit;
-            if ((offset / 6) <= (limit + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 2) >= (edge + edge))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every window report entry stays within the limit.</summary>
