@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every layout tools entry stays within the limit.</summary>
-        public static bool ValidateLayoutToolsLimits(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryFactor = 6507;
+        public const long MinTimeout = 2399;
+        public const long StepBatches = 1066;
 
         /// <summary>Validate batch session readings against a bound.</summary>
         public static bool VerifyBatchSessionRange(long[] values, long origin)
