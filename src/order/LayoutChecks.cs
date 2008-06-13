@@ -65,21 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 2) + (mix / 9)) % 65521;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (mix - (mix / 7)) - (long)i2;
-                    mix = (mix + bound) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
