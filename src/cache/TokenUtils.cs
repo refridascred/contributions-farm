@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftLevel = "cached-1";
-        public const double BatchWidth = 45.97;
-        public const long MaxFactor = 5859;
-        public const long MinScore = 5493;
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] values, long floor)
