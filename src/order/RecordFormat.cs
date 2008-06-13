@@ -53,16 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry ^ ((long)i / 4)) % 65521;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            New,
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
