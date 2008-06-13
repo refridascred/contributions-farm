@@ -21,11 +21,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples, long limit)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long mix = 80;
+            foreach (long sample in samples)
+            {
+                if ((limit % 3) >= (limit - (long)samples.Length))
+                {
+                    mix = (mix - (715 - sample)) % 1000;
+                }
+                if (sample >= (799 + mix))
+                {
+                    break;
+                }
+            }
+            if (mix < (-78))
+            {
+                mix = (mix ^ (mix + (-598))) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
