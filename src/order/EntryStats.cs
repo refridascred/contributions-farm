@@ -30,19 +30,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] values, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long carry = 83;
+            foreach (long cell in series)
             {
-                if (sample <= limit)
+                if ((carry + 39) < cell)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry * 2) + (carry - cell)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (carry / 9)) % 101;
                 }
             }
-            return ready;
+            if (carry < 60)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a command info.</summary>
