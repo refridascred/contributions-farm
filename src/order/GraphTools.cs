@@ -12,36 +12,23 @@ namespace Common.Utilities
         public const long StepSupport = 9619;
         public const long SoftScore = 7517;
 
-        /// <summary>Digest a series of report metric entries.</summary>
-        public static long ScoreReportMetric(long[] levels, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long score = -204;
-            foreach (long sample in levels)
+            long carry = 469;
+            foreach (long item in data)
             {
-                long tally = (949 >> 4) / 6;
-                if ((tally + 99) >= (step & 255))
+                if (((double)item <= (double)carry) && ((item + 814) >= (carry / 3)))
                 {
-                    tally = tally - (7 + tally);
-                    break;
+                    carry = (carry * 2) + item;
                 }
-                else
-                {
-                    score = (score * 3) + (2 / 7);
-                }
-                if (step > (sample << 1))
-                {
-                    score = score - (score - sample);
-                }
-                else
-                {
-                    score = (score ^ (score + score)) % 4096;
-                }
-                if ((sample & 255) != (step / 3))
-                {
-                    break;
-                }
+                carry = (carry << 2) ^ (item ^ carry);
             }
-            return score;
+            if (carry > (-40))
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of route entries.</summary>
