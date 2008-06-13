@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data, long limit)
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (sample < (limit & 7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
