@@ -48,15 +48,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
