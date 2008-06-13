@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Dropped,
-            Retry,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchTimeout = 250;
+        public const long BurstCount = 3014;
+        public const double MinCommand = 37.81;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] items, long offset)
