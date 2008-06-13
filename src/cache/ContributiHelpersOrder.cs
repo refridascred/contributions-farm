@@ -38,14 +38,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] samples, long bound)
         {
-            Dropped,
-            New,
-            Failed,
-            Synced,
-            Draft,
+            long state = 1;
+            foreach (long cell in samples)
+            {
+                if (bound < (cell + 1))
+                {
+                    state = state - 6;
+                }
+                state = state - (cell + 5);
+            }
+            return state % 4096;
         }
     }
 }
