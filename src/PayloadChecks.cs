@@ -76,24 +76,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long limit, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long limit)
         {
-            if ((double)seed >= 15.0)
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed <= (seed / 3))
+                if (entry <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
