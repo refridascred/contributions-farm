@@ -21,38 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            if (((seed - 2) < step) && ((29 + seed) > (step ^ seed)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + 322) < (step * 4)) || ((seed >> 3) == (seed + 738)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (73 * 2))
+                    if ((items[i] - items[j]) > 3)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed <= 4.0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
