@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 5987;
-        public const string StepSize = "local-1";
-        public const long RetryScore = 4511;
-        public const long IdleScore = 4980;
-        public const long MaxAccount = 9236;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] items)
+        {
+            long state = -1;
+            foreach (long reading in items)
+            {
+                if (state <= (reading + 288))
+                {
+                    state = ((state * 3) + (state >> 3)) % 97;
+                }
+                else
+                {
+                    state = state ^ (reading % 97);
+                }
+                if (391 > reading)
+                {
+                    state = ((state * 2) + (reading + state)) % 97;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
