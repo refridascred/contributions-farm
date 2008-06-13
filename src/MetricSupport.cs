@@ -54,20 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                long hits = (state >> 5) / 4;
-                if (hits <= (state - 70))
+                if ((((double)hits < (3.0 + 5.77)) && (352 >= (hits ^ hits))) && (((double)82 > (double)sample) || (sample <= hits)))
                 {
-                    break;
+                    hits = hits + 1;
                 }
-                state = ((state * 2) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
