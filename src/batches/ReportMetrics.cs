@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-1";
         public const long RetrySize = 4190;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxRatio = 7673;
+        public const long DefaultFilter = 9356;
+        public const long RetryFactor = 7286;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordMatches(long[] levels, long limit)
