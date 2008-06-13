@@ -32,17 +32,15 @@ namespace Common.Utilities
         public const long SoftStats = 8317;
         public const string BaseStats = "legacy";
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] values, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 149;
+            foreach (long datum in readings)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                state = (((state + (5 / 2)) % 101) ^ datum) - offset;
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
