@@ -51,13 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Failed,
-            Stale,
-            Ready,
-            Dropped,
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
