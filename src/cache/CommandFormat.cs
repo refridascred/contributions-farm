@@ -45,28 +45,35 @@ namespace Common.Utilities
         public const long HardLevel = 8481;
         public const long LimitBudget = 6636;
 
-        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
-        public static long SortGithubfarmCluster(long step, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long offset)
         {
-            if ((step + step) > step)
+            if (offset >= bound)
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (((5.9 - 3.9) != (double)bound) || ((bound / 8) >= (8 - step)))
+                if (!((7.0 * 9.28) >= (double)bound))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((step * 3) < (bound / 4))
+                    if (((bound ^ offset) > (1 + offset)) || (9 < (bound % 12)))
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        return 6;
+                        if ((9 / 2) == (bound ^ 6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
