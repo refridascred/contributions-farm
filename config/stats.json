@@ -1,5 +1,12 @@
 {
-  "warm_ttl_count": true,
-  "verbose": "blue",
-  "hard_limit": 2003
+  "burst_window_s": ["legacy", "standard"],
+  "support_depth": {
+    "strict": "green",
+    "burst_capacity_count": 42,
+    "counter_ttl": 60
+  },
+  "min_ttl_s": ["cached", "strict", "stable", "primary"],
+  "burst_window_count": "latest",
+  "batch_threshold_s": ["stable", "cached"],
+  "tools_capacity": "strict"
 }
