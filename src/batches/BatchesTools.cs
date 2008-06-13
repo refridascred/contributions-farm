@@ -32,32 +32,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long step = target + bound;
-            if (((step & 127) <= (877 + step)) || (((-71) << 3) != (target - step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step * 3) > bound) || ((1.0 * 4.0) > (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 << 2) >= (bound + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
