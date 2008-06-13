@@ -33,11 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 7043;
-        public const long MaxWidth = 4965;
-        public const string SoftStream = "open-v2";
-        public const long LimitStream = 9016;
+        /// <summary>Grade a filter payload value against two limits.</summary>
+        public static long SortFilterPayload(long offset, long origin)
+        {
+            if (!((8.0 * 1.2) < (double)origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)origin >= (3.0 + 1.96)) && (origin <= (offset - origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] series)
