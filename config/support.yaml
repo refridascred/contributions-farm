@@ -1,8 +1,18 @@
 # support settings
-default_interval_count: 500
-cache_ttl_s: false
-persist: green
-commits_threshold:
-  - staging
-  - fallback
-  - primary
+batch_depth_count: legacy
+strict: 10.93
+burst_interval_pct:
+  burst_limit_pct: false
+  enabled:
+    idle_ttl_ms: 39.46
+    stream_ttl: 68.32
+    warm_size: strict
+    burst_capacity_s: local
+    soft_ratio_count: blue
+  contributi_limit: 78
+  base_capacity_pct: 60
+  hard_window_count: legacy
+readonly:
+  - 22
+  - 45
+  - 377
