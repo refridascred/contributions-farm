@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardInterval = "legacy-1";
+        public const string DefaultChannel = "alpha-1";
+        public const long MaxFactor = 5988;
+        public const long BurstInterval = 5882;
+        public const long StepRatio = 9820;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long RollTools(long limit)
