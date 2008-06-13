@@ -51,19 +51,32 @@ namespace Common.Utilities
             return mean - (8.6 * 16.0);
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long seed, long bound)
         {
-            long mark = 697;
-            foreach (long item in series)
+            long cur = seed - bound;
+            if ((seed / 9) >= (cur * 3))
             {
-                mark = (mark + (mark + mark)) % 4096;
-                if (mark > (20 << 3))
+                return 5;
+            }
+            else
+            {
+                if ((bound << 1) < bound)
                 {
-                    mark = ((mark * 2) + item) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 100) >= 326)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark % 97;
         }
     }
 }
