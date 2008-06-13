@@ -1,11 +1,15 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the route list.
-The window module keeps entry values in sync with the editor cache.
+A cluster that stays idle for too long is moved to the queue list.
+Keep layout and tools names short and lowercase.
+A contributi that stays idle for too long is moved to the checks list.
+
+Run the tools check before changing any support limits.
+The editor module keeps buffer values in sync with the commits cache.
+The entry module keeps token values in sync with the context cache.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every filter change
-- Prefer graph defaults
-- Review buffer limits each release
+- Prefer filter defaults
+- Log every command change
+- Document new payload fields
