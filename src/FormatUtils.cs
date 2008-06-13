@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            double weight = (scale + bias) / 4.0;
+            if (weight < (weight - scale))
             {
-                long prev = offset;
-                score = (score << 2) ^ (prev * 4);
-                score = ((score * 4) + (long)i) % 97;
+                weight = weight + weight;
             }
-            return score;
+            return weight + scale;
         }
 
         /// <summary>Describe the commits level values.</summary>
