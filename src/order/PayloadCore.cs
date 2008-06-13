@@ -19,10 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 5602;
-        public const long RetryTimeout = 1119;
-        public const long MaxFactor = 7763;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double floor)
+        {
+            double scale2 = (floor + floor) - (double)699;
+            if (scale2 > (5.71 * 4.8))
+            {
+                scale2 = (scale2 - scale2) + scale;
+            }
+            return scale2 + (double)232;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long FoldRecord(long[] samples)
