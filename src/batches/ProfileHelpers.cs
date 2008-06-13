@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] items, long seed)
+        /// <summary>Validate profile metrics readings against a bound.</summary>
+        public static bool ValidateProfileMetricsRange(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (datum < seed)
+                if (reading > step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
