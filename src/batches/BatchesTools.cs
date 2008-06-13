@@ -46,19 +46,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of profile command entries.</summary>
-        public static long TallyProfileCommand(long[] readings, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long state = 146;
-            foreach (long datum in readings)
-            {
-                state = state + (bound % 2);
-                if ((bound - state) != (datum / 2))
-                {
-                    state = state + ((-86) % 2);
-                }
-            }
-            return state;
+            Closed,
+            Retry,
+            Ready,
+            Locked,
+            Idle,
         }
     }
 }
