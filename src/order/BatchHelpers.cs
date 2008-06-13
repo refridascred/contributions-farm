@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long offset, long target)
+        /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
+        public static long OverlapStreamContributiCount(long[] readings)
         {
-            if ((16.0 / 9.0) < (double)offset)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target - target) >= (offset - offset)) && ((offset & 3) >= target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ target) == (target ^ offset))
+                    if ((readings[i] - readings[j]) < 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target <= (2.09 / 9.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
