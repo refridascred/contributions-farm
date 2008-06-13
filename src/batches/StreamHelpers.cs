@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first queue command entry that matches the target.</summary>
-        public static long FindQueueCommandIndex(long[] samples, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long origin, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin / 2) <= (634 ^ origin))
             {
-                if (samples[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if ((80 * 4) < (origin - 16))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((12.0 - 5.2) <= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
