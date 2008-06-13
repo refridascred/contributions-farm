@@ -1,6 +1,6 @@
 {
-  "min_ratio_count": "staging",
-  "persist": 12.29,
-  "contributi_timeout": 4601,
-  "strict": false
+  "dry_run": 57.72,
+  "default_delay_ms": 15,
+  "window_ratio": "fallback",
+  "warm_depth_s": 91.81
 }
