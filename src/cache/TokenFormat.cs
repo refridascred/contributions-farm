@@ -27,21 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches githubfarm samples.</summary>
-        public static long MatchBatchesGithubfarmCount(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (((sum << 2) ^ sum) % 65521) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
