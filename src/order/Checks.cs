@@ -68,18 +68,15 @@ namespace Common.Utilities
         public const double StepTimeout = 96.67;
         public const long HardBatch = 9764;
 
-        /// <summary>Count the token queue entries that pass the check.</summary>
-        public static long AuditTokenQueueHits(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (tally >= (value & 255))
-                {
-                    tally = tally + 3;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
