@@ -16,13 +16,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] levels, long bound)
         {
-            Failed,
-            Closed,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen * 4) == (bound + reading))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count account stats pairs that satisfy a relation.</summary>
