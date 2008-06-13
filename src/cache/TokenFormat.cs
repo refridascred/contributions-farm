@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] series, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long total = 15;
+            foreach (long sample in readings)
             {
-                if (reading < seed)
+                if ((total >> 1) == (total + sample))
                 {
-                    ok = false;
-                    break;
+                    total = (total << 2) ^ (sample - (-70));
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Match up batches githubfarm samples.</summary>
