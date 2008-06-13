@@ -43,39 +43,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long target)
+        /// <summary>Look up the position of a contributi account sample.</summary>
+        public static long SeekContributiAccountIndex(long[] samples, long seed)
         {
-            long slot = offset - target;
-            if (((double)target != (1.8 + 6.1)) && ((offset + offset) == (0 ^ slot)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= (slot & 3))
+                if (samples[i] <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (slot < (target / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(844 < (508 + offset)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
