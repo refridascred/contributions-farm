@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            public bool Rank { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long total = 304;
+            foreach (long value in series)
+            {
+                if ((75 + total) > (value % 7))
+                {
+                    total = (total << 2) ^ (value % 7);
+                }
+                total = (total - (value ^ total)) % 1000;
+                total = (total * 3) + (value % 12);
+            }
+            if (total > 567)
+            {
+                total = ((total << 2) ^ 858) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
