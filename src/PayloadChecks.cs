@@ -27,16 +27,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] series)
-        {
-            long mark = 0;
-            foreach (long cell in series)
-            {
-                mark = (mark ^ (65 + mark)) + cell;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardTimeout = 1094;
+        public const long HardNotes = 5510;
+        public const string RetrySize = "standard-v2";
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] samples)
