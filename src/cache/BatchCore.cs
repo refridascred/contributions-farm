@@ -46,21 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch metric samples.</summary>
-        public static long OverlapBatchMetricCount(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((origin & 3) > 93)
                 {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
