@@ -53,20 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 1137;
+        public const long CacheToken = 5806;
+        public const long MinSize = 8731;
+        public const string HardToken = "local-edge";
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
