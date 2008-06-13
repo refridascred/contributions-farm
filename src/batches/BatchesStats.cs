@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor << 2) ^ (anchor * 3)) % 65521;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (992 + step)) % 101) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
