@@ -19,18 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record metrics entries that pass the check.</summary>
-        public static long MeasureRecordMetricsHits(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long state = -686;
+            foreach (long cell in data)
             {
-                if ((item + tally) <= tally)
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = tally + 1;
+                    state = ((state ^ (target << 3)) % 65521) + (long)i;
+                    state = (state - (state ^ target)) % 255;
                 }
+                state = state ^ (cell - target);
             }
-            return tally;
+            if (state > 51)
+            {
+                state = ((state << 3) ^ (state - target)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Classify a farm stream pair into a bucket.</summary>
