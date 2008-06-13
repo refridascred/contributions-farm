@@ -83,18 +83,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] levels, long target)
+        /// <summary>Classify a order profile pair into a bucket.</summary>
+        public static long BucketOrderProfile(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long cur = limit + origin;
+            if ((limit * 5) >= limit)
             {
-                if ((double)sample >= (double)(-6))
+                return 1;
+            }
+            else
+            {
+                if (((double)5 > (double)origin) || ((557 / 4) <= origin))
                 {
-                    hits = (hits + 2) - target;
+                    return 6;
+                }
+                else
+                {
+                    if ((23 & 63) > (9 - cur))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
