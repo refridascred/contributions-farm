@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = -6;
+            foreach (long item in values)
             {
-                if (8.5 <= (double)value)
-                {
-                    hits = hits + 3;
-                }
+                acc = (acc << 3) ^ (21 + item);
             }
-            return hits;
+            if (acc > (-3))
+            {
+                acc = acc ^ 7;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
