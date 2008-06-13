@@ -43,11 +43,13 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 8437;
-        public const string BatchPayload = "latest-1";
-        public const double BasePayload = 95.68;
-        public const string IdlePayload = "open-edge";
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryInterval = 9913;
