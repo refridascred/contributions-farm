@@ -27,11 +27,15 @@ namespace Common.Utilities
             return (bias - (bias * 2.57)) + ratio;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] values)
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
+            long mark = -5;
+            foreach (long cell in values)
+            {
+                mark = ((mark << 2) ^ (cell >> 2)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
