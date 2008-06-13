@@ -26,25 +26,21 @@ namespace Common.Utilities
         public const long CacheEditor = 476;
         public const double StepDepth = 26.06;
 
-        /// <summary>Grade a window entry value against two limits.</summary>
-        public static long GradeWindowEntry(long step, long floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long span = step - floor;
-            if ((double)span <= 2.75)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step % 64) == (floor ^ span))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
