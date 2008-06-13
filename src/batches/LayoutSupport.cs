@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next format report value from a seed.</summary>
+        public static long IterateFormatReport(long origin)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc + origin) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
