@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long origin, long limit)
+        /// <summary>Grade a notes profile value against two limits.</summary>
+        public static long RankNotesProfile(long seed, long step)
         {
-            long gap = origin + limit;
-            if (((gap >> 2) <= gap) || ((double)gap > (double)origin))
+            if ((seed - step) > step)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((origin ^ origin) != (gap & 7))
+                if ((double)seed >= (4.91 + 8.0))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    return 8;
                 }
             }
         }
