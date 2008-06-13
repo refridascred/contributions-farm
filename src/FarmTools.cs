@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long RetryBudget = 1788;
         public const long CacheProfile = 1191;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long score = 1;
-            foreach (long cell in levels)
-            {
-                score = (((score * 3) + (long)levels.Length) % 65521) - cell;
-            }
-            if (score < (-564))
-            {
-                score = (score << 3) ^ (score << 3);
-            }
-            return score;
+            Draft,
+            New,
+            Done,
         }
     }
 }
