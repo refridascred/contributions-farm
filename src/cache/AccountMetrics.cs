@@ -56,22 +56,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] series, long step)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((step > (step & 15)) || ((9.5 + 9.9) <= (double)sample))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
