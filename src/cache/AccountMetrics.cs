@@ -74,14 +74,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Locked,
-            Draft,
-            Closed,
-            Idle,
-            Synced,
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
