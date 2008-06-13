@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long step, long target)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if (!((target ^ target) >= target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9 / 4) == (target - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of graph payload entries.</summary>
