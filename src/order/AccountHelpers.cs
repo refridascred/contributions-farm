@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Locked,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Accumulate window samples.</summary>
