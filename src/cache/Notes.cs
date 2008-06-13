@@ -58,28 +58,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Count filter stream pairs that satisfy a relation.</summary>
+        public static long OverlapFilterStreamCount(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((floor << 1) > (5 & 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score + (score >> 4)) % 4096;
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (((long)i * 4) < (score >> 3))
-                {
-                    score = (score + floor) % 97;
-                    score = ((score << 3) ^ ((long)i >> 1)) % 101;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (score - (78 + (long)i2)) % 97;
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
