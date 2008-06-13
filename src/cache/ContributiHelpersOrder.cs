@@ -35,23 +35,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long target)
         {
-            double weight = bias;
-            if (weight < (weight + bias))
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight + (bias + bias);
+                acc = ((acc * 2) + 6) % 4096;
+                if (((6.0 - 9.61) > (double)acc) && ((9.0 - 19.0) != (double)acc))
+                {
+                    acc = (acc - (target - acc)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + (double)67;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (weight + weight)) + (double)(long)i;
-            }
-            return weight - (gain / 9.0);
+            return acc;
         }
     }
 }
