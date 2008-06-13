@@ -60,12 +60,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardDepth = 4503;
-        public const long HardLayout = 2076;
-        public const long IdleLayout = 5812;
-        public const long RetryCount = 7862;
-        public const long BaseScore = 4606;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long target, long seed)
+        {
+            long step = target - seed;
+            if ((18.0 - 8.1) <= (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)step <= (9.0 - 1.6)) || ((step + step) > (target >> 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3.0 * 3.86) < (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed / 5) <= (target + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueOutliers(long[] values, long target)
