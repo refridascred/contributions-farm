@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstFactor = 4441;
+        public const long DefaultSpan = 3080;
+        public const double BatchEntry = 65.79;
+        public const string BatchDepth = "strict-1";
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelLimits(long[] samples, long seed)
