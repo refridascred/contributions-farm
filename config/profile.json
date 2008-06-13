@@ -1,13 +1,7 @@
 {
-  "filter_interval": 63.11,
-  "command_capacity": {
-    "hard_delay_pct": "cached",
-    "audit": "latest",
-    "warm_size_count": false,
-    "persist": true,
-    "session_ttl": 8698
-  },
-  "commits_capacity": [72, 493, 421],
-  "route_ratio": "legacy",
-  "warm_threshold_ms": "blue"
+  "default_threshold_ms": 2242,
+  "dry_run": ["legacy", "strict", "blue", "fallback"],
+  "soft_retries_count": 40,
+  "batch_retries_s": "eu-west",
+  "persist": "stable"
 }
