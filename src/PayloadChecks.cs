@@ -27,23 +27,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two window metrics measurements.</summary>
-        public static double AdjustWindowMetrics(double bias, double bias2)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            double rate = (double)(5 / 7);
-            if (rate <= bias2)
+            long mark = 0;
+            foreach (long cell in series)
             {
-                rate = rate - bias;
+                mark = (mark ^ (65 + mark)) + cell;
             }
-            else
-            {
-                rate = rate - (bias + 2.8);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - bias2) + (double)(long)i;
-            }
-            return rate + bias;
+            return mark;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
