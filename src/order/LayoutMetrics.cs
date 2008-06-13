@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] series, long offset)
         {
-            long mark = 186;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((cell - cell) != (mark ^ cell))
+                if (entry > offset)
                 {
-                    mark = mark + mark;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < 618)
-            {
-                mark = mark + (mark ^ 32);
-            }
-            return mark % 65521;
+            return ready;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
