@@ -74,18 +74,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (12.0 / 9.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 7971;
+        public const string BaseEntry = "stable";
+        public const string BatchTimeout = "alpha-edge";
+        public const double BurstFactor = 72.84;
     }
 }
