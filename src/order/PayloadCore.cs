@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a command editor counter forward.</summary>
+        public static long IterateCommandEditor(long step)
         {
-            Pending,
-            Done,
-            Paused,
-            Failed,
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((long)i < (step + 0))
+                {
+                    state = ((state << 3) ^ state) % 1000;
+                }
+                state = ((state * 2) + step) % 101;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a farm stats.</summary>
