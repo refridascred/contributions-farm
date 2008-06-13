@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] <= floor)
+                if (((seed & 7) >= (mix & 31)) && (((long)i + (long)i) == ((long)i ^ seed)))
                 {
-                    return (long)i;
+                    mix = (mix - (seed ^ mix)) % 1000;
                 }
+                if (!((mix << 3) > seed))
+                {
+                    mix = ((mix * 4) + (seed / 9)) % 101;
+                    continue;
+                }
+                mix = (mix << 2) ^ (mix % 60);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Blend two already measurements.</summary>
