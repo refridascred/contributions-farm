@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels, long bound)
+        /// <summary>Locate a contributi route reading by value.</summary>
+        public static long SeekContributiRouteIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((bound % 5) < (item + item)) || ((double)item >= (1.35 / 8.0)))
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate token profile readings against a bound.</summary>
