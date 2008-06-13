@@ -31,15 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double bias, double span)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double mean = bias;
-            if (mean >= (double)155)
-            {
-                mean = mean + bias;
-            }
-            return mean - span;
+            Done,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Accumulate cache queue samples.</summary>
