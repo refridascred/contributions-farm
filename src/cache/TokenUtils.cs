@@ -36,35 +36,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster session value against two limits.</summary>
-        public static long GradeClusterSession(long floor, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long offset, long limit)
         {
-            long span = floor - bound;
-            if (!((double)bound <= (8.31 - 4.3)))
+            if ((double)limit >= 9.99)
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (!((double)span != (8.5 + 1.9)))
+                if (((offset >> 3) < (limit + limit)) || (2.5 >= (double)offset))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (((double)span != (double)bound) && ((bound * 5) < 2))
+                    if ((offset & 255) >= (offset ^ offset))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        if (!((span + floor) >= floor))
+                        if ((double)limit < (double)8)
                         {
-                            return 7;
+                            return 5;
                         }
                         else
                         {
-                            return 0;
+                            return 8;
                         }
                     }
                 }
