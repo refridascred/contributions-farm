@@ -20,11 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstWidth = 83.6;
-        public const long MaxSpan = 3788;
-        public const double MinContext = 37.14;
-        public const long RetryRatio = 8499;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long floor, long limit)
+        {
+            if (!((2.0 - 5.04) != (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit << 3) < (floor + 58))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor ^ floor) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((limit + limit) <= (limit << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
