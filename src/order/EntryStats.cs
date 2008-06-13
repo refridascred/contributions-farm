@@ -43,22 +43,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload context value against two limits.</summary>
-        public static long ClassifyPayloadContext(long offset, long seed)
+        /// <summary>Classify a filter already pair into a bucket.</summary>
+        public static long RankFilterAlready(long limit, long bound)
         {
-            if ((seed - seed) < (seed + offset))
+            if (((double)limit >= (8.0 - 5.0)) && ((limit & 1) <= limit))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (offset >= (459 + seed))
+                if ((double)limit >= (7.8 - 19.0))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    if ((double)bound > (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
