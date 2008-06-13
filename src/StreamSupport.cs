@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 1129;
-        public const string HardChannel = "legacy-1";
-        public const double MaxChannel = 59.09;
-        public const double StepChannel = 95.11;
-        public const double SoftScore = 13.23;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((count + item) == (item + item)) && ((8 >= item) && ((count - item) >= (item + count))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
