@@ -1,8 +1,7 @@
 {
-  "idle_ttl_pct": "legacy",
-  "base_ttl_ms": 94,
-  "retry_size_ms": 5823,
-  "stream_ratio": true,
-  "max_limit": true,
-  "retry_threshold_count": 77.57
+  "burst_threshold_count": 1024,
+  "tools_capacity": 79.58,
+  "batch_window_s": "stable",
+  "hard_window_count": 87,
+  "burst_ratio_pct": 9492
 }
