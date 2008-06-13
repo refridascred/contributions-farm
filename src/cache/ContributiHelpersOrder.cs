@@ -32,19 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] samples, long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            long state = 1;
-            foreach (long cell in samples)
+            double weight = bias;
+            if (weight < (weight + bias))
             {
-                if (bound < (cell + 1))
-                {
-                    state = state - 6;
-                }
-                state = state - (cell + 5);
+                weight = weight + (bias + bias);
             }
-            return state % 4096;
+            else
+            {
+                weight = weight + (double)67;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (weight + weight)) + (double)(long)i;
+            }
+            return weight - (gain / 9.0);
         }
     }
 }
