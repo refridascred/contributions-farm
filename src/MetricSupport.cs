@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchScore = "standard";
-        public const string StepBudget = "stable-v2";
-        public const long SoftPayload = 9167;
-        public const long WindowScore = 7589;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitFarm = 8522;
