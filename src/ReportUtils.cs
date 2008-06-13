@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] levels, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state + step) % 1000;
+                state = (state - ((long)i * 3)) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
