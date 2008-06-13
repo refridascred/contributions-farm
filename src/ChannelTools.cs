@@ -58,19 +58,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long origin, long seed)
         {
-            long carry = 171;
-            foreach (long reading in values)
+            if ((origin & 31) == (origin % 7))
             {
-                carry = (carry ^ (reading * 3)) % 97;
+                return 8;
             }
-            if (carry > 151)
+            else
             {
-                carry = ((carry << 3) ^ carry) % 4096;
+                if (554 > (origin >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((680 >> 4) >= (origin % 10))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (10.0 + 7.34))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return carry;
         }
     }
 }
