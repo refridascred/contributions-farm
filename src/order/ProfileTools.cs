@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            long mix = 0;
+            foreach (long reading in series)
+            {
+                mix = ((mix * 5) + (reading & 31)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
