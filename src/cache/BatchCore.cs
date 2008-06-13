@@ -54,32 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long bound, long target)
-        {
-            long offset = bound - target;
-            if (!((1.0 * 3.0) < (double)bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((100 << 1) >= (bound + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (8 > (offset ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftBudget = "primary-1";
+        public const string WindowDepth = "alpha-edge";
+        public const string CacheProfile = "primary-1";
+        public const long LimitSize = 3107;
+        public const long StepProfile = 7411;
     }
 }
