@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] values, long seed)
+        /// <summary>Adjust a contributi already reading.</summary>
+        public static double BlendContributiAlready(double scale, double floor)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double load = 3.81;
+            if (load > (double)4)
             {
-                if (cell >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - scale;
             }
-            return found;
+            else
+            {
+                load = load + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (floor / 2.0)) + (double)(long)i;
+            }
+            return load - (load * 7.1);
         }
 
         /// <summary>Define support limits and defaults.</summary>
