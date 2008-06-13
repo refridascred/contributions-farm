@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every checks context entry stays within the limit.</summary>
-        public static bool VerifyChecksContextLimits(long[] items, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
