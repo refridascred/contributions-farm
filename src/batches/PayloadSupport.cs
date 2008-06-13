@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BatchMetrics = 1443;
         public const long RetryMetrics = 5695;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits >> 2) > (value ^ hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
