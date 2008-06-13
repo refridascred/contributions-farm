@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Locate a order counter reading by value.</summary>
+        public static long LookupOrderCounterIndex(long[] samples, long seed)
         {
-            double drift = 8.3;
-            if (drift >= rate)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + drift) + bias;
+                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)10;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 0.5) + (double)(long)i;
-            }
-            return drift + (double)0;
+            return -1;
         }
 
         /// <summary>Adjust a channel tools reading.</summary>
