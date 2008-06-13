@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] samples)
         {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits + hits) <= sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
