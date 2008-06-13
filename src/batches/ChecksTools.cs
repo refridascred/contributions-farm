@@ -33,21 +33,31 @@ namespace Common.Utilities
         public const long WindowMetrics = 3321;
         public const string HardMetrics = "primary";
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long seed, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (seed >= (seed * 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed == (8.62 / 8.0))
                 {
-                    if ((series[i] ^ series[j]) != 12)
+                    return 3;
+                }
+                else
+                {
+                    if (1.24 > (double)seed)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
