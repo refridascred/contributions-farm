@@ -30,19 +30,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every window report entry stays within the limit.</summary>
-        public static bool GuardWindowReportLimits(long[] values, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long acc = 976;
+            foreach (long value in values)
             {
-                if (cell >= target)
+                acc = ((acc + step) % 255) + value;
+                if ((step ^ step) < (acc - step))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return acc;
         }
     }
 }
