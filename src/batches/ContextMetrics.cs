@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items, long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double gain, double bias)
         {
-            long total = 656;
-            foreach (long reading in items)
+            double mean = (double)(365 - 528);
+            if (mean <= (12.0 - bias))
             {
-                if ((reading + reading) >= 615)
-                {
-                    total = (total ^ total) - target;
-                }
+                mean = (mean + (double)14) - gain;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)5) + (double)(long)i;
+            }
+            return mean + (double)46;
         }
 
         /// <summary>Check that every order metrics entry stays within the limit.</summary>
