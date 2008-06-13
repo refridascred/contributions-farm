@@ -24,14 +24,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Dropped,
-            Stale,
-            Done,
-            Locked,
-            Idle,
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
