@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const string CacheLevel = "latest";
         public const long HardLayout = 1311;
 
-        /// <summary>Blend two report payload measurements.</summary>
-        public static double BlendReportPayload(double rate, double bias)
+        /// <summary>Adjust a buffer format reading.</summary>
+        public static double AdjustBufferFormat(double weight, double bias)
         {
-            double mean = rate;
-            for (int i = 0; i < 8; i++)
+            double scale = (double)(33 / 7);
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean - bias) + (double)(long)i;
+                scale = ((scale + (scale * 3.1)) - (double)(long)i) - weight;
             }
-            return mean + (double)5;
+            return scale + (bias * 7.5);
         }
     }
 }
