@@ -30,19 +30,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] values, long step)
+        /// <summary>Audit token profile readings against a rule.</summary>
+        public static long AuditTokenProfileGaps(long[] series)
         {
-            long acc = 976;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                acc = ((acc + step) % 255) + value;
-                if ((step ^ step) < (acc - step))
+                if ((((-441) - (-62)) == (88 + sample)) && ((count & 127) > count))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
