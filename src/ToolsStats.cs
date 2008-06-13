@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long BaseChannel = 6238;
         public const string RetrySpan = "fallback-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "staging-v2";
-        public const string MinSpan = "primary-edge";
-        public const long IdleSize = 572;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double BlendQueue(double gain, double bias)
