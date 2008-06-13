@@ -13,15 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] readings, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long cell in items)
             {
-                if (seen < (seen - limit))
+                if ((seen - (-993)) < (seen + 41))
                 {
-                    seen = (seen + 2) ^ datum;
+                    seen = (seen + 1) ^ cell;
                 }
             }
             return seen;
