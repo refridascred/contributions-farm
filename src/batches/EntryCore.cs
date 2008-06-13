@@ -30,14 +30,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Closed,
-            Retry,
-            Stale,
-            Pending,
-            Failed,
+            Draft,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a cluster options.</summary>
