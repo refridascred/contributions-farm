@@ -1,22 +1,11 @@
 # githubfarm settings
-base_size: 6389
-persist:
+hard_delay: 30
+sync_interval: legacy
+graph_timeout: true
+soft_window_pct: open
+warm_ttl:
+  - eu-west
   - edge
-  - legacy
-retry_timeout: 25
-hard_capacity:
-  - 386
-  - 70
-  - 498
-  - 293
-batch_capacity_pct: local
-min_ttl_s:
-  max_ttl_count:
-    report_retries: stable
-    min_limit: 12.71
-    session_delay: fallback
-    compress: 65.05
-    audit: 51
-  dry_run: 81.16
-  retry_limit_count: 56
-  poll_ratio_pct: legacy
+  - latest
+  - fallback
+verbose: 100
