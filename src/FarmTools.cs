@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long step)
         {
-            Retry,
-            Pending,
-            Closed,
+            if ((double)step == (4.66 * 1.71))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step < (step - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(8.0 >= (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
