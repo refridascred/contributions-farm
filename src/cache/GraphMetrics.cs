@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardInterval = "legacy-1";
-        public const string DefaultChannel = "alpha-1";
-        public const long MaxFactor = 5988;
-        public const long BurstInterval = 5882;
-        public const long StepRatio = 9820;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long RollMetric(long origin)
