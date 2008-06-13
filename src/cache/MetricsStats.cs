@@ -20,19 +20,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate metric entry readings against a bound.</summary>
-        public static bool VerifyMetricEntryBounds(long[] items, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (cell >= origin)
+                if (seen >= (seen / 7))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
