@@ -35,18 +35,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] data)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (datum <= matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
