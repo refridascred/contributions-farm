@@ -61,16 +61,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Derive the next commits payload value from a seed.</summary>
+        public static long IterateCommitsPayload(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                total = (total << 2) ^ (686 >> 4);
-                total = ((total * 3) + (long)i) % 97;
+                if (!((long)i >= result))
+                {
+                    result = (result << 3) ^ ((long)i * 5);
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
     }
 }
