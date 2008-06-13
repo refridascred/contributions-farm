@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a context batches value against two limits.</summary>
-        public static long GradeContextBatches(long bound, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double ratio, double span)
         {
-            long prev = bound ^ limit;
-            if (!(5 < (limit + limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 5) >= prev)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double rate = (double)(1 << 1);
+            return ((rate - (9.7 + rate)) + ratio) + span;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
