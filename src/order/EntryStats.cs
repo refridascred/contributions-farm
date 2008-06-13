@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of farm window readings.</summary>
-        public static long ScoreFarmWindow(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long limit)
         {
-            long score = -374;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (((long)series.Length - reading) > (-9))
+                if (reading < limit)
                 {
-                    score = (score * 2) + (score << 3);
+                    ready = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ready;
         }
 
         /// <summary>Describe the command level values.</summary>
