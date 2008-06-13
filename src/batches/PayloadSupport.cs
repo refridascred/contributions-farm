@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BatchMetrics = 1443;
         public const long RetryMetrics = 5695;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] items, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
