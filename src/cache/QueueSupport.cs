@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleWidth = 96.72;
-        public const double CacheEntry = 36.93;
-        public const long MinBudget = 369;
-        public const string SoftEntry = "alpha-1";
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] items)
+        {
+            long anchor = 396;
+            foreach (long datum in items)
+            {
+                if (!(anchor <= (anchor & 7)))
+                {
+                    anchor = (anchor * 3) + (anchor - datum);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long step)
