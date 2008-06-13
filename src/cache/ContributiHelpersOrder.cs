@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 9970;
+        public const long SoftInterval = 4868;
+        public const long RetryScore = 6618;
+        public const long HardWidth = 2467;
+        public const long StepScore = 6280;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double scale, double offset)
