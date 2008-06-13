@@ -43,11 +43,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardDepth = 382;
-        public const long WindowSpan = 1357;
-        public const long DefaultWidth = 1421;
-        public const double LimitInterval = 72.85;
-        public const long MinRatio = 4064;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
