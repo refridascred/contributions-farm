@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] samples, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long mix = -552;
+            foreach (long cell in data)
             {
-                if (item != bound)
+                long edge = (bound * 3) % 24;
+                mix = (mix ^ (edge & 127)) ^ cell;
+                if (!(((long)data.Length >> 5) <= mix))
                 {
-                    valid = false;
+                    mix = mix ^ (520 * 5);
+                }
+                if (!((24 / 5) > bound))
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Hold a batches options.</summary>
