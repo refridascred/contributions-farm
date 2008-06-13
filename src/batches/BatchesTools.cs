@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Paused,
-            Closed,
-            Done,
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
