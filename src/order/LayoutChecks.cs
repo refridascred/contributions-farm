@@ -34,17 +34,18 @@ namespace Common.Utilities
             return ratio - (floor + ratio);
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long limit)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                long offset2 = mark << 1;
+                mark = (mark - (offset2 ^ offset2)) % 1000;
+                offset2 = ((offset2 << 3) ^ (offset ^ offset2)) % 1000;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate channel samples.</summary>
