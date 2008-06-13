@@ -53,20 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long seed, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long cur = seed ^ offset;
+            if ((6.3 * 1.78) <= (double)offset)
             {
-                if (limit <= (long)i)
-                {
-                    carry = carry + carry;
-                    carry = (carry - limit) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (!((double)seed < (0.69 + 6.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.84 - 5.0) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset > (offset + cur)) && ((cur - cur) <= (seed * 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm checks entries that pass the check.</summary>
