@@ -14,23 +14,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double weight, double floor)
+        /// <summary>Blend two stats already measurements.</summary>
+        public static double SmoothStatsAlready(double gain, double bias)
         {
-            double rate = floor;
-            if (rate < (rate - weight))
+            double scale = bias;
+            if (scale > (double)117)
             {
-                rate = rate + (double)7;
+                scale = (scale + scale) - gain;
             }
-            else
-            {
-                rate = rate - (floor / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - 12.0) + (double)(long)i;
-            }
-            return rate - rate;
+            return scale + scale;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
