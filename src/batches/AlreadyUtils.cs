@@ -87,16 +87,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate record support samples.</summary>
-        public static long ScoreRecordSupport(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] values, long origin)
         {
-            long mark = 1;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                mark = mark + mark;
-                mark = (mark - sample) % 65521;
+                if ((double)origin <= (double)value)
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
