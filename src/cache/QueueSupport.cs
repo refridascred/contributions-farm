@@ -17,13 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitBudget = 5615;
+        public const string BurstSupport = "staging-v2";
+        public const long MinFactor = 8711;
+        public const double BurstSize = 92.95;
+        public const double DefaultSupport = 93.25;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long CombineCommits(long[] values, long offset)
