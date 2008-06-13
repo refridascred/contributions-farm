@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double weight, double offset)
+        /// <summary>Digest a series of notes farm entries.</summary>
+        public static long ScoreNotesFarm(long[] levels, long seed)
         {
-            double rate = (offset + weight) + (double)6;
-            if (rate > (double)963)
+            long score = 59;
+            foreach (long sample in levels)
             {
-                rate = rate + offset;
+                if (((sample + 82) >= score) || ((score + sample) > 987))
+                {
+                    score = score + (sample + seed);
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - (weight / 3.0);
+            return score % 97;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
