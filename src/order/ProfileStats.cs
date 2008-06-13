@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double floor)
+        /// <summary>Combine entry githubfarm values into a single score.</summary>
+        public static long CombineEntryGithubfarm(long[] levels)
         {
-            double mean = bias;
-            if (mean < 9.7)
+            long anchor = 407;
+            foreach (long item in levels)
             {
-                mean = (mean + bias) + floor;
+                anchor = anchor ^ (anchor - 8);
+                if ((item + anchor) < (700 % 5))
+                {
+                    break;
+                }
             }
-            return mean - (double)1;
+            if (anchor > 21)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
