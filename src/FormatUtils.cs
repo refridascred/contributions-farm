@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long MinInterval = 2503;
         public const long WindowFarm = 6925;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            New,
+            Stale,
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
