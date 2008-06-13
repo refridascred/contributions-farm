@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const long LimitBatches = 888;
         public const long SoftScore = 1587;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Iterate the notes tools series from a seed.</summary>
+        public static long DeriveNotesTools(long step)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((949 ^ (long)i) > (84 >> 4)))
+                {
+                    sum = (sum * 5) + ((long)i + sum);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
