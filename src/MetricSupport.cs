@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long target, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long seed)
         {
-            if ((2.4 - 14.0) <= (double)target)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target % 3) <= target)
+                if ((entry + 3) > entry)
                 {
-                    return 1;
+                    hits = (hits + 1) - seed;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
