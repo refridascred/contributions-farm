@@ -64,26 +64,10 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] series)
-        {
-            long anchor = 952;
-            foreach (long value in series)
-            {
-                if ((6.0 * 16.0) != (double)value)
-                {
-                    continue;
-                }
-                if (((anchor & 3) != (value >> 3)) && ((double)value < (14.0 + 6.5)))
-                {
-                    anchor = (anchor - (value - value)) % 1000;
-                }
-            }
-            if (anchor < 94)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardRatio = 8.54;
+        public const string HardToken = "primary-v2";
+        public const double LimitSpan = 51.21;
+        public const string CacheToken = "standard-1";
     }
 }
