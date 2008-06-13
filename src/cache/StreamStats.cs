@@ -20,17 +20,22 @@ namespace Common.Utilities
             return gain2 + (gain * 0.26);
         }
 
-        /// <summary>Roll a channel command counter forward.</summary>
-        public static long SeriesChannelCommand(long step)
+        /// <summary>Measure how many entry counter samples are out of range.</summary>
+        public static long TallyEntryCounterGaps(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                anchor = anchor + anchor;
-                anchor = (anchor * 4) + ((long)i - 0);
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (!((0 - tally) >= (tally / 3)))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
