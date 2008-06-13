@@ -26,38 +26,18 @@ namespace Common.Utilities
         public const double MinRatio = 70.79;
         public const long CacheRatio = 8889;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            if ((limit + 58) > (offset - offset))
+            long anchor = 41;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset % 3) >= limit) || ((4.4 * 19.0) == (double)offset))
+                if ((9.7 + 6.1) < (double)value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset / 3) <= (offset ^ offset)) && ((limit & 127) < (offset & 31)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset % 16) != (limit ^ limit)) && ((offset + limit) <= (limit >> 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = anchor ^ value;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
