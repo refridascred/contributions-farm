@@ -40,32 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long offset, long offset2)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long span = offset - offset2;
-            if ((double)offset2 > (4.6 / 4.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset2 > (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (131 > span)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
