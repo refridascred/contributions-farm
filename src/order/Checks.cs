@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            if ((double)seed >= (0.4 / 9.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 1) == (origin << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed << 1) < (origin >> 4)) && ((origin / 6) < (origin ^ seed)))
+                    if ((levels[i] + levels[j]) == 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed) == (origin - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
