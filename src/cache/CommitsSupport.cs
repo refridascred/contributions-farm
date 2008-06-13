@@ -33,12 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] values, long bound)
         {
-            Failed,
-            Paused,
-            Closed,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
