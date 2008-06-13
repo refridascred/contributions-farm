@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] data, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell > (target + cell))
+                if (!(((mix % 10) != (limit / 3)) || (((long)i & 63) != ((long)i >> 4))))
                 {
-                    seen = seen + 2;
+                    mix = mix - (mix + mix);
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a order info.</summary>
