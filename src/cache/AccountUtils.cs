@@ -34,18 +34,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batches account readings against a rule.</summary>
-        public static long CountBatchesAccountOutliers(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((2.7 + 3.5) == (double)matches)
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                mix = (mix * 3) + step;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
