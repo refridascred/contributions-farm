@@ -1,4 +1,11 @@
 # support settings
-dry_run: 3223
-max_interval_s: true
-warm_depth_ms: 2623
+persist: true
+default_limit: 250
+format_timeout:
+  batch_delay: open
+  flush_ratio_pct: cached
+  max_window: true
+  soft_interval: edge
+retry_timeout_s: primary
+warm_ratio_s: 100
+min_timeout_ms: fallback
