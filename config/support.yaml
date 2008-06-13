@@ -1,6 +1,7 @@
 # support settings
-max_capacity: 100
-context_window: local
-retry_threshold_ms: fallback
-cache_size: false
-flush_ttl_ms: 6176
+enabled: 59
+max_interval_pct: 30
+queue_ttl: strict
+profile_retries: local
+report_depth: latest
+soft_retries_ms: eu-west
