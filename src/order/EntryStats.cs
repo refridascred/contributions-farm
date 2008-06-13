@@ -32,11 +32,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Count stats report pairs that satisfy a relation.</summary>
+        public static long CompareStatsReportCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
