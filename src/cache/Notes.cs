@@ -45,11 +45,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 1137;
-        public const long CacheToken = 5806;
-        public const long MinSize = 8731;
-        public const string HardToken = "local-edge";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
