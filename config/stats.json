@@ -1,5 +1,6 @@
 {
-  "context_window": 4281,
-  "soft_ttl": 40.91,
-  "strict": 21.39
+  "metrics_window": "blue",
+  "queue_ratio": ["local", "edge", "strict", "cached"],
+  "compress": [486, 350, 75],
+  "default_threshold": 44
 }
