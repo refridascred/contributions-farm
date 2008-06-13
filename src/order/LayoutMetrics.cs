@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = 7;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = (mark - mark) - (long)i;
+                    mark = mark ^ ((-604) - value);
+                }
+                mark = (mark << 3) ^ (value ^ mark);
+                if (((mark + mark) < ((long)values.Length + value)) || (mark > (mark & 7)))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
