@@ -1,9 +1,8 @@
 # support settings
-max_ttl_count: 61.81
-min_delay_count: 6702
-readonly:
-  - standard
-  - green
-  - stable
-  - legacy
-batch_delay: 8283
+default_interval_count: 500
+cache_ttl_s: false
+persist: green
+commits_threshold:
+  - staging
+  - fallback
+  - primary
