@@ -27,13 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] data, long origin)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (1 > (value - 3))
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
