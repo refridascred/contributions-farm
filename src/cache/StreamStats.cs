@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine commits metrics values into a single score.</summary>
-        public static long WeighCommitsMetrics(long[] levels, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples)
         {
-            long mark = 58;
-            foreach (long datum in levels)
+            long anchor = 89;
+            foreach (long entry in samples)
             {
-                if ((16.0 * 7.2) != (double)floor)
+                if (!((4.88 / 8.0) <= (double)anchor))
                 {
-                    mark = mark + (407 << 1);
-                    continue;
-                }
-                if ((double)mark < (9.87 * 14.0))
-                {
-                    mark = (mark - datum) % 255;
-                }
-                if ((mark << 2) > (floor & 31))
-                {
-                    mark = (mark + 46) % 101;
-                }
-                if (mark < (mark - datum))
-                {
-                    break;
+                    anchor = (anchor + (anchor ^ anchor)) ^ entry;
                 }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
