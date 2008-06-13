@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheRatio = 88.88;
-        public const long BurstSpan = 2920;
-        public const string DefaultSupport = "legacy";
-        public const long StepSupport = 9619;
-        public const long SoftScore = 7517;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] data)
