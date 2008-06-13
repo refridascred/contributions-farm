@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const long BurstGraph = 2048;
         public const long IdleGraph = 8178;
 
-        /// <summary>Audit stats already readings against a rule.</summary>
-        public static long CountStatsAlreadyOutliers(long[] readings, long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!(0.3 <= (double)origin) || ((origin + item) >= (item >> 1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
