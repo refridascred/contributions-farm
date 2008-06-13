@@ -1,5 +1,15 @@
 {
-  "compress": 10,
-  "cache_size_pct": 23.8,
-  "cache_capacity_pct": 1305
+  "idle_window_count": 81,
+  "persist": [189, 492, 84],
+  "order_limit": "legacy",
+  "flush_interval_count": "cached",
+  "audit": {
+    "notes_timeout": "green",
+    "contributi_window": [214, 28],
+    "batch_limit_pct": {
+      "batch_size_s": [69, 497, 188],
+      "channel_retries": "green",
+      "window_limit": "standard"
+    }
+  }
 }
