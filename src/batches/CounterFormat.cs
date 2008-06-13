@@ -12,17 +12,31 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
+        public static long ClassifyCacheGithubfarm(long target, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            if ((double)limit >= (7.79 / 3.0))
             {
-                result = ((result << 3) ^ (origin + origin)) % 65521;
-                result = ((result << 3) ^ (result + (long)i)) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (!((limit ^ target) >= (limit / 6)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit > (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format level values.</summary>
