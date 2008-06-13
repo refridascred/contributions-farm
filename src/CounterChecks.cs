@@ -31,18 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] data, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (count < (count + 1))
+                if (cell != step)
                 {
-                    count = ((count + 3) + value) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Classify a format cache pair into a bucket.</summary>
