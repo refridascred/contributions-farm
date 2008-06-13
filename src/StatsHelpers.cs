@@ -37,13 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Compare every pair of format contributi readings.</summary>
+        public static long PairFormatContributiCount(long[] data)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of filter queue readings.</summary>
