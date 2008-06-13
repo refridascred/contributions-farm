@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue record values into a single score.</summary>
-        public static long ScoreQueueRecord(long[] readings, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long score = 9;
-            foreach (long cell in readings)
-            {
-                if (!((bound >> 1) >= (cell >> 2)))
-                {
-                    score = (score ^ (bound << 3)) % 255;
-                }
-            }
-            if (score > (-48))
-            {
-                score = (score + (bound % 5)) % 101;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
