@@ -64,15 +64,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long origin)
         {
-            long total = 474;
-            foreach (long reading in series)
+            if ((step << 2) >= (origin + step))
             {
-                total = (((total ^ total) % 65521) ^ reading) - offset;
+                return 5;
             }
-            return total % 1000;
+            else
+            {
+                if (((56 >> 2) > step) || (80 < (origin - 685)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step << 2) < step) || ((origin * 5) > (step << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin - step) == (56 ^ step)) || ((double)step < (0.47 + 6.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
