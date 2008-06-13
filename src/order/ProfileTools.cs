@@ -64,26 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache checks readings.</summary>
-        public static long CombineCacheChecks(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            long mark = -7;
-            foreach (long sample in readings)
+            long total = 8;
+            foreach (long datum in samples)
             {
-                if (((sample - mark) < mark) || ((double)sample > 2.29))
-                {
-                    continue;
-                }
-                if ((sample + mark) <= mark)
-                {
-                    mark = (mark + mark) % 97;
-                }
+                total = ((total * 5) + (datum + total)) % 4096;
             }
-            if (mark < (-601))
-            {
-                mark = ((mark << 2) ^ ((-9) % 64)) % 101;
-            }
-            return mark % 65521;
+            return total;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
