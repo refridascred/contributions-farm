@@ -34,21 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of profile support readings.</summary>
-        public static long MatchProfileSupportCount(long[] samples)
+        /// <summary>Look up the position of a filter window sample.</summary>
+        public static long LocateFilterWindowIndex(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((values[i] >= floor) && ((values[i] % 2) != 0))
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a format cache pair into a bucket.</summary>
