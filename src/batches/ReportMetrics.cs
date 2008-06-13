@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count already context pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyContextCount(long[] readings)
+        /// <summary>Match up profile channel samples.</summary>
+        public static long PairProfileChannelCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 20)
+                    if ((values[i] + values[j]) != 8)
                     {
                         seen = seen + 1;
                     }
