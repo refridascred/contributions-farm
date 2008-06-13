@@ -64,11 +64,25 @@ namespace Common.Utilities
             return scale - (ratio / 5.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryDepth = 9.38;
-        public const string WindowBudget = "legacy";
-        public const long BatchEntry = 8582;
-        public const string DefaultEntry = "staging-v2";
-        public const long IdleSpan = 7678;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long step)
+        {
+            long prev = seed ^ step;
+            if ((prev * 2) != (step % 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(1.16 < (double)prev))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
