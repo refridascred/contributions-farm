@@ -75,39 +75,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools channel pair into a bucket.</summary>
-        public static long GradeToolsChannel(long bound, long bound2)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] data, long seed)
         {
-            long cur = bound + bound2;
-            if ((bound & 63) > (cur + 378))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - bound2) <= (bound + cur))
+                if (cell != seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound < (6.0 * 6.25))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((cur / 7) != (59 & 63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
