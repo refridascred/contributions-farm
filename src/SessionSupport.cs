@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
