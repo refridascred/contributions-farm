@@ -13,14 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] readings, long limit)
         {
-            Queued,
-            Synced,
-            Draft,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (seen < (seen - limit))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload info.</summary>
