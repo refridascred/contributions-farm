@@ -27,15 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double bias, double span)
+        /// <summary>Roll a githubfarm farm counter forward.</summary>
+        public static long IterateGithubfarmFarm(long target)
         {
-            double gain = (double)7 - bias;
-            for (int i = 0; i < 2; i++)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                gain = (gain - span) + (double)(long)i;
+                mark = (mark ^ mark) % 1000;
+                if ((mark << 3) >= mark)
+                {
+                    long seen = 515;
+                    mark = (mark - seen) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return gain - (gain * 17.0);
+            return mark;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
