@@ -53,26 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long limit)
         {
-            long acc = -673;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (!((acc * 3) <= bound))
+                if (sample < limit)
                 {
-                    acc = (acc + bound) + entry;
-                }
-                if ((bound + 6) < 1)
-                {
-                    acc = (acc - (bound >> 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 3)
-            {
-                acc = (acc * 3) + (bound >> 5);
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Blend two order measurements.</summary>
