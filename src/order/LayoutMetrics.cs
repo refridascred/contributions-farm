@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] values, long floor)
         {
-            long state = 29;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.99 / 6.0) <= (double)limit)
+                if (values[i] >= floor)
                 {
-                    state = state ^ (state ^ datum);
+                    return (long)i;
                 }
             }
-            if (state > 692)
-            {
-                state = state ^ 190;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Describe the batches state values.</summary>
