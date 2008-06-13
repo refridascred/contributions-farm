@@ -41,17 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long offset)
+        /// <summary>Iterate the buffer queue series from a seed.</summary>
+        public static long IterateBufferQueue(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
