@@ -31,10 +31,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTimeout = 1681;
-        public const long BurstTools = 4338;
-        public const long HardBudget = 479;
+        /// <summary>Check that every order metrics entry stays within the limit.</summary>
+        public static bool VerifyOrderMetricsRange(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] series)
