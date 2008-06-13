@@ -37,21 +37,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Locate a commits counter reading by value.</summary>
+        public static long FindCommitsCounterIndex(long[] samples, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long count = anchor;
-                if (((double)(long)i >= (double)count) || ((anchor >> 2) > offset))
+                if (samples[i] == step)
                 {
-                    count = count ^ (261 * 5);
-                    anchor = (anchor + (count >> 3)) % 255;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
