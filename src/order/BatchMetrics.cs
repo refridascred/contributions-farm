@@ -72,23 +72,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (entry >= ((long)data.Length + (long)data.Length))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 259;
+        public const long MinBatches = 2215;
+        public const long LimitInterval = 5077;
+        public const double CacheSize = 31.34;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long seed, long seed2)
