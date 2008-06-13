@@ -52,12 +52,18 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 6014;
         public const long BaseWidth = 4568;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] values, long seed)
         {
-            Queued,
-            Paused,
-            Closed,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seed < (seed + seed))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
