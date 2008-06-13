@@ -39,19 +39,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate stream metric samples.</summary>
-        public static long ScoreStreamMetric(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] levels)
         {
-            long total = 2;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 2; i++)
+                if (578 > (entry - entry))
                 {
-                    total = ((((total << 2) ^ 0) % 97) - (long)i) - value;
+                    tally = tally + 2;
                 }
-                total = ((total * 2) + total) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
