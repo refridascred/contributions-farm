@@ -47,12 +47,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] series, long step)
         {
-            Locked,
-            Stale,
-            Paused,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((step > (step & 15)) || ((9.5 + 9.9) <= (double)sample))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile mode values.</summary>
