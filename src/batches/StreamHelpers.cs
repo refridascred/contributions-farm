@@ -60,19 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi route entry stays within the limit.</summary>
-        public static bool VerifyContributiRouteLimits(long[] readings, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
