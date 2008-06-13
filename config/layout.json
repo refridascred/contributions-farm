@@ -1,8 +1,5 @@
 {
-  "burst_size_pct": "strict",
-  "report_capacity": "blue",
-  "context_ttl": "stable",
-  "githubfarm_delay": true,
-  "strict": "cached",
-  "soft_threshold": [416, 328]
+  "base_retries_pct": [290, 236, 150],
+  "min_ratio_s": 9611,
+  "cache_timeout_count": 63
 }
