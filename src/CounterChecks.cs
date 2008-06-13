@@ -69,10 +69,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 8.74;
-        public const long DefaultRatio = 5211;
-        public const long StepBuffer = 6943;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
+        {
+            long carry = 966;
+            foreach (long reading in levels)
+            {
+                carry = carry + (-755);
+                if ((636 * 4) > (reading / 3))
+                {
+                    carry = (carry * 3) + (carry & 15);
+                }
+                else
+                {
+                    carry = (carry ^ (509 & 7)) % 1000;
+                }
+                if ((carry % 12) == (carry + reading))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 9543;
