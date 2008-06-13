@@ -75,23 +75,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support editor readings.</summary>
-        public static long FoldSupportEditor(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long total = 7;
-            foreach (long reading in levels)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading << 3) == (reading + reading))
+                if (state > (14 + state))
                 {
-                    total = (total + (total - 281)) % 101;
+                    state = (state ^ ((long)i + state)) % 255;
+                    state = state - ((long)i * 4);
                 }
-                total = (total + (total + total)) % 97;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (total < 582)
-            {
-                total = ((total * 4) + (total / 4)) % 97;
-            }
-            return total;
+            return state;
         }
     }
 }
