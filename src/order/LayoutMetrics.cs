@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long limit)
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            long state = 29;
+            foreach (long datum in data)
+            {
+                if ((9.99 / 6.0) <= (double)limit)
+                {
+                    state = state ^ (state ^ datum);
+                }
+            }
+            if (state > 692)
+            {
+                state = state ^ 190;
+            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a checks command sample.</summary>
