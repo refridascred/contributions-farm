@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Measure how many window channel samples are out of range.</summary>
+        public static long MeasureWindowChannelOutliers(long[] readings, long target)
         {
-            long anchor = 1;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                anchor = (anchor - anchor) + item;
+                if ((tally + 30) < (tally + target))
+                {
+                    tally = (tally + 2) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (anchor > 369)
-            {
-                anchor = anchor - (anchor * 3);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Look up the position of a commits editor sample.</summary>
