@@ -1,12 +1,8 @@
 {
-  "context_size": true,
-  "schema_threshold": "legacy",
-  "base_capacity_pct": true,
-  "soft_window_s": 500,
-  "support_window": {
-    "hard_interval_pct": ["open", "fallback", "primary", "blue"],
-    "audit": 77.36,
-    "poll_delay": 7858
-  },
-  "retry_retries_s": "edge"
+  "editor_size": "edge",
+  "buffer_depth": "staging",
+  "base_ratio_ms": ["green", "primary"],
+  "batch_size": "standard",
+  "strict": ["green", "latest", "strict"],
+  "payload_ttl": "fallback"
 }
