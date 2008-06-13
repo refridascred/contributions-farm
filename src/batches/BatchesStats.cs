@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 251;
+            foreach (long cell in readings)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                if (!((acc + limit) < cell))
                 {
-                    return (long)i;
+                    acc = acc + (limit << 2);
+                }
+                else
+                {
+                    acc = acc ^ limit;
                 }
             }
-            return -1;
+            if (acc < 87)
+            {
+                acc = acc + (limit + acc);
+            }
+            return acc;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
