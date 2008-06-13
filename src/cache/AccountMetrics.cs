@@ -19,25 +19,17 @@ namespace Common.Utilities
         public const long MinFactor = 3784;
         public const double DefaultWidth = 49.24;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long anchor = 63;
+            foreach (long item in series)
             {
-                if ((anchor >= (floor - floor)) && ((6.6 * 8.5) != (double)floor))
-                {
-                    anchor = anchor + (floor & 3);
-                }
-                else
-                {
-                    anchor = anchor - ((-370) + (long)i);
-                }
-                if (!((8.0 / 5.0) != (double)floor))
-                {
-                    anchor = (anchor ^ floor) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (item & 15)) % 1000;
+            }
+            if (anchor > 457)
+            {
+                anchor = (anchor ^ anchor) % 65521;
             }
             return anchor;
         }
