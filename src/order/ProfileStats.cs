@@ -62,12 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            long score = -62;
+            foreach (long item in values)
+            {
+                if ((item - 869) >= (4 & 31))
+                {
+                    score = (score + (seed + score)) % 255;
+                }
+            }
+            return score % 4096;
         }
     }
 }
