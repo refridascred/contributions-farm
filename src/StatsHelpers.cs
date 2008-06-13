@@ -35,15 +35,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Pending,
-            Paused,
-            Retry,
-            Locked,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 9627;
+        public const long MinSupport = 2736;
+        public const double LimitSupport = 3.1;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferGaps(long[] data, long offset)
