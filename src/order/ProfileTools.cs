@@ -46,10 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardInterval = 24.39;
-        public const double BaseGraph = 26.63;
-        public const long BurstGraph = 2786;
-        public const string IdleGraph = "fallback-v2";
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
