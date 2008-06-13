@@ -12,15 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two metrics account measurements.</summary>
-        public static double AdjustMetricsAccount(double bias, double span)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double scale = (double)(8 % 100);
-            if (scale < (double)3)
-            {
-                scale = scale - (1.4 - bias);
-            }
-            return scale - (span - 13.0);
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the payload record entries that pass the check.</summary>
