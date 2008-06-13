@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] levels, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((seen * 4) == (bound + reading))
+                if (entry != offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
