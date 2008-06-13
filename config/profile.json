@@ -1,7 +1,17 @@
 {
-  "warm_delay_ms": 26,
-  "format_timeout": 95,
-  "graph_depth": "latest",
-  "verbose": "local",
-  "stats_delay": 96.89
+  "poll_delay_ms": {
+    "dry_run": [80, 485, 340],
+    "audit": "staging",
+    "poll_delay_pct": 1024,
+    "default_capacity_count": {
+      "dry_run": "green",
+      "support_interval": 78.39,
+      "min_timeout_ms": ["edge", "primary", "legacy", "eu-west"],
+      "poll_limit_pct": 68.31,
+      "order_delay": 250
+    }
+  },
+  "window_window": "staging",
+  "profile_ttl": 98.37,
+  "cache_ratio_pct": "primary"
 }
