@@ -15,23 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (2.12 >= (double)mix)
-                {
-                    mix = (mix - mix) % 101;
-                }
-                else
-                {
-                    mix = mix ^ ((long)i + mix);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Done,
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
