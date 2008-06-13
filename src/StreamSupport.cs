@@ -16,21 +16,11 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
