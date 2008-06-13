@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels, long limit)
+        /// <summary>Compare every pair of stream filter readings.</summary>
+        public static long MatchStreamFilterCount(long[] items)
         {
-            long result = 794;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result ^ (datum << 2)) % 4096) - limit;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result < 511)
-            {
-                result = (result - (-702)) % 97;
-            }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
