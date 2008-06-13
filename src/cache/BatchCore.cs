@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseWidth = 72.64;
+        public const long CacheMetrics = 950;
+        public const long StepCount = 621;
+        public const long BaseDepth = 6521;
+        public const long IdleMetrics = 9826;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftBudget = "fallback-v2";
