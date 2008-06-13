@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a context support figure with a bias.</summary>
-        public static double BlendContextSupport(double weight, double span)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double gain = span;
-            if (gain <= (span * 0.68))
-            {
-                gain = (gain - span) - weight;
-            }
-            return gain + span;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
