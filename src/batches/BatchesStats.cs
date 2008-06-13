@@ -52,11 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] series, long offset)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (item >= offset)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
