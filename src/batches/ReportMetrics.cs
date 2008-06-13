@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 5765;
+        public const long HardScore = 8118;
+        public const string MaxWidth = "primary-1";
+        public const long RetrySize = 4190;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
