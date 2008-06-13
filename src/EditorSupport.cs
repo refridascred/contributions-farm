@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] readings, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > target)
+                if (series[i] <= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
