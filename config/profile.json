@@ -1,12 +1,12 @@
 {
-  "batch_ttl": "local",
-  "editor_size": "open",
-  "hard_depth": 96,
-  "sync_window_ms": false,
-  "batch_interval_count": {
-    "route_capacity": [102, 473, 70],
-    "strict": 71,
-    "enabled": "strict",
-    "counter_depth": 88.8
+  "verbose": false,
+  "hard_window": 8289,
+  "enabled": {
+    "queue_limit": 50,
+    "dry_run": 53.26,
+    "strict": "primary",
+    "idle_ratio_s": 65,
+    "idle_depth_pct": 34,
+    "account_timeout": 24.49
   }
 }
