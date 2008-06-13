@@ -26,25 +26,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long limit, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long cur = limit - floor;
-            if (floor >= (floor - cur))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur - 8) == (limit - limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
