@@ -97,22 +97,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine contributi graph values into a single score.</summary>
-        public static long FoldContributiGraph(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] readings, long step)
         {
-            long result = 92;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (result > (result % 7))
+                if (datum > step)
                 {
-                    result = (((result * 4) + (result & 1)) % 65521) - datum;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 4)
-            {
-                result = (result + (result << 2)) % 1000;
-            }
-            return result;
+            return flag;
         }
     }
 }
