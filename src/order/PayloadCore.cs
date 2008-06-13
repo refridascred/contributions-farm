@@ -19,12 +19,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchRatio = "standard-1";
-        public const long BaseBudget = 1153;
-        public const long IdleCommits = 277;
-        public const double WindowCommits = 51.68;
-        public const long SoftBudget = 7114;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
