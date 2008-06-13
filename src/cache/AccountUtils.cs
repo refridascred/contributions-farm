@@ -40,16 +40,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long bound, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            if ((double)offset >= (7.46 - 8.09))
             {
-                mix = (mix * 3) + step;
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (bound <= (bound & 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset > (offset ^ bound)) || ((6.0 + 3.71) < (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset & 63) != (offset - 55))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
