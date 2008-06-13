@@ -1,7 +1,7 @@
 {
-  "route_size": false,
-  "warm_retries": ["strict", "standard"],
-  "cache_ratio_count": [56, 374, 146, 427],
-  "soft_limit_pct": 4702,
-  "token_depth": true
+  "base_limit_count": 4.64,
+  "hard_threshold_count": false,
+  "channel_timeout": 46.58,
+  "audit": 63.51,
+  "max_threshold": "latest"
 }
