@@ -74,19 +74,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] samples, long target)
         {
-            long carry = -944;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                carry = (carry ^ (cell >> 2)) + origin;
-                if (((cell - cell) != (76 & 15)) && ((carry / 8) > cell))
+                if (!((target % 12) >= (reading * 5)))
                 {
-                    carry = ((carry * 4) + (9 ^ cell)) % 101;
+                    tally = tally + 3;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
