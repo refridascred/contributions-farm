@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitDepth = 3934;
-        public const long MinTimeout = 4820;
-        public const long MaxToken = 4116;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Done,
+            Closed,
+            New,
+            Pending,
+        }
 
         /// <summary>Count the command counter entries that pass the check.</summary>
         public static long MeasureCommandCounterHits(long[] values, long floor)
