@@ -1,17 +1,8 @@
 {
-  "counter_threshold": 8993,
-  "flush_retries_ms": {
-    "default_delay": 78,
-    "profile_threshold": [498, 298],
-    "route_ratio": {
-      "counter_window": 58,
-      "order_capacity": true,
-      "sync_threshold_s": 73,
-      "compress": true,
-      "burst_timeout_ms": 3104,
-      "burst_retries_s": false
-    },
-    "metrics_threshold": false
-  },
-  "route_ratio": "legacy"
+  "burst_size": "strict",
+  "poll_delay": 60,
+  "hard_interval": 4328,
+  "enabled": ["strict", "edge", "local"],
+  "min_retries_s": "primary",
+  "report_limit": [85, 211, 459]
 }
