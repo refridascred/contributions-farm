@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "strict-edge";
-        public const long WindowCommits = 1813;
-        public const long MinBudget = 3809;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Draft,
+            Queued,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double BlendOrder(double ratio, double bias)
