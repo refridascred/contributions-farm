@@ -1,14 +1,7 @@
 {
-  "order_timeout": 21.45,
-  "retry_threshold_ms": 100,
-  "burst_delay_pct": false,
-  "readonly": "staging",
-  "sync_retries_count": 250,
-  "persist": {
-    "hard_size": true,
-    "strict": 500,
-    "min_threshold_s": false,
-    "batches_depth": "legacy",
-    "cache_retries": 2.42
-  }
+  "flush_threshold_count": "fallback",
+  "format_depth": [170, 269, 110],
+  "queue_size": ["green", "standard"],
+  "retry_threshold_ms": "blue",
+  "audit": "eu-west"
 }
