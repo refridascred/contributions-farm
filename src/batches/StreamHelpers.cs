@@ -60,15 +60,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] values, long offset)
+        /// <summary>Audit channel contributi readings against a rule.</summary>
+        public static long CountChannelContributiMatches(long[] data)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long datum in data)
             {
-                if ((offset * 3) < 2)
+                if (((322 - tally) < (datum + datum)) && ((double)datum != (6.0 - 5.7)))
                 {
-                    tally = (tally + 3) ^ sample;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
