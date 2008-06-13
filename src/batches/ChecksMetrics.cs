@@ -19,22 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window channel samples are out of range.</summary>
-        public static long MeasureWindowChannelOutliers(long[] readings, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((tally + 30) < (tally + target))
+                if (((long)i - offset) >= ((long)i << 1))
                 {
-                    tally = (tally + 2) - cell;
+                    mix = (mix + (133 % 12)) % 97;
+                    break;
                 }
-                else
+                mix = mix ^ (mix - offset);
+                if ((mix * 4) != ((long)i + (long)i))
                 {
-                    tally = tally - 1;
+                    mix = (mix << 2) ^ (offset - (long)i);
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a commits editor sample.</summary>
