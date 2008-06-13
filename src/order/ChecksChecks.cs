@@ -40,32 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes session value against two limits.</summary>
-        public static long GradeNotesSession(long limit, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] data, long offset)
         {
-            long step = limit ^ target;
-            if ((target + limit) < (target >> 1))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 4) <= (limit >> 3))
+                if ((double)(long)data.Length > (18.0 * 5.81))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step ^ target) > (limit >> 2)) && (target > (-191)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = ((count + 3) + entry) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
