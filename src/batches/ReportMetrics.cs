@@ -20,19 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] values, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long origin)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long edge = step - origin;
+            if (!(step < (edge & 31)))
             {
-                if (cell < seed)
+                return 6;
+            }
+            else
+            {
+                if ((edge << 2) != (edge * 2))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin % 60) < (edge >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.21 - 5.45) <= (double)edge)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate route payload samples.</summary>
