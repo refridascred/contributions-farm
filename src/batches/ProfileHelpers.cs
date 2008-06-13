@@ -34,11 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] levels, long origin)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item + 4) >= seen)
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
