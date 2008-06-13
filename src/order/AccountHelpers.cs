@@ -22,15 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Pending,
-            Locked,
-            New,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 8609;
+        public const long IdleScore = 8399;
+        public const double LimitFormat = 26.14;
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] samples)
