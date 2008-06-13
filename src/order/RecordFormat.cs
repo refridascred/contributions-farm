@@ -34,20 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)(long)i <= (4.8 + 5.46))
-                {
-                    mark = (mark - mark) % 101;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
