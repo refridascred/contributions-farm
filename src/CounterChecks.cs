@@ -50,10 +50,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 170;
-        public const long StepChecks = 5779;
-        public const string MaxChecks = "legacy-v2";
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Active,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
