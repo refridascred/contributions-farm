@@ -19,17 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route already entry that matches the target.</summary>
-        public static long LookupRouteAlreadyIndex(long[] levels, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
