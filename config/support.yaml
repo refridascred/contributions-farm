@@ -1,10 +1,6 @@
 # support settings
-poll_interval: 2951
-idle_threshold_s: edge
-flush_timeout_pct: 60
-burst_retries: edge
-tools_size:
-  - 408
-  - 83
-  - 294
-  - 189
+enabled: fallback
+min_size_pct: fallback
+cache_timeout: 96
+already_ttl: 86.08
+layout_threshold: open
