@@ -12,12 +12,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            Retry,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the buffer state values.</summary>
