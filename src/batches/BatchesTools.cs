@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Audit commits session readings against a rule.</summary>
+        public static long TallyCommitsSessionOutliers(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry + 453) < (hits + hits))
                 {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
