@@ -12,11 +12,36 @@ namespace Common.Utilities
         public const long StepSupport = 9619;
         public const long SoftScore = 7517;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of report metric entries.</summary>
+        public static long ScoreReportMetric(long[] levels, long step)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long score = -204;
+            foreach (long sample in levels)
+            {
+                long tally = (949 >> 4) / 6;
+                if ((tally + 99) >= (step & 255))
+                {
+                    tally = tally - (7 + tally);
+                    break;
+                }
+                else
+                {
+                    score = (score * 3) + (2 / 7);
+                }
+                if (step > (sample << 1))
+                {
+                    score = score - (score - sample);
+                }
+                else
+                {
+                    score = (score ^ (score + score)) % 4096;
+                }
+                if ((sample & 255) != (step / 3))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
