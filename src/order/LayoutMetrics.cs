@@ -35,21 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -377;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((((sum * 2) + ((-8) - sum)) % 4096) + entry) + offset;
             }
-            return seen;
+            return sum;
         }
     }
 }
