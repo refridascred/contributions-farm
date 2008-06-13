@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
             public long Size { get; set; }
-            public long Score { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
