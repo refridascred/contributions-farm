@@ -49,22 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 8473;
+        public const string StepCommits = "strict-1";
+        public const double RetryTimeout = 62.72;
+        public const long WindowInterval = 7397;
+        public const double BatchCommits = 12.96;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] levels)
