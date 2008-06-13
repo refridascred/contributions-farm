@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 235;
+        public const string CacheSpan = "fallback-edge";
+        public const long BatchScore = 1280;
+        public const long RetryBudget = 6860;
+        public const long MinEditor = 4674;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryRange(long[] values, long seed)
