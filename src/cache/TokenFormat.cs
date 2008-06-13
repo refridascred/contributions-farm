@@ -39,17 +39,13 @@ namespace Common.Utilities
         public const string SoftStream = "open-v2";
         public const long LimitStream = 9016;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] items, long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public double Score { get; set; }
         }
     }
 }
