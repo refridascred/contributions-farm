@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((count + count) <= reading) && ((double)count > 15.0))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseFactor = "fallback-1";
+        public const long MaxBatch = 3972;
+        public const long RetryBatch = 2152;
+        public const long BurstBatch = 2911;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsGaps(long[] values)
