@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Derive the next cluster record value from a seed.</summary>
+        public static long RollClusterRecord(long limit)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                long lane = (long)i % 64;
+                if (!((3 + 24) <= (lane + 46)))
+                {
+                    state = ((state * 5) + 350) % 101;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
