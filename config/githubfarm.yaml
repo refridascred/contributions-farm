@@ -1,16 +1,17 @@
 # githubfarm settings
-readonly: 92
-dry_run:
-  - 439
-  - 250
-support_size: true
-base_depth_ms:
-  githubfarm_size: legacy
-  warm_limit_count: stable
-  sync_ttl_s: eu-west
-  verbose:
+notes_ttl:
+  - 368
+  - 31
+  - 46
+warm_threshold_ms: true
+token_threshold:
+  readonly:
+    - 129
+    - 11
+    - 85
+  burst_ratio:
+    - staging
     - legacy
-    - blue
-    - standard
-idle_delay_pct: staging
-compress: false
+    - legacy
+    - strict
+  min_depth_ms: edge
