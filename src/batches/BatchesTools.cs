@@ -28,18 +28,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((tally % 24) < (tally * 2)) && ((tally - 7) <= (tally / 6)))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Draft,
+            Dropped,
+            New,
         }
     }
 }
