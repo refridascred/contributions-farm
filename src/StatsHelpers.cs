@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of editor queue readings.</summary>
-        public static long PairEditorQueueCount(long[] data)
+        /// <summary>Check that every layout tools entry stays within the limit.</summary>
+        public static bool ValidateLayoutToolsLimits(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading < seed)
                 {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
