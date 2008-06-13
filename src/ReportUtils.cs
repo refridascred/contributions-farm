@@ -32,22 +32,11 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 8437;
+        public const string BatchPayload = "latest-1";
+        public const double BasePayload = 95.68;
+        public const string IdlePayload = "open-edge";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryInterval = 9913;
