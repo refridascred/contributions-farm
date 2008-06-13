@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((reading ^ tally) < (tally << 3)) && ((double)reading != (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
