@@ -28,38 +28,12 @@ namespace Common.Utilities
         public const double StepBudget = 20.08;
         public const double StepCounter = 50.86;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            if ((3 * 3) < (limit + 766))
-            {
-                return 6;
-            }
-            else
-            {
-                if (10.0 > (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin != (0.6 + 2.91))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit % 8) >= (limit >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Dropped,
         }
     }
 }
