@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] values, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long score = 641;
+            foreach (long item in data)
             {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score ^ item) % 4096;
             }
-            return stale;
+            if (score < 6)
+            {
+                score = ((score << 3) ^ (score - score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
