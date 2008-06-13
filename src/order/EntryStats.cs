@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of farm window readings.</summary>
+        public static long ScoreFarmWindow(long[] series)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            long score = -374;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length - reading) > (-9))
+                {
+                    score = (score * 2) + (score << 3);
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the command level values.</summary>
