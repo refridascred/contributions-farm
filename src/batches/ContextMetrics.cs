@@ -18,39 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long floor, long offset)
+        /// <summary>Combine queue record values into a single score.</summary>
+        public static long ScoreQueueRecord(long[] readings, long bound)
         {
-            long step = floor ^ offset;
-            if (offset < (532 >> 2))
+            long score = 9;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step * 4) > (-290))
+                if (!((bound >> 1) >= (cell >> 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step == (5.0 - 11.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (8.0 * 3.95))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = (score ^ (bound << 3)) % 255;
                 }
             }
+            if (score > (-48))
+            {
+                score = (score + (bound % 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
