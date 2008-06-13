@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long MinBudget = 369;
         public const string SoftEntry = "alpha-1";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            long result = 549;
-            foreach (long sample in samples)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((9.9 + 17.0) < (double)result)
-                {
-                    result = ((result * 5) + (645 << 1)) ^ sample;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
