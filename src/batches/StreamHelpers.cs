@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long limit)
+        /// <summary>Derive the next route buffer value from a seed.</summary>
+        public static long DeriveRouteBuffer(long bound)
         {
-            if ((origin / 2) <= (634 ^ origin))
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                long offset = ((long)i - (long)i) >> 1;
+                mix = ((mix * 2) + (mix + offset)) % 4096;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((80 * 4) < (origin - 16))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((12.0 - 5.2) <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
