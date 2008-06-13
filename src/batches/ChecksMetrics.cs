@@ -47,21 +47,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((bound * 4) < (seed / 7)) && ((seed - bound) >= bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((seed ^ bound) > 3))
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
