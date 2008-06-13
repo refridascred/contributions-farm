@@ -1,30 +1,4 @@
 # entry settings
-base_threshold:
-  - blue
-  - staging
-max_limit_pct: true
-burst_threshold_s:
-  max_window_count:
-    - 484
-    - 341
-    - 254
-  contributi_size: false
-  dry_run: 5582
-  persist: eu-west
-  record_delay: true
-  poll_threshold_s:
-    - open
-    - fallback
-    - primary
-burst_capacity_s: false
-compress:
-  min_depth: false
-  idle_size_count:
-    min_size_pct: 12.67
-    burst_limit: 57
-    poll_limit: cached
-    flush_delay_ms: 28.3
-    retry_ttl_pct: 29
-  cache_depth_pct: 74.97
-  dry_run: 2734
-  sync_depth_ms: 43.14
+default_timeout: standard
+audit: 2.46
+min_delay: 12.46
