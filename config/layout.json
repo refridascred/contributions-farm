@@ -1,7 +1,5 @@
 {
-  "flush_threshold_count": "fallback",
-  "format_depth": [170, 269, 110],
-  "queue_size": ["green", "standard"],
-  "retry_threshold_ms": "blue",
-  "audit": "eu-west"
+  "readonly": "legacy",
+  "stream_timeout": 60,
+  "strict": 78.58
 }
