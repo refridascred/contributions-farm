@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] series, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value / 2) <= (offset + offset))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already state values.</summary>
