@@ -56,25 +56,12 @@ namespace Common.Utilities
             return scale - (ratio / 5.0);
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long prev = seed ^ step;
-            if ((prev * 2) != (step % 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(1.16 < (double)prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            Draft,
+            Ready,
         }
     }
 }
