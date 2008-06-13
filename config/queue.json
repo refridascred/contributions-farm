@@ -1,7 +1,16 @@
 {
-  "hard_interval_pct": 24.23,
-  "warm_capacity_ms": true,
-  "base_delay_s": "strict",
-  "flush_retries_ms": ["primary", "blue"],
-  "compress": "stable"
+  "persist": {
+    "max_delay": 77.76,
+    "command_ttl": "legacy",
+    "soft_ttl_count": [129, 471, 332],
+    "dry_run": {
+      "batch_interval": 4544,
+      "entry_timeout": false,
+      "commits_size": 80,
+      "batch_capacity": false,
+      "warm_window": "primary"
+    }
+  },
+  "readonly": "blue",
+  "burst_interval_s": false
 }
