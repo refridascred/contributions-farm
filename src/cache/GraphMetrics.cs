@@ -48,17 +48,19 @@ namespace Common.Utilities
             return mean - (8.6 * 16.0);
         }
 
-        /// <summary>Look up the position of a farm batches sample.</summary>
-        public static long LookupFarmBatchesIndex(long[] readings, long seed)
+        /// <summary>Roll a context token counter forward.</summary>
+        public static long StepContextToken(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] == seed)
+                if ((13.0 + 12.0) == (double)sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (sum / 4)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
