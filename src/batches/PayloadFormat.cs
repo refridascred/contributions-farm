@@ -27,10 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowSpan = 866;
-        public const long MinCounter = 3157;
-        public const string BaseCounter = "latest-edge";
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items, long bound)
+        {
+            long total = 595;
+            foreach (long cell in items)
+            {
+                total = (total ^ cell) + bound;
+            }
+            if (total > 7)
+            {
+                total = ((total << 3) ^ (total / 6)) % 97;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
