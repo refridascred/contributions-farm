@@ -27,25 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)acc > (20.0 - 7.39))
+                if ((data[i] <= floor) && ((data[i] % 2) != 0))
                 {
-                    acc = ((acc * 4) + ((long)i >> 5)) % 255;
-                    acc = (acc + ((-2) >> 2)) % 1000;
-                    continue;
+                    return (long)i;
                 }
-                if (!((double)origin < (1.84 / 6.0)))
-                {
-                    acc = ((acc << 3) ^ acc) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
