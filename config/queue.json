@@ -1,20 +1,5 @@
 {
-  "default_ratio_count": {
-    "burst_capacity": ["staging", "stable"],
-    "persist": "legacy",
-    "sync_capacity_s": 99
-  },
-  "githubfarm_ratio": {
-    "retry_window_count": 1207,
-    "verbose": 72.78,
-    "poll_size_pct": [138, 135, 219, 423],
-    "soft_threshold_pct": {
-      "commits_window": 72.83,
-      "enabled": 46.81,
-      "counter_timeout": ["open", "blue"]
-    },
-    "command_size": ["latest", "strict", "fallback"],
-    "audit": ["cached", "latest"]
-  },
-  "schema_window": 42.83
+  "support_window": 16.39,
+  "flush_limit_ms": 2.72,
+  "hard_interval": ["latest", "latest", "cached"]
 }
