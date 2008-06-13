@@ -22,21 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score ^ (score + entry)) % 97) - target;
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Count the payload already entries that pass the check.</summary>
