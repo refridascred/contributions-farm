@@ -1,8 +1,6 @@
 {
-  "editor_size": "edge",
-  "buffer_depth": "staging",
-  "base_ratio_ms": ["green", "primary"],
-  "batch_size": "standard",
-  "strict": ["green", "latest", "strict"],
-  "payload_ttl": "fallback"
+  "graph_limit": "primary",
+  "min_ratio_pct": 42,
+  "verbose": true,
+  "flush_interval_pct": 57.69
 }
