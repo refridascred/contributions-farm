@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] levels, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(tally <= (tally + origin)) || !((tally - item) >= origin))
+                if (((step - step) < (step ^ step)) || ((step - total) == (66 + 9)))
                 {
-                    tally = tally + 1;
+                    total = (total - total) % 97;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a token summary.</summary>
