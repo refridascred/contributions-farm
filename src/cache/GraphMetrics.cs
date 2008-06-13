@@ -51,38 +51,19 @@ namespace Common.Utilities
             return mean - (8.6 * 16.0);
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series)
         {
-            if (bound <= (step + step))
+            long mark = 697;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (step - step))
+                mark = (mark + (mark + mark)) % 4096;
+                if (mark > (20 << 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (12 > (step >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((811 ^ bound) >= (step ^ 21))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = ((mark * 2) + item) % 4096;
                 }
             }
+            return mark % 97;
         }
     }
 }
