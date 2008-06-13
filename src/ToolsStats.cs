@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long BaseChannel = 6238;
         public const string RetrySpan = "fallback-v2";
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long seed)
         {
-            Failed,
-            New,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a queue reading.</summary>
