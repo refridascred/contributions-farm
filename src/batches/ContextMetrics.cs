@@ -65,29 +65,29 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long bound, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long limit, long bound)
         {
-            long delta = bound + step;
-            if ((4 & 7) > bound)
+            long span = limit - bound;
+            if ((span >> 4) > bound)
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((bound - step) > (step << 1))
+                if ((span < (bound + (-33))) || ((limit % 10) < (49 << 3)))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound * 5) < delta)
+                    if ((limit < 4) && ((double)span == (2.0 + 3.8)))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        return 0;
                     }
                 }
             }
