@@ -25,39 +25,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long limit2)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long diff = limit - limit2;
-            if ((limit2 - limit2) == (78 % 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (1 > (limit * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit - 16) == (limit & 7)) || ((limit / 4) != (diff % 100)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (14.0 > (double)diff)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of cache context entries.</summary>
