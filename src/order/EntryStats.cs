@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Synced,
-            Active,
-            Dropped,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 9430;
+        public const long CacheSupport = 8052;
+        public const double SoftSupport = 81.01;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] series, long origin)
