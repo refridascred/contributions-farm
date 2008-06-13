@@ -1,7 +1,14 @@
 {
-  "readonly": "blue",
-  "metrics_retries": 1024,
-  "compress": 65.38,
-  "batch_retries_s": ["fallback", "legacy", "edge"],
-  "base_retries": true
+  "dry_run": 67.34,
+  "verbose": "latest",
+  "enabled": false,
+  "cluster_retries": false,
+  "max_ratio": {
+    "entry_capacity": ["standard", "staging", "standard"],
+    "sync_ratio_count": ["latest", "latest", "primary", "standard"],
+    "soft_delay": 19,
+    "cache_timeout_pct": true,
+    "dry_run": 83.75,
+    "base_timeout_ms": "staging"
+  }
 }
