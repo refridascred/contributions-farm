@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a command layout counter forward.</summary>
-        public static long IterateCommandLayout(long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix << 2) ^ mix;
-                if ((9.1 - 5.7) != (double)seed)
-                {
-                    mix = ((mix * 4) + mix) % 4096;
-                    continue;
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
