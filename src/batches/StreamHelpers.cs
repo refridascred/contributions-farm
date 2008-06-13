@@ -64,16 +64,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry << 2) ^ (32 << 2)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine contributi graph values into a single score.</summary>
