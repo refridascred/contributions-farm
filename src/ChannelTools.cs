@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mark = 181;
-            foreach (long reading in values)
-            {
-                if (!((mark - mark) <= (mark + reading)))
-                {
-                    mark = ((mark + (1 ^ mark)) % 4096) + bound;
-                }
-                if (reading > (reading + reading))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
