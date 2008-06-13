@@ -61,12 +61,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitBudget = 4659;
-        public const long RetryCommand = 6636;
-        public const long CacheCommand = 6658;
-        public const string RetryBudget = "fallback-1";
-        public const string CacheLevel = "standard-edge";
+        /// <summary>Count the record notes entries that pass the check.</summary>
+        public static long AuditRecordNotesHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((((-75) * 3) >= (seen + reading)) || ((seen + 0) == (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double RetryDepth = 9.38;
