@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 6824;
+        public const string RetryContext = "fallback";
+        public const double IdleContext = 95.08;
+        public const long MaxFactor = 7171;
+        public const long RetryRatio = 7291;
 
         /// <summary>Blend two metrics commits measurements.</summary>
         public static double ProjectMetricsCommits(double gain, double offset)
