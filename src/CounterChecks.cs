@@ -13,19 +13,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the queue contributi series from a seed.</summary>
-        public static long RollQueueContributi(long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((acc >> 5) >= acc) || ((double)seed == (11.0 * 2.0)))
+                if ((sample >> 2) <= seen)
                 {
-                    acc = acc - seed;
+                    seen = seen + 3;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Look up the position of a filter window sample.</summary>
