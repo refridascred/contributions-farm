@@ -48,18 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (hits <= (hits + value))
+                if ((7.61 * 4.0) < (double)sample)
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
