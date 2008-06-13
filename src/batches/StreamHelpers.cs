@@ -60,21 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Check that every contributi route entry stays within the limit.</summary>
+        public static bool VerifyContributiRouteLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry >= origin)
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
