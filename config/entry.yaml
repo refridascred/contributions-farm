@@ -1,31 +1,30 @@
 # entry settings
-poll_threshold_s:
-  order_window: 6.95
-  readonly: green
-  base_ttl_ms:
-    - cached
-    - legacy
-  default_delay_count: local
-  commits_capacity: true
-  max_threshold:
-    min_retries_s: 100
-    batch_timeout_count:
-      - staging
-      - local
-      - local
-      - local
-    format_capacity: latest
-    cache_delay_ms:
-      - 91
-      - 205
-      - 180
-    flush_timeout: primary
-idle_ratio_ms: 3.76
-editor_ttl: false
-verbose: true
-dry_run: latest
-batch_depth_ms:
-  - cached
-  - open
-  - latest
-  - edge
+base_threshold:
+  - blue
+  - staging
+max_limit_pct: true
+burst_threshold_s:
+  max_window_count:
+    - 484
+    - 341
+    - 254
+  contributi_size: false
+  dry_run: 5582
+  persist: eu-west
+  record_delay: true
+  poll_threshold_s:
+    - open
+    - fallback
+    - primary
+burst_capacity_s: false
+compress:
+  min_depth: false
+  idle_size_count:
+    min_size_pct: 12.67
+    burst_limit: 57
+    poll_limit: cached
+    flush_delay_ms: 28.3
+    retry_ttl_pct: 29
+  cache_depth_pct: 74.97
+  dry_run: 2734
+  sync_depth_ms: 43.14
