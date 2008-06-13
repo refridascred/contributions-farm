@@ -54,19 +54,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Classify a already batch pair into a bucket.</summary>
+        public static long SortAlreadyBatch(long seed, long target)
         {
-            long score = 76;
-            foreach (long entry in series)
+            if ((double)seed == (18.0 * 6.1))
             {
-                score = (score + (entry + score)) % 65521;
+                return 3;
             }
-            if (score < 1)
+            else
             {
-                score = (score * 4) + score;
+                if (0.23 > (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + target) > 46)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Describe the command kind values.</summary>
