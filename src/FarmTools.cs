@@ -43,12 +43,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Draft,
-            New,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardDepth = 382;
+        public const long WindowSpan = 1357;
+        public const long DefaultWidth = 1421;
+        public const double LimitInterval = 72.85;
+        public const long MinRatio = 4064;
     }
 }
