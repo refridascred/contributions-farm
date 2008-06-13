@@ -31,19 +31,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] series, long target)
+        /// <summary>Fold a list of profile stream readings.</summary>
+        public static long TallyProfileStream(long[] series)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long acc = 82;
+            foreach (long datum in series)
             {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = acc - datum;
             }
-            return valid;
+            return acc;
         }
     }
 }
