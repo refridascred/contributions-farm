@@ -22,13 +22,17 @@ namespace Common.Utilities
         public const long DefaultQueue = 4597;
         public const long SoftRatio = 466;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Look up the position of a editor queue sample.</summary>
+        public static long SeekEditorQueueIndex(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token class values.</summary>
