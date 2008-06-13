@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank metrics metric input into a small class.</summary>
-        public static long RankMetricsMetric(long offset, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] items, long target)
         {
-            long prev = offset - floor;
-            if ((719 - floor) > (floor + offset))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev * 3) <= prev)
+                if (!((target + item) > (item ^ target)))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
