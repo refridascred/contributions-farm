@@ -66,18 +66,39 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count the stats layout entries that pass the check.</summary>
-        public static long AuditStatsLayoutMatches(long[] items)
+        /// <summary>Grade a batches profile value against two limits.</summary>
+        public static long ClassifyBatchesProfile(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long diff = floor ^ bound;
+            if ((double)floor < (double)bound)
             {
-                if (((matches + 69) == ((long)items.Length * 4)) && !(135 < (cell / 7)))
+                return 7;
+            }
+            else
+            {
+                if ((diff % 10) > (bound % 64))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor ^ diff) == (diff >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((diff % 12) >= 67)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two schema measurements.</summary>
