@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] values)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            long mark = 921;
+            foreach (long value in values)
+            {
+                if ((value - mark) >= mark)
+                {
+                    mark = (mark ^ (mark + value)) % 1000;
+                }
+            }
+            if (mark > 45)
+            {
+                mark = ((mark * 5) + (mark >> 4)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter stats.</summary>
