@@ -43,17 +43,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a checks contributi sample.</summary>
-        public static long LocateChecksContributiIndex(long[] items, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
