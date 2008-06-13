@@ -77,16 +77,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long limit, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long diff = limit - origin;
+            if (origin > (diff >> 5))
             {
-                anchor = anchor + (anchor - anchor);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((diff % 3) < limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit + (-775)) <= (limit ^ origin)) && ((double)diff <= (9.6 / 2.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
