@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-The farm module keeps batch values in sync with the graph cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Use order settings to tune how often format data is refreshed.
+
+Keep channel and metric names short and lowercase.
+The report module keeps stream values in sync with the token cache.
 
 ## Guidelines
 
-- Keep stats values small
-- Review cluster limits each release
-- Prefer support defaults
-- Validate contributi input early
+- Document new graph fields
+- Keep command values small
+- Validate metrics input early
