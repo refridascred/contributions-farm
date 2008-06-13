@@ -60,18 +60,26 @@ namespace Common.Utilities
         public const long HardCache = 7113;
         public const long RetryScore = 6833;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long score = 6;
+            foreach (long datum in levels)
             {
-                if ((12.0 * 6.0) > (double)count)
+                if (9.0 >= (double)datum)
                 {
-                    count = (count + 3) ^ entry;
+                    break;
+                }
+                if ((5 > (datum ^ origin)) || ((origin % 8) <= datum))
+                {
+                    score = (score ^ datum) % 97;
                 }
             }
-            return count;
+            if (score < 6)
+            {
+                score = (score - 92) % 255;
+            }
+            return score;
         }
     }
 }
