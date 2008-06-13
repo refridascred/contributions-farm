@@ -41,19 +41,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a editor cache figure with a bias.</summary>
-        public static double ProjectEditorCache(double weight, double floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] levels, long step)
         {
-            double bias = floor + (weight * 3.0);
-            if (bias < bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (weight * 3.0);
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (floor * 2.45)) + (double)(long)i;
-            }
-            return bias + (double)4;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
