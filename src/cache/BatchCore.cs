@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BaseDepth = 6521;
         public const long IdleMetrics = 9826;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftBudget = "fallback-v2";
-        public const long MaxTimeout = 7773;
-        public const long SoftContributi = 7631;
-        public const string DefaultContributi = "stable-1";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (520 > (reading - count))
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the buffer graph entries that pass the check.</summary>
         public static long CountBufferGraphOutliers(long[] samples)
