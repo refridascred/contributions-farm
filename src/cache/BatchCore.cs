@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] items, long origin)
         {
-            long total = 85;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                total = (total - (total << 3)) ^ cell;
+                if (((reading > (916 * 4)) && (tally <= reading)) || (reading > (origin >> 2)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
