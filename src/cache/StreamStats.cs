@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a filter githubfarm reading.</summary>
-        public static double ScaleFilterGithubfarm(double rate, double floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values)
         {
-            double mean = (double)(92 + 80);
-            return ((mean + mean) + rate) + floor;
+            long anchor = 319;
+            foreach (long reading in values)
+            {
+                anchor = (((anchor << 2) ^ (79 << 1)) % 1000) ^ reading;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a format entry.</summary>
