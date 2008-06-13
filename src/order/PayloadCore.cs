@@ -24,39 +24,17 @@ namespace Common.Utilities
         public const long RetryBatches = 2939;
         public const long BatchBatches = 648;
 
-        /// <summary>Rank cluster already input into a small class.</summary>
-        public static long GradeClusterAlready(long target, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long step)
         {
-            long bound = target ^ origin;
-            if (((5.8 + 1.8) > (double)target) && ((double)204 != (double)bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + target) >= (target % 7))
+                if ((series[i] < step) && ((series[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + 397) != (bound & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3 > (origin ^ bound)) && ((19.0 + 7.0) >= (double)target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of format commits readings.</summary>
