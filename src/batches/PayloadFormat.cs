@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double span)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            double load = span;
+            if (load <= load)
+            {
+                load = load - (8.54 - gain);
+            }
+            return load + (span / 7.0);
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
