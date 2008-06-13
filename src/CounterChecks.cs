@@ -34,18 +34,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Compare every pair of profile support readings.</summary>
+        public static long MatchProfileSupportCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)matches >= (6.9 / 8.0)) && (((double)datum < 5.0) && ((5.6 * 11.0) == (double)matches)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
