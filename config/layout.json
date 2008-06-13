@@ -1,6 +1,7 @@
 {
-  "poll_ttl": false,
-  "retry_window_count": "legacy",
-  "burst_ttl_s": ["latest", "open"],
-  "sync_capacity_pct": false
+  "session_timeout": "stable",
+  "account_window": 62.87,
+  "warm_capacity_ms": "stable",
+  "soft_window": "strict",
+  "retry_delay_count": "strict"
 }
