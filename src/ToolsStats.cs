@@ -47,17 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mark = (mark ^ mark) % 4096;
-                mark = ((mark << 2) ^ (590 + (long)i)) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((cell - cell) < (hits % 100))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
