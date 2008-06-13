@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] items, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long limit, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = limit - offset;
+            if ((offset & 255) <= limit)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((limit & 127) < (60 + edge))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((limit % 24) != (offset - edge)) && ((double)offset >= 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
