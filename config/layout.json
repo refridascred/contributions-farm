@@ -1,7 +1,7 @@
 {
-  "session_timeout": "stable",
-  "account_window": 62.87,
-  "warm_capacity_ms": "stable",
-  "soft_window": "strict",
-  "retry_delay_count": "strict"
+  "strict": ["cached", "latest"],
+  "dry_run": 86.13,
+  "readonly": "blue",
+  "enabled": 1847,
+  "sync_interval_ms": "open"
 }
