@@ -27,22 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] items, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] readings, long limit)
         {
-            long anchor = 52;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (((long)items.Length << 3) < (limit + 893))
+                if (sample != limit)
                 {
-                    anchor = (anchor - (anchor & 7)) - sample;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor > 36)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Measure how many tools filter samples are out of range.</summary>
