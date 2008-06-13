@@ -77,11 +77,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 259;
-        public const long MinBatches = 2215;
-        public const long LimitInterval = 5077;
-        public const double CacheSize = 31.34;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a metric profile pair into a bucket.</summary>
         public static long BucketMetricProfile(long offset, long seed)
