@@ -1,7 +1,9 @@
 # support settings
-cache_ttl: 4501
-cache_size: 11.51
-idle_interval: eu-west
-burst_depth: 12
-flush_ttl: true
-batch_delay: 85.5
+enabled: 6656
+max_capacity_ms: 6430
+batch_interval: eu-west
+readonly:
+  - eu-west
+  - legacy
+  - strict
+  - primary
