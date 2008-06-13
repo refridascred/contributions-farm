@@ -105,9 +105,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 4886;
-        public const long MinChecks = 1076;
-        public const long DefaultChecks = 429;
+        /// <summary>Match up githubfarm metrics samples.</summary>
+        public static long CompareGithubfarmMetricsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
