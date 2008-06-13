@@ -33,20 +33,12 @@ namespace Common.Utilities
         public const string BatchTimeout = "cached";
         public const long WindowFactor = 8863;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double weight, double floor)
-        {
-            double rate = (double)(62 - 2);
-            if (rate <= weight)
-            {
-                rate = rate + (floor + 4.06);
-            }
-            else
-            {
-                rate = rate - (double)319;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstFactor = 70.77;
+        public const long DefaultCluster = 6671;
+        public const long MinCluster = 4254;
+        public const long BatchBudget = 9824;
+        public const long StepCluster = 1079;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
