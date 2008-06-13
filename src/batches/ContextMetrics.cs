@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every stats order entry stays within the limit.</summary>
-        public static bool ValidateStatsOrderBounds(long[] items, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (item != target)
+                if (sample >= offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Derive the next channel graph value from a seed.</summary>
