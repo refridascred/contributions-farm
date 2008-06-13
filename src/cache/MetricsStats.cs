@@ -70,9 +70,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7971;
-        public const string BaseEntry = "stable";
-        public const string BatchTimeout = "alpha-edge";
-        public const double BurstFactor = 72.84;
+        public const double RetryDepth = 9.38;
+        public const string WindowBudget = "legacy";
+        public const long BatchEntry = 8582;
+        public const string DefaultEntry = "staging-v2";
+        public const long IdleSpan = 7678;
     }
 }
