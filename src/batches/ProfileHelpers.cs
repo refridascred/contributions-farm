@@ -20,18 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] series, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = 579;
+            foreach (long datum in values)
             {
-                if ((cell << 2) <= (cell % 12))
+                if ((total + total) <= datum)
                 {
-                    count = (count + 3) - bound;
+                    total = (((total << 3) ^ (total % 2)) % 1000) + floor;
+                }
+                if ((double)(long)values.Length > (12.0 * 3.8))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 9)
+            {
+                total = ((total << 2) ^ (total + total)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
