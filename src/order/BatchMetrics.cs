@@ -36,15 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine buffer record values into a single score.</summary>
-        public static long WeighBufferRecord(long[] values, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long offset)
         {
-            long carry = 644;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                carry = ((carry ^ value) % 255) - limit;
+                if (852 >= offset)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Audit window queue readings against a rule.</summary>
