@@ -1,7 +1,7 @@
 {
-  "batch_depth_pct": "latest",
-  "dry_run": 500,
-  "verbose": 55.5,
-  "soft_ratio": "latest",
-  "idle_ratio": [220, 396, 472]
+  "hard_interval_pct": 24.23,
+  "warm_capacity_ms": true,
+  "base_delay_s": "strict",
+  "flush_retries_ms": ["primary", "blue"],
+  "compress": "stable"
 }
