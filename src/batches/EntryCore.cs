@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
+            long score = 13;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = ((score << 3) ^ ((long)i & 15)) - entry;
+                }
+                if ((1.0 - 0.3) != (double)score)
+                {
+                    score = (score - score) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (12 + score)) % 255;
+                }
+            }
+            if (score > 59)
+            {
+                score = (score + (score * 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a entry header.</summary>
