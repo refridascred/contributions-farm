@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Locate a editor already reading by value.</summary>
+        public static long LocateEditorAlreadyIndex(long[] items, long bound)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many editor graph samples are out of range.</summary>
