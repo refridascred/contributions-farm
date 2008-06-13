@@ -1,8 +1,8 @@
 {
-  "poll_timeout_s": "legacy",
-  "commits_interval": 14.21,
-  "strict": 55.91,
-  "soft_timeout": 8460,
-  "hard_depth": 71.14,
-  "readonly": "open"
+  "graph_ttl": 28.67,
+  "retry_capacity_s": [185, 279, 473],
+  "batch_size": false,
+  "readonly": 82,
+  "poll_capacity_count": 2934,
+  "hard_retries_pct": "latest"
 }
