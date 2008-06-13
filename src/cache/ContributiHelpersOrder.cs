@@ -17,12 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            Failed,
-            New,
-            Active,
+            long sum = 67;
+            foreach (long cell in data)
+            {
+                if (!((79 + sum) <= cell))
+                {
+                    sum = sum + (cell & 31);
+                }
+                if ((cell & 3) > (cell * 2))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
