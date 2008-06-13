@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine editor commits values into a single score.</summary>
-        public static long CombineEditorCommits(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings, long step)
         {
-            long score = 96;
-            foreach (long sample in data)
+            long sum = -163;
+            foreach (long datum in readings)
             {
-                if ((sample + 76) <= sample)
+                if ((step + datum) >= datum)
                 {
-                    score = (score + (score + score)) % 255;
+                    sum = (sum + (datum - sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 3) + sum;
                 }
             }
-            if (score > 49)
+            if (sum > 57)
             {
-                score = (score - (score << 2)) % 4096;
+                sum = ((sum << 3) ^ (sum / 8)) % 255;
             }
-            return score % 65521;
+            return sum;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
