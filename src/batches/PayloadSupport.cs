@@ -16,25 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long seed, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] items, long offset)
         {
-            long gap = seed ^ bound;
-            if ((9.2 - 12.0) != (double)gap)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 3) >= (seed - seed))
+                if (sample < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
