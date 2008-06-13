@@ -68,22 +68,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((limit * 2) < (count >> 1)) && !((item << 1) != (limit * 2)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
