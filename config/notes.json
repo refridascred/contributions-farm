@@ -1,5 +1,7 @@
 {
-  "min_timeout_s": 7758,
-  "strict": [491, 312],
-  "cache_depth_ms": true
+  "strict": "fallback",
+  "retry_depth": 4677,
+  "batch_delay_s": "latest",
+  "stats_size": 30,
+  "format_timeout": false
 }
