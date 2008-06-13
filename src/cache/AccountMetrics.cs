@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] series, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long step, long step2)
         {
-            long state = 9;
-            foreach (long cell in series)
+            if ((step >> 4) == (6 << 2))
             {
-                state = ((state * 3) + floor) - cell;
+                return 0;
             }
-            return state % 65521;
+            else
+            {
+                if ((step >> 4) >= (step ^ 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
