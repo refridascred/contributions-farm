@@ -65,14 +65,32 @@ namespace Common.Utilities
             return scale - (ratio / 5.0);
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long target, long origin)
         {
-            Failed,
-            Paused,
-            Queued,
-            New,
-            Pending,
+            long slot = target ^ origin;
+            if (((target >> 1) >= target) && ((origin + slot) != (origin + target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(target > (target >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (slot <= (slot ^ target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
