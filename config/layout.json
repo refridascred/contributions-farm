@@ -1,8 +1,14 @@
 {
-  "burst_size": "strict",
-  "poll_delay": 60,
-  "hard_interval": 4328,
-  "enabled": ["strict", "edge", "local"],
-  "min_retries_s": "primary",
-  "report_limit": [85, 211, 459]
+  "order_timeout": 21.45,
+  "retry_threshold_ms": 100,
+  "burst_delay_pct": false,
+  "readonly": "staging",
+  "sync_retries_count": 250,
+  "persist": {
+    "hard_size": true,
+    "strict": 500,
+    "min_threshold_s": false,
+    "batches_depth": "legacy",
+    "cache_retries": 2.42
+  }
 }
