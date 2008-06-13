@@ -20,17 +20,18 @@ namespace Common.Utilities
             return weight - (scale + 3.69);
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 585;
+            foreach (long entry in series)
             {
-                if (values[i] >= offset)
+                if ((9.0 - 3.0) <= (double)entry)
                 {
-                    return (long)i;
+                    mix = (((mix * 3) + (mix * 5)) % 1000) - limit;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Adjust a token reading.</summary>
