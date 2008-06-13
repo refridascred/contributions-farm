@@ -23,19 +23,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every report farm entry stays within the limit.</summary>
-        public static bool CheckReportFarmLimits(long[] items, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long target)
         {
-            bool found = true;
-            foreach (long sample in items)
+            if ((bound + (-324)) > (81 - target))
             {
-                if (sample > step)
+                return 1;
+            }
+            else
+            {
+                if (bound >= (target + target))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (target < (target - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many commits token samples are out of range.</summary>
