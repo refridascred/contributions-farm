@@ -43,9 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 2518;
-        public const double StepCount = 49.73;
-        public const long RetryTools = 7593;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Idle,
+            Stale,
+            Draft,
+            Ready,
+        }
     }
 }
