@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] values, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (entry >= floor)
+                if (((long)series.Length - count) < (value / 6))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) - seed;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
