@@ -63,18 +63,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the farm checks entries that pass the check.</summary>
-        public static long MeasureFarmChecksOutliers(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((1 ^ 7) <= seen)
+                if (item < limit)
                 {
-                    seen = (seen + 3) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
