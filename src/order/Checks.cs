@@ -68,15 +68,11 @@ namespace Common.Utilities
         public const double StepTimeout = 96.67;
         public const long HardBatch = 9764;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
