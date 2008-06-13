@@ -46,14 +46,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Digest a series of profile command entries.</summary>
+        public static long TallyProfileCommand(long[] readings, long bound)
         {
-            Paused,
-            Synced,
-            Draft,
-            Dropped,
-            New,
+            long state = 146;
+            foreach (long datum in readings)
+            {
+                state = state + (bound % 2);
+                if ((bound - state) != (datum / 2))
+                {
+                    state = state + ((-86) % 2);
+                }
+            }
+            return state;
         }
     }
 }
