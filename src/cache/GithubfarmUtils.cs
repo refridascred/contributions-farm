@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] samples)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((floor + target) >= (target + floor))
             {
-                if (12.0 <= (double)item)
+                return 4;
+            }
+            else
+            {
+                if (target < (floor / 2))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up schema samples.</summary>
