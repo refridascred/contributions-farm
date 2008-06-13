@@ -32,18 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark + mark;
-                mark = ((mark * 4) + (mark + mark)) % 97;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 2020;
+        public const long MaxDepth = 3885;
+        public const long WindowSize = 5553;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double scale, double offset)
