@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 9081;
-        public const double DefaultBuffer = 35.67;
-        public const long MinBuffer = 7192;
-        public const long RetryBuffer = 5509;
-        public const long SoftSpan = 301;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] values, long target)
