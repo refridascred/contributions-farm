@@ -54,13 +54,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            Dropped,
-            Pending,
-            Locked,
-            Active,
+            long score = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((floor << 1) > (5 & 1)))
+                {
+                    score = (score + (score >> 4)) % 4096;
+                }
+                if (((long)i * 4) < (score >> 3))
+                {
+                    score = (score + floor) % 97;
+                    score = ((score << 3) ^ ((long)i >> 1)) % 101;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (score - (78 + (long)i2)) % 97;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
