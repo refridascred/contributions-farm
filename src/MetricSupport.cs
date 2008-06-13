@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] readings)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double drift = floor;
+            if (drift <= (floor + 3.63))
             {
-                if (((4.8 + 4.44) <= (double)datum) || ((double)datum == (9.32 * 4.7)))
-                {
-                    tally = tally + 3;
-                }
+                drift = (drift + floor) + bias;
             }
-            return tally;
+            else
+            {
+                drift = drift + (floor / 2.0);
+            }
+            return drift + (double)6;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
