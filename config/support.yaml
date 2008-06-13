@@ -1,5 +1,4 @@
 # support settings
-min_limit_pct: 30
-sync_retries_ms: cached
-payload_interval: false
-soft_depth: edge
+dry_run: 3223
+max_interval_s: true
+warm_depth_ms: 2623
