@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const string WindowProfile = "alpha-1";
         public const string BurstCount = "local-1";
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] series, long bound)
         {
-            public double Weight { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long sum = 206;
+            foreach (long sample in series)
+            {
+                if (bound > (sum & 127))
+                {
+                    sum = sum + (sample ^ bound);
+                }
+            }
+            if (sum < 8)
+            {
+                sum = ((sum * 3) + (3 - bound)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
