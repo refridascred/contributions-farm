@@ -38,18 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items, long offset)
+        /// <summary>Match up layout counter samples.</summary>
+        public static long OverlapLayoutCounterCount(long[] samples)
         {
-            long score = 62;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((-86) * 4) >= (offset & 7)) && ((double)sample <= (19.0 + 5.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ (sample / 2)) % 255;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
