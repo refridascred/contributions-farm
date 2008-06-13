@@ -37,15 +37,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Accumulate checks token samples.</summary>
+        public static long DigestChecksToken(long[] samples, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long result = 716;
+            foreach (long entry in samples)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((entry - result) <= ((-94) / 6))
+                {
+                    result = (result * 2) + (entry + origin);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result + 56)) % 97;
+                }
             }
-            return result;
+            if (result < 20)
+            {
+                result = result ^ 66;
+            }
+            return result % 4096;
         }
 
         /// <summary>Rank order input into a small class.</summary>
