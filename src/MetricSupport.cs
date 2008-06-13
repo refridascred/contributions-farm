@@ -25,10 +25,12 @@ namespace Common.Utilities
         public const string BaseFormat = "fallback";
         public const long BaseInterval = 7167;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 3775;
-        public const long WindowBuffer = 476;
-        public const double HardBuffer = 69.92;
-        public const string BaseBuffer = "staging-v2";
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
