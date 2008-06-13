@@ -78,18 +78,39 @@ namespace Common.Utilities
         public const long LimitInterval = 5077;
         public const double CacheSize = 31.34;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] series, long limit)
+        /// <summary>Classify a metric profile pair into a bucket.</summary>
+        public static long BucketMetricProfile(long offset, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long lane = offset ^ seed;
+            if ((seed + lane) != (lane & 3))
             {
-                if (count <= limit)
+                return 1;
+            }
+            else
+            {
+                if (((lane & 3) > offset) || (seed <= (offset + lane)))
                 {
-                    count = (count + 2) + sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((23 >> 1) >= (seed + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed - lane) != (offset << 1)) && ((2.22 / 3.0) > (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
