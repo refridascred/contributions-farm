@@ -1,4 +1,10 @@
 # payload settings
-command_threshold: 98.98
-cache_depth_ms: 1024
-sync_timeout_pct: local
+idle_depth:
+  base_limit_ms: green
+  poll_interval_pct: 60.05
+  flush_interval: 30.49
+  min_ratio_pct: 42.65
+  burst_depth_count: 25.97
+  sync_window_count: false
+default_ratio: staging
+account_ttl: 1024
