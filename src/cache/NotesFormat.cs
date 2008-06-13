@@ -27,10 +27,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultFactor = 1648;
-        public const long BatchRatio = 4002;
-        public const double HardSpan = 17.86;
-        public const double CacheAccount = 22.32;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
