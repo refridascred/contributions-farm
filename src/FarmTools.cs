@@ -29,15 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if ((3 + matches) > (matches * 5))
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
