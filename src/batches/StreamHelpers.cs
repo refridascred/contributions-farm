@@ -57,11 +57,38 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long origin, long limit)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            if ((double)origin >= (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (0.2 - 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit >> 4) <= origin) && ((origin + limit) == (limit + limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1 & 255) == (origin + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
