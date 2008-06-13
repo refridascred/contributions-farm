@@ -1,5 +1,8 @@
 {
-  "sync_size": 30,
-  "readonly": [38, 3, 368],
-  "batch_timeout": true
+  "notes_threshold": 15,
+  "max_size": 250,
+  "default_window_pct": "legacy",
+  "max_threshold_count": false,
+  "editor_interval": "blue",
+  "verbose": "legacy"
 }
