@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long anchor = 107;
+            foreach (long value in series)
             {
-                if ((reading % 5) <= reading)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor + (anchor - value)) % 255;
             }
-            return tally;
+            if (anchor < 0)
+            {
+                anchor = anchor ^ (limit + limit);
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
