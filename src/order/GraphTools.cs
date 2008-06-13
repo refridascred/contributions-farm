@@ -13,20 +13,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheSpan = 6137;
+        public const long BaseInterval = 6818;
+        public const double IdleContributi = 22.79;
+        public const double SoftContributi = 41.71;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsMatches(long[] samples, long step)
