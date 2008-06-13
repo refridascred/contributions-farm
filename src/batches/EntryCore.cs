@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long MeasureSupportNotesHits(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits != (double)origin)
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a entry header.</summary>
