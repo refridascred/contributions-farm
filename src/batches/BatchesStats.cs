@@ -27,21 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a githubfarm farm counter forward.</summary>
-        public static long IterateGithubfarmFarm(long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] levels, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mark = (mark ^ mark) % 1000;
-                if ((mark << 3) >= mark)
+                if ((113 + 64) <= (entry / 9))
                 {
-                    long seen = 515;
-                    mark = (mark - seen) % 101;
+                    tally = (tally + 3) + seed;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
