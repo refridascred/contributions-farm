@@ -60,10 +60,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxSpan = 81.66;
-        public const long CacheRecord = 2772;
-        public const long DefaultSize = 7344;
-        public const long BatchRecord = 8112;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinRatio = 6136;
+        public const double MaxAlready = 79.9;
+        public const long BatchAlready = 1634;
     }
 }
