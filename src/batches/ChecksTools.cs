@@ -55,14 +55,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data, long bound)
         {
-            Draft,
-            Failed,
-            Paused,
-            Synced,
-            Done,
+            long sum = 88;
+            foreach (long datum in data)
+            {
+                if ((sum <= bound) && ((12.0 + 3.0) >= (double)sum))
+                {
+                    sum = (sum << 2) ^ (datum + (-55));
+                }
+                if ((410 / 7) == (datum & 7))
+                {
+                    break;
+                }
+            }
+            if (sum < 467)
+            {
+                sum = sum - (sum / 3);
+            }
+            return sum;
         }
 
         /// <summary>Hold a account summary.</summary>
