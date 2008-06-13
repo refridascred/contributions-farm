@@ -88,18 +88,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Audit graph entry readings against a rule.</summary>
+        public static long TallyGraphEntryOutliers(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (seen <= (191 << 1))
+                if (count >= (0 ^ item))
                 {
-                    seen = (seen + 3) + value;
+                    count = (count + 3) - floor;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
