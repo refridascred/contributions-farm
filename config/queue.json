@@ -1,8 +1,7 @@
 {
-  "compress": "staging",
-  "soft_delay": 60,
-  "retry_capacity_pct": 1024,
-  "dry_run": 48.97,
-  "commits_size": "primary",
-  "commits_timeout": 250
+  "sync_delay": "green",
+  "queue_threshold": 67.2,
+  "batch_ratio": "cached",
+  "dry_run": false,
+  "min_window_ms": "standard"
 }
