@@ -22,22 +22,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many commits token samples are out of range.</summary>
-        public static long CountCommitsTokenOutliers(long[] items, long target)
+        /// <summary>Grade a window entry value against two limits.</summary>
+        public static long GradeWindowEntry(long step, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long span = step - floor;
+            if ((double)span <= 2.75)
             {
-                if (((7.0 + 0.1) > (double)reading) || ((reading / 8) <= (hits ^ hits)))
+                return 1;
+            }
+            else
+            {
+                if ((step % 64) == (floor ^ span))
                 {
-                    hits = (hits + 1) + target;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
