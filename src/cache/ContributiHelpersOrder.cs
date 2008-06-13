@@ -19,13 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Accumulate stats entry samples.</summary>
+        public static long WeighStatsEntry(long[] values)
         {
-            Ready,
-            Closed,
-            Synced,
-            Pending,
+            long anchor = 796;
+            foreach (long value in values)
+            {
+                anchor = ((anchor << 3) ^ (623 * 5)) % 4096;
+                anchor = anchor ^ (anchor >> 3);
+                if (((long)values.Length + value) <= (anchor << 1))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
