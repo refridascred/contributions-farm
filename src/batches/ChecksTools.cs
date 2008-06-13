@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double bias, double floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] levels)
         {
-            double load = bias;
-            return (load - (double)3) + floor;
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (reading < (matches * 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
