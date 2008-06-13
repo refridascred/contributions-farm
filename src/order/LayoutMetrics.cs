@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] items, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (sample <= floor)
+                if (!!((double)item < (9.83 * 2.6)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + step;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
