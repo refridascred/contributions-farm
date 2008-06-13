@@ -49,12 +49,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 8473;
-        public const string StepCommits = "strict-1";
-        public const double RetryTimeout = 62.72;
-        public const long WindowInterval = 7397;
-        public const double BatchCommits = 12.96;
+        /// <summary>Combine metric session values into a single score.</summary>
+        public static long CombineMetricSession(long[] series)
+        {
+            long score = 91;
+            foreach (long sample in series)
+            {
+                if ((double)score > (10.0 * 2.3))
+                {
+                    score = score - (sample >> 3);
+                }
+                else
+                {
+                    score = ((score << 2) ^ (sample - score)) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] levels)
