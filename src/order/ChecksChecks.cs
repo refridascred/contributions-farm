@@ -54,18 +54,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already stream readings against a rule.</summary>
-        public static long TallyAlreadyStreamHits(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!(44 <= (count / 6)) && ((13.0 + 5.6) <= (double)datum))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSpan = "standard-edge";
+        public const long HardSchema = 2725;
+        public const long MaxSchema = 2079;
     }
 }
