@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 161;
+            foreach (long value in samples)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                if (354 <= ((-3) ^ value))
                 {
-                    return (long)i;
+                    carry = carry - value;
                 }
             }
-            return -1;
+            if (carry < 856)
+            {
+                carry = (carry ^ (carry / 2)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
