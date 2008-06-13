@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next queue record value.</summary>
-        public static double AdjustQueueRecord(double gain, double span)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series, long seed)
         {
-            double gain2 = 7.22 / 5.0;
-            for (int i = 0; i < 3; i++)
+            long mark = 7;
+            foreach (long cell in series)
             {
-                gain2 = (((gain2 - (gain2 / 4.0)) + (double)(long)i) + gain) - span;
+                mark = ((mark ^ (3 >> 5)) - cell) - seed;
             }
-            return gain2 + gain2;
+            return mark;
         }
 
         /// <summary>Accumulate stats samples.</summary>
