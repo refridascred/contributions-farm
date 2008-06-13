@@ -35,23 +35,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            double ratio = rate;
-            if (ratio < 13.0)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = ratio - span;
+                if (!((bound + bound) > (score + score)))
+                {
+                    score = ((score * 4) + (bound << 3)) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio - 1.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio - (double)994;
+            return score;
         }
     }
 }
