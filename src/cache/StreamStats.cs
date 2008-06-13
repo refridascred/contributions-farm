@@ -27,18 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] data, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (1 > (value - 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) - origin;
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
