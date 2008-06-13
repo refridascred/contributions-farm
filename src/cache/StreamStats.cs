@@ -59,12 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Draft,
-            Failed,
-            Idle,
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
