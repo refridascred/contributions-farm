@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] items, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((2.35 / 6.0) < (double)sample)
-                {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
