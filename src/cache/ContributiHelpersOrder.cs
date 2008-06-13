@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the context batch entries that pass the check.</summary>
-        public static long TallyContextBatchHits(long[] series)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((entry / 5) <= 53) || ((entry * 4) == (entry & 7)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
