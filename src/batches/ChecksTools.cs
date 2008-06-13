@@ -12,18 +12,17 @@ namespace Common.Utilities
             return (load - (double)3) + floor;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] levels, long floor)
         {
-            long anchor = -64;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((anchor + 788) < (datum & 127)) && ((anchor & 3) > (datum >> 1)))
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
                 {
-                    anchor = (anchor << 3) ^ (anchor & 255);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the notes status values.</summary>
