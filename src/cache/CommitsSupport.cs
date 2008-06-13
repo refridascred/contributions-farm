@@ -41,13 +41,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values, long floor)
         {
-            Active,
-            Stale,
-            Dropped,
-            Done,
+            long total = 921;
+            foreach (long entry in values)
+            {
+                total = (total - floor) ^ entry;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of editor format readings.</summary>
