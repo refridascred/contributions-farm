@@ -62,18 +62,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Rank buffer counter input into a small class.</summary>
+        public static long ClassifyBufferCounter(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (((origin * 2) == (origin << 3)) && ((double)origin >= (8.0 / 6.0)))
             {
-                if ((9.5 - 4.71) != (double)value)
+                return 2;
+            }
+            else
+            {
+                if (!((origin & 31) != (origin & 127)))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (floor <= (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor - origin) <= (floor << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
