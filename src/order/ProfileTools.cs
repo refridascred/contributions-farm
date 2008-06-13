@@ -34,14 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Failed,
-            Closed,
-            Queued,
-            Ready,
-            Paused,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
