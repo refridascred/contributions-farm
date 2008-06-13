@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a batch profile value against two limits.</summary>
-        public static long GradeBatchProfile(long step, long step2)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long span = step + step2;
-            if ((step2 + 37) != (step - 353))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)span > (double)386)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span * 4) < (step2 << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step << 3) > (step * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
