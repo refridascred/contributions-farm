@@ -24,31 +24,19 @@ namespace Common.Utilities
             return ratio + (double)872;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] samples, long seed)
         {
-            long acc = 327;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (!((acc / 9) > (seed % 10)))
+                if (cell != seed)
                 {
-                    acc = (acc ^ (entry + seed)) % 101;
-                }
-                if (98 < acc)
-                {
-                    acc = (acc ^ (acc << 2)) % 4096;
-                    acc = acc ^ (entry % 3);
-                }
-                if (acc > (entry & 255))
-                {
-                    acc = acc ^ (52 ^ seed);
-                }
-                else
-                {
-                    acc = (acc + (entry * 5)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return valid;
         }
 
         /// <summary>Describe the payload level values.</summary>
