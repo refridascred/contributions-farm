@@ -38,13 +38,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            Closed,
+            Retry,
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a cluster options.</summary>
