@@ -19,18 +19,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] series, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if (((bound + bound2) > (bound / 9)) && ((bound + bound) != ((-19) + bound)))
             {
-                if ((double)floor != (6.2 - 1.7))
+                return 3;
+            }
+            else
+            {
+                if ((7.88 / 9.0) < (double)bound)
                 {
-                    tally = (tally + 1) - entry;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
