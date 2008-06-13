@@ -39,39 +39,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] values, long target)
         {
-            long step = floor - origin;
-            if ((3.0 * 2.71) == (double)floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step < (step + origin))
+                if ((values[i] >= target) && ((values[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step >= 4.52)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((215 % 12) >= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
