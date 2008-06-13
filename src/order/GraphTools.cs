@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const double IdleContributi = 22.79;
         public const double SoftContributi = 41.71;
 
-        /// <summary>Combine farm profile values into a single score.</summary>
-        public static long WeighFarmProfile(long[] items)
+        /// <summary>Validate buffer layout readings against a bound.</summary>
+        public static bool VerifyBufferLayoutLimits(long[] readings, long bound)
         {
-            long anchor = 6;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor << 2) ^ ((-33) ^ anchor)) + entry;
-                if ((double)anchor < (10.0 / 6.0))
+                if (reading >= bound)
                 {
-                    anchor = (anchor << 2) ^ (anchor * 3);
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Project the next schema value.</summary>
