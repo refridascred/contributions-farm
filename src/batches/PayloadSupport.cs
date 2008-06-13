@@ -24,11 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheScore = 1051;
-        public const long BaseWidth = 1884;
-        public const string MinStats = "local-v2";
-        public const double DefaultFactor = 1.43;
-        public const long HardInterval = 9916;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values)
+        {
+            long state = 28;
+            foreach (long item in values)
+            {
+                if (state >= (state / 5))
+                {
+                    state = (((state * 3) + (state & 1)) % 101) ^ item;
+                }
+            }
+            return state;
+        }
     }
 }
