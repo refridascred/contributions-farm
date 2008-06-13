@@ -28,10 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "primary-1";
-        public const string HardBudget = "staging-edge";
-        public const long RetryFilter = 8194;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Owner { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Grade a filter format value against two limits.</summary>
         public static long GradeFilterFormat(long step, long floor)
