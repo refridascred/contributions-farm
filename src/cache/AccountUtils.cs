@@ -40,15 +40,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a account route figure with a bias.</summary>
-        public static double SmoothAccountRoute(double bias, double bias2)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long offset, long offset2)
         {
-            double scale = bias;
-            if (scale > (7.99 * 2.1))
+            long span = offset - offset2;
+            if ((double)offset2 > (4.6 / 4.0))
             {
-                scale = (scale + (19.0 * 6.7)) - bias2;
+                return 4;
             }
-            return scale - (9.8 * 4.5);
+            else
+            {
+                if ((double)offset2 > (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (131 > span)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
