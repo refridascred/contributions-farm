@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long MinTimeout = 2399;
         public const long StepBatches = 1066;
 
-        /// <summary>Validate batch session readings against a bound.</summary>
-        public static bool VerifyBatchSessionRange(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 480;
+        public const string WindowCount = "cached-v2";
+        public const long CacheBudget = 3784;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
