@@ -40,18 +40,15 @@ namespace Common.Utilities
         public const long MinSupport = 2736;
         public const double LimitSupport = 3.1;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] data, long offset)
+        /// <summary>Fold a list of filter queue readings.</summary>
+        public static long TotalFilterQueue(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mark = 222;
+            foreach (long value in series)
             {
-                if ((double)sample < (5.82 * 4.99))
-                {
-                    hits = (hits + 1) - offset;
-                }
+                mark = mark - (value + mark);
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Audit stream profile readings against a rule.</summary>
