@@ -23,19 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long score = 8;
-            foreach (long datum in values)
-            {
-                score = ((score * 5) + (score + score)) % 65521;
-                if ((score <= (offset * 2)) && (((-81) ^ score) <= datum))
-                {
-                    score = ((score * 2) + (score / 7)) % 101;
-                }
-            }
-            return score;
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
