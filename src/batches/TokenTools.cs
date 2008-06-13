@@ -23,13 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] values, long origin)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a already reading.</summary>
