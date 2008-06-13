@@ -34,18 +34,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] levels)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches << 1) >= matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            Queued,
+            Ready,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
