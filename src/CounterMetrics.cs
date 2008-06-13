@@ -50,13 +50,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long bound)
         {
-            Paused,
-            Pending,
-            Failed,
-            Done,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (bound < (bound & 127))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
