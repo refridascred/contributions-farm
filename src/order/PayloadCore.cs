@@ -48,14 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Locked,
-            Idle,
-            Retry,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSpan = 4976;
+        public const string BatchChannel = "stable-v2";
+        public const long MinChannel = 1726;
+        public const long RetryChannel = 6499;
     }
 }
