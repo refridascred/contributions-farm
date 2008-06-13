@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item * 3) > item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
