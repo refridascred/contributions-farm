@@ -74,19 +74,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio = bias;
+            return (ratio + bias) + scale;
         }
     }
 }
