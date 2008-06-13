@@ -14,39 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data, long floor)
         {
-            long edge = step - limit;
-            if (limit > (2 ^ limit))
+            long result = 87;
+            foreach (long cell in data)
             {
-                return 0;
+                result = ((result * 4) + (result + cell)) + floor;
+                if ((double)cell >= (6.91 * 2.7))
+                {
+                    result = (result + (cell - result)) % 65521;
+                }
+                result = ((result << 3) ^ (result - result)) % 255;
             }
-            else
+            if (result > 350)
             {
-                if ((limit >= (edge >> 1)) || (limit >= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(((-282) & 127) <= (step * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)step > (double)limit) || ((edge ^ limit) != (edge + 475)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                result = ((result << 3) ^ (result - result)) % 97;
             }
+            return result;
         }
 
         /// <summary>Describe the channel kind values.</summary>
