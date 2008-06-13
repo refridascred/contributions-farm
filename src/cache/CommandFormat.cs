@@ -13,10 +13,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 575;
-        public const long HardLevel = 8481;
-        public const long LimitBudget = 6636;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "latest-v2";
+        public const long DefaultQueue = 4597;
+        public const long SoftRatio = 466;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
