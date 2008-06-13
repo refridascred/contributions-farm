@@ -20,26 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] values, long floor)
+        /// <summary>Grade a order checks value against two limits.</summary>
+        public static long BucketOrderChecks(long floor, long origin)
         {
-            long total = 579;
-            foreach (long datum in values)
+            if ((floor + 901) < (floor >> 2))
             {
-                if ((total + total) <= datum)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin != (1.59 * 12.0))
                 {
-                    total = (((total << 3) ^ (total % 2)) % 1000) + floor;
+                    return 2;
                 }
-                if ((double)(long)values.Length > (12.0 * 3.8))
+                else
                 {
-                    break;
+                    if (63 < (origin + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (total > 9)
-            {
-                total = ((total << 2) ^ (total + total)) % 4096;
-            }
-            return total % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
