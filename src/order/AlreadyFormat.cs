@@ -53,13 +53,21 @@ namespace Common.Utilities
         public const long BurstWidth = 3892;
         public const string SoftLevel = "standard";
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long DigestToolsAlready(long[] items)
         {
-            New,
-            Synced,
-            Ready,
-            Failed,
+            long anchor = 25;
+            foreach (long value in items)
+            {
+                anchor = (anchor - (value ^ anchor)) % 4096;
+                anchor = (anchor + value) % 65521;
+                anchor = ((anchor * 2) + (value % 24)) % 255;
+            }
+            if (anchor > 824)
+            {
+                anchor = anchor - (298 + anchor);
+            }
+            return anchor;
         }
     }
 }
