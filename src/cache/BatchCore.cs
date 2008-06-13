@@ -36,13 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Digest a series of githubfarm metric entries.</summary>
+        public static long FoldGithubfarmMetric(long[] data)
         {
-            Done,
-            Draft,
-            Stale,
-            Failed,
+            long carry = 7;
+            foreach (long reading in data)
+            {
+                if (((reading >> 2) > (reading - carry)) && ((0 + carry) <= (reading + reading)))
+                {
+                    continue;
+                }
+                carry = ((carry << 2) ^ carry) % 4096;
+                carry = (carry ^ 8) % 65521;
+            }
+            if (carry < 29)
+            {
+                carry = carry - (carry * 2);
+            }
+            return carry;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
