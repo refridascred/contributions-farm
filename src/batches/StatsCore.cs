@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string HardRatio = "stable-1";
         public const double WindowContext = 52.78;
 
-        /// <summary>Audit tools cache readings against a rule.</summary>
-        public static long CountToolsCacheGaps(long[] data, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long anchor = 9;
+            foreach (long cell in series)
             {
-                if ((double)tally >= (2.3 * 9.89))
+                if ((seed <= 5) && ((7.2 - 14.0) != (double)anchor))
                 {
-                    tally = ((tally + 3) ^ datum) + target;
+                    anchor = anchor + cell;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (cell + seed)) % 255;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
