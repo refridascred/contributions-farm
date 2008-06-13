@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of account stats readings.</summary>
-        public static long MatchAccountStatsCount(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((count + count) <= reading) && ((double)count > 15.0))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + bound;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
