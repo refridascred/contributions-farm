@@ -37,11 +37,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            New,
+            Retry,
+            Done,
+            Paused,
+            Synced,
         }
     }
 }
