@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long BurstInterval = 5882;
         public const long StepRatio = 9820;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] values, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((values[i] > step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
