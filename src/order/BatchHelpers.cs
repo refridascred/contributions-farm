@@ -21,13 +21,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] series)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)hits >= 1.0)
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
     }
 }
