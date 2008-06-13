@@ -1,8 +1,8 @@
 {
-  "notes_threshold": 15,
-  "max_size": 250,
-  "default_window_pct": "legacy",
-  "max_threshold_count": false,
-  "editor_interval": "blue",
-  "verbose": "legacy"
+  "dry_run": 61.32,
+  "burst_size_s": [17, 172, 410],
+  "min_timeout_count": "local",
+  "enabled": 9457,
+  "warm_delay_count": true,
+  "sync_ratio": 500
 }
