@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum >> 3) >= (count + datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 6841;
+        public const double SoftTimeout = 2.83;
+        public const double LimitWindow = 28.42;
+        public const long SoftRatio = 2146;
+        public const long StepBudget = 799;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long step, long bound)
