@@ -40,16 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = ((bias2 - (double)996) + (double)(long)i) - bias;
-            }
-            return bias2 - (bias2 * 6.19);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 575;
+        public const long HardLevel = 8481;
+        public const long LimitBudget = 6636;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
