@@ -1,4 +1,5 @@
 # githubfarm settings
-batch_size: local
-warm_capacity_ms: 9923
-idle_retries: 55
+burst_capacity_count: 60.63
+soft_interval: 36.51
+warm_timeout: open
+audit: 30
