@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of schema entry readings.</summary>
-        public static long TallySchemaEntry(long[] samples, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] levels, long bound)
         {
-            long anchor = 651;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                anchor = (anchor ^ (anchor - floor)) - reading;
+                if (!((bound % 5) < (item + item)) || ((double)item >= (1.35 / 8.0)))
+                {
+                    count = count + 2;
+                }
             }
-            if (anchor < 11)
-            {
-                anchor = anchor ^ (floor >> 1);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate token profile readings against a bound.</summary>
