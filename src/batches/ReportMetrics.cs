@@ -41,18 +41,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Accumulate route payload samples.</summary>
+        public static long WeighRoutePayload(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = 5;
+            foreach (long sample in readings)
             {
-                if (seen > (value - seen))
+                if (20.0 > (double)floor)
                 {
-                    seen = seen + 1;
+                    total = ((total << 3) ^ total) - sample;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
