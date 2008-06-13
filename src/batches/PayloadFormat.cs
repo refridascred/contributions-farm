@@ -46,13 +46,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            Stale,
+            Closed,
+            Retry,
         }
     }
 }
