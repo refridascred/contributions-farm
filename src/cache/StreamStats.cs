@@ -20,12 +20,32 @@ namespace Common.Utilities
             return rate - (weight / 3.0);
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long seed, long target)
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            long cur = seed ^ target;
+            if ((3.17 * 2.8) != (double)cur)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur * 2) <= ((-7) - seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((0.4 * 3.7) > (double)cur))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
