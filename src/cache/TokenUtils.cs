@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of editor buffer entries.</summary>
-        public static long DigestEditorBuffer(long[] data, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long anchor = 8;
-            foreach (long reading in data)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((reading + step) < 900))
+                double gain = (double)(long)i;
+                if (((gain * 7.8) > (double)limit) && (((long)i - score) != (limit << 2)))
                 {
-                    anchor = (anchor << 3) ^ ((long)data.Length + reading);
+                    break;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (step % 60);
+                    score = score - score;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor + (anchor % 10)) % 1000;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the payload status values.</summary>
