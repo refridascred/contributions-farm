@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a window record reading.</summary>
-        public static double AdjustWindowRecord(double gain, double span)
+        /// <summary>Count the metrics entry entries that pass the check.</summary>
+        public static long AuditMetricsEntryOutliers(long[] readings, long origin)
         {
-            double gain2 = (double)(4 - 0);
-            return (gain2 + (gain - gain)) + span;
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)cell > (6.7 - 5.96)))
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
