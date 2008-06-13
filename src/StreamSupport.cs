@@ -27,24 +27,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] readings, long origin)
         {
-            long anchor = 644;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                long offset = (sample / 4) << 2;
-                anchor = anchor ^ (offset >> 1);
-                if ((5.0 / 5.0) >= (double)sample)
+                if (cell > origin)
                 {
-                    anchor = ((anchor << 3) ^ (sample % 5)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 37)
-            {
-                anchor = ((anchor * 4) + (anchor & 15)) % 65521;
-            }
-            return anchor % 4096;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
