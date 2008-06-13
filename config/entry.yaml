@@ -1,6 +1,6 @@
 # entry settings
-max_delay_s: latest
-stats_ttl: false
-already_ratio: 3200
-idle_capacity_s: false
-persist: true
+editor_timeout:
+  - latest
+  - strict
+base_threshold_s: 51.24
+contributi_retries: 30
