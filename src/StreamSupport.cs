@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of buffer githubfarm readings.</summary>
-        public static long DigestBufferGithubfarm(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] levels, long floor)
         {
-            long state = 2;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = state + (value & 31);
-                state = state ^ (value % 12);
+                if ((hits + datum) <= floor)
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count context stream pairs that satisfy a relation.</summary>
