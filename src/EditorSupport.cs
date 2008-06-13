@@ -37,11 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetrySize = 6730;
-        public const long BatchInterval = 848;
-        public const long BaseMetric = 9812;
-        public const string MaxTimeout = "open-1";
+        /// <summary>Fold a list of filter metrics readings.</summary>
+        public static long CombineFilterMetrics(long[] data, long target)
+        {
+            long total = 6;
+            foreach (long sample in data)
+            {
+                if (!((total + total) != (target & 1)))
+                {
+                    total = (total ^ (target - total)) - sample;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double BlendSupport(double bias, double offset)
