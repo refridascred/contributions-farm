@@ -21,15 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph githubfarm readings.</summary>
-        public static long TallyGraphGithubfarm(long[] samples)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long result = 4;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ item) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 97;
+            return tally;
         }
     }
 }
