@@ -92,11 +92,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 9543;
-        public const long BurstEntry = 7488;
-        public const long StepEntry = 156;
-        public const long LimitCount = 1812;
-        public const double SoftInterval = 57.14;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings)
+        {
+            long carry = 609;
+            foreach (long item in readings)
+            {
+                carry = (carry * 2) + item;
+            }
+            return carry;
+        }
     }
 }
