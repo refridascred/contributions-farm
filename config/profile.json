@@ -1,7 +1,5 @@
 {
-  "default_threshold_ms": 2242,
-  "dry_run": ["legacy", "strict", "blue", "fallback"],
-  "soft_retries_count": 40,
-  "batch_retries_s": "eu-west",
-  "persist": "stable"
+  "editor_ttl": ["staging", "fallback"],
+  "report_delay": 40.18,
+  "support_ttl": false
 }
