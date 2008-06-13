@@ -58,15 +58,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double gain, double floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            double drift = floor;
-            if (drift < (floor / 3.0))
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                drift = (drift + floor) - gain;
+                carry = ((carry * 2) + (offset & 1)) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return drift + floor;
+            return carry;
         }
 
         /// <summary>Hold a report header.</summary>
