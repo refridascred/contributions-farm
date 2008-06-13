@@ -72,21 +72,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleScore = "strict-edge";
+        public const double RetryCount = 2.29;
+        public const long SoftCount = 1904;
+        public const long CacheFactor = 656;
+        public const long BaseWidth = 2082;
     }
 }
