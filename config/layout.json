@@ -1,17 +1,6 @@
 {
-  "max_retries": "standard",
-  "verbose": 30,
-  "already_depth": 9,
-  "base_limit": {
-    "compress": {
-      "support_depth": "staging",
-      "context_capacity": [412, 217, 300, 74],
-      "stats_window": 7861,
-      "flush_depth_count": false
-    },
-    "idle_timeout_ms": "stable",
-    "readonly": 996
-  },
-  "support_retries": "fallback",
-  "enabled": false
+  "audit": "eu-west",
+  "warm_timeout_s": 500,
+  "warm_interval_s": "edge",
+  "dry_run": 7716
 }
