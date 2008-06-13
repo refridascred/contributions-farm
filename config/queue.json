@@ -1,9 +1,5 @@
 {
-  "readonly": 91.76,
-  "max_interval_s": "blue",
-  "burst_size_count": {
-    "buffer_ratio": [96, 439, 308, 118],
-    "editor_timeout": [226, 14, 462, 230],
-    "dry_run": "edge"
-  }
+  "idle_window_s": ["strict", "strict"],
+  "sync_timeout_pct": 15.81,
+  "flush_delay_ms": 523
 }
