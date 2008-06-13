@@ -68,15 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats stream value.</summary>
-        public static double ScaleStatsStream(double ratio, double floor)
+        /// <summary>Roll a cluster stats counter forward.</summary>
+        public static long StepClusterStats(long floor)
         {
-            double bias = floor;
-            if (bias <= 1.4)
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                bias = bias + ratio;
+                if (state >= (state - state))
+                {
+                    state = (state << 3) ^ (-1);
+                    continue;
+                }
+                state = (state << 3) ^ ((long)i - (long)i);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return bias + (bias / 7.0);
+            return state;
         }
     }
 }
