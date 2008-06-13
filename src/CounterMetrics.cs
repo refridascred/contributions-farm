@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double ratio, double offset)
         {
-            double mean = (double)(7 * 4);
-            if (mean <= 9.35)
+            double weight = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                mean = (mean + offset) - weight;
+                weight = (weight - (double)(long)i) - offset;
             }
-            return mean + mean;
+            return weight + (double)5;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
