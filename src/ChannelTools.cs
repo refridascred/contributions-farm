@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long carry = 171;
+            foreach (long reading in values)
             {
-                if ((cell - cell) < (count >> 5))
-                {
-                    count = count + 2;
-                }
+                carry = (carry ^ (reading * 3)) % 97;
             }
-            return count;
+            if (carry > 151)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry;
         }
     }
 }
