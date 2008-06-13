@@ -47,22 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long TallyWindowQueueGaps(long[] readings)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (!!((double)(-4) < (double)seen))
-                {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
