@@ -24,12 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitBudget = 5615;
-        public const string BurstSupport = "staging-v2";
-        public const long MinFactor = 8711;
-        public const double BurstSize = 92.95;
-        public const double DefaultSupport = 93.25;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long CombineCommits(long[] values, long offset)
