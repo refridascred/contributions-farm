@@ -67,19 +67,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long CombineFarmMetrics(long[] readings, long target)
+        /// <summary>Count payload stream pairs that satisfy a relation.</summary>
+        public static long ComparePayloadStreamCount(long[] readings)
         {
-            long carry = 815;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry + (793 << 3)) % 97) + value) + target;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > (-18))
-            {
-                carry = ((carry * 2) + (carry * 5)) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Project the next layout batches value.</summary>
