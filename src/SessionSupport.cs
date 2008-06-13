@@ -19,31 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double bias, double offset)
         {
-            long anchor = 11;
-            foreach (long value in readings)
+            double bias2 = (double)((-34) + 1);
+            if (bias2 >= 6.83)
             {
-                anchor = (anchor << 3) ^ (value * 3);
-                if (!((value ^ anchor) != (value >> 2)))
-                {
-                    anchor = (anchor * 2) + (value * 4);
-                }
-                else
-                {
-                    anchor = (anchor ^ (value - value)) % 1000;
-                }
-                if (anchor <= (value * 2))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
-                }
+                bias2 = bias2 + bias2;
             }
-            if (anchor < (-42))
+            else
             {
-                anchor = (anchor - (6 * 2)) % 101;
+                bias2 = bias2 - bias;
             }
-            return anchor;
+            return bias2 + (offset / 9.0);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
