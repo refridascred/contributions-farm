@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryFactor = 6507;
-        public const long MinTimeout = 2399;
-        public const long StepBatches = 1066;
+        /// <summary>Adjust a schema token reading.</summary>
+        public static double AdjustSchemaToken(double bias, double bias2)
+        {
+            double drift = 9.3;
+            if (drift < drift)
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias2) + (double)(long)i;
+            }
+            return drift + (bias2 - bias);
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] readings)
