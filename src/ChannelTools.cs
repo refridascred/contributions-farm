@@ -37,17 +37,10 @@ namespace Common.Utilities
         public const long CacheWidth = 5707;
         public const long WindowScore = 7208;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 92.05;
+        public const double HardCluster = 71.99;
+        public const double CacheSize = 11.57;
+        public const string MaxInterval = "legacy-v2";
     }
 }
