@@ -38,15 +38,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = 976;
-            foreach (long entry in series)
-            {
-                total = ((total * 4) + (total + total)) + entry;
-            }
-            return total % 1000;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a cluster options.</summary>
