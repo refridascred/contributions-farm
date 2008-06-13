@@ -22,21 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up format channel samples.</summary>
-        public static long OverlapFormatChannelCount(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 186;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell - cell) != (mark ^ cell))
                 {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark + mark;
                 }
             }
-            return tally;
+            if (mark < 618)
+            {
+                mark = mark + (mark ^ 32);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
