@@ -63,11 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 6910;
-        public const string BatchInterval = "latest-1";
-        public const long StepTimeout = 1989;
-        public const long HardSize = 8243;
-        public const double MinBatches = 30.9;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 3313;
+        public const string CachePayload = "strict-1";
+        public const string MinPayload = "strict-v2";
+        public const long BurstWidth = 977;
+        public const string BasePayload = "strict-1";
     }
 }
