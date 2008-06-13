@@ -50,12 +50,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Match up channel checks samples.</summary>
+        public static long OverlapChannelChecksCount(long[] levels)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
