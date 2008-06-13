@@ -31,15 +31,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of profile stream readings.</summary>
-        public static long TallyProfileStream(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] items)
         {
-            long acc = 82;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                acc = acc - datum;
+                if ((seen + seen) >= (57 + seen))
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
