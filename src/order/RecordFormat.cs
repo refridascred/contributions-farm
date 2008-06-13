@@ -68,19 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] series, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Retry,
+            New,
+            Ready,
         }
     }
 }
