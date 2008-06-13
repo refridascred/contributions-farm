@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long score = 13;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score << 3) ^ ((long)i & 15)) - entry;
-                }
-                if ((1.0 - 0.3) != (double)score)
-                {
-                    score = (score - score) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (12 + score)) % 255;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 59)
-            {
-                score = (score + (score * 3)) % 65521;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a entry header.</summary>
