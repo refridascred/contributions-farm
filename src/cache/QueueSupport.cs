@@ -12,15 +12,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] readings, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long state = 2;
-            foreach (long sample in readings)
+            long result = 549;
+            foreach (long sample in samples)
             {
-                state = (state - (state - sample)) + target;
+                if ((9.9 + 17.0) < (double)result)
+                {
+                    result = ((result * 5) + (645 << 1)) ^ sample;
+                }
             }
-            return state;
+            return result % 65521;
         }
 
         /// <summary>Hold a session options.</summary>
