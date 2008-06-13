@@ -37,19 +37,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double bias)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double mean = gain;
-            if (mean < gain)
-            {
-                mean = (mean - 6.38) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean - (double)79;
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate queue samples.</summary>
