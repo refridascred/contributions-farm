@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] samples, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] items)
         {
-            long carry = 67;
-            foreach (long reading in samples)
+            long state = 84;
+            foreach (long item in items)
             {
-                if ((target * 2) <= (target + (-712)))
+                if ((83 + state) != (item >> 3))
                 {
-                    carry = (carry << 2) ^ reading;
-                }
-                else
-                {
-                    carry = carry ^ (target >> 4);
+                    state = state - (state * 3);
                 }
             }
-            return carry;
+            if (state < 565)
+            {
+                state = (state ^ state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Blend two token measurements.</summary>
