@@ -57,18 +57,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] values)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 1) != (cell + (long)values.Length))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
