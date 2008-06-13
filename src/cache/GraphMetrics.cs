@@ -25,39 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long limit, long limit2)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] items, long bound)
         {
-            long gap = limit ^ limit2;
-            if ((double)limit2 != (8.2 + 6.43))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (gap < (gap >> 5))
+                if (item > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit2 == (18.0 + 0.9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit >= gap)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
