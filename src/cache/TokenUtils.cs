@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long offset)
         {
-            double scale = (double)74 - (gain - gain);
-            if (scale <= gain)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                scale = scale + floor;
+                sum = (sum - (offset - sum)) % 65521;
+                if ((long)i > (1 & 127))
+                {
+                    sum = ((sum * 5) + ((-6) / 8)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + floor;
+            return sum;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
