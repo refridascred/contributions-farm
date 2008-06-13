@@ -1,10 +1,20 @@
 # entry settings
-cache_ttl_count: blue
-filter_capacity:
-  sync_timeout_ms: 30
-  strict: green
-  audit:
-    - blue
-    - fallback
-  sync_delay_count: 19.14
-warm_retries_count: 66
+layout_size: 30
+soft_ratio:
+  editor_capacity: standard
+  readonly:
+    - cached
+    - legacy
+    - eu-west
+    - local
+  hard_size_count: false
+  base_interval_ms:
+    poll_ttl_count: true
+    batch_timeout: blue
+    cache_limit_pct: 77
+    githubfarm_threshold: green
+    flush_delay_pct: false
+    batch_ttl: 23.44
+  retry_timeout: legacy
+  batch_limit_count: 84.54
+flush_ttl_ms: 9560
