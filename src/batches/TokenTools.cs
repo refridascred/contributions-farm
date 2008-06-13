@@ -30,23 +30,21 @@ namespace Common.Utilities
             return (mean + (double)112) + rate;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double ratio, double floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            double load = floor;
-            if (load < (load - load))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - floor) - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (floor * 15.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)262) - (double)(long)i;
-            }
-            return load - floor;
+            return seen;
         }
     }
 }
