@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double ratio, double floor)
         {
-            long acc = 487;
-            foreach (long reading in readings)
+            double load = (double)((-978) % 24);
+            if (load >= ratio)
             {
-                if (acc > (reading >> 3))
-                {
-                    break;
-                }
-                if ((reading - reading) > step)
-                {
-                    acc = (acc + (acc - acc)) % 4096;
-                }
+                load = load - (double)(-8);
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - (double)51;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
