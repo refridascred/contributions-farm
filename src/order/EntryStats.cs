@@ -63,17 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] samples, long offset)
+        /// <summary>Accumulate command already samples.</summary>
+        public static long DigestCommandAlready(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 378;
+            foreach (long reading in series)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                if ((reading % 3) <= (4 + 74))
                 {
-                    return (long)i;
+                    state = (state * 3) + (state + state);
                 }
             }
-            return -1;
+            if (state > 0)
+            {
+                state = (state - (state + state)) % 97;
+            }
+            return state;
         }
     }
 }
