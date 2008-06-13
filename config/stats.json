@@ -1,12 +1,8 @@
 {
-  "burst_window_s": ["legacy", "standard"],
-  "support_depth": {
-    "strict": "green",
-    "burst_capacity_count": 42,
-    "counter_ttl": 60
-  },
-  "min_ttl_s": ["cached", "strict", "stable", "primary"],
-  "burst_window_count": "latest",
-  "batch_threshold_s": ["stable", "cached"],
-  "tools_capacity": "strict"
+  "persist": false,
+  "entry_limit": 60,
+  "max_size_pct": true,
+  "base_timeout_pct": "blue",
+  "soft_limit_count": [202, 317, 8],
+  "hard_limit_s": "staging"
 }
