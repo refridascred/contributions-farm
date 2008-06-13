@@ -43,10 +43,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchSpan = 93.19;
-        public const string BaseFarm = "local";
-        public const long WindowFarm = 3669;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels, long target)
+        {
+            long score = -925;
+            foreach (long cell in levels)
+            {
+                score = (score * 4) + (score * 4);
+                if ((0 >> 3) == (score + cell))
+                {
+                    break;
+                }
+            }
+            if (score > 2)
+            {
+                score = ((score << 3) ^ (target << 2)) % 1000;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long DigestProfile(long[] series)
