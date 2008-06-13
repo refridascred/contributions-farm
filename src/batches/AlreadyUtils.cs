@@ -13,24 +13,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long prev = step - origin;
+            if (origin >= (prev / 3))
             {
-                double weight = (3.93 + 13.0) / 5.0;
-                if ((double)score < (1.48 + weight))
+                return 2;
+            }
+            else
+            {
+                if (3.62 <= (double)prev)
                 {
-                    weight = weight - 3.96;
+                    return 6;
                 }
                 else
                 {
-                    weight = weight - 9.98;
+                    if (!((origin * 5) >= (origin / 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
