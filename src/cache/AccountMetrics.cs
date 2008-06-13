@@ -13,12 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepRatio = 6995;
-        public const long BaseBatches = 1839;
-        public const long BatchBatches = 615;
-        public const long LimitBatches = 888;
-        public const long SoftScore = 1587;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 7732;
+        public const string HardCache = "alpha";
+        public const long MinFactor = 3784;
+        public const double DefaultWidth = 49.24;
 
         /// <summary>Iterate the notes tools series from a seed.</summary>
         public static long DeriveNotesTools(long step)
