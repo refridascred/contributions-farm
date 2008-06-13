@@ -1,9 +1,23 @@
 # support settings
-verbose: legacy
-soft_limit: blue
-dry_run: false
-base_delay_ms:
-  - local
-  - primary
-retry_limit: 71.27
-base_timeout_s: 98.92
+warm_delay: 500
+cache_threshold: 62.02
+readonly: blue
+idle_timeout_pct: false
+token_capacity:
+  batch_timeout: 48.15
+  batch_delay: false
+  already_threshold:
+    compress: open
+    readonly: false
+    enabled:
+      - 36
+      - 45
+    default_timeout_count: 77.32
+    poll_interval: 38
+    burst_depth: false
+  min_size_ms: 90.84
+  channel_ratio: false
+  base_size_ms:
+    - latest
+    - latest
+    - legacy
