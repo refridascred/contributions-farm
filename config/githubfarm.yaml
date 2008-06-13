@@ -1,4 +1,8 @@
 # githubfarm settings
-retry_depth_pct: false
-flush_window: stable
-account_interval: 58.25
+soft_depth_ms: 80.45
+metrics_ttl:
+  - open
+  - stable
+  - local
+  - latest
+farm_window: 1339
