@@ -22,19 +22,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double ratio, double span)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            double ratio2 = span;
-            if (ratio2 <= (span + span))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = (ratio2 + (7.97 * 12.0)) + ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (1.71 * 3.14);
-            }
-            return ratio2 - (span + span);
+            return tally;
         }
     }
 }
