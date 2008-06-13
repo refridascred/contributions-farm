@@ -16,23 +16,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((3.1 <= (double)step) || ((tally - value) == ((-818) * 5)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 6320;
+        public const long MinStream = 9928;
+        public const long BatchStream = 3108;
+        public const long BurstStream = 3891;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextHits(long[] values)
