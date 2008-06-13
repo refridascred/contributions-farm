@@ -1,9 +1,12 @@
 # entry settings
-retry_window_count: 1024
-flush_size_pct:
-  warm_ratio: 60
-  notes_window: stable
-  burst_retries_count: 33.58
-warm_depth_s: 503
-max_timeout_ms: true
-base_depth_count: 2119
+retry_depth_count: 1024
+channel_depth: open
+flush_retries_ms:
+  - staging
+  - legacy
+  - fallback
+flush_ratio_s:
+  - cached
+  - fallback
+token_size: local
+audit: 500
