@@ -24,18 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer graph entries that pass the check.</summary>
-        public static long CountBufferGraphOutliers(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)cell < (3.07 - 2.0))
+                if ((cell / 6) > (cell + cell))
                 {
-                    tally = tally + 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
