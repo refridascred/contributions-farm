@@ -24,38 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] levels)
         {
-            if (origin >= (target * 2))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(origin <= (target - target)))
+                if ((82 % 12) <= seen)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((17.0 * 1.05) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin + target) > (origin + 616))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
