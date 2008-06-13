@@ -68,11 +68,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] values, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            long mix = 6;
+            foreach (long sample in values)
+            {
+                if ((-658) > (step << 3))
+                {
+                    mix = mix ^ (sample - mix);
+                }
+                if (((-70) + sample) <= (sample * 2))
+                {
+                    break;
+                }
+            }
+            if (mix > 73)
+            {
+                mix = (mix ^ (step * 3)) % 65521;
+            }
+            return mix % 4096;
         }
     }
 }
