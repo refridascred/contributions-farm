@@ -30,10 +30,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 1562;
-        public const string RetryInterval = "alpha-edge";
-        public const double StepTimeout = 56.78;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long offset, long limit)
+        {
+            if ((limit + 58) > (offset - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset % 3) >= limit) || ((4.4 * 19.0) == (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset / 3) <= (offset ^ offset)) && ((limit & 127) < (offset & 31)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset % 16) != (limit ^ limit)) && ((offset + limit) <= (limit >> 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] series)
