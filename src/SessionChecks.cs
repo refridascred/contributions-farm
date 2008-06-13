@@ -23,17 +23,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long limit)
+        /// <summary>Audit token queue readings against a rule.</summary>
+        public static long MeasureTokenQueueOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
+                if (reading > (reading ^ tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
