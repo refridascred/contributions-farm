@@ -38,18 +38,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of notes tools readings.</summary>
-        public static long FoldNotesTools(long[] series, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long floor)
         {
-            long sum = 907;
-            foreach (long entry in series)
+            if ((floor + limit) <= (88 - floor))
             {
-                if (sum < (offset + sum))
+                return 1;
+            }
+            else
+            {
+                if (floor <= (limit & 1))
                 {
-                    sum = (sum ^ (entry + offset)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit < 4.3)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return sum % 97;
         }
     }
 }
