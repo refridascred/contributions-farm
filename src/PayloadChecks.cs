@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long limit, long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if (!((floor + floor) > limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((4.4 + 7.3) == (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two commits editor measurements.</summary>
