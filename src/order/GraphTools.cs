@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const string BatchTimeout = "cached";
         public const long WindowFactor = 8863;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstFactor = 70.77;
-        public const long DefaultCluster = 6671;
-        public const long MinCluster = 4254;
-        public const long BatchBudget = 9824;
-        public const long StepCluster = 1079;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] values, long offset)
