@@ -44,11 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double bias, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] values)
         {
-            double drift = floor;
-            return (drift - floor) + bias;
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally + tally) < (tally + reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
