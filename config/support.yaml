@@ -1,11 +1,6 @@
 # support settings
-persist: true
-default_limit: 250
-format_timeout:
-  batch_delay: open
-  flush_ratio_pct: cached
-  max_window: true
-  soft_interval: edge
-retry_timeout_s: primary
-warm_ratio_s: 100
-min_timeout_ms: fallback
+cache_delay: strict
+compress: primary
+flush_size: 26
+max_threshold_ms: 35.63
+warm_limit_pct: blue
