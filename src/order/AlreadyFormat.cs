@@ -70,24 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits support input into a small class.</summary>
-        public static long RankCommitsSupport(long bound, long offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if (((double)offset != (11.0 - 18.0)) && ((bound - offset) < offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + offset) >= (bound / 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            New,
+            Synced,
+            Ready,
+            Failed,
         }
     }
 }
