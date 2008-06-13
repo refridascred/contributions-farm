@@ -1,6 +1,7 @@
 # githubfarm settings
-warm_capacity: 100
-persist: strict
-min_retries_count: 5972
-layout_window: 71.98
-max_ttl_s: 500
+soft_limit_s:
+  - legacy
+  - green
+  - cached
+format_interval: staging
+warm_ttl: 77
