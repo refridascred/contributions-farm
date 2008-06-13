@@ -27,11 +27,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] data)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            long anchor = 644;
+            foreach (long sample in data)
+            {
+                long offset = (sample / 4) << 2;
+                anchor = anchor ^ (offset >> 1);
+                if ((5.0 / 5.0) >= (double)sample)
+                {
+                    anchor = ((anchor << 3) ^ (sample % 5)) % 255;
+                }
+            }
+            if (anchor < 37)
+            {
+                anchor = ((anchor * 4) + (anchor & 15)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
