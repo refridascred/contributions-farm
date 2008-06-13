@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheSpan = "stable";
-        public const long CacheGithubfarm = 5984;
-        public const string BurstBudget = "stable";
-        public const long WindowGithubfarm = 154;
-        public const string MinGithubfarm = "fallback";
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordHits(long[] items, long bound)
