@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mean + (double)46;
         }
 
-        /// <summary>Check that every order metrics entry stays within the limit.</summary>
-        public static bool VerifyOrderMetricsRange(long[] values, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (item > floor)
+                if (reading != origin)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Digest a series of order entries.</summary>
