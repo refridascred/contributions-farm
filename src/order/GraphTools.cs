@@ -31,22 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] readings, long origin)
         {
-            long result = 131;
-            foreach (long datum in series)
+            long anchor = 6;
+            foreach (long cell in readings)
             {
-                if ((double)datum < (double)bound)
-                {
-                    result = result + (datum - 461);
-                }
+                anchor = ((anchor ^ cell) % 4096) + origin;
             }
-            if (result < 9)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
