@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a profile report value against two limits.</summary>
-        public static long GradeProfileReport(long bound, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long bound2 = bound + step;
-            if ((step + step) < (bound - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step + step) >= (bound2 << 2)) && ((bound2 - bound) >= (0 + step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) < (bound2 ^ (-963)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
