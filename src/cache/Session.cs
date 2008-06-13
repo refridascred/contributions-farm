@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a window graph pair into a bucket.</summary>
+        public static long ClassifyWindowGraph(long floor, long seed)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            if (10.0 > (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((2.03 * 0.97) >= (double)floor) || (0.8 <= (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a entry reading.</summary>
