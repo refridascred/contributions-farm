@@ -60,17 +60,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] data, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((data[i] >= origin) && ((data[i] % 3) == 0))
+                if ((offset * 3) < 2)
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a batches entry.</summary>
