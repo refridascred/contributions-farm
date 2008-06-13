@@ -49,21 +49,15 @@ namespace Common.Utilities
         public const string BatchTimeout = "cached";
         public const long WindowFactor = 8863;
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 897;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor * 5) + (anchor + entry);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Adjust a stream reading.</summary>
