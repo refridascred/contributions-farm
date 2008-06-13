@@ -22,12 +22,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] series, long limit)
         {
-            Pending,
-            Draft,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
