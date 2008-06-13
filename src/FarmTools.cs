@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 5857;
-        public const long SoftNotes = 1240;
-        public const long WindowNotes = 8444;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Queued,
+            Synced,
+            Done,
+            Draft,
+        }
 
         /// <summary>Derive the next batches already value from a seed.</summary>
         public static long RollBatchesAlready(long offset)
