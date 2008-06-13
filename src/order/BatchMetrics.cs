@@ -54,18 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (value < tally)
+                if (cell < floor)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
