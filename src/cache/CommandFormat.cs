@@ -42,17 +42,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a editor queue sample.</summary>
-        public static long SeekEditorQueueIndex(long[] levels, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
