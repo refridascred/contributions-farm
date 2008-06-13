@@ -25,12 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 9149;
-        public const string StepRatio = "strict-v2";
-        public const long IdleDepth = 9042;
-        public const long SoftStats = 8317;
-        public const string BaseStats = "legacy";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public double Flag { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] readings, long offset)
