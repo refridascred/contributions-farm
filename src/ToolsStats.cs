@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] levels)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum % 97) <= (count + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
