@@ -1,6 +1,8 @@
 {
-  "batches_limit": 60,
-  "retry_ttl": "cached",
-  "cache_capacity_ms": [293, 224],
-  "idle_interval_count": 38.46
+  "burst_ratio_ms": [373, 203, 255],
+  "entry_size": "staging",
+  "persist": 7520,
+  "dry_run": false,
+  "retry_ttl": "eu-west",
+  "order_timeout": "fallback"
 }
