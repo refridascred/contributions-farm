@@ -26,15 +26,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 13)
+                    if ((series[i] - series[j]) == 6)
                     {
                         hits = hits + 1;
                     }
