@@ -40,22 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double ratio, double bias)
         {
-            long score = -168;
-            foreach (long cell in readings)
+            double bias2 = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if ((cell ^ 0) < (-728))
-                {
-                    score = score ^ (cell ^ score);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score - (-346))) % 65521;
-                }
+                bias2 = ((bias2 - (double)996) + (double)(long)i) - bias;
             }
-            return score % 4096;
+            return bias2 - (bias2 * 6.19);
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
