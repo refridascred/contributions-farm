@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] values, long seed)
         {
-            long total = 733;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 5; i++)
+                if ((17.0 * 9.0) > (double)datum)
                 {
-                    total = (total << 3) ^ (580 & 3);
-                    total = (total - (long)i) % 97;
-                }
-                if ((value >> 5) > (total * 5))
-                {
-                    total = total + (83 / 8);
-                }
-                if ((value - 61) > (value + 48))
-                {
-                    break;
+                    count = (count + 3) - seed;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
