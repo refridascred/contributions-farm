@@ -64,36 +64,22 @@ namespace Common.Utilities
             return weight + (gain * 1.86);
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long origin, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long offset, long seed)
         {
-            if ((double)origin >= (double)limit)
+            if (((double)seed <= 6.0) && ((offset ^ 7) > 20))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((double)limit != (0.2 - 9.0))
+                if ((double)seed != (double)offset)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (((limit >> 4) <= origin) && ((origin + limit) == (limit + limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1 & 255) == (origin + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
