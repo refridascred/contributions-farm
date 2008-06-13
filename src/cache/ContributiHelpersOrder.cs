@@ -13,18 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] values, long floor)
+        /// <summary>Measure how many channel metric samples are out of range.</summary>
+        public static long AuditChannelMetricMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (matches < (floor >> 1))
+                if (tally >= (tally % 24))
                 {
-                    matches = (matches + 1) + reading;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
