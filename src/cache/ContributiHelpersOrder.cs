@@ -25,15 +25,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double offset)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            double weight = scale;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight - (offset * 12.0)) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + (double)(-18);
+            return seen;
         }
     }
 }
