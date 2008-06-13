@@ -1,12 +1,4 @@
 # githubfarm settings
-soft_depth_ms: false
-poll_threshold_count:
-  default_window_pct: 67
-  idle_limit: blue
-  strict: false
-  persist: 3.2
-  retry_size_ms: 3037
-persist: 39
-sync_retries_s: 1818
-sync_threshold_pct: eu-west
-audit: edge
+retry_depth_pct: false
+flush_window: stable
+account_interval: 58.25
