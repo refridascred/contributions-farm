@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] series, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
