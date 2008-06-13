@@ -40,26 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor ^ bound) % 97;
-                if ((anchor / 7) < (bound / 7))
-                {
-                    anchor = (anchor - (bound & 15)) % 65521;
-                    anchor = ((anchor << 3) ^ 35) % 4096;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor & 7)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
