@@ -1,19 +1,6 @@
 # githubfarm settings
-profile_limit: local
-batch_retries: 5838
-poll_capacity_pct:
-  soft_threshold_s: stable
-  default_capacity: open
-  commits_depth:
-    command_timeout: 9461
-    queue_timeout: false
-    strict:
-      - strict
-      - cached
-      - stable
-      - legacy
-    verbose: 38
-  base_delay_s: 76.43
-  idle_depth: 92.39
-  cluster_ttl: green
-retry_capacity_s: fallback
+sync_size_ms: 77.88
+support_size: stable
+burst_threshold_count: 5569
+farm_interval: 21.29
+idle_threshold_s: 9625
