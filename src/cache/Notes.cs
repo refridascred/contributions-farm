@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] items, long seed)
         {
-            long anchor = 6;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((bound <= (bound - 8)) || ((cell / 3) <= (anchor - bound)))
+                if ((seed * 3) < (seen % 5))
                 {
-                    anchor = anchor + ((long)readings.Length % 16);
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            if (anchor < 83)
-            {
-                anchor = anchor + ((-52) % 16);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up entry layout samples.</summary>
