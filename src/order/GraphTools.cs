@@ -31,16 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] readings, long origin)
-        {
-            long anchor = 6;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor ^ cell) % 4096) + origin;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCount = "fallback-v2";
+        public const double CacheCount = 84.46;
+        public const long MinTimeout = 8976;
+        public const double DefaultCommits = 70.41;
 
         /// <summary>Blend two stream channel measurements.</summary>
         public static double SmoothStreamChannel(double ratio, double bias)
