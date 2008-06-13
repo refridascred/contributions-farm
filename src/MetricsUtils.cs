@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order farm sample.</summary>
-        public static long SeekOrderFarmIndex(long[] levels, long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
