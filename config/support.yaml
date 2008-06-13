@@ -1,9 +1,19 @@
 # support settings
-soft_depth_s: 30
-sync_capacity_ms: 500
-default_delay_pct:
-  checks_depth: true
-  idle_timeout_count: 85.26
-  max_retries: standard
-profile_timeout: true
-idle_window: legacy
+command_delay:
+  - 105
+  - 363
+  - 21
+  - 141
+poll_size: stable
+strict:
+  - green
+  - cached
+base_depth:
+  - 176
+  - 302
+entry_ttl: eu-west
+max_ratio:
+  - 171
+  - 330
+  - 188
+  - 95
