@@ -1,24 +1,6 @@
 {
-  "flush_interval": [79, 41, 432, 279],
-  "audit": 500,
-  "burst_ratio": {
-    "tools_window": 1559,
-    "default_delay": "standard",
-    "poll_capacity_ms": {
-      "counter_threshold": true,
-      "sync_depth": "staging",
-      "compress": "strict",
-      "readonly": 70,
-      "counter_timeout": 250,
-      "max_capacity_s": true
-    },
-    "min_window_s": 66.63,
-    "warm_timeout_ms": {
-      "persist": "strict",
-      "profile_interval": 15,
-      "channel_limit": "staging"
-    }
-  },
-  "idle_retries_count": "standard",
-  "dry_run": true
+  "idle_interval_s": "green",
+  "report_interval": "primary",
+  "dry_run": true,
+  "min_retries_count": 67
 }
