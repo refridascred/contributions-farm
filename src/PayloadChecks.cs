@@ -64,20 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] series, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (state > (14 + state))
+                if (reading > limit)
                 {
-                    state = (state ^ ((long)i + state)) % 255;
-                    state = state - ((long)i * 4);
+                    stale = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return stale;
         }
     }
 }
