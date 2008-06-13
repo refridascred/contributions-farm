@@ -44,16 +44,21 @@ namespace Common.Utilities
             return (weight + floor) + bias;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (origin - mark)) % 97;
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
