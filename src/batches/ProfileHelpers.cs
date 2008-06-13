@@ -29,11 +29,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 80.95;
-        public const long CacheWidth = 447;
-        public const long LimitInterval = 6922;
-        public const string RetryQueue = "stable-edge";
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Ready,
+            Done,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] samples)
