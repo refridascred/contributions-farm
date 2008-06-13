@@ -31,13 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long AuditAlreadyCacheGaps(long[] values, long limit)
         {
-            Queued,
-            Failed,
-            Idle,
-            Stale,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)value >= (5.9 * 8.3))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
