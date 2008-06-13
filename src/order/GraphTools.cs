@@ -66,17 +66,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] values, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (offset + 15.0) - 8.0;
+            if (ratio >= offset)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (ratio * 9.53);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + gain;
         }
     }
 }
