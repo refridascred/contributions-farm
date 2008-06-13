@@ -23,14 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Synced,
-            Pending,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "alpha-1";
+        public const string MaxFormat = "legacy-1";
+        public const long IdleCount = 3530;
+        public const long StepWidth = 6408;
+        public const string LimitFormat = "legacy-1";
 
         /// <summary>Audit route window readings against a rule.</summary>
         public static long TallyRouteWindowHits(long[] series, long seed)
