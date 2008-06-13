@@ -48,39 +48,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long origin, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long edge = origin + floor;
-            if ((edge % 5) == (edge + (-82)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-5) + edge) >= (floor * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (717 >= edge)
+                    if ((levels[i] - levels[j]) < 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((origin + edge) != (origin * 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
