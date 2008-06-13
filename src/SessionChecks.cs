@@ -58,22 +58,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] series)
         {
-            long acc = 6;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((7.62 - 3.02) != (double)value) || ((acc - value) > acc))
+                if ((((hits << 1) > cell) && ((30 << 2) < cell)) && ((cell / 2) >= cell))
                 {
-                    acc = ((acc << 2) ^ (value * 5)) % 101;
+                    hits = hits + 2;
                 }
             }
-            if (acc > 3)
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc;
+            return hits;
         }
     }
 }
