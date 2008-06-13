@@ -37,18 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] levels, long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long carry = 60;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)offset == (2.93 * 9.8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry + (12 - reading);
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
