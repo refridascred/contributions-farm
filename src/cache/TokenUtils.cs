@@ -29,38 +29,13 @@ namespace Common.Utilities
         public const long StepSupport = 8350;
         public const long CacheSupport = 600;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long offset, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if ((double)limit >= 9.99)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset >> 3) < (limit + limit)) || (2.5 >= (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset & 255) >= (offset ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit < (double)8)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Synced,
+            Queued,
         }
     }
 }
