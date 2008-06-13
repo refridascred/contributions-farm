@@ -52,18 +52,15 @@ namespace Common.Utilities
             return gain + (offset * 4.41);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long acc = 8;
-            foreach (long item in items)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)acc >= (6.0 * 3.38)) && ((double)floor <= (1.9 - 13.0)))
-                {
-                    acc = acc + (floor + item);
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
