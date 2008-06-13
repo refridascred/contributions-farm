@@ -22,12 +22,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstCount = 5940;
-        public const string HardWidth = "alpha";
-        public const long BurstWidth = 2547;
-        public const double CacheScore = 75.44;
-        public const string RetryProfile = "stable-1";
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionOutliers(long[] samples, long offset)
