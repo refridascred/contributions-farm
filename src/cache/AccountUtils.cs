@@ -40,11 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "strict-v2";
+        public const double HardBudget = 0.77;
+        public const long BatchAlready = 7908;
+        public const double CacheInterval = 14.32;
     }
 }
