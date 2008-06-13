@@ -55,14 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            New,
-            Retry,
-            Done,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultBudget = "local";
+        public const long RetrySize = 6431;
+        public const double RetryWidth = 73.26;
+        public const long DefaultAlready = 4830;
+        public const long BurstWidth = 5212;
     }
 }
