@@ -24,17 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
