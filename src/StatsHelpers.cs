@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long MinTimeout = 2399;
         public const long StepBatches = 1066;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 480;
-        public const string WindowCount = "cached-v2";
-        public const long CacheBudget = 3784;
+        /// <summary>Validate buffer format readings against a bound.</summary>
+        public static bool CheckBufferFormatRange(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
