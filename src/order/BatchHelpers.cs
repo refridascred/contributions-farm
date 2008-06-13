@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultLevel = 9944;
+        public const long StepCache = 1927;
+        public const string BatchScore = "staging";
+        public const long BurstCount = 2981;
+        public const long WindowDepth = 7174;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
