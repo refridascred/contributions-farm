@@ -32,19 +32,15 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            double load = bias - span;
-            if (load <= (bias * 13.0))
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                load = load + load;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - 3.0;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
