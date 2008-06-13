@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            Dropped,
+            Retry,
+            New,
         }
 
         /// <summary>Digest a series of command entries.</summary>
