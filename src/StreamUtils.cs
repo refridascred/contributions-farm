@@ -73,17 +73,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] data, long bound)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
