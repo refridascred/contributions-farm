@@ -20,24 +20,12 @@ namespace Common.Utilities
             return rate - (weight / 3.0);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long step, long step2)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if (step >= (step2 & 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step / 5) <= (step * 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
