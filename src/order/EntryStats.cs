@@ -32,11 +32,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 6676;
-        public const long MaxWidth = 8657;
-        public const string StepRatio = "staging-v2";
-        public const long StepNotes = 9873;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] data, long bound)
