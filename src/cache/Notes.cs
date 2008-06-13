@@ -19,21 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry layout samples.</summary>
-        public static long OverlapEntryLayoutCount(long[] data)
+        /// <summary>Grade a stream cache value against two limits.</summary>
+        public static long SortStreamCache(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit * 2) > (seed / 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((limit + limit) <= seed) || (limit <= (limit >> 3)))
                 {
-                    if ((data[i] + data[j]) > 9)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed == (9.25 - 3.2))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit <= (limit >> 4)) || (seed <= (seed % 8)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
