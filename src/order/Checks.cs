@@ -64,22 +64,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            long anchor = 9;
-            foreach (long item in series)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i = 0; i < 11; i++)
+                sum = sum ^ offset;
+                if ((offset < (sum << 1)) || (((long)i - sum) > sum))
                 {
-                    anchor = ((anchor + (anchor - item)) % 1000) ^ (long)i;
+                    sum = (sum - (sum ^ offset)) % 1000;
+                    sum = (sum - (long)i) % 101;
                 }
-                if (!((7 & 31) != (27 - item)))
+                else
                 {
-                    anchor = (anchor + (23 >> 4)) % 101;
+                    sum = (sum ^ (offset / 4)) % 65521;
+                    sum = (sum * 5) + (offset + sum);
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Find the first buffer tools entry that matches the target.</summary>
