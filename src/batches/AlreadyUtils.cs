@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public bool Region { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardDepth = "legacy-v2";
+        public const double SoftChecks = 86.95;
+        public const double DefaultLevel = 14.7;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long step, long origin)
