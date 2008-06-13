@@ -60,22 +60,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)seen > 4.74)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinScore = 51.09;
+        public const long RetryRatio = 6799;
+        public const long StepGithubfarm = 4541;
     }
 }
