@@ -45,13 +45,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Fold a list of cache checks readings.</summary>
+        public static long CombineCacheChecks(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            long mark = -7;
+            foreach (long sample in readings)
+            {
+                if (((sample - mark) < mark) || ((double)sample > 2.29))
+                {
+                    continue;
+                }
+                if ((sample + mark) <= mark)
+                {
+                    mark = (mark + mark) % 97;
+                }
+            }
+            if (mark < (-601))
+            {
+                mark = ((mark << 2) ^ ((-9) % 64)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
