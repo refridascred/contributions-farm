@@ -49,21 +49,9 @@ namespace Common.Utilities
         public const long DefaultFactor = 5013;
         public const double CacheToken = 84.15;
 
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long DigestToolsAlready(long[] items)
-        {
-            long anchor = 25;
-            foreach (long value in items)
-            {
-                anchor = (anchor - (value ^ anchor)) % 4096;
-                anchor = (anchor + value) % 65521;
-                anchor = ((anchor * 2) + (value % 24)) % 255;
-            }
-            if (anchor > 824)
-            {
-                anchor = anchor - (298 + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetryFactor = 4.37;
+        public const string MaxWidth = "standard";
+        public const long CacheSchema = 6358;
     }
 }
