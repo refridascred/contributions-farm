@@ -52,16 +52,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "local-v2";
+        public const long MinBuffer = 9636;
+        public const long BatchSpan = 6177;
+        public const double BatchTimeout = 3.46;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
