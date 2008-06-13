@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] data, long bound)
+        /// <summary>Measure how many channel batch samples are out of range.</summary>
+        public static long AuditChannelBatchHits(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (item <= bound)
+                if ((191 >= (hits >> 5)) || (sample >= (7 << 3)))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
