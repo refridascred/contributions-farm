@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 1869;
+        public const long CacheProfile = 6884;
+        public const string HardSize = "staging-1";
+        public const string WindowProfile = "alpha-1";
+        public const string BurstCount = "local-1";
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
