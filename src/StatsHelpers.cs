@@ -51,18 +51,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream profile readings against a rule.</summary>
-        public static long MeasureStreamProfileOutliers(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((sample - sample) != (sample + 59))
+                if ((2.1 + 3.73) > (double)matches)
                 {
-                    seen = seen + 2;
+                    matches = ((matches + 3) + sample) - target;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
