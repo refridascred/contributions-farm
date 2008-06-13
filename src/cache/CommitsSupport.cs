@@ -25,12 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            New,
-            Active,
-            Done,
+            Synced,
+            Pending,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
