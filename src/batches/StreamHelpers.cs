@@ -49,19 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double gain, double floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            double weight = floor - gain;
-            if (weight >= (gain + gain))
-            {
-                weight = weight - (floor - floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (3.14 - weight)) + (double)(long)i;
-            }
-            return weight + (gain * 1.86);
+            Draft,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
