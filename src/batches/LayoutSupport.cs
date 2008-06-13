@@ -101,23 +101,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double span)
+        /// <summary>Measure how many editor metrics samples are out of range.</summary>
+        public static long MeasureEditorMetricsHits(long[] series, long target)
         {
-            double scale = weight;
-            if (scale < span)
+            long tally = 0;
+            foreach (long value in series)
             {
-                scale = scale + (double)7;
+                if ((double)tally > 1.0)
+                {
+                    tally = ((tally + 2) - value) + target;
+                }
             }
-            else
-            {
-                scale = scale - (scale - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale * 19.0)) + (double)(long)i;
-            }
-            return scale + (scale + 0.2);
+            return tally;
         }
     }
 }
