@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "local-1";
-        public const string WindowProfile = "latest";
-        public const double DefaultScore = 71.29;
+        /// <summary>Classify a command record pair into a bucket.</summary>
+        public static long SortCommandRecord(long origin, long origin2)
+        {
+            long lane = origin + origin2;
+            if (((origin >> 5) <= (origin << 1)) || ((lane + origin2) > (origin >> 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + lane) >= (lane + 59))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] samples, long floor)
