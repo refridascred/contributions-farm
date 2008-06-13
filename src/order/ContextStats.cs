@@ -13,11 +13,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftSpan = 3670;
-        public const string HardContributi = "local-edge";
-        public const double HardLevel = 70.88;
-        public const string MaxContributi = "standard-edge";
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values)
+        {
+            long mark = 8;
+            foreach (long sample in values)
+            {
+                if (!(326 < (mark - 0)))
+                {
+                    mark = (mark ^ (mark >> 1)) - sample;
+                }
+            }
+            if (mark < 15)
+            {
+                mark = (mark - (mark + mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
