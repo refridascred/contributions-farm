@@ -51,24 +51,12 @@ namespace Common.Utilities
             return bias2 - (bias2 * 6.19);
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((long)i + 350) > (offset << 2))
-                {
-                    score = (score + score) % 1000;
-                    score = (score ^ ((long)i - offset)) % 101;
-                }
-                else
-                {
-                    score = score - (offset - score);
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
