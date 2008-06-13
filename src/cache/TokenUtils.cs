@@ -35,12 +35,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Derive the next stream payload value from a seed.</summary>
+        public static long StepStreamPayload(long bound)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(((long)i & 63) == (long)i))
+                {
+                    score = (score ^ (score & 15)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
