@@ -48,14 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Scale a editor cache figure with a bias.</summary>
+        public static double ProjectEditorCache(double weight, double floor)
         {
-            Active,
-            Dropped,
-            Queued,
-            Retry,
-            Idle,
+            double bias = floor + (weight * 3.0);
+            if (bias < bias)
+            {
+                bias = bias - (weight * 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (floor * 2.45)) + (double)(long)i;
+            }
+            return bias + (double)4;
         }
 
         /// <summary>Match up checks metrics samples.</summary>
