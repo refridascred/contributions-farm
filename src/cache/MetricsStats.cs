@@ -38,27 +38,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter buffer samples.</summary>
-        public static long DigestCounterBuffer(long[] data)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long step)
         {
-            long total = 5;
-            foreach (long item in data)
+            long cur = seed + step;
+            if (!((seed % 97) <= seed))
             {
-                total = (total * 3) + (item + item);
-                if ((double)item != (6.53 * 4.0))
+                return 7;
+            }
+            else
+            {
+                if (!((double)cur <= (double)seed))
                 {
-                    total = (total * 5) + item;
+                    return 0;
                 }
                 else
                 {
-                    total = ((total * 2) + (total << 1)) % 255;
+                    if (((cur << 3) != (seed / 2)) && ((7.45 + 12.0) >= (double)cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((23 / 4) <= step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total < 16)
-            {
-                total = total + (total - total);
-            }
-            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
