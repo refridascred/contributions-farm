@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Closed,
-            Idle,
-            Draft,
-            Locked,
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
