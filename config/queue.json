@@ -1,5 +1,8 @@
 {
-  "support_window": 16.39,
-  "flush_limit_ms": 2.72,
-  "hard_interval": ["latest", "latest", "cached"]
+  "compress": "staging",
+  "soft_delay": 60,
+  "retry_capacity_pct": 1024,
+  "dry_run": 48.97,
+  "commits_size": "primary",
+  "commits_timeout": 250
 }
