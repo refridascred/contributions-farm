@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double gain, double bias)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long floor, long offset)
         {
-            double mean = (double)(365 - 528);
-            if (mean <= (12.0 - bias))
+            long step = floor ^ offset;
+            if (offset < (532 >> 2))
             {
-                mean = (mean + (double)14) - gain;
+                return 1;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean - (double)5) + (double)(long)i;
+                if ((step * 4) > (-290))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step == (5.0 - 11.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (8.0 * 3.95))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mean + (double)46;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
