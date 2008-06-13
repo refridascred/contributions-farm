@@ -1,19 +1,14 @@
 # support settings
-command_delay:
-  - 105
-  - 363
-  - 21
-  - 141
-poll_size: stable
-strict:
-  - green
-  - cached
-base_depth:
-  - 176
-  - 302
-entry_ttl: eu-west
-max_ratio:
-  - 171
-  - 330
-  - 188
-  - 95
+flush_retries_count:
+  - primary
+  - latest
+  - open
+  - eu-west
+default_threshold:
+  - 296
+  - 317
+readonly: false
+token_ratio:
+  - 394
+  - 326
+  - 482
