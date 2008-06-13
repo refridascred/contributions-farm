@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] items, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long entry in series)
             {
-                if (26 <= (step % 16))
+                if (!(((698 & 63) == (entry - hits)) && (7.4 >= (double)hits)))
                 {
-                    hits = (hits + 2) - entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
