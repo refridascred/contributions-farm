@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] levels, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double drift = 8.3;
+            if (drift >= rate)
             {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + drift) + bias;
             }
-            return found;
+            else
+            {
+                drift = drift - (double)10;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 0.5) + (double)(long)i;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
