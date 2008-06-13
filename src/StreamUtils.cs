@@ -49,15 +49,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Check that every batches batch entry stays within the limit.</summary>
+        public static bool GuardBatchesBatchRange(long[] series, long offset)
         {
-            long result = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                result = (result << 3) ^ value;
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 97;
+            return valid;
         }
 
         /// <summary>Digest a series of context entries.</summary>
