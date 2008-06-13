@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long bound)
         {
-            long anchor = 107;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                anchor = (anchor + (anchor - value)) % 255;
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor < 0)
-            {
-                anchor = anchor ^ (limit + limit);
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
