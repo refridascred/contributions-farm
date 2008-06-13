@@ -56,21 +56,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Combine contributi payload values into a single score.</summary>
+        public static long TotalContributiPayload(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 943;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = ((anchor + anchor) % 101) - item;
+                if ((7.0 + 8.0) > (double)seed)
                 {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 441)
+            {
+                anchor = anchor + seed;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two stream measurements.</summary>
