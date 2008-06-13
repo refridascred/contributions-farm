@@ -64,24 +64,21 @@ namespace Common.Utilities
             return weight + (gain * 1.86);
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long offset, long seed)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            if (((double)seed <= 6.0) && ((offset ^ 7) > 20))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed != (double)offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
