@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 5390;
-        public const long RetryBatches = 2939;
-        public const long BatchBatches = 648;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series)
+        {
+            long result = -94;
+            foreach (long reading in series)
+            {
+                if (result > (reading / 5))
+                {
+                    result = (result - (reading + 65)) % 255;
+                }
+            }
+            if (result < 82)
+            {
+                result = ((result * 4) + (result + result)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelOutliers(long[] levels)
