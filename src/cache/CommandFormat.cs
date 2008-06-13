@@ -58,21 +58,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)i + 350) > (offset << 2))
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + score) % 1000;
+                    score = (score ^ ((long)i - offset)) % 101;
                 }
+                else
+                {
+                    score = score - (offset - score);
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
