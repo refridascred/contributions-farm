@@ -37,12 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long carry = 60;
+            foreach (long reading in levels)
+            {
+                if ((double)offset == (2.93 * 9.8))
+                {
+                    carry = carry + (12 - reading);
+                }
+            }
+            return carry;
         }
     }
 }
