@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((9.4 / 9.0) > (double)item) && ((hits * 5) < item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
