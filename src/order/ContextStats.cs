@@ -60,17 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long seed)
+        /// <summary>Digest a series of cache context entries.</summary>
+        public static long ScoreCacheContext(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -909;
+            foreach (long sample in items)
             {
-                if ((data[i] < seed) && ((data[i] % 3) == 0))
+                if ((7.9 * 4.6) != (double)sample)
                 {
-                    return (long)i;
+                    state = ((state + sample) % 255) - origin;
                 }
             }
-            return -1;
+            if (state > 77)
+            {
+                state = ((state * 4) + (state % 7)) % 4096;
+            }
+            return state;
         }
     }
 }
