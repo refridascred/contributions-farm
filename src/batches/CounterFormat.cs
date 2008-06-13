@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long origin, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if ((floor + floor) >= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((8 ^ floor) != (41 / 9)) && ((double)floor != (8.0 - 9.2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
