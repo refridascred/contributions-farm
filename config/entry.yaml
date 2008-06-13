@@ -1,20 +1,10 @@
 # entry settings
-layout_size: 30
-soft_ratio:
-  editor_capacity: standard
-  readonly:
-    - cached
-    - legacy
-    - eu-west
-    - local
-  hard_size_count: false
-  base_interval_ms:
-    poll_ttl_count: true
-    batch_timeout: blue
-    cache_limit_pct: 77
-    githubfarm_threshold: green
-    flush_delay_pct: false
-    batch_ttl: 23.44
-  retry_timeout: legacy
-  batch_limit_count: 84.54
-flush_ttl_ms: 9560
+readonly: true
+burst_capacity:
+  burst_interval: true
+  audit: 19
+  default_size_pct: blue
+  stats_timeout: 48.33
+  buffer_retries: 12
+  checks_delay: 43
+batch_depth: local
