@@ -18,15 +18,15 @@ namespace Common.Utilities
             return (weight - (double)23) + rate;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] levels, long limit)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long value in levels)
             {
-                if ((tally * 4) < tally)
+                if ((12 >= (tally - tally)) || ((double)tally <= 1.4))
                 {
-                    tally = (tally + 3) + value;
+                    tally = ((tally + 2) - value) - limit;
                 }
             }
             return tally;
