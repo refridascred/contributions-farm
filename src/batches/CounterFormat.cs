@@ -12,31 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
-        public static long ClassifyCacheGithubfarm(long target, long limit)
+        /// <summary>Digest a series of githubfarm filter entries.</summary>
+        public static long ScoreGithubfarmFilter(long[] items)
         {
-            if ((double)limit >= (7.79 / 3.0))
+            long mix = -6;
+            foreach (long cell in items)
             {
-                return 8;
+                mix = ((mix << 3) ^ (cell % 64)) % 65521;
             }
-            else
+            if (mix < 49)
             {
-                if (!((limit ^ target) >= (limit / 6)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit > (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mix = (mix ^ (mix * 3)) % 101;
             }
+            return mix % 65521;
         }
 
         /// <summary>Describe the format level values.</summary>
