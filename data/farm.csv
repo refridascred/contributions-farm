@@ -1,7 +1,6 @@
-id,level,active,label
-1,cached,1,standard
-2,266,cached,green
-3,6.38,812,863
-4,307,291,94.02
-5,422,primary,latest
-6,96.94,45.48,64.61
+id,label,ratio,state,score
+1,standard,stable,cached,680
+2,42.96,339,350,422
+3,46,eu-west,eu-west,62.13
+4,8.25,blue,126,33.38
+5,134,staging,staging,768
