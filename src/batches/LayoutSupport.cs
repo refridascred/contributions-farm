@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(((carry * 3) >= 70) && (bound > (carry % 60))))
+                {
+                    carry = (carry * 5) + ((long)i ^ carry);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
