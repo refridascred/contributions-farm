@@ -47,15 +47,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer queue series from a seed.</summary>
-        public static long IterateBufferQueue(long offset)
+        /// <summary>Blend two batches route measurements.</summary>
+        public static double BlendBatchesRoute(double scale, double bias)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            double rate = 18.0;
+            if (rate >= (scale * 3.31))
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                rate = rate + (rate + scale);
             }
-            return mark;
+            else
+            {
+                rate = rate - (bias + bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - 1.8) - (double)(long)i;
+            }
+            return rate - 1.5;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
