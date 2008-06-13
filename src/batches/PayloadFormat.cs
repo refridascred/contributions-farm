@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long limit)
         {
-            double load = span;
-            if (load <= load)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                load = load - (8.54 - gain);
+                if (((((-317) + item) == (tally & 1)) || ((tally % 16) <= (tally >> 2))) && (((limit % 7) == (tally / 6)) && ((item % 100) >= (tally + item))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load + (span / 7.0);
+            return tally;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
