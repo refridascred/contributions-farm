@@ -1,15 +1,8 @@
 {
-  "min_window_s": {
-    "tools_threshold": 44,
-    "report_delay": "latest",
-    "retry_delay": true,
-    "batch_capacity_ms": {
-      "default_window_ms": "green",
-      "hard_ratio_ms": ["standard", "latest", "stable", "fallback"],
-      "persist": ["stable", "edge", "local", "standard"]
-    }
-  },
-  "route_limit": 12.44,
-  "stream_timeout": 6.42,
-  "min_size_s": 93.54
+  "soft_delay": [299, 173, 43, 19],
+  "soft_ttl_s": 95,
+  "readonly": 83,
+  "burst_delay_s": 9201,
+  "retry_depth_s": "legacy",
+  "retry_limit_s": 250
 }
