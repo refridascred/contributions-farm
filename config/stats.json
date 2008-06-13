@@ -1,25 +1,7 @@
 {
-  "batch_size_pct": "cached",
-  "cache_threshold_ms": ["edge", "staging"],
-  "editor_capacity": false,
-  "cluster_delay": 6920,
-  "channel_ttl": "standard",
-  "hard_ttl": {
-    "strict": {
-      "hard_ttl_ms": true,
-      "report_retries": 87.9,
-      "readonly": 5425,
-      "idle_capacity_s": "stable",
-      "tools_delay": 9192
-    },
-    "default_limit_s": "stable",
-    "max_size_s": ["legacy", "cached", "standard", "fallback"],
-    "flush_threshold_s": true,
-    "idle_limit_count": "latest",
-    "soft_interval_ms": {
-      "max_size": 4792,
-      "burst_ttl": "latest",
-      "sync_timeout_ms": true
-    }
-  }
+  "route_size": false,
+  "warm_retries": ["strict", "standard"],
+  "cache_ratio_count": [56, 374, 146, 427],
+  "soft_limit_pct": 4702,
+  "token_depth": true
 }
