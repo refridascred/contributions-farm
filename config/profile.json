@@ -1,17 +1,6 @@
 {
-  "retry_depth_s": {
-    "readonly": "legacy",
-    "cache_threshold": 100,
-    "default_threshold": {
-      "batch_capacity_count": 2370,
-      "flush_limit": true,
-      "max_interval_ms": 19
-    },
-    "dry_run": "legacy"
-  },
-  "schema_depth": "edge",
-  "soft_capacity_count": 30,
-  "enabled": 59,
-  "cache_threshold_pct": 6982,
-  "sync_ratio_ms": 250
+  "min_delay_s": false,
+  "window_interval": 73.3,
+  "schema_ratio": 97.81,
+  "warm_limit": "latest"
 }
