@@ -27,17 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)7 - bias;
+            for (int i = 0; i < 2; i++)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - span) + (double)(long)i;
             }
-            return -1;
+            return gain - (gain * 17.0);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
