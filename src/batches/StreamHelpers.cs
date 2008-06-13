@@ -67,21 +67,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] >= origin) && ((data[i] % 3) == 0))
                 {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a batches entry.</summary>
