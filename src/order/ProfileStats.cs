@@ -31,11 +31,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 85.24;
-        public const double SoftInterval = 92.41;
-        public const double BaseStats = 61.03;
-        public const long BatchInterval = 3582;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + matches) != (bound + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long MatchChannelCount(long[] series)
