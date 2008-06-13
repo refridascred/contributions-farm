@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitRatio = 5208;
-        public const long BurstStats = 5476;
-        public const double SoftLevel = 88.51;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples)
+        {
+            long total = 6;
+            foreach (long cell in samples)
+            {
+                if (!(cell >= (75 % 12)))
+                {
+                    total = ((total << 2) ^ (cell + 722)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double weight, double floor)
