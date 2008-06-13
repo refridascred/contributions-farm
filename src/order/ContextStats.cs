@@ -13,22 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mark = 8;
-            foreach (long sample in values)
-            {
-                if (!(326 < (mark - 0)))
-                {
-                    mark = (mark ^ (mark >> 1)) - sample;
-                }
-            }
-            if (mark < 15)
-            {
-                mark = (mark - (mark + mark)) % 101;
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
