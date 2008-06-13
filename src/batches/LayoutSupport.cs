@@ -42,14 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count the stats layout entries that pass the check.</summary>
+        public static long AuditStatsLayoutMatches(long[] items)
         {
-            Idle,
-            Ready,
-            Done,
-            Failed,
-            Paused,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((matches + 69) == ((long)items.Length * 4)) && !(135 < (cell / 7)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
