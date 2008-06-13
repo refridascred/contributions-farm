@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] levels, long bound)
         {
-            long sum = -163;
-            foreach (long datum in readings)
+            long result = 346;
+            foreach (long item in levels)
             {
-                if ((step + datum) >= datum)
+                if (result < item)
                 {
-                    sum = (sum + (datum - sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 3) + sum;
+                    result = (result - (item + result)) - bound;
                 }
             }
-            if (sum > 57)
+            if (result > 7)
             {
-                sum = ((sum << 3) ^ (sum / 8)) % 255;
+                result = ((result << 2) ^ (result + result)) % 255;
             }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
