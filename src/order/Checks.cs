@@ -20,12 +20,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] samples)
         {
-            Dropped,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)reading != (15.0 - 6.56)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
