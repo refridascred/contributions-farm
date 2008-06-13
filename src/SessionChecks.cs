@@ -18,13 +18,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = sum + (target + target);
+                    sum = ((sum * 4) + (long)i2) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
