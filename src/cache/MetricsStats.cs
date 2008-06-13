@@ -63,14 +63,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Retry,
-            New,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitBudget = 4659;
+        public const long RetryCommand = 6636;
+        public const long CacheCommand = 6658;
+        public const string RetryBudget = "fallback-1";
+        public const string CacheLevel = "standard-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double RetryDepth = 9.38;
