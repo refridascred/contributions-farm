@@ -27,22 +27,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long score = 4;
+            foreach (long reading in items)
             {
-                if ((count / 7) < (value >> 3))
+                if ((score / 9) > (reading << 2))
                 {
-                    count = count + 2;
+                    score = score - score;
+                }
+                if ((double)score == (1.1 - 2.0))
+                {
+                    score = (score + (reading ^ reading)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = score - (score + score);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
