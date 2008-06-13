@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Digest a series of command report entries.</summary>
+        public static long TotalCommandReport(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (((acc << 2) ^ acc) + cell) + origin;
             }
-            return hits;
+            if (acc > 50)
+            {
+                acc = (acc + (3 - 96)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
