@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            long anchor = 89;
-            foreach (long entry in samples)
+            double gain2 = (double)((-51) + 1);
+            if (gain2 >= (double)820)
             {
-                if (!((4.88 / 8.0) <= (double)anchor))
-                {
-                    anchor = (anchor + (anchor ^ anchor)) ^ entry;
-                }
+                gain2 = (gain2 + gain) - offset;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + gain) - (double)(long)i;
+            }
+            return gain2 + (gain * 0.26);
         }
 
         /// <summary>Grade a route value against two limits.</summary>
