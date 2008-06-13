@@ -20,18 +20,13 @@ namespace Common.Utilities
             return weight - (scale + 3.69);
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mix = 585;
-            foreach (long entry in series)
-            {
-                if ((9.0 - 3.0) <= (double)entry)
-                {
-                    mix = (((mix * 3) + (mix * 5)) % 1000) - limit;
-                }
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a token reading.</summary>
