@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the channel checks entries that pass the check.</summary>
-        public static long TallyChannelChecksGaps(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < (tally / 6))
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 5466;
+        public const long BurstSpan = 4451;
+        public const long MinContext = 3634;
+        public const double BatchContext = 71.98;
+        public const long BurstDepth = 7803;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 1444;
