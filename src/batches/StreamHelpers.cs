@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next route buffer value from a seed.</summary>
-        public static long DeriveRouteBuffer(long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                long offset = ((long)i - (long)i) >> 1;
-                mix = ((mix * 2) + (mix + offset)) % 4096;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (((double)(long)i <= (10.0 - 5.0)) && (10.0 >= (double)carry))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = (carry ^ (seed << 3)) % 1000;
+                }
+                carry = carry + carry;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
