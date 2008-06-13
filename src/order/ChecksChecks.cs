@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double floor)
         {
-            Stale,
-            Dropped,
-            Retry,
+            double bias = rate;
+            if (bias > bias)
+            {
+                bias = (bias + (double)298) - floor;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + rate) + (double)(long)i;
+            }
+            return bias + (rate / 8.0);
         }
 
         /// <summary>Audit already stream readings against a rule.</summary>
