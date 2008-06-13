@@ -37,10 +37,18 @@ namespace Common.Utilities
         public const long CacheWidth = 5707;
         public const long WindowScore = 7208;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 92.05;
-        public const double HardCluster = 71.99;
-        public const double CacheSize = 11.57;
-        public const string MaxInterval = "legacy-v2";
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (item < (count - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
