@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Roll a session window counter forward.</summary>
-        public static long IterateSessionWindow(long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] values, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if ((double)datum <= 12.0)
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the account stats entries that pass the check.</summary>
