@@ -33,10 +33,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 6.36;
-        public const double BatchTimeout = 68.62;
-        public const long CacheBuffer = 3756;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long bound)
+        {
+            long total = -112;
+            foreach (long datum in series)
+            {
+                total = ((total * 3) + total) % 4096;
+                if ((total + bound) <= (bound - total))
+                {
+                    total = total + (total >> 4);
+                }
+                else
+                {
+                    total = (total ^ 8) % 97;
+                }
+                if (((datum >> 2) <= (64 - total)) && (bound <= (datum << 2)))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] values)
