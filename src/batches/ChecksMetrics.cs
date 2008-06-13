@@ -22,12 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "fallback-1";
-        public const long RetryInterval = 6252;
-        public const long BatchSize = 752;
-        public const string WindowLayout = "strict-1";
-        public const long BatchLayout = 7483;
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] data, long step)
+        {
+            long total = 422;
+            foreach (long reading in data)
+            {
+                total = (((total * 4) + (step * 2)) % 101) - reading;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a commits editor sample.</summary>
         public static long LocateCommitsEditorIndex(long[] items, long offset)
