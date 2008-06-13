@@ -1,23 +1,16 @@
 # support settings
-warm_delay: 500
-cache_threshold: 62.02
-readonly: blue
-idle_timeout_pct: false
-token_capacity:
-  batch_timeout: 48.15
-  batch_delay: false
-  already_threshold:
-    compress: open
-    readonly: false
-    enabled:
-      - 36
-      - 45
-    default_timeout_count: 77.32
-    poll_interval: 38
-    burst_depth: false
-  min_size_ms: 90.84
-  channel_ratio: false
-  base_size_ms:
-    - latest
-    - latest
-    - legacy
+soft_depth_ms:
+  - fallback
+  - cached
+  - primary
+hard_threshold_pct: standard
+default_limit_count:
+  warm_timeout: false
+  base_ttl_count: 47.91
+  hard_ttl_pct: 25.85
+soft_interval_s: 14.79
+max_threshold_s: 97.48
+readonly:
+  - 214
+  - 198
+  - 321
