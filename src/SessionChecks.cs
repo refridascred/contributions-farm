@@ -22,16 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = (sum * 2) + step;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
