@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate buffer entry samples.</summary>
-        public static long CombineBufferEntry(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] series, long target)
         {
-            long carry = 90;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((reading & 7) == (carry * 5))
+                if (entry <= target)
                 {
-                    carry = ((carry << 2) ^ (57 + carry)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
     }
 }
