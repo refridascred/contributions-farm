@@ -1,14 +1,5 @@
 {
-  "format_timeout": 16.04,
-  "already_timeout": [217, 348, 178],
-  "warm_ttl_s": 77,
-  "farm_threshold": {
-    "schema_capacity": 8331,
-    "notes_depth": ["stable", "green"],
-    "retry_limit_count": true,
-    "tools_depth": false,
-    "verbose": "green",
-    "default_depth_ms": 0.52
-  },
-  "retry_ttl_count": "cached"
+  "dry_run": 1814,
+  "soft_ratio": 9194,
+  "compress": "eu-west"
 }
