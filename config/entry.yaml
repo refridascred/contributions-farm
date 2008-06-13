@@ -1,4 +1,10 @@
 # entry settings
-poll_size_pct: 71
-cache_timeout_pct: 38
-strict: true
+compress:
+  sync_window: 1345
+  retry_timeout_pct: legacy
+  soft_delay_ms: true
+  default_interval_ms: false
+warm_size: staging
+max_threshold_s: 4047
+default_threshold_pct: false
+readonly: 65
