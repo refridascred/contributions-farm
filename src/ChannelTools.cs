@@ -32,15 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next already tools value from a seed.</summary>
-        public static long RollAlreadyTools(long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Pending,
+            Draft,
+            Paused,
         }
     }
 }
