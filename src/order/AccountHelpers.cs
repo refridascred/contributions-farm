@@ -22,10 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 8609;
-        public const long IdleScore = 8399;
-        public const double LimitFormat = 26.14;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] data, long bound)
