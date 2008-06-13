@@ -54,23 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item - floor) >= (9 >> 1))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftCount = 34.13;
+        public const long WindowFilter = 3421;
+        public const long StepTimeout = 7677;
+        public const double DefaultFilter = 63.35;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowLimits(long[] series, long limit)
