@@ -1,6 +1,7 @@
-id,weight,ratio,state,label
-1,26.81,stable,264,standard
-2,18.36,704,349,57.69
-3,72.33,24.79,strict,86.32
-4,primary,latest,49.97,489
-5,505,251,305,73.16
+id,score,ratio,rank
+1,34.44,67,10.49
+2,638,96.28,66.83
+3,338,651,eu-west
+4,stable,802,270
+5,open,legacy,strict
+6,131,838,59.81
