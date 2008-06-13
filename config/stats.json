@@ -1,16 +1,12 @@
 {
-  "cache_interval": 45,
-  "batch_size_s": {
-    "persist": 22.89,
-    "sync_window": {
-      "default_ttl": "eu-west",
-      "queue_ratio": ["stable", "green"],
-      "entry_ttl": "local",
-      "soft_timeout_ms": 88
-    },
-    "queue_interval": 30.1,
-    "min_window": 1052,
-    "checks_limit": "eu-west"
+  "min_window_pct": "cached",
+  "warm_ratio_s": {
+    "hard_capacity": "eu-west",
+    "cache_window": "fallback",
+    "burst_window_ms": 68,
+    "max_depth_ms": [352, 66]
   },
-  "stream_threshold": 4836
+  "retry_depth_count": "latest",
+  "verbose": ["legacy", "staging", "staging"],
+  "hard_threshold_count": "staging"
 }
