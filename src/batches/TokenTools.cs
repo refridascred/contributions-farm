@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((entry < (entry - 170)) && ((double)entry <= (6.4 + 17.0))) || ((6 + seen) <= (seen + entry)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSpan = 9150;
+        public const double SoftScore = 12.79;
+        public const long BatchInterval = 822;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double rate, double offset)
