@@ -56,12 +56,14 @@ namespace Common.Utilities
             return scale - (ratio / 5.0);
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
+            Failed,
+            Paused,
+            Queued,
+            New,
             Pending,
-            Draft,
-            Ready,
         }
     }
 }
