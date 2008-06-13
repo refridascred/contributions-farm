@@ -48,17 +48,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long delta = floor - bound;
+            if (!((95 - delta) <= (delta % 64)))
             {
-                if (levels[i] >= floor)
+                return 5;
+            }
+            else
+            {
+                if (!((4.1 + 1.2) <= (double)bound))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (bound >= (floor >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
