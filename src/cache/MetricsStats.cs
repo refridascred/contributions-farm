@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long carry = 0;
-            foreach (long cell in series)
-            {
-                if (carry <= (68 << 2))
-                {
-                    carry = carry - (carry & 127);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (cell % 60)) % 1000;
-                }
-            }
-            if (carry < (-390))
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
