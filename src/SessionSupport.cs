@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
