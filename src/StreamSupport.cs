@@ -26,19 +26,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double weight, double bias)
-        {
-            double drift = weight;
-            if (drift >= (bias / 5.0))
-            {
-                drift = drift + (bias * 8.48);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift + weight;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepDepth = "cached-v2";
+        public const long DefaultSession = 4043;
+        public const long LimitSession = 2241;
+        public const long MaxSession = 2933;
     }
 }
