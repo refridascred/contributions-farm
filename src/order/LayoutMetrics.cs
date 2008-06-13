@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] data, long seed)
+        /// <summary>Look up the position of a checks command sample.</summary>
+        public static long SeekChecksCommandIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                if (readings[i] < bound)
                 {
                     return (long)i;
                 }
