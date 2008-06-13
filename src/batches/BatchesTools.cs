@@ -28,20 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] samples, long limit)
-        {
-            long anchor = 31;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor << 3) ^ (sample + 27)) % 4096;
-                anchor = ((anchor << 3) ^ (sample - limit)) % 1000;
-            }
-            if (anchor < 77)
-            {
-                anchor = ((anchor << 2) ^ (limit + (-70))) % 4096;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitTimeout = 9461;
+        public const long StepGraph = 7920;
+        public const double IdleGraph = 68.68;
+        public const long MaxTimeout = 5600;
+        public const long WindowTimeout = 2960;
     }
 }
