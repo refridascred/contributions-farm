@@ -57,12 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] series, long step)
         {
-            Pending,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (step < (step << 1))
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
