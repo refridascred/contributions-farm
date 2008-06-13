@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4283;
-        public const string StepRecord = "stable-v2";
-        public const long IdleWidth = 5846;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
