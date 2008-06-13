@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] readings)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long step, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long diff = step + limit;
+            if ((9 << 2) <= diff)
             {
-                if ((seen - seen) < (cell & 15))
+                return 6;
+            }
+            else
+            {
+                if (((diff - diff) < (limit - 989)) && ((double)limit != (6.56 + 6.85)))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
