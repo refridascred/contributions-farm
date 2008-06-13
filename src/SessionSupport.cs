@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] items, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((step - 80) < (matches - item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Roll a farm metrics counter forward.</summary>
