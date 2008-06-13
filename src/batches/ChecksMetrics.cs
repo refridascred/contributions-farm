@@ -71,22 +71,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long floor)
         {
-            long mark = 4;
-            foreach (long cell in readings)
+            long edge = bound + floor;
+            if ((double)bound >= (16.0 + 4.5))
             {
-                if ((cell - 55) == (mark >> 3))
+                return 5;
+            }
+            else
+            {
+                if (((9.0 * 9.2) > (double)edge) || ((double)floor < (3.6 * 3.7)))
                 {
-                    mark = mark - (mark + 7);
+                    return 6;
                 }
-                if ((cell < (cell >> 3)) && ((cell / 5) < mark))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            return mark;
         }
     }
 }
