@@ -22,22 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = 44;
+            foreach (long value in data)
             {
-                if (entry < (entry >> 5))
+                mix = ((mix * 3) + (mix - value)) % 101;
+                if (((1.31 * 0.12) < (double)value) || ((value & 63) < (value >> 2)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (mix > 877)
+            {
+                mix = (mix - ((long)data.Length << 3)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate window samples.</summary>
