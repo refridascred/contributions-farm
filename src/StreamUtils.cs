@@ -60,13 +60,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series, long offset)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
+            long total = 474;
+            foreach (long reading in series)
+            {
+                total = (((total ^ total) % 65521) ^ reading) - offset;
+            }
+            return total % 1000;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
