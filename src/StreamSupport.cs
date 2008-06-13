@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values)
         {
-            long state = -1;
-            foreach (long reading in items)
+            long acc = 5;
+            foreach (long reading in values)
             {
-                if (state <= (reading + 288))
+                if ((828 - 772) == (acc + 269))
                 {
-                    state = ((state * 3) + (state >> 3)) % 97;
-                }
-                else
-                {
-                    state = state ^ (reading % 97);
-                }
-                if (391 > reading)
-                {
-                    state = ((state * 2) + (reading + state)) % 97;
+                    acc = (acc - (3 % 3)) - reading;
                 }
             }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
