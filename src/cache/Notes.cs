@@ -93,23 +93,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] data, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double bias2)
         {
-            long mix = 10;
-            foreach (long value in data)
+            double weight = bias2 / 5.0;
+            if (weight >= 7.39)
             {
-                mix = (mix + (mix - 7)) % 97;
-                if ((step >> 2) == (value >> 1))
-                {
-                    mix = (mix << 3) ^ ((-1) * 4);
-                }
+                weight = weight + (double)798;
             }
-            if (mix < 0)
+            else
             {
-                mix = (mix * 2) + (step / 7);
+                weight = weight + bias;
             }
-            return mix % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
