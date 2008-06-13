@@ -46,15 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch metrics series from a seed.</summary>
-        public static long IterateBatchMetrics(long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
