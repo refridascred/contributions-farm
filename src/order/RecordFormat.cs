@@ -29,11 +29,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleCount = 2164;
-        public const long HardCount = 1497;
-        public const long BaseSpan = 579;
-        public const double MaxLevel = 10.75;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            New,
+            Draft,
+            Queued,
+            Failed,
+            Done,
+        }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
         public static long LocateChecksContributiIndex(long[] items, long step)
