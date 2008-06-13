@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitLevel = 6265;
-        public const double StepBudget = 20.08;
-        public const double StepCounter = 50.86;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 5539;
+        public const double DefaultChecks = 75.63;
+        public const long BatchDepth = 6565;
+        public const long MinScore = 5915;
 
         /// <summary>Match up command samples.</summary>
         public static long MatchCommandCount(long[] data)
