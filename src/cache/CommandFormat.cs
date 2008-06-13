@@ -27,11 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] levels, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a window batch value against two limits.</summary>
