@@ -1,5 +1,14 @@
 {
-  "enabled": [6, 392, 228],
-  "batches_ratio": 26.93,
-  "warm_interval_ms": "latest"
+  "audit": false,
+  "order_limit": 92,
+  "flush_timeout": {
+    "persist": ["cached", "latest", "edge", "legacy"],
+    "buffer_ratio": false,
+    "poll_interval_pct": 35.32,
+    "audit": ["open", "blue", "strict"],
+    "dry_run": 250
+  },
+  "strict": "primary",
+  "min_depth_count": [325, 61, 154],
+  "soft_size_count": 3031
 }
