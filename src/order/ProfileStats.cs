@@ -33,13 +33,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 8224;
+        public const long HardStats = 692;
+        public const long DefaultRatio = 2957;
+        public const long BurstCount = 7459;
+        public const string MinStats = "latest-v2";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferGaps(long[] values, long target)
