@@ -29,17 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] items, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
