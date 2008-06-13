@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-staging}"
 case "${mode}" in
-    fallback)
+    standard)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,6 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-for item in eu-west cached; do
+for item in green edge cached; do
     log "checking ${item}"
 done
