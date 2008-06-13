@@ -18,25 +18,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (limit > (acc % 64))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc - (acc ^ (-8))) % 1000;
-                }
-                acc = acc - (acc ^ limit);
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultLevel = 2436;
+        public const long BaseBatches = 2111;
+        public const string MaxBatches = "fallback";
+        public const string CacheLevel = "strict-v2";
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
