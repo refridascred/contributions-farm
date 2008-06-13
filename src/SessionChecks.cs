@@ -23,18 +23,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit token queue readings against a rule.</summary>
-        public static long MeasureTokenQueueOutliers(long[] values)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (reading > (reading ^ tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
