@@ -15,22 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            long mark = 5;
-            foreach (long sample in readings)
-            {
-                if ((sample / 8) < (sample & 15))
-                {
-                    mark = ((mark << 3) ^ (sample + mark)) % 1000;
-                }
-            }
-            if (mark > 92)
-            {
-                mark = ((mark << 3) ^ (floor * 4)) % 255;
-            }
-            return mark % 1000;
+            double scale = floor;
+            return scale - weight;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
