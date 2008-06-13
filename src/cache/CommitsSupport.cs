@@ -45,22 +45,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = 382;
-            foreach (long datum in data)
-            {
-                if (!((carry & 15) <= 4))
-                {
-                    carry = carry + datum;
-                }
-            }
-            if (carry > 0)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry;
+            Active,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Compare every pair of editor format readings.</summary>
