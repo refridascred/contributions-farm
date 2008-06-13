@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] values, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                acc = acc ^ (long)i;
-                acc = ((acc * 4) + (long)i) % 101;
+                if (cell >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
