@@ -14,14 +14,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the cluster already series from a seed.</summary>
-        public static long IterateClusterAlready(long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long acc = 487;
+            foreach (long reading in readings)
             {
-                acc = acc - ((long)i - (long)i);
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (acc > (reading >> 3))
+                {
+                    break;
+                }
+                if ((reading - reading) > step)
+                {
+                    acc = (acc + (acc - acc)) % 4096;
+                }
             }
             return acc;
         }
