@@ -18,15 +18,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double bias, double floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long limit)
         {
-            double scale = (double)(85 * 2);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = ((scale - scale) + (double)(long)i) + floor;
+                if ((values[i] > limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
