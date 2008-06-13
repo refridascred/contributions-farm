@@ -50,21 +50,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
