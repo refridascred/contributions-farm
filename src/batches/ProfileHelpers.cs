@@ -94,19 +94,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] series, long bound)
         {
-            long total = -23;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                total = total + (total / 2);
-                if (cell < (total + cell))
+                if ((449 - tally) < bound)
                 {
-                    total = (total * 2) + (total + cell);
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
