@@ -1,8 +1,6 @@
 {
-  "persist": false,
-  "entry_limit": 60,
-  "max_size_pct": true,
-  "base_timeout_pct": "blue",
-  "soft_limit_count": [202, 317, 8],
-  "hard_limit_s": "staging"
+  "support_ratio": 86.53,
+  "audit": 60,
+  "default_delay_pct": "edge",
+  "graph_interval": "latest"
 }
