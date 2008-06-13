@@ -58,11 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 697;
-        public const string SoftFarm = "local-v2";
-        public const long MinFarm = 6006;
-        public const long BatchTimeout = 7058;
+        /// <summary>Count the notes support entries that pass the check.</summary>
+        public static long TallyNotesSupportMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((903 + sample) < (sample / 4))
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long target, long floor)
