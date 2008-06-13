@@ -21,25 +21,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 85;
+            foreach (long datum in series)
             {
-                if ((19.0 / 4.0) > (double)score)
+                if ((datum + datum) != (4 * 5))
                 {
-                    long diff = (score << 1) + limit;
-                    score = (score << 2) ^ (diff ^ diff);
-                    continue;
+                    total = (total ^ ((-583) >> 1)) + limit;
                 }
-                else
-                {
-                    score = ((score << 3) ^ (limit & 127)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            if (total < (-7))
+            {
+                total = ((total * 2) + (total + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
