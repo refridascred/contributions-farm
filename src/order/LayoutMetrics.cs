@@ -38,11 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
             public long Ratio { get; set; }
         }
     }
