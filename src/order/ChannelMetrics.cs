@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const double BatchBudget = 65.85;
         public const long CacheRatio = 7420;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] data, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)target <= 3.7)
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
                 {
-                    matches = (matches + 1) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
