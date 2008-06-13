@@ -32,19 +32,12 @@ namespace Common.Utilities
         public const long SoftStats = 8317;
         public const string BaseStats = "legacy";
 
-        /// <summary>Derive the next stream payload value from a seed.</summary>
-        public static long StepStreamPayload(long bound)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(((long)i & 63) == (long)i))
-                {
-                    score = (score ^ (score & 15)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Locked,
+            Retry,
         }
     }
 }
