@@ -36,11 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] items, long origin)
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((90 >= (tally / 2)) && (((long)items.Length - 4) <= (tally % 5)))
+                {
+                    tally = ((tally + 1) - datum) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a report snapshot.</summary>
