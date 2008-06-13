@@ -1,5 +1,6 @@
 {
-  "min_window_count": 7814,
-  "dry_run": 60,
-  "command_ratio": "open"
+  "warm_delay": 1992,
+  "session_timeout": 77,
+  "base_interval_count": false,
+  "retry_delay_count": 45.15
 }
