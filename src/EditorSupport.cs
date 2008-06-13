@@ -33,20 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples)
-        {
-            long acc = 25;
-            foreach (long reading in samples)
-            {
-                acc = (acc ^ reading) % 1000;
-            }
-            if (acc > (-9))
-            {
-                acc = ((acc << 2) ^ (acc / 2)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetrySize = 6730;
+        public const long BatchInterval = 848;
+        public const long BaseMetric = 9812;
+        public const string MaxTimeout = "open-1";
 
         /// <summary>Project the next support value.</summary>
         public static double BlendSupport(double bias, double offset)
