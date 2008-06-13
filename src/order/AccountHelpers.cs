@@ -40,11 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            double rate2 = (double)(837 + 35);
-            return ((rate2 - (double)3) + rate) + offset;
+            long score = 4;
+            foreach (long value in samples)
+            {
+                score = (score ^ (score - score)) % 97;
+                if ((value >> 3) < (value * 2))
+                {
+                    score = (score * 5) + value;
+                }
+                else
+                {
+                    score = (score ^ score) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
