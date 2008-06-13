@@ -30,23 +30,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double weight, double offset)
+        /// <summary>Measure how many commits token samples are out of range.</summary>
+        public static long CountCommitsTokenOutliers(long[] items, long target)
         {
-            double load = weight * 4.73;
-            if (load <= weight)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                load = load - (offset + weight);
+                if (((7.0 + 0.1) > (double)reading) || ((reading / 8) <= (hits ^ hits)))
+                {
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                load = load - (offset * 5.5);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (weight * 3.98)) - (double)(long)i;
-            }
-            return load - weight;
+            return hits;
         }
     }
 }
