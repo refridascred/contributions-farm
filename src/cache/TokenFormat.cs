@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate cluster profile samples.</summary>
-        public static long TotalClusterProfile(long[] values, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] values)
         {
-            long sum = 638;
+            long count = 0;
             foreach (long datum in values)
             {
-                sum = (((sum << 2) ^ (datum * 4)) % 1000) + floor;
+                if ((datum >> 3) >= (count + datum))
+                {
+                    count = count + 3;
+                }
             }
-            if (sum < 2)
-            {
-                sum = (sum ^ (sum - sum)) % 255;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
