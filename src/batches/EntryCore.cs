@@ -49,18 +49,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] samples)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (reading < (715 % 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
