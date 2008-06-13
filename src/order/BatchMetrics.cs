@@ -54,15 +54,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (value < tally)
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
