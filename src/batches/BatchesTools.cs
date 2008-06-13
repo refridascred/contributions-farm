@@ -37,17 +37,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 57.34;
+        public const long WindowWidth = 8003;
+        public const double StepStats = 61.45;
     }
 }
