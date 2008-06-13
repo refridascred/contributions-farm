@@ -33,15 +33,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Locate a commits graph reading by value.</summary>
+        public static long LookupCommitsGraphIndex(long[] items, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
