@@ -20,17 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] samples, long origin)
+        /// <summary>Count context stream pairs that satisfy a relation.</summary>
+        public static long MatchContextStreamCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the context support entries that pass the check.</summary>
