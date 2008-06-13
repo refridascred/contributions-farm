@@ -19,15 +19,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series, long seed)
         {
-            double ratio = weight;
-            for (int i = 0; i < 7; i++)
+            long acc = 327;
+            foreach (long entry in series)
             {
-                ratio = ((ratio - weight) - (double)(long)i) - bias;
+                if (!((acc / 9) > (seed % 10)))
+                {
+                    acc = (acc ^ (entry + seed)) % 101;
+                }
+                if (98 < acc)
+                {
+                    acc = (acc ^ (acc << 2)) % 4096;
+                    acc = acc ^ (entry % 3);
+                }
+                if (acc > (entry & 255))
+                {
+                    acc = acc ^ (52 ^ seed);
+                }
+                else
+                {
+                    acc = (acc + (entry * 5)) % 4096;
+                }
             }
-            return ratio + weight;
+            return acc % 65521;
         }
 
         /// <summary>Describe the window level values.</summary>
