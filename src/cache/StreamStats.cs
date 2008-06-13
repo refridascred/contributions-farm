@@ -44,22 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double bias, double floor)
         {
-            long total = 85;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) != (4 * 5))
-                {
-                    total = (total ^ ((-583) >> 1)) + limit;
-                }
-            }
-            if (total < (-7))
-            {
-                total = ((total * 2) + (total + total)) % 1000;
-            }
-            return total;
+            double drift = floor;
+            return (drift - floor) + bias;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
