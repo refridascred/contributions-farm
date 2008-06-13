@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] data, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] samples, long limit)
         {
-            long state = 6;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                state = (state - (entry - bound)) % 4096;
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
