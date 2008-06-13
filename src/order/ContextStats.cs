@@ -38,21 +38,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count batch counter pairs that satisfy a relation.</summary>
-        public static long CompareBatchCounterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 3983;
+        public const double StepSession = 42.61;
+        public const double BatchSession = 76.6;
     }
 }
