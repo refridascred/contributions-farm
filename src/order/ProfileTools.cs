@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token profile readings against a bound.</summary>
-        public static bool CheckTokenProfileBounds(long[] data, long step)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
