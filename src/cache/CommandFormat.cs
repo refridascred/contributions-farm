@@ -17,10 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "latest-v2";
-        public const long DefaultQueue = 4597;
-        public const long SoftRatio = 466;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Queued,
+            Synced,
+            Draft,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Look up the position of a editor queue sample.</summary>
         public static long SeekEditorQueueIndex(long[] levels, long floor)
