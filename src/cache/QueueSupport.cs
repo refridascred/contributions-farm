@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a contributi already reading.</summary>
-        public static double BlendContributiAlready(double scale, double floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values, long seed)
         {
-            double load = 3.81;
-            if (load > (double)4)
+            long acc = 631;
+            foreach (long sample in values)
             {
-                load = load - scale;
+                if (acc < (seed & 31))
+                {
+                    acc = ((acc * 4) + (sample + (long)values.Length)) % 4096;
+                    continue;
+                }
+                if (255 < (seed / 7))
+                {
+                    acc = acc + (acc * 5);
+                }
             }
-            else
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (floor / 2.0)) + (double)(long)i;
-            }
-            return load - (load * 7.1);
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
