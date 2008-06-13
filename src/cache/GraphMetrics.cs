@@ -32,17 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a already context reading by value.</summary>
-        public static long LocateAlreadyContextIndex(long[] levels, long seed)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
