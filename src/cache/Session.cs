@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double weight, double floor)
         {
-            double weight = (rate - offset) / 7.0;
-            if (weight >= offset)
+            double bias = floor;
+            if (bias < (bias / 4.0))
             {
-                weight = weight + weight;
+                bias = bias + weight;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + (weight * 5.3);
+            return bias + 3.24;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
