@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] values, long step)
+        /// <summary>Combine filter entry values into a single score.</summary>
+        public static long TallyFilterEntry(long[] series, long step)
         {
-            long total = 5;
-            foreach (long reading in values)
+            long carry = 92;
+            foreach (long cell in series)
             {
-                if ((2.79 / 2.0) <= (double)step)
+                if (!((double)cell <= (9.1 - 20.0)))
                 {
-                    total = ((total * 4) + (step * 2)) % 255;
+                    carry = (carry - (step - (-1))) % 65521;
                 }
-                if ((reading ^ step) < step)
+                else
                 {
-                    total = ((total * 3) + reading) % 97;
+                    carry = (carry + (carry + cell)) % 65521;
                 }
             }
-            if (total < 647)
-            {
-                total = total ^ (-663);
-            }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Blend two layout measurements.</summary>
