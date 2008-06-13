@@ -20,19 +20,15 @@ namespace Common.Utilities
             return drift + (bias2 - bias);
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] data, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
