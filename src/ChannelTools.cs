@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many payload format samples are out of range.</summary>
-        public static long MeasurePayloadFormatGaps(long[] series, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long step = bound - seed;
+            if (!(seed > step))
             {
-                if ((floor / 4) <= ((-697) / 5))
+                return 5;
+            }
+            else
+            {
+                if (3.5 < (double)bound)
                 {
-                    hits = (hits + 2) - reading;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (seed >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((bound + bound) >= (bound & 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the session level values.</summary>
