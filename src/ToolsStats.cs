@@ -77,11 +77,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            long total = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total << 2) ^ (686 >> 4);
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
