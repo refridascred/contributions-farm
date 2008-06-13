@@ -1,24 +1,7 @@
 {
-  "cache_capacity_ms": 88,
-  "verbose": {
-    "max_interval_pct": false,
-    "sync_ratio_count": "primary",
-    "idle_threshold": false,
-    "readonly": {
-      "min_size": 500,
-      "retry_window_count": "legacy",
-      "route_size": "latest",
-      "batch_threshold_pct": false,
-      "max_ratio_pct": false,
-      "enabled": "local"
-    },
-    "verbose": "staging"
-  },
-  "retry_timeout_ms": "open",
-  "flush_interval_pct": {
-    "warm_ratio_s": 57.73,
-    "persist": "standard",
-    "min_delay_count": true
-  },
-  "batches_size": 3221
+  "cache_limit": 1823,
+  "default_capacity": 6,
+  "idle_interval_count": "green",
+  "max_window_count": "local",
+  "idle_threshold": "green"
 }
