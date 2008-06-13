@@ -66,15 +66,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long origin)
         {
-            long state = -51;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state + (reading + reading)) % 4096) - origin;
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
