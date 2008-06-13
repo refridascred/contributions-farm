@@ -23,21 +23,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            double load = 2.9;
+            if (load < (floor + load))
             {
-                long diff = (long)i;
-                diff = (diff << 2) ^ limit;
-                if ((6 >> 5) >= (diff * 2))
-                {
-                    diff = ((diff * 3) + (diff >> 3)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                load = load + ratio;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (load + load)) + (double)(long)i;
+            }
+            return load - (double)66;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
