@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Fold a list of layout schema readings.</summary>
+        public static long WeighLayoutSchema(long[] readings, long floor)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long mark = 46;
+            foreach (long sample in readings)
             {
-                mark = (mark ^ 735) + value;
+                if ((sample + sample) >= (sample << 3))
+                {
+                    mark = (mark - (sample ^ sample)) + floor;
+                }
             }
             return mark;
         }
