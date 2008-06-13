@@ -54,12 +54,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] values, long offset)
         {
-            Stale,
-            Pending,
-            Done,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (6.55 <= (double)value)
+                {
+                    tally = (tally + 1) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm state values.</summary>
