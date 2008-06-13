@@ -29,16 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cache checks series from a seed.</summary>
-        public static long SeriesCacheChecks(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 8536;
+        public const long BaseScore = 2168;
+        public const long StepLevel = 4147;
+        public const double StepFactor = 16.59;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
