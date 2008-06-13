@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2040;
         public const string RetryAccount = "legacy-1";
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] series, long floor)
         {
-            Stale,
-            Closed,
-            Done,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (tally <= (cell - floor))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
