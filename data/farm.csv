@@ -1,6 +1,6 @@
-id,label,ratio,state,score
-1,standard,stable,cached,680
-2,42.96,339,350,422
-3,46,eu-west,eu-west,62.13
-4,8.25,blue,126,33.38
-5,134,staging,staging,768
+id,token,count,weight,active
+1,open,64.49,760,8.24
+2,blue,standard,156,746
+3,385,75.31,296,860
+4,391,cached,409,edge
+5,768,57.4,55.91,496
