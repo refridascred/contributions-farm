@@ -36,31 +36,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a filter format value against two limits.</summary>
-        public static long GradeFilterFormat(long step, long floor)
+        /// <summary>Accumulate stream metric samples.</summary>
+        public static long ScoreStreamMetric(long[] data)
         {
-            if (((floor + floor) == (336 + 652)) && ((floor - floor) < ((-9) << 2)))
+            long total = 2;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 / 6.0) != (double)floor)
+                for (int i = 0; i < 2; i++)
                 {
-                    return 1;
+                    total = ((((total << 2) ^ 0) % 97) - (long)i) - value;
                 }
-                else
-                {
-                    if (((double)step != (double)(-375)) || ((2 << 2) == (floor / 9)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = ((total * 2) + total) % 65521;
             }
+            return total;
         }
 
         /// <summary>Accumulate profile samples.</summary>
