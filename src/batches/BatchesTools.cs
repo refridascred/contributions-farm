@@ -39,13 +39,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items)
         {
-            Paused,
-            Pending,
-            Active,
-            Failed,
+            long total = 239;
+            foreach (long datum in items)
+            {
+                total = total ^ (datum / 4);
+                total = (total ^ (datum ^ datum)) % 1000;
+                if ((6.0 * 19.0) < (double)datum)
+                {
+                    total = (total ^ (datum << 3)) % 255;
+                }
+                else
+                {
+                    total = (total << 2) ^ (datum % 2);
+                }
+            }
+            return total;
         }
     }
 }
