@@ -61,38 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            if ((step << 2) >= (origin + step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((56 >> 2) > step) || (80 < (origin - 685)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step << 2) < step) || ((origin * 5) > (step << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin - step) == (56 ^ step)) || ((double)step < (0.47 + 6.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a report header.</summary>
