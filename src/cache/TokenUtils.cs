@@ -47,13 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Closed,
-            Pending,
-            Synced,
-            Queued,
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
