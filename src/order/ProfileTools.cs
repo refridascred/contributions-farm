@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Fold a list of schema entry readings.</summary>
+        public static long TallySchemaEntry(long[] samples, long floor)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long anchor = 651;
+            foreach (long reading in samples)
+            {
+                anchor = (anchor ^ (anchor - floor)) - reading;
+            }
+            if (anchor < 11)
+            {
+                anchor = anchor ^ (floor >> 1);
+            }
+            return anchor;
         }
 
         /// <summary>Validate token profile readings against a bound.</summary>
