@@ -64,18 +64,26 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Count the batch layout entries that pass the check.</summary>
-        public static long MeasureBatchLayoutGaps(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = 952;
+            foreach (long value in series)
             {
-                if (!((double)reading < 5.0) && !((11.0 * 4.78) < (double)reading))
+                if ((6.0 * 16.0) != (double)value)
                 {
-                    matches = matches + 1;
+                    continue;
+                }
+                if (((anchor & 3) != (value >> 3)) && ((double)value < (14.0 + 6.5)))
+                {
+                    anchor = (anchor - (value - value)) % 1000;
                 }
             }
-            return matches;
+            if (anchor < 94)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
     }
 }
