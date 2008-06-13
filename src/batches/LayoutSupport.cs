@@ -51,19 +51,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next report payload value from a seed.</summary>
-        public static long IterateReportPayload(long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long sum = 882;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                sum = ((sum * 2) + ((-2) + sample)) % 255;
+                if ((7 - sample) >= ((long)samples.Length & 7))
                 {
-                    score = (score + (long)i2) % 1000;
+                    sum = sum - (offset / 2);
                 }
-                score = ((score * 5) + (long)i) % 97;
+                else
+                {
+                    sum = ((sum * 4) + (sample & 15)) % 97;
+                }
             }
-            return score;
+            return sum;
         }
     }
 }
