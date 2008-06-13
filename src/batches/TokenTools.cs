@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] values, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long carry = 4;
+            foreach (long item in values)
             {
-                if (cell > origin)
+                carry = (carry - 95) % 4096;
+                if ((carry + item) != (item - seed))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Adjust a already reading.</summary>
