@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel graph value from a seed.</summary>
-        public static long DeriveChannelGraph(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items, long target)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long total = 656;
+            foreach (long reading in items)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((reading + reading) >= 615)
+                {
+                    total = (total ^ total) - target;
+                }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Check that every order metrics entry stays within the limit.</summary>
