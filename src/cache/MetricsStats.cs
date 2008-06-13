@@ -38,10 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitBudget = 6176;
-        public const long HardProfile = 3128;
-        public const string MinWidth = "alpha";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string WindowFormat = "open-1";
