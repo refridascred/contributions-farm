@@ -37,12 +37,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
