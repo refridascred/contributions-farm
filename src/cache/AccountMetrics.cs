@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] series, long floor)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public double Label { get; set; }
+            long state = 9;
+            foreach (long cell in series)
+            {
+                state = ((state * 3) + floor) - cell;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
