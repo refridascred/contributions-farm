@@ -13,11 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] values)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)tally == (11.0 / 5.0))
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
