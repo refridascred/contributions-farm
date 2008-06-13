@@ -13,19 +13,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate stats buffer readings against a bound.</summary>
-        public static bool GuardStatsBufferRange(long[] items, long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum - sum) % 255;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
