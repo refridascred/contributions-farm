@@ -66,25 +66,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks notes value against two limits.</summary>
-        public static long GradeChecksNotes(long bound, long seed)
-        {
-            long span = bound - seed;
-            if (((bound + seed) >= bound) || (bound >= (seed + seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound >= 7.1) || ((seed * 2) >= span))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstSize = "open-edge";
+        public const double SoftInterval = 5.04;
+        public const string WindowStats = "staging-v2";
+        public const long SoftRatio = 8842;
     }
 }
