@@ -46,22 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftDepth = 92.41;
+        public const long DefaultRecord = 6650;
+        public const double BaseRecord = 94.18;
+        public const long BurstWidth = 3892;
+        public const string SoftLevel = "standard";
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
