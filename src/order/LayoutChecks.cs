@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Stale,
-            Idle,
-            Failed,
-            Retry,
-            Done,
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
