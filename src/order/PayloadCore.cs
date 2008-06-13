@@ -28,22 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count queue githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareQueueGithubfarmCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchRatio = "standard-1";
+        public const long BaseBudget = 1153;
+        public const long IdleCommits = 277;
+        public const double WindowCommits = 51.68;
+        public const long SoftBudget = 7114;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] levels, long target)
