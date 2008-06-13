@@ -36,18 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long state = 6;
+            foreach (long entry in data)
             {
-                if ((5.0 + 2.7) <= (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
+                state = (state - (entry - bound)) % 4096;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
