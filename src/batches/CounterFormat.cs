@@ -31,12 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Done,
+            Locked,
+            Idle,
         }
     }
 }
