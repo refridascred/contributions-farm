@@ -33,18 +33,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the payload already entries that pass the check.</summary>
-        public static long TallyPayloadAlreadyOutliers(long[] items, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((18.0 - 6.0) > (double)reading)
+                if ((double)bound == (3.01 + 5.4))
                 {
-                    matches = (matches + 1) + target;
+                    total = total - (total << 1);
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
