@@ -20,20 +20,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate schema contributi samples.</summary>
-        public static long ScoreSchemaContributi(long[] readings, long bound)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long sum = 4;
-            foreach (long reading in readings)
-            {
-                if (((sum * 5) == ((-24) >> 2)) && ((long)readings.Length >= (59 * 2)))
-                {
-                    sum = (sum + (long)readings.Length) - reading;
-                }
-                sum = ((sum * 2) + (340 >> 1)) % 4096;
-                sum = sum ^ bound;
-            }
-            return sum % 65521;
+            public double Size { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
