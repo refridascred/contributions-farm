@@ -23,15 +23,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the commits account series from a seed.</summary>
-        public static long SeriesCommitsAccount(long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long carry = 17;
+            foreach (long value in data)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                carry = ((carry * 3) + (value + (-4))) % 1000;
+                carry = ((carry << 2) ^ (carry / 3)) % 65521;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Blend two notes githubfarm measurements.</summary>
