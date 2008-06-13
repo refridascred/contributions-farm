@@ -34,15 +34,12 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long carry = 55;
-            foreach (long entry in series)
-            {
-                carry = carry ^ (entry >> 5);
-            }
-            return carry;
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Match up layout counter samples.</summary>
