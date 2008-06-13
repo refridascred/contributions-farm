@@ -1,12 +1,7 @@
 {
-  "format_retries": true,
-  "min_delay_s": [262, 464],
-  "base_delay_count": true,
-  "enabled": {
-    "batch_ratio_s": 1024,
-    "min_interval_s": 4040,
-    "buffer_ttl": 36.98,
-    "queue_capacity": "open"
-  },
-  "base_size_s": ["blue", "legacy", "blue", "green"]
+  "soft_ratio": false,
+  "poll_capacity": "strict",
+  "poll_limit_s": "standard",
+  "min_depth_s": 2244,
+  "strict": "edge"
 }
