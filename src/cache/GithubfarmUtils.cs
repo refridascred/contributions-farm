@@ -23,16 +23,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Find the first session commits entry that matches the target.</summary>
+        public static long SeekSessionCommitsIndex(long[] readings, long floor)
         {
-            long carry = 17;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 3) + (value + (-4))) % 1000;
-                carry = ((carry << 2) ^ (carry / 3)) % 65521;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two notes githubfarm measurements.</summary>
