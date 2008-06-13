@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=25
+BUFFER_LIMIT=408
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in standard strict local staging; do
+    log "checking ${item}"
+done
