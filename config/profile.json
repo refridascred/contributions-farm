@@ -1,22 +1,8 @@
 {
-  "default_limit": {
-    "soft_timeout_pct": {
-      "compress": "blue",
-      "channel_retries": 2615,
-      "batch_ttl_count": [19, 268, 16, 249]
-    },
-    "warm_depth": "green",
-    "verbose": "latest",
-    "flush_depth_count": "staging",
-    "strict": 4
-  },
-  "support_ttl": {
-    "queue_threshold": "edge",
-    "warm_threshold": "staging",
-    "payload_delay": true,
-    "channel_size": "legacy",
-    "retry_size_ms": "staging"
-  },
-  "idle_ttl_count": [476, 4],
-  "persist": "standard"
+  "default_retries": [256, 493, 259, 376],
+  "verbose": [86, 23, 244, 280],
+  "min_threshold_count": "edge",
+  "enabled": 500,
+  "burst_ttl_count": ["stable", "blue", "fallback", "fallback"],
+  "strict": ["cached", "latest"]
 }
