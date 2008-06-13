@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] data, long limit)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((99 % 60) > (cell / 7))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the schema kind values.</summary>
