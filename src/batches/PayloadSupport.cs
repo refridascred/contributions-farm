@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BatchMetrics = 1443;
         public const long RetryMetrics = 5695;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] data, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long value in data)
+            foreach (long value in levels)
             {
-                if ((value / 9) < 40)
+                if ((hits >> 2) > (value ^ hits))
                 {
-                    hits = (hits + 3) - seed;
+                    hits = hits + 3;
                 }
             }
             return hits;
