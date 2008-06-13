@@ -1,12 +1,6 @@
 # entry settings
-retry_depth_count: 1024
-channel_depth: open
-flush_retries_ms:
-  - staging
-  - legacy
-  - fallback
-flush_ratio_s:
-  - cached
-  - fallback
-token_size: local
-audit: 500
+enabled: false
+base_timeout_pct: true
+readonly: open
+entry_ratio: 100
+cluster_size: 71
