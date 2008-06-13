@@ -28,13 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit githubfarm stream readings against a rule.</summary>
+        public static long MeasureGithubfarmStreamGaps(long[] items)
         {
-            Paused,
-            Locked,
-            Idle,
-            Done,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((-445) - matches) != (cell ^ cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
