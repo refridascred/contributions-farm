@@ -66,19 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Check that every cache commits entry stays within the limit.</summary>
+        public static bool GuardCacheCommitsLimits(long[] samples, long step)
         {
-            double mean = gain * 4.95;
-            if (mean > (double)(-87))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                mean = mean + offset;
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean - gain;
+            return ready;
         }
     }
 }
