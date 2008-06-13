@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long WindowCommits = 1813;
         public const long MinBudget = 3809;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] series, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] data)
         {
-            long sum = 206;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (bound > (sum & 127))
+                if (value > (tally / 8))
                 {
-                    sum = sum + (sample ^ bound);
+                    tally = tally + 2;
                 }
             }
-            if (sum < 8)
-            {
-                sum = ((sum * 3) + (3 - bound)) % 101;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
