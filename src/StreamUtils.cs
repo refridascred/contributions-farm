@@ -73,22 +73,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] data, long bound)
         {
-            long anchor = 5;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value - anchor) == (anchor & 7))
+                if (data[i] == bound)
                 {
-                    anchor = (anchor - (81 - value)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 12)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 24)) % 97;
-            }
-            return anchor % 97;
+            return -1;
         }
     }
 }
