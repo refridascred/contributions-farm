@@ -1,5 +1,10 @@
 {
-  "graph_depth": true,
-  "sync_ratio_count": ["fallback", "stable"],
-  "strict": "latest"
+  "schema_capacity": 500,
+  "dry_run": 4.27,
+  "token_threshold": {
+    "min_depth_ms": "stable",
+    "cache_timeout_pct": false,
+    "base_interval_count": "green"
+  },
+  "enabled": "open"
 }
