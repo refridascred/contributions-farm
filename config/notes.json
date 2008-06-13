@@ -1,23 +1,8 @@
 {
-  "cache_ttl": "latest",
-  "verbose": {
-    "base_size": 73.57,
-    "sync_interval": {
-      "burst_size_pct": 77,
-      "schema_retries": [471, 286, 256],
-      "batch_size_ms": 7285,
-      "audit": false,
-      "counter_retries": 60
-    },
-    "counter_retries": 100,
-    "idle_timeout_pct": {
-      "window_depth": 500,
-      "profile_depth": 500,
-      "enabled": "latest",
-      "editor_depth": 60,
-      "max_depth_s": 500,
-      "retry_window_pct": "edge"
-    }
-  },
-  "editor_ratio": 12
+  "sync_window": 29,
+  "idle_interval_pct": ["latest", "stable", "edge"],
+  "readonly": 37,
+  "strict": 69.94,
+  "graph_size": true,
+  "idle_ttl": 9693
 }
