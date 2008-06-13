@@ -38,16 +38,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long acc = 606;
+            foreach (long datum in samples)
             {
-                score = (score ^ (origin & 255)) % 1000;
-                score = ((score * 5) + (long)i) % 1000;
+                if (!(((long)samples.Length * 4) <= acc))
+                {
+                    acc = ((acc << 2) ^ acc) % 1000;
+                }
+                acc = (acc - ((long)samples.Length % 5)) % 97;
+                if (!(datum >= 313))
+                {
+                    break;
+                }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
