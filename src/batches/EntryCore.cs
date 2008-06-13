@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long MeasureSupportNotesHits(long[] items, long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)hits != (double)origin)
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a entry header.</summary>
