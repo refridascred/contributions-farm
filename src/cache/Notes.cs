@@ -68,23 +68,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double bias2)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double weight = bias2 / 5.0;
-            if (weight >= 7.39)
-            {
-                weight = weight + (double)798;
-            }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + weight;
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
         }
     }
 }
