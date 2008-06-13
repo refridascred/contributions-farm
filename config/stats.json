@@ -1,13 +1,5 @@
 {
-  "stats_capacity": 500,
-  "sync_ratio_ms": 25.8,
-  "format_threshold": {
-    "sync_threshold": 5000,
-    "base_threshold_pct": ["local", "staging", "latest"],
-    "batch_delay": ["staging", "strict", "blue", "standard"],
-    "readonly": "stable"
-  },
-  "cache_limit_ms": "eu-west",
-  "readonly": true,
-  "retry_limit": 1024
+  "context_window": 4281,
+  "soft_ttl": 40.91,
+  "strict": 21.39
 }
