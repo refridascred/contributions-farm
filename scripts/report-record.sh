@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for item in fallback strict local edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-RECORD_LIMIT=428
+mode="${1:-eu-west}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=370
 log "limit is ${RECORD_LIMIT}"
