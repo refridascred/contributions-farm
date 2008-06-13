@@ -1,8 +1,4 @@
 # githubfarm settings
-command_ttl: 84
-soft_depth_s: 250
-sync_capacity_ms: false
-batch_delay: 7139
-sync_capacity:
-  - 145
-  - 156
+soft_depth_count: true
+max_limit: fallback
+retry_retries: 30
