@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] samples, long floor)
         {
-            long total = 3;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((double)(long)series.Length > (6.7 * 2.56))
+                if (cell < floor)
                 {
-                    total = (total + (sample & 1)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return found;
         }
     }
 }
