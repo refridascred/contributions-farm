@@ -1,6 +1,10 @@
-id,token,count,weight,active
-1,open,64.49,760,8.24
-2,blue,standard,156,746
-3,385,75.31,296,860
-4,391,cached,409,edge
-5,768,57.4,55.91,496
+id,count,score,region
+1,94.55,528,79.05
+2,25,971,34.53
+3,160,599,legacy
+4,77,39.72,edge
+5,open,45.61,open
+6,open,269,standard
+7,52.77,primary,69.38
+8,434,strict,primary
+9,380,293,466
