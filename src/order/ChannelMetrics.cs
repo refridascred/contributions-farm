@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultInterval = "standard-v2";
-        public const long WindowStats = 9727;
-        public const double MinWidth = 94.68;
-        public const string MinStats = "stable-edge";
-        public const double CacheSpan = 68.58;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two report payload measurements.</summary>
         public static double BlendReportPayload(double rate, double bias)
