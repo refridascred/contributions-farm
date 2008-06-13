@@ -34,32 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long seed, long origin)
+        /// <summary>Count the context support entries that pass the check.</summary>
+        public static long CountContextSupportOutliers(long[] values, long limit)
         {
-            long offset = seed + origin;
-            if (((origin + origin) != (seed + seed)) && ((double)seed <= (7.93 / 9.0)))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((417 + seed) != (origin % 5)) && (((-567) & 15) >= (offset - 72)))
+                if (matches >= (matches & 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin < offset) && ((double)seed < 0.49))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = ((matches + 2) + sample) - limit;
                 }
             }
+            return matches;
         }
     }
 }
