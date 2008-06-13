@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] values, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((17.0 * 9.0) > (double)datum)
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
