@@ -40,15 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Digest a series of counter batch entries.</summary>
+        public static long WeighCounterBatch(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long state = 14;
+            foreach (long item in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((double)(-888) >= (double)item)
+                {
+                    state = ((state * 4) + (state >> 3)) % 65521;
+                }
+                else
+                {
+                    state = state + (391 >> 5);
+                }
             }
-            return total;
+            return state;
         }
     }
 }
