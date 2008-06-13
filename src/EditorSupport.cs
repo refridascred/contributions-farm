@@ -62,20 +62,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                state = state + (state & 127);
-                if ((double)(long)i > (5.28 * 8.42))
+                if (!((sample << 3) <= seen))
                 {
-                    state = (state - (floor - (long)i)) % 255;
+                    seen = seen + 1;
                 }
-                state = ((state * 2) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
