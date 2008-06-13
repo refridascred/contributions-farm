@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Validate stats buffer readings against a bound.</summary>
+        public static bool GuardStatsBufferRange(long[] items, long step)
         {
-            long mix = 4;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((mix > (datum & 63)) || (904 > (mix % 97)))
+                if (entry <= step)
                 {
-                    mix = (mix + 476) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
