@@ -29,21 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = 8.77;
+            if (bias2 >= bias2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 - 7.1;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (3.0 + ratio);
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Match up checks samples.</summary>
