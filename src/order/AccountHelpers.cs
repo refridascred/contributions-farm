@@ -73,19 +73,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache queue measurements.</summary>
-        public static double ScaleCacheQueue(double bias, double bias2)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data, long origin)
         {
-            double gain = 6.8;
-            if (gain < bias2)
+            long state = -51;
+            foreach (long reading in data)
             {
-                gain = gain + (bias / 6.0);
+                state = ((state + (reading + reading)) % 4096) - origin;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (bias + gain)) - (double)(long)i;
-            }
-            return gain - (bias / 3.0);
+            return state;
         }
 
         /// <summary>Hold a support record.</summary>
