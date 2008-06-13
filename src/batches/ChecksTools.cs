@@ -40,26 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data, long bound)
+        /// <summary>Validate batches farm readings against a bound.</summary>
+        public static bool VerifyBatchesFarmRange(long[] values, long seed)
         {
-            long sum = 88;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((sum <= bound) && ((12.0 + 3.0) >= (double)sum))
+                if (cell != seed)
                 {
-                    sum = (sum << 2) ^ (datum + (-55));
-                }
-                if ((410 / 7) == (datum & 7))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (sum < 467)
-            {
-                sum = sum - (sum / 3);
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Count the layout notes entries that pass the check.</summary>
