@@ -1,27 +1,5 @@
 # githubfarm settings
-soft_threshold:
-  retry_window_s: edge
-  entry_delay: open
-  entry_threshold: 500
-warm_ttl_count: 37
-strict: 8976
-warm_retries:
-  channel_threshold:
-    - 126
-    - 444
-    - 97
-    - 102
-  flush_size: true
-  retry_limit_ms:
-    persist: 74.25
-    idle_interval_s: 68.38
-    burst_size: 8341
-  compress: 94.22
-  cache_depth: 41.92
-  readonly:
-    warm_ratio: cached
-    base_delay_s: true
-    strict: standard
-    base_depth_ms: eu-west
-    verbose: true
-    graph_window: 500
+token_window: latest
+soft_size_pct: true
+min_threshold_pct: 4141
+idle_threshold: fallback
