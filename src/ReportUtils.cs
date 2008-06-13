@@ -39,11 +39,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryInterval = 9913;
-        public const long RetryBatches = 9483;
-        public const string LimitSpan = "standard-edge";
-        public const double CacheCount = 33.74;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 861;
