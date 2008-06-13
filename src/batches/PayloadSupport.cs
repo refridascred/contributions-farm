@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 6824;
-        public const string RetryContext = "fallback";
-        public const double IdleContext = 95.08;
-        public const long MaxFactor = 7171;
-        public const long RetryRatio = 7291;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 3697;
+        public const long DefaultBatch = 4636;
+        public const long RetryBudget = 1460;
 
         /// <summary>Blend two metrics commits measurements.</summary>
         public static double ProjectMetricsCommits(double gain, double offset)
