@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long total = 6;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(cell >= (75 % 12)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total << 2) ^ (cell + 722)) % 65521;
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
