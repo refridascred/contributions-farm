@@ -32,15 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((14 - matches) != (matches + matches))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
