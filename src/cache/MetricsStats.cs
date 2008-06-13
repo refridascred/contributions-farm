@@ -38,17 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] levels, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 60;
+            foreach (long datum in levels)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ step) % 101) + datum;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next schema cluster value.</summary>
