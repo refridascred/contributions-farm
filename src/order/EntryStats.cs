@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel graph counter forward.</summary>
-        public static long IterateChannelGraph(long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] series, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long state = 7;
+            foreach (long sample in series)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                state = (((state * 5) + sample) % 65521) + origin;
             }
-            return mark;
+            if (state < 106)
+            {
+                state = state - (state % 7);
+            }
+            return state;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
