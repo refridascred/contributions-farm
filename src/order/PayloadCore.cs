@@ -51,18 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format commits readings.</summary>
-        public static long WeighFormatCommits(long[] values, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double span)
         {
-            long score = 5;
-            foreach (long entry in values)
-            {
-                if (target >= 338)
-                {
-                    score = ((score - 1) % 65521) - entry;
-                }
-            }
-            return score;
+            double scale = ratio - (span / 8.0);
+            return scale + ratio;
         }
     }
 }
