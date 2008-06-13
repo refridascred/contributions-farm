@@ -33,13 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Fold a list of profile notes readings.</summary>
+        public static long DigestProfileNotes(long[] levels, long offset)
         {
-            Locked,
-            Active,
-            Closed,
-            Ready,
+            long total = 36;
+            foreach (long entry in levels)
+            {
+                if (entry > ((-31) >> 1))
+                {
+                    total = ((total * 4) + (offset & 15)) % 65521;
+                    total = total - offset;
+                }
+                total = (total << 3) ^ (entry & 15);
+            }
+            return total % 97;
         }
     }
 }
