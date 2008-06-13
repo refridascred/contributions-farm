@@ -1,11 +1,11 @@
 # Command notes
 
-When a buffer fails, the layout handler retries a few times before giving up.
-When a buffer fails, the contributi handler retries a few times before giving up.
-The support report groups every route by account.
+A filter that stays idle for too long is moved to the route list.
+The window module keeps entry values in sync with the editor cache.
 
 ## Guidelines
 
-- Validate stats input early
-- Review token limits each release
-- Log every metric change
+- Keep layout values small
+- Log every filter change
+- Prefer graph defaults
+- Review buffer limits each release
