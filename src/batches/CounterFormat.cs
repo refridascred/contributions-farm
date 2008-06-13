@@ -30,17 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 8544;
+        public const long SoftInterval = 8646;
+        public const long MaxDepth = 5847;
+        public const long MaxEntry = 8670;
+        public const long CacheFactor = 6051;
     }
 }
