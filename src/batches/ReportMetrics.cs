@@ -55,18 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route payload samples.</summary>
-        public static long WeighRoutePayload(long[] readings, long floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] values, long floor)
         {
-            long total = 5;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (20.0 > (double)floor)
+                if (values[i] < floor)
                 {
-                    total = ((total << 3) ^ total) - sample;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
