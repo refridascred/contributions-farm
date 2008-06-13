@@ -25,18 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] values)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count - count) == (83 << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) ^ entry;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
