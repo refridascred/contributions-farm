@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 7419;
-        public const long BatchInterval = 1738;
-        public const double BatchToken = 87.33;
-        public const string MinToken = "standard-v2";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] series, long seed)
