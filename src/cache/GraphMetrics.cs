@@ -32,18 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] levels)
+        /// <summary>Locate a already context reading by value.</summary>
+        public static long LocateAlreadyContextIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5.7 * 2.32) >= (double)count)
+                if (levels[i] == seed)
                 {
-                    count = (count + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
