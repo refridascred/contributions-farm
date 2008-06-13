@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
