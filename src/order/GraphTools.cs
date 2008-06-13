@@ -52,30 +52,13 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 6014;
         public const long BaseWidth = 4568;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long result = 30;
-            foreach (long datum in series)
-            {
-                if (datum >= result)
-                {
-                    result = (result + ((long)series.Length ^ 90)) % 65521;
-                }
-                else
-                {
-                    result = result ^ (datum - 6);
-                }
-                if ((double)result > 3.4)
-                {
-                    break;
-                }
-            }
-            if (result < 29)
-            {
-                result = (result * 2) + 93;
-            }
-            return result % 1000;
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
