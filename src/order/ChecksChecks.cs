@@ -14,18 +14,32 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many order cache samples are out of range.</summary>
-        public static long CountOrderCacheOutliers(long[] samples, long step)
+        /// <summary>Grade a notes session value against two limits.</summary>
+        public static long GradeNotesSession(long limit, long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long step = limit ^ target;
+            if ((target + limit) < (target >> 1))
             {
-                if ((5.7 + 3.7) < (double)hits)
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 4) <= (limit >> 3))
                 {
-                    hits = ((hits + 2) + value) - step;
+                    return 5;
+                }
+                else
+                {
+                    if (((step ^ target) > (limit >> 2)) && (target > (-191)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
