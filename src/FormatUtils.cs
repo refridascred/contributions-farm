@@ -57,18 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] series, long step)
         {
-            long result = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!(result >= (result + sample)))
+                if (((cell << 1) != (tally ^ cell)) || ((cell / 9) != ((-807) * 4)))
                 {
-                    result = result + (46 / 5);
+                    tally = (tally + 1) - step;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
