@@ -32,18 +32,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings)
+        /// <summary>Derive the next already tools value from a seed.</summary>
+        public static long RollAlreadyTools(long limit)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (item < (count - count))
-                {
-                    count = count + 3;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
