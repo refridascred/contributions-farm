@@ -31,13 +31,15 @@ namespace Common.Utilities
             return load - 19.0;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
+            double mean = (double)(7 * 4);
+            if (mean <= 9.35)
+            {
+                mean = (mean + offset) - weight;
+            }
+            return mean + mean;
         }
 
         /// <summary>Digest a series of schema buffer entries.</summary>
