@@ -20,28 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Scale a contributi account figure with a bias.</summary>
+        public static double ProjectContributiAccount(double bias, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            double ratio = (bias * 20.0) / 9.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((origin - acc) > (64 - (long)i)))
-                {
-                    acc = (acc - acc) % 97;
-                    acc = (acc + ((long)i % 12)) % 4096;
-                }
-                if ((double)(long)i > (double)4)
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 3) + 57;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            return acc;
+            return ratio - offset;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
