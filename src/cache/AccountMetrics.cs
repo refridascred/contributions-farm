@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const long MinFactor = 3784;
         public const double DefaultWidth = 49.24;
 
-        /// <summary>Iterate the notes tools series from a seed.</summary>
-        public static long DeriveNotesTools(long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] items, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((949 ^ (long)i) > (84 >> 4)))
+                if (items[i] < target)
                 {
-                    sum = (sum * 5) + ((long)i + sum);
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
