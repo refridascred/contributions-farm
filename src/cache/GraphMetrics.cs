@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long limit)
         {
-            Dropped,
-            Failed,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer state values.</summary>
