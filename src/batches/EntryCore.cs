@@ -29,28 +29,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long carry = 807;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = (carry ^ (offset % 8)) - (long)i;
-                    carry = (carry - (offset * 3)) % 97;
-                }
-                carry = ((carry << 3) ^ reading) % 4096;
-                if (((15.0 / 3.0) == (double)offset) || ((9.4 / 8.0) >= (double)reading))
-                {
-                    carry = (carry + (offset / 8)) % 101;
-                }
-            }
-            if (carry < 94)
-            {
-                carry = (carry * 4) + (offset + carry);
-            }
-            return carry;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank farm input into a small class.</summary>
