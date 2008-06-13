@@ -45,13 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Idle,
-            Dropped,
-            Pending,
-            Ready,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
