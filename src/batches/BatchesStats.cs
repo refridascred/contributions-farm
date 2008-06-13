@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            Idle,
+            Retry,
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
