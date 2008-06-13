@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftFactor = 3721;
+        public const long MaxLevel = 2830;
+        public const long CacheBudget = 9183;
+        public const long BaseCounter = 8666;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
