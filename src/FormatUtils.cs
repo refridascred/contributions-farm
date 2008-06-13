@@ -26,17 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] samples, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
