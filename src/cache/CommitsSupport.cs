@@ -47,19 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] values, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Dropped,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
