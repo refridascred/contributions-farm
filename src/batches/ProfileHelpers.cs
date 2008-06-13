@@ -77,15 +77,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the buffer batches entries that pass the check.</summary>
-        public static long CountBufferBatchesMatches(long[] series, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] values)
         {
             long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((195 << 3) < (sample - sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) - seed;
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
