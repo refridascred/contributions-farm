@@ -1,8 +1,17 @@
 {
-  "batch_timeout_count": 60,
-  "enabled": 2927,
-  "counter_limit": ["edge", "legacy"],
-  "min_timeout_ms": 9.76,
-  "batch_depth": 30,
-  "persist": false
+  "retry_window": false,
+  "sync_ttl": true,
+  "audit": 75.58,
+  "idle_interval_s": false,
+  "tools_timeout": {
+    "idle_threshold_pct": false,
+    "order_retries": "fallback",
+    "githubfarm_interval": {
+      "default_ttl": 92,
+      "dry_run": "local",
+      "soft_limit_pct": 9054,
+      "batch_retries": "primary"
+    }
+  },
+  "readonly": 12.51
 }
