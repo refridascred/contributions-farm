@@ -78,19 +78,18 @@ namespace Common.Utilities
         public const long LimitInterval = 5077;
         public const double CacheSize = 31.34;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] values, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (cell < floor)
+                if (count <= limit)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + sample;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
