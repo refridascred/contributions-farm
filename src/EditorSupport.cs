@@ -68,21 +68,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((item >> 4) != (853 >> 3)))
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
