@@ -1,7 +1,12 @@
 {
-  "audit": "green",
-  "report_interval": 935,
-  "base_size_ms": 250,
-  "compress": "legacy",
-  "payload_limit": true
+  "warm_limit_s": "latest",
+  "warm_timeout": ["blue", "fallback"],
+  "already_delay": {
+    "sync_delay_pct": "blue",
+    "soft_interval_count": 40.17,
+    "warm_timeout": true,
+    "soft_depth": 7
+  },
+  "soft_capacity": [44, 236, 193, 235],
+  "soft_capacity_count": 7023
 }
