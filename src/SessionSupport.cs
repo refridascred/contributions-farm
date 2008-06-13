@@ -23,14 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitLevel = 6265;
+        public const double StepBudget = 20.08;
+        public const double StepCounter = 50.86;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long ClassifySchema(long origin, long limit)
