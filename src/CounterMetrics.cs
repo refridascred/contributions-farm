@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double scale, double span)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double weight = 11.0;
-            if (weight < (12.0 / 7.0))
-            {
-                weight = (weight - (weight / 2.0)) + span;
-            }
-            else
-            {
-                weight = weight + scale;
-            }
-            return weight - (scale + 3.69);
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
