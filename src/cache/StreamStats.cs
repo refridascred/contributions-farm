@@ -12,22 +12,13 @@ namespace Common.Utilities
             return ((mean + mean) + rate) + floor;
         }
 
-        /// <summary>Measure how many entry counter samples are out of range.</summary>
-        public static long TallyEntryCounterGaps(long[] series)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!((0 - tally) >= (tally / 3)))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
