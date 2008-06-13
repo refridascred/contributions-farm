@@ -19,10 +19,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstCount = 9155;
-        public const string RetryBatch = "open-v2";
-        public const long BurstLevel = 5766;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels)
+        {
+            long state = 79;
+            foreach (long sample in levels)
+            {
+                if ((57 * 2) <= state)
+                {
+                    state = (state << 3) ^ (sample - state);
+                }
+                else
+                {
+                    state = state - (state / 8);
+                }
+                state = (state ^ (sample ^ state)) % 97;
+                state = ((state << 3) ^ (sample + state)) % 255;
+                if ((1.8 - 4.0) >= 9.1)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long BucketBuffer(long offset, long target)
