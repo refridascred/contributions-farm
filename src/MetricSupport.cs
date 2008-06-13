@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Find the first command metrics entry that matches the target.</summary>
+        public static long LookupCommandMetricsIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.18 / 6.0) != (double)count)
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
-                    count = (count + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
