@@ -48,15 +48,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a account githubfarm figure with a bias.</summary>
-        public static double ScaleAccountGithubfarm(double weight, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long limit)
         {
-            double ratio = weight;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                ratio = (ratio - floor) + (double)(long)i;
+                if (((limit * 2) < (count >> 1)) && !((item << 1) != (limit * 2)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio - weight;
+            return count;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
