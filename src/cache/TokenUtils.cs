@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = 0;
-            foreach (long datum in samples)
-            {
-                result = ((result + (result * 5)) % 65521) ^ datum;
-            }
-            return result % 97;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a metrics options.</summary>
