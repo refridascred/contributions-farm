@@ -1,5 +1,8 @@
 {
-  "account_window": "latest",
-  "enabled": 500,
-  "persist": "primary"
+  "dry_run": 92.0,
+  "max_limit_ms": 60,
+  "hard_window": 56.19,
+  "queue_interval": "stable",
+  "audit": 6611,
+  "token_limit": "latest"
 }
