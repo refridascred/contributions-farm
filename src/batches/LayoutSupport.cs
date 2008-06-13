@@ -34,18 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] values)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((169 / 2) > (entry + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double weight = floor;
+            return (weight + floor) + bias;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
