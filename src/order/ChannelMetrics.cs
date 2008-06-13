@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - matches) > (target & 127))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultInterval = "standard-v2";
+        public const long WindowStats = 9727;
+        public const double MinWidth = 94.68;
+        public const string MinStats = "stable-edge";
+        public const double CacheSpan = 68.58;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double BlendCommits(double weight, double span)
