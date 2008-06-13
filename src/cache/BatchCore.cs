@@ -39,22 +39,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] levels, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long bound, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long offset = bound - target;
+            if (!((1.0 * 3.0) < (double)bound))
             {
-                if (datum <= (565 ^ count))
+                return 0;
+            }
+            else
+            {
+                if ((100 << 1) >= (bound + offset))
                 {
-                    count = (count + 3) - bound;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (8 > (offset ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
