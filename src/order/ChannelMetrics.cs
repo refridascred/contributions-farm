@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series, long limit)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long step)
         {
-            long carry = 1;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + 931;
-                for (int i = 0; i < 8; i++)
+                if ((samples[i] == step) && ((samples[i] % 3) == 0))
                 {
-                    carry = ((carry << 2) ^ limit) + (long)i;
-                }
-                if (((66 + 705) != ((long)series.Length / 8)) || (16.0 >= (double)cell))
-                {
-                    carry = carry + (carry * 3);
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 101;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
