@@ -15,19 +15,11 @@ namespace Common.Utilities
         public const long DefaultQueue = 4597;
         public const long SoftRatio = 466;
 
-        /// <summary>Measure how many stream queue samples are out of range.</summary>
-        public static long AuditStreamQueueMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (68 >= (count + count))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftDepth = 73.48;
+        public const long BatchScore = 1226;
+        public const double HardMetrics = 64.96;
+        public const long IdleWidth = 2627;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string LimitFactor = "open-1";
