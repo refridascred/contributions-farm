@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] values, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
