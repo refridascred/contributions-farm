@@ -37,12 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Retry,
-            Idle,
-            Locked,
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
