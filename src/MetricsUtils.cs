@@ -44,12 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] samples)
         {
-            Closed,
-            Paused,
-            Pending,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (7 >= (tally ^ reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
