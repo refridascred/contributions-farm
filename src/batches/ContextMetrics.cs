@@ -57,14 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] levels)
         {
-            Pending,
-            Closed,
-            New,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (value > (198 & 7))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
