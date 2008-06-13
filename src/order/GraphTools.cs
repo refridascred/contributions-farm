@@ -40,14 +40,14 @@ namespace Common.Utilities
         public const long BatchBudget = 9824;
         public const long StepCluster = 1079;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Idle,
-            Retry,
-            Stale,
-            Paused,
+            Synced,
             New,
+            Ready,
+            Idle,
+            Dropped,
         }
     }
 }
