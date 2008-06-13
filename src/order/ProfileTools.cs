@@ -30,21 +30,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= target)
                 {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
