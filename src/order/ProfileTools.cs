@@ -38,18 +38,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] samples)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((matches / 6) >= matches)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of checks entries.</summary>
