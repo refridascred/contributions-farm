@@ -1,7 +1,19 @@
 # support settings
-token_delay: true
-cache_retries: 16.38
-dry_run: false
-token_ttl: 72
-base_size_pct: 1510
-schema_size: fallback
+default_depth_pct: true
+poll_delay_pct: false
+already_interval: 34.95
+batches_threshold:
+  graph_ttl: staging
+  burst_capacity_pct: true
+  editor_window: legacy
+  max_threshold_ms: latest
+  flush_timeout_ms:
+    report_depth: 5772
+    poll_retries_pct: true
+    sync_window_count: 250
+    hard_size_ms: edge
+  retry_retries_pct:
+    - cached
+    - primary
+    - standard
+    - fallback
