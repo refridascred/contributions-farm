@@ -28,15 +28,21 @@ namespace Common.Utilities
         public const double StepBudget = 20.08;
         public const double StepCounter = 50.86;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            long mark = 799;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark ^ mark) % 97) ^ cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
