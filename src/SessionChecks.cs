@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] data, long offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)tally != (3.3 + 5.14))
-                {
-                    tally = ((tally + 2) ^ sample) + offset;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Combine metric session values into a single score.</summary>
