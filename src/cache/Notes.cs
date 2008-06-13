@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] series)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!(((698 & 63) == (entry - hits)) && (7.4 >= (double)hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Done,
+            Paused,
+            Active,
         }
 
         /// <summary>Count filter stream pairs that satisfy a relation.</summary>
