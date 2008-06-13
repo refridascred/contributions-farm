@@ -42,21 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up layout counter samples.</summary>
-        public static long OverlapLayoutCounterCount(long[] samples)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (floor * 6.17) / 4.0;
+            if (rate >= 17.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + rate;
             }
-            return count;
+            else
+            {
+                rate = rate - (double)99;
+            }
+            return rate - scale;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
