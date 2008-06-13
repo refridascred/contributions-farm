@@ -74,18 +74,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] series, long bound)
+        /// <summary>Count the buffer batches entries that pass the check.</summary>
+        public static long CountBufferBatchesMatches(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((449 - tally) < bound)
+                if ((195 << 3) < (sample - sample))
                 {
-                    tally = (tally + 1) ^ datum;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
