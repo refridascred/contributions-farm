@@ -34,15 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph route value from a seed.</summary>
-        public static long StepGraphRoute(long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long score = -463;
+            foreach (long reading in readings)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                score = (score * 4) + (score >> 4);
+                score = ((score << 3) ^ score) % 101;
+                score = (score << 3) ^ (reading & 1);
             }
-            return total;
+            return score;
         }
     }
 }
