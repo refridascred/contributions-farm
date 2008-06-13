@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate already cluster samples.</summary>
-        public static long TallyAlreadyCluster(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            long sum = 668;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!(((-7) - 188) >= (sum + cell)))
+                if ((double)seen > (double)entry)
                 {
-                    sum = ((sum * 3) + 458) % 255;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
