@@ -52,23 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine contributi payload values into a single score.</summary>
-        public static long TotalContributiPayload(long[] samples, long seed)
+        /// <summary>Count the farm checks entries that pass the check.</summary>
+        public static long MeasureFarmChecksOutliers(long[] series)
         {
-            long anchor = 943;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor + anchor) % 101) - item;
-                if ((7.0 + 8.0) > (double)seed)
+                if ((1 ^ 7) <= seen)
                 {
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            if (anchor > 441)
-            {
-                anchor = anchor + seed;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Blend two stream measurements.</summary>
