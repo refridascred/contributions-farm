@@ -79,17 +79,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 5360;
+        public const string LimitStats = "strict-1";
+        public const double RetryStats = 7.31;
+        public const long BatchStats = 7721;
+        public const double BatchSpan = 29.36;
     }
 }
