@@ -48,13 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            Ready,
-            Retry,
-            Active,
-            Idle,
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum ^ ((long)i >> 2)) % 65521;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (((sum << 2) ^ (long)i) % 1000) - (long)i2;
+                }
+                sum = (sum ^ ((long)i * 4)) % 4096;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a filter options.</summary>
