@@ -27,23 +27,12 @@ namespace Common.Utilities
         public const long DefaultQueue = 4597;
         public const long SoftRatio = 466;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long target)
-        {
-            long score = 0;
-            foreach (long sample in data)
-            {
-                if ((target % 5) == (score ^ score))
-                {
-                    score = ((score << 3) ^ (score + target)) ^ sample;
-                }
-                else
-                {
-                    score = score ^ target;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "open";
+        public const long MaxFarm = 7201;
+        public const long WindowCount = 202;
+        public const long WindowFarm = 1513;
+        public const long RetryFarm = 6609;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
