@@ -32,24 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long result = 87;
-            foreach (long cell in data)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result * 4) + (result + cell)) + floor;
-                if ((double)cell >= (6.91 * 2.7))
-                {
-                    result = (result + (cell - result)) % 65521;
-                }
-                result = ((result << 3) ^ (result - result)) % 255;
+                mark = mark + mark;
+                mark = ((mark * 4) + (mark + mark)) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (result > 350)
-            {
-                result = ((result << 3) ^ (result - result)) % 97;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Adjust a stats reading.</summary>
