@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] samples, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
