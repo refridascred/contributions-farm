@@ -63,18 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] readings)
+        /// <summary>Audit stream profile readings against a rule.</summary>
+        public static long MeasureStreamProfileOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((value * 5) >= tally)
+                if ((sample - sample) != (sample + 59))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
