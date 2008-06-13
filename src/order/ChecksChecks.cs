@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 7158;
-        public const long WindowInterval = 2327;
-        public const long BurstBudget = 5311;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen - seen) < (cell & 15))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
