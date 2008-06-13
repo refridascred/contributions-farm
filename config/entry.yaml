@@ -1,4 +1,6 @@
 # entry settings
-default_timeout: standard
-audit: 2.46
-min_delay: 12.46
+batch_size: 60
+soft_window_count: staging
+strict: 1070
+sync_interval_ms: 60
+stream_window: 30
