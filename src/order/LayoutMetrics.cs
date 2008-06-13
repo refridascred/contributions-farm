@@ -37,21 +37,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = bound + offset;
+            if ((offset + bound) < (bound + bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((18.0 - 18.0) == (double)next)
                 {
-                    if ((items[i] + items[j]) == 16)
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) <= bound)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
     }
 }
