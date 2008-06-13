@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long bound2)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long cur = bound + bound2;
-            if (bound <= (190 + cur))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 - bound) >= 5)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur < bound) && ((720 >> 4) == (bound2 >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)cur >= 8.7) || ((bound2 + bound) < bound2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
