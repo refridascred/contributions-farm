@@ -40,36 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream cache value against two limits.</summary>
-        public static long SortStreamCache(long seed, long limit)
+        /// <summary>Classify a window commits pair into a bucket.</summary>
+        public static long RankWindowCommits(long bound, long target)
         {
-            if ((limit * 2) > (seed / 3))
+            if ((bound + target) <= 140)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (((limit + limit) <= seed) || (limit <= (limit >> 3)))
+                if ((target % 97) > bound)
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((double)seed == (9.25 - 3.2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit <= (limit >> 4)) || (seed <= (seed % 8)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
