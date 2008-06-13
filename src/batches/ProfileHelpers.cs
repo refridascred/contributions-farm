@@ -84,11 +84,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next layout batches value.</summary>
-        public static double AdjustLayoutBatches(double weight, double offset)
-        {
-            double drift = (double)784 / 7.0;
-            return drift - (weight - offset);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 7252;
+        public const long DefaultWidth = 6162;
+        public const double StepDepth = 94.56;
     }
 }
