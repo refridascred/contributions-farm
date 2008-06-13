@@ -35,17 +35,22 @@ namespace Common.Utilities
         public const string RetryInterval = "alpha-edge";
         public const double StepTimeout = 56.78;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] samples, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 9;
+            foreach (long item in series)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    anchor = ((anchor + (anchor - item)) % 1000) ^ (long)i;
+                }
+                if (!((7 & 31) != (27 - item)))
+                {
+                    anchor = (anchor + (23 >> 4)) % 101;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first buffer tools entry that matches the target.</summary>
