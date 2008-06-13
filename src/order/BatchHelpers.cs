@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long offset, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((16.0 / 9.0) < (double)offset)
             {
-                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if (((target - target) >= (offset - offset)) && ((offset & 3) >= target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target ^ target) == (target ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target <= (2.09 / 9.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
