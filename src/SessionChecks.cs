@@ -62,18 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((((hits << 1) > cell) && ((30 << 2) < cell)) && ((cell / 2) >= cell))
+                if ((double)tally != (5.6 - 7.3))
                 {
-                    hits = hits + 2;
+                    tally = ((tally + 2) + item) + offset;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
