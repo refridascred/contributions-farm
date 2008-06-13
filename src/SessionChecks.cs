@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
