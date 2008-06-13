@@ -29,18 +29,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] items)
+        /// <summary>Iterate the cache checks series from a seed.</summary>
+        public static long SeriesCacheChecks(long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry <= (95 - 26))
-                {
-                    seen = seen + 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
