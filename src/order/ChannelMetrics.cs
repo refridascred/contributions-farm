@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryDepth = 88.67;
+        public const double BatchBudget = 65.85;
+        public const long CacheRatio = 7420;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long RollStats(long limit)
