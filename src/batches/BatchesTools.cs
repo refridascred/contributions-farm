@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            double ratio = floor;
-            if (ratio > (double)307)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (1.18 + ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (double)872;
+            return hits;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
