@@ -47,17 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] levels, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                long diff = (long)i;
-                anchor = anchor + diff;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((sample + 93) > (seen >> 3))
+                {
+                    seen = (seen + 1) - bound;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
