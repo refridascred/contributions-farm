@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long floor, long step)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if (step <= (floor ^ step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.0 / 3.0) > (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step >= (7.0 - 4.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
