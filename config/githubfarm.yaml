@@ -1,8 +1,4 @@
 # githubfarm settings
-soft_capacity_s:
-  - local
-  - open
-  - latest
-min_ratio: legacy
-burst_delay: 500
-hard_size_ms: 250
+persist: staging
+batch_retries_pct: false
+poll_threshold_pct: 250
