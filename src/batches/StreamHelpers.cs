@@ -64,25 +64,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score * 2) + (score / 4);
-                if (!((score ^ (-1)) >= step))
-                {
-                    score = (score + (step * 4)) % 4096;
-                }
-                if (score <= (step & 255))
-                {
-                    score = score ^ step;
-                    score = (score + ((long)i & 3)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                carry = ((carry << 2) ^ (32 << 2)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the report status values.</summary>
