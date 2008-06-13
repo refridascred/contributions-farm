@@ -42,22 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] series, long step)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mix = 2;
-            foreach (long datum in series)
-            {
-                if (((mix & 63) != (step << 2)) && (((long)series.Length - datum) <= (mix * 4)))
-                {
-                    mix = (mix - (mix * 4)) % 65521;
-                }
-            }
-            if (mix < 461)
-            {
-                mix = mix ^ (mix - step);
-            }
-            return mix % 65521;
+            Idle,
+            Ready,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
