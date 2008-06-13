@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long seed, long seed2)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            long slot = seed + seed2;
+            if ((slot + seed) < (seed + seed))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (anchor ^ (limit ^ anchor)) - (long)i2;
-                }
-                anchor = anchor + (limit % 2);
-                if (limit <= (limit - limit))
-                {
-                    anchor = (anchor ^ (limit + 609)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (((seed & 15) > (seed2 % 7)) || ((5 % 8) < seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >> 5) >= (seed2 / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
