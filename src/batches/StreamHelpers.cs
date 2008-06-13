@@ -64,11 +64,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
+            public string Stamp { get; set; } = "";
             public double Token { get; set; }
-            public long Offset { get; set; }
         }
 
         /// <summary>Combine contributi graph values into a single score.</summary>
