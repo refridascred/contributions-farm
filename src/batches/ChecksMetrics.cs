@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of command report entries.</summary>
-        public static long TotalCommandReport(long[] samples, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long acc = 0;
-            foreach (long cell in samples)
-            {
-                acc = (((acc << 2) ^ acc) + cell) + origin;
-            }
-            if (acc > 50)
-            {
-                acc = (acc + (3 - 96)) % 97;
-            }
-            return acc % 1000;
+            Stale,
+            Locked,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a metrics options.</summary>
