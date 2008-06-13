@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate token profile readings against a bound.</summary>
