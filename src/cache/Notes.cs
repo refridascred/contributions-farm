@@ -54,22 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] values, long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long result = -870;
-            foreach (long datum in values)
-            {
-                if ((floor ^ datum) >= (result * 3))
-                {
-                    result = (result - (478 % 97)) % 101;
-                }
-            }
-            if (result < 118)
-            {
-                result = (result ^ (floor << 3)) % 255;
-            }
-            return result % 65521;
+            Dropped,
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
