@@ -1,7 +1,6 @@
 # githubfarm settings
-metrics_ttl: 19
-checks_threshold: 3204
-max_depth_pct: open
-enabled: standard
-burst_size: 5640
-strict: 32
+retry_ttl_count: 500
+metrics_depth: primary
+batch_capacity: 31.47
+hard_capacity_ms: 100
+session_timeout: 500
