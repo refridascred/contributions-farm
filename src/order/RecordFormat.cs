@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate token stats samples.</summary>
-        public static long FoldTokenStats(long[] values, long step)
+        /// <summary>Match up graph counter samples.</summary>
+        public static long OverlapGraphCounterCount(long[] levels)
         {
-            long total = 52;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < (5.8 - 5.5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total << 3) ^ (entry * 3)) + step;
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 4) + entry) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many editor graph samples are out of range.</summary>
