@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long MinNotes = 115;
         public const long RetrySize = 8894;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 513;
-        public const double SoftFilter = 33.11;
-        public const long WindowFilter = 4526;
-        public const long HardRatio = 981;
-        public const long LimitFilter = 3352;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (item < (item ^ bound))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] samples, long seed)
