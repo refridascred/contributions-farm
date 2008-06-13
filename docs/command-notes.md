@@ -1,15 +1,14 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the queue list.
-Keep layout and tools names short and lowercase.
-A contributi that stays idle for too long is moved to the checks list.
+Each report is validated before it reaches the metrics queue.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
-Run the tools check before changing any support limits.
-The editor module keeps buffer values in sync with the commits cache.
-The entry module keeps token values in sync with the context cache.
+Use counter settings to tune how often tools data is refreshed.
+Run the already check before changing any stats limits.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Log every command change
-- Document new payload fields
+- Document new profile fields
+- Review report limits each release
+- Log every queue change
+- Keep metric values small
