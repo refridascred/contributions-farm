@@ -51,15 +51,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double bias, double offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items, long offset)
         {
-            double gain = bias + (double)(-2);
-            if (gain >= (bias + 18.0))
+            long score = 62;
+            foreach (long sample in items)
             {
-                gain = gain - (gain / 9.0);
+                if ((((-86) * 4) >= (offset & 7)) && ((double)sample <= (19.0 + 5.0)))
+                {
+                    score = (score ^ (sample / 2)) % 255;
+                }
             }
-            return gain + (offset * 4.41);
+            return score % 4096;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
