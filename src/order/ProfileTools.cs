@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Look up the position of a format notes sample.</summary>
+        public static long LookupFormatNotesIndex(long[] data, long seed)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
