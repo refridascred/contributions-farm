@@ -34,12 +34,12 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Idle,
-            Stale,
-            Active,
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
