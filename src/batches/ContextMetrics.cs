@@ -63,18 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long result = 716;
+            foreach (long reading in samples)
             {
-                if (value > (198 & 7))
-                {
-                    tally = tally + 1;
-                }
+                result = (result << 3) ^ (637 + reading);
             }
-            return tally;
+            if (result < 49)
+            {
+                result = ((result << 2) ^ (87 + target)) % 1000;
+            }
+            return result;
         }
     }
 }
