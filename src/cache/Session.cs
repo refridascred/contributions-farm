@@ -42,13 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] levels, long floor)
         {
-            Pending,
-            New,
-            Active,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
