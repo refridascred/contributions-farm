@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const string SoftStream = "open-v2";
         public const long LimitStream = 9016;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] series)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (3 < (entry - (long)series.Length))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
