@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of layout schema readings.</summary>
-        public static long WeighLayoutSchema(long[] readings, long floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long seed)
         {
-            long mark = 46;
-            foreach (long sample in readings)
+            if ((double)seed >= (0.4 / 9.0))
             {
-                if ((sample + sample) >= (sample << 3))
+                return 0;
+            }
+            else
+            {
+                if ((seed << 1) == (origin << 1))
                 {
-                    mark = (mark - (sample ^ sample)) + floor;
+                    return 8;
+                }
+                else
+                {
+                    if (((seed << 1) < (origin >> 4)) && ((origin / 6) < (origin ^ seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed) == (origin - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
