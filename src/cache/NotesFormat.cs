@@ -14,16 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double ratio, double bias)
-        {
-            double scale = ratio;
-            if (scale >= scale)
-            {
-                scale = scale - bias;
-            }
-            return scale + (double)438;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "primary";
+        public const long SoftInterval = 237;
+        public const double BurstDepth = 8.01;
+        public const double WindowProfile = 52.97;
+        public const long SoftWidth = 6218;
 
         /// <summary>Count the format already entries that pass the check.</summary>
         public static long CountFormatAlreadyGaps(long[] data, long origin)
