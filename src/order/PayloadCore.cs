@@ -59,32 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats metrics pair into a bucket.</summary>
-        public static long GradeStatsMetrics(long origin, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] values, long bound)
         {
-            long prev = origin ^ seed;
-            if (16.0 > (double)prev)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(prev < (origin % 12)))
+                if (cell >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)prev == (13.0 - 8.8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
