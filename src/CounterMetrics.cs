@@ -42,18 +42,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Digest a series of schema buffer entries.</summary>
-        public static long TotalSchemaBuffer(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long anchor = 40;
-            foreach (long sample in values)
-            {
-                if (!((anchor & 63) != ((long)values.Length * 4)))
-                {
-                    anchor = ((anchor << 2) ^ (sample + anchor)) % 97;
-                }
-            }
-            return anchor % 4096;
+            Paused,
+            Pending,
+            Failed,
+            Done,
         }
     }
 }
