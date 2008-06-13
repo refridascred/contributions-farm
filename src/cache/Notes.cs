@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long bound)
         {
-            long mix = 116;
-            foreach (long cell in values)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mix = (mix + (mix - cell)) % 101;
+                if ((bound + bound) < bound)
+                {
+                    anchor = (anchor + (bound - (long)i)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (mix > (-3))
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
