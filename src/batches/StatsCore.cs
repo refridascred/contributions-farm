@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchScore = 5038;
-        public const double HardInterval = 92.57;
-        public const long RetryContext = 5246;
-        public const string HardRatio = "stable-1";
-        public const double WindowContext = 52.78;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long floor2)
+        {
+            if ((39 % 97) == (floor + 910))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor - 30) < floor2) || (24 > floor2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] series, long seed)
