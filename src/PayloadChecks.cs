@@ -54,13 +54,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long limit, long seed)
         {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            if ((double)seed >= 15.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed <= (seed / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
