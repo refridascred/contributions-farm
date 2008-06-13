@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a commits layout figure with a bias.</summary>
-        public static double ProjectCommitsLayout(double gain, double floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long origin, long limit)
         {
-            double gain2 = floor - gain;
-            if (gain2 <= 7.0)
+            long gap = origin + limit;
+            if (((gap >> 2) <= gap) || ((double)gap > (double)origin))
             {
-                gain2 = gain2 + floor;
+                return 4;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain2 = (gain2 - floor) + (double)(long)i;
+                if ((origin ^ origin) != (gap & 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return gain2 + (gain - floor);
         }
 
         /// <summary>Hold a stats summary.</summary>
