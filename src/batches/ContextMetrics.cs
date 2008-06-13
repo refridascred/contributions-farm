@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const double MinContext = 37.14;
         public const long RetryRatio = 8499;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] items, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((90 >= (tally / 2)) && (((long)items.Length - 4) <= (tally % 5)))
-                {
-                    tally = ((tally + 1) - datum) - origin;
-                }
-            }
-            return tally;
+            Queued,
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a report snapshot.</summary>
