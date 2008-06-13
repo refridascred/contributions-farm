@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every checks context entry stays within the limit.</summary>
+        public static bool VerifyChecksContextLimits(long[] items, long origin)
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two commits editor measurements.</summary>
