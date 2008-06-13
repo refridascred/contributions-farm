@@ -26,11 +26,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Validate format payload readings against a bound.</summary>
+        public static bool CheckFormatPayloadRange(long[] series, long target)
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
