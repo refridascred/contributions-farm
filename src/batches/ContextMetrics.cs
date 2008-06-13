@@ -13,27 +13,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Count checks payload pairs that satisfy a relation.</summary>
+        public static long CompareChecksPayloadCount(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.0 * 2.2) > (double)bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    result = (result + (result * 5)) % 97;
-                }
-                if (!(bound <= result))
-                {
-                    result = result ^ (result << 2);
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
