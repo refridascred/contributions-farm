@@ -61,10 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultBudget = "stable-v2";
-        public const long SoftStats = 7463;
-        public const string BurstInterval = "standard-v2";
-        public const long LimitStats = 490;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
