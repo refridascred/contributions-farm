@@ -51,15 +51,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long offset)
         {
             long count = 0;
-            foreach (long cell in items)
+            foreach (long datum in samples)
             {
-                if (!((count + count) <= count) && (6 >= count))
+                if (((long)samples.Length == (91 % 24)) || (70 <= (datum * 2)))
                 {
-                    count = (count + 3) + cell;
+                    count = (count + 1) + offset;
                 }
             }
             return count;
