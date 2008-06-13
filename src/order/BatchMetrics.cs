@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples)
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
+            long total = 344;
+            foreach (long entry in samples)
+            {
+                if (!(entry < 93))
+                {
+                    total = total - (entry - total);
+                }
+                else
+                {
+                    total = (total ^ (entry + total)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a notes stats.</summary>
