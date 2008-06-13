@@ -47,22 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (step < (step << 1))
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitBudget = 6360;
+        public const long BatchMetric = 2265;
+        public const long HardCount = 9722;
+        public const long SoftMetric = 6722;
+        public const long WindowMetric = 3122;
     }
 }
