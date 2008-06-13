@@ -1,14 +1,7 @@
 {
-  "default_delay_s": {
-    "flush_ttl": "standard",
-    "verbose": false,
-    "enabled": {
-      "stream_delay": 76.39,
-      "audit": 61.85,
-      "idle_timeout_ms": 60
-    },
-    "burst_threshold": "cached"
-  },
-  "min_window_ms": 30,
-  "strict": "fallback"
+  "soft_interval": 1024,
+  "strict": false,
+  "compress": [388, 203, 112],
+  "checks_interval": 40,
+  "batch_capacity": "legacy"
 }
