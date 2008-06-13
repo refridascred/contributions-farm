@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long StepSupport = 9619;
         public const long SoftScore = 7517;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheSpan = 6137;
-        public const long BaseInterval = 6818;
-        public const double IdleContributi = 22.79;
-        public const double SoftContributi = 41.71;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Draft,
+            Active,
+            Queued,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 9875;
