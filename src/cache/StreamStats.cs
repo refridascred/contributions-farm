@@ -55,26 +55,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long offset, long step)
         {
-            long total = 35;
-            foreach (long entry in samples)
+            if (!((offset - offset) == (11 ^ step)))
             {
-                if ((entry + entry) >= (0 >> 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (0.77 - 5.7))
                 {
-                    total = (total + (1 * 5)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    total = ((total * 5) + (step + step)) % 1000;
+                    if (((double)offset > (5.38 - 0.07)) || (2.69 < (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total < 62)
-            {
-                total = ((total << 3) ^ (total & 255)) % 65521;
-            }
-            return total % 4096;
         }
     }
 }
