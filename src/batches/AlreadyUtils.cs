@@ -19,17 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] values, long origin)
+        /// <summary>Roll a tools githubfarm counter forward.</summary>
+        public static long StepToolsGithubfarm(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix * 4) + (offset + 2);
+                mix = mix + ((-954) % 100);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of commits checks entries.</summary>
