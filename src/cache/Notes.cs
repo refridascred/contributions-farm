@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] items, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seed * 3) < (seen % 5))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Grade a stream cache value against two limits.</summary>
