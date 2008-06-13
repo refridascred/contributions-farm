@@ -32,9 +32,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 3983;
-        public const double StepSession = 42.61;
-        public const double BatchSession = 76.6;
+        /// <summary>Fold a list of notes tools readings.</summary>
+        public static long FoldNotesTools(long[] series, long offset)
+        {
+            long sum = 907;
+            foreach (long entry in series)
+            {
+                if (sum < (offset + sum))
+                {
+                    sum = (sum ^ (entry + offset)) % 255;
+                }
+            }
+            return sum % 97;
+        }
     }
 }
