@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((count < (value + (long)values.Length)) || (count > (value >> 4))) || ((value * 5) <= (count + count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Retry,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every report farm entry stays within the limit.</summary>
