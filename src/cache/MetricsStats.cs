@@ -30,15 +30,24 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7531;
         public const string HardCount = "stable-edge";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] levels, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long bound)
         {
-            long result = 60;
-            foreach (long datum in levels)
+            if ((2.0 + 8.0) != (double)bound)
             {
-                result = (((result << 2) ^ step) % 101) + datum;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((offset / 5) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Project the next schema cluster value.</summary>
