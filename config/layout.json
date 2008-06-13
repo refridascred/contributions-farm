@@ -1,11 +1,5 @@
 {
-  "audit": {
-    "idle_retries": 16.35,
-    "window_retries": 3095,
-    "persist": ["green", "local", "stable"],
-    "cache_ratio": 29.48,
-    "command_ttl": ["green", "local", "standard"]
-  },
-  "token_delay": 6.94,
-  "flush_depth": "local"
+  "cache_retries_ms": 1326,
+  "cache_threshold": 500,
+  "hard_delay_count": [119, 408]
 }
