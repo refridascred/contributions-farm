@@ -1,8 +1,5 @@
 {
-  "persist": "staging",
-  "retry_delay": ["blue", "local"],
-  "verbose": ["eu-west", "legacy", "eu-west"],
-  "default_retries_ms": 5008,
-  "idle_capacity": "cached",
-  "readonly": 500
+  "account_window": "latest",
+  "enabled": 500,
+  "persist": "primary"
 }
