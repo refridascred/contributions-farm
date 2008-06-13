@@ -1,5 +1,13 @@
 {
-  "min_size_ms": "eu-west",
-  "dry_run": [58, 387, 421],
-  "readonly": "edge"
+  "max_delay": "strict",
+  "cache_window": {
+    "max_depth_ms": "latest",
+    "retry_capacity_s": "primary",
+    "cache_retries_pct": 100,
+    "persist": 1024,
+    "base_ttl_pct": 427,
+    "notes_interval": 500
+  },
+  "strict": false,
+  "context_threshold": 69.55
 }
