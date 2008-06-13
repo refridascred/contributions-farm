@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            if ((floor + target) >= (target + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target < (floor / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
