@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(((long)i + limit) > (anchor & 31)))
-                {
-                    anchor = anchor - anchor;
-                }
-                if ((96 << 2) > (limit ^ anchor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + limit)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
