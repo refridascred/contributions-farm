@@ -12,19 +12,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm filter entries.</summary>
-        public static long ScoreGithubfarmFilter(long[] items)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            long mix = -6;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 3) ^ (cell % 64)) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix < 49)
-            {
-                mix = (mix ^ (mix * 3)) % 101;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
