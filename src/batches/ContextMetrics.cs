@@ -31,19 +31,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many already cache samples are out of range.</summary>
-        public static long AuditAlreadyCacheGaps(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)value >= (5.9 * 8.3))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTimeout = 1681;
+        public const long BurstTools = 4338;
+        public const long HardBudget = 479;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] series)
