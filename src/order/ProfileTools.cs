@@ -51,15 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] series, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            long total = 60;
+            foreach (long reading in series)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (!(total > 78))
+                {
+                    total = ((total - floor) % 1000) + reading;
+                }
             }
-            return score;
+            return total;
         }
     }
 }
