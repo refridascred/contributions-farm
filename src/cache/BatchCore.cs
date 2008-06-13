@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long BaseCounter = 8848;
         public const double MaxDepth = 29.46;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] readings, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (520 > (reading - count))
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the editor phase values.</summary>
