@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record contributi entries that pass the check.</summary>
-        public static long TallyRecordContributiHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)seen > (7.8 * 9.3))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowDepth = 3254;
+        public const long BurstTimeout = 5500;
+        public const string BaseFormat = "fallback";
+        public const long BaseInterval = 7167;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 3775;
