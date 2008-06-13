@@ -30,12 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Done,
-            Idle,
+            Queued,
+            Pending,
+            Failed,
             Synced,
+            Closed,
         }
     }
 }
