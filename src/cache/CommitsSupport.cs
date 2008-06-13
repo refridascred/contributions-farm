@@ -58,21 +58,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of editor format readings.</summary>
-        public static long OverlapEditorFormatCount(long[] samples)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 0)
+                    if ((values[i] + values[j]) != 15)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
