@@ -18,17 +18,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = (mark + mark) % 1000;
-                mark = mark - (floor & 3);
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Synced,
+            New,
+            Retry,
+            Queued,
+            Closed,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
