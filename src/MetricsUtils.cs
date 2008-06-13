@@ -58,14 +58,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next filter command value.</summary>
+        public static double ProjectFilterCommand(double scale, double bias)
         {
-            Pending,
-            Paused,
-            Stale,
-            Synced,
-            Active,
+            double ratio = (2.71 + scale) - 14.0;
+            if (ratio > (double)96)
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (ratio - 10.0)) + (double)(long)i;
+            }
+            return ratio + 7.98;
         }
 
         /// <summary>Define account limits and defaults.</summary>
