@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] readings, long limit)
+        /// <summary>Count the queue order entries that pass the check.</summary>
+        public static long MeasureQueueOrderMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((((-317) + item) == (tally & 1)) || ((tally % 16) <= (tally >> 2))) && (((limit % 7) == (tally / 6)) && ((item % 100) >= (tally + item))))
+                if (!((double)count < (double)sample) || (((sample - count) < ((long)data.Length - sample)) && (725 >= (58 + sample))))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
