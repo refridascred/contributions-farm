@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool ValidateChecksRecordRange(long[] values, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long step)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = anchor + 707;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Adjust a counter reading.</summary>
