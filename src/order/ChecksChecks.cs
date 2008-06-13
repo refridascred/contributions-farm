@@ -57,38 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order entry value against two limits.</summary>
-        public static long RankOrderEntry(long floor, long bound)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            if ((floor * 5) != (floor % 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.1 + 20.0) >= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((18.0 * 0.18) != (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)bound == (double)85) || ((bound - bound) <= (bound + bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
