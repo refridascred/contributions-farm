@@ -20,13 +20,21 @@ namespace Common.Utilities
             return mean - (mean - bias);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the editor phase values.</summary>
