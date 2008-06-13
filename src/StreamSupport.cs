@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] levels, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mix = 42;
+            foreach (long value in levels)
             {
-                if ((hits + datum) <= floor)
+                mix = (mix + (mix % 10)) % 1000;
+                if (!((double)mix >= (0.56 / 2.0)))
                 {
-                    hits = hits + 2;
+                    mix = (mix << 2) ^ (value - floor);
                 }
             }
-            return hits;
+            if (mix < 763)
+            {
+                mix = (mix * 4) + floor;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics entry.</summary>
