@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long StepSupport = 9619;
         public const long SoftScore = 7517;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Draft,
-            Active,
-            Queued,
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
