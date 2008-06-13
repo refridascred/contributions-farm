@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Measure how many token session samples are out of range.</summary>
+        public static long AuditTokenSessionGaps(long[] levels, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)(-485) != (double)value)
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
