@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardDepth = "legacy-v2";
-        public const double SoftChecks = 86.95;
-        public const double DefaultLevel = 14.7;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long step, long origin)
