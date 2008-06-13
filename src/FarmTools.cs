@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 3) + ((long)i - seed)) % 101;
-                if (!((14.0 + 0.6) <= (double)total))
-                {
-                    total = (total ^ seed) % 4096;
-                    total = (total * 4) + (seed >> 4);
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 3354;
+        public const double BatchReport = 6.19;
+        public const double MinLevel = 53.64;
+        public const double StepReport = 74.72;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] items, long offset)
