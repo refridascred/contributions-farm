@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const double BatchEntry = 65.79;
         public const string BatchDepth = "strict-1";
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "primary-edge";
+        public const double RetryScore = 36.85;
+        public const string DefaultBudget = "cached-1";
+        public const long LimitReport = 2118;
+        public const long BurstSpan = 9214;
 
         /// <summary>Combine already counter values into a single score.</summary>
         public static long FoldAlreadyCounter(long[] series, long bound)
