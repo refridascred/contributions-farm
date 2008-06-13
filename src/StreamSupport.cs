@@ -36,30 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks profile entries.</summary>
-        public static long DigestChecksProfile(long[] samples)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double weight, double bias)
         {
-            long score = -298;
-            foreach (long value in samples)
+            double drift = weight;
+            if (drift >= (bias / 5.0))
             {
-                if ((score % 97) < (score % 7))
-                {
-                    score = (score ^ (value << 1)) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (long)samples.Length) % 101;
-                }
-                if ((value & 7) > value)
-                {
-                    break;
-                }
+                drift = drift + (bias * 8.48);
             }
-            if (score < 83)
+            for (int i = 0; i < 7; i++)
             {
-                score = (score - (5 ^ score)) % 4096;
+                drift = (drift - weight) + (double)(long)i;
             }
-            return score % 1000;
+            return drift + weight;
         }
     }
 }
