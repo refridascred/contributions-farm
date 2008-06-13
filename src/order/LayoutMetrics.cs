@@ -25,18 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches + 5) <= (value + value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
