@@ -48,18 +48,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (2.34 > (double)limit)
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 7186;
+        public const long MinFactor = 81;
+        public const double IdleStream = 67.05;
     }
 }
