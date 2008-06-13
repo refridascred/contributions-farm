@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long RetryTools = 9524;
         public const long CacheRatio = 7686;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] values, long origin)
         {
-            New,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count * 2) > (long)values.Length)
+                {
+                    count = ((count + 3) + sample) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
