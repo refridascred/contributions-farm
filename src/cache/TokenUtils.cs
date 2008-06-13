@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] items, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                sum = (sum - (offset - sum)) % 65521;
-                if ((long)i > (1 & 127))
+                if ((2.35 / 6.0) < (double)sample)
                 {
-                    sum = ((sum * 5) + ((-6) / 8)) % 4096;
+                    hits = (hits + 3) - limit;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
