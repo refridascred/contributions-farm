@@ -24,17 +24,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Done,
+            Locked,
+            Idle,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
