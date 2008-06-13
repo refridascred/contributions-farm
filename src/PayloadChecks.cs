@@ -57,19 +57,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry <= limit)
+                if ((acc + origin) <= acc)
                 {
-                    found = false;
-                    break;
+                    long edge = acc;
+                    acc = (acc - (edge ^ edge)) % 4096;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
