@@ -89,31 +89,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long floor, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if ((double)floor <= 4.2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound >> 1) >= (floor % 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor != (8.3 * 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Draft,
         }
     }
 }
