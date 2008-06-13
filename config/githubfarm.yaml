@@ -1,8 +1,17 @@
 # githubfarm settings
-sync_timeout_count: 9642
-audit:
-  - 4
-  - 53
-  - 399
-warm_depth_pct: 41.26
-poll_retries: 37
+verbose: false
+strict: 500
+cache_interval:
+  order_ttl:
+    - primary
+    - green
+    - open
+  default_ratio_s: false
+  already_delay: edge
+  soft_ttl_s:
+    verbose: 76.2
+    format_capacity: true
+    min_limit: 3163
+  record_threshold: cached
+burst_limit_pct: stable
+soft_interval_pct: 100
