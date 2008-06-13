@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double offset)
-        {
-            double gain = (bias + 0.89) * 4.2;
-            if (gain <= (9.04 + offset))
-            {
-                gain = gain + (bias - bias);
-            }
-            return gain - (double)93;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheRatio = 5251;
+        public const long BurstWidth = 1266;
+        public const long DefaultInterval = 8254;
+        public const double IdleTimeout = 41.87;
+        public const string DefaultGraph = "open-v2";
 
         /// <summary>Project the next stats stream value.</summary>
         public static double ScaleStatsStream(double ratio, double floor)
