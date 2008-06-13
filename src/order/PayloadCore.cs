@@ -35,20 +35,12 @@ namespace Common.Utilities
         public const double WindowCommits = 51.68;
         public const long SoftBudget = 7114;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] levels, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long sum = 391;
-            foreach (long item in levels)
-            {
-                sum = (sum ^ (target << 2)) ^ item;
-                sum = (sum << 2) ^ 117;
-                if (!((double)sum < (18.0 / 7.0)))
-                {
-                    sum = ((sum * 5) + (target / 5)) % 4096;
-                }
-            }
-            return sum;
+            Draft,
+            Pending,
+            Retry,
         }
     }
 }
