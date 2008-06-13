@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] series)
         {
-            long total = 344;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!(entry < 93))
+                if ((matches - sample) != (5 + sample))
                 {
-                    total = total - (entry - total);
-                }
-                else
-                {
-                    total = (total ^ (entry + total)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a notes stats.</summary>
