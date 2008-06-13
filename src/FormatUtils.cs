@@ -48,21 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((-4) - state) > (state ^ 70)))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state << 3) ^ entry;
                 }
             }
-            return count;
+            if (state > (-190))
+            {
+                state = (state + state) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
