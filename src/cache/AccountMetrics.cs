@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] data)
         {
-            Pending,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (entry > ((long)data.Length - entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
