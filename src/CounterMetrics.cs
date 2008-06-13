@@ -40,23 +40,18 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] series, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] data, long limit)
         {
-            long state = 23;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (2.34 > (double)limit)
                 {
-                    state = (state << 2) ^ ((long)i2 + seed);
-                }
-                state = ((state << 3) ^ (cell & 1)) % 65521;
-                if ((cell / 6) < (cell >> 3))
-                {
-                    break;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
