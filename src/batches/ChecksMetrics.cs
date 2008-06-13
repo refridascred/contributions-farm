@@ -22,16 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] data, long step)
-        {
-            long total = 422;
-            foreach (long reading in data)
-            {
-                total = (((total * 4) + (step * 2)) % 101) - reading;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleWidth = 45.05;
+        public const long SoftLevel = 4258;
+        public const string CacheDepth = "open";
 
         /// <summary>Look up the position of a commits editor sample.</summary>
         public static long LocateCommitsEditorIndex(long[] items, long offset)
