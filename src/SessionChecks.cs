@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes schema samples.</summary>
-        public static long PairNotesSchemaCount(long[] data)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)tally != (3.3 + 5.14))
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 2) ^ sample) + offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine metric session values into a single score.</summary>
