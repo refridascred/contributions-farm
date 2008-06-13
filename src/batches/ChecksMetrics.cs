@@ -70,38 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long origin, long origin2)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            if ((2.0 / 9.0) >= (double)origin2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.94 + 20.0) > (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin2 - origin) >= (origin2 / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin2 ^ origin) != (origin2 - origin)) || ((7.1 - 8.0) != (double)origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Digest a series of tools graph entries.</summary>
