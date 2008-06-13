@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] data, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= limit)
+                if (samples[i] == limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
