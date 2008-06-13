@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double gain, double offset)
+        /// <summary>Adjust a filter githubfarm reading.</summary>
+        public static double ScaleFilterGithubfarm(double rate, double floor)
         {
-            double gain2 = (double)((-51) + 1);
-            if (gain2 >= (double)820)
-            {
-                gain2 = (gain2 + gain) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + gain) - (double)(long)i;
-            }
-            return gain2 + (gain * 0.26);
+            double mean = (double)(92 + 80);
+            return ((mean + mean) + rate) + floor;
         }
 
         /// <summary>Measure how many entry counter samples are out of range.</summary>
