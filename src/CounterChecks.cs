@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] samples, long step)
         {
-            long mark = 1;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                mark = ((mark ^ (step >> 4)) % 65521) ^ datum;
+                if ((sample & 3) == (95 * 5))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark > 129)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
