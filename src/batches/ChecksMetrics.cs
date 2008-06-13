@@ -20,10 +20,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleWidth = 45.05;
-        public const long SoftLevel = 4258;
-        public const string CacheDepth = "open";
+        /// <summary>Accumulate schema contributi samples.</summary>
+        public static long ScoreSchemaContributi(long[] readings, long bound)
+        {
+            long sum = 4;
+            foreach (long reading in readings)
+            {
+                if (((sum * 5) == ((-24) >> 2)) && ((long)readings.Length >= (59 * 2)))
+                {
+                    sum = (sum + (long)readings.Length) - reading;
+                }
+                sum = ((sum * 2) + (340 >> 1)) % 4096;
+                sum = sum ^ bound;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSchema = 8289;
