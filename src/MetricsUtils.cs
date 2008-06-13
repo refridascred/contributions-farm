@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Stale,
-            New,
-            Failed,
-            Locked,
-            Paused,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
