@@ -1,18 +1,5 @@
 # support settings
-retry_interval:
-  - standard
-  - cached
-  - legacy
-  - eu-west
-account_threshold: green
-entry_capacity: local
-warm_ttl_pct:
-  - stable
-  - stable
-  - fallback
-  - latest
-persist:
-  sync_depth: stable
-  audit: 5
-  max_size_pct: 94
-  sync_interval_s: edge
+min_limit_pct: 30
+sync_retries_ms: cached
+payload_interval: false
+soft_depth: edge
