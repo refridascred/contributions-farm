@@ -18,18 +18,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count + cell) >= count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheScore = 1051;
+        public const long BaseWidth = 1884;
+        public const string MinStats = "local-v2";
+        public const double DefaultFactor = 1.43;
+        public const long HardInterval = 9916;
     }
 }
