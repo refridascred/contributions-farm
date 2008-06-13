@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the queue order entries that pass the check.</summary>
-        public static long MeasureQueueOrderMatches(long[] data)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)count < (double)sample) || (((sample - count) < ((long)data.Length - sample)) && (725 >= (58 + sample))))
+                if (readings[i] == limit)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
