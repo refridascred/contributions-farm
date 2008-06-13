@@ -46,12 +46,22 @@ namespace Common.Utilities
         public const double RetryBatches = 57.4;
         public const long DefaultCount = 6969;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Combine cache tools values into a single score.</summary>
+        public static long WeighCacheTools(long[] values)
         {
-            Failed,
-            Draft,
-            Queued,
+            long state = 0;
+            foreach (long entry in values)
+            {
+                if ((entry < (entry + state)) || ((state + state) > state))
+                {
+                    state = (state * 5) + (entry % 2);
+                }
+            }
+            if (state < (-168))
+            {
+                state = state - (630 << 2);
+            }
+            return state % 1000;
         }
     }
 }
