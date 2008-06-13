@@ -40,9 +40,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "latest-edge";
-        public const long BurstCommits = 7519;
-        public const long MinInterval = 423;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long target2)
+        {
+            if (!((3.4 - 2.0) >= (double)target2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target2 >> 1) > (target ^ target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
