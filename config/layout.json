@@ -1,12 +1,8 @@
 {
-  "flush_retries": false,
-  "burst_depth": {
-    "payload_size": false,
-    "queue_ratio": ["legacy", "cached", "cached"],
-    "flush_delay_count": "fallback",
-    "audit": 54.98,
-    "warm_ttl_count": "eu-west"
-  },
-  "verbose": 6732,
-  "base_threshold_ms": 46.3
+  "burst_size_pct": "strict",
+  "report_capacity": "blue",
+  "context_ttl": "stable",
+  "githubfarm_delay": true,
+  "strict": "cached",
+  "soft_threshold": [416, 328]
 }
