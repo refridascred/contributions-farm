@@ -30,15 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long mix = 693;
-            foreach (long value in readings)
-            {
-                mix = mix - value;
-            }
-            return mix % 1000;
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Fold a list of notes tools readings.</summary>
