@@ -1,7 +1,17 @@
 {
-  "enabled": "blue",
-  "commits_timeout": 48.34,
-  "strict": 100,
-  "warm_window": [99, 306, 13, 466],
-  "batch_threshold_pct": [494, 184, 354]
+  "retry_depth_s": {
+    "readonly": "legacy",
+    "cache_threshold": 100,
+    "default_threshold": {
+      "batch_capacity_count": 2370,
+      "flush_limit": true,
+      "max_interval_ms": 19
+    },
+    "dry_run": "legacy"
+  },
+  "schema_depth": "edge",
+  "soft_capacity_count": 30,
+  "enabled": 59,
+  "cache_threshold_pct": 6982,
+  "sync_ratio_ms": 250
 }
