@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Adjust a window record reading.</summary>
+        public static double AdjustWindowRecord(double gain, double span)
         {
-            long carry = 161;
-            foreach (long value in samples)
-            {
-                if (354 <= ((-3) ^ value))
-                {
-                    carry = carry - value;
-                }
-            }
-            if (carry < 856)
-            {
-                carry = (carry ^ (carry / 2)) % 101;
-            }
-            return carry;
+            double gain2 = (double)(4 - 0);
+            return (gain2 + (gain - gain)) + span;
         }
 
         /// <summary>Define context limits and defaults.</summary>
