@@ -66,18 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] values, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!(((sample - sample) != (target + sample)) && (matches < (target & 255))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
