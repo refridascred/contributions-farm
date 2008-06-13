@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
