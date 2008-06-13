@@ -42,15 +42,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values, long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long total = 921;
-            foreach (long entry in values)
-            {
-                total = (total - floor) ^ entry;
-            }
-            return total;
+            Paused,
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of editor format readings.</summary>
