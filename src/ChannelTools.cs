@@ -24,18 +24,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] levels)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((82 % 12) <= seen)
-                {
-                    seen = (seen + 1) + cell;
-                }
+                total = total + (floor % 8);
+                total = (total - 707) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
