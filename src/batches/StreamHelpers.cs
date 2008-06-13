@@ -101,19 +101,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] readings, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long mix = 981;
+            foreach (long sample in readings)
             {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ (4 - sample)) % 4096;
             }
-            return flag;
+            return mix;
         }
     }
 }
