@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] levels, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 1;
+            foreach (long cell in series)
             {
-                if (levels[i] == seed)
+                carry = carry + 931;
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ limit) + (long)i;
+                }
+                if (((66 + 705) != ((long)series.Length / 8)) || (16.0 >= (double)cell))
+                {
+                    carry = carry + (carry * 3);
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
