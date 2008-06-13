@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] series, long seed)
         {
-            long mark = 921;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value - mark) >= mark)
+                if (series[i] < seed)
                 {
-                    mark = (mark ^ (mark + value)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mark > 45)
-            {
-                mark = ((mark * 5) + (mark >> 4)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
