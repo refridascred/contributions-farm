@@ -14,19 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long mark = 815;
+            foreach (long value in data)
             {
-                if (!((limit - (long)i) <= (long)i))
+                if (value > (mark - mark))
                 {
-                    break;
+                    mark = mark + value;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return mark % 1000;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
