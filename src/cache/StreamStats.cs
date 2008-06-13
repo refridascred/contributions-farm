@@ -48,39 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long target, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long bound)
         {
-            long step = target - seed;
-            if ((18.0 - 8.1) <= (double)step)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)step <= (9.0 - 1.6)) || ((step + step) > (target >> 2)))
+                if (entry <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.0 * 3.86) < (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed / 5) <= (target + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
