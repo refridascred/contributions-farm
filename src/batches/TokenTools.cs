@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ hits) < (hits << 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
