@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] readings, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != bound)
+                if (readings[i] == target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
