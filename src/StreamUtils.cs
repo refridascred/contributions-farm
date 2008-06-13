@@ -52,23 +52,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches route measurements.</summary>
-        public static double BlendBatchesRoute(double scale, double bias)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings, long origin)
         {
-            double rate = 18.0;
-            if (rate >= (scale * 3.31))
+            long sum = 390;
+            foreach (long cell in readings)
             {
-                rate = rate + (rate + scale);
+                if (sum >= (origin * 3))
+                {
+                    sum = ((sum << 3) ^ (origin << 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (cell ^ sum)) % 101;
+                }
             }
-            else
+            if (sum > 0)
             {
-                rate = rate - (bias + bias);
+                sum = ((sum << 2) ^ (983 % 97)) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - 1.8) - (double)(long)i;
-            }
-            return rate - 1.5;
+            return sum;
         }
 
         /// <summary>Locate a command reading by value.</summary>
