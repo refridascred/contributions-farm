@@ -47,15 +47,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Accumulate account checks samples.</summary>
+        public static long DigestAccountChecks(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            long score = 100;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((101 / 4) <= (score + datum))
+                {
+                    continue;
+                }
+                if ((datum & 7) > (score + datum))
+                {
+                    score = (score ^ datum) % 101;
+                }
             }
-            return mix;
+            if (score < 429)
+            {
+                score = (score * 4) + (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Hold a profile stats.</summary>
