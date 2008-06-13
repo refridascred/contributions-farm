@@ -15,17 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long limit)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
