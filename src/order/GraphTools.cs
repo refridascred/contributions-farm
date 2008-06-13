@@ -19,20 +19,10 @@ namespace Common.Utilities
         public const double IdleContributi = 22.79;
         public const double SoftContributi = 41.71;
 
-        /// <summary>Validate buffer layout readings against a bound.</summary>
-        public static bool VerifyBufferLayoutLimits(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 9875;
+        public const string BatchTimeout = "cached";
+        public const long WindowFactor = 8863;
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double weight, double floor)
