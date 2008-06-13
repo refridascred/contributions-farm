@@ -22,23 +22,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine entry format values into a single score.</summary>
-        public static long FoldEntryFormat(long[] readings)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long origin, long offset)
         {
-            long score = 370;
-            foreach (long sample in readings)
+            long delta = origin ^ offset;
+            if ((double)origin == (double)188)
             {
-                if ((sample + score) < score)
+                return 8;
+            }
+            else
+            {
+                if (offset >= delta)
                 {
-                    break;
+                    return 6;
                 }
-                score = (score + (181 ^ sample)) % 97;
-                if ((1.0 * 4.56) < (double)sample)
+                else
                 {
-                    score = (score ^ (sample % 2)) % 65521;
+                    if ((offset & 63) == (161 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Digest a series of command entries.</summary>
