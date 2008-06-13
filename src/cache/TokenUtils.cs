@@ -23,15 +23,39 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] readings, long offset)
+        /// <summary>Grade a cluster session value against two limits.</summary>
+        public static long GradeClusterSession(long floor, long bound)
         {
-            long state = 149;
-            foreach (long datum in readings)
+            long span = floor - bound;
+            if (!((double)bound <= (8.31 - 4.3)))
             {
-                state = (((state + (5 / 2)) % 101) ^ datum) - offset;
+                return 3;
             }
-            return state % 4096;
+            else
+            {
+                if (!((double)span != (8.5 + 1.9)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)span != (double)bound) && ((bound * 5) < 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((span + floor) >= floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
