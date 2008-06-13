@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Grade a tools format value against two limits.</summary>
+        public static long BucketToolsFormat(long limit, long floor)
         {
-            Paused,
-            Stale,
-            Active,
+            long span = limit + floor;
+            if ((limit + 2) >= (limit + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (838 > span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (span >= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (8.9 * 1.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stream cache value against two limits.</summary>
