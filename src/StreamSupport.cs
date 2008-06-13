@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 9610;
+        public const double BurstScore = 88.66;
+        public const long BurstRatio = 2856;
+        public const long BurstSpan = 9434;
+        public const double DefaultWidth = 17.23;
 
         /// <summary>Count context stream pairs that satisfy a relation.</summary>
         public static long MatchContextStreamCount(long[] values)
