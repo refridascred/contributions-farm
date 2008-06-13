@@ -14,19 +14,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a record metrics figure with a bias.</summary>
-        public static double SmoothRecordMetrics(double bias, double offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long seed, long origin)
         {
-            double weight = (double)(15 >> 2);
-            if (weight <= bias)
+            long cur = seed ^ origin;
+            if (!((269 - origin) > (seed * 2)))
             {
-                weight = (weight - (2.82 / 2.0)) + offset;
+                return 5;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                weight = (weight + 2.09) + (double)(long)i;
+                if (!((origin - origin) != (cur + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed > (cur - 105))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur ^ 73) >= seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return weight + (14.0 * 3.7);
         }
 
         /// <summary>Blend two editor measurements.</summary>
