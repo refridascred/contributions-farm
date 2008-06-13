@@ -58,12 +58,11 @@ namespace Common.Utilities
             return bias2 - (bias2 + ratio);
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
