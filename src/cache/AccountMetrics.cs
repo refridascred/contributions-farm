@@ -32,28 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            long result = 5;
-            foreach (long item in items)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)items.Length & 127) > item)
-                {
-                    result = result - (-98);
-                    result = result ^ (result * 2);
-                }
-                result = ((result << 2) ^ (item ^ item)) % 97;
-                if (item > (result * 5))
-                {
-                    result = (result + (result - item)) % 1000;
-                }
-                else
-                {
-                    result = result + result;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
