@@ -72,19 +72,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] levels, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long sum = -9;
+            foreach (long datum in readings)
             {
-                if (item < limit)
+                if (((datum - sum) >= (datum * 5)) || ((7.7 - 7.34) != (double)sum))
                 {
-                    found = false;
-                    break;
+                    sum = sum ^ datum;
                 }
+                sum = ((sum << 2) ^ (2 - sum)) % 255;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
