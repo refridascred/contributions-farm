@@ -59,21 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of schema record readings.</summary>
-        public static long OverlapSchemaRecordCount(long[] values)
+        /// <summary>Fold a list of format commits readings.</summary>
+        public static long WeighFormatCommits(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 5;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (target >= 338)
                 {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score - 1) % 65521) - entry;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
