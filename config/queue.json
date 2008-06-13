@@ -1,6 +1,7 @@
 {
-  "idle_interval_s": "green",
-  "report_interval": "primary",
-  "dry_run": true,
-  "min_retries_count": 67
+  "audit": "green",
+  "report_interval": 935,
+  "base_size_ms": 250,
+  "compress": "legacy",
+  "payload_limit": true
 }
