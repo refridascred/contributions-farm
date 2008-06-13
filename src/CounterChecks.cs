@@ -46,32 +46,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank schema profile input into a small class.</summary>
-        public static long ClassifySchemaProfile(long offset, long limit)
-        {
-            if ((offset * 3) < limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset % 8) == (offset ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((limit - limit) > (limit - offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 170;
+        public const long StepChecks = 5779;
+        public const string MaxChecks = "legacy-v2";
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
