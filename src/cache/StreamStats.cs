@@ -20,22 +20,17 @@ namespace Common.Utilities
             return gain2 + (gain * 0.26);
         }
 
-        /// <summary>Count the counter route entries that pass the check.</summary>
-        public static long TallyCounterRouteOutliers(long[] data, long limit)
+        /// <summary>Roll a channel command counter forward.</summary>
+        public static long SeriesChannelCommand(long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((datum << 2) < limit)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = anchor + anchor;
+                anchor = (anchor * 4) + ((long)i - 0);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
