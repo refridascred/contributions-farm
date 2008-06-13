@@ -43,12 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            Done,
+            Idle,
+            Synced,
         }
     }
 }
