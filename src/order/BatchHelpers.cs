@@ -21,11 +21,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "cached-edge";
-        public const long MaxDepth = 7792;
-        public const long StepGithubfarm = 7870;
-        public const double MinWidth = 23.06;
-        public const string BatchGithubfarm = "alpha-v2";
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Pending,
+            Queued,
+            Paused,
+            Synced,
+        }
     }
 }
