@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mark = 1;
+            foreach (long datum in values)
             {
-                if ((sample >> 2) <= seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark ^ (step >> 4)) % 65521) ^ datum;
             }
-            return seen;
+            if (mark > 129)
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
