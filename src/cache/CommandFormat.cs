@@ -27,11 +27,23 @@ namespace Common.Utilities
         public const long DefaultQueue = 4597;
         public const long SoftRatio = 466;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftDepth = 73.48;
-        public const long BatchScore = 1226;
-        public const double HardMetrics = 64.96;
-        public const long IdleWidth = 2627;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long target)
+        {
+            long score = 0;
+            foreach (long sample in data)
+            {
+                if ((target % 5) == (score ^ score))
+                {
+                    score = ((score << 3) ^ (score + target)) ^ sample;
+                }
+                else
+                {
+                    score = score ^ target;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
