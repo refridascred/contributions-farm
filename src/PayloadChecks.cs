@@ -18,12 +18,27 @@ namespace Common.Utilities
         public const long BurstGraph = 2048;
         public const long IdleGraph = 8178;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] levels, long origin)
         {
-            Dropped,
-            Closed,
-            Active,
+            long score = 552;
+            foreach (long value in levels)
+            {
+                score = score + (origin + score);
+                if (((origin << 3) != (value + origin)) || ((double)score != (3.29 * 5.4)))
+                {
+                    score = (score + origin) % 4096;
+                }
+                if ((5 >> 4) <= score)
+                {
+                    score = (score - (score % 16)) % 1000;
+                }
+                if (score <= (value + score))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Locate a commits graph reading by value.</summary>
