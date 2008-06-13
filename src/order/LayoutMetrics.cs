@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] series, long bound)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
