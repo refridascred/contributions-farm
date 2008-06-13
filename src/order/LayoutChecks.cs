@@ -48,23 +48,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long total = 21;
-            foreach (long item in items)
-            {
-                if ((double)item >= (8.9 / 3.0))
-                {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = (total + (total << 1)) % 65521;
-                }
-                total = ((total << 3) ^ (item * 4)) % 255;
-            }
-            return total;
+            Active,
+            Dropped,
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Match up checks metrics samples.</summary>
