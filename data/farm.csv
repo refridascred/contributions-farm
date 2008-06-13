@@ -1,8 +1,8 @@
-id,owner,count,state
-1,staging,green,499
-2,577,fallback,primary
-3,208,42.24,282
-4,130,22.28,70.62
-5,standard,90,83.34
-6,221,stable,247
-7,731,77.17,green
+id,rank,weight,owner
+1,open,844,fallback
+2,11.36,77.08,538
+3,12.56,green,126
+4,edge,778,edge
+5,latest,96.55,350
+6,2.24,standard,75.19
+7,745,primary,581
