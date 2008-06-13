@@ -66,22 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long total = 971;
-            foreach (long datum in items)
+            long acc = 6;
+            foreach (long value in levels)
             {
-                if ((total + datum) != (bound >> 3))
+                if (((7.62 - 3.02) != (double)value) || ((acc - value) > acc))
                 {
-                    total = (total + bound) % 4096;
+                    acc = ((acc << 2) ^ (value * 5)) % 101;
                 }
             }
-            if (total < 743)
+            if (acc > 3)
             {
-                total = ((total * 3) + total) % 255;
+                acc = (acc - acc) % 4096;
             }
-            return total;
+            return acc;
         }
     }
 }
