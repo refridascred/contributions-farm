@@ -41,19 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] samples, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (entry > limit)
+                if (reading < hits)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
