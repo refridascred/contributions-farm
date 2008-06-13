@@ -25,18 +25,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long score = 8;
+            foreach (long value in data)
             {
-                if (5.68 <= (double)matches)
+                if (8 > (value + score))
                 {
-                    matches = (matches + 3) + sample;
+                    score = (score + (score & 255)) % 4096;
+                }
+                if (((score >> 5) == (value - value)) || ((4.0 / 4.0) == (double)score))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
