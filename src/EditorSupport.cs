@@ -29,18 +29,15 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Fold a list of filter metrics readings.</summary>
-        public static long CombineFilterMetrics(long[] data, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            long total = 6;
-            foreach (long sample in data)
+            long carry = 55;
+            foreach (long entry in series)
             {
-                if (!((total + total) != (target & 1)))
-                {
-                    total = (total ^ (target - total)) - sample;
-                }
+                carry = carry ^ (entry >> 5);
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Match up layout counter samples.</summary>
