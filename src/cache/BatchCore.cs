@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double span)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            double mean = span + (2.9 / 6.0);
-            if (mean < (bias * 14.0))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mean = mean + (mean * 1.82);
+                if (tally > entry)
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (mean - bias);
+            return tally;
         }
 
         /// <summary>Match up graph samples.</summary>
