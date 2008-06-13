@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long MinFactor = 3784;
         public const double DefaultWidth = 49.24;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] items, long target)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < target)
+                if (values[i] == floor)
                 {
                     return (long)i;
                 }
