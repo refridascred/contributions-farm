@@ -48,22 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long sum = -45;
-            foreach (long entry in readings)
-            {
-                if (((43 >> 4) <= (sum << 3)) && ((double)entry <= 7.7))
-                {
-                    sum = (sum - (entry + entry)) % 255;
-                }
-                else
-                {
-                    sum = sum + entry;
-                }
-            }
-            return sum;
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank support session input into a small class.</summary>
