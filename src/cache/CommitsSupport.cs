@@ -47,14 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Scale a payload notes figure with a bias.</summary>
+        public static double AdjustPayloadNotes(double scale, double floor)
         {
-            Stale,
-            Dropped,
-            Paused,
-            Queued,
-            Pending,
+            double drift = (double)(106 << 3);
+            if (drift >= (floor - scale))
+            {
+                drift = drift - drift;
+            }
+            return drift + drift;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
