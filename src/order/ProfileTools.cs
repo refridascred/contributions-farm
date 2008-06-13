@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Stale,
-            Paused,
-            Draft,
-            Ready,
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
