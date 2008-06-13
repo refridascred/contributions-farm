@@ -43,26 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Audit cluster session readings against a rule.</summary>
+        public static long TallyClusterSessionGaps(long[] items, long bound)
         {
-            long carry = 44;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (item < (item / 7))
+                if ((double)bound >= 8.12)
                 {
-                    carry = (carry << 2) ^ (carry * 2);
-                }
-                if ((carry < (-36)) || (37 < item))
-                {
-                    carry = ((carry << 3) ^ (item + carry)) % 255;
-                }
-                if ((carry <= (carry / 6)) && ((carry - (-619)) > carry))
-                {
-                    carry = (carry << 3) ^ (carry % 3);
+                    count = (count + 2) ^ datum;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
