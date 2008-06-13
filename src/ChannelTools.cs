@@ -48,22 +48,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] items)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + seen) >= (57 + seen))
+                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
