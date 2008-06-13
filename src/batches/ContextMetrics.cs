@@ -33,19 +33,17 @@ namespace Common.Utilities
             return mean + (double)46;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != origin)
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
