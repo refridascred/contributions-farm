@@ -63,38 +63,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank buffer counter input into a small class.</summary>
-        public static long ClassifyBufferCounter(long origin, long floor)
+        /// <summary>Iterate the metric layout series from a seed.</summary>
+        public static long DeriveMetricLayout(long origin)
         {
-            if (((origin * 2) == (origin << 3)) && ((double)origin >= (8.0 / 6.0)))
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin & 31) != (origin & 127)))
+                if ((origin << 1) >= (origin * 3))
                 {
-                    return 6;
+                    continue;
                 }
-                else
-                {
-                    if (floor <= (origin - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor - origin) <= (floor << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
+            return score;
         }
     }
 }
