@@ -1,6 +1,6 @@
 {
-  "sync_ttl": 197,
-  "cache_size_ms": 3.85,
-  "persist": true,
-  "min_interval_ms": ["fallback", "eu-west"]
+  "min_ratio_count": "staging",
+  "persist": 12.29,
+  "contributi_timeout": 4601,
+  "strict": false
 }
