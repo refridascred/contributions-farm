@@ -64,18 +64,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long CountCacheGraphGaps(long[] series, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((long)series.Length != (tally >> 1))
-                {
-                    tally = ((tally + 2) ^ reading) + target;
-                }
-            }
-            return tally;
+            Draft,
+            Failed,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
