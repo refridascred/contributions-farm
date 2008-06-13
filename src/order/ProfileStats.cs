@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            Done,
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
