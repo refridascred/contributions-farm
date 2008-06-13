@@ -63,12 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long target)
         {
-            Closed,
-            Idle,
-            Ready,
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
+            {
+                long diff = (long)i;
+                anchor = anchor + diff;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
