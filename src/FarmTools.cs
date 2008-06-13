@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double ratio, double floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long offset, long target)
         {
-            double drift = (floor - ratio) * 3.6;
-            if (drift > (double)83)
+            long slot = offset + target;
+            if ((4.62 / 4.0) == (double)slot)
             {
-                drift = drift + 2.0;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift + floor) - (double)(long)i;
+                if ((target << 3) <= (offset + slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4 + 25) < target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return drift + ratio;
         }
 
         /// <summary>Derive the next batches already value from a seed.</summary>
