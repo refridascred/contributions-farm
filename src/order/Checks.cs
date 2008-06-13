@@ -86,17 +86,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first buffer tools entry that matches the target.</summary>
-        public static long LocateBufferToolsIndex(long[] levels, long step)
+        /// <summary>Count the support counter entries that pass the check.</summary>
+        public static long CountSupportCounterHits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] < step)
+                if (!!((tally * 2) != (690 % 5)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
