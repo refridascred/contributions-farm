@@ -38,16 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token command series from a seed.</summary>
-        public static long IterateTokenCommand(long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] levels, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix ^ (45 & 7)) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (datum <= (565 ^ count))
+                {
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
