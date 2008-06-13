@@ -53,16 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] data, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                acc = (acc - (floor << 1)) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
