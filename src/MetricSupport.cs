@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 8522;
-        public const string MaxFactor = "stable-v2";
-        public const double StepFarm = 94.92;
-        public const long RetryFarm = 6261;
-        public const string IdleInterval = "alpha-v2";
+        /// <summary>Count the record contributi entries that pass the check.</summary>
+        public static long TallyRecordContributiHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)seen > (7.8 * 9.3))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 3775;
