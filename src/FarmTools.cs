@@ -14,11 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSize = 4326;
-        public const long LimitTimeout = 5276;
-        public const string BaseWidth = "stable-v2";
-        public const string HardSchema = "staging-edge";
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadMatches(long[] values)
