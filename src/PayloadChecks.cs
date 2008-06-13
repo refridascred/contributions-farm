@@ -40,21 +40,18 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Audit stats already readings against a rule.</summary>
+        public static long CountStatsAlreadyOutliers(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(0.3 <= (double)origin) || ((origin + item) >= (item >> 1)))
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
