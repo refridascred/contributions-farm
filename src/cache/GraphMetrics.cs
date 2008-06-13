@@ -14,16 +14,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] values, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                result = (result ^ (origin * 5)) % 65521;
-                result = ((result * 2) + (long)i) % 101;
+                if (1.37 > (double)datum)
+                {
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
