@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)74 - (gain - gain);
+            if (scale <= gain)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale + floor;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Blend two support measurements.</summary>
