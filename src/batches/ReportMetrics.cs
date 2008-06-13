@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double gain = (double)5 * 9.46;
+            if (gain <= (offset / 8.0))
             {
-                if (!((cell << 1) < cell))
-                {
-                    hits = hits + 2;
-                }
+                gain = (gain - (offset / 3.0)) - ratio;
             }
-            return hits;
+            return gain - gain;
         }
 
         /// <summary>Hold a window entry.</summary>
