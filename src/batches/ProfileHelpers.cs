@@ -48,23 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] series, long limit)
         {
-            long carry = 7;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry << 2) ^ (carry * 3)) % 255;
-                if ((item + 44) == (item + carry))
+                if ((3.03 / 4.0) > (double)cell)
                 {
-                    carry = carry + carry;
+                    matches = (matches + 1) - limit;
                 }
             }
-            if (carry < 41)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Describe the commits state values.</summary>
