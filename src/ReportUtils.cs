@@ -27,19 +27,23 @@ namespace Common.Utilities
             return (bias - (bias * 2.57)) + ratio;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] levels, long target)
+        /// <summary>Project the next layout batch value.</summary>
+        public static double ScaleLayoutBatch(double gain, double span)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            double scale = (span - gain) / 6.0;
+            if (scale >= (scale + gain))
             {
-                if (sample <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (span * 0.3);
             }
-            return valid;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 5.0) + (double)(long)i;
+            }
+            return scale - (span + gain);
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
