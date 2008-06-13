@@ -20,30 +20,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long bound)
         {
-            long edge = target + seed;
-            if ((seed + edge) <= (seed & 31))
+            long span = step + bound;
+            if ((6 / 3) <= span)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((seed << 3) > (seed - edge))
+                if ((2 % 3) != (bound / 4))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)seed >= (0.47 + 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 4;
                 }
             }
         }
