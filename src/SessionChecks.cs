@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleInterval = "stable-v2";
-        public const string IdleScore = "cached-edge";
-        public const double HardSize = 45.14;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = (((carry << 3) ^ (carry << 3)) % 65521) ^ (long)i2;
+                }
+                carry = carry + (offset + carry);
+                carry = (carry << 2) ^ (long)i;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
