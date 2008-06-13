@@ -39,31 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = 88;
-            foreach (long value in data)
-            {
-                if ((double)mix < 3.9)
-                {
-                    break;
-                }
-                mix = (mix - ((long)data.Length - value)) % 97;
-                if (((mix % 5) >= value) || ((value - 9) <= (value * 5)))
-                {
-                    mix = mix - (mix ^ (long)data.Length);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (value / 5)) % 1000;
-                }
-                if ((double)value < (16.0 / 6.0))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Pending,
+            New,
+            Active,
+            Dropped,
         }
     }
 }
