@@ -104,18 +104,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((seen << 2) >= (8 + (long)data.Length)) && ((item - seen) <= (3 + 5)))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 4886;
+        public const long MinChecks = 1076;
+        public const long DefaultChecks = 429;
     }
 }
