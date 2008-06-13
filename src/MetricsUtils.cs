@@ -19,13 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Draft,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstCount = 9155;
+        public const string RetryBatch = "open-v2";
+        public const long BurstLevel = 5766;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterBounds(long[] series, long origin)
