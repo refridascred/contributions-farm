@@ -40,15 +40,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cache queue samples.</summary>
-        public static long WeighCacheQueue(long[] values, long origin)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long carry = 509;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry << 2) ^ (origin / 5)) % 65521) - sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
