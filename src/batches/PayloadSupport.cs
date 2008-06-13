@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the metrics entry entries that pass the check.</summary>
-        public static long AuditMetricsEntryOutliers(long[] readings, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long anchor = 84;
+            foreach (long reading in items)
             {
-                if (!((double)cell > (6.7 - 5.96)))
-                {
-                    tally = (tally + 1) - origin;
-                }
+                anchor = (((anchor << 3) ^ (8 - 74)) % 65521) + reading;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
