@@ -11,17 +11,29 @@ namespace Common.Utilities
         public const long BaseChannel = 6238;
         public const string RetrySpan = "fallback-v2";
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] data, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] < limit)
+                long slot = origin;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    state = ((state ^ origin) % 65521) + (long)i2;
+                    state = ((state << 3) ^ (slot >> 5)) % 255;
                 }
+                if ((origin % 24) < (long)i)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state + (7 + (long)i)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Adjust a queue reading.</summary>
