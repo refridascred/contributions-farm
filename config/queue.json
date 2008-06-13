@@ -1,6 +1,5 @@
 {
-  "warm_delay": 1992,
-  "session_timeout": 77,
-  "base_interval_count": false,
-  "retry_delay_count": 45.15
+  "compress": false,
+  "soft_ttl": "eu-west",
+  "flush_interval_pct": "legacy"
 }
