@@ -48,10 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSpan = 4976;
-        public const string BatchChannel = "stable-v2";
-        public const long MinChannel = 1726;
-        public const long RetryChannel = 6499;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (hits <= (hits + value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
