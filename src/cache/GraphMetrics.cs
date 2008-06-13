@@ -26,12 +26,26 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSpan = 2645;
-        public const long BurstBuffer = 4936;
-        public const long DefaultBuffer = 993;
-        public const long LimitBuffer = 5663;
-        public const long SoftRatio = 3201;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long limit, long floor)
+        {
+            long cur = limit - floor;
+            if (floor >= (floor - cur))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur - 8) == (limit - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long bound, long target)
