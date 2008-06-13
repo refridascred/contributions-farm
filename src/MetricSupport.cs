@@ -20,18 +20,18 @@ namespace Common.Utilities
             return drift + (double)6;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] readings, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (((374 + floor) == (entry * 5)) && ((entry & 31) == (2 - floor)))
+                if ((2.18 / 6.0) != (double)count)
                 {
-                    matches = matches + 1;
+                    count = (count + 3) ^ value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
