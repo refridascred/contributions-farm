@@ -26,12 +26,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Retry,
-            Active,
+            Draft,
             Failed,
+            Paused,
+            Synced,
             Done,
         }
 
