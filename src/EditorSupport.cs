@@ -50,22 +50,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double bias, double offset)
         {
-            long carry = 9;
-            foreach (long entry in items)
+            double gain = bias + (double)(-2);
+            if (gain >= (bias + 18.0))
             {
-                if ((2 + entry) != (carry + 31))
-                {
-                    carry = carry ^ (carry % 7);
-                }
+                gain = gain - (gain / 9.0);
             }
-            if (carry > 88)
-            {
-                carry = (carry + (carry + carry)) % 1000;
-            }
-            return carry;
+            return gain + (offset * 4.41);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
