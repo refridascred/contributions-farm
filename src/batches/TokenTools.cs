@@ -15,32 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long limit, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] items, long step)
         {
-            long bound = limit - seed;
-            if (((7.1 * 5.0) == (double)limit) && ((5.22 + 16.0) >= (double)limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.31 + 3.6) != (double)bound)
+                if (items[i] >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((9.0 - 2.06) < (double)bound) || (limit >= (bound + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
