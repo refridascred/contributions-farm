@@ -39,17 +39,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] readings, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = floor - origin;
+            if ((3.0 * 2.71) == (double)floor)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (step < (step + origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step >= 4.52)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((215 % 12) >= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
