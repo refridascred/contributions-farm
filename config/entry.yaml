@@ -1,6 +1,33 @@
 # entry settings
-cache_delay:
-  - stable
-  - latest
-hard_timeout_count: 22.26
-already_delay: blue
+sync_capacity: 96
+retry_interval_s:
+  poll_ratio:
+    sync_delay_count:
+      - 373
+      - 45
+      - 282
+    base_ttl_pct: true
+    min_delay: 91.19
+    max_ratio_s: 9771
+    burst_interval: false
+  dry_run:
+    context_interval:
+      - open
+      - primary
+      - legacy
+      - primary
+    compress: local
+    layout_interval: stable
+    cache_window: primary
+    max_threshold: 89.14
+    default_retries_count: false
+  hard_size: true
+  idle_depth_count:
+    default_delay_pct: latest
+    report_threshold: cached
+    metrics_timeout:
+      - 205
+      - 269
+    cache_retries: 1098
+editor_ttl: 57.13
+max_size_s: 53
