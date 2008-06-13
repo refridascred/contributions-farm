@@ -77,21 +77,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry + carry) % 1000;
+                if ((225 >> 3) >= step)
                 {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry + (carry + step)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
