@@ -13,28 +13,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double rate, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            double drift = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)origin < (2.9 - 10.0))
-                {
-                    break;
-                }
-                total = total - (12 % 24);
-                if (((total % 60) >= ((long)i * 5)) && (92 > total))
-                {
-                    total = (total * 4) + (total << 2);
-                }
-                else
-                {
-                    total = total - total;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                drift = ((drift - offset) + (double)(long)i) + rate;
             }
-            return total;
+            return drift + (double)9;
         }
 
         /// <summary>Fold a list of filter metrics readings.</summary>
