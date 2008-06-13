@@ -38,11 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 3564;
-        public const long WindowWidth = 146;
-        public const long IdlePayload = 3477;
-        public const double BasePayload = 77.5;
-        public const double BaseWidth = 36.61;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)seen >= (1.17 - 6.7))
+                {
+                    seen = ((seen + 1) + sample) - seed;
+                }
+            }
+            return seen;
+        }
     }
 }
