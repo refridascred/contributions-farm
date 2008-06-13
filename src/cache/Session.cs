@@ -53,18 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Derive the next graph route value from a seed.</summary>
+        public static long StepGraphRoute(long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)value <= (double)tally) && ((13.0 / 8.0) >= (double)value))
-                {
-                    tally = tally + 1;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
