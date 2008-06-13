@@ -47,10 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 63.33;
-        public const string BaseSpan = "local";
-        public const long WindowCount = 7379;
-        public const long LimitCount = 3691;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) < (count >> 5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
