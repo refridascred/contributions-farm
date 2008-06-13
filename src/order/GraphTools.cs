@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double scale, double bias)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double ratio = scale / 6.0;
-            if (ratio < (double)4)
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio + (scale + scale);
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
