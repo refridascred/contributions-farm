@@ -31,15 +31,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] levels, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
             long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item + 4) >= seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) + origin;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
