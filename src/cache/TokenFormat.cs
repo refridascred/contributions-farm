@@ -33,22 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double rate = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (((-8) % 60) > (hits ^ item))
-                {
-                    hits = (hits + 2) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = ((rate + rate) + (double)(long)i) + scale;
             }
-            return hits;
+            return rate + span;
         }
 
         /// <summary>Match up batches githubfarm samples.</summary>
