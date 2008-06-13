@@ -1,16 +1,11 @@
 # Command notes
 
-Keep graph and notes names short and lowercase.
-Keep account and schema names short and lowercase.
-Use channel settings to tune how often report data is refreshed.
-
-Run the already check before changing any filter limits.
-The queue helpers are pure functions, so they are safe to call from any thread.
-Defaults for session live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the format list.
+Use editor settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Keep filter values small
-- Document new channel fields
-- Log every cache change
-- Review payload limits each release
+- Keep support values small
+- Document new editor fields
+- Log every editor change
+- Review buffer limits each release
