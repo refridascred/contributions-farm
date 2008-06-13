@@ -61,20 +61,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next commits payload value from a seed.</summary>
-        public static long IterateCommitsPayload(long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((long)i >= result))
-                {
-                    result = (result << 3) ^ ((long)i * 5);
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Dropped,
+            Ready,
         }
     }
 }
