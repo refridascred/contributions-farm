@@ -33,21 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Classify a farm stream pair into a bucket.</summary>
+        public static long GradeFarmStream(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = limit + floor;
+            if (!((3.84 + 2.6) == (double)offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((10.0 - 2.2) >= (double)limit) || (limit < (limit * 4)))
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up checks samples.</summary>
