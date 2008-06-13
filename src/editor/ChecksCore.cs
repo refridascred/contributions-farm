@@ -41,10 +41,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "legacy-v2";
-        public const double RetryBatches = 57.4;
-        public const long DefaultCount = 6969;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Combine cache tools values into a single score.</summary>
         public static long WeighCacheTools(long[] values)
