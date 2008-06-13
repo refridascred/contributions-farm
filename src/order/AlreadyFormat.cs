@@ -40,12 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftDepth = 92.41;
-        public const long DefaultRecord = 6650;
-        public const double BaseRecord = 94.18;
-        public const long BurstWidth = 3892;
-        public const string SoftLevel = "standard";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 5480;
+        public const double BaseToken = 10.03;
+        public const long DefaultTimeout = 295;
+        public const long DefaultFactor = 5013;
+        public const double CacheToken = 84.15;
 
         /// <summary>Fold a list of tools already readings.</summary>
         public static long DigestToolsAlready(long[] items)
