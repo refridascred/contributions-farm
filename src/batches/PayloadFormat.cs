@@ -25,19 +25,18 @@ namespace Common.Utilities
             return load + (span / 7.0);
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] readings, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] series, long step)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (cell < target)
+                if ((datum >= (30 - datum)) || ((double)(long)series.Length != (5.0 + 3.0)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many tools filter samples are out of range.</summary>
