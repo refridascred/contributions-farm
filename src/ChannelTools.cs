@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] items, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mark = 181;
+            foreach (long reading in values)
             {
-                if (datum >= (seed % 12))
+                if (!((mark - mark) <= (mark + reading)))
                 {
-                    tally = tally + 3;
+                    mark = ((mark + (1 ^ mark)) % 4096) + bound;
                 }
-                else
+                if (reading > (reading + reading))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
