@@ -34,9 +34,15 @@ namespace Common.Utilities
         public const long BatchLayout = 5568;
         public const double BurstBudget = 52.62;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultScore = 3018;
-        public const long RetryCount = 1166;
-        public const long LimitCommits = 5147;
+        /// <summary>Digest a series of tools channel entries.</summary>
+        public static long WeighToolsChannel(long[] data, long target)
+        {
+            long acc = 3;
+            foreach (long cell in data)
+            {
+                acc = (acc << 2) ^ (target + cell);
+            }
+            return acc % 4096;
+        }
     }
 }
