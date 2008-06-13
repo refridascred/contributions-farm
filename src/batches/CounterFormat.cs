@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long LimitMetric = 1977;
         public const double CacheLevel = 56.49;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long score = 7;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > (score + 68))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score << 3) ^ (6 << 3)) % 101;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 3)
-            {
-                score = (score * 4) + (score << 3);
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
