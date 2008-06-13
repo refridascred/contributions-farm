@@ -1,16 +1,6 @@
 # support settings
-soft_depth_ms:
-  - fallback
-  - cached
-  - primary
-hard_threshold_pct: standard
-default_limit_count:
-  warm_timeout: false
-  base_ttl_count: 47.91
-  hard_ttl_pct: 25.85
-soft_interval_s: 14.79
-max_threshold_s: 97.48
-readonly:
-  - 214
-  - 198
-  - 321
+max_capacity: 100
+context_window: local
+retry_threshold_ms: fallback
+cache_size: false
+flush_ttl_ms: 6176
