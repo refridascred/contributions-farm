@@ -12,17 +12,38 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] levels, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((seed - 2) < step) && ((29 + seed) > (step ^ seed)))
             {
-                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((seed + 322) < (step * 4)) || ((seed >> 3) == (seed + 738)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= (73 * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed <= 4.0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes status values.</summary>
