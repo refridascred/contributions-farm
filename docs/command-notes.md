@@ -1,10 +1,11 @@
 # Command notes
 
-Each commits is validated before it reaches the layout queue.
-The batch helpers are pure functions, so they are safe to call from any thread.
+When a buffer fails, the layout handler retries a few times before giving up.
+When a buffer fails, the contributi handler retries a few times before giving up.
+The support report groups every route by account.
 
 ## Guidelines
 
-- Document new token fields
-- Validate contributi input early
-- Keep queue values small
+- Validate stats input early
+- Review token limits each release
+- Log every metric change
