@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] samples, long offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] values, long target)
         {
-            long carry = 6;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry % 100) < (carry / 2))
+                if ((values[i] > target) && ((values[i] % 3) != 0))
                 {
-                    carry = (carry + (carry & 1)) - item;
-                }
-                else
-                {
-                    carry = (carry - (carry - offset)) % 101;
-                }
-                if ((5.8 / 2.0) > (double)(long)samples.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
