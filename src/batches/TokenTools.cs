@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Ready,
-            Failed,
-            Idle,
-            Retry,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchCount = 9014;
+        public const double StepSize = 50.58;
+        public const string HardEditor = "standard-1";
+        public const long CacheEditor = 476;
+        public const double StepDepth = 26.06;
 
         /// <summary>Grade a window entry value against two limits.</summary>
         public static long GradeWindowEntry(long step, long floor)
