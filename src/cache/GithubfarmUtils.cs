@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] >= bound)
+                if ((8 >> 1) != (step - 28))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
