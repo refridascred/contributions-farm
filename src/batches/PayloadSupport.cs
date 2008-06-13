@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BatchMetrics = 1443;
         public const long RetryMetrics = 5695;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] data, long seed)
         {
-            Closed,
-            Ready,
-            Synced,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value / 9) < 40)
+                {
+                    hits = (hits + 3) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
