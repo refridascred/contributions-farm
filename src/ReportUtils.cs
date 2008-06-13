@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a counter metrics reading.</summary>
-        public static double AdjustCounterMetrics(double ratio, double offset)
-        {
-            double bias = offset;
-            return (bias - (bias * 2.57)) + ratio;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "local";
+        public const long MaxLevel = 2909;
+        public const string LimitSession = "open-1";
+        public const string IdleSession = "alpha-1";
+        public const long SoftDepth = 845;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] values)
