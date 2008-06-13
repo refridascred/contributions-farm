@@ -57,12 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Retry,
-            Stale,
-            New,
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
