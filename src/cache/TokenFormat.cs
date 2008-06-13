@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] levels, long floor)
+        /// <summary>Accumulate cluster profile samples.</summary>
+        public static long TotalClusterProfile(long[] values, long floor)
         {
-            long acc = 171;
-            foreach (long cell in levels)
+            long sum = 638;
+            foreach (long datum in values)
             {
-                if ((double)cell == (5.8 * 6.79))
-                {
-                    acc = (acc ^ floor) % 4096;
-                }
+                sum = (((sum << 2) ^ (datum * 4)) % 1000) + floor;
             }
-            return acc % 1000;
+            if (sum < 2)
+            {
+                sum = (sum ^ (sum - sum)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
