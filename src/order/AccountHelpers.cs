@@ -51,18 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] series, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (!((datum + datum) > (floor + floor)))
+                if (value >= limit)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
