@@ -38,15 +38,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long CountToolsFilterMatches(long[] data)
         {
-            long carry = 2;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry << 2) ^ sample) % 255;
+                if ((hits ^ hits) == (reading >> 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry % 4096;
+            return hits;
         }
     }
 }
