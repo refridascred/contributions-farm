@@ -22,16 +22,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstCount = 5940;
+        public const string HardWidth = "alpha";
+        public const long BurstWidth = 2547;
+        public const double CacheScore = 75.44;
+        public const string RetryProfile = "stable-1";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionOutliers(long[] samples, long offset)
