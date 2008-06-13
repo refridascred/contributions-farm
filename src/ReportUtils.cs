@@ -27,23 +27,11 @@ namespace Common.Utilities
             return (bias - (bias * 2.57)) + ratio;
         }
 
-        /// <summary>Project the next layout batch value.</summary>
-        public static double ScaleLayoutBatch(double gain, double span)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double scale = (span - gain) / 6.0;
-            if (scale >= (scale + gain))
-            {
-                scale = scale - (span * 0.3);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 5.0) + (double)(long)i;
-            }
-            return scale - (span + gain);
+            public bool Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
