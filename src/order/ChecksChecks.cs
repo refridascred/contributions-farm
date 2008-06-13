@@ -13,23 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Count contributi commits pairs that satisfy a relation.</summary>
+        public static long PairContributiCommitsCount(long[] data)
         {
-            long acc = -251;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value ^ 66) <= (acc * 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc << 2) ^ (value ^ 80);
-                    acc = ((acc << 2) ^ (value + acc)) % 1000;
-                }
-                if ((value + value) < value)
-                {
-                    acc = acc ^ (value % 100);
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
