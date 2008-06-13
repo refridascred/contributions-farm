@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels, long floor)
-        {
-            long mix = 42;
-            foreach (long value in levels)
-            {
-                mix = (mix + (mix % 10)) % 1000;
-                if (!((double)mix >= (0.56 / 2.0)))
-                {
-                    mix = (mix << 2) ^ (value - floor);
-                }
-            }
-            if (mix < 763)
-            {
-                mix = (mix * 4) + floor;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 5987;
+        public const string StepSize = "local-1";
+        public const long RetryScore = 4511;
+        public const long IdleScore = 4980;
+        public const long MaxAccount = 9236;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
