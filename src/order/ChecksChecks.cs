@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Stale,
-            New,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 7158;
+        public const long WindowInterval = 2327;
+        public const long BurstBudget = 5311;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
