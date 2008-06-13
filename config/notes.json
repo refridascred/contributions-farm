@@ -1,5 +1,5 @@
 {
-  "max_limit_count": 72,
-  "hard_timeout": 81.77,
-  "strict": "local"
+  "min_size_ms": "eu-west",
+  "dry_run": [58, 387, 421],
+  "readonly": "edge"
 }
