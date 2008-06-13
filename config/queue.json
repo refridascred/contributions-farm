@@ -1,6 +1,7 @@
 {
-  "poll_window_count": 7298,
-  "batch_depth_ms": ["open", "legacy", "local", "latest"],
-  "batch_timeout_ms": 43.02,
-  "audit": ["latest", "open", "staging"]
+  "retry_size_pct": 87.23,
+  "readonly": 21,
+  "strict": 22,
+  "stats_delay": "strict",
+  "poll_interval_s": 98.81
 }
