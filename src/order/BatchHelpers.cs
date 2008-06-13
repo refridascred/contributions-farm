@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string IdleRatio = "staging-1";
         public const long StepBuffer = 5783;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double weight = bias - (bias * 7.0);
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (span - weight)) + (double)(long)i;
-            }
-            return weight + 8.58;
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
