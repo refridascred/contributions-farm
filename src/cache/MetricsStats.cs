@@ -27,18 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] data)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (seen >= (seen / 7))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Accumulate cache samples.</summary>
