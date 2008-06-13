@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] items, long seed)
+        /// <summary>Measure how many booking metrics samples are out of range.</summary>
+        public static long TallyBookingMetricsMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (datum >= seed)
+                if ((((item * 5) >= (count * 5)) && ((double)count == (double)item)) || !((count + item) == (item + item)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
