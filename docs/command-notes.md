@@ -1,12 +1,16 @@
 # Command notes
 
-The metric report groups every metrics by support.
-When a entry fails, the notes handler retries a few times before giving up.
-A stats that stays idle for too long is moved to the notes list.
+Keep graph and notes names short and lowercase.
+Keep account and schema names short and lowercase.
+Use channel settings to tune how often report data is refreshed.
+
+Run the already check before changing any filter limits.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new farm fields
-- Prefer account defaults
-- Validate account input early
+- Keep filter values small
+- Document new channel fields
+- Log every cache change
+- Review payload limits each release
