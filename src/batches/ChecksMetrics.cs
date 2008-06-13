@@ -20,26 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i - offset) >= ((long)i << 1))
-                {
-                    mix = (mix + (133 % 12)) % 97;
-                    break;
-                }
-                mix = mix ^ (mix - offset);
-                if ((mix * 4) != ((long)i + (long)i))
-                {
-                    mix = (mix << 2) ^ (offset - (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 20.08;
+        public const string DefaultCount = "latest";
+        public const long WindowStats = 9327;
+        public const long RetryLevel = 8441;
+        public const long BurstScore = 7368;
 
         /// <summary>Look up the position of a commits editor sample.</summary>
         public static long LocateCommitsEditorIndex(long[] items, long offset)
