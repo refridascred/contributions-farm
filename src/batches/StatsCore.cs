@@ -48,22 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many counter queue samples are out of range.</summary>
-        public static long AuditCounterQueueOutliers(long[] values)
+        /// <summary>Scale a account githubfarm figure with a bias.</summary>
+        public static double ScaleAccountGithubfarm(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double ratio = weight;
+            for (int i = 0; i < 2; i++)
             {
-                if (!(((tally % 60) <= entry) || ((double)tally <= (4.28 * 13.0))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = (ratio - floor) + (double)(long)i;
             }
-            return tally;
+            return ratio - weight;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
