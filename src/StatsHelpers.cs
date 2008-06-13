@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MinTimeout = 2399;
         public const long StepBatches = 1066;
 
-        /// <summary>Validate buffer format readings against a bound.</summary>
-        public static bool CheckBufferFormatRange(long[] values, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (value != limit)
+                if ((long)readings.Length >= (seen / 7))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) + value;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a format summary.</summary>
