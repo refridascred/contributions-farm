@@ -60,17 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm cache entry that matches the target.</summary>
-        public static long SeekFarmCacheIndex(long[] items, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((items[i] == seed) && ((items[i] % 2) != 0))
+                if ((count * 4) > count)
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ sample) + bound;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
