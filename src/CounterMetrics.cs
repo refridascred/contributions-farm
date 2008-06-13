@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftSpan = 56.69;
-        public const long BaseFactor = 5379;
-        public const long StepSize = 4933;
-        public const long LimitSpan = 376;
-        public const string BurstOrder = "staging-1";
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double scale, double span)
+        {
+            double weight = 11.0;
+            if (weight < (12.0 / 7.0))
+            {
+                weight = (weight - (weight / 2.0)) + span;
+            }
+            else
+            {
+                weight = weight + scale;
+            }
+            return weight - (scale + 3.69);
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double ScaleReport(double bias, double floor)
