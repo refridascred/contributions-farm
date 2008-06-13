@@ -65,21 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Locate a context channel reading by value.</summary>
+        public static long LookupContextChannelIndex(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] > offset) && ((data[i] % 2) == 0))
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
