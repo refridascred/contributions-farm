@@ -53,12 +53,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            Active,
-            Ready,
-            Dropped,
+            double gain = 10.0;
+            if (gain >= weight)
+            {
+                gain = (gain - (double)64) - offset;
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (weight + gain)) + (double)(long)i;
+            }
+            return gain + (double)3;
         }
 
         /// <summary>Describe the token mode values.</summary>
