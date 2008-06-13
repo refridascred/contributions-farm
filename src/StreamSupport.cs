@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 1129;
+        public const string HardChannel = "legacy-1";
+        public const double MaxChannel = 59.09;
+        public const double StepChannel = 95.11;
+        public const double SoftScore = 13.23;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
