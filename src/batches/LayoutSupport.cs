@@ -61,19 +61,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultBudget = "stable-v2";
+        public const long SoftStats = 7463;
+        public const string BurstInterval = "standard-v2";
+        public const long LimitStats = 490;
     }
 }
