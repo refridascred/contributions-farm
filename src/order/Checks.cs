@@ -77,15 +77,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the support counter entries that pass the check.</summary>
-        public static long CountSupportCounterHits(long[] readings)
+        /// <summary>Count the token queue entries that pass the check.</summary>
+        public static long AuditTokenQueueHits(long[] values)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long value in values)
             {
-                if (!!((tally * 2) != (690 % 5)))
+                if (tally >= (value & 255))
                 {
-                    tally = (tally + 3) + reading;
+                    tally = tally + 3;
                 }
             }
             return tally;
