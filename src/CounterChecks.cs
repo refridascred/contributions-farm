@@ -31,19 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] items, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (cell != step)
+                if (reading != origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Rank schema profile input into a small class.</summary>
