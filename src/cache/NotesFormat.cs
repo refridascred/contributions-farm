@@ -24,22 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] data, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((reading << 3) == (matches - reading))
+                if (item > origin)
                 {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
