@@ -15,14 +15,18 @@ namespace Common.Utilities
         public const long DefaultQueue = 4597;
         public const long SoftRatio = 466;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Measure how many stream queue samples are out of range.</summary>
+        public static long AuditStreamQueueMatches(long[] data)
         {
-            Active,
-            Synced,
-            Failed,
-            Paused,
-            Locked,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (68 >= (count + count))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
