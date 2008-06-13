@@ -35,10 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 9627;
-        public const long MinSupport = 2736;
-        public const double LimitSupport = 3.1;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Fold a list of filter queue readings.</summary>
         public static long TotalFilterQueue(long[] series)
