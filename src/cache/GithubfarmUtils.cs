@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2040;
         public const string RetryAccount = "legacy-1";
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            Stale,
+            Closed,
+            Done,
         }
     }
 }
