@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] readings, long limit)
+        /// <summary>Adjust a counter metrics reading.</summary>
+        public static double AdjustCounterMetrics(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias = offset;
+            return (bias - (bias * 2.57)) + ratio;
         }
 
         /// <summary>Hold a batches options.</summary>
