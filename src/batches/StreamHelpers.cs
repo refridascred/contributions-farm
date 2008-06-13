@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultTimeout = 2731;
-        public const long CacheTimeout = 9369;
-        public const long CacheOrder = 8725;
-        public const long StepBudget = 5833;
-        public const long BaseOrder = 6492;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double scale, double offset)
