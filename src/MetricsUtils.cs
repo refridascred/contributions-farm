@@ -53,10 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheInterval = 2136;
-        public const string LimitSize = "legacy-1";
-        public const long BatchFactor = 1253;
-        public const long IdleTimeout = 4423;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (seen <= (191 << 1))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
