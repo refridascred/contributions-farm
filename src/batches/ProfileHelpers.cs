@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const string LimitSize = "open-edge";
         public const string IdleDepth = "fallback-1";
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings, long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long result = 5;
-            foreach (long item in readings)
-            {
-                if (!((3.5 * 9.3) != (double)floor))
-                {
-                    result = (result * 4) + (item / 7);
-                }
-            }
-            return result % 97;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
