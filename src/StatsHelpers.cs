@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a schema token reading.</summary>
-        public static double AdjustSchemaToken(double bias, double bias2)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] items, long origin)
         {
-            double drift = 9.3;
-            if (drift < drift)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - bias;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - bias2) + (double)(long)i;
-            }
-            return drift + (bias2 - bias);
+            return -1;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
