@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] items, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
             long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count > (69 >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 1) ^ entry) + offset;
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
