@@ -28,10 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardTimeout = 1094;
-        public const long HardNotes = 5510;
-        public const string RetrySize = "standard-v2";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count - count) == (83 << 2))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] samples)
