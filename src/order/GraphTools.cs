@@ -19,22 +19,19 @@ namespace Common.Utilities
         public const double IdleContributi = 22.79;
         public const double SoftContributi = 41.71;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] samples, long step)
+        /// <summary>Combine farm profile values into a single score.</summary>
+        public static long WeighFarmProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = 6;
+            foreach (long entry in items)
             {
-                if ((double)seen > 2.4)
+                anchor = ((anchor << 2) ^ ((-33) ^ anchor)) + entry;
+                if ((double)anchor < (10.0 / 6.0))
                 {
-                    seen = ((seen + 3) + cell) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (anchor << 2) ^ (anchor * 3);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Project the next schema value.</summary>
