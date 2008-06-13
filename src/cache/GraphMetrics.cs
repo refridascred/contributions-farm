@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of graph payload entries.</summary>
-        public static long TallyGraphPayload(long[] items)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = 6;
-            foreach (long item in items)
-            {
-                if (((double)item < (6.5 - 3.6)) && ((item * 4) == (4 >> 3)))
-                {
-                    mix = (mix + item) % 4096;
-                }
-            }
-            return mix % 1000;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the buffer state values.</summary>
