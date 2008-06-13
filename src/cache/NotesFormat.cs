@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const string WindowProfile = "alpha-1";
         public const string BurstCount = "local-1";
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate already readings against a bound.</summary>
