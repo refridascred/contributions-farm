@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Digest a series of profile batches entries.</summary>
+        public static long DigestProfileBatches(long[] data, long bound)
         {
-            long anchor = 319;
-            foreach (long reading in values)
+            long anchor = -2;
+            foreach (long value in data)
             {
-                anchor = (((anchor << 2) ^ (79 << 1)) % 1000) ^ reading;
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = (anchor + ((long)i & 31)) % 97;
+                }
+                if (anchor >= bound)
+                {
+                    anchor = (anchor + (value ^ bound)) % 4096;
+                }
+            }
+            if (anchor < 184)
+            {
+                anchor = ((anchor << 2) ^ bound) % 4096;
             }
             return anchor;
         }
