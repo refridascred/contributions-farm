@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long limit, long target)
         {
-            double drift = floor;
-            if (drift <= (floor + 3.63))
+            long span = limit ^ target;
+            if ((limit * 5) > (limit + span))
             {
-                drift = (drift + floor) + bias;
+                return 5;
             }
             else
             {
-                drift = drift + (floor / 2.0);
+                if (2 <= (span >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((13.0 / 4.0) > (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit < (limit & 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return drift + (double)6;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
