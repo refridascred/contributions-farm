@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = bias;
+            if (mean < 9.7)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + bias) + floor;
             }
-            return matches;
+            return mean - (double)1;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
