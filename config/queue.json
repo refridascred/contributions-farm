@@ -1,7 +1,5 @@
 {
-  "poll_timeout_count": "eu-west",
-  "order_ttl": "open",
-  "default_capacity_ms": 61,
-  "min_capacity_s": 500,
-  "warm_threshold_s": ["strict", "eu-west"]
+  "idle_threshold_pct": "latest",
+  "account_size": false,
+  "hard_interval_s": false
 }
