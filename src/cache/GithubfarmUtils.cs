@@ -32,12 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 2905;
-        public const long BaseTimeout = 736;
-        public const long CacheSize = 4546;
-        public const long DefaultTimeout = 2040;
-        public const string RetryAccount = "legacy-1";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Locked,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricGaps(long[] series, long floor)
