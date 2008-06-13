@@ -41,18 +41,16 @@ namespace Common.Utilities
             return (weight + floor) + bias;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] items)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((4.8 / 4.0) <= (double)reading)
-                {
-                    count = count + 3;
-                }
+                mark = (mark ^ (origin - mark)) % 97;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
