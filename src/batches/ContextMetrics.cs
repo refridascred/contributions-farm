@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every window stats entry stays within the limit.</summary>
-        public static bool ValidateWindowStatsBounds(long[] values, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] values, long limit)
         {
             bool stale = true;
-            foreach (long datum in values)
+            foreach (long sample in values)
             {
-                if (datum >= floor)
+                if (sample > limit)
                 {
                     stale = false;
                     break;
