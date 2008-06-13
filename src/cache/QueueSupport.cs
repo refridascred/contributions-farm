@@ -17,12 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
