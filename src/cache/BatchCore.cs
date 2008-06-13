@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long SoftContributi = 7631;
         public const string DefaultContributi = "stable-1";
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] levels, long seed)
+        /// <summary>Count the buffer graph entries that pass the check.</summary>
+        public static long CountBufferGraphOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
+                if ((double)cell < (3.07 - 2.0))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
