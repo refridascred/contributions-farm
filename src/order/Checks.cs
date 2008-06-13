@@ -20,23 +20,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)reading != (15.0 - 6.56)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowFactor = 7842;
+        public const long RetryMetrics = 8969;
+        public const double MinRatio = 70.79;
+        public const long CacheRatio = 8889;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long ClassifyBatches(long offset, long limit)
