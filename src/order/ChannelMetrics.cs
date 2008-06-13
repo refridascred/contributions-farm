@@ -16,12 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the schema contributi entries that pass the check.</summary>
+        public static long MeasureSchemaContributiOutliers(long[] levels, long seed)
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((item + hits) < (hits + item)) || (hits <= (hits + item)))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
