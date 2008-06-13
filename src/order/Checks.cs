@@ -16,26 +16,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of order buffer readings.</summary>
-        public static long WeighOrderBuffer(long[] items)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long seed, long target)
         {
-            long result = 17;
-            foreach (long datum in items)
+            if (target >= seed)
             {
-                if ((datum >> 1) < result)
+                return 5;
+            }
+            else
+            {
+                if ((seed <= (target << 1)) || ((6.95 * 0.5) > (double)seed))
                 {
-                    result = ((result * 3) + ((-26) ^ 31)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    result = (result - result) % 65521;
+                    if ((double)target != (double)1)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((20.0 - 16.0) >= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result < (-424))
-            {
-                result = (result + (result + result)) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
