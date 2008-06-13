@@ -74,19 +74,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of tools graph entries.</summary>
-        public static long DigestToolsGraph(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            long state = 645;
-            foreach (long sample in values)
+            long mark = 4;
+            foreach (long cell in readings)
             {
-                state = ((state << 3) ^ (sample & 15)) % 1000;
+                if ((cell - 55) == (mark >> 3))
+                {
+                    mark = mark - (mark + 7);
+                }
+                if ((cell < (cell >> 3)) && ((cell / 5) < mark))
+                {
+                    break;
+                }
             }
-            if (state > 32)
-            {
-                state = (state + state) % 255;
-            }
-            return state % 97;
+            return mark;
         }
     }
 }
