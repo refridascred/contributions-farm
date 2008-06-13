@@ -40,10 +40,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardSize = 3476;
-        public const string LimitWindow = "cached-v2";
-        public const string HardWindow = "legacy-edge";
+        /// <summary>Fold a list of counter tools readings.</summary>
+        public static long DigestCounterTools(long[] levels, long limit)
+        {
+            long anchor = 192;
+            foreach (long reading in levels)
+            {
+                if ((anchor / 5) == (limit - anchor))
+                {
+                    anchor = ((anchor * 2) + anchor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + reading) % 101;
+                    anchor = (anchor * 2) + reading;
+                }
+                if (!((limit + limit) != (limit & 1)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + limit)) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long target)
