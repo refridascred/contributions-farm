@@ -44,22 +44,17 @@ namespace Common.Utilities
         public const long WindowMetrics = 3321;
         public const string HardMetrics = "primary";
 
-        /// <summary>Count the layout notes entries that pass the check.</summary>
-        public static long TallyLayoutNotesGaps(long[] data, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)229 == (double)matches)
+                if (samples[i] >= seed)
                 {
-                    matches = ((matches + 2) - value) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
