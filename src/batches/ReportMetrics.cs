@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up profile channel samples.</summary>
-        public static long PairProfileChannelCount(long[] values)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = offset;
+            if (scale <= scale)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - bias;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (double)(-776)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
