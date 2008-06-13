@@ -39,31 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] values)
         {
-            if (seed <= (bound + bound))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((2.4 + 3.43) < (double)bound) && ((double)bound < (double)6))
+                if ((entry - 9) < hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + bound) == (seed ^ bound)) && (bound >= (bound << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
