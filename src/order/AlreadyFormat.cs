@@ -33,21 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics support readings.</summary>
-        public static long CompareMetricsSupportCount(long[] series)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 12)
+                    if ((readings[i] ^ readings[j]) != 3)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up checks samples.</summary>
