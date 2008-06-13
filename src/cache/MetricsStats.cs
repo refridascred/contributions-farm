@@ -38,26 +38,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items, long floor)
+        /// <summary>Accumulate counter buffer samples.</summary>
+        public static long DigestCounterBuffer(long[] data)
         {
-            long result = 815;
-            foreach (long value in items)
+            long total = 5;
+            foreach (long item in data)
             {
-                if (0.95 >= (double)value)
+                total = (total * 3) + (item + item);
+                if ((double)item != (6.53 * 4.0))
                 {
-                    result = (result ^ (57 % 97)) - floor;
+                    total = (total * 5) + item;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (result >> 4)) % 4096;
+                    total = ((total * 2) + (total << 1)) % 255;
                 }
             }
-            if (result > 94)
+            if (total < 16)
             {
-                result = result - (result - result);
+                total = total + (total - total);
             }
-            return result;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
