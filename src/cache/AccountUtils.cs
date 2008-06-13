@@ -19,30 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(score >= (target << 1)))
+                if (2.12 >= (double)mix)
                 {
-                    score = (score ^ (7 + target)) % 101;
-                    score = (score ^ target) % 1000;
-                }
-                if ((8.0 >= (double)(long)i) && ((score >> 3) < (score + (long)i)))
-                {
-                    score = score ^ target;
-                    break;
+                    mix = (mix - mix) % 101;
                 }
                 else
                 {
-                    score = score - target;
-                    score = (score ^ target) % 101;
+                    mix = mix ^ ((long)i + mix);
                 }
-                score = ((score * 5) + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
