@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BurstProfile = 994;
         public const string MinProfile = "alpha-1";
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Blend two metrics account measurements.</summary>
+        public static double AdjustMetricsAccount(double bias, double span)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            double scale = (double)(8 % 100);
+            if (scale < (double)3)
+            {
+                scale = scale - (1.4 - bias);
+            }
+            return scale - (span - 13.0);
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
