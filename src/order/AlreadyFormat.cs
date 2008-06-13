@@ -25,11 +25,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double bias, double offset)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
+            double mean = (double)718 + offset;
+            if (mean > offset)
+            {
+                mean = (mean - offset) - bias;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define token limits and defaults.</summary>
