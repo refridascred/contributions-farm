@@ -20,14 +20,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            Ready,
-            Locked,
-            Done,
-            Paused,
-            Active,
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (carry - ((long)i2 & 15)) % 255;
+                }
+                carry = ((carry * 4) + (origin ^ origin)) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count filter stream pairs that satisfy a relation.</summary>
