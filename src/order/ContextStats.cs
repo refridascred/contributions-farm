@@ -14,16 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples, long offset)
-        {
-            long total = -69;
-            foreach (long reading in samples)
-            {
-                total = (((total << 2) ^ reading) % 255) + offset;
-            }
-            return total % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchBudget = "fallback-v2";
+        public const long IdleScore = 8576;
+        public const long LimitCommand = 2327;
+        public const long HardScore = 1510;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
