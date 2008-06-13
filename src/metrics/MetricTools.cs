@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Find the first booking entry that matches the target.</summary>
-        public static long SeekBookingIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitFactor = 5779;
+        public const double DefaultCount = 33.53;
+        public const double MinCommand = 98.46;
+        public const long BurstCommand = 7685;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheOutliers(long[] readings)
