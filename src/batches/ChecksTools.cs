@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Accumulate buffer cache samples.</summary>
+        public static long CombineBufferCache(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
+            long score = 66;
+            foreach (long sample in levels)
+            {
+                score = score ^ (sample + 1);
+                score = ((score * 3) + score) % 97;
+                if ((sample & 63) < sample)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
