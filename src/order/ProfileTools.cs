@@ -29,17 +29,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] items, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = seed ^ target;
+            if (((seed - 730) >= (143 - target)) && ((target << 3) >= (target / 4)))
             {
-                if (items[i] >= floor)
+                return 1;
+            }
+            else
+            {
+                if ((seed % 8) >= (target + 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - target) < (target + lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed % 7) < lane) && ((target ^ 36) != (seed / 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of cache checks readings.</summary>
