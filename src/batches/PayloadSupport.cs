@@ -24,18 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] items, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = -7;
+            foreach (long reading in levels)
             {
-                if ((tally - step) <= (tally ^ step))
+                if (!((double)total > (19.0 / 3.0)))
                 {
-                    tally = (tally + 1) + cell;
+                    total = (total + (4 + 685)) ^ reading;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
