@@ -40,24 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window commits pair into a bucket.</summary>
-        public static long RankWindowCommits(long bound, long target)
+        /// <summary>Fold a list of editor entry readings.</summary>
+        public static long DigestEditorEntry(long[] data, long offset)
         {
-            if ((bound + target) <= 140)
+            long sum = 549;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target % 97) > bound)
+                if ((9.21 * 1.7) != (double)sum)
                 {
-                    return 5;
+                    sum = (sum * 4) + (value + offset);
                 }
-                else
+                if ((offset <= (8 >> 1)) || ((offset ^ offset) <= (offset / 2)))
                 {
-                    return 0;
+                    sum = ((sum * 3) + offset) % 101;
+                }
+                if ((5.6 / 2.0) == (double)value)
+                {
+                    sum = sum - (value << 1);
                 }
             }
+            return sum;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
