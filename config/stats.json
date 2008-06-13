@@ -1,6 +1,12 @@
 {
-  "graph_limit": "primary",
-  "min_ratio_pct": 42,
-  "verbose": true,
-  "flush_interval_pct": 57.69
+  "burst_limit_ms": 51.37,
+  "burst_window": {
+    "batch_retries_count": "green",
+    "compress": 60,
+    "verbose": 8627,
+    "max_ttl_ms": 50.44
+  },
+  "burst_ttl_count": false,
+  "default_delay_count": true,
+  "layout_ttl": 3867
 }
