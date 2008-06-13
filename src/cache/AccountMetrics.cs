@@ -40,18 +40,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] values)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((14 - matches) != (matches + matches))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
