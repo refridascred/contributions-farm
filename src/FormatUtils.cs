@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Synced,
-            New,
-            Retry,
-            Queued,
-            Closed,
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
