@@ -1,7 +1,9 @@
 # githubfarm settings
-burst_delay: 500
-min_interval_s:
-  - 368
-  - 300
-hard_depth_s: 24.09
-channel_threshold: 71
+batch_depth_count: 76
+verbose:
+  channel_timeout: standard
+  context_threshold: 73
+  burst_capacity: true
+  strict: true
+  idle_interval_pct: 1024
+persist: strict
