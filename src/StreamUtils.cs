@@ -28,24 +28,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((518 - 836) != (carry % 100)) && ((double)(long)i >= (double)carry))
+                if (values[i] < origin)
                 {
-                    carry = ((carry * 2) + seed) % 255;
-                    continue;
+                    return (long)i;
                 }
-                if (((carry << 1) <= seed) || (carry <= (seed ^ seed)))
-                {
-                    carry = carry + (605 - seed);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
