@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series, long limit)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long acc = 41;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (acc <= ((long)series.Length * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc - ((-895) / 7)) ^ value) + limit;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Grade a order entry value against two limits.</summary>
