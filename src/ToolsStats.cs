@@ -77,11 +77,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long offset)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long step = bound ^ offset;
+            if ((step % 2) > offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + 67) < (step % 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step >> 2) < (bound ^ bound)) && ((offset + bound) >= 792))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
