@@ -24,19 +24,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] items, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (item > origin)
+                if ((double)item != (8.61 * 1.3))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
