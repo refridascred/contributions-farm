@@ -22,39 +22,18 @@ namespace Common.Utilities
             return scale - (span - 13.0);
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long target, long bound)
+        /// <summary>Count the payload record entries that pass the check.</summary>
+        public static long TallyPayloadRecordMatches(long[] samples, long step)
         {
-            long bound2 = target ^ bound;
-            if ((834 - target) > 260)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target < (6.3 + 4.41))
+                if (((seen + step) < step) && ((seen + entry) < step))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.83 * 2.33) < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound2 % 3) == ((-749) + bound2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the notes support entries that pass the check.</summary>
