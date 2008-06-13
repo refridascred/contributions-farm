@@ -37,22 +37,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 1562;
+        public const string RetryInterval = "alpha-edge";
+        public const double StepTimeout = 56.78;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
