@@ -1,5 +1,8 @@
 # githubfarm settings
-compress: open
-batch_limit_count: 30
-persist: local
-account_ttl: true
+command_ttl: 84
+soft_depth_s: 250
+sync_capacity_ms: false
+batch_delay: 7139
+sync_capacity:
+  - 145
+  - 156
