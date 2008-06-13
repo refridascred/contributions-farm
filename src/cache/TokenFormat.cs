@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] series)
         {
-            long total = 15;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((total >> 1) == (total + sample))
+                if ((value + hits) < (hits & 63))
                 {
-                    total = (total << 2) ^ (sample - (-70));
+                    hits = hits + 3;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Match up batches githubfarm samples.</summary>
