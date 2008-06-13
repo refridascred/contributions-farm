@@ -1,9 +1,4 @@
 # support settings
-burst_depth_ms: 34
-idle_threshold_s: 1024
-base_size_pct: 78.99
-warm_interval_count:
-  - standard
-  - legacy
-burst_ratio_count: edge
-cache_ttl_s: false
+metric_retries: 54.55
+retry_timeout: false
+min_size_ms: 500
