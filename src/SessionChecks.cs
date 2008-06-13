@@ -34,15 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next stream support value.</summary>
-        public static double BlendStreamSupport(double bias, double floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            double drift = 5.08 / 8.0;
-            if (drift < floor)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                drift = drift + (bias * 7.25);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return drift - 3.0;
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
