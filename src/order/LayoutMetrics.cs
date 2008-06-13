@@ -38,18 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] readings, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)seen >= (1.17 - 6.7))
-                {
-                    seen = ((seen + 1) + sample) - seed;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
