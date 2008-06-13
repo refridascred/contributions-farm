@@ -20,11 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
