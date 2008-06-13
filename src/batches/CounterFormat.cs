@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] items, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (1.4 >= (double)seen)
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 2) ^ cell) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
