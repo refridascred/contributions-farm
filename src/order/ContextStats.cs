@@ -13,12 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
