@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            Idle,
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a account entry.</summary>
