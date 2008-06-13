@@ -38,12 +38,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Rank farm input into a small class.</summary>
