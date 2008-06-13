@@ -40,26 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor entry readings.</summary>
-        public static long DigestEditorEntry(long[] data, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] items, long step)
         {
-            long sum = 549;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((9.21 * 1.7) != (double)sum)
+                if (26 <= (step % 16))
                 {
-                    sum = (sum * 4) + (value + offset);
-                }
-                if ((offset <= (8 >> 1)) || ((offset ^ offset) <= (offset / 2)))
-                {
-                    sum = ((sum * 3) + offset) % 101;
-                }
-                if ((5.6 / 2.0) == (double)value)
-                {
-                    sum = sum - (value << 1);
+                    hits = (hits + 2) - entry;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
