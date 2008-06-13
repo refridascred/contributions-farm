@@ -32,22 +32,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of cache context entries.</summary>
-        public static long ScoreCacheContext(long[] items, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long state = -909;
-            foreach (long sample in items)
-            {
-                if ((7.9 * 4.6) != (double)sample)
-                {
-                    state = ((state + sample) % 255) - origin;
-                }
-            }
-            if (state > 77)
-            {
-                state = ((state * 4) + (state % 7)) % 4096;
-            }
-            return state;
+            Idle,
+            Failed,
+            Pending,
+            Draft,
+            Retry,
         }
     }
 }
