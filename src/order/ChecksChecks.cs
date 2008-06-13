@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((result - origin) <= 898))
-                {
-                    result = (result * 3) + (251 + origin);
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
