@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryDepth = 88.67;
-        public const double BatchBudget = 65.85;
-        public const long CacheRatio = 7420;
+        /// <summary>Validate counter stream readings against a bound.</summary>
+        public static bool ValidateCounterStreamBounds(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long StepBatch(long origin)
