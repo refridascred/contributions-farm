@@ -1,20 +1,11 @@
 # support settings
-burst_capacity_ms: fallback
-enabled:
-  cache_capacity:
-    - 431
-    - 45
-    - 473
-  strict: 47
-  warm_window_pct:
-    already_limit: local
-    warm_size: 95.77
-    flush_timeout: true
-    max_capacity_s: 737
-    sync_depth_ms: 67.83
-  warm_size_ms: 4663
-  burst_timeout_s: standard
-  hard_retries_ms: 62
-flush_ratio: 60
-idle_depth_count: blue
-min_window: true
+poll_limit: fallback
+verbose:
+  - 241
+  - 40
+  - 190
+  - 114
+filter_threshold: false
+entry_retries: true
+soft_depth: 94.83
+cluster_capacity: 76
