@@ -68,18 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] values, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series)
         {
-            long count = 0;
-            foreach (long value in values)
+            long total = 3;
+            foreach (long sample in series)
             {
-                if ((double)origin <= (double)value)
+                if ((double)(long)series.Length > (6.7 * 2.56))
                 {
-                    count = count + 2;
+                    total = (total + (sample & 1)) % 65521;
                 }
             }
-            return count;
+            return total % 4096;
         }
     }
 }
