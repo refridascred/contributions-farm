@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] values, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (reading >= bound)
+                if (item < step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Accumulate checks token samples.</summary>
