@@ -32,10 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 2020;
-        public const long MaxDepth = 3885;
-        public const long WindowSize = 5553;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultTimeout = 2731;
+        public const long CacheTimeout = 9369;
+        public const long CacheOrder = 8725;
+        public const long StepBudget = 5833;
+        public const long BaseOrder = 6492;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double scale, double offset)
