@@ -21,13 +21,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            long score = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((19.0 / 4.0) > (double)score)
+                {
+                    long diff = (score << 1) + limit;
+                    score = (score << 2) ^ (diff ^ diff);
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (limit & 127)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
