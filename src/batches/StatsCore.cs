@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double floor)
+        /// <summary>Derive the next channel batches value from a seed.</summary>
+        public static long SeriesChannelBatches(long limit)
         {
-            double gain = weight - (floor + weight);
-            if (gain < (double)8)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain - floor;
+                if ((double)limit >= (double)126)
+                {
+                    total = (total ^ (total - 575)) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - 18.0) + (double)(long)i;
-            }
-            return gain - (weight + weight);
+            return total;
         }
 
         /// <summary>Accumulate filter samples.</summary>
