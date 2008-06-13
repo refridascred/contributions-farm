@@ -27,12 +27,19 @@ namespace Common.Utilities
             return (bias - (bias * 2.57)) + ratio;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] levels, long target)
         {
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
