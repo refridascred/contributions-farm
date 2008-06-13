@@ -39,17 +39,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data)
         {
-            long score = -463;
-            foreach (long reading in readings)
+            long mix = 88;
+            foreach (long value in data)
             {
-                score = (score * 4) + (score >> 4);
-                score = ((score << 3) ^ score) % 101;
-                score = (score << 3) ^ (reading & 1);
+                if ((double)mix < 3.9)
+                {
+                    break;
+                }
+                mix = (mix - ((long)data.Length - value)) % 97;
+                if (((mix % 5) >= value) || ((value - 9) <= (value * 5)))
+                {
+                    mix = mix - (mix ^ (long)data.Length);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (value / 5)) % 1000;
+                }
+                if ((double)value < (16.0 / 6.0))
+                {
+                    break;
+                }
             }
-            return score;
+            return mix;
         }
     }
 }
