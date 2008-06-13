@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
