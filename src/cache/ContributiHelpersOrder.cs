@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Adjust a payload format reading.</summary>
+        public static double BlendPayloadFormat(double gain, double bias)
         {
-            Queued,
-            Draft,
-            Ready,
+            double weight = gain;
+            if (weight >= gain)
+            {
+                weight = (weight + (double)638) - bias;
+            }
+            return weight + (7.1 - weight);
         }
 
         /// <summary>Measure how many channel metric samples are out of range.</summary>
