@@ -26,14 +26,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Stale,
-            Locked,
-            Retry,
-            Active,
-            Closed,
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
