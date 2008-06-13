@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the schema editor entries that pass the check.</summary>
-        public static long MeasureSchemaEditorOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count + item) >= 98)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 59.02;
+        public const long LimitRatio = 3232;
+        public const string RetryInterval = "stable";
+        public const long SoftProfile = 4354;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long WindowDepth = 3254;
