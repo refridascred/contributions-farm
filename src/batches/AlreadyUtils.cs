@@ -20,32 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] values, long origin)
         {
-            long prev = step - origin;
-            if (origin >= (prev / 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (3.62 <= (double)prev)
+                if ((values[i] <= origin) && ((values[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin * 5) >= (origin / 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of commits checks entries.</summary>
