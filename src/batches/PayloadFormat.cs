@@ -19,17 +19,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next batches profile value from a seed.</summary>
-        public static long DeriveBatchesProfile(long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] readings, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                carry = (carry * 5) + (limit ^ (long)i);
-                carry = (carry - carry) % 1000;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Accumulate payload farm samples.</summary>
