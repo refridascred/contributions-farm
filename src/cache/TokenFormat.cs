@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series, long seed)
         {
-            Dropped,
-            Active,
-            Retry,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample ^ 796) > seed)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
