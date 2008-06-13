@@ -38,20 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batches farm readings against a bound.</summary>
-        public static bool VerifyBatchesFarmRange(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 9572;
+        public const double BurstRatio = 39.74;
+        public const long WindowMetrics = 3321;
+        public const string HardMetrics = "primary";
 
         /// <summary>Count the layout notes entries that pass the check.</summary>
         public static long TallyLayoutNotesGaps(long[] data, long seed)
