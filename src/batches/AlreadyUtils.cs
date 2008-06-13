@@ -66,22 +66,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] data, long origin)
+        /// <summary>Rank support session input into a small class.</summary>
+        public static long RankSupportSession(long step, long offset)
         {
-            long result = 541;
-            foreach (long entry in data)
+            long offset2 = step - offset;
+            if (((double)offset2 != (6.11 - 5.5)) && (step <= offset))
             {
-                if (((result * 4) >= entry) && ((origin - (long)data.Length) < (entry / 3)))
+                return 2;
+            }
+            else
+            {
+                if ((235 ^ offset) >= (offset - offset2))
                 {
-                    result = ((result << 2) ^ entry) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (result > 61)
-            {
-                result = (result - (origin + result)) % 255;
-            }
-            return result;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
