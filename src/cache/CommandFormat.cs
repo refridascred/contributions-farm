@@ -30,12 +30,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Grade a window batch value against two limits.</summary>
+        public static long SortWindowBatch(long limit, long limit2)
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            long offset = limit - limit2;
+            if ((5.84 + 8.6) >= (9.0 / 3.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit2 ^ limit2) <= (offset + limit)) || (limit <= (-703)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
