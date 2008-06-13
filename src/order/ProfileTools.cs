@@ -32,18 +32,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long TallyRecordCounterGaps(long[] items, long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)count <= 4.51)
-                {
-                    count = ((count + 3) - datum) + offset;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
