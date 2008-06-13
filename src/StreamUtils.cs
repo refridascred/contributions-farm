@@ -96,14 +96,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Retry,
-            Draft,
-            Stale,
-            Pending,
-            Done,
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
