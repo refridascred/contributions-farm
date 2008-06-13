@@ -87,32 +87,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long bound, long bound2)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] data, long step)
         {
-            long offset = bound + bound2;
-            if ((754 * 2) <= offset)
+            long mix = 10;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound < (9.62 + 9.3))
+                mix = (mix + (mix - 7)) % 97;
+                if ((step >> 2) == (value >> 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 + bound) > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (mix << 3) ^ ((-1) * 4);
                 }
             }
+            if (mix < 0)
+            {
+                mix = (mix * 2) + (step / 7);
+            }
+            return mix % 97;
         }
     }
 }
