@@ -51,11 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double span)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double scale = ratio - (span / 8.0);
-            return scale + ratio;
+            Locked,
+            Idle,
+            Retry,
+            Done,
+            Dropped,
         }
     }
 }
