@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] levels)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < (matches * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
