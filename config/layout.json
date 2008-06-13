@@ -1,14 +1,5 @@
 {
-  "retry_size_s": "staging",
-  "retry_ratio": 78.71,
-  "default_ratio_s": "latest",
-  "route_threshold": "legacy",
-  "retry_size": 31.1,
-  "compress": {
-    "burst_ratio": ["legacy", "primary"],
-    "idle_capacity": "eu-west",
-    "readonly": true,
-    "default_limit_count": 100,
-    "max_timeout_count": 3502
-  }
+  "hard_interval": 7.92,
+  "retry_depth_count": 60,
+  "checks_threshold": 70
 }
