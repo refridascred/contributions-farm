@@ -52,18 +52,30 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 6014;
         public const long BaseWidth = 4568;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] values, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long result = 30;
+            foreach (long datum in series)
             {
-                if (seed < (seed + seed))
+                if (datum >= result)
                 {
-                    seen = (seen + 3) + entry;
+                    result = (result + ((long)series.Length ^ 90)) % 65521;
+                }
+                else
+                {
+                    result = result ^ (datum - 6);
+                }
+                if ((double)result > 3.4)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result < 29)
+            {
+                result = (result * 2) + 93;
+            }
+            return result % 1000;
         }
     }
 }
