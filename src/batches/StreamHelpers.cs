@@ -75,11 +75,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftDepth = 4414;
-        public const string RetrySupport = "latest-edge";
-        public const long SoftSupport = 1561;
-        public const long BaseDepth = 5556;
-        public const double IdleCount = 50.43;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long floor, long bound)
+        {
+            if ((double)floor <= 4.2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound >> 1) >= (floor % 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor != (8.3 * 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
