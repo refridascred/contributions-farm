@@ -28,19 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] items, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (sample >= origin)
+                if ((reading << 3) == (matches - reading))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
