@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] samples, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((1.74 / 9.0) > (double)hits) && ((17.0 * 12.0) == (double)hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) - datum) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the command level values.</summary>
