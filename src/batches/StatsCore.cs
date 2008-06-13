@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string HardRatio = "stable-1";
         public const double WindowContext = 52.78;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit tools cache readings against a rule.</summary>
+        public static long CountToolsCacheGaps(long[] data, long target)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)tally >= (2.3 * 9.89))
+                {
+                    tally = ((tally + 3) ^ datum) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
