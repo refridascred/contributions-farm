@@ -36,12 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            Paused,
-            Draft,
-            Done,
+            long total = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total + ((long)i + (long)i)) % 65521;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = total + total;
+                    total = total - ((long)i2 / 2);
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
