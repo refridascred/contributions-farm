@@ -25,22 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 9149;
+        public const string StepRatio = "strict-v2";
+        public const long IdleDepth = 9042;
+        public const long SoftStats = 8317;
+        public const string BaseStats = "legacy";
 
         /// <summary>Derive the next stream payload value from a seed.</summary>
         public static long StepStreamPayload(long bound)
