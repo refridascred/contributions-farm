@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 7732;
-        public const string HardCache = "alpha";
-        public const long MinFactor = 3784;
-        public const double DefaultWidth = 49.24;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 7800;
+        public const long MaxTimeout = 4278;
+        public const long IdleTimeout = 192;
+        public const double WindowCluster = 79.5;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long ScoreProfile(long[] series)
