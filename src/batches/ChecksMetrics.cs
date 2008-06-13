@@ -50,24 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long seed, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (((bound * 4) < (seed / 7)) && ((seed - bound) >= bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((seed ^ bound) > 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the farm state values.</summary>
