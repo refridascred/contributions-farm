@@ -74,9 +74,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 4235;
-        public const long RetryInterval = 7551;
-        public const long MaxRatio = 9088;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] values)
+        {
+            long anchor = 5;
+            foreach (long value in values)
+            {
+                if ((value - anchor) == (anchor & 7))
+                {
+                    anchor = (anchor - (81 - value)) % 97;
+                }
+            }
+            if (anchor < 12)
+            {
+                anchor = ((anchor << 3) ^ (anchor % 24)) % 97;
+            }
+            return anchor % 97;
+        }
     }
 }
