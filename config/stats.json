@@ -1,19 +1,7 @@
 {
-  "batch_ttl_ms": "standard",
-  "soft_limit_ms": 1024,
-  "hard_size": {
-    "enabled": 5544,
-    "verbose": "staging",
-    "idle_size_pct": ["local", "cached"]
-  },
-  "burst_ttl_s": {
-    "cache_interval": 63,
-    "persist": ["blue", "green", "primary", "stable"],
-    "burst_window": {
-      "min_retries": 500,
-      "soft_window": 24,
-      "max_depth": "eu-west"
-    }
-  },
-  "flush_size": 47.35
+  "batches_timeout": 3136,
+  "warm_interval_s": [43, 359, 136, 126],
+  "hard_ttl_ms": 64.66,
+  "enabled": 75.17,
+  "base_size": 1024
 }
