@@ -48,11 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
