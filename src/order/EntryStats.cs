@@ -25,21 +25,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 90;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = score + (score % 97);
+                if (((datum - 838) < (datum >> 2)) && ((score & 3) <= (datum + datum)))
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score - ((long)readings.Length * 3);
+                }
+                score = ((score * 3) + (score + datum)) % 255;
+                if (((229 % 2) > (score - 6)) || ((score - 37) <= score))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 56)
+            {
+                score = score ^ (score + score);
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a filter already pair into a bucket.</summary>
