@@ -63,21 +63,22 @@ namespace Common.Utilities
             return bias + (double)4;
         }
 
-        /// <summary>Match up checks metrics samples.</summary>
-        public static long PairChecksMetricsCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((5.1 / 5.0) >= (double)seen))
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
