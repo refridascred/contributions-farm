@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data)
-        {
-            long anchor = -2;
-            foreach (long item in data)
-            {
-                if (anchor > (anchor / 2))
-                {
-                    anchor = anchor ^ item;
-                }
-            }
-            if (anchor < 17)
-            {
-                anchor = ((anchor * 5) + (anchor - anchor)) % 97;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 6944;
+        public const string DefaultMetric = "primary";
+        public const long BatchSpan = 4530;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 1562;
