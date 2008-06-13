@@ -51,18 +51,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] samples, long offset)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long CombineFarmMetrics(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long carry = 815;
+            foreach (long value in readings)
             {
-                if (((long)samples.Length == (91 % 24)) || (70 <= (datum * 2)))
-                {
-                    count = (count + 1) + offset;
-                }
+                carry = (((carry + (793 << 3)) % 97) + value) + target;
             }
-            return count;
+            if (carry > (-18))
+            {
+                carry = ((carry * 2) + (carry * 5)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Project the next layout batches value.</summary>
