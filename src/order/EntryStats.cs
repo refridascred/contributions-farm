@@ -70,22 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command already samples.</summary>
-        public static long DigestCommandAlready(long[] series)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long state = 378;
-            foreach (long reading in series)
-            {
-                if ((reading % 3) <= (4 + 74))
-                {
-                    state = (state * 3) + (state + state);
-                }
-            }
-            if (state > 0)
-            {
-                state = (state - (state + state)) % 97;
-            }
-            return state;
+            Done,
+            Failed,
+            Pending,
+            Synced,
+            Closed,
         }
     }
 }
