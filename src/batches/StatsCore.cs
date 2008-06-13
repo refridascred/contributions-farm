@@ -75,19 +75,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] data, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < step)
+                if ((values[i] >= target) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
