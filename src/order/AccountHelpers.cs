@@ -61,14 +61,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Pending,
-            Active,
             Retry,
-            Queued,
+            Locked,
+            Closed,
             Failed,
+            Paused,
         }
 
         /// <summary>Hold a support record.</summary>
