@@ -15,11 +15,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long offset, long limit)
         {
-            double scale = floor;
-            return scale - weight;
+            long edge = offset + limit;
+            if ((offset / 6) <= (limit + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 2) >= (edge + edge))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
