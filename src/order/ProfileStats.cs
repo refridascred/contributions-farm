@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Scale a stream contributi figure with a bias.</summary>
+        public static double SmoothStreamContributi(double rate, double offset)
         {
-            Done,
-            Retry,
-            Ready,
-            Locked,
+            double scale = rate;
+            return scale + (offset - scale);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
