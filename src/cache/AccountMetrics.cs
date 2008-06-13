@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 7800;
-        public const long MaxTimeout = 4278;
-        public const long IdleTimeout = 192;
-        public const double WindowCluster = 79.5;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] values, long target)
+        {
+            long sum = 463;
+            foreach (long datum in values)
+            {
+                if (sum > (target >> 3))
+                {
+                    sum = ((sum - (sum << 3)) % 97) - datum;
+                }
+                else
+                {
+                    sum = sum - 405;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long ScoreProfile(long[] series)
