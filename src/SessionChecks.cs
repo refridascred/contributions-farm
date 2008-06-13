@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long step)
         {
-            Pending,
-            Synced,
-            Ready,
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = (sum * 2) + step;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine metric session values into a single score.</summary>
