@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double span)
         {
-            public double Level { get; set; }
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            double rate = span * 2.25;
+            if (rate > (span + span))
+            {
+                rate = rate + (gain + gain);
+            }
+            else
+            {
+                rate = rate - 2.1;
+            }
+            return rate - (rate * 0.24);
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
