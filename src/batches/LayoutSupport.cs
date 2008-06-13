@@ -32,18 +32,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] series)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double mean = (double)(2 - 722);
+            if (mean >= offset)
             {
-                if (((double)value == (7.28 / 4.0)) || (3.0 > (double)seen))
-                {
-                    seen = seen + 2;
-                }
+                mean = (mean + mean) + scale;
             }
-            return seen;
+            return mean + mean;
         }
 
         /// <summary>Count the stats layout entries that pass the check.</summary>
