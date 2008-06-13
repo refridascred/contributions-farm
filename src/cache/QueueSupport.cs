@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values, long seed)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long acc = 631;
-            foreach (long sample in values)
-            {
-                if (acc < (seed & 31))
-                {
-                    acc = ((acc * 4) + (sample + (long)values.Length)) % 4096;
-                    continue;
-                }
-                if (255 < (seed / 7))
-                {
-                    acc = acc + (acc * 5);
-                }
-            }
-            return acc;
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
