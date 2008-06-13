@@ -51,16 +51,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Classify a format cache pair into a bucket.</summary>
+        public static long GradeFormatCache(long step, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            long cur = step ^ limit;
+            if (9 < limit)
             {
-                result = (result ^ (result + seed)) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (((-288) + cur) > limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((cur - step) > (cur & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
