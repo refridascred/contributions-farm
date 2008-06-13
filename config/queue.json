@@ -1,5 +1,6 @@
 {
-  "burst_threshold_ms": true,
-  "dry_run": 0.03,
-  "batches_threshold": 91.11
+  "record_threshold": 82.72,
+  "default_size": 100,
+  "command_timeout": 14.69,
+  "compress": "staging"
 }
