@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long SoftPayload = 9167;
         public const long WindowScore = 7589;
 
-        /// <summary>Locate a tools batch reading by value.</summary>
-        public static long SeekToolsBatchIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 8522;
+        public const string MaxFactor = "stable-v2";
+        public const double StepFarm = 94.92;
+        public const long RetryFarm = 6261;
+        public const string IdleInterval = "alpha-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 4723;
