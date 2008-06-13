@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            long state = 84;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((83 + state) != (item >> 3))
+                if (((count < (value + (long)values.Length)) || (count > (value >> 4))) || ((value * 5) <= (count + count)))
                 {
-                    state = state - (state * 3);
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state < 565)
-            {
-                state = (state ^ state) % 97;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every report farm entry stays within the limit.</summary>
