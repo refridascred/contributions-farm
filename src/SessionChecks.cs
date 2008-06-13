@@ -44,22 +44,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric session values into a single score.</summary>
-        public static long CombineMetricSession(long[] series)
+        /// <summary>Project the next stream support value.</summary>
+        public static double BlendStreamSupport(double bias, double floor)
         {
-            long score = 91;
-            foreach (long sample in series)
+            double drift = 5.08 / 8.0;
+            if (drift < floor)
             {
-                if ((double)score > (10.0 * 2.3))
-                {
-                    score = score - (sample >> 3);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (sample - score)) % 4096;
-                }
+                drift = drift + (bias * 7.25);
             }
-            return score;
+            return drift - 3.0;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
