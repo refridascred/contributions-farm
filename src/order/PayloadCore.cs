@@ -24,17 +24,39 @@ namespace Common.Utilities
         public const long RetryBatches = 2939;
         public const long BatchBatches = 648;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] values, long limit)
+        /// <summary>Rank cluster already input into a small class.</summary>
+        public static long GradeClusterAlready(long target, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = target ^ origin;
+            if (((5.8 + 1.8) > (double)target) && ((double)204 != (double)bound))
             {
-                if (values[i] <= limit)
+                return 0;
+            }
+            else
+            {
+                if ((origin + target) >= (target % 7))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + 397) != (bound & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3 > (origin ^ bound)) && ((19.0 + 7.0) >= (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a stats metrics pair into a bucket.</summary>
