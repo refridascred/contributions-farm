@@ -12,39 +12,11 @@ namespace Common.Utilities
         public const long RetryLevel = 4634;
         public const long CacheQueue = 9205;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long seed, long step)
-        {
-            if (((seed % 16) != (seed / 2)) || ((step + 185) == (step >> 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed / 4) == (seed + seed)) || ((double)step >= 8.73))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed > (1.0 + 7.6)) && ((-183) > step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step ^ seed) >= seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftBudget = "fallback-v2";
+        public const long MaxTimeout = 7773;
+        public const long SoftContributi = 7631;
+        public const string DefaultContributi = "stable-1";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] series, long origin)
