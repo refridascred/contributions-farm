@@ -12,30 +12,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] readings)
         {
-            long result = -6;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!(((result ^ entry) <= (entry << 1)) || ((double)floor < 5.5)))
+                if ((double)sample < (9.73 + 15.0))
                 {
-                    result = (result << 2) ^ (floor + result);
-                }
-                if ((616 + entry) != (floor + 317))
-                {
-                    result = result ^ (entry >> 5);
-                }
-                else
-                {
-                    result = (result << 2) ^ (result - entry);
+                    matches = matches + 2;
                 }
             }
-            if (result < 48)
-            {
-                result = ((result << 2) ^ (floor % 5)) % 255;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine route values into a single score.</summary>
