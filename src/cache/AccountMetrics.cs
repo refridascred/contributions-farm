@@ -28,15 +28,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long target)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
