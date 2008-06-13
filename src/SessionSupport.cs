@@ -26,12 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long floor)
         {
-            Idle,
-            Ready,
-            Closed,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
