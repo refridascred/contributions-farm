@@ -1,7 +1,5 @@
 {
-  "soft_interval": 1024,
-  "strict": false,
-  "compress": [388, 203, 112],
-  "checks_interval": 40,
-  "batch_capacity": "legacy"
+  "hard_threshold_s": 90.47,
+  "compress": "eu-west",
+  "enabled": [109, 165]
 }
