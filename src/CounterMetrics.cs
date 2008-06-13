@@ -20,13 +20,30 @@ namespace Common.Utilities
             return weight - (scale + 3.69);
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
+            long result = -6;
+            foreach (long entry in readings)
+            {
+                if (!(((result ^ entry) <= (entry << 1)) || ((double)floor < 5.5)))
+                {
+                    result = (result << 2) ^ (floor + result);
+                }
+                if ((616 + entry) != (floor + 317))
+                {
+                    result = result ^ (entry >> 5);
+                }
+                else
+                {
+                    result = (result << 2) ^ (result - entry);
+                }
+            }
+            if (result < 48)
+            {
+                result = ((result << 2) ^ (floor % 5)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
