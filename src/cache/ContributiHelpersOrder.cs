@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 9970;
-        public const long SoftInterval = 4868;
-        public const long RetryScore = 6618;
-        public const long HardWidth = 2467;
-        public const long StepScore = 6280;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Failed,
+            New,
+            Active,
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double scale, double offset)
