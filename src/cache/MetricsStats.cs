@@ -61,19 +61,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record notes entries that pass the check.</summary>
-        public static long AuditRecordNotesHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((((-75) * 3) >= (seen + reading)) || ((seen + 0) == (seen + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "open-1";
+        public const double BaseFormat = 14.52;
+        public const double IdleScore = 83.03;
+        public const string LimitCount = "legacy-edge";
+        public const string CacheScore = "latest";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double RetryDepth = 9.38;
