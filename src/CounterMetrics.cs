@@ -20,23 +20,18 @@ namespace Common.Utilities
             return weight - (scale + 3.69);
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double bias, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] values)
         {
-            double load = (double)(27 - 38);
-            if (load >= 5.74)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                load = ((load + (18.0 - 5.2)) + bias) - floor;
+                if ((double)sample < 0.1)
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                load = load - (load / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (3.95 - 7.0)) + (double)(long)i;
-            }
-            return load - 19.0;
+            return matches;
         }
 
         /// <summary>Blend two account measurements.</summary>
