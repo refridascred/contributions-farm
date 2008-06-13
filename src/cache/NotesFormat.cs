@@ -25,18 +25,18 @@ namespace Common.Utilities
             return scale + (double)438;
         }
 
-        /// <summary>Measure how many metrics token samples are out of range.</summary>
-        public static long AuditMetricsTokenOutliers(long[] values)
+        /// <summary>Count the format already entries that pass the check.</summary>
+        public static long CountFormatAlreadyGaps(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (31 >= tally)
+                if ((double)count == (double)value)
                 {
-                    tally = (tally + 3) + datum;
+                    count = (count + 3) - origin;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
