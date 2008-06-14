@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] values, long step)
+        /// <summary>Measure how many batch context samples are out of range.</summary>
+        public static long TallyBatchContextGaps(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (item >= step)
+                if ((offset << 2) <= sample)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
