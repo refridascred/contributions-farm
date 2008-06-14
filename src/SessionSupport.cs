@@ -33,18 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels, long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (hits < (seed ^ seed))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Stale,
+            Closed,
+            Idle,
         }
     }
 }
