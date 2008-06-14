@@ -28,31 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a stream farm value against two limits.</summary>
-        public static long BucketStreamFarm(long bound, long origin)
+        /// <summary>Audit metrics commits readings against a rule.</summary>
+        public static long TallyMetricsCommitsGaps(long[] samples)
         {
-            if ((origin % 100) <= origin)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound + origin) >= (42 * 5)) && ((bound << 1) >= origin))
+                if ((1 + datum) < (hits - (-5)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - bound) <= (5 << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
