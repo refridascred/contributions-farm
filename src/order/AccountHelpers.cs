@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const double BurstFactor = 36.41;
         public const long BaseCount = 4621;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = offset;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + (double)(long)i) - rate;
             }
-            return count;
+            return load + (offset * 7.8);
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
