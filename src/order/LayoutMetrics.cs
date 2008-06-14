@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the order command entries that pass the check.</summary>
-        public static long MeasureOrderCommandOutliers(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((((double)item > 7.04) && ((count >> 2) >= (68 * 3))) && ((6 % 5) > item))
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultInterval = 8338;
+        public const long DefaultChecks = 4991;
+        public const double BurstBudget = 6.37;
+        public const long MaxChecks = 3782;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
