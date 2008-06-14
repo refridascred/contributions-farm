@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] data, long bound)
         {
-            long anchor = 75;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((15.0 / 8.0) <= (8.0 * 2.9))
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
                 {
-                    anchor = ((anchor - (50 + anchor)) % 101) + entry;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 255;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
