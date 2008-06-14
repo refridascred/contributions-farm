@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next commits entry value from a seed.</summary>
-        public static long StepCommitsEntry(long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry << 2) ^ (carry / 8)) % 4096;
-                carry = (carry << 2) ^ 756;
-                carry = (carry ^ ((long)i + offset)) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
