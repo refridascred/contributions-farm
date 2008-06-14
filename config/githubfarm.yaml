@@ -1,5 +1,5 @@
 # githubfarm settings
-flush_ttl: 1250
-flush_ttl_ms: 8868
-flush_threshold_ms: cached
-max_limit_ms: 500
+min_window_pct: false
+report_interval: 8.52
+persist: blue
+batch_ttl: 60
