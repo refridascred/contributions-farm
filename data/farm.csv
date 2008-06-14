@@ -1,6 +1,8 @@
-id,ratio,state
-1,35,74.15
-2,standard,open
-3,462,49
-4,313,standard
-5,598,strict
+id,region,level
+1,598,42.05
+2,565,staging
+3,26.14,96.62
+4,643,latest
+5,202,204
+6,open,15.96
+7,686,700
