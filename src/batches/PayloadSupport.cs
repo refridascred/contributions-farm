@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            if ((double)offset < 8.6)
+            long carry = 27;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 5) > (origin + origin))
+                carry = ((carry ^ (carry % 97)) % 1000) - entry;
+                if ((7 << 3) >= carry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) >= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Count the cache batch entries that pass the check.</summary>
