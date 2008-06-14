@@ -45,19 +45,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels, long bound)
+        /// <summary>Audit payload commits readings against a rule.</summary>
+        public static long AuditPayloadCommitsHits(long[] samples, long limit)
         {
-            long sum = 25;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                sum = (sum << 3) ^ (value * 4);
+                if ((hits + sample) < hits)
+                {
+                    hits = (hits + 1) - limit;
+                }
             }
-            if (sum > 6)
-            {
-                sum = (sum + (bound << 1)) % 97;
-            }
-            return sum;
+            return hits;
         }
     }
 }
