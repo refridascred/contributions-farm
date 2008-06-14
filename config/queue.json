@@ -1,10 +1,5 @@
 {
-  "min_capacity": 9475,
-  "cache_ttl_pct": 3372,
-  "warm_ttl_count": {
-    "flush_size_count": 9694,
-    "profile_ratio": "cached",
-    "soft_retries": "legacy"
-  },
-  "session_size": false
+  "schema_ttl": "primary",
+  "batches_ratio": 100,
+  "poll_delay_ms": "stable"
 }
