@@ -39,16 +39,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a payload notes figure with a bias.</summary>
-        public static double AdjustPayloadNotes(double scale, double floor)
-        {
-            double drift = (double)(106 << 3);
-            if (drift >= (floor - scale))
-            {
-                drift = drift - drift;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 36.03;
+        public const long MaxChannel = 6846;
+        public const long SoftChannel = 1634;
+        public const double BatchInterval = 61.73;
+        public const long MinChannel = 2545;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatLimits(long[] items, long seed)
