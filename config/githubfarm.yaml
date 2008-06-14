@@ -1,18 +1,6 @@
 # githubfarm settings
-enabled:
-  - latest
-  - latest
-order_retries: cached
-poll_limit_count: 70.94
-compress:
-  - 113
-  - 289
-dry_run:
-  buffer_retries: 85.63
-  farm_capacity: eu-west
-  strict:
-    max_retries_count: cached
-    base_limit_s: 60
-    already_timeout: false
-    audit: edge
-  max_retries_count: 6.36
+flush_capacity_ms: primary
+audit: true
+verbose: 100
+batch_limit_ms: legacy
+warm_ttl: 6329
