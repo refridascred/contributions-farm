@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a layout cluster figure with a bias.</summary>
-        public static double SmoothLayoutCluster(double gain, double floor)
+        /// <summary>Find the first stats schema entry that matches the target.</summary>
+        public static long SeekStatsSchemaIndex(long[] items, long limit)
         {
-            double load = 13.0 / 2.0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load + 17.0) + (double)(long)i) + gain;
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return load + (floor + load);
+            return -1;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
