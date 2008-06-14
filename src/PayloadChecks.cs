@@ -45,17 +45,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = carry - (carry * 3);
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 3925;
+        public const string RetryStream = "fallback-edge";
+        public const long SoftSize = 49;
+        public const long StepSpan = 1972;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] values, long target)
