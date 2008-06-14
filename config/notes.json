@@ -1,7 +1,5 @@
 {
-  "counter_ttl": 1024,
-  "githubfarm_window": "edge",
-  "strict": "green",
-  "notes_depth": 78.32,
-  "dry_run": false
+  "readonly": [88, 215],
+  "audit": "edge",
+  "poll_ttl": [112, 248]
 }
