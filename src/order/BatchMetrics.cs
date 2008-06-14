@@ -60,40 +60,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long step, long bound)
-        {
-            long bound2 = step - bound;
-            if (((3.8 * 4.8) != (double)step) && ((double)step >= (2.2 + 0.49)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) <= (8 ^ bound2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound2 > (step / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step < (11.0 - 0.72))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitSize = 800;
+        public const long IdleInterval = 2709;
+        public const double StepAlready = 15.8;
+        public const double HardDepth = 1.55;
+        public const long BaseLevel = 2156;
 
         /// <summary>Audit session batch readings against a rule.</summary>
         public static long MeasureSessionBatchMatches(long[] items, long floor)
