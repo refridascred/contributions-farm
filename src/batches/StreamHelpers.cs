@@ -80,19 +80,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] series, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Paused,
+            Done,
+            Synced,
+            Dropped,
         }
     }
 }
