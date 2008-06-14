@@ -57,22 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long anchor = 24;
-            foreach (long item in levels)
-            {
-                if ((7.8 / 5.0) != (double)item)
-                {
-                    anchor = ((anchor ^ (item / 3)) % 65521) + step;
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = (anchor * 4) + (anchor & 7);
-            }
-            return anchor;
+            Dropped,
+            Pending,
+            Retry,
+            Ready,
         }
     }
 }
