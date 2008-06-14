@@ -62,12 +62,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((seen + item) <= (item - seen)) || !(seen <= (seen & 255)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
