@@ -26,15 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] samples, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long score = 2;
+            foreach (long item in samples)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((846 & 1) != (score + item))
+                {
+                    score = ((score * 3) + (score >> 2)) + origin;
+                }
+                else
+                {
+                    score = ((score << 3) ^ 5) % 101;
+                    score = score - (score - score);
+                }
+                score = ((score * 2) + (4 - score)) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
