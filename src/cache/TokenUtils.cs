@@ -25,23 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((offset % 7) < state)
-                {
-                    break;
-                }
-                if (state >= ((long)i >> 3))
-                {
-                    state = ((state << 3) ^ offset) % 255;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Idle,
+            Stale,
+            Active,
         }
     }
 }
