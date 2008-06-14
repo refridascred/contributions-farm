@@ -14,19 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
-        public static bool VerifyClusterProfileBounds(long[] readings, long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
