@@ -72,17 +72,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a layout filter sample.</summary>
-        public static long FindLayoutFilterIndex(long[] samples, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                if (cell >= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
