@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long floor)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine order values into a single score.</summary>
