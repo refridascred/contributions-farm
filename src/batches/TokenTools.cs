@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long target, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] readings, long floor)
         {
-            if ((double)origin < (6.0 / 4.0))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((759 % 8) >= (target + origin))
+                if (!!((reading & 63) <= (floor * 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target + (-2)) > (target * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
