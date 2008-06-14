@@ -20,14 +20,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Compare every pair of graph schema readings.</summary>
+        public static long OverlapGraphSchemaCount(long[] items)
         {
-            Idle,
-            Synced,
-            Locked,
-            Dropped,
-            New,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of stats channel readings.</summary>
