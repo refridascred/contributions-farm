@@ -1,9 +1,4 @@
 # githubfarm settings
-hard_delay_ms: staging
-idle_depth: stable
-min_size_pct:
-  - 308
-  - 489
-  - 483
-retry_window_pct: 100
-batch_window: true
+base_capacity_ms: 500
+audit: true
+retry_interval: 1.25
