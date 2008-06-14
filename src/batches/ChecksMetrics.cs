@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long floor)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                bias2 = ((bias2 - (double)784) + (double)(long)i) + span;
+                if ((double)anchor > (20.0 * 5.8))
+                {
+                    anchor = (anchor ^ (long)i) % 4096;
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return bias2 + (bias2 + bias);
+            return anchor;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
