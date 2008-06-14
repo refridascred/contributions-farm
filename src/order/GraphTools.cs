@@ -28,31 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if ((7 - 29) > bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound / 6) <= (bound + 9)) || (step <= (bound + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound - 5) > (2 << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the entry level values.</summary>
