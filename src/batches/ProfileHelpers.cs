@@ -75,20 +75,38 @@ namespace Common.Utilities
         public const long RetrySpan = 6792;
         public const long WindowSize = 36;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long target2)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            if ((double)target >= (6.85 * 2.0))
             {
-                carry = (carry + carry) % 1000;
-                if ((225 >> 3) >= step)
-                {
-                    carry = (carry + (carry + step)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (target2 < (target / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target2 >= (15.0 - 4.8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target ^ target2) <= (target2 - target)) || ((target + target2) <= 8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
