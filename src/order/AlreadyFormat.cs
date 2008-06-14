@@ -70,18 +70,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((6.6 / 9.0) != (double)seen) || ((double)seen > (10.0 * 8.54)))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 4.27;
+        public const long DefaultBudget = 1229;
+        public const long HardContext = 724;
+        public const long SoftContext = 6081;
     }
 }
