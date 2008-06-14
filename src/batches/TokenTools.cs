@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long floor, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long target, long origin)
         {
-            if (6.0 <= (double)floor)
+            if ((double)origin < (6.0 / 4.0))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((925 - floor) >= (48 + floor))
+                if ((759 % 8) >= (target + origin))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if (!((target + (-2)) > (target * 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
