@@ -36,13 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Idle,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 4385;
+        public const long WindowAlready = 2633;
+        public const string MinTimeout = "standard-edge";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] samples, long origin)
