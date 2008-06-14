@@ -44,15 +44,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items, long offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mix = 474;
-            foreach (long value in items)
-            {
-                mix = ((mix << 3) ^ offset) + value;
-            }
-            return mix % 1000;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
