@@ -49,19 +49,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] items, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < bound)
+                if (data[i] > offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
