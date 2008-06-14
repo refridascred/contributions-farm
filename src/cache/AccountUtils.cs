@@ -27,14 +27,19 @@ namespace Common.Utilities
         public const long IdleCounter = 4831;
         public const long MinSpan = 6544;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels, long seed)
         {
-            New,
-            Idle,
-            Draft,
-            Failed,
-            Closed,
+            long mark = 407;
+            foreach (long value in levels)
+            {
+                mark = ((mark << 3) ^ (mark - value)) + seed;
+                if ((value - mark) > (value >> 1))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
