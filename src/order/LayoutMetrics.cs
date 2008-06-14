@@ -13,19 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] series, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double scale = (double)(395 % 16);
+            if (scale < bias)
             {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + bias;
             }
-            return ready;
+            else
+            {
+                scale = scale + (gain + 8.81);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
