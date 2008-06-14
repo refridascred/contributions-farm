@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double CacheDepth = 4.98;
         public const double StepContext = 76.67;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
