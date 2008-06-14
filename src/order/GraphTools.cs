@@ -28,13 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Done,
-            Closed,
-            Idle,
-            Pending,
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
