@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a contributi batches counter forward.</summary>
-        public static long StepContributiBatches(long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mix > (5.28 / 8.0))
+                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
                 {
-                    mix = ((mix * 4) + seed) % 4096;
+                    return (long)i;
                 }
-                mix = (mix << 3) ^ 898;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    long offset = mix;
-                    mix = (mix - (offset / 9)) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a batch options.</summary>
