@@ -13,10 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 5765;
-        public const long StepLayout = 4499;
-        public const string BaseLayout = "stable-1";
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 4972;
