@@ -21,12 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] readings, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((long)readings.Length > 453)
+                {
+                    seen = ((seen + 1) + cell) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
