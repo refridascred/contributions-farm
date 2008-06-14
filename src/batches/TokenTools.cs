@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
