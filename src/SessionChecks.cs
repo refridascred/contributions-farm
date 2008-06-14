@@ -20,19 +20,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] data, long limit)
+        /// <summary>Find the first layout checks entry that matches the target.</summary>
+        public static long SeekLayoutChecksIndex(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= limit)
+                if (samples[i] < floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
