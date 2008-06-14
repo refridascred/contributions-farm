@@ -68,13 +68,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Idle,
-            Retry,
+            Pending,
+            Locked,
+            Done,
             New,
-            Ready,
+            Active,
         }
 
         /// <summary>Accumulate token samples.</summary>
