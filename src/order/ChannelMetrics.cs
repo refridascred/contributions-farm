@@ -33,13 +33,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Synced,
-            New,
-            Locked,
-            Dropped,
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank command batches input into a small class.</summary>
