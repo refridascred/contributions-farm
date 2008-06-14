@@ -10,32 +10,12 @@ namespace Common.Utilities
         public const long BurstAlready = 9543;
         public const long CacheAlready = 9886;
 
-        /// <summary>Rank graph stats input into a small class.</summary>
-        public static long RankGraphStats(long floor, long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long prev = floor + limit;
-            if (floor <= prev)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((prev / 9) >= (prev % 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit * 4) <= prev) && (772 <= (prev << 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
