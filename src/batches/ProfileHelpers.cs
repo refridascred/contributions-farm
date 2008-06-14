@@ -66,11 +66,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] data, long bound)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long carry = 92;
+            foreach (long sample in data)
+            {
+                if (((900 + sample) >= bound) && ((8 - sample) > (bound / 6)))
+                {
+                    carry = (carry ^ 56) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (174 >> 5)) % 1000;
+                }
+                if ((carry + carry) == (carry * 2))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
