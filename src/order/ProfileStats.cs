@@ -28,12 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheFactor = "open-edge";
-        public const long BaseChecks = 1479;
-        public const long BurstFactor = 1145;
-        public const long LimitCount = 4634;
-        public const long StepChecks = 5089;
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels)
+        {
+            long mark = 4;
+            foreach (long sample in levels)
+            {
+                if (!((double)(long)levels.Length <= (double)4))
+                {
+                    mark = (mark - (4 + mark)) - sample;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long seed, long seed2)
