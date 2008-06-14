@@ -19,16 +19,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Measure how many checks farm samples are out of range.</summary>
+        public static long AuditChecksFarmHits(long[] levels, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                anchor = (anchor ^ (offset - anchor)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((tally + tally) > (14 & 63))
+                {
+                    tally = ((tally + 2) + value) - target;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many support queue samples are out of range.</summary>
