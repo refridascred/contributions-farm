@@ -38,14 +38,15 @@ namespace Common.Utilities
         public const double DefaultReport = 73.53;
         public const long LimitSize = 7447;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            Closed,
-            Draft,
-            Stale,
-            Dropped,
-            Paused,
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
