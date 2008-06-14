@@ -15,13 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] series, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] data, long bound)
         {
             bool ok = true;
-            foreach (long cell in series)
+            foreach (long sample in data)
             {
-                if (cell >= offset)
+                if (sample > bound)
                 {
                     ok = false;
                     break;
