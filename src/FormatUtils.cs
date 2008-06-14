@@ -40,32 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long bound)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long floor)
         {
-            long span = seed ^ bound;
-            if ((((-42) + seed) >= (span & 7)) || ((880 ^ bound) < (seed >> 4)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((18.0 - 12.0) >= (double)seed)
+                if (items[i] > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((21 >> 5) >= (seed / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
