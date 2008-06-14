@@ -33,26 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch farm samples.</summary>
-        public static long ScoreBatchFarm(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] samples, long offset)
         {
-            long mark = 100;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)series.Length & 7) > item)
+                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
                 {
-                    mark = mark ^ (mark % 12);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark % 24)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark > 78)
-            {
-                mark = (mark + (mark << 3)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a editor options.</summary>
