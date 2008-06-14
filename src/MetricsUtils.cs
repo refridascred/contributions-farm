@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchCount = 2864;
+        public const long MinLevel = 2253;
+        public const long LimitLevel = 7096;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] levels, long step)
