@@ -1,18 +1,19 @@
 # entry settings
-token_delay: 64.11
-buffer_ttl: 65
-context_capacity:
-  audit:
-    idle_timeout: cached
-    channel_ratio: 7328
-    cache_ratio: 6310
-    compress: stable
-    base_delay_pct: true
-  warm_limit: 91.89
-  batch_ttl_s: fallback
-burst_capacity:
-  - latest
-  - legacy
-  - stable
-  - stable
-warm_limit_count: staging
+cache_depth_ms: legacy
+default_threshold_count: false
+strict: fallback
+cluster_retries:
+  - edge
+  - primary
+entry_capacity:
+  dry_run: 5900
+  warm_retries: strict
+  hard_interval_count: eu-west
+  persist:
+    compress:
+      - standard
+      - staging
+    soft_interval: strict
+    context_size: true
+  cluster_retries: green
+compress: 30
