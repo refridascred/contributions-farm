@@ -12,19 +12,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] samples, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (value <= target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor ^ (offset - anchor)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Digest a series of record session entries.</summary>
