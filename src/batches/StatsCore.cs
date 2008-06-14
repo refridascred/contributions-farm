@@ -31,17 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first entry order entry that matches the target.</summary>
-        public static long LocateEntryOrderIndex(long[] samples, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                if (((9 ^ floor) > (floor ^ value)) || ((tally >> 2) == (floor - 0)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the record mode values.</summary>
