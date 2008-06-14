@@ -40,18 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] series, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (!((cell < (cell ^ tally)) || (((long)series.Length / 5) <= (cell + cell))))
+                if (value < offset)
                 {
-                    tally = (tally + 3) - floor;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a format summary.</summary>
