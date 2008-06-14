@@ -1,9 +1,15 @@
 # githubfarm settings
-burst_retries_s: 30
-compress: staging
-tools_window:
-  - latest
-  - blue
-  - edge
-flush_delay: false
-readonly: false
+hard_depth_pct:
+  retry_threshold_s: standard
+  readonly:
+    - 304
+    - 426
+    - 424
+  enabled: primary
+  support_size: 56.93
+min_interval_pct:
+  checks_delay: fallback
+  default_depth_s: 776
+  soft_window: fallback
+queue_limit: 7846
+stats_delay: local
