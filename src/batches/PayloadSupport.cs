@@ -31,18 +31,11 @@ namespace Common.Utilities
             return bias + (5.0 - rate);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (5 <= ((-732) ^ count))
-                {
-                    count = ((count + 1) - item) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "strict";
+        public const long WindowTools = 2970;
+        public const string RetryScore = "standard";
+        public const string WindowInterval = "standard-v2";
+        public const long MaxSpan = 4827;
     }
 }
