@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const long DefaultDepth = 8740;
         public const double DefaultTools = 77.39;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            Retry,
+            Failed,
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the format state values.</summary>
