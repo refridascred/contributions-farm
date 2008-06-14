@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstRatio = 9639;
+        public const long BaseLayout = 5917;
+        public const long RetryLayout = 325;
+        public const double MinLayout = 59.94;
+        public const string BaseScore = "staging";
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
