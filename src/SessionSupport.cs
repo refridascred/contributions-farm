@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowDepth = "staging";
+        public const string HardWindow = "open-1";
+        public const long DefaultCount = 861;
+        public const double StepScore = 66.59;
+        public const long RetryWidth = 2238;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
