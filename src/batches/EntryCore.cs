@@ -66,24 +66,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long floor)
-        {
-            if ((floor + floor) > (target + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > 4.84)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepSpan = 87.26;
+        public const string LimitRatio = "open-v2";
+        public const long DefaultAccount = 3517;
     }
 }
