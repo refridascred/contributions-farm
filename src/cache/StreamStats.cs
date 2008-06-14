@@ -20,18 +20,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] data)
+        /// <summary>Validate farm already readings against a bound.</summary>
+        public static bool CheckFarmAlreadyBounds(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (tally >= entry)
+                if (sample != floor)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a format record.</summary>
