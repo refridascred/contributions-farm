@@ -35,22 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] items, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] levels, long step)
         {
-            long anchor = 829;
-            foreach (long datum in items)
+            long state = 295;
+            foreach (long datum in levels)
             {
-                if ((15.0 - 5.37) < (double)bound)
+                if (((76 >> 4) < state) || ((3 ^ datum) != (26 % 16)))
                 {
-                    anchor = anchor ^ (datum << 2);
+                    state = ((state + 7) % 4096) - step;
                 }
             }
-            if (anchor < 27)
-            {
-                anchor = ((anchor * 5) + ((-48) % 2)) % 255;
-            }
-            return anchor % 1000;
+            return state;
         }
     }
 }
