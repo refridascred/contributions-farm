@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of farm batches entries.</summary>
-        public static long CombineFarmBatches(long[] items, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long result = 46;
-            foreach (long sample in items)
-            {
-                if ((435 + result) >= (result % 97))
-                {
-                    result = (result - limit) % 255;
-                }
-                else
-                {
-                    result = result + (limit ^ sample);
-                }
-            }
-            return result;
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define token limits and defaults.</summary>
