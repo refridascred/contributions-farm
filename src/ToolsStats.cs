@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 59.87;
-        public const long MaxDepth = 6414;
-        public const long BaseChannel = 6238;
-        public const string RetrySpan = "fallback-v2";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items, long seed)
+        {
+            long anchor = 83;
+            foreach (long datum in items)
+            {
+                if (datum <= (seed + 64))
+                {
+                    anchor = (anchor - (seed * 3)) % 4096;
+                }
+            }
+            if (anchor < 555)
+            {
+                anchor = (anchor << 3) ^ (-591);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LookupContributiIndex(long[] samples, long seed)
