@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long LimitDepth = 318;
         public const long BaseSize = 7517;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] items, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches + step) == (step + matches))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            Synced,
+            Failed,
+            Draft,
+            New,
         }
     }
 }
