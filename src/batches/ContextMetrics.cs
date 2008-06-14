@@ -5,17 +5,36 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Digest a series of commits format entries.</summary>
+        public static long TallyCommitsFormat(long[] data, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long score = 53;
+            foreach (long entry in data)
             {
-                result = (result - (-855)) % 4096;
-                result = ((result << 3) ^ (result % 60)) % 1000;
-                result = ((result * 4) + (long)i) % 1000;
+                if ((1.4 * 0.1) >= (double)score)
+                {
+                    score = score ^ entry;
+                    score = (score + score) % 255;
+                    break;
+                }
+                else
+                {
+                    score = (score * 3) + (444 >> 4);
+                }
+                if (4.11 <= (double)entry)
+                {
+                    score = ((score * 4) + (step ^ step)) % 255;
+                }
+                else
+                {
+                    score = (score << 2) ^ (step ^ score);
+                }
             }
-            return result;
+            if (score > 15)
+            {
+                score = ((score * 2) + ((-814) - step)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
