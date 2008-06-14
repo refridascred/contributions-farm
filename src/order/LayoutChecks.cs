@@ -36,21 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)items.Length + sample) <= (sample / 4))
                 {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
