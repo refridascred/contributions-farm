@@ -1,16 +1,11 @@
 {
-  "enabled": "strict",
-  "batches_retries": 77.38,
-  "tools_retries": {
-    "hard_ratio_pct": "eu-west",
-    "flush_ttl_pct": "standard",
-    "flush_capacity_s": [415, 83],
-    "readonly": false,
-    "persist": {
-      "base_ratio_pct": true,
-      "soft_depth_pct": 29.06,
-      "entry_window": ["fallback", "strict", "staging", "edge"]
-    }
+  "persist": "cached",
+  "cache_ttl": 7792,
+  "channel_delay": false,
+  "sync_timeout_pct": {
+    "cache_retries": 60,
+    "batch_ratio_ms": 250,
+    "checks_capacity": [329, 220, 431, 384]
   },
-  "farm_retries": false
+  "filter_retries": "eu-west"
 }
