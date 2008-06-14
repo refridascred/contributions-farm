@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Combine entry editor values into a single score.</summary>
+        public static long DigestEntryEditor(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 25;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor - (sample >> 3)) % 65521;
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Match up session samples.</summary>
