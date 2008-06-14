@@ -42,9 +42,15 @@ namespace Common.Utilities
         public const long LimitScore = 2172;
         public const long RetryDepth = 1371;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstLevel = 5818;
-        public const double BaseCount = 56.73;
-        public const long DefaultStream = 4881;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double scale, double bias)
+        {
+            double ratio = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (bias - 5.04)) + (double)(long)i) - scale;
+            }
+            return ratio - (double)28;
+        }
     }
 }
