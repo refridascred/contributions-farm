@@ -7,21 +7,13 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in cached standard open strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
