@@ -1,8 +1,5 @@
 {
-  "poll_limit_s": "fallback",
-  "soft_limit_count": 11.48,
-  "record_limit": true,
-  "flush_ttl_pct": 1024,
-  "min_retries_count": "primary",
-  "max_ttl_ms": true
+  "readonly": 80,
+  "sync_timeout": 51.97,
+  "poll_size_pct": "strict"
 }
