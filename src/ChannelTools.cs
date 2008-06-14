@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first checks record entry that matches the target.</summary>
-        public static long LookupChecksRecordIndex(long[] data, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] < step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (step - 806)) % 4096;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
