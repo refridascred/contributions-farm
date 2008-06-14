@@ -1,9 +1,16 @@
 {
-  "notes_depth": 35,
-  "commits_delay": {
-    "payload_retries": "green",
-    "cache_capacity_count": 62.45,
-    "cache_retries_count": false
+  "compress": {
+    "cache_retries_ms": 9639,
+    "support_capacity": ["staging", "fallback", "standard", "standard"],
+    "poll_timeout_count": false
   },
-  "enabled": false
+  "layout_capacity": [211, 351, 445, 2],
+  "cache_capacity": 68,
+  "format_threshold": {
+    "record_capacity": 47.6,
+    "persist": 82.78,
+    "cache_retries": "green",
+    "hard_size_count": "fallback",
+    "farm_delay": 92.16
+  }
 }
