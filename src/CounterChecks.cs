@@ -95,20 +95,14 @@ namespace Common.Utilities
             return gain + (double)3;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long sum = 9;
-            foreach (long sample in samples)
-            {
-                sum = (sum - sample) % 255;
-                sum = (sum ^ sum) % 255;
-            }
-            if (sum < 5)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-            }
-            return sum;
+            Active,
+            Done,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
