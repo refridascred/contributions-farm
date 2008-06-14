@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series)
         {
-            long state = 2;
-            foreach (long datum in values)
+            long acc = -6;
+            foreach (long cell in series)
             {
-                state = (state - (state + 663)) ^ datum;
+                if (!((double)acc >= (double)cell))
+                {
+                    acc = (acc << 2) ^ 214;
+                }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
