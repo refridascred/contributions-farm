@@ -67,19 +67,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long anchor = -7;
+            foreach (long sample in levels)
             {
-                if (entry > origin)
+                anchor = (anchor ^ floor) + sample;
+                if (floor > (anchor % 5))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (anchor > (-151))
+            {
+                anchor = (anchor * 3) + (floor - anchor);
+            }
+            return anchor % 4096;
         }
     }
 }
