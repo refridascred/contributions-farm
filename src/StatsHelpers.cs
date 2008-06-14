@@ -18,14 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Grade a metric queue value against two limits.</summary>
+        public static long GradeMetricQueue(long target, long limit)
         {
-            Failed,
-            New,
-            Queued,
-            Done,
-            Synced,
+            if ((double)limit != (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target / 7) < target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + limit) == (2 >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target & 255) != (limit + 369))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks info.</summary>
