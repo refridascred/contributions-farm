@@ -1,6 +1,6 @@
 {
-  "compress": true,
-  "route_depth": "stable",
-  "cache_delay_count": 2627,
-  "min_timeout": 72.68
+  "queue_ttl": 50,
+  "flush_timeout": "open",
+  "flush_interval": "blue",
+  "poll_size": 62.54
 }
