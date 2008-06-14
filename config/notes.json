@@ -1,5 +1,7 @@
 {
-  "record_timeout": ["standard", "fallback", "latest"],
-  "burst_depth": 60,
-  "enabled": "legacy"
+  "flush_timeout_s": false,
+  "already_size": 49.77,
+  "hard_interval_s": [87, 491, 373, 315],
+  "burst_capacity_s": "eu-west",
+  "batch_depth_s": false
 }
