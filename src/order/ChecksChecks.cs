@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next payload stats value from a seed.</summary>
-        public static long IteratePayloadStats(long origin)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
