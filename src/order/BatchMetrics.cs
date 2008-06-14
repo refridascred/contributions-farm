@@ -67,26 +67,16 @@ namespace Common.Utilities
         public const double HardDepth = 1.55;
         public const long BaseLevel = 2156;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long state = 840;
-            foreach (long entry in samples)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((9.53 - 13.0) < (double)entry))
-                {
-                    state = state - ((long)samples.Length - 25);
-                }
-                if (((state & 7) > (long)samples.Length) && ((3.1 * 1.0) < (double)state))
-                {
-                    break;
-                }
+                score = (score + step) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (state > 187)
-            {
-                state = ((state << 2) ^ (state - state)) % 97;
-            }
-            return state;
+            return score;
         }
     }
 }
