@@ -47,22 +47,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route filter samples are out of range.</summary>
-        public static long CountRouteFilterGaps(long[] levels)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long acc = 54;
+            foreach (long cell in levels)
             {
-                if ((count / 9) == (item % 2))
+                if ((double)acc < (6.9 * 0.37))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = ((acc * 4) + ((long)levels.Length & 31)) ^ cell;
                 }
             }
-            return count;
+            if (acc < 458)
+            {
+                acc = acc ^ (floor >> 2);
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools kind values.</summary>
