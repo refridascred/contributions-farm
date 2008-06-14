@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit counter notes readings against a rule.</summary>
-        public static long AuditCounterNotesGaps(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long carry = 99;
+            foreach (long item in samples)
             {
-                if ((datum ^ datum) >= count)
-                {
-                    count = count + 2;
-                }
+                carry = ((carry * 4) + (carry * 3)) ^ item;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
