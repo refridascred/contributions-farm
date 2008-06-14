@@ -47,18 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] series)
+        /// <summary>Look up the position of a profile window sample.</summary>
+        public static long SeekProfileWindowIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((tally * 3) >= (tally << 2)) && ((sample & 15) == (tally + tally)))
+                if (series[i] == step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
