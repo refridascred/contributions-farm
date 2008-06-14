@@ -14,19 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] levels, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (seen > (entry >> 5))
                 {
-                    score = ((score << 2) ^ ((long)i >> 3)) - (long)i2;
+                    seen = (seen + 1) + bound;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
