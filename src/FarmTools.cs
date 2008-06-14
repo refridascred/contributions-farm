@@ -27,17 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] levels)
         {
+            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
