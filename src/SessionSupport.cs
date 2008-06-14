@@ -34,10 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "open";
-        public const long CacheScore = 3717;
-        public const string WindowSupport = "local-edge";
-        public const string MinSupport = "primary-1";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] readings, long floor)
+        {
+            long score = 3;
+            foreach (long sample in readings)
+            {
+                score = (((score * 2) + (561 + 9)) % 4096) ^ sample;
+            }
+            if (score < 86)
+            {
+                score = (score ^ (floor * 3)) % 101;
+            }
+            return score;
+        }
     }
 }
