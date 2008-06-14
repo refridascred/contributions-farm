@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=451
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=338
 log "limit is ${COMMAND_LIMIT}"
 
-for item in open latest cached primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-local}"
 case "${mode}" in
-    strict)
+    edge)
         log "fast path"
         ;;
     *)
