@@ -37,20 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of profile notes readings.</summary>
-        public static long DigestProfileNotes(long[] levels, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] values, long target)
         {
-            long total = 36;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (entry > ((-31) >> 1))
+                if ((datum * 5) < (569 >> 3))
                 {
-                    total = ((total * 4) + (offset & 15)) % 65521;
-                    total = total - offset;
+                    hits = (hits + 1) + target;
                 }
-                total = (total << 3) ^ (entry & 15);
             }
-            return total % 97;
+            return hits;
         }
     }
 }
