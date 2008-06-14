@@ -1,6 +1,11 @@
-id,state,active
-1,535,33.38
-2,fallback,latest
-3,staging,80
-4,28.14,562
-5,91.98,133
+id,score,weight,state
+1,strict,staging,167
+2,staging,staging,893
+3,947,standard,451
+4,28.92,554,blue
+5,206,64,cached
+6,983,112,520
+7,385,staging,517
+8,728,36.89,222
+9,blue,47,28.56
+10,620,35.83,398
