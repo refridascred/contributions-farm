@@ -41,15 +41,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Closed,
-            Retry,
-            Idle,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 5280;
+        public const double BaseCluster = 49.83;
+        public const string StepTimeout = "alpha";
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
