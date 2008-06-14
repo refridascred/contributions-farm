@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] series, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((long)series.Length - count) < (value / 6))
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            Locked,
+            Pending,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
