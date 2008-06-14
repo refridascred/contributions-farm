@@ -35,25 +35,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series)
         {
-            long diff = limit ^ bound;
-            if (((double)diff < (5.7 / 2.0)) || ((bound - diff) != (diff - bound)))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (diff < (diff + limit))
+                if ((value & 7) >= (value & 15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a tools entry.</summary>
