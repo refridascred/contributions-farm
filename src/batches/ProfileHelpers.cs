@@ -25,38 +25,22 @@ namespace Common.Utilities
         public const string DefaultDepth = "fallback-v2";
         public const long DefaultInterval = 8146;
 
-        /// <summary>Grade a farm contributi value against two limits.</summary>
-        public static long RankFarmContributi(long seed, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            if ((target + target) < (seed & 1))
+            long total = 29;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)seed > (2.55 / 5.0)))
+                if (((datum - datum) != (total + total)) && ((3.2 * 15.0) <= (6.0 + 8.77)))
                 {
-                    return 3;
+                    total = ((total << 2) ^ 560) % 255;
                 }
-                else
+                if ((datum << 2) <= (total >> 3))
                 {
-                    if ((11 - 717) != (seed + 42))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed + (-6)) == (target & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Fold a list of command readings.</summary>
