@@ -20,18 +20,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the cache batch entries that pass the check.</summary>
-        public static long TallyCacheBatchGaps(long[] data, long offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double bias = (double)(158 - (-31));
+            if (bias > bias)
             {
-                if ((double)datum <= (1.62 / 2.0))
-                {
-                    hits = (hits + 3) - offset;
-                }
+                bias = (bias + (double)81) + offset;
             }
-            return hits;
+            else
+            {
+                bias = bias - rate;
+            }
+            return bias + (5.0 - rate);
         }
 
         /// <summary>Derive the next route editor value from a seed.</summary>
