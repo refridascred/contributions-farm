@@ -63,12 +63,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinInterval = 1158;
-        public const long MaxCluster = 8039;
-        public const string BaseCluster = "fallback-v2";
-        public const long CacheRatio = 2648;
-        public const long MaxCount = 6366;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Active,
+            Draft,
+            New,
+        }
 
         /// <summary>Look up the position of a layout filter sample.</summary>
         public static long FindLayoutFilterIndex(long[] samples, long limit)
