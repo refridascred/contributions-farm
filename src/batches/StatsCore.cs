@@ -24,23 +24,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two already schema measurements.</summary>
-        public static double SmoothAlreadySchema(double gain, double bias)
+        /// <summary>Find the first entry order entry that matches the target.</summary>
+        public static long LocateEntryOrderIndex(long[] samples, long bound)
         {
-            double weight = bias;
-            if (weight <= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + gain;
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (7.2 + gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (double)629;
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
