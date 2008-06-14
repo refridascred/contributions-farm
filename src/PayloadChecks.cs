@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long target)
         {
-            long carry = 3;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-109) + floor) == (carry ^ floor))
+                if ((samples[i] == target) && ((samples[i] % 5) != 0))
                 {
-                    carry = (carry + 659) ^ reading;
+                    return (long)i;
                 }
             }
-            if (carry < 56)
-            {
-                carry = ((carry * 3) + (floor << 3)) % 97;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
