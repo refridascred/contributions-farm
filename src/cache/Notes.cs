@@ -50,12 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 49.55;
+        public const double DefaultDepth = 24.03;
+        public const double SoftBudget = 21.97;
+        public const long StepCounter = 2810;
+        public const string IdleCounter = "legacy-1";
     }
 }
