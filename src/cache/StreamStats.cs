@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 9792;
-        public const long DefaultEditor = 3388;
-        public const string BatchFactor = "primary-v2";
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long floor, long step)
+        {
+            if (step > (step - floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((floor + 914) < floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 3) > (step + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step >= (step + 29))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
