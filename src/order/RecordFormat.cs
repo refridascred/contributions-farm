@@ -78,10 +78,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "open-v2";
-        public const double MinDepth = 98.55;
-        public const string LimitInterval = "fallback";
-        public const long MinReport = 9147;
+        /// <summary>Look up the position of a layout filter sample.</summary>
+        public static long FindLayoutFilterIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
