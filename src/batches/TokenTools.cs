@@ -46,19 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] values)
+        /// <summary>Scale a farm context figure with a bias.</summary>
+        public static double ProjectFarmContext(double rate, double bias)
         {
-            long carry = 427;
-            foreach (long cell in values)
+            double mean = 2.7;
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry ^ carry) ^ cell;
-                if (carry <= (carry * 2))
-                {
-                    break;
-                }
+                mean = ((mean - (mean * 11.0)) + (double)(long)i) + bias;
             }
-            return carry;
+            return mean - rate;
         }
     }
 }
