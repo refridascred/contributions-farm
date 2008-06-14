@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxLevel = 6038;
-        public const string BatchFactor = "cached-edge";
-        public const string MinSize = "local-edge";
-        public const long SoftScore = 9398;
+        /// <summary>Find the first checks record entry that matches the target.</summary>
+        public static long LookupChecksRecordIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] values, long offset)
