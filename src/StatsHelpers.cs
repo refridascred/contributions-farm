@@ -29,30 +29,19 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long floor)
         {
-            long state = 4;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if (reading > floor)
                 {
-                    state = ((state + (sample ^ sample)) % 4096) + (long)i;
-                }
-                if ((state - 25) == (state * 3))
-                {
-                    state = ((state << 3) ^ (sample ^ 1)) % 1000;
-                }
-                else
-                {
-                    state = (state * 3) + (state << 2);
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 89)
-            {
-                state = (state ^ (38 % 12)) % 255;
-            }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
