@@ -25,16 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches session counter forward.</summary>
-        public static long RollBatchesSession(long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] series, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                mix = mix ^ (219 / 2);
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((datum < (90 ^ hits)) && ((hits < (hits % 100)) || (hits <= 94)))
+                {
+                    hits = (hits + 3) + target;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
