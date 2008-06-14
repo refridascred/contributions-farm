@@ -55,13 +55,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double bias2)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            double weight = bias / 8.0;
+            if (weight < (double)3)
+            {
+                weight = weight - bias2;
+            }
+            return weight + (double)448;
         }
 
         /// <summary>Describe the profile state values.</summary>
