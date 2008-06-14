@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowDepth = "staging";
-        public const string HardWindow = "open-1";
-        public const long DefaultCount = 861;
-        public const double StepScore = 66.59;
-        public const long RetryWidth = 2238;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseRatio = 1.83;
+        public const long SoftReport = 4356;
+        public const long HardDepth = 6332;
+        public const long SoftBudget = 8421;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
