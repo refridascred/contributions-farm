@@ -12,12 +12,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinFactor = "latest-1";
-        public const long SoftAccount = 3609;
-        public const double HardSize = 94.49;
-        public const double BurstFactor = 36.41;
-        public const long BaseCount = 4621;
+        /// <summary>Check that every stream metrics entry stays within the limit.</summary>
+        public static bool VerifyStreamMetricsRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ScaleCounter(double rate, double offset)
