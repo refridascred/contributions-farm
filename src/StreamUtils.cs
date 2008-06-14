@@ -44,19 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] values, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long mark = 879;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((double)item <= (double)3) || ((11.0 - 9.2) <= (double)mark))
                 {
-                    carry = carry ^ (long)i2;
+                    mark = ((mark * 4) + (offset - item)) % 65521;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((double)mark == (7.0 + 12.0))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (mark > 4)
+            {
+                mark = (mark * 3) + (mark / 7);
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel entry.</summary>
