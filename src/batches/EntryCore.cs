@@ -14,31 +14,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long offset, long target)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] samples, long origin)
         {
-            if ((578 >> 3) < (target + offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (15.0 < (double)offset)
+                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset < target) || (29 < target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
