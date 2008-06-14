@@ -1,7 +1,13 @@
 # entry settings
-order_size:
-  - 377
-  - 113
-  - 208
-default_limit_ms: fallback
-poll_capacity_count: 39
+hard_threshold: 58.22
+cache_timeout: 100
+base_depth: edge
+graph_size: edge
+default_threshold_s:
+  - local
+  - latest
+  - blue
+verbose:
+  - primary
+  - fallback
+  - blue
