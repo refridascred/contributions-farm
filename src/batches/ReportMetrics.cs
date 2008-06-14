@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Audit notes command readings against a rule.</summary>
+        public static long CountNotesCommandGaps(long[] levels, long target)
         {
-            Failed,
-            Idle,
-            Done,
-            Stale,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!(target <= (tally * 2)))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count layout account pairs that satisfy a relation.</summary>
