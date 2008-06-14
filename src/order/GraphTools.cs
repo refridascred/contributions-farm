@@ -15,11 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next checks buffer value.</summary>
-        public static double ProjectChecksBuffer(double ratio, double offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] items, long origin)
         {
-            double load = (double)8 + (double)803;
-            return (load - ratio) + offset;
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
