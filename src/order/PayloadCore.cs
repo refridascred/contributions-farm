@@ -19,15 +19,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Queued,
-            Ready,
-            Locked,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardRatio = 458;
+        public const long BaseWindow = 5291;
+        public const double DefaultRatio = 87.32;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsOutliers(long[] items, long step)
