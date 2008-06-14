@@ -55,21 +55,15 @@ namespace Common.Utilities
         public const long IdleCommits = 9004;
         public const string BatchCommits = "open-1";
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = floor - ratio;
+            if (weight <= weight)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (double)295;
             }
-            return hits;
+            return weight - (weight + weight);
         }
     }
 }
