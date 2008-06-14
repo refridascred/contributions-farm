@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "standard-edge";
+        public const string LimitCount = "staging-v2";
+        public const string DefaultCount = "alpha-v2";
+        public const long IdleFactor = 9191;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
