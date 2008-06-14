@@ -49,9 +49,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseDepth = 3851;
-        public const double SoftInterval = 28.55;
-        public const long MinSize = 8851;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
