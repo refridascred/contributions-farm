@@ -43,14 +43,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels, long floor)
         {
-            Done,
-            Ready,
-            Synced,
-            New,
-            Locked,
+            long acc = 595;
+            foreach (long item in levels)
+            {
+                acc = (((acc * 3) + (item + acc)) % 4096) + floor;
+            }
+            return acc;
         }
     }
 }
