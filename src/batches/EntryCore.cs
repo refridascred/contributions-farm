@@ -56,18 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches entry samples are out of range.</summary>
-        public static long TallyBatchesEntryMatches(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((cell <= tally) || ((-8) <= (tally >> 2)))
+                if (cell != origin)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
