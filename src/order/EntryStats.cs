@@ -33,18 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi payload entries that pass the check.</summary>
-        public static long TallyContributiPayloadHits(long[] items, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (!(((reading + reading) >= (offset + matches)) && (offset < ((-906) - reading))))
+                if ((-770) <= cell)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the window level values.</summary>
