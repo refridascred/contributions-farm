@@ -35,23 +35,23 @@ namespace Common.Utilities
         public const long HardBuffer = 701;
         public const double SoftBuffer = 39.61;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Blend two githubfarm order measurements.</summary>
+        public static double AdjustGithubfarmOrder(double ratio, double bias)
         {
-            double drift = ratio;
-            if (drift < span)
+            double mean = bias - (ratio - ratio);
+            if (mean >= mean)
             {
-                drift = drift - span;
+                mean = mean + ratio;
             }
             else
             {
-                drift = drift + (ratio - drift);
+                mean = mean + (double)294;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 7; i++)
             {
-                drift = (drift - (7.0 / 2.0)) + (double)(long)i;
+                mean = (mean + ratio) + (double)(long)i;
             }
-            return drift - (ratio / 2.0);
+            return mean - (5.84 * 10.0);
         }
     }
 }
