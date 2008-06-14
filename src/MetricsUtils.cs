@@ -29,11 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftLevel = "strict-1";
-        public const double CacheBatches = 7.1;
-        public const long StepLevel = 440;
-        public const long MaxBatches = 3567;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterMatches(long[] data, long target)
