@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long step, long seed)
+        /// <summary>Classify a channel metrics pair into a bucket.</summary>
+        public static long GradeChannelMetrics(long step, long bound)
         {
-            long next = step - seed;
-            if ((double)seed != (double)next)
+            if ((step / 9) >= step)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (((seed - seed) >= (step / 5)) && ((3 + step) > (seed << 3)))
+                if ((step + step) >= ((-829) * 5))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if (step < ((-3) + 94))
+                    if (step >= (step + step))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        if (!((15.0 + 8.0) <= (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 5;
                     }
                 }
             }
