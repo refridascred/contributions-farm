@@ -1,4 +1,10 @@
 # entry settings
-channel_capacity: false
-batch_interval: 6
-hard_capacity: 99
+strict: 500
+default_depth_count: open
+default_interval_count: stable
+buffer_capacity: local
+graph_depth:
+  - cached
+  - eu-west
+  - latest
+  - staging
