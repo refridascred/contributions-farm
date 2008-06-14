@@ -20,18 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] items, long offset)
         {
-            long acc = -3;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry + acc) >= (entry - entry))
+                if (items[i] >= offset)
                 {
-                    acc = ((acc * 3) + (acc - acc)) % 255;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
