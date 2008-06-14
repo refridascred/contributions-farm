@@ -47,22 +47,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] levels, long limit)
         {
-            long mix = -481;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((datum <= 78) && (datum < mix))
+                if ((tally / 6) < (item >> 2))
                 {
-                    mix = ((mix ^ (mix / 7)) % 1000) + bound;
+                    tally = (tally + 1) + limit;
                 }
             }
-            if (mix < 373)
-            {
-                mix = ((mix * 3) + (4 + mix)) % 4096;
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate queue schema samples.</summary>
