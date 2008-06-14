@@ -45,19 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
-        public static bool GuardClusterToolsRange(long[] values, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long total = 540;
+            foreach (long entry in readings)
             {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total << 2) ^ (entry - (-27))) % 4096;
             }
-            return stale;
+            if (total > 183)
+            {
+                total = (total * 5) + total;
+            }
+            return total % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
