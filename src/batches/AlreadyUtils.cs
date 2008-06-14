@@ -19,17 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a tools githubfarm counter forward.</summary>
-        public static long StepToolsGithubfarm(long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (mix * 4) + (offset + 2);
-                mix = mix + ((-954) % 100);
-                mix = ((mix * 4) + (long)i) % 97;
+                score = ((score * 3) + (offset + (-14))) % 97;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Describe the batches state values.</summary>
