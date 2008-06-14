@@ -44,20 +44,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double ratio, double floor)
-        {
-            double load = ratio;
-            if (load <= floor)
-            {
-                load = load + (ratio + 5.4);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (0.8 + load)) + (double)(long)i;
-            }
-            return load + (double)369;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 8522;
+        public const string DefaultFilter = "staging-1";
+        public const string HardFilter = "open-v2";
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] values, long offset)
