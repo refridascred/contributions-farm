@@ -12,19 +12,10 @@ namespace Common.Utilities
             return ((rate - (9.7 + rate)) + ratio) + span;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item == (18.0 + 9.9))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchTimeout = 1391;
+        public const string BaseTimeout = "cached";
+        public const long CacheToken = 5367;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadOutliers(long[] levels)
