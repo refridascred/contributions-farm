@@ -38,31 +38,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long seed, long bound)
+        /// <summary>Combine farm editor values into a single score.</summary>
+        public static long ScoreFarmEditor(long[] values, long bound)
         {
-            if ((bound > (seed >> 3)) && ((seed / 5) < 7))
+            long anchor = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((2.0 / 7.0) == (double)bound) && ((3.1 - 7.26) <= (double)bound))
+                if ((anchor & 15) > (bound + (long)values.Length))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)8 < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = ((anchor << 2) ^ anchor) ^ reading;
                 }
             }
+            if (anchor < (-599))
+            {
+                anchor = ((anchor << 3) ^ (anchor + bound)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every cluster tools entry stays within the limit.</summary>
