@@ -18,10 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 9905;
-        public const long MaxChecks = 6624;
-        public const long MinFactor = 9504;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long step, long offset)
+        {
+            long step2 = step ^ offset;
+            if (!((step2 << 3) == (offset << 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8 - offset) >= (offset ^ offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset < (step + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step != (7.9 + 3.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a contributi account sample.</summary>
         public static long LocateContributiAccountIndex(long[] values, long target)
