@@ -18,19 +18,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate farm already readings against a bound.</summary>
-        public static bool CheckFarmAlreadyBounds(long[] data, long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample != floor)
+                anchor = (anchor - 469) % 97;
+                anchor = (anchor * 2) + (anchor + (long)i);
+                if (((long)i ^ anchor) <= anchor)
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor << 3) ^ (long)i;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
