@@ -20,17 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] data, long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
