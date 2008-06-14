@@ -26,15 +26,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Audit stats support readings against a rule.</summary>
+        public static long AuditStatsSupportOutliers(long[] items, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((seen + 3) == (cell >> 4))
+                {
+                    seen = (seen + 2) - floor;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a tools stats.</summary>
