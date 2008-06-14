@@ -56,19 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long target)
+        /// <summary>Look up the position of a layout counter sample.</summary>
+        public static long LookupLayoutCounterIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < target)
+                if ((samples[i] == bound) && ((samples[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
