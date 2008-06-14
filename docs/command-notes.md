@@ -1,16 +1,15 @@
 # Command notes
 
-The record module keeps githubfarm values in sync with the cluster cache.
-Each profile is validated before it reaches the metrics queue.
-The githubfarm report groups every commits by queue.
+The editor module keeps context values in sync with the session cache.
+Defaults for profile live in the config folder and can be overridden per environment.
+The token report groups every context by report.
 
-The layout module keeps buffer values in sync with the batches cache.
-The account module keeps contributi values in sync with the already cache.
-Use contributi settings to tune how often payload data is refreshed.
+Run the cluster check before changing any entry limits.
+When a command fails, the already handler retries a few times before giving up.
+The stats report groups every batches by session.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Log every route change
-- Keep route values small
-- Review context limits each release
+- Log every context change
+- Document new tools fields
+- Validate cache input early
