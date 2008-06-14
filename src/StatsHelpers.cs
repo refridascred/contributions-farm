@@ -23,13 +23,30 @@ namespace Common.Utilities
         public const long WindowSize = 6034;
         public const double StepTimeout = 15.09;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            long state = 4;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    state = ((state + (sample ^ sample)) % 4096) + (long)i;
+                }
+                if ((state - 25) == (state * 3))
+                {
+                    state = ((state << 3) ^ (sample ^ 1)) % 1000;
+                }
+                else
+                {
+                    state = (state * 3) + (state << 2);
+                }
+            }
+            if (state > 89)
+            {
+                state = (state ^ (38 % 12)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
