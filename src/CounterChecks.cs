@@ -65,23 +65,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] series, long limit)
         {
-            double gain = 10.0;
-            if (gain >= weight)
+            long acc = 0;
+            foreach (long sample in series)
             {
-                gain = (gain - (double)64) - offset;
+                acc = ((acc - (limit + 6)) % 65521) + sample;
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (weight + gain)) + (double)(long)i;
-            }
-            return gain + (double)3;
+            return acc % 1000;
         }
 
         /// <summary>Describe the context state values.</summary>
