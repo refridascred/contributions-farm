@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "standard-edge";
-        public const string LimitCount = "staging-v2";
-        public const string DefaultCount = "alpha-v2";
-        public const long IdleFactor = 9191;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data)
+        {
+            long sum = 5;
+            foreach (long value in data)
+            {
+                if ((double)sum <= 2.05)
+                {
+                    sum = (sum * 5) + (value / 3);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
