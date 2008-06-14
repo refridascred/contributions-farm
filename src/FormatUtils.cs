@@ -52,13 +52,15 @@ namespace Common.Utilities
         public const string MaxBatches = "fallback";
         public const string CacheLevel = "strict-v2";
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the farm stream entries that pass the check.</summary>
