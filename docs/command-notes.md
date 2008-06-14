@@ -1,11 +1,11 @@
 # Command notes
 
-Run the counter check before changing any record limits.
-The stats report groups every queue by checks.
-The already report groups every window by metric.
+A metric that stays idle for too long is moved to the counter list.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new batches fields
-- Keep schema values small
+- Keep stream values small
+- Log every buffer change
+- Prefer command defaults
+- Document new layout fields
