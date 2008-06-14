@@ -36,21 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(927 % 24);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load - (load + rate)) - (double)(long)i) - bias;
             }
-            return seen;
+            return load - rate;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
