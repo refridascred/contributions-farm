@@ -65,15 +65,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] series, long limit)
+        /// <summary>Count the notes commits entries that pass the check.</summary>
+        public static long AuditNotesCommitsMatches(long[] samples, long step)
         {
-            long acc = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                acc = ((acc - (limit + 6)) % 65521) + sample;
+                if ((double)seen < (double)step)
+                {
+                    seen = (seen + 3) ^ value;
+                }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Describe the context state values.</summary>
