@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a contributi summary.</summary>
