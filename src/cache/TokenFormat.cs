@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double offset)
         {
-            double weight = floor;
-            return weight - (bias + weight);
+            double ratio = (double)(157 / 5);
+            if (ratio < (scale - offset))
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - (offset + 0.22);
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate report samples.</summary>
