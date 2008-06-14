@@ -1,11 +1,7 @@
 {
-  "burst_threshold": {
-    "default_size_count": [406, 170, 480, 236],
-    "burst_retries_ms": 10.35,
-    "sync_limit_ms": 90.69,
-    "burst_threshold_pct": "primary"
-  },
-  "burst_delay_s": false,
-  "min_ratio_count": false,
-  "hard_capacity": ["green", "stable"]
+  "burst_delay": "strict",
+  "cache_threshold": 1480,
+  "batch_size_ms": true,
+  "format_delay": [297, 440],
+  "hard_ratio_pct": "open"
 }
