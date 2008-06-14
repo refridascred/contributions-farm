@@ -41,19 +41,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long step)
+        /// <summary>Locate a cluster already reading by value.</summary>
+        public static long LookupClusterAlreadyIndex(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < step)
+                if (values[i] < origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
