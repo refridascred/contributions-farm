@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long CacheLevel = 2387;
         public const long BaseFactor = 2892;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Roll a window entry counter forward.</summary>
+        public static long SeriesWindowEntry(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
