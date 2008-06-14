@@ -31,19 +31,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double weight, double bias)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long offset)
         {
-            double mean = bias;
-            if (mean > bias)
+            long delta = floor ^ offset;
+            if (!(floor > (floor * 4)))
             {
-                mean = mean - mean;
+                return 3;
             }
             else
             {
-                mean = mean + (weight * 9.0);
+                if ((delta + 21) != (floor & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mean + (double)2;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
