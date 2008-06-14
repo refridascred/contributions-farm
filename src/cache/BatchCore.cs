@@ -23,26 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double weight, double span)
         {
-            long mix = 3;
-            foreach (long cell in series)
+            double mean = 1.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)cell <= (17.0 + 4.0))
-                {
-                    mix = (mix ^ (mix & 63)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (mix * 5)) % 4096;
-                }
+                mean = ((mean + weight) + (double)(long)i) - span;
             }
-            if (mix < 498)
-            {
-                mix = ((mix << 2) ^ (mix + 47)) % 4096;
-            }
-            return mix % 97;
+            return mean - (weight + mean);
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
