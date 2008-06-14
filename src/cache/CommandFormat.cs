@@ -50,18 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token layout readings against a rule.</summary>
-        public static long TallyTokenLayoutOutliers(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (item >= (332 - 8))
+                if ((target >= (6 + datum)) || ((datum - datum) >= (317 % 10)))
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
