@@ -63,18 +63,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long AuditFormatLayoutMatches(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((((double)(long)series.Length > (double)tally) || ((tally - tally) > tally)) || ((((-67) + 8) > (tally % 7)) && ((8.9 * 8.0) <= (double)datum)))
+                if ((matches - floor) != (floor ^ 694))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
