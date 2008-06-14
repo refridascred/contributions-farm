@@ -20,19 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] items, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (reading != seed)
+                if (value <= target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Digest a series of record session entries.</summary>
