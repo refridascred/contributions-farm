@@ -26,12 +26,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "fallback";
-        public const long MaxQueue = 9688;
-        public const long BurstQueue = 2647;
-        public const double CacheQueue = 70.96;
-        public const double MaxLevel = 41.25;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] levels, long origin)
