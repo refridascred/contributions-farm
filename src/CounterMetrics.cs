@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] series)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((4.53 + 7.9) < (double)sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a stats summary.</summary>
