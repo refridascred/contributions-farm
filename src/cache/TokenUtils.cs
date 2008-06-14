@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result ^ ((-2) + seed)) % 1000;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 3093;
+        public const long CacheBudget = 6661;
+        public const long BurstMetrics = 7625;
+        public const string BaseMetrics = "latest-v2";
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] data, long bound)
