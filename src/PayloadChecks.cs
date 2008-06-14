@@ -35,12 +35,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Match up metric context samples.</summary>
+        public static long CompareMetricContextCount(long[] data)
         {
-            Locked,
-            Pending,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
