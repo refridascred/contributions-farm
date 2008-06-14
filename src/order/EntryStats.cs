@@ -30,22 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] items, long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((0 + seed) != (358 / 8)) && ((503 + seed) < (seen & 3)))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the entry mode values.</summary>
