@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] readings, long target)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
