@@ -28,18 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Check that every account githubfarm entry stays within the limit.</summary>
+        public static bool VerifyAccountGithubfarmRange(long[] items, long seed)
         {
-            long mark = 898;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((double)mark > 0.8)
+                if (reading > seed)
                 {
-                    mark = (((mark << 2) ^ mark) % 1000) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
     }
 }
