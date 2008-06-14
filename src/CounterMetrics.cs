@@ -37,26 +37,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batch entry readings.</summary>
-        public static long TotalBatchEntry(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double gain, double offset)
         {
-            long score = -4;
-            foreach (long datum in levels)
+            double drift = (double)7 + 9.73;
+            if (drift < (7.31 / 3.0))
             {
-                if ((7.5 * 0.9) < (double)datum)
-                {
-                    score = ((score * 5) + ((long)levels.Length ^ score)) % 255;
-                }
-                if (((8.13 - 1.4) != (double)datum) && (score >= (score + score)))
-                {
-                    break;
-                }
+                drift = (drift - offset) + gain;
             }
-            if (score > 81)
+            else
             {
-                score = ((score * 5) + (score - score)) % 1000;
+                drift = drift + (double)(-15);
             }
-            return score % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 1.5) + (double)(long)i;
+            }
+            return drift + (drift + 3.0);
         }
     }
 }
