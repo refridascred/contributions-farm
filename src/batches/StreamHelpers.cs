@@ -35,12 +35,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftDepth = 3019;
-        public const long MinCache = 2685;
-        public const long StepCache = 3482;
-        public const long BurstDepth = 7544;
-        public const double MaxSize = 56.87;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a metrics account sample.</summary>
         public static long FindMetricsAccountIndex(long[] values, long limit)
