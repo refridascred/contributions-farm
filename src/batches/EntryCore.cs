@@ -56,14 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many batches entry samples are out of range.</summary>
+        public static long TallyBatchesEntryMatches(long[] values)
         {
-            Paused,
-            Closed,
-            Ready,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell <= tally) || ((-8) <= (tally >> 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
