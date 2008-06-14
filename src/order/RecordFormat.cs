@@ -18,17 +18,38 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] levels, long limit)
+        /// <summary>Grade a order buffer value against two limits.</summary>
+        public static long GradeOrderBuffer(long limit, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((1 & 255) <= (limit * 5))
             {
-                if (levels[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if (((seed - seed) >= seed) && ((double)127 > (double)limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - seed) != (6 * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((24 << 2) < (seed >> 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
