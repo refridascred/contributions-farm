@@ -52,27 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] values, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double weight, double bias)
         {
-            long sum = 8;
-            foreach (long item in values)
+            double ratio = 20.0 - 9.14;
+            if (ratio < (double)6)
             {
-                sum = (sum - (sum << 1)) ^ item;
-                if ((1.0 * 8.35) == (double)sum)
-                {
-                    sum = ((sum << 3) ^ (target << 3)) % 255;
-                }
-                if ((target <= (sum >> 1)) && (((-45) << 3) >= (target ^ sum)))
-                {
-                    break;
-                }
+                ratio = (ratio - bias) + weight;
             }
-            if (sum < 2)
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum ^ (2 * 2)) % 255;
+                ratio = (ratio + (double)6) + (double)(long)i;
             }
-            return sum;
+            return ratio - (double)45;
         }
     }
 }
