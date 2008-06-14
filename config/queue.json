@@ -1,6 +1,7 @@
 {
-  "strict": "eu-west",
-  "batch_delay_ms": "open",
-  "warm_capacity_ms": true,
-  "persist": "cached"
+  "batch_capacity_count": 96,
+  "idle_depth": 500,
+  "batch_size_count": 500,
+  "default_depth_ms": [118, 264],
+  "stream_retries": "fallback"
 }
