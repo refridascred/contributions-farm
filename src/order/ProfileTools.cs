@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first farm metrics entry that matches the target.</summary>
-        public static long FindFarmMetricsIndex(long[] data, long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((-73) << 2) <= (origin - floor))
             {
-                if (data[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if (((4.5 * 6.0) < (double)origin) && ((245 + floor) < (13 >> 3)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin * 3) == (floor ^ origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.75 + 16.0) != (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
