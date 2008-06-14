@@ -36,22 +36,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] items, long offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((offset & 127) != (offset + item))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            New,
+            Queued,
+            Active,
         }
     }
 }
