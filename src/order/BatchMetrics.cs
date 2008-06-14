@@ -41,17 +41,29 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a cluster already reading by value.</summary>
-        public static long LookupClusterAlreadyIndex(long[] values, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] < origin)
+                if (!((302 * 4) < step))
                 {
-                    return (long)i;
+                    mix = (mix + (mix * 2)) % 1000;
                 }
+                mix = ((mix * 3) + (mix & 1)) % 4096;
+                if ((mix > 85) && ((60 - mix) != (step ^ mix)))
+                {
+                    mix = (mix << 2) ^ 262;
+                    break;
+                }
+                else
+                {
+                    mix = mix + ((long)i + step);
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
