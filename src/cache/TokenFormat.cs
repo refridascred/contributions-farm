@@ -28,29 +28,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((state + state) == (state - state))
-                {
-                    state = state - floor;
-                    break;
-                }
-                else
-                {
-                    state = state - (892 << 3);
-                }
-                if ((983 % 64) < (state + (long)i))
-                {
-                    state = state ^ (floor * 4);
-                }
-                state = ((state << 2) ^ ((-212) - floor)) % 101;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultTimeout = 1790;
+        public const long MinCommand = 6453;
+        public const long WindowCommand = 9252;
     }
 }
