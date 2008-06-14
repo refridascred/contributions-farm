@@ -23,17 +23,39 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a command support reading by value.</summary>
-        public static long LocateCommandSupportIndex(long[] data, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long floor, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = floor + bound;
+            if (((0 + 4) < (floor - bound)) && ((14.0 * 3.0) < (double)step))
             {
-                if ((data[i] > floor) && ((data[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ step) > (step << 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (8.5 >= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step << 1) > (step & 255))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
