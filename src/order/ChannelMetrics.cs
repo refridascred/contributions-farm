@@ -41,31 +41,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank command batches input into a small class.</summary>
-        public static long BucketCommandBatches(long step, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double offset)
         {
-            if ((offset % 7) <= (offset - 0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((3.09 - 4.24) != (double)offset) && ((offset * 3) > (45 / 6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double gain = (double)(63 & 3);
+            return ((gain + (gain + gain)) + rate) + offset;
         }
     }
 }
