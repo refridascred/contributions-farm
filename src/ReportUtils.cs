@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            Synced,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
