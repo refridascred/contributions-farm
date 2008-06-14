@@ -54,11 +54,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data, long limit)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long state = 369;
+            foreach (long reading in data)
+            {
+                state = ((state ^ (state + state)) % 255) ^ reading;
+            }
+            if (state < 324)
+            {
+                state = (state + limit) % 1000;
+            }
+            return state;
         }
     }
 }
