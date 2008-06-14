@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string BatchBudget = "primary-v2";
         public const long BurstQueue = 9016;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items, long offset)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches + datum) > offset)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
