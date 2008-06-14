@@ -58,10 +58,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchWidth = "primary";
-        public const string SoftGithubfarm = "strict-1";
-        public const double LimitGithubfarm = 47.46;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] series)
+        {
+            long mix = -67;
+            foreach (long reading in series)
+            {
+                mix = (mix ^ (reading + reading)) % 101;
+            }
+            if (mix > (-880))
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string MaxRecord = "legacy-edge";
