@@ -37,18 +37,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally <= (10.0 - 5.35))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Project the next notes value.</summary>
