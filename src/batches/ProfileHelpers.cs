@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] values, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((double)reading >= (double)matches)
+                if (sample < offset)
                 {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the queue class values.</summary>
