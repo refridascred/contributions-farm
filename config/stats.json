@@ -1,14 +1,7 @@
 {
-  "flush_delay_ms": 8,
-  "enabled": "edge",
-  "batches_retries": 11.66,
-  "hard_size": [344, 397, 474],
-  "notes_size": true,
-  "max_limit_s": {
-    "readonly": "legacy",
-    "tools_ratio": 75,
-    "idle_delay_s": ["edge", "open"],
-    "min_ratio": 54.67,
-    "hard_threshold_pct": [199, 189, 422]
-  }
+  "batch_size": true,
+  "retry_interval_ms": 76,
+  "poll_ttl": 81.37,
+  "sync_limit_count": ["edge", "fallback"],
+  "readonly": "local"
 }
