@@ -27,19 +27,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items, long bound)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long total = 595;
-            foreach (long cell in items)
-            {
-                total = (total ^ cell) + bound;
-            }
-            if (total > 7)
-            {
-                total = ((total << 3) ^ (total / 6)) % 97;
-            }
-            return total % 4096;
+            Ready,
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
