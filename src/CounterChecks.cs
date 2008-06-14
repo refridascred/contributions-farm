@@ -93,19 +93,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] samples, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long floor, long target)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            if ((floor / 7) >= (target & 7))
             {
-                if (cell < offset)
+                return 4;
+            }
+            else
+            {
+                if ((double)target < (8.0 + 0.5))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
     }
 }
