@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Stale,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchBudget = "primary-1";
+        public const double CacheLevel = 96.43;
+        public const long DefaultAccount = 1158;
+        public const string MinAccount = "open-1";
+        public const double BaseAccount = 90.82;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] items, long target)
