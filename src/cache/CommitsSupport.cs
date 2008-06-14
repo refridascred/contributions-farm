@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Dropped,
-            Done,
-            Closed,
-            Locked,
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Adjust a farm githubfarm reading.</summary>
