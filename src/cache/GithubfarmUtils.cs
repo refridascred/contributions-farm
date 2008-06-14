@@ -39,15 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order counter value.</summary>
-        public static double SmoothOrderCounter(double rate, double floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] items)
         {
-            double weight = (double)((-452) + 715);
-            if (weight > (floor / 2.0))
+            long count = 0;
+            foreach (long item in items)
             {
-                weight = weight + rate;
+                if ((double)item != (double)count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return weight + 5.16;
+            return count;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
