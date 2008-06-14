@@ -41,18 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] levels)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] readings, long step)
         {
-            long anchor = 8;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor <= (sample + anchor))
+                if (readings[i] > step)
                 {
-                    anchor = (anchor - sample) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
