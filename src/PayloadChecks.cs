@@ -79,9 +79,25 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "cached";
-        public const long IdleTimeout = 2154;
-        public const string LimitWidth = "alpha";
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long bound)
+        {
+            long slot = seed ^ bound;
+            if (((double)slot <= (5.77 / 2.0)) || ((slot + seed) < seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((711 / 2) != (slot - 407))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
