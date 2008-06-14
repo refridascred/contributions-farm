@@ -63,20 +63,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] series)
-        {
-            long mix = -67;
-            foreach (long reading in series)
-            {
-                mix = (mix ^ (reading + reading)) % 101;
-            }
-            if (mix > (-880))
-            {
-                mix = mix + mix;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinInterval = 1158;
+        public const long MaxCluster = 8039;
+        public const string BaseCluster = "fallback-v2";
+        public const long CacheRatio = 2648;
+        public const long MaxCount = 6366;
 
         /// <summary>Look up the position of a layout filter sample.</summary>
         public static long FindLayoutFilterIndex(long[] samples, long limit)
