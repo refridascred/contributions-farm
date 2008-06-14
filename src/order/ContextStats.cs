@@ -26,22 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels, long step)
         {
-            long total = 3;
-            foreach (long entry in values)
+            long mark = 47;
+            foreach (long datum in levels)
             {
-                if (!((entry % 5) > (step + step)))
-                {
-                    total = (total + (step * 5)) % 97;
-                }
-                else
-                {
-                    total = total + (entry % 97);
-                }
+                mark = (((mark << 2) ^ 787) - datum) - step;
             }
-            return total;
+            return mark % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
