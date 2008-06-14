@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const double RetryStats = 78.43;
         public const long BatchStats = 8231;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] series, long limit)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 4585;
+        public const long RetryEntry = 6470;
+        public const long LimitEntry = 3730;
+        public const long StepEntry = 4503;
+        public const long BurstSpan = 9709;
     }
 }
