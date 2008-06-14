@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Failed,
-            Active,
-            Dropped,
+            Draft,
             Queued,
+            Ready,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
