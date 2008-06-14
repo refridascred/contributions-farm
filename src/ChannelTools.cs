@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark << 3) ^ (step - 806)) % 4096;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((long)samples.Length >= item)
+                {
+                    matches = (matches + 1) - origin;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
