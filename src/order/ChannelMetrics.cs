@@ -13,19 +13,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of route window entries.</summary>
-        public static long WeighRouteWindow(long[] items)
+        /// <summary>Derive the next counter checks value from a seed.</summary>
+        public static long IterateCounterChecks(long bound)
         {
-            long carry = 822;
-            foreach (long datum in items)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                carry = (carry - (datum - datum)) % 1000;
+                acc = ((acc * 5) + ((long)i + acc)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            if (carry < 8)
-            {
-                carry = (carry << 2) ^ (carry << 3);
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the layout kind values.</summary>
