@@ -20,12 +20,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] items, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < floor)
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
