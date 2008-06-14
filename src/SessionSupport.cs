@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload report samples are out of range.</summary>
-        public static long TallyPayloadReportGaps(long[] series, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] samples)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long reading in samples)
             {
-                if (!(sample < (sample ^ matches)))
+                if ((30 + reading) > (matches / 5))
                 {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
