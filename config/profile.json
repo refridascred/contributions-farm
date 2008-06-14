@@ -1,6 +1,6 @@
 {
-  "retry_delay": ["legacy", "primary"],
-  "command_window": "fallback",
-  "strict": 35,
-  "layout_limit": "edge"
+  "flush_threshold_s": ["latest", "latest", "green"],
+  "flush_interval_ms": "latest",
+  "burst_limit_pct": true,
+  "strict": 36.95
 }
