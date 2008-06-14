@@ -13,22 +13,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine batch schema values into a single score.</summary>
-        public static long CombineBatchSchema(long[] levels, long limit)
+        /// <summary>Audit schema graph readings against a rule.</summary>
+        public static long AuditSchemaGraphHits(long[] samples, long offset)
         {
-            long sum = 344;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((double)value < (3.0 * 4.3))
+                if ((tally + value) < value)
                 {
-                    sum = ((sum * 2) + value) % 101;
-                }
-                if ((double)limit >= (7.99 + 19.0))
-                {
-                    break;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
