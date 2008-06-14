@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west green; do
+for item in strict fallback stable staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=459
+mode="${1:-eu-west}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=412
 log "limit is ${BUFFER_LIMIT}"
