@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long offset, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples, long target)
         {
-            if (!(step > (step % 3)))
+            long mark = 73;
+            foreach (long item in samples)
             {
-                return 2;
+                mark = ((mark * 2) + (target + target)) + item;
             }
-            else
-            {
-                if (!((offset * 3) >= offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset - step) != (offset / 3)) || ((step * 2) == (step ^ 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Match up channel samples.</summary>
