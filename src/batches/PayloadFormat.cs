@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Combine payload schema values into a single score.</summary>
+        public static long DigestPayloadSchema(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -963;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc + offset) + reading;
+                acc = (acc - (acc << 2)) % 1000;
+                acc = (acc - (offset * 2)) % 4096;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of record readings.</summary>
