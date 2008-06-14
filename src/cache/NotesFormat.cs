@@ -16,18 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] series, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((-39) / 5) < (entry - entry))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
