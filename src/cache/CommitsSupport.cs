@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings, long offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long sum = 889;
-            foreach (long entry in readings)
-            {
-                if ((sum & 7) > 710)
-                {
-                    sum = (((sum * 4) + (offset + sum)) % 4096) + entry;
-                }
-                if (!((1.16 + 17.0) >= (double)offset))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
