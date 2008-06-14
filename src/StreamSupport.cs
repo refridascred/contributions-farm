@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark + ((-897) + target)) % 97;
-                mark = (mark - target) % 255;
-                if ((double)(long)i != (8.5 + 8.41))
-                {
-                    mark = (mark * 3) + (target - 343);
-                    mark = mark - (target - (-659));
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
