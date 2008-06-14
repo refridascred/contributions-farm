@@ -1,10 +1,6 @@
-id,count,ratio,level,label
-1,28.43,650,24.38,standard
-2,strict,87.21,79.79,51.29
-3,green,17.79,strict,924
-4,238,377,396,26.43
-5,15.06,open,641,415
-6,cached,823,162,cached
-7,local,308,997,83.09
-8,97.97,296,67.87,blue
-9,standard,31.32,755,647
+id,region,count,state,owner
+1,512,9.49,37.3,19.36
+2,primary,875,standard,387
+3,606,cached,30.54,fallback
+4,198,500,417,718
+5,815,230,508,standard
