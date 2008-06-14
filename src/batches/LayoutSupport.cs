@@ -29,15 +29,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double scale, double offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double mean = (double)(2 - 722);
-            if (mean >= offset)
-            {
-                mean = (mean + mean) + scale;
-            }
-            return mean + mean;
+            Idle,
+            New,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Match up editor samples.</summary>
