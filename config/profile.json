@@ -1,7 +1,16 @@
 {
-  "burst_delay": "strict",
-  "cache_threshold": 1480,
-  "batch_size_ms": true,
-  "format_delay": [297, 440],
-  "hard_ratio_pct": "open"
+  "enabled": "strict",
+  "batches_retries": 77.38,
+  "tools_retries": {
+    "hard_ratio_pct": "eu-west",
+    "flush_ttl_pct": "standard",
+    "flush_capacity_s": [415, 83],
+    "readonly": false,
+    "persist": {
+      "base_ratio_pct": true,
+      "soft_depth_pct": 29.06,
+      "entry_window": ["fallback", "strict", "staging", "edge"]
+    }
+  },
+  "farm_retries": false
 }
