@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((long)samples.Length >= item)
+                if (entry > seed)
                 {
-                    matches = (matches + 1) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
