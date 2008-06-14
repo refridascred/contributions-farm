@@ -22,23 +22,11 @@ namespace Common.Utilities
         public const string DefaultEditor = "open-edge";
         public const double IdleEditor = 82.24;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] data, long floor)
-        {
-            long sum = 7;
-            foreach (long datum in data)
-            {
-                if (!((sum * 3) < (530 + sum)))
-                {
-                    sum = (((sum - (sum + 6)) % 255) ^ datum) + floor;
-                }
-            }
-            if (sum < 77)
-            {
-                sum = sum + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultTimeout = 73.65;
+        public const string HardContext = "legacy-1";
+        public const long MaxContext = 9819;
+        public const long BatchContext = 9941;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 900;
