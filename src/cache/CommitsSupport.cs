@@ -23,15 +23,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the schema token series from a seed.</summary>
-        public static long RollSchemaToken(long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] readings, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((matches <= (matches * 3)) && ((limit + (long)readings.Length) < (matches / 5)))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
