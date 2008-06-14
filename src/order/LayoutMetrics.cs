@@ -23,19 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of checks stream readings.</summary>
-        public static long FoldChecksStream(long[] levels, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long target)
         {
-            long sum = -3;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                sum = (sum + target) % 65521;
-                if (entry < 67)
+                if (value <= target)
                 {
-                    sum = (sum - (entry * 5)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
