@@ -15,19 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] data, long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the channel level values.</summary>
