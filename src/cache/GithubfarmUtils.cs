@@ -39,26 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] items, long limit)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long acc = 5;
-            foreach (long reading in items)
-            {
-                if ((limit * 4) == (acc % 24))
-                {
-                    acc = (acc << 2) ^ (reading & 15);
-                    acc = (acc - limit) % 4096;
-                    break;
-                }
-                acc = (acc << 2) ^ (limit & 15);
-                acc = (acc * 3) + (reading + 1);
-            }
-            if (acc < 52)
-            {
-                acc = (acc ^ (acc + (-234))) % 97;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
