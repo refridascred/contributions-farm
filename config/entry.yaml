@@ -1,8 +1,27 @@
 # entry settings
-default_ttl_count: 55.76
-default_window_count: false
-readonly:
-  burst_timeout_pct: green
-  sync_limit: standard
-  min_interval: 34.3
-  editor_limit: 10
+warm_interval_s:
+  hard_size:
+    - strict
+    - legacy
+  min_depth: 496
+  sync_delay_ms: staging
+  soft_capacity:
+    - edge
+    - edge
+    - eu-west
+dry_run: 60
+cluster_retries:
+  max_limit:
+    cache_ratio_ms: strict
+    record_retries: fallback
+    audit: false
+    idle_limit_pct:
+      - eu-west
+      - staging
+      - staging
+    dry_run: 100
+  poll_interval_ms: false
+  hard_window: fallback
+  cluster_delay: 4584
+cache_threshold_count: false
+readonly: false
