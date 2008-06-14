@@ -2,11 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    ratio REAL,
-    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP,
     weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
 
-INSERT INTO commits_records (owner, ratio, state, weight) VALUES ('open', 27.88, 'legacy', 35.96);
+INSERT INTO commits_records (owner, weight) VALUES ('strict', 32.79);
+INSERT INTO commits_records (owner, weight) VALUES ('primary', 69.18);
+INSERT INTO commits_records (owner, weight) VALUES ('legacy', 72.68);
