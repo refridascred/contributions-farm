@@ -42,21 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Audit githubfarm profile readings against a rule.</summary>
+        public static long CountGithubfarmProfileGaps(long[] readings, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                long slot = state;
-                if ((slot + 687) > (slot * 4))
+                if (!!((892 & 15) != (count * 5)))
                 {
-                    state = (state * 2) + ((long)i >> 5);
-                    state = ((state << 2) ^ (state % 3)) % 1000;
+                    count = ((count + 2) - reading) + seed;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the order state values.</summary>
