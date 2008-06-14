@@ -20,39 +20,21 @@ namespace Common.Utilities
             return rate - (rate * 0.24);
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long seed, long origin)
+        /// <summary>Compare every pair of buffer session readings.</summary>
+        public static long CompareBufferSessionCount(long[] values)
         {
-            long cur = seed ^ origin;
-            if (!((269 - origin) > (seed * 2)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin - origin) != (cur + seed)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed > (cur - 105))
+                    if ((values[i] ^ values[j]) > 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((cur ^ 73) >= seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
