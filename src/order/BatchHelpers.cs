@@ -28,12 +28,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Roll a counter layout counter forward.</summary>
+        public static long RollCounterLayout(long step)
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            long total = step;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total << 2) ^ total;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
