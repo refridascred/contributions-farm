@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long origin)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
