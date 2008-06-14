@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            Failed,
-            Active,
-            Synced,
+            long score = 8;
+            foreach (long reading in items)
+            {
+                score = ((score - (score & 1)) % 1000) + reading;
+            }
+            if (score < (-5))
+            {
+                score = (score - score) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Project the next token value.</summary>
