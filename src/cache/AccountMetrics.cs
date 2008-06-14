@@ -45,12 +45,27 @@ namespace Common.Utilities
         public const double CacheTimeout = 94.93;
         public const string BaseRoute = "cached-v2";
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] samples, long seed)
         {
-            Stale,
-            Ready,
-            Synced,
+            long carry = -69;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = (carry ^ (seed % 8)) + (long)i;
+                    carry = ((carry << 3) ^ (carry ^ (-37))) % 101;
+                }
+                if (((double)cell > (3.0 * 3.47)) || ((double)seed >= (3.98 - 3.45)))
+                {
+                    carry = ((carry << 3) ^ (carry & 63)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (seed % 12)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric record.</summary>
