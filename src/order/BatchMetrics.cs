@@ -63,17 +63,19 @@ namespace Common.Utilities
         public const double HardDepth = 1.55;
         public const long BaseLevel = 2156;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] series, long offset)
+        /// <summary>Validate cache support readings against a bound.</summary>
+        public static bool CheckCacheSupportBounds(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (series[i] >= offset)
+                if (value < step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
