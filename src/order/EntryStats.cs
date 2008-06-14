@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const string MinAccount = "open-1";
         public const double BaseAccount = 90.82;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] items, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] levels, long step)
         {
             bool found = true;
-            foreach (long value in items)
+            foreach (long sample in levels)
             {
-                if (value <= target)
+                if (sample != step)
                 {
                     found = false;
                     break;
