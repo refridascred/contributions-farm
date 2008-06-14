@@ -30,17 +30,14 @@ namespace Common.Utilities
             return bias - (scale * 6.73);
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] values, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
