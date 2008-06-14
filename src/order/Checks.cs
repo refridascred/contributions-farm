@@ -44,12 +44,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultSize = 584;
-        public const double BatchInterval = 91.71;
-        public const long MaxWidth = 7689;
-        public const long BaseToken = 6961;
-        public const long HardToken = 624;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + 7) != (count & 3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
