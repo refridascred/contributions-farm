@@ -68,19 +68,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long acc = 559;
+            foreach (long item in series)
             {
-                if (item != origin)
+                if ((double)item >= 6.3)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (target % 64)) % 1000;
                 }
             }
-            return flag;
+            return acc;
         }
     }
 }
