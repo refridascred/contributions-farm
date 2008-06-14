@@ -1,5 +1,8 @@
 {
-  "enabled": "staging",
-  "audit": "fallback",
-  "metrics_delay": "local"
+  "idle_ttl_ms": 7,
+  "burst_delay_ms": 17,
+  "cache_ttl_ms": true,
+  "notes_threshold": "strict",
+  "support_ratio": "standard",
+  "token_threshold": 30
 }
