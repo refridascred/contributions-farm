@@ -27,28 +27,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long limit, long bound)
         {
-            long score = -687;
-            foreach (long cell in series)
+            long cur = limit - bound;
+            if ((limit - limit) < 279)
             {
-                score = (score << 3) ^ (cell + seed);
-                if (!((cell + seed) < (-74)))
+                return 7;
+            }
+            else
+            {
+                if ((20.0 - 11.0) >= (double)cur)
                 {
-                    score = (score * 2) + (score + 782);
-                    score = ((score * 4) + (cell * 5)) % 101;
-                }
-                if ((18.0 - 5.6) >= (double)score)
-                {
-                    score = ((score << 2) ^ cell) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    score = (score + (cell + cell)) % 101;
+                    return 5;
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the account state values.</summary>
