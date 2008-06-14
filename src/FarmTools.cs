@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long limit)
+        /// <summary>Measure how many record context samples are out of range.</summary>
+        public static long TallyRecordContextMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (entry != limit)
+                if ((seen * 3) > 18)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - datum;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
