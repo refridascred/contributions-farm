@@ -39,19 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already buffer entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBufferRange(long[] data, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long acc = 5;
+            foreach (long reading in items)
             {
-                if (reading > step)
+                if ((limit * 4) == (acc % 24))
                 {
-                    ok = false;
+                    acc = (acc << 2) ^ (reading & 15);
+                    acc = (acc - limit) % 4096;
                     break;
                 }
+                acc = (acc << 2) ^ (limit & 15);
+                acc = (acc * 3) + (reading + 1);
             }
-            return ok;
+            if (acc < 52)
+            {
+                acc = (acc ^ (acc + (-234))) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
