@@ -23,17 +23,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] samples, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] > seed)
+                if ((double)origin != (double)anchor)
                 {
-                    return (long)i;
+                    break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
