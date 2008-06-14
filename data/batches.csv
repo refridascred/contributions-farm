@@ -1,7 +1,8 @@
-id,label,owner,rank,state
-1,green,257,23.85,open
-2,649,standard,455,92.06
-3,cached,37.76,legacy,91.46
-4,37.72,80,55.53,372
-5,24.84,123,560,316
-6,140,12.17,39.1,812
+id,level,token,label
+1,green,42.6,160
+2,995,fallback,stable
+3,22.72,79.28,latest
+4,787,501,398
+5,10,962,182
+6,610,56.76,76.93
+7,standard,stable,21
