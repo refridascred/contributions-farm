@@ -35,38 +35,23 @@ namespace Common.Utilities
         public const long HardBuffer = 701;
         public const double SoftBuffer = 39.61;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long target, long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            if ((seed ^ 109) >= (943 ^ (-555)))
+            double drift = ratio;
+            if (drift < span)
             {
-                return 0;
+                drift = drift - span;
             }
             else
             {
-                if ((seed + target) == (seed & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)seed == (double)target) && ((seed + target) >= (target * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed % 97) >= seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                drift = drift + (ratio - drift);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (7.0 / 2.0)) + (double)(long)i;
+            }
+            return drift - (ratio / 2.0);
         }
     }
 }
