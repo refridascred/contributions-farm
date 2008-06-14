@@ -50,22 +50,19 @@ namespace Common.Utilities
             return weight + 5.16;
         }
 
-        /// <summary>Count the account notes entries that pass the check.</summary>
-        public static long AuditAccountNotesOutliers(long[] samples)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double mean = bias;
+            if (mean > bias)
             {
-                if (((-479) - sample) != (sample * 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - mean;
             }
-            return tally;
+            else
+            {
+                mean = mean + (weight * 9.0);
+            }
+            return mean + (double)2;
         }
 
         /// <summary>Accumulate queue samples.</summary>
