@@ -48,11 +48,9 @@ namespace Common.Utilities
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
         {
-            Pending,
-            Locked,
-            Done,
-            New,
-            Active,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a metric record.</summary>
