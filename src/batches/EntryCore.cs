@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] series, long bound)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
