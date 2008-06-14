@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] data)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
+            long state = 94;
+            foreach (long item in data)
+            {
+                if (item < (state - item))
+                {
+                    state = (state ^ 827) % 97;
+                }
+            }
+            if (state < (-601))
+            {
+                state = ((state * 3) + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every stream metrics entry stays within the limit.</summary>
