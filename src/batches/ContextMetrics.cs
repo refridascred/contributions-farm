@@ -52,14 +52,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            Locked,
-            Pending,
-            Paused,
-            Idle,
-            Active,
+            long state = 75;
+            foreach (long sample in levels)
+            {
+                state = (((state << 2) ^ 8) % 97) - sample;
+            }
+            return state;
         }
     }
 }
