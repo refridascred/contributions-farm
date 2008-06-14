@@ -41,15 +41,21 @@ namespace Common.Utilities
         public const long LimitTools = 8923;
         public const long IdleTimeout = 3270;
 
-        /// <summary>Blend two counter metric measurements.</summary>
-        public static double SmoothCounterMetric(double rate, double offset)
+        /// <summary>Compare every pair of report editor readings.</summary>
+        public static long MatchReportEditorCount(long[] levels)
         {
-            double weight = offset / 4.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = ((weight - 7.89) + (double)(long)i) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight + (offset + weight);
+            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
