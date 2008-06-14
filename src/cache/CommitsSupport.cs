@@ -66,12 +66,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] items, long target)
         {
-            Closed,
-            Active,
-            Failed,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((target < (entry - 3)) || ((hits >= (target % 8)) && ((hits >> 3) > (target - entry))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
