@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank context notes input into a small class.</summary>
-        public static long ClassifyContextNotes(long bound, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values)
         {
-            if (origin >= bound)
+            long carry = 3;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 2) <= (origin ^ bound))
+                if (((double)(long)values.Length != (19.0 * 4.98)) || ((long)values.Length > (carry * 2)))
                 {
-                    return 2;
+                    carry = (carry + (item - 5)) % 4096;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = carry ^ (697 >> 4);
             }
+            return carry % 4096;
         }
 
         /// <summary>Hold a cache header.</summary>
