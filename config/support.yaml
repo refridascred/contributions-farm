@@ -1,7 +1,12 @@
 # support settings
-record_depth: 66
-farm_window: fallback
-min_size: green
-audit: local
-cluster_delay: fallback
-batch_delay_s: primary
+checks_window: false
+base_capacity_s: 7292
+base_ratio_s:
+  - green
+  - cached
+  - standard
+idle_window_s:
+  - stable
+  - strict
+  - staging
+audit: 16.12
