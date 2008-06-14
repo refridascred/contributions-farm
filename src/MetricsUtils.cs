@@ -71,18 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] data, long target)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (hits > (7 + 364))
-                {
-                    hits = ((hits + 1) + value) - target;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
