@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "standard-1";
-        public const long IdleTimeout = 7381;
-        public const long MinDepth = 2767;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Synced,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
