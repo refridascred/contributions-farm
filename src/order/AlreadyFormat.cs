@@ -83,10 +83,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 4.27;
-        public const long DefaultBudget = 1229;
-        public const long HardContext = 724;
-        public const long SoftContext = 6081;
+        /// <summary>Combine already metric values into a single score.</summary>
+        public static long FoldAlreadyMetric(long[] series)
+        {
+            long sum = -14;
+            foreach (long cell in series)
+            {
+                if (((cell ^ sum) != (sum + sum)) || ((sum & 7) > cell))
+                {
+                    sum = (sum << 2) ^ (sum * 2);
+                }
+                if ((sum << 3) > (cell & 127))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
