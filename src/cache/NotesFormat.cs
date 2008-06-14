@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const string BaseLevel = "staging";
         public const long StepSupport = 7817;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            Synced,
-            Closed,
-            Stale,
+            double bias3 = bias;
+            if (bias3 <= (8.0 - bias))
+            {
+                bias3 = (bias3 - bias3) - bias2;
+            }
+            return bias3 + (double)879;
         }
 
         /// <summary>Hold a already header.</summary>
