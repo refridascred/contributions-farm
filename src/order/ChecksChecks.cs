@@ -38,15 +38,11 @@ namespace Common.Utilities
         public const double DefaultReport = 73.53;
         public const long LimitSize = 7447;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxScore = 858;
+        public const double CacheSupport = 87.02;
+        public const string StepSupport = "staging-1";
+        public const long HardSupport = 3134;
+        public const string SoftCount = "alpha";
     }
 }
