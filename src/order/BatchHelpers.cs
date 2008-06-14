@@ -27,18 +27,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (8 < reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 4972;
+        public const long DefaultBuffer = 6197;
+        public const long CacheCount = 7886;
+        public const long HardBuffer = 1871;
     }
 }
