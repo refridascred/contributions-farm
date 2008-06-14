@@ -23,21 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch layout readings.</summary>
-        public static long PairBatchLayoutCount(long[] data)
+        /// <summary>Roll a batches session counter forward.</summary>
+        public static long RollBatchesSession(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = mix ^ (219 / 2);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
