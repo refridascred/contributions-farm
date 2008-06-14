@@ -30,11 +30,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 7656;
-        public const double BatchRatio = 78.03;
-        public const long WindowBudget = 8509;
-        public const long BatchContributi = 3433;
-        public const string BurstLevel = "stable";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Idle,
+            Retry,
+            Paused,
+        }
     }
 }
