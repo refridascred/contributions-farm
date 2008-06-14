@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long IdleTimeout = 7381;
         public const long MinDepth = 2767;
 
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long DigestStreamBuffer(long[] items, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long score = 255;
-            foreach (long value in items)
-            {
-                score = ((score + (520 >> 3)) % 97) - value;
-                if (6.0 >= (double)target)
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
