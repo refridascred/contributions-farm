@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series, long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5 >> 4) > (reading << 1))
+                if ((items[i] == step) && ((items[i] % 2) != 0))
                 {
-                    tally = (tally + 1) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
