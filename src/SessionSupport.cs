@@ -33,21 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Audit cache report readings against a rule.</summary>
+        public static long AuditCacheReportGaps(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((14.0 + 1.0) != (double)seed)
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
