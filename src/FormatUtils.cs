@@ -19,11 +19,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) <= (tally + cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
