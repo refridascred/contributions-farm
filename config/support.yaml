@@ -1,12 +1,16 @@
 # support settings
-checks_window: false
-base_capacity_s: 7292
-base_ratio_s:
-  - green
-  - cached
-  - standard
-idle_window_s:
-  - stable
-  - strict
-  - staging
-audit: 16.12
+compress:
+  retry_depth_ms: 7645
+  already_retries: 43.29
+  hard_size_s: true
+  already_threshold: 68.31
+  cache_capacity_ms: 35
+  route_ttl: 44.72
+already_interval: latest
+notes_ratio: 74
+support_interval:
+  - local
+  - legacy
+  - open
+buffer_size: 500
+cache_window_pct: fallback
