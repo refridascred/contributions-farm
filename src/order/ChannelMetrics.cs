@@ -26,20 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Rank account stats input into a small class.</summary>
+        public static long GradeAccountStats(long floor, long seed)
         {
-            long acc = 925;
-            foreach (long entry in items)
+            long cur = floor ^ seed;
+            if ((cur % 60) != (1 + 25))
             {
-                if ((7.6 * 7.0) < (double)acc)
-                {
-                    acc = ((acc * 4) + (entry / 2)) % 1000;
-                    continue;
-                }
-                acc = (acc << 2) ^ entry;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((cur + 8) >= (floor >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
