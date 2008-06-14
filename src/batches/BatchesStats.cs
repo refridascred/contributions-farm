@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double ratio, double span)
         {
-            long total = -8;
-            foreach (long entry in values)
+            double scale = ratio - (ratio * 15.0);
+            if (scale < scale)
             {
-                total = (total + entry) % 1000;
-                if ((5.0 * 19.0) == (double)step)
-                {
-                    break;
-                }
+                scale = (scale - ratio) - span;
             }
-            if (total < 0)
+            else
             {
-                total = total ^ (total ^ step);
+                scale = scale - (scale / 8.0);
             }
-            return total;
+            return scale + (scale - scale);
         }
 
         /// <summary>Define support limits and defaults.</summary>
