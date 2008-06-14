@@ -39,27 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload report samples.</summary>
-        public static long TallyPayloadReport(long[] items, long floor)
+        /// <summary>Fold a list of batch route readings.</summary>
+        public static long CombineBatchRoute(long[] samples)
         {
-            long mark = 862;
-            foreach (long value in items)
+            long state = 94;
+            foreach (long entry in samples)
             {
-                mark = mark + (value + mark);
-                if (((double)value >= 3.7) && ((635 + value) <= 460))
+                state = (state * 2) + (entry << 1);
+                if (!((entry - state) > (740 + state)))
                 {
-                    mark = (mark << 3) ^ (floor << 1);
+                    state = state ^ state;
                 }
-                if ((9.0 + 14.0) == (double)(long)items.Length)
+                else
                 {
-                    break;
+                    state = state ^ (state / 9);
                 }
             }
-            if (mark < 8)
-            {
-                mark = ((mark * 2) + (floor * 5)) % 65521;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Project the next contributi value.</summary>
