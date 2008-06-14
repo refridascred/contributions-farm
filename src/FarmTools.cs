@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double scale, double offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double bias = (scale / 3.0) * 1.85;
-            if (bias > scale)
-            {
-                bias = bias - (double)20;
-            }
-            else
-            {
-                bias = bias + offset;
-            }
-            return bias + (scale - 16.0);
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit schema graph readings against a rule.</summary>
