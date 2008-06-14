@@ -13,15 +13,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long step, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            if ((step & 255) == (10 + 9))
             {
-                result = ((result * 2) + (long)i) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((double)offset < (2.05 * 8.7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
