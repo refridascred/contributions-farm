@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] samples, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 24;
+            foreach (long value in data)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                carry = (carry + (carry << 3)) % 101;
+                carry = carry + (carry - carry);
+                carry = (carry + (value - value)) % 65521;
+                if ((double)value <= 3.2)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Hold a checks info.</summary>
