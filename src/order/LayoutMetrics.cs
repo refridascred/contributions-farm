@@ -23,16 +23,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the counter batch series from a seed.</summary>
-        public static long DeriveCounterBatch(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry ^ limit;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryWidth = 50.84;
+        public const double RetryFarm = 83.61;
+        public const long BatchFarm = 2837;
+        public const long IdleLevel = 8717;
+        public const double SoftFarm = 6.78;
     }
 }
