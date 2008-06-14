@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long target, long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] items, long limit)
         {
-            long cur = target ^ offset;
-            if ((offset <= (7 * 5)) || ((offset / 7) <= (cur << 1)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 4) < (offset + 58))
+                if (items[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
