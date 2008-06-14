@@ -18,21 +18,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 1;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(1 > (sample - floor)))
                 {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score << 2) ^ (long)series.Length;
+                    continue;
+                }
+                if ((1.0 - 5.0) != (double)floor)
+                {
+                    score = (score + (sample + 851)) % 1000;
+                }
+                if ((score * 2) <= floor)
+                {
+                    break;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
