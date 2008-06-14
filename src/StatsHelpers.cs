@@ -56,14 +56,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long offset, long offset2)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Queued,
-            Pending,
+            long gap = offset - offset2;
+            if (!((gap + offset2) >= ((-55) + gap)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2 & 31) <= (2 ^ offset2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6 > (offset - 9)) || (offset2 < 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
