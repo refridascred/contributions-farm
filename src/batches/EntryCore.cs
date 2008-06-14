@@ -35,11 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 93.41;
-        public const long SoftFormat = 5800;
-        public const double DefaultFormat = 9.46;
-        public const long WindowBudget = 2357;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultFactor = 8658;
+        public const long SoftNotes = 147;
+        public const long IdleNotes = 3481;
+        public const long DefaultSize = 5606;
+        public const long BurstCount = 8411;
 
         /// <summary>Audit githubfarm queue readings against a rule.</summary>
         public static long TallyGithubfarmQueueGaps(long[] values, long bound)
