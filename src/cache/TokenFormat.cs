@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 6841;
-        public const double SoftTimeout = 2.83;
-        public const double LimitWindow = 28.42;
-        public const long SoftRatio = 2146;
-        public const long StepBudget = 799;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double floor)
+        {
+            double weight = floor;
+            return weight - (bias + weight);
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] samples, long limit)
