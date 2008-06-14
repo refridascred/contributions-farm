@@ -33,15 +33,15 @@ namespace Common.Utilities
             return bias - (scale * 6.73);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] readings, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] samples, long seed)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long item in samples)
             {
-                if ((double)bound >= (7.3 - 4.7))
+                if (item > (seed + seed))
                 {
-                    hits = (hits + 1) + reading;
+                    hits = hits + 3;
                 }
             }
             return hits;
