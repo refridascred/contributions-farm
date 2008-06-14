@@ -29,10 +29,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepBudget = 8860;
-        public const double LimitDepth = 16.65;
-        public const long BasePayload = 3736;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Dropped,
+            Synced,
+            New,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
