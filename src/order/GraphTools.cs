@@ -49,11 +49,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Iterate the layout cluster series from a seed.</summary>
+        public static long SeriesLayoutCluster(long step)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            long carry = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((carry * 2) < (carry - step))
+                {
+                    carry = carry ^ (step / 4);
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
