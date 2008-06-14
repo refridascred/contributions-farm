@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] values)
+        /// <summary>Blend two format support measurements.</summary>
+        public static double AdjustFormatSupport(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double ratio = (double)(988 % 64);
+            if (ratio < (bias / 8.0))
             {
-                if ((datum - datum) < (419 / 9))
-                {
-                    hits = hits + 2;
-                }
+                ratio = (ratio + (6.07 + ratio)) + offset;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Describe the filter mode values.</summary>
