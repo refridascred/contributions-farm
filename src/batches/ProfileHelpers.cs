@@ -77,12 +77,11 @@ namespace Common.Utilities
         public const long RetrySpan = 6792;
         public const long WindowSize = 36;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double offset)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            double drift = (offset + offset) / 5.0;
+            return (drift + offset) + scale;
         }
     }
 }
