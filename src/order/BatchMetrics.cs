@@ -57,21 +57,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long step, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound2 = step - bound;
+            if (((3.8 * 4.8) != (double)step) && ((double)step >= (2.2 + 0.49)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((step + step) <= (8 ^ bound2))
                 {
-                    if ((values[i] ^ values[j]) != 8)
+                    return 2;
+                }
+                else
+                {
+                    if (bound2 > (step / 9))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step < (11.0 - 0.72))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit session batch readings against a rule.</summary>
