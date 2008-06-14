@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
