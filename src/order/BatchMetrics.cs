@@ -23,10 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxFactor = 1724;
-        public const long MaxInterval = 5678;
-        public const string MaxTimeout = "stable";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many contributi format samples are out of range.</summary>
         public static long CountContributiFormatOutliers(long[] data)
