@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count batch cache pairs that satisfy a relation.</summary>
-        public static long CompareBatchCacheCount(long[] series)
+        /// <summary>Derive the next contributi farm value from a seed.</summary>
+        public static long IterateContributiFarm(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a context snapshot.</summary>
