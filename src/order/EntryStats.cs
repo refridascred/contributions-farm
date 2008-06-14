@@ -23,17 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
+                if ((cell >> 4) <= (998 - cell))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next queue value.</summary>
