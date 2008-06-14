@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long offset)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the channel kind values.</summary>
