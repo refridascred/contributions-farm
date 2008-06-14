@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            New,
-            Failed,
-            Synced,
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
