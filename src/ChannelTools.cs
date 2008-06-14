@@ -28,13 +28,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Synced,
-            Failed,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftDepth = 58.26;
+        public const string StepCount = "standard-v2";
+        public const string BurstRatio = "strict-edge";
     }
 }
