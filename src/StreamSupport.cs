@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] data, long target)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
