@@ -1,11 +1,15 @@
 # Command notes
 
-When a report fails, the layout handler retries a few times before giving up.
-When a cache fails, the schema handler retries a few times before giving up.
-When a cache fails, the cluster handler retries a few times before giving up.
+The route module keeps cache values in sync with the queue cache.
+A checks that stays idle for too long is moved to the cluster list.
+Defaults for payload live in the config folder and can be overridden per environment.
+
+Run the metric check before changing any tools limits.
+The window report groups every cache by farm.
+Keep channel and buffer names short and lowercase.
 
 ## Guidelines
 
-- Validate notes input early
-- Keep channel values small
-- Prefer notes defaults
+- Log every context change
+- Keep batch values small
+- Document new entry fields
