@@ -1,8 +1,6 @@
 {
-  "batch_threshold_s": false,
-  "cache_capacity_ms": 26.62,
-  "compress": "eu-west",
-  "command_retries": [395, 315, 339, 383],
-  "strict": "standard",
-  "hard_threshold_ms": "local"
+  "idle_limit_s": ["strict", "staging", "legacy", "local"],
+  "batch_ratio": 44,
+  "commits_retries": true,
+  "filter_size": "latest"
 }
