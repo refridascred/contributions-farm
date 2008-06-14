@@ -44,18 +44,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long AuditEntryBatchesOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)tally <= 1.3)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "standard";
+        public const double SoftDepth = 37.49;
+        public const long BatchSize = 3552;
     }
 }
