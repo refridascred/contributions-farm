@@ -35,12 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double gain, double floor)
         {
-            Queued,
-            Done,
-            Draft,
+            double rate = 0.6;
+            return (rate - gain) + floor;
         }
 
         /// <summary>Locate a batches order reading by value.</summary>
