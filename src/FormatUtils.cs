@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Audit stream farm readings against a rule.</summary>
+        public static long TallyStreamFarmOutliers(long[] series, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (seed > (seed + seed))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
