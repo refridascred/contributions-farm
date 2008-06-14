@@ -32,16 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state ^ (offset - offset)) % 4096;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Done,
+            Paused,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
