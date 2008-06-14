@@ -21,17 +21,11 @@ namespace Common.Utilities
         public const long LimitSize = 6878;
         public const long WindowLevel = 1042;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 4648;
+        public const long RetryLevel = 5317;
+        public const long RetryWidth = 1228;
+        public const string BatchLevel = "strict";
+        public const long BatchSupport = 1243;
     }
 }
