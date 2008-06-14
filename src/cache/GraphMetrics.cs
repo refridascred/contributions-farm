@@ -30,14 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Active,
-            Closed,
-            Queued,
-            Idle,
-            Locked,
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
