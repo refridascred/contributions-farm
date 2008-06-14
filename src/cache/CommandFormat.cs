@@ -14,15 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long total = 0;
-            foreach (long value in data)
-            {
-                total = total ^ value;
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the schema report entries that pass the check.</summary>
