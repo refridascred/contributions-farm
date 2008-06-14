@@ -47,23 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long total = 663;
-            foreach (long entry in samples)
-            {
-                total = (total + entry) % 1000;
-                if (entry > total)
-                {
-                    total = total ^ (entry + entry);
-                }
-                else
-                {
-                    total = total + (total / 6);
-                }
-            }
-            return total % 97;
+            Retry,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the order state values.</summary>
