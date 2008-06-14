@@ -1,22 +1,12 @@
 {
-  "batch_window": {
-    "batch_timeout_pct": {
-      "retry_threshold": 4933,
-      "soft_retries_count": "blue",
-      "soft_retries": false
-    },
-    "contributi_size": "standard",
-    "notes_retries": {
-      "queue_interval": "fallback",
-      "max_ttl": true,
-      "enabled": "fallback",
-      "retry_depth_pct": [253, 171],
-      "filter_window": "local",
-      "hard_depth_s": 56.83
-    },
-    "base_timeout_s": "strict"
-  },
-  "max_timeout_pct": 74.03,
-  "batch_ratio_s": 13,
-  "sync_retries_count": "edge"
+  "audit": "open",
+  "record_interval": "legacy",
+  "batch_ratio_s": 45.75,
+  "hard_interval_count": {
+    "retry_threshold": "open",
+    "cache_ratio": 6435,
+    "audit": 1472,
+    "warm_limit_pct": "cached",
+    "profile_limit": "latest"
+  }
 }
