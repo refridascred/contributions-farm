@@ -32,11 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            Done,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Rank support session input into a small class.</summary>
