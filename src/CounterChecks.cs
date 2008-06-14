@@ -61,12 +61,21 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Match up context graph samples.</summary>
+        public static long CompareContextGraphCount(long[] items)
         {
-            Draft,
-            Synced,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
