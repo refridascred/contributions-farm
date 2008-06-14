@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] samples)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double bias, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double rate = 0.42;
+            if (rate >= (bias / 2.0))
             {
-                if ((matches / 8) <= (matches + 184))
-                {
-                    matches = (matches + 1) + item;
-                }
+                rate = (rate - bias) - span;
             }
-            return matches;
+            return rate - (rate - rate);
         }
 
         /// <summary>Digest a series of order entries.</summary>
