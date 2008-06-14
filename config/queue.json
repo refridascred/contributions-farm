@@ -1,8 +1,5 @@
 {
-  "report_ratio": 29.01,
-  "soft_timeout": "eu-west",
-  "default_capacity": "standard",
-  "burst_limit_ms": "edge",
-  "batch_interval": 4072,
-  "persist": "standard"
+  "flush_depth_pct": [428, 31, 404, 75],
+  "editor_threshold": 22.73,
+  "persist": "latest"
 }
