@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowWidth = "fallback-edge";
-        public const double MaxTimeout = 65.32;
-        public const double DefaultFactor = 6.0;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry << 1) >= (entry & 127))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] data, long floor)
