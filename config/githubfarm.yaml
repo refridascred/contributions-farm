@@ -1,4 +1,6 @@
 # githubfarm settings
-entry_window: true
-idle_threshold_ms: false
-hard_size_count: 100
+strict: edge
+enabled: false
+batches_depth: 0.81
+retry_threshold_pct: 30
+filter_threshold: edge
