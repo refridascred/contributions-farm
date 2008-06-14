@@ -29,14 +29,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] samples, long seed)
         {
-            Idle,
-            New,
-            Pending,
-            Dropped,
-            Synced,
+            long anchor = 48;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (((anchor << 3) ^ item) % 4096) - seed;
+                    anchor = (anchor * 3) + (long)i;
+                }
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Match up editor samples.</summary>
