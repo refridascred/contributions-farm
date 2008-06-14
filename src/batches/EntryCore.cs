@@ -54,19 +54,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] levels, long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor - ((long)i ^ step)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
     }
 }
