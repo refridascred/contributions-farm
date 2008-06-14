@@ -50,18 +50,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items, long step)
+        /// <summary>Count the farm stream entries that pass the check.</summary>
+        public static long TallyFarmStreamHits(long[] items)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (15.0 > (double)step)
+                if (entry > (matches * 4))
                 {
-                    tally = (tally + 2) + value;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
