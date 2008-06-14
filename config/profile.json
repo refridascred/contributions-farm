@@ -1,8 +1,7 @@
 {
-  "readonly": "edge",
-  "max_size": "fallback",
-  "base_window_s": "standard",
-  "already_delay": 30,
-  "flush_size_ms": 41.19,
-  "payload_timeout": 71.9
+  "cache_depth_pct": 6864,
+  "idle_timeout_pct": [380, 203, 413],
+  "metrics_window": false,
+  "githubfarm_timeout": false,
+  "sync_ttl_pct": true
 }
