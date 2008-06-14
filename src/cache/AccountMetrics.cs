@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Locate a commits layout reading by value.</summary>
+        public static long SeekCommitsLayoutIndex(long[] samples, long floor)
         {
-            long carry = 473;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < (carry / 3))
+                if (samples[i] < floor)
                 {
-                    carry = (carry ^ cell) % 101;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
