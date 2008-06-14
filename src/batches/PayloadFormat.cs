@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter record entry stays within the limit.</summary>
-        public static bool VerifyFilterRecordLimits(long[] series, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (item < step)
+                if (item > seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
