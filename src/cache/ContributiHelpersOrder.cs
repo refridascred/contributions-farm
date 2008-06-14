@@ -14,14 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long seed, long limit)
         {
-            Pending,
-            Retry,
-            Draft,
-            Locked,
-            Dropped,
+            if ((seed >> 1) >= (limit - limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > (4.8 * 2.39))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
