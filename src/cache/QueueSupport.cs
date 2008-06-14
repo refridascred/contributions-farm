@@ -52,19 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account already entry stays within the limit.</summary>
-        public static bool ValidateAccountAlreadyLimits(long[] readings, long bound)
+        /// <summary>Count the cluster filter entries that pass the check.</summary>
+        public static long AuditClusterFilterHits(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (reading > bound)
+                if ((double)entry != (20.0 * 3.53))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
