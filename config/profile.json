@@ -1,7 +1,14 @@
 {
-  "stream_delay": "standard",
-  "burst_capacity_count": 74.82,
-  "retry_delay": 90.95,
-  "flush_depth_ms": "primary",
-  "order_window": "legacy"
+  "warm_retries": {
+    "profile_ratio": 500,
+    "batches_depth": 69,
+    "hard_window_count": 1208
+  },
+  "min_depth": [298, 34],
+  "default_retries_s": {
+    "order_delay": "legacy",
+    "enabled": "cached",
+    "cache_limit": false,
+    "readonly": "edge"
+  }
 }
