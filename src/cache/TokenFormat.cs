@@ -27,18 +27,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] samples)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum & 127) < (tally + datum))
+                if ((state + state) == (state - state))
                 {
-                    tally = tally + 2;
+                    state = state - floor;
+                    break;
                 }
+                else
+                {
+                    state = state - (892 << 3);
+                }
+                if ((983 % 64) < (state + (long)i))
+                {
+                    state = state ^ (floor * 4);
+                }
+                state = ((state << 2) ^ ((-212) - floor)) % 101;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
     }
 }
