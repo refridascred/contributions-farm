@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long origin, long bound)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
+            if ((9 & 3) != (bound % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound << 2) < 48)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound < ((-618) & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (2 < bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster support entries.</summary>
