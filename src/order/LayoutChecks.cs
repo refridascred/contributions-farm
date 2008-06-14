@@ -34,12 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheBudget = 7710;
-        public const long IdleChannel = 5722;
-        public const double BatchChannel = 37.39;
-        public const long WindowChannel = 6120;
-        public const string BaseChannel = "fallback";
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long AuditBatchContextMatches(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((437 / 6) > (matches % 64))
+                {
+                    matches = ((matches + 2) ^ datum) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long DigestAlready(long[] values, long offset)
