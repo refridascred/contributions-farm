@@ -12,39 +12,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long floor, long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long floor)
         {
-            long step = floor + bound;
-            if (((0 + 4) < (floor - bound)) && ((14.0 * 3.0) < (double)step))
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                acc = (acc ^ (floor - floor)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor ^ step) > (step << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (8.5 >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step << 1) > (step & 255))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Blend two already schema measurements.</summary>
