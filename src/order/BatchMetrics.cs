@@ -19,11 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long offset)
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long delta = origin - offset;
+            if (((-228) + 498) <= (offset * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((delta + delta) != (delta & 1)) || ((double)delta <= (8.0 + 7.1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((81 * 4) == (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset != (double)2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
