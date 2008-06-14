@@ -13,10 +13,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowSize = 17.49;
-        public const string CacheLevel = "latest";
-        public const long HardLayout = 1311;
+        /// <summary>Digest a series of route window entries.</summary>
+        public static long WeighRouteWindow(long[] items)
+        {
+            long carry = 822;
+            foreach (long datum in items)
+            {
+                carry = (carry - (datum - datum)) % 1000;
+            }
+            if (carry < 8)
+            {
+                carry = (carry << 2) ^ (carry << 3);
+            }
+            return carry;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
