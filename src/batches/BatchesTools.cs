@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] items)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry << 1) >= (entry & 127))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of support readings.</summary>
