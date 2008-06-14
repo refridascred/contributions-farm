@@ -25,20 +25,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] samples, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] levels)
         {
-            long anchor = 48;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if (hits > (hits >> 2))
                 {
-                    anchor = (((anchor << 3) ^ item) % 4096) - seed;
-                    anchor = (anchor * 3) + (long)i;
+                    hits = (hits + 1) ^ reading;
                 }
-                anchor = (anchor ^ anchor) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Match up githubfarm batch samples.</summary>
