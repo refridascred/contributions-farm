@@ -30,17 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a route format reading by value.</summary>
-        public static long SeekRouteFormatIndex(long[] readings, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                if ((double)seen != (16.0 + 6.34))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
