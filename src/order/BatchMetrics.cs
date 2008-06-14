@@ -30,21 +30,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long CountContributiFormatOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((datum * 2) == (57 + (-31))) && ((matches % 60) > datum)) || ((matches + 11) < datum))
                 {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
