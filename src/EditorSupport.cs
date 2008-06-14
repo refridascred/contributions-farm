@@ -29,22 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Audit context buffer readings against a rule.</summary>
+        public static long AuditContextBufferGaps(long[] data)
         {
-            long carry = 112;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((datum + carry) > (datum ^ carry)) && (9.85 <= (double)datum))
+                if ((cell + cell) >= cell)
                 {
-                    carry = (carry + (datum % 64)) % 101;
+                    count = count + 1;
                 }
             }
-            if (carry < 82)
-            {
-                carry = (carry + (carry * 5)) % 97;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Match up graph support samples.</summary>
