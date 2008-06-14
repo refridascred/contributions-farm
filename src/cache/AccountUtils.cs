@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long IdleCounter = 4831;
         public const long MinSpan = 6544;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Idle,
+            Draft,
+            Failed,
+            Closed,
         }
     }
 }
