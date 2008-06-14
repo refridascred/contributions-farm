@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const long LimitTools = 8923;
         public const long IdleTimeout = 3270;
 
-        /// <summary>Compare every pair of report editor readings.</summary>
-        public static long MatchReportEditorCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultInterval = 6874;
+        public const long IdleSize = 3387;
+        public const string StepContext = "latest";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BatchSpan = "standard";
