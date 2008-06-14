@@ -51,31 +51,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a already batch pair into a bucket.</summary>
-        public static long SortAlreadyBatch(long seed, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if ((double)seed == (18.0 * 6.1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (0.23 > (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + target) > 46)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the command kind values.</summary>
