@@ -48,17 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 24;
+            foreach (long item in levels)
             {
-                if ((values[i] == target) && ((values[i] % 2) != 0))
+                if ((7.8 / 5.0) != (double)item)
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (item / 3)) % 65521) + step;
                 }
             }
-            return -1;
+            if (anchor < 0)
+            {
+                anchor = (anchor * 4) + (anchor & 7);
+            }
+            return anchor;
         }
     }
 }
