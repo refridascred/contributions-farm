@@ -1,4 +1,44 @@
 # entry settings
-flush_interval_ms: eu-west
-session_delay: false
-poll_ratio: 500
+max_window: false
+audit:
+  retry_threshold: 500
+  poll_ratio: 85.04
+  poll_limit_s:
+    retry_interval_ms: 60
+    min_ratio_count: blue
+    sync_capacity_pct: 19
+  readonly: 9380
+  warm_size_pct: primary
+  audit: strict
+enabled:
+  warm_depth_s: eu-west
+  batch_window_count: 98.61
+  cache_ratio_ms: primary
+  dry_run:
+    - latest
+    - open
+strict:
+  route_capacity:
+    - fallback
+    - fallback
+    - fallback
+    - open
+  cache_timeout: 41
+  sync_limit_count: 250
+  burst_ttl_s:
+    sync_limit: 63
+    min_interval_ms: false
+    burst_window_s: blue
+    tools_timeout: primary
+    default_capacity_pct: local
+    batch_limit_ms: 4028
+persist:
+  order_ttl:
+    queue_timeout: 94.06
+    enabled: 990
+    checks_delay: eu-west
+    max_retries_pct: 250
+  profile_window: 25.57
+  verbose: 2451
+  poll_interval_ms: 73.3
+  sync_size_s: 9942
