@@ -1,8 +1,7 @@
-id,level,rank
-1,95.62,7.57
-2,cached,cached
-3,primary,73
-4,49.53,60.66
-5,545,175
-6,stable,local
-7,97.77,566
+id,ratio
+1,eu-west
+2,fallback
+3,114
+4,230
+5,10.65
+6,748
