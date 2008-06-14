@@ -1,13 +1,4 @@
 # entry settings
-hard_threshold: 58.22
-cache_timeout: 100
-base_depth: edge
-graph_size: edge
-default_threshold_s:
-  - local
-  - latest
-  - blue
-verbose:
-  - primary
-  - fallback
-  - blue
+flush_interval_ms: eu-west
+session_delay: false
+poll_ratio: 500
