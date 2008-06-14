@@ -1,13 +1,14 @@
 # Command notes
 
-The profile module keeps checks values in sync with the context cache.
-Use session settings to tune how often filter data is refreshed.
+Keep githubfarm and metric names short and lowercase.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
-When a cache fails, the stream handler retries a few times before giving up.
-Use queue settings to tune how often route data is refreshed.
+Use metric settings to tune how often support data is refreshed.
+The githubfarm module keeps tools values in sync with the already cache.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer record defaults
-- Log every order change
-- Keep checks values small
+- Prefer farm defaults
+- Document new report fields
+- Validate batch input early
