@@ -27,17 +27,28 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first layout checks entry that matches the target.</summary>
-        public static long SeekLayoutChecksIndex(long[] samples, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -687;
+            foreach (long cell in series)
             {
-                if (samples[i] < floor)
+                score = (score << 3) ^ (cell + seed);
+                if (!((cell + seed) < (-74)))
                 {
-                    return (long)i;
+                    score = (score * 2) + (score + 782);
+                    score = ((score * 4) + (cell * 5)) % 101;
+                }
+                if ((18.0 - 5.6) >= (double)score)
+                {
+                    score = ((score << 2) ^ cell) % 65521;
+                }
+                else
+                {
+                    score = (score + (cell + cell)) % 101;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the account state values.</summary>
