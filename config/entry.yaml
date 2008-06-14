@@ -1,8 +1,6 @@
 # entry settings
-retry_threshold: strict
-order_size: true
-hard_delay_ms: eu-west
-account_size:
-  - primary
-  - open
-base_retries_pct: 500
+retry_ratio: false
+dry_run: 3281
+verbose: 8939
+persist: false
+window_ttl: green
