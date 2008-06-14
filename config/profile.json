@@ -1,12 +1,17 @@
 {
-  "support_ttl": "legacy",
-  "burst_timeout": {
-    "dry_run": ["legacy", "legacy", "cached"],
-    "sync_limit_count": 74,
-    "flush_capacity_pct": true,
-    "retry_limit_count": true,
-    "batch_timeout": 6357,
-    "poll_limit_pct": 250
-  },
-  "hard_ratio": "legacy"
+  "default_ratio": "blue",
+  "compress": 68.58,
+  "enabled": ["open", "strict"],
+  "verbose": "local",
+  "format_retries": {
+    "cache_limit": [486, 247, 74, 238],
+    "idle_size_s": {
+      "burst_delay_s": "green",
+      "idle_retries_pct": false,
+      "warm_threshold": 60,
+      "min_capacity_s": 100
+    },
+    "min_size": 39,
+    "min_ttl": [54, 372, 336]
+  }
 }
