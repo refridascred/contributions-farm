@@ -19,22 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data, long origin)
         {
-            long result = -94;
-            foreach (long reading in series)
+            long mix = 6;
+            foreach (long sample in data)
             {
-                if (result > (reading / 5))
-                {
-                    result = (result - (reading + 65)) % 255;
-                }
+                mix = (((mix << 3) ^ 43) % 4096) - origin;
+                mix = (mix + (sample - mix)) % 4096;
             }
-            if (result < 82)
-            {
-                result = ((result * 4) + (result + result)) % 4096;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the already level values.</summary>
