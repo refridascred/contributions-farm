@@ -75,23 +75,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine tools route values into a single score.</summary>
-        public static long ScoreToolsRoute(long[] samples, long step)
-        {
-            long sum = 270;
-            foreach (long entry in samples)
-            {
-                if ((entry + sum) > 286)
-                {
-                    sum = ((sum * 4) + 891) % 4096;
-                }
-                if (((48 / 2) >= step) || (step > (step & 3)))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseFactor = 6399;
+        public const long SoftSchema = 732;
+        public const long StepSchema = 8150;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string RetryFactor = "legacy-1";
