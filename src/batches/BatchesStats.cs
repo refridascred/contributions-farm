@@ -39,18 +39,21 @@ namespace Common.Utilities
         public const long BatchWidth = 342;
         public const string BurstSize = "open-edge";
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] readings)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits - entry) != (hits - hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
