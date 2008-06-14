@@ -28,12 +28,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultSpan = 5109;
-        public const long BatchTools = 759;
-        public const string CacheTools = "stable-edge";
-        public const long LimitTools = 8923;
-        public const long IdleTimeout = 3270;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long DefaultInterval = 6874;
