@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = bound + seed;
+            if (((double)seed != (double)gap) || (gap < (bound - seed)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((9.0 - 2.4) != (double)bound) || ((double)bound > (7.0 + 0.91)))
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((gap + seed) > (bound + bound))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed / 9) == (82 & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
