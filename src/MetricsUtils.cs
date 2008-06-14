@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] data, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((99 % 60) > (cell / 7))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
