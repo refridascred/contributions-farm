@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double MinLevel = 53.64;
         public const double StepReport = 74.72;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] items, long offset)
+        /// <summary>Combine batch schema values into a single score.</summary>
+        public static long CombineBatchSchema(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long sum = 344;
+            foreach (long value in levels)
             {
-                if (reading >= (offset / 8))
+                if ((double)value < (3.0 * 4.3))
                 {
-                    count = count + 2;
+                    sum = ((sum * 2) + value) % 101;
+                }
+                if ((double)limit >= (7.99 + 19.0))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
