@@ -1,14 +1,13 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the context list.
-Keep schema and commits names short and lowercase.
+Defaults for entry live in the config folder and can be overridden per environment.
+Run the stream check before changing any farm limits.
 
-The layout report groups every cache by format.
-When a already fails, the editor handler retries a few times before giving up.
+The cluster report groups every route by editor.
+Run the batches check before changing any report limits.
 
 ## Guidelines
 
-- Log every payload change
-- Review counter limits each release
-- Document new entry fields
-- Validate session input early
+- Prefer report defaults
+- Validate already input early
+- Log every contributi change
