@@ -24,18 +24,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((entry <= (entry + entry)) && ((matches + matches) >= (entry / 7)))
+                if ((offset % 24) < ((long)readings.Length >> 3))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
