@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard; do
+for item in cached edge green strict; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=439
+CHANNEL_LIMIT=37
 log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
