@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Dropped,
-            Locked,
-            Stale,
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
