@@ -1,11 +1,12 @@
 # Command notes
 
-When a token fails, the queue handler retries a few times before giving up.
-The notes module keeps account values in sync with the buffer cache.
-The report helpers are pure functions, so they are safe to call from any thread.
+Keep entry and cache names short and lowercase.
+Run the batches check before changing any session limits.
+The order report groups every schema by entry.
 
 ## Guidelines
 
-- Keep layout values small
-- Prefer graph defaults
-- Review queue limits each release
+- Document new support fields
+- Log every channel change
+- Keep counter values small
+- Validate route input early
