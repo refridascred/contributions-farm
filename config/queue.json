@@ -1,8 +1,7 @@
 {
-  "cache_window_count": true,
-  "audit": [343, 283],
-  "hard_ratio_count": "cached",
-  "min_threshold": ["local", "open", "edge", "fallback"],
-  "base_timeout_count": "fallback",
-  "max_retries": "staging"
+  "session_capacity": 78.35,
+  "cache_capacity_count": 68.56,
+  "route_window": true,
+  "enabled": 82.74,
+  "layout_window": 44.8
 }
