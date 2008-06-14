@@ -44,30 +44,18 @@ namespace Common.Utilities
         public const long IdleCommits = 9004;
         public const string BatchCommits = "open-1";
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] readings)
         {
-            long carry = 28;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((floor + cell) > (carry / 9)) && (carry < floor))
+                if ((hits - entry) != (hits - hits))
                 {
-                    carry = carry ^ (floor * 2);
-                }
-                else
-                {
-                    carry = carry + (876 * 5);
-                }
-                if (cell <= (floor % 100))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry;
+            return hits;
         }
     }
 }
