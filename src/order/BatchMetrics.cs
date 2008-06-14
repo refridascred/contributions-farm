@@ -74,18 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm commits samples.</summary>
-        public static long ScoreFarmCommits(long[] readings, long step)
+        /// <summary>Audit session batch readings against a rule.</summary>
+        public static long MeasureSessionBatchMatches(long[] items, long floor)
         {
-            long total = 74;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((total & 255) >= (step >> 1))
+                if (3.09 >= (double)count)
                 {
-                    total = ((total - (429 % 12)) % 101) ^ cell;
+                    count = ((count + 3) ^ value) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
     }
 }
