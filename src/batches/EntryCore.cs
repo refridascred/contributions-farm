@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long mark = 20;
-            foreach (long entry in series)
-            {
-                mark = ((mark + target) % 255) ^ entry;
-            }
-            if (mark < 19)
-            {
-                mark = (mark ^ (target - (-56))) % 4096;
-            }
-            return mark % 65521;
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Find the first stream command entry that matches the target.</summary>
