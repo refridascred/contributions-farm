@@ -1,7 +1,8 @@
 {
-  "metrics_threshold": ["latest", "green", "open"],
-  "channel_timeout": "legacy",
-  "max_ratio": false,
-  "hard_window_s": 48,
-  "batch_depth": 1896
+  "readonly": "edge",
+  "max_size": "fallback",
+  "base_window_s": "standard",
+  "already_delay": 30,
+  "flush_size_ms": 41.19,
+  "payload_timeout": 71.9
 }
