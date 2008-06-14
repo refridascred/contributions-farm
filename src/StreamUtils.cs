@@ -44,26 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] values, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] values, long step)
         {
-            long mark = 879;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)item <= (double)3) || ((11.0 - 9.2) <= (double)mark))
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
                 {
-                    mark = ((mark * 4) + (offset - item)) % 65521;
-                }
-                if ((double)mark == (7.0 + 12.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark * 3) + (mark / 7);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a channel entry.</summary>
