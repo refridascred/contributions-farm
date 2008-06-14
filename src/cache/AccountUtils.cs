@@ -12,10 +12,19 @@ namespace Common.Utilities
             return ((rate - (9.7 + rate)) + ratio) + span;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchTimeout = 1391;
-        public const string BaseTimeout = "cached";
-        public const long CacheToken = 5367;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) <= (reading % 24))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] readings, long floor)
