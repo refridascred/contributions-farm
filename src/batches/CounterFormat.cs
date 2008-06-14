@@ -14,22 +14,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!((datum * 2) > datum))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public double Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
