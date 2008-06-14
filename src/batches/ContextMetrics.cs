@@ -29,18 +29,18 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Count the session githubfarm entries that pass the check.</summary>
-        public static long TallySessionGithubfarmHits(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (hits >= (32 + reading))
+                if ((reading << 3) <= reading)
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
