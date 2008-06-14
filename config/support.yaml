@@ -1,9 +1,20 @@
 # support settings
-already_capacity: cached
-layout_limit:
-  - stable
-  - stable
-  - eu-west
-  - staging
-batches_ttl: strict
-retry_timeout_count: false
+sync_capacity:
+  hard_limit_pct:
+    base_capacity_ms: false
+    report_capacity:
+      - stable
+      - open
+    soft_ttl_count: eu-west
+  warm_threshold_count: false
+  tools_ratio: 6.78
+  githubfarm_limit: 500
+  farm_size: 21.84
+dry_run: 60
+default_window: true
+max_interval: 95
+hard_ratio_s:
+  - local
+  - strict
+  - strict
+  - blue
