@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] samples, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (samples[i] > seed)
+                if ((double)reading >= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
