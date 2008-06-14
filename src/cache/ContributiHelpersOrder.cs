@@ -23,13 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            Paused,
-            Dropped,
-            Closed,
-            Queued,
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
