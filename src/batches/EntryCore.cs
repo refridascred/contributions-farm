@@ -15,12 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
