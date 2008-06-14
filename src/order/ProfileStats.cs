@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token counter samples are out of range.</summary>
-        public static long TallyTokenCounterHits(long[] data, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!((74 >= (value / 5)) && (tally <= (value % 12))))
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
