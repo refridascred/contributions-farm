@@ -29,18 +29,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepBudget = 8860;
+        public const double LimitDepth = 16.65;
+        public const long BasePayload = 3736;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
