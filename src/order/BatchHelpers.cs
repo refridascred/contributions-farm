@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Count the farm window entries that pass the check.</summary>
+        public static long CountFarmWindowOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((8.9 + 17.0) <= (double)count)
+                if (((0.2 + 19.0) < (double)seen) || ((value & 15) >= seen))
                 {
-                    count = (count + 3) + entry;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
