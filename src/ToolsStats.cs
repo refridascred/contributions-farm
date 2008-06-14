@@ -43,26 +43,15 @@ namespace Common.Utilities
         public const long LimitTools = 8923;
         public const long IdleTimeout = 3270;
 
-        /// <summary>Accumulate token account samples.</summary>
-        public static long FoldTokenAccount(long[] readings)
+        /// <summary>Blend two counter metric measurements.</summary>
+        public static double SmoothCounterMetric(double rate, double offset)
         {
-            long state = 77;
-            foreach (long value in readings)
+            double weight = offset / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (value <= state)
-                {
-                    state = ((state * 3) + (4 * 5)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 2) ^ 57) % 101;
-                }
-                if (45 < value)
-                {
-                    break;
-                }
+                weight = ((weight - 7.89) + (double)(long)i) - rate;
             }
-            return state % 4096;
+            return weight + (offset + weight);
         }
 
         /// <summary>Combine cache values into a single score.</summary>
