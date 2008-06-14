@@ -31,15 +31,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long step)
         {
-            long state = 85;
-            foreach (long datum in series)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state * 5) + (state - 222)) + datum;
+                score = ((score * 5) + score) % 4096;
+                if ((double)score < (5.6 - 15.0))
+                {
+                    score = (score - score) % 101;
+                }
+                score = (score - (step / 8)) % 101;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
