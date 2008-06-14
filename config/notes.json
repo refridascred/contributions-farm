@@ -1,6 +1,15 @@
 {
-  "enabled": true,
-  "retry_interval": 303,
-  "burst_ratio": 7.25,
-  "base_delay": 8602
+  "already_timeout": "standard",
+  "burst_interval": "local",
+  "warm_timeout": {
+    "context_limit": false,
+    "cache_depth_count": 87,
+    "buffer_depth": {
+      "hard_timeout_count": 29.1,
+      "record_ttl": true,
+      "hard_timeout_s": 80.18,
+      "graph_ttl": "cached"
+    },
+    "poll_timeout": 45
+  }
 }
