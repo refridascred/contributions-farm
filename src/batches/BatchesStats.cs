@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] data, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long acc = 575;
+            foreach (long value in samples)
             {
-                if (entry != offset)
+                if ((value % 3) <= (-44))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - (value & 3)) % 1000;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (target ^ value);
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a buffer summary.</summary>
