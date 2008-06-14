@@ -1,13 +1,6 @@
 {
-  "enabled": 70.97,
-  "persist": 53,
-  "poll_ttl_ms": true,
-  "layout_ttl": {
-    "audit": ["open", "standard", "latest"],
-    "batch_limit_s": true,
-    "min_interval_count": 5226,
-    "poll_interval_s": 7096
-  },
-  "max_capacity_s": 36.85,
-  "flush_interval_ms": 84
+  "strict": "eu-west",
+  "batch_delay_ms": "open",
+  "warm_capacity_ms": true,
+  "persist": "cached"
 }
