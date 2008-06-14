@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] series, long seed)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((29 + item) > (item % 2))
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter level values.</summary>
