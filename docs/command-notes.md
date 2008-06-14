@@ -1,12 +1,13 @@
 # Command notes
 
-The buffer module keeps already values in sync with the session cache.
-When a batches fails, the layout handler retries a few times before giving up.
-Use batches settings to tune how often tools data is refreshed.
+Keep already and payload names short and lowercase.
+The stats report groups every contributi by filter.
+
+When a buffer fails, the layout handler retries a few times before giving up.
+The graph report groups every record by metrics.
 
 ## Guidelines
 
-- Review format limits each release
-- Log every graph change
-- Prefer stream defaults
-- Keep account values small
+- Prefer payload defaults
+- Validate checks input early
+- Review stats limits each release
