@@ -30,19 +30,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Count the stats route entries that pass the check.</summary>
+        public static long TallyStatsRouteGaps(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (((total % 24) < 9) || ((step & 7) >= (step & 255)))
+                if ((entry % 97) != (entry + 82))
                 {
-                    continue;
+                    tally = tally + 3;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of counter batch entries.</summary>
