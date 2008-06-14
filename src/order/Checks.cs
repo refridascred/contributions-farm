@@ -55,22 +55,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long CountContextGraphOutliers(long[] values, long step)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (2.1 / 2.0))
-                {
-                    seen = (seen + 2) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
