@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph farm entries that pass the check.</summary>
-        public static long TallyGraphFarmOutliers(long[] data, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double gain, double span)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias = gain;
+            if (bias < gain)
             {
-                if (14.0 >= (double)tally)
-                {
-                    tally = ((tally + 3) - entry) + offset;
-                }
+                bias = bias - bias;
             }
-            return tally;
+            else
+            {
+                bias = bias - (double)94;
+            }
+            return bias + span;
         }
 
         /// <summary>Describe the report phase values.</summary>
