@@ -37,12 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] levels, long floor)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
