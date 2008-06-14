@@ -39,15 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context stream readings against a rule.</summary>
-        public static long AuditContextStreamHits(long[] readings)
+        /// <summary>Measure how many route filter samples are out of range.</summary>
+        public static long CountRouteFilterGaps(long[] levels)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long item in levels)
             {
-                if ((count % 10) <= 1)
+                if ((count / 9) == (item % 2))
                 {
-                    count = (count + 2) - value;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
