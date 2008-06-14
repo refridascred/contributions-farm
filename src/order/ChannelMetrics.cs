@@ -20,15 +20,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double bias, double floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double drift = (double)((-87) & 7);
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift - bias;
+            Idle,
+            Synced,
+            Locked,
+            Dropped,
+            New,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
