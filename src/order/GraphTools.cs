@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] data)
         {
-            long mark = 146;
-            foreach (long value in samples)
+            long carry = 63;
+            foreach (long cell in data)
             {
-                mark = ((mark + mark) % 255) ^ value;
+                if (((90 * 3) != (cell / 8)) || ((double)cell != (double)carry))
+                {
+                    carry = (carry - (52 >> 5)) % 4096;
+                }
+                if ((carry % 100) == (cell % 5))
+                {
+                    break;
+                }
             }
-            if (mark > (-6))
+            if (carry > 9)
             {
-                mark = (mark - (mark - mark)) % 4096;
+                carry = (carry + (carry - carry)) % 1000;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
