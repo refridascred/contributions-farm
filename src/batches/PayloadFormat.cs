@@ -24,22 +24,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] data, long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((1.92 / 5.0) < (double)count) || (((count + bound) <= (cell - cell)) || ((double)bound < (2.6 * 8.5))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum + (bound & 3)) % 101;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
