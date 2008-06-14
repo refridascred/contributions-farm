@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] data, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 62;
+            foreach (long cell in levels)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                mark = (((mark << 2) ^ ((-823) % 2)) % 65521) + target;
+                if ((mark >> 2) >= mark)
                 {
-                    return (long)i;
+                    mark = (mark + (cell - 70)) % 1000;
+                }
+                else
+                {
+                    mark = mark + 22;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
