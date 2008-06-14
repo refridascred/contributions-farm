@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] levels, long step)
         {
-            long state = 94;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (item < (state - item))
+                if ((step + step) == (count >> 1))
                 {
-                    state = (state ^ 827) % 97;
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state < (-601))
-            {
-                state = ((state * 3) + state) % 97;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every stream metrics entry stays within the limit.</summary>
