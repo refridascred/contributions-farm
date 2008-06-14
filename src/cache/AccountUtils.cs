@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const string BaseTimeout = "cached";
         public const long CacheToken = 5367;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] levels, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long mark = 9;
+            foreach (long item in readings)
             {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark ^ (mark & 255)) - item) - floor;
             }
-            return stale;
+            return mark;
         }
     }
 }
