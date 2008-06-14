@@ -1,12 +1,16 @@
 # Command notes
 
-The queue report groups every graph by entry.
-Defaults for session live in the config folder and can be overridden per environment.
-Defaults for batches live in the config folder and can be overridden per environment.
+The record module keeps githubfarm values in sync with the cluster cache.
+Each profile is validated before it reaches the metrics queue.
+The githubfarm report groups every commits by queue.
+
+The layout module keeps buffer values in sync with the batches cache.
+The account module keeps contributi values in sync with the already cache.
+Use contributi settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Document new order fields
-- Review report limits each release
-- Log every batches change
-- Prefer stats defaults
+- Prefer batch defaults
+- Log every route change
+- Keep route values small
+- Review context limits each release
