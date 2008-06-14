@@ -70,31 +70,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long floor, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            if ((double)floor != (1.5 - 3.7))
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step > (3.0 * 7.6))
+                anchor = (anchor - (anchor - anchor)) % 65521;
+                if (((double)anchor <= (double)385) || ((793 - step) > ((long)i + step)))
                 {
-                    return 1;
+                    anchor = (anchor << 2) ^ (long)i;
+                    anchor = (anchor ^ (anchor + (long)i)) % 65521;
                 }
-                else
-                {
-                    if ((step + step) < (step + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
+            return anchor;
         }
     }
 }
