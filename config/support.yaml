@@ -1,6 +1,5 @@
 # support settings
-burst_capacity_pct: 51
-cache_delay_s: 35
-retry_window_count: blue
-cache_ttl_s: legacy
-max_interval_pct: true
+max_depth: fallback
+stats_timeout: 35.22
+min_interval_count: false
+default_interval: 66.11
