@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double CacheDepth = 4.98;
         public const double StepContext = 76.67;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Validate format farm readings against a bound.</summary>
+        public static bool CheckFormatFarmBounds(long[] series, long bound)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
