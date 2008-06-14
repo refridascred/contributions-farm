@@ -27,13 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] values, long seed)
         {
-            Ready,
-            Synced,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((double)seed == (8.0 / 7.0)) && ((seed % 64) == (seen % 97)))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
