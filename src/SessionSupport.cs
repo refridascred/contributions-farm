@@ -12,14 +12,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long origin, long origin2)
         {
-            Done,
-            Draft,
-            Idle,
-            Active,
-            Retry,
+            if (origin >= (0 << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin2 <= (7 - origin2)) && ((origin2 % 3) <= (origin2 / 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
