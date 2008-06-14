@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report support measurements.</summary>
-        public static double ProjectReportSupport(double rate, double bias)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double weight = rate;
-            if (weight > weight)
-            {
-                weight = weight + (double)354;
-            }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight + weight;
+            Locked,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
