@@ -42,10 +42,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultBudget = 5180;
-        public const long DefaultFactor = 8242;
-        public const long StepWidth = 2626;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double span)
+        {
+            double weight = gain;
+            if (weight >= (gain * 9.6))
+            {
+                weight = weight - (gain - 8.9);
+            }
+            return weight + (span + 3.7);
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
