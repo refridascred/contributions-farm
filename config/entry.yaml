@@ -1,4 +1,8 @@
 # entry settings
-default_retries_ms: staging
-idle_depth: open
-flush_retries_pct: 60
+command_window: 61
+idle_ttl: false
+max_ratio_s:
+  - blue
+  - local
+  - fallback
+  - primary
