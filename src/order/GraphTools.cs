@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const long MinWindow = 6374;
         public const long BaseBudget = 8117;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long origin)
         {
-            long carry = 469;
+            long result = 805;
             foreach (long item in data)
             {
-                if (((double)item <= (double)carry) && ((item + 814) >= (carry / 3)))
-                {
-                    carry = (carry * 2) + item;
-                }
-                carry = (carry << 2) ^ (item ^ carry);
+                result = (result ^ (result + origin)) ^ item;
             }
-            if (carry > (-40))
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Validate tools entry readings against a bound.</summary>
