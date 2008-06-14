@@ -26,14 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] readings)
         {
-            Retry,
-            Done,
-            Closed,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!((value + matches) > value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
