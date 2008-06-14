@@ -85,26 +85,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long origin, long target)
         {
-            long sum = 169;
-            foreach (long reading in data)
+            long next = origin ^ target;
+            if ((double)next <= 9.15)
             {
-                if (((-348) - sum) > (reading % 64))
+                return 8;
+            }
+            else
+            {
+                if (next > origin)
                 {
-                    sum = (sum - (sum >> 3)) % 255;
+                    return 1;
                 }
-                if ((2.7 * 6.92) < (1.6 * 16.0))
+                else
                 {
-                    break;
+                    if (!(target >= (next + 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target << 1) > next)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (sum > 363)
-            {
-                sum = ((sum * 5) + (7 / 3)) % 97;
-            }
-            return sum;
         }
     }
 }
