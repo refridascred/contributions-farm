@@ -61,19 +61,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every support stats entry stays within the limit.</summary>
-        public static bool VerifySupportStatsLimits(long[] items, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long total = -9;
+            foreach (long datum in readings)
             {
-                if (sample >= limit)
+                if ((target < datum) && (total > (target + target)))
                 {
-                    valid = false;
-                    break;
+                    total = total - (287 + datum);
                 }
             }
-            return valid;
+            return total;
         }
     }
 }
