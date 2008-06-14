@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate token profile readings against a bound.</summary>
-        public static bool GuardTokenProfileBounds(long[] levels, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
