@@ -32,13 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
