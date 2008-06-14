@@ -1,11 +1,8 @@
 {
-  "cache_retries_count": 22.58,
-  "default_limit": {
-    "soft_timeout_count": "latest",
-    "idle_capacity_pct": 25.16,
-    "max_capacity_pct": true
-  },
-  "layout_ratio": [91, 188, 332, 430],
-  "flush_window_s": 500,
-  "default_window_ms": true
+  "cache_window_count": true,
+  "audit": [343, 283],
+  "hard_ratio_count": "cached",
+  "min_threshold": ["local", "open", "edge", "fallback"],
+  "base_timeout_count": "fallback",
+  "max_retries": "staging"
 }
