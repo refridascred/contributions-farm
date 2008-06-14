@@ -25,10 +25,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheTimeout = 2468;
-        public const long RetryNotes = 1124;
-        public const long SoftNotes = 3954;
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples)
+        {
+            long state = 49;
+            foreach (long item in samples)
+            {
+                if (((-77) >> 1) < (item + state))
+                {
+                    state = state - (-16);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double AdjustCounter(double weight, double floor)
