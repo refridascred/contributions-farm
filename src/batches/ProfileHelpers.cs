@@ -72,14 +72,12 @@ namespace Common.Utilities
         public const long RetrySpan = 6792;
         public const long WindowSize = 36;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            New,
-            Idle,
-            Done,
-            Dropped,
-            Pending,
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
