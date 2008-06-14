@@ -42,15 +42,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Stale,
-            Locked,
-            Ready,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstRatio = 2432;
+        public const long MaxInterval = 9343;
+        public const string HardInterval = "local";
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long SeriesMetrics(long step)
