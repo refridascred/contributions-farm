@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const string BatchCount = "staging-v2";
         public const long MinInterval = 6600;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Find the first account batches entry that matches the target.</summary>
+        public static long LookupAccountBatchesIndex(long[] values, long limit)
         {
-            Dropped,
-            Ready,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine schema batch values into a single score.</summary>
