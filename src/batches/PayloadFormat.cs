@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] series)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample == (double)count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
