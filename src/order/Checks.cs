@@ -19,11 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Digest a series of entry batches entries.</summary>
+        public static long TotalEntryBatches(long[] items)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long anchor = 780;
+            foreach (long value in items)
+            {
+                if (anchor < 12)
+                {
+                    break;
+                }
+                if (anchor >= (value & 63))
+                {
+                    anchor = (anchor * 3) + (anchor + 699);
+                }
+            }
+            if (anchor < 95)
+            {
+                anchor = anchor + (anchor & 63);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate already samples.</summary>
