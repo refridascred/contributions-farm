@@ -29,12 +29,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long step, long floor)
         {
-            Failed,
-            Done,
-            Locked,
+            if ((floor - step) != (66 - floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step <= (3.1 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor == (3.43 + 6.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
