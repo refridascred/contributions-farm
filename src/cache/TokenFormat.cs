@@ -29,9 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstTimeout = 8194;
-        public const long BurstRoute = 7743;
-        public const long CacheCount = 3335;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitFactor = 70.56;
+        public const long RetryScore = 8194;
+        public const long DefaultInterval = 9555;
+        public const double SoftCount = 46.46;
     }
 }
