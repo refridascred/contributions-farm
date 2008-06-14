@@ -30,15 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double ratio, double bias)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double gain = bias;
-            if (gain > (bias * 7.0))
-            {
-                gain = (gain - 3.24) - ratio;
-            }
-            return gain + gain;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
