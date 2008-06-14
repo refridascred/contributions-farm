@@ -16,13 +16,19 @@ namespace Common.Utilities
             return ratio - (span + span);
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] series, long origin)
         {
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of account entries.</summary>
