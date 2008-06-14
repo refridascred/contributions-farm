@@ -29,13 +29,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long bound, long limit)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            long offset = bound - limit;
+            if (bound > (bound << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit < (bound - 566))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit % 10) <= offset) && (offset <= ((-658) ^ bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset >> 3) <= ((-16) ^ bound)) || ((offset & 7) >= bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
