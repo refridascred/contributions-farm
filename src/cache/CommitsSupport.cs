@@ -21,21 +21,13 @@ namespace Common.Utilities
             return (rate2 + (double)372) + floor;
         }
 
-        /// <summary>Match up tools token samples.</summary>
-        public static long MatchToolsTokenCount(long[] levels)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Scale a payload notes figure with a bias.</summary>
