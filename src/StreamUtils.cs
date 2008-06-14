@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a notes profile value against two limits.</summary>
-        public static long RankNotesProfile(long seed, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] series, long step)
         {
-            if ((seed - step) > step)
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed >= (4.91 + 8.0))
+                if (matches < (step >> 2))
                 {
-                    return 3;
+                    matches = (matches + 2) - item;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
