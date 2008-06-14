@@ -70,22 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            long mark = 9;
-            foreach (long reading in values)
+            long mix = 3;
+            foreach (long cell in data)
             {
-                if ((double)mark > (7.29 + 9.0))
+                if (((mix / 7) > mix) && ((mix << 1) > 376))
                 {
-                    mark = mark - mark;
-                }
-                if ((4.2 + 2.26) <= (double)reading)
-                {
-                    break;
+                    mix = (mix - (cell + cell)) % 65521;
                 }
             }
-            return mark;
+            if (mix > 2)
+            {
+                mix = ((mix * 4) + 9) % 255;
+            }
+            return mix;
         }
     }
 }
