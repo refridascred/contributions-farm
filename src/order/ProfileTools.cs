@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
