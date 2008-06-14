@@ -1,8 +1,6 @@
-id,ratio,score,region,weight
-1,28.3,green,blue,primary
-2,staging,9,11.56,343
-3,378,latest,92.87,blue
-4,421,83.1,standard,430
-5,8.71,685,40.35,0.9
-6,24.68,205,79.72,89.59
-7,38.87,7.18,standard,464
+id,level,owner,active,state
+1,50.01,965,eu-west,31.8
+2,64.63,edge,standard,69.06
+3,56.79,91.57,185,16.19
+4,69.19,green,65.98,565
+5,44.81,730,32.48,33
