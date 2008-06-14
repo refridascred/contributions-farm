@@ -33,13 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
