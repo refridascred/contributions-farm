@@ -1,5 +1,26 @@
 # githubfarm settings
-enabled: 1192
-base_interval: 9847
-default_timeout_pct: green
-dry_run: 9466
+soft_ttl_s: 94
+min_window_pct:
+  idle_limit_count: 61
+  flush_size:
+    burst_threshold_pct: 60
+    warm_ratio:
+      - 158
+      - 265
+      - 275
+      - 361
+    flush_limit: stable
+    warm_interval: latest
+  batch_ratio_pct:
+    dry_run: edge
+    poll_size_count:
+      - 261
+      - 154
+    warm_retries: 84.66
+    token_interval: false
+  batch_interval_pct: 41.81
+  counter_delay: 100
+warm_capacity_count: primary
+default_delay: 95.09
+hard_ttl_s: green
+dry_run: false
