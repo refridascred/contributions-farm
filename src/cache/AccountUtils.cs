@@ -26,15 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] readings, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long mark = 9;
-            foreach (long item in readings)
-            {
-                mark = ((mark ^ (mark & 255)) - item) - floor;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
