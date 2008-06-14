@@ -49,17 +49,22 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "strict-1";
         public const double LimitGithubfarm = 47.46;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (samples[i] >= origin)
+                if (!((555 << 3) < matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
