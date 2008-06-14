@@ -49,12 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            Done,
+            Paused,
+            Active,
+            New,
+            Pending,
         }
     }
 }
