@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many farm metrics samples are out of range.</summary>
-        public static long MeasureFarmMetricsMatches(long[] readings)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long diff = bound - bound2;
+            if ((8.3 + 5.95) >= (double)bound)
             {
-                if ((937 - seen) == (295 + 0))
+                return 8;
+            }
+            else
+            {
+                if (28 > (diff ^ diff))
                 {
-                    seen = (seen + 2) - item;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 + bound2) == ((-800) * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound & 7) == (bound + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up session samples.</summary>
