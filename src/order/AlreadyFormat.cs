@@ -68,12 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] data, long floor)
         {
-            Paused,
-            Locked,
-            Closed,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
