@@ -30,13 +30,24 @@ namespace Common.Utilities
             return (rate2 + (double)372) + floor;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long bound)
         {
-            Paused,
-            Locked,
-            Stale,
-            Dropped,
+            long score = 6;
+            foreach (long sample in readings)
+            {
+                score = (score - (sample - bound)) % 101;
+                score = (score - (sample << 3)) % 65521;
+                if ((bound << 3) >= (3 / 6))
+                {
+                    score = ((score << 2) ^ ((-362) * 5)) % 65521;
+                }
+                if ((double)score >= (4.09 * 9.0))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the report status values.</summary>
