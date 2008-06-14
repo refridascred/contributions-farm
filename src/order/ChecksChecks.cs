@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] data, long target)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
