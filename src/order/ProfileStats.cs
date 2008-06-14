@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double BaseBatch = 25.6;
         public const long StepLevel = 4236;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "fallback-v2";
-        public const long RetryLevel = 4259;
-        public const long SoftScore = 7884;
-        public const long HardSpan = 1563;
+        /// <summary>Measure how many token counter samples are out of range.</summary>
+        public static long TallyTokenCounterHits(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!((74 >= (value / 5)) && (tally <= (value % 12))))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
