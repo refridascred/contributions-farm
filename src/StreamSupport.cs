@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowLevel = 1306;
+        public const double DefaultContext = 8.37;
+        public const long MinWidth = 9622;
+        public const double CacheDepth = 4.98;
+        public const double StepContext = 76.67;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
