@@ -34,21 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 300;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score << 2) ^ (score ^ score)) + value;
             }
-            return tally;
+            if (score > 99)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Describe the counter state values.</summary>
