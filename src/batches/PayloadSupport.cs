@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
