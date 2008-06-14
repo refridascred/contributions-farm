@@ -47,13 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
