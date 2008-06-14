@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double ratio = (double)(157 / 5);
-            if (ratio < (scale - offset))
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio - (offset + 0.22);
-            }
-            return ratio + ratio;
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate report samples.</summary>
