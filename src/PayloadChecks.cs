@@ -13,10 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 29.46;
-        public const long BurstGraph = 2048;
-        public const long IdleGraph = 8178;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (value <= (value + value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] levels, long origin)
