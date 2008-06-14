@@ -27,13 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Match up tools format samples.</summary>
+        public static long CompareToolsFormatCount(long[] values)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
