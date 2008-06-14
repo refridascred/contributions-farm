@@ -1,23 +1,7 @@
 # support settings
-queue_delay:
-  tools_delay:
-    max_window:
-      - fallback
-      - edge
-    burst_retries_ms:
-      - staging
-      - strict
-    audit: standard
-    tools_delay: 28.2
-  base_timeout_count:
-    - 324
-    - 293
-    - 310
-    - 203
-  warm_limit_count: 640
-stats_window: 62
-support_interval: fallback
-poll_limit_pct: false
-sync_limit_pct:
-  - 138
-  - 228
+default_window: 6.51
+dry_run: 30
+idle_depth_count: 5382
+idle_size: 2.43
+queue_capacity: stable
+cache_timeout: 60.82
