@@ -16,20 +16,10 @@ namespace Common.Utilities
             return ratio - (span + span);
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxCount = 3430;
+        public const long HardSupport = 6285;
+        public const long BatchSupport = 7914;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] data, long step)
