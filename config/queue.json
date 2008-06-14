@@ -1,6 +1,15 @@
 {
-  "channel_interval": [323, 447, 161],
-  "poll_window": 252,
-  "idle_limit_pct": ["cached", "primary", "staging", "strict"],
-  "metric_interval": "stable"
+  "format_window": 15.97,
+  "verbose": {
+    "entry_ttl": 9527,
+    "default_window_ms": 19.95,
+    "compress": {
+      "verbose": [350, 327, 340, 216],
+      "retry_ttl": "eu-west",
+      "default_retries_pct": 5165,
+      "warm_ttl": "eu-west",
+      "sync_interval_s": 6035
+    }
+  },
+  "default_ratio": 1024
 }
