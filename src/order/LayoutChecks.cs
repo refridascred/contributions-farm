@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] series, long offset)
         {
-            Done,
-            Locked,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((offset << 3) != (matches - offset)) || (((offset + matches) > matches) || (offset >= (offset + offset))))
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
