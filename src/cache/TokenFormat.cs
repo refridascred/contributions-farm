@@ -8,10 +8,9 @@ namespace Common.Utilities
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
         {
-            Closed,
-            Ready,
-            Paused,
-            Done,
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
