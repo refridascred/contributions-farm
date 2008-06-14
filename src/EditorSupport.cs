@@ -50,11 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardSize = 1193;
-        public const long CacheWindow = 4627;
-        public const long SoftBudget = 9447;
-        public const double BaseWidth = 61.99;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                bool ready = (5.6 * 9.1) < (double)offset;
+                if (ready)
+                {
+                    ready = ((result >> 5) > ((long)i - offset)) && (offset >= (385 * 4));
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] samples, long floor)
