@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] samples, long origin)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
