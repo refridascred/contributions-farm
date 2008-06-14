@@ -37,20 +37,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (carry <= ((long)i + (long)i))
+                if (samples[i] < limit)
                 {
-                    carry = (carry ^ (step + (long)i)) % 4096;
-                    carry = ((carry * 2) + (step * 2)) % 65521;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
