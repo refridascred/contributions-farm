@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many cluster session samples are out of range.</summary>
-        public static long AuditClusterSessionOutliers(long[] series, long bound)
+        /// <summary>Derive the next token payload value from a seed.</summary>
+        public static long RollTokenPayload(long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)bound > (6.3 + 7.5))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                score = (score << 2) ^ score;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Match up format samples.</summary>
