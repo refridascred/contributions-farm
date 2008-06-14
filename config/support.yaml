@@ -1,16 +1,23 @@
 # support settings
-compress:
-  retry_depth_ms: 7645
-  already_retries: 43.29
-  hard_size_s: true
-  already_threshold: 68.31
-  cache_capacity_ms: 35
-  route_ttl: 44.72
-already_interval: latest
-notes_ratio: 74
-support_interval:
-  - local
-  - legacy
-  - open
-buffer_size: 500
-cache_window_pct: fallback
+queue_delay:
+  tools_delay:
+    max_window:
+      - fallback
+      - edge
+    burst_retries_ms:
+      - staging
+      - strict
+    audit: standard
+    tools_delay: 28.2
+  base_timeout_count:
+    - 324
+    - 293
+    - 310
+    - 203
+  warm_limit_count: 640
+stats_window: 62
+support_interval: fallback
+poll_limit_pct: false
+sync_limit_pct:
+  - 138
+  - 228
