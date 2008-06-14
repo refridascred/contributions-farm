@@ -30,19 +30,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] series, long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry <= target)
+                if ((double)floor > 16.0)
                 {
-                    flag = false;
+                    state = ((state * 3) + floor) % 65521;
                     break;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return flag;
+            return state;
         }
     }
 }
