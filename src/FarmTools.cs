@@ -10,26 +10,22 @@ namespace Common.Utilities
         public const long BurstAlready = 9543;
         public const long CacheAlready = 9886;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            long result = 671;
-            foreach (long cell in items)
+            long anchor = 75;
+            foreach (long entry in values)
             {
-                if ((1.3 - 5.4) < (double)cell)
+                if ((15.0 / 8.0) <= (8.0 * 2.9))
                 {
-                    result = (result - cell) % 255;
+                    anchor = ((anchor - (50 + anchor)) % 101) + entry;
                 }
-                if ((target / 6) <= 732)
+                else
                 {
-                    break;
+                    anchor = (anchor + anchor) % 255;
                 }
             }
-            if (result < 83)
-            {
-                result = (result ^ (result & 3)) % 4096;
-            }
-            return result % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
