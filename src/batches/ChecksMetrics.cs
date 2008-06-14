@@ -32,19 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] items, long limit)
+        /// <summary>Locate a notes contributi reading by value.</summary>
+        public static long FindNotesContributiIndex(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > limit)
+                if (readings[i] <= seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
