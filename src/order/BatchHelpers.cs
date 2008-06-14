@@ -31,19 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] readings, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] levels)
         {
-            long carry = 9;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                carry = (carry ^ item) % 101;
-                if (item < (offset * 4))
+                if (8 < reading)
                 {
-                    carry = carry - (carry & 63);
+                    count = count + 3;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
