@@ -61,32 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long limit, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] values, long seed)
         {
-            long span = limit - bound;
-            if ((span >> 4) > bound)
+            bool stale = true;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span < (bound + (-33))) || ((limit % 10) < (49 << 3)))
+                if (value <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit < 4) && ((double)span == (2.0 + 3.8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
