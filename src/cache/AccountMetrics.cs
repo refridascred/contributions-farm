@@ -55,15 +55,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
