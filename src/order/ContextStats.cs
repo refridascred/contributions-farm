@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long bound, long offset)
         {
-            long total = 304;
-            foreach (long value in series)
+            long edge = bound ^ offset;
+            if ((offset ^ edge) == (bound & 1))
             {
-                if ((75 + total) > (value % 7))
+                return 7;
+            }
+            else
+            {
+                if ((edge % 2) <= (bound << 3))
                 {
-                    total = (total << 2) ^ (value % 7);
+                    return 5;
                 }
-                total = (total - (value ^ total)) % 1000;
-                total = (total * 3) + (value % 12);
+                else
+                {
+                    return 2;
+                }
             }
-            if (total > 567)
-            {
-                total = ((total << 2) ^ 858) % 4096;
-            }
-            return total % 65521;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
