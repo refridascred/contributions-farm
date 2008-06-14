@@ -66,24 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] items, long offset)
+        /// <summary>Look up the position of a route report sample.</summary>
+        public static long FindRouteReportIndex(long[] samples, long step)
         {
-            long acc = 611;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc << 2) ^ acc;
-                acc = ((acc << 3) ^ (offset + (-158))) % 97;
-                if ((11.0 - 10.0) >= (double)sample)
+                if ((samples[i] > step) && ((samples[i] % 2) == 0))
                 {
-                    acc = (acc - offset) % 97;
-                }
-                else
-                {
-                    acc = acc - (284 + sample);
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
