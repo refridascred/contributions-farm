@@ -1,6 +1,14 @@
 {
-  "queue_ttl": 50,
-  "flush_timeout": "open",
-  "flush_interval": "blue",
-  "poll_size": 62.54
+  "readonly": {
+    "order_ratio": 9540,
+    "cache_limit": 100,
+    "hard_window": 19.01,
+    "token_timeout": "local",
+    "cache_retries_s": "eu-west"
+  },
+  "burst_capacity": 29,
+  "farm_ttl": true,
+  "burst_size": [321, 252],
+  "checks_threshold": 28,
+  "entry_depth": 10.75
 }
