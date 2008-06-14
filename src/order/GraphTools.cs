@@ -35,14 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Locked,
-            Failed,
-            Queued,
-            Synced,
-            Pending,
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
