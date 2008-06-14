@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "primary-1";
-        public const long MaxCount = 4059;
-        public const long HardInterval = 9925;
-        public const double MinAlready = 97.82;
-        public const string CacheAlready = "staging";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleDepth = 82.02;
+        public const long RetrySize = 5901;
+        public const long BatchFactor = 6723;
+        public const double BaseBatch = 25.6;
+        public const long StepLevel = 4236;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string HardReport = "fallback-v2";
