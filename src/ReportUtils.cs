@@ -20,11 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
