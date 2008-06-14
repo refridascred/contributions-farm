@@ -32,18 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats route entries that pass the check.</summary>
-        public static long TallyStatsRouteGaps(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((entry % 97) != (entry + 82))
+                if ((11 + entry) < ((-7) - 666))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
