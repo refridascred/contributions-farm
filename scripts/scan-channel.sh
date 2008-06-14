@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary strict; do
-    log "checking ${item}"
-done
+mode="${1:-staging}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=310
+log "limit is ${CHANNEL_LIMIT}"
