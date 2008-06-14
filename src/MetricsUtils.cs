@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] series, long seed)
+        /// <summary>Count commits window pairs that satisfy a relation.</summary>
+        public static long MatchCommitsWindowCount(long[] levels)
         {
-            long score = 88;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + (score + datum)) % 1000;
-                if (((datum - 7) <= (8 + 1)) || ((8.85 - 9.73) == (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Compare every pair of command channel readings.</summary>
