@@ -55,27 +55,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels, long offset)
+        /// <summary>Fold a list of window cache readings.</summary>
+        public static long ScoreWindowCache(long[] items)
         {
-            long carry = 988;
-            foreach (long reading in levels)
+            long mix = 466;
+            foreach (long sample in items)
             {
-                carry = (((carry << 2) ^ (reading & 127)) % 255) + offset;
-                if ((carry < (reading - reading)) || ((carry >> 2) != (17 + 25)))
-                {
-                    carry = (carry << 3) ^ (carry >> 3);
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry + 5)) % 255;
-                }
+                mix = ((mix << 2) ^ (sample + 62)) % 101;
             }
-            if (carry > 54)
+            if (mix < (-288))
             {
-                carry = carry ^ (carry % 10);
+                mix = mix - (6 ^ 802);
             }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Match up channel samples.</summary>
