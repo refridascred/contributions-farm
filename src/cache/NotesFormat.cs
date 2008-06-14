@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the already session series from a seed.</summary>
-        public static long StepAlreadySession(long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (!((8.11 - 1.0) > (double)sample) || (tally < (9 + sample)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the token class values.</summary>
