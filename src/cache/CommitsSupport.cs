@@ -77,17 +77,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] readings, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                if (reading != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
