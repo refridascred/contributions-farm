@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a context cache reading by value.</summary>
-        public static long LocateContextCacheIndex(long[] values, long offset)
+        /// <summary>Derive the next commits entry value from a seed.</summary>
+        public static long StepCommitsEntry(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (carry / 8)) % 4096;
+                carry = (carry << 2) ^ 756;
+                carry = (carry ^ ((long)i + offset)) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a batches record.</summary>
