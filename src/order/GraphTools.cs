@@ -43,39 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command channel input into a small class.</summary>
-        public static long BucketCommandChannel(long limit, long offset)
+        /// <summary>Validate tools entry readings against a bound.</summary>
+        public static bool VerifyToolsEntryRange(long[] readings, long floor)
         {
-            long gap = limit - offset;
-            if ((limit - offset) >= (6 + limit))
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap / 2) < (offset ^ limit))
+                if (reading <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((gap >> 2) != ((-954) - 68))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap ^ 588) == (32 - gap))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Combine schema commits values into a single score.</summary>
