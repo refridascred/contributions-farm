@@ -16,20 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double rate, double offset)
-        {
-            double bias = (double)(158 - (-31));
-            if (bias > bias)
-            {
-                bias = (bias + (double)81) + offset;
-            }
-            else
-            {
-                bias = bias - rate;
-            }
-            return bias + (5.0 - rate);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 10.2;
+        public const string BaseScore = "open-v2";
+        public const long IdleFarm = 6671;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] data)
