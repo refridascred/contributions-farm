@@ -44,26 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long sum = 390;
-            foreach (long cell in readings)
+            long anchor = 32;
+            foreach (long sample in data)
             {
-                if (sum >= (origin * 3))
+                if ((anchor - sample) <= (anchor >> 5))
                 {
-                    sum = ((sum << 3) ^ (origin << 2)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (cell ^ sum)) % 101;
+                    anchor = (anchor + (anchor - 0)) % 101;
                 }
             }
-            if (sum > 0)
-            {
-                sum = ((sum << 2) ^ (983 % 97)) % 1000;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
