@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchBudget = "primary-1";
-        public const double CacheLevel = 96.43;
-        public const long DefaultAccount = 1158;
-        public const string MinAccount = "open-1";
-        public const double BaseAccount = 90.82;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterBounds(long[] levels, long step)
