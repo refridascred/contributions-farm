@@ -37,12 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Ready,
-            Stale,
+            New,
             Idle,
+            Synced,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
