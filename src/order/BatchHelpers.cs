@@ -13,22 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] items, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = 88;
+            foreach (long value in data)
             {
-                if (item < (item ^ bound))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total - (total << 2)) % 65521) + value;
             }
-            return count;
+            if (total > 0)
+            {
+                total = ((total << 2) ^ (total / 8)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
