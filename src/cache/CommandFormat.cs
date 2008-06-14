@@ -37,22 +37,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] values, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long score = 47;
+            foreach (long item in levels)
             {
-                if (((double)item >= 1.0) || ((count + step) == (item % 12)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (((score << 3) ^ (item & 15)) % 101) - floor;
             }
-            return count;
+            return score;
         }
     }
 }
