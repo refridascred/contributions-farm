@@ -1,6 +1,16 @@
 # githubfarm settings
-strict: edge
-enabled: false
-batches_depth: 0.81
-retry_threshold_pct: 30
-filter_threshold: edge
+stream_ttl:
+  flush_limit_s: false
+  session_depth: fallback
+  stats_limit: 5504
+  support_limit: 500
+  base_size:
+    - 355
+    - 475
+  support_capacity: eu-west
+compress:
+  default_timeout_pct: 1024
+  flush_interval: open
+  strict: 84
+  retry_retries_pct: true
+warm_size_s: latest
