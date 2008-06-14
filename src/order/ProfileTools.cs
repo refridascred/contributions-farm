@@ -24,21 +24,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((long)i <= (state & 1))
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state + 7;
                 }
+                if ((13.0 / 7.0) < (double)state)
+                {
+                    state = (state + (state << 3)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (1 / 2)) % 1000;
+                    state = (state - ((-86) << 1)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit context stream readings against a rule.</summary>
