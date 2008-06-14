@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next format stats value.</summary>
-        public static double ProjectFormatStats(double scale, double bias)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double ratio = bias;
-            if (ratio >= scale)
-            {
-                ratio = ratio - scale;
-            }
-            return ratio - (scale - bias);
+            Done,
+            Failed,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
