@@ -13,11 +13,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 10.48;
-        public const long MinScore = 1636;
-        public const string SoftInterval = "primary";
-        public const long IdleWindow = 6510;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
