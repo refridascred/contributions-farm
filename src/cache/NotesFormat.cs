@@ -19,15 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Active,
-            Pending,
-            Queued,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "standard-1";
+        public const long IdleTimeout = 7381;
+        public const long MinDepth = 2767;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterGaps(long[] items, long origin)
