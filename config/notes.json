@@ -1,18 +1,5 @@
 {
-  "flush_timeout_ms": [11, 175, 434],
-  "flush_ttl": 35,
-  "soft_threshold_count": true,
-  "default_size": {
-    "queue_interval": {
-      "soft_interval": [368, 140, 399, 484],
-      "verbose": 8895,
-      "flush_ttl_ms": 60
-    },
-    "cache_ttl": false,
-    "retry_ratio_count": true,
-    "sync_size": 1106,
-    "flush_threshold_ms": 33
-  },
-  "token_delay": "strict",
-  "notes_limit": ["legacy", "open", "cached"]
+  "max_ratio_count": ["latest", "fallback"],
+  "graph_ratio": 6323,
+  "batch_retries_s": "fallback"
 }
