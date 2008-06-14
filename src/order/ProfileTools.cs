@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!!(seen >= entry))
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultDepth = "standard-v2";
+        public const long MaxQueue = 245;
+        public const long CacheQueue = 8696;
+        public const string BatchBudget = "primary-v2";
+        public const long BurstQueue = 9016;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
