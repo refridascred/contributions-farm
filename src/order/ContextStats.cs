@@ -48,9 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseWidth = 2559;
-        public const long BaseMetric = 5482;
-        public const string StepBudget = "fallback-1";
+        /// <summary>Measure how many metric already samples are out of range.</summary>
+        public static long TallyMetricAlreadyHits(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((8.9 / 8.0) >= (double)floor)
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
+        }
     }
 }
