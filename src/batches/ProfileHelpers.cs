@@ -48,18 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] series, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((3.03 / 4.0) > (double)cell)
+                if (entry <= (entry << 1))
                 {
-                    matches = (matches + 1) - limit;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the commits state values.</summary>
