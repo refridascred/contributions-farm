@@ -53,14 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Closed,
-            New,
-            Idle,
-            Ready,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "fallback-edge";
+        public const long CacheSize = 6986;
+        public const long BaseNotes = 3114;
+        public const double BurstRatio = 56.45;
     }
 }
