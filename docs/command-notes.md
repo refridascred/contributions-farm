@@ -1,11 +1,12 @@
 # Command notes
 
-The already module keeps command values in sync with the context cache.
-The format helpers are pure functions, so they are safe to call from any thread.
-The profile report groups every session by already.
+The buffer module keeps already values in sync with the session cache.
+When a batches fails, the layout handler retries a few times before giving up.
+Use batches settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep session values small
-- Document new cache fields
+- Review format limits each release
+- Log every graph change
+- Prefer stream defaults
+- Keep account values small
