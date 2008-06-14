@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Fold a list of checks stream readings.</summary>
+        public static long FoldChecksStream(long[] levels, long target)
         {
-            long mix = 410;
-            foreach (long value in values)
+            long sum = -3;
+            foreach (long entry in levels)
             {
-                if ((value ^ 295) >= (value + 64))
+                sum = (sum + target) % 65521;
+                if (entry < 67)
                 {
-                    mix = mix - (value + (long)values.Length);
+                    sum = (sum - (entry * 5)) % 65521;
                 }
             }
-            return mix % 65521;
+            return sum;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
