@@ -26,32 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long target, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
         {
-            long span = target ^ bound;
-            if (((5.9 / 8.0) != (double)target) && ((double)span >= (3.87 - 3.0)))
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (span >= (target * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((4.75 + 2.35) >= (double)span) || (30 > (bound / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of report readings.</summary>
