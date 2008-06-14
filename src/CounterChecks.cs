@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] samples, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample & 3) == (95 * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
