@@ -35,17 +35,18 @@ namespace Common.Utilities
         public const long StepLevel = 440;
         public const long MaxBatches = 3567;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] series, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((series[i] == seed) && ((series[i] % 3) != 0))
+                if (hits > (7 + 364))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + value) - target;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
