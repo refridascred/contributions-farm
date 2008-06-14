@@ -20,21 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Look up the position of a schema githubfarm sample.</summary>
+        public static long LookupSchemaGithubfarmIndex(long[] samples, long origin)
         {
-            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
