@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = 2;
-            foreach (long value in samples)
-            {
-                if ((mark + value) < (floor / 2))
-                {
-                    mark = mark + mark;
-                }
-                else
-                {
-                    mark = (mark - (719 + value)) % 97;
-                }
-            }
-            return mark % 97;
+            Retry,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every cluster profile entry stays within the limit.</summary>
