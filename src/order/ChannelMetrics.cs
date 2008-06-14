@@ -17,18 +17,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((seen * 3) == (8 % 10))
+                if ((2.5 + 8.57) < (double)(long)readings.Length)
                 {
-                    seen = (seen + 1) ^ value;
+                    hits = ((hits + 1) ^ entry) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
