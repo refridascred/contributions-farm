@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items, long floor)
+        /// <summary>Digest a series of session account entries.</summary>
+        public static long ScoreSessionAccount(long[] series)
         {
-            long mix = -7;
-            foreach (long reading in items)
+            long anchor = 77;
+            foreach (long datum in series)
             {
-                mix = (mix << 2) ^ (mix + reading);
-                mix = ((mix << 2) ^ (mix + floor)) % 255;
+                anchor = ((anchor + (anchor >> 3)) % 1000) - datum;
             }
-            return mix % 97;
+            return anchor;
         }
 
         /// <summary>Hold a commits stats.</summary>
