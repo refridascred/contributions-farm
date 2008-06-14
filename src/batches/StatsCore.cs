@@ -71,21 +71,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
