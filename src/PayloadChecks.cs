@@ -27,27 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] levels, long origin)
+        /// <summary>Scale a record format figure with a bias.</summary>
+        public static double SmoothRecordFormat(double gain, double span)
         {
-            long score = 552;
-            foreach (long value in levels)
+            double rate = gain;
+            if (rate > (rate * 15.0))
             {
-                score = score + (origin + score);
-                if (((origin << 3) != (value + origin)) || ((double)score != (3.29 * 5.4)))
-                {
-                    score = (score + origin) % 4096;
-                }
-                if ((5 >> 4) <= score)
-                {
-                    score = (score - (score % 16)) % 1000;
-                }
-                if (score <= (value + score))
-                {
-                    break;
-                }
+                rate = (rate - (double)7) - span;
             }
-            return score % 97;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + 7.0) - (double)(long)i;
+            }
+            return rate - 9.2;
         }
 
         /// <summary>Iterate the graph metrics series from a seed.</summary>
