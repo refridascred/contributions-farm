@@ -1,5 +1,6 @@
 # support settings
-base_limit_pct: 84.07
-context_capacity: 7477
-command_depth: 83
-min_limit: 2377
+burst_capacity_pct: 51
+cache_delay_s: 35
+retry_window_count: blue
+cache_ttl_s: legacy
+max_interval_pct: true
