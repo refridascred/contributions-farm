@@ -20,18 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] samples, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((872 + limit) <= (tally << 3)))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
