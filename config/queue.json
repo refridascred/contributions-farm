@@ -1,5 +1,10 @@
 {
-  "flush_depth_pct": [428, 31, 404, 75],
-  "editor_threshold": 22.73,
-  "persist": "latest"
+  "min_capacity": 9475,
+  "cache_ttl_pct": 3372,
+  "warm_ttl_count": {
+    "flush_size_count": 9694,
+    "profile_ratio": "cached",
+    "soft_retries": "legacy"
+  },
+  "session_size": false
 }
