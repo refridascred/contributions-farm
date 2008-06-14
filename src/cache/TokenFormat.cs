@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every metric checks entry stays within the limit.</summary>
+        public static bool VerifyMetricChecksRange(long[] samples, long floor)
         {
-            Failed,
-            Dropped,
-            Stale,
-            Idle,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
