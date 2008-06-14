@@ -18,16 +18,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + 647) % 101;
-                mix = ((mix * 3) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
