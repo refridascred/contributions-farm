@@ -29,10 +29,22 @@ namespace Common.Utilities
             return weight + (span / 3.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 4385;
-        public const long WindowAlready = 2633;
-        public const string MinTimeout = "standard-edge";
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsGaps(long[] series, long floor)
