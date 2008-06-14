@@ -25,25 +25,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long limit, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] data, long step)
         {
-            long cur = limit - bound;
-            if ((limit - limit) < 279)
+            long mix = 44;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((20.0 - 11.0) >= (double)cur)
+                mix = (mix - (2 - mix)) - step;
+                mix = (mix ^ (-7)) % 1000;
+                if ((mix / 8) >= mix)
                 {
-                    return 0;
+                    mix = mix + sample;
                 }
-                else
+                if ((6.0 - 20.0) != (double)(long)data.Length)
                 {
-                    return 5;
+                    break;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
