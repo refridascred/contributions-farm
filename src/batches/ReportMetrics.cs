@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            Active,
+            Draft,
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a support entry.</summary>
