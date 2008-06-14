@@ -1,10 +1,6 @@
-id,ratio,active,token
-1,legacy,64.41,897
-2,staging,64.29,139
-3,cached,2.78,295
-4,stable,59.78,298
-5,13.08,29.37,strict
-6,341,143,604
-7,30.18,latest,24.1
-8,947,legacy,72.33
-9,blue,33.4,180
+id,ratio,state
+1,35,74.15
+2,standard,open
+3,462,49
+4,313,standard
+5,598,strict
