@@ -33,18 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] levels, long step)
+        /// <summary>Audit token report readings against a rule.</summary>
+        public static long MeasureTokenReportOutliers(long[] data, long step)
         {
-            long state = 295;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (((76 >> 4) < state) || ((3 ^ datum) != (26 % 16)))
+                if ((seen + step) > (seen << 3))
                 {
-                    state = ((state + 7) % 4096) - step;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
