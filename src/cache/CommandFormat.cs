@@ -32,26 +32,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] series)
         {
-            long mix = 63;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)origin != (9.67 + 9.7))
+                if (8 >= (count % 100))
                 {
-                    mix = ((mix - (origin % 7)) % 4096) - entry;
+                    count = (count + 2) + reading;
                 }
-                if (!((8.0 + 1.16) >= (double)mix))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (mix > 75)
-            {
-                mix = mix + (-815);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first batch layout entry that matches the target.</summary>
