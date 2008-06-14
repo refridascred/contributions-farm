@@ -1,14 +1,13 @@
 {
-  "strict": {
-    "min_ratio": [325, 201],
-    "warm_limit_count": 1040,
-    "graph_limit": "fallback",
-    "session_interval": 500,
-    "hard_capacity": 7975
-  },
-  "notes_limit": "cached",
-  "readonly": 1024,
-  "default_ratio": "standard",
-  "session_window": 43.43,
-  "verbose": false
+  "sync_retries": "primary",
+  "batch_depth_pct": [79, 23],
+  "verbose": 82.54,
+  "editor_threshold": {
+    "cache_window_count": "cached",
+    "soft_threshold_count": "local",
+    "compress": "legacy",
+    "buffer_capacity": 70,
+    "readonly": ["blue", "staging", "strict"],
+    "hard_window": [295, 440]
+  }
 }
