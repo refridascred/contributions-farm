@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data, long target)
         {
-            Locked,
-            Retry,
-            New,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((((target & 127) != (tally << 3)) || ((7.8 - 1.76) == (double)target)) || ((tally ^ reading) < 52))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
