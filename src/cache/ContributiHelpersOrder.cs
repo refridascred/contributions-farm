@@ -45,18 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] values, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum * 5) < (569 >> 3))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            Paused,
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
