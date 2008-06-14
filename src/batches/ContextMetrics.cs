@@ -37,12 +37,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine metric values into a single score.</summary>
