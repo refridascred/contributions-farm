@@ -47,18 +47,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit githubfarm profile readings against a rule.</summary>
-        public static long CountGithubfarmProfileGaps(long[] readings, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long total = 663;
+            foreach (long entry in samples)
             {
-                if (!!((892 & 15) != (count * 5)))
+                total = (total + entry) % 1000;
+                if (entry > total)
                 {
-                    count = ((count + 2) - reading) + seed;
+                    total = total ^ (entry + entry);
+                }
+                else
+                {
+                    total = total + (total / 6);
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Describe the order state values.</summary>
