@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] readings, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long offset, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if (!(step > (step % 3)))
             {
-                if ((floor + floor) == (entry >> 1))
+                return 2;
+            }
+            else
+            {
+                if (!((offset * 3) >= offset))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset - step) != (offset / 3)) || ((step * 2) == (step ^ 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
