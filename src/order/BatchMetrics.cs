@@ -62,16 +62,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                mark = ((mark << 3) ^ mark) % 101;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
