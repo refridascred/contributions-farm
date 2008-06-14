@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double weight, double bias)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            double ratio = 20.0 - 9.14;
-            if (ratio < (double)6)
+            long sum = 57;
+            foreach (long datum in readings)
             {
-                ratio = (ratio - bias) + weight;
+                sum = ((sum << 2) ^ 1) + datum;
             }
-            for (int i = 0; i < 4; i++)
+            if (sum > 67)
             {
-                ratio = (ratio + (double)6) + (double)(long)i;
+                sum = ((sum << 3) ^ 86) % 255;
             }
-            return ratio - (double)45;
+            return sum % 1000;
         }
     }
 }
