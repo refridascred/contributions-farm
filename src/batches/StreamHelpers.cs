@@ -57,14 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Active,
-            Paused,
-            Done,
+            Idle,
+            Closed,
             Synced,
-            Dropped,
+            Done,
+            Paused,
         }
     }
 }
