@@ -33,15 +33,15 @@ namespace Common.Utilities
             return load + (bias2 / 7.0);
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long seed)
+        /// <summary>Count the session githubfarm entries that pass the check.</summary>
+        public static long TallySessionGithubfarmHits(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            foreach (long reading in readings)
             {
-                if ((((cell + hits) <= cell) || ((double)cell > 3.44)) || (cell > (cell + cell)))
+                if (hits >= (32 + reading))
                 {
-                    hits = (hits + 1) + seed;
+                    hits = hits + 1;
                 }
             }
             return hits;
