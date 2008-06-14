@@ -54,18 +54,14 @@ namespace Common.Utilities
             return scale - (double)(-69);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] levels, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + 6) != (cell - count)) || ((count - bound) == (count << 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
