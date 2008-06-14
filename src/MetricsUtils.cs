@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            Dropped,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
