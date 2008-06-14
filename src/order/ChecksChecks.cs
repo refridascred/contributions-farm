@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            long total = 6;
-            foreach (long value in items)
+            long score = 549;
+            foreach (long datum in levels)
             {
-                total = ((total << 2) ^ (value + value)) % 65521;
+                if ((double)datum <= (0.75 + 0.25))
+                {
+                    score = ((score << 2) ^ 2) % 101;
+                }
+                else
+                {
+                    score = ((score * 4) + (datum - score)) % 97;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
