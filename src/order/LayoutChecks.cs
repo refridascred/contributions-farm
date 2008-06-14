@@ -13,20 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((double)total >= (8.68 - 18.0)))
-                {
-                    continue;
-                }
-                total = (total ^ total) % 101;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Stale,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
