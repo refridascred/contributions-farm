@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] values, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (((offset % 64) > (offset + tally)) && ((8 ^ tally) != (tally << 1)))
+                if (cell >= offset)
                 {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
