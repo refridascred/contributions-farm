@@ -20,15 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] data, long offset)
         {
-            long acc = 825;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc + (acc & 15)) % 4096) + datum;
+                if ((data[i] >= offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
