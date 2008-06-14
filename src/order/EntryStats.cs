@@ -30,28 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] items, long seed)
         {
-            long score = 90;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                score = score + (score % 97);
-                if (((datum - 838) < (datum >> 2)) && ((score & 3) <= (datum + datum)))
+                if (((0 + seed) != (358 / 8)) && ((503 + seed) < (seen & 3)))
                 {
-                    score = score - ((long)readings.Length * 3);
+                    seen = (seen + 2) ^ item;
                 }
-                score = ((score * 3) + (score + datum)) % 255;
-                if (((229 % 2) > (score - 6)) || ((score - 37) <= score))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (score > 56)
-            {
-                score = score ^ (score + score);
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Describe the entry mode values.</summary>
