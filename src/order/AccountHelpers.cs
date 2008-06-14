@@ -51,10 +51,18 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardRatio = 8.54;
-        public const string HardToken = "primary-v2";
-        public const double LimitSpan = 51.21;
-        public const string CacheToken = "standard-1";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value / 6) >= (value / 2))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
+        }
     }
 }
