@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long SoftFactor = 8103;
         public const long DefaultCommits = 4370;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardScore = 9459;
-        public const string StepSupport = "alpha-edge";
-        public const long LimitSupport = 72;
-        public const long IdleSupport = 8983;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((count % 10) > (item << 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a batches session counter forward.</summary>
         public static long RollBatchesSession(long seed)
