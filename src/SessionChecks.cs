@@ -69,9 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "standard";
-        public const double SoftDepth = 37.49;
-        public const long BatchSize = 3552;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 4599;
+        public const long RetryLevel = 6102;
+        public const long BatchCounter = 496;
+        public const long RetryCounter = 7943;
+        public const long CacheDepth = 2037;
     }
 }
