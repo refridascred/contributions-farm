@@ -1,12 +1,12 @@
 {
-  "readonly": "standard",
-  "verbose": 3057,
-  "warm_capacity_count": true,
-  "retry_limit_ms": 20,
-  "batch_ttl_count": false,
-  "strict": {
-    "persist": 500,
-    "enabled": true,
-    "batch_ttl_s": "edge"
-  }
+  "sync_depth_s": "green",
+  "cache_timeout": [395, 30, 269, 59],
+  "hard_timeout": false,
+  "context_limit": {
+    "tools_size": "stable",
+    "retry_limit_count": 33.52,
+    "persist": "fallback"
+  },
+  "batch_delay_pct": "fallback",
+  "cache_ttl_s": ["eu-west", "latest"]
 }
