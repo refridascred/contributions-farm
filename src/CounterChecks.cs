@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftBudget = 36.09;
+        public const long IdleLevel = 1368;
+        public const double StepRatio = 76.91;
+        public const long SoftDepth = 8383;
 
         /// <summary>Fold a list of batch route readings.</summary>
         public static long CombineBatchRoute(long[] samples)
