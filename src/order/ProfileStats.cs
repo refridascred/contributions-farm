@@ -24,11 +24,15 @@ namespace Common.Utilities
         public const long SoftScore = 7884;
         public const long HardSpan = 1563;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 9287;
-        public const long BatchInterval = 4486;
-        public const long IdleFactor = 5129;
-        public const string CacheDepth = "fallback";
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Retry,
+            Done,
+            Closed,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] values, long seed)
