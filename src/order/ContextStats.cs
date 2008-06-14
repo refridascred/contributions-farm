@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long bound, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double ratio, double span)
         {
-            long edge = bound ^ offset;
-            if ((offset ^ edge) == (bound & 1))
+            double drift = (double)(4 ^ 6);
+            if (drift < (span * 19.0))
             {
-                return 7;
+                drift = (drift - span) - ratio;
             }
-            else
-            {
-                if ((edge % 2) <= (bound << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return drift - span;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
