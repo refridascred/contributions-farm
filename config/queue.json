@@ -1,7 +1,12 @@
 {
-  "session_capacity": 78.35,
-  "cache_capacity_count": 68.56,
-  "route_window": true,
-  "enabled": 82.74,
-  "layout_window": 44.8
+  "readonly": "standard",
+  "verbose": 3057,
+  "warm_capacity_count": true,
+  "retry_limit_ms": 20,
+  "batch_ttl_count": false,
+  "strict": {
+    "persist": 500,
+    "enabled": true,
+    "batch_ttl_s": "edge"
+  }
 }
