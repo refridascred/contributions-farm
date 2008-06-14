@@ -27,10 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 8642;
-        public const long RetryInterval = 6990;
-        public const long StepLevel = 1843;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterGaps(long[] items, long offset)
