@@ -23,12 +23,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long bound, long bound2)
         {
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            long offset = bound ^ bound2;
+            if ((8.2 - 8.4) <= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < (double)bound2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 + bound) < (742 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
