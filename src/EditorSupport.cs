@@ -23,11 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            Synced,
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a command header.</summary>
