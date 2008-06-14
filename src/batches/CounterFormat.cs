@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long WindowCommand = 3404;
         public const long IdleCommand = 4110;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "primary-edge";
-        public const double RetryScore = 36.85;
-        public const string DefaultBudget = "cached-1";
-        public const long LimitReport = 2118;
-        public const long BurstSpan = 9214;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((datum * 2) > datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long CombineFormat(long[] items)
