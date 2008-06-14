@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many stream context samples are out of range.</summary>
-        public static long CountStreamContextOutliers(long[] items)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading << 3) <= (matches << 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
