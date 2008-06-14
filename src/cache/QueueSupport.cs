@@ -46,22 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter batch entries.</summary>
-        public static long WeighCounterBatch(long[] readings)
+        /// <summary>Check that every filter notes entry stays within the limit.</summary>
+        public static bool VerifyFilterNotesBounds(long[] readings, long floor)
         {
-            long state = 14;
+            bool flag = true;
             foreach (long item in readings)
             {
-                if ((double)(-888) >= (double)item)
+                if (item < floor)
                 {
-                    state = ((state * 4) + (state >> 3)) % 65521;
-                }
-                else
-                {
-                    state = state + (391 >> 5);
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
     }
 }
