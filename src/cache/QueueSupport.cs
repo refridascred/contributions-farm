@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string MinSize = "staging";
         public const long BatchStats = 726;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long target)
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
