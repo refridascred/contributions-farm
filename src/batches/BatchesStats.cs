@@ -52,15 +52,30 @@ namespace Common.Utilities
         public const long IdleCommits = 9004;
         public const string BatchCommits = "open-1";
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings, long floor)
         {
-            double weight = floor - ratio;
-            if (weight <= weight)
+            long carry = 28;
+            foreach (long cell in readings)
             {
-                weight = weight - (double)295;
+                if (((floor + cell) > (carry / 9)) && (carry < floor))
+                {
+                    carry = carry ^ (floor * 2);
+                }
+                else
+                {
+                    carry = carry + (876 * 5);
+                }
+                if (cell <= (floor % 100))
+                {
+                    break;
+                }
             }
-            return weight - (weight + weight);
+            if (carry > 1)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry;
         }
     }
 }
