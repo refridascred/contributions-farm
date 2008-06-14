@@ -28,12 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] samples)
         {
-            Active,
-            Synced,
-            Closed,
+            long mark = 898;
+            foreach (long item in samples)
+            {
+                if ((double)mark > 0.8)
+                {
+                    mark = (((mark << 2) ^ mark) % 1000) ^ item;
+                }
+            }
+            return mark;
         }
     }
 }
