@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 78.68;
-        public const double HardCommits = 60.81;
-        public const string MaxCommits = "stable-1";
-        public const string DefaultScore = "latest-v2";
-        public const long CacheTimeout = 7333;
+        /// <summary>Audit format queue readings against a rule.</summary>
+        public static long CountFormatQueueHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)hits <= (0.29 - 18.0))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TotalBuffer(long[] readings)
