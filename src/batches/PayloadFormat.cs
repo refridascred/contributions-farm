@@ -19,27 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] series, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] series, long step)
         {
-            long score = 1;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (!(1 > (sample - floor)))
+                if (datum < step)
                 {
-                    score = (score << 2) ^ (long)series.Length;
-                    continue;
-                }
-                if ((1.0 - 5.0) != (double)floor)
-                {
-                    score = (score + (sample + 851)) % 1000;
-                }
-                if ((score * 2) <= floor)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return score % 65521;
+            return flag;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
