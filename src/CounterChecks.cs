@@ -73,19 +73,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long step)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
