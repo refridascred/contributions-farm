@@ -32,14 +32,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Ready,
-            Draft,
-            Synced,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 51.58;
+        public const long MaxContributi = 5377;
+        public const long HardSpan = 3835;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long SeriesFilter(long floor)
