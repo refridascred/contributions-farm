@@ -41,11 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
