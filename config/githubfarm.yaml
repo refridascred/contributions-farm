@@ -1,4 +1,9 @@
 # githubfarm settings
-hard_limit: stable
-support_size: false
-flush_limit_pct: 6487
+hard_delay_ms: staging
+idle_depth: stable
+min_size_pct:
+  - 308
+  - 489
+  - 483
+retry_window_pct: 100
+batch_window: true
