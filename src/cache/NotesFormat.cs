@@ -33,14 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Synced,
-            Queued,
-            New,
-            Dropped,
             Failed,
+            Done,
+            Draft,
         }
     }
 }
