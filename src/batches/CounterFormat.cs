@@ -23,23 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double span)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            double rate = (double)(8 & 127);
-            if (rate > rate)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                rate = (rate - 3.6) + span;
+                if ((mix / 7) >= (long)i)
+                {
+                    mix = (mix - mix) % 65521;
+                    mix = ((mix << 2) ^ (target << 3)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                rate = rate + (20.0 / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (double)125) + (double)(long)i;
-            }
-            return rate + (weight - weight);
+            return mix;
         }
 
         /// <summary>Describe the batch status values.</summary>
