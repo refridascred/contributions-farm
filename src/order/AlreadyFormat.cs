@@ -25,22 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long score = 8;
-            foreach (long value in data)
-            {
-                if (8 > (value + score))
-                {
-                    score = (score + (score & 255)) % 4096;
-                }
-                if (((score >> 5) == (value - value)) || ((4.0 / 4.0) == (double)score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
