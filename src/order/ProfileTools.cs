@@ -62,13 +62,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] samples, long target)
         {
-            Paused,
-            Stale,
-            Idle,
-            Draft,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((target <= (seen >> 1)) && !((double)(long)samples.Length < (7.4 * 9.8)))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a payload channel figure with a bias.</summary>
