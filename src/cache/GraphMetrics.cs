@@ -61,23 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long anchor = -7;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor ^ floor) + sample;
-                if (floor > (anchor % 5))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-151))
-            {
-                anchor = (anchor * 3) + (floor - anchor);
-            }
-            return anchor % 4096;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
     }
 }
