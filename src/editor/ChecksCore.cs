@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)series.Length >= matches)
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
