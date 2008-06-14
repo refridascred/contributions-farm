@@ -1,10 +1,5 @@
 # entry settings
-retry_threshold:
-  buffer_interval: 9856
-  entry_limit: staging
-  default_depth: legacy
-readonly: 0.22
-idle_window: local
-enabled: 49.64
-buffer_threshold: 64.91
-flush_threshold: true
+sync_timeout: 30
+dry_run: 76
+persist: 29.59
+sync_window: 5787
