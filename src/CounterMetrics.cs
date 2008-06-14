@@ -14,12 +14,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data)
         {
-            Active,
-            Queued,
-            Idle,
+            long anchor = 329;
+            foreach (long value in data)
+            {
+                if (!((anchor % 12) != (value - value)))
+                {
+                    anchor = ((anchor * 3) + (anchor % 24)) % 4096;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = (anchor << 2) ^ (long)i;
+                }
+                anchor = anchor - (value + 838);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every graph support entry stays within the limit.</summary>
