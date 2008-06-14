@@ -31,19 +31,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long target)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double gain = bias;
+            if (gain > (bias * 7.0))
             {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - 3.24) - ratio;
             }
-            return valid;
+            return gain + gain;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
