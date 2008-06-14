@@ -1,6 +1,8 @@
-id,state,token
-1,fallback,3.98
-2,latest,57.41
-3,839,eu-west
-4,local,standard
-5,open,legacy
+id,region,rank,count,label
+1,staging,724,389,staging
+2,213,254,blue,593
+3,strict,local,80.08,221
+4,staging,396,stable,300
+5,98,275,192,legacy
+6,eu-west,standard,700,36.37
+7,177,42.71,eu-west,275
