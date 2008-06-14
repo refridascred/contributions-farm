@@ -47,19 +47,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next filter command value.</summary>
-        public static double ProjectFilterCommand(double scale, double bias)
+        /// <summary>Compare every pair of command channel readings.</summary>
+        public static long PairCommandChannelCount(long[] readings)
         {
-            double ratio = (2.71 + scale) - 14.0;
-            if (ratio > (double)96)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (ratio - 10.0)) + (double)(long)i;
-            }
-            return ratio + 7.98;
+            return tally;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
