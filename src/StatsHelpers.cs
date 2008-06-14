@@ -70,22 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mix = 3;
-            foreach (long cell in data)
-            {
-                if (((mix / 7) > mix) && ((mix << 1) > 376))
-                {
-                    mix = (mix - (cell + cell)) % 65521;
-                }
-            }
-            if (mix > 2)
-            {
-                mix = ((mix * 4) + 9) % 255;
-            }
-            return mix;
+            Dropped,
+            Retry,
+            Idle,
+            Queued,
+            Pending,
         }
     }
 }
