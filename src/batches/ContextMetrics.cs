@@ -29,19 +29,13 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] series, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
