@@ -41,19 +41,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] readings, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (datum <= bound)
+                if ((190 + 240) <= (value << 3))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
