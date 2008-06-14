@@ -54,19 +54,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] values, long target)
+        /// <summary>Combine tools route values into a single score.</summary>
+        public static long ScoreToolsRoute(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long sum = 270;
+            foreach (long entry in samples)
             {
-                if (cell >= target)
+                if ((entry + sum) > 286)
                 {
-                    ready = false;
+                    sum = ((sum * 4) + 891) % 4096;
+                }
+                if (((48 / 2) >= step) || (step > (step & 3)))
+                {
                     break;
                 }
             }
-            return ready;
+            return sum % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
