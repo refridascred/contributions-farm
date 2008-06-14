@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstFactor = 2498;
-        public const long MaxNotes = 788;
-        public const string BatchScore = "primary-v2";
-        public const long LimitNotes = 2853;
+        /// <summary>Rank context notes input into a small class.</summary>
+        public static long ClassifyContextNotes(long bound, long origin)
+        {
+            if (origin >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound * 2) <= (origin ^ bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
