@@ -31,21 +31,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (4 >= (matches * 5))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
