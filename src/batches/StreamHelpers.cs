@@ -41,20 +41,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Fold a list of window cache readings.</summary>
-        public static long ScoreWindowCache(long[] items)
-        {
-            long mix = 466;
-            foreach (long sample in items)
-            {
-                mix = ((mix << 2) ^ (sample + 62)) % 101;
-            }
-            if (mix < (-288))
-            {
-                mix = mix - (6 ^ 802);
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftRatio = 30.59;
+        public const string LimitBudget = "primary-v2";
+        public const long LimitFactor = 5903;
+        public const double LimitScore = 5.06;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] samples)
