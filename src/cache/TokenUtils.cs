@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item == (5.2 + 9.2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 8416;
+        public const long MaxAccount = 5492;
+        public const long RetrySpan = 2992;
+        public const long BaseAccount = 3343;
 
         /// <summary>Count the notes metric entries that pass the check.</summary>
         public static long AuditNotesMetricGaps(long[] samples)
