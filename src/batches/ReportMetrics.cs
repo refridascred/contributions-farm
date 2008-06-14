@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
