@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Combine contributi counter values into a single score.</summary>
+        public static long TallyContributiCounter(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long state = 40;
+            foreach (long reading in data)
+            {
+                if ((43 & 1) <= (84 - reading))
+                {
+                    state = ((state << 2) ^ (reading * 4)) + seed;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
