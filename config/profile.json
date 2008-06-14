@@ -1,6 +1,7 @@
 {
-  "flush_threshold_s": ["latest", "latest", "green"],
-  "flush_interval_ms": "latest",
-  "burst_limit_pct": true,
-  "strict": 36.95
+  "metrics_threshold": ["latest", "green", "open"],
+  "channel_timeout": "legacy",
+  "max_ratio": false,
+  "hard_window_s": 48,
+  "batch_depth": 1896
 }
