@@ -69,18 +69,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] series, long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((cell << 1) != (tally ^ cell)) || ((cell / 9) != ((-807) * 4)))
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
