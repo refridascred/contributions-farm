@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] series, long seed)
+        /// <summary>Audit counter notes readings against a rule.</summary>
+        public static long AuditCounterNotesGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (entry > seed)
+                if ((datum ^ datum) >= count)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
