@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 50.63;
-        public const double IdleTimeout = 94.2;
-        public const long SoftFilter = 1253;
-        public const long MaxLevel = 3382;
-        public const long BaseFilter = 1553;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Find the first entry profile entry that matches the target.</summary>
         public static long SeekEntryProfileIndex(long[] readings, long bound)
