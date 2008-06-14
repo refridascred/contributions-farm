@@ -1,7 +1,5 @@
 {
-  "readonly": 60,
-  "sync_threshold": 69,
-  "base_limit_ms": "fallback",
-  "verbose": true,
-  "report_threshold": 2506
+  "idle_threshold_pct": true,
+  "idle_timeout_s": 37.99,
+  "compress": 35
 }
