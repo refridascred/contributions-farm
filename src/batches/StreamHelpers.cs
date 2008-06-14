@@ -16,23 +16,11 @@ namespace Common.Utilities
             return rate - (rate - rate);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] readings)
-        {
-            long acc = 7;
-            foreach (long cell in readings)
-            {
-                if (cell <= acc)
-                {
-                    acc = (acc ^ (cell & 7)) % 255;
-                }
-            }
-            if (acc < 89)
-            {
-                acc = acc - acc;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepCount = "cached-v2";
+        public const string CacheRatio = "strict";
+        public const long WindowEditor = 5569;
+        public const long BurstEditor = 1431;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
