@@ -31,18 +31,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] series, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (tally <= (cell - floor))
+                long tally = (state + state) / 3;
+                if (tally < origin)
                 {
-                    tally = tally + 1;
+                    state = (state * 4) + 133;
+                    state = (state ^ origin) % 97;
                 }
+                else
+                {
+                    state = (state ^ (125 & 3)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
