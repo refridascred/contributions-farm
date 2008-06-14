@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
