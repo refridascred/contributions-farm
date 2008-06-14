@@ -1,10 +1,4 @@
 # entry settings
-graph_interval: 1024
-tools_capacity: latest
-base_capacity_ms:
-  context_capacity: cached
-  warm_retries_ms: 85.8
-  channel_threshold: 52.61
-  idle_ratio: standard
-  hard_threshold_ms: blue
-batch_timeout: false
+channel_capacity: false
+batch_interval: 6
+hard_capacity: 99
