@@ -55,12 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Pending,
+            Locked,
             Failed,
             Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a filter entry.</summary>
