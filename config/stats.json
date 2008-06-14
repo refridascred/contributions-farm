@@ -1,7 +1,8 @@
 {
-  "batch_size_count": ["fallback", "blue", "stable"],
-  "poll_ttl_ms": 60,
-  "strict": 81.19,
-  "verbose": false,
-  "compress": 3790
+  "poll_limit_s": "fallback",
+  "soft_limit_count": 11.48,
+  "record_limit": true,
+  "flush_ttl_pct": 1024,
+  "min_retries_count": "primary",
+  "max_ttl_ms": true
 }
