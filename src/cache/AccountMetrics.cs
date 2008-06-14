@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 4013;
-        public const long DefaultInterval = 1150;
-        public const string CacheBatches = "local";
-        public const double BatchBatches = 21.94;
-        public const long SoftBudget = 7787;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
