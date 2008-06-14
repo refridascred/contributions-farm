@@ -30,19 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context window entries that pass the check.</summary>
-        public static long TallyContextWindowHits(long[] values, long seed)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)count > (double)868)
-                {
-                    count = ((count + 1) - item) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitScore = 3080;
+        public const long RetryScore = 4744;
+        public const long DefaultCommits = 6754;
+        public const long BatchCommits = 6430;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
