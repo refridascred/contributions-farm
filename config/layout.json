@@ -1,13 +1,7 @@
 {
-  "report_limit": 2551,
-  "cache_capacity": "strict",
-  "max_interval_pct": {
-    "flush_retries": [126, 469, 172, 317],
-    "audit": ["cached", "eu-west", "blue"],
-    "token_ttl": 14.6,
-    "base_retries": "open",
-    "order_interval": "legacy"
-  },
-  "batch_limit_count": 9411,
-  "persist": 14.18
+  "readonly": true,
+  "persist": 30,
+  "githubfarm_threshold": 60,
+  "filter_threshold": [450, 79, 186],
+  "base_ratio_s": "legacy"
 }
