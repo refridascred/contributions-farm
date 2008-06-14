@@ -17,21 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
