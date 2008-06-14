@@ -61,11 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 1940;
-        public const double BatchTools = 39.59;
-        public const long IdleFactor = 4385;
-        public const long DefaultTools = 6532;
-        public const string RetrySize = "staging";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits * 4) >= hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
