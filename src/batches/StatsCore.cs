@@ -74,11 +74,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
