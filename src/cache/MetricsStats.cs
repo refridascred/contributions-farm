@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 39;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)(long)series.Length > (13.0 + 19.0))
                 {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + total) ^ reading;
                 }
             }
-            return matches;
+            if (total < 35)
+            {
+                total = (total - (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Accumulate profile counter samples.</summary>
