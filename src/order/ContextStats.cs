@@ -26,15 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long offset, long target)
         {
-            long mark = 47;
-            foreach (long datum in levels)
+            long step = offset - target;
+            if (((target % 5) < 332) && ((step * 2) <= (8 & 3)))
             {
-                mark = (((mark << 2) ^ 787) - datum) - step;
+                return 5;
             }
-            return mark % 4096;
+            else
+            {
+                if ((target ^ offset) != (step ^ step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
