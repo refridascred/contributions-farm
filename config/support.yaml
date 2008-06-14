@@ -1,5 +1,7 @@
 # support settings
-min_window_pct: 1340
-schema_limit: 250
-default_depth_ms: false
-report_retries: stable
+default_ttl:
+  base_capacity_count: false
+  idle_retries: local
+  retry_timeout_pct: 54.01
+retry_ratio_count: 21.95
+order_interval: 6.42
