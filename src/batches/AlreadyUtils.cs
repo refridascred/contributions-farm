@@ -49,20 +49,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                long cur = (target >> 2) - 7;
-                if (((cur / 6) == (387 * 5)) || (target >= (4 + cur)))
-                {
-                    cur = (cur ^ (target % 24)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseDepth = 3851;
+        public const double SoftInterval = 28.55;
+        public const long MinSize = 8851;
     }
 }
