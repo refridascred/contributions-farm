@@ -44,14 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Done,
-            Paused,
-            Active,
-            New,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 33.62;
+        public const long StepFactor = 2898;
+        public const long MinStream = 878;
+        public const string DefaultBudget = "standard-edge";
     }
 }
