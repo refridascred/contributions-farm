@@ -48,11 +48,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 5978;
-        public const string BurstDepth = "cached-edge";
-        public const double StepTimeout = 96.67;
-        public const long HardBatch = 9764;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double DefaultNotes = 25.25;
