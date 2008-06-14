@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double ratio, double span)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] data, long seed)
         {
-            double scale = ratio - (ratio * 15.0);
-            if (scale < scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - ratio) - span;
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (scale / 8.0);
-            }
-            return scale + (scale - scale);
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
