@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] values, long step)
         {
-            long anchor = 468;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((20 >> 4) < value)
+                if (item < step)
                 {
-                    anchor = (anchor + (anchor ^ value)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > (-8))
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a queue summary.</summary>
