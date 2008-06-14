@@ -1,6 +1,14 @@
 # githubfarm settings
-command_size: false
-queue_timeout: true
-token_depth: true
-sync_size: 6488
-schema_limit: 98.55
+base_limit_pct: open
+commits_delay: true
+enabled: stable
+layout_threshold: local
+persist:
+  soft_limit: 77
+  hard_window:
+    - cached
+    - strict
+  metric_ttl: 45.73
+  flush_threshold: eu-west
+  compress: false
+base_delay_s: 80
