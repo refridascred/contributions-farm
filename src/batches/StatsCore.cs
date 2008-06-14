@@ -54,19 +54,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] data, long bound)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double span)
         {
-            bool flag = true;
-            foreach (long item in data)
+            double weight = scale;
+            if (weight > (double)979)
             {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight - (8.0 * 18.0);
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + (span - 1.12);
         }
 
         /// <summary>Hold a farm options.</summary>
