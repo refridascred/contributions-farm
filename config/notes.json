@@ -1,19 +1,7 @@
 {
-  "readonly": {
-    "profile_ttl": 37,
-    "warm_capacity_pct": 61,
-    "notes_ratio": true,
-    "base_window_ms": 38
-  },
-  "sync_retries": true,
-  "burst_timeout_s": 24,
-  "soft_retries": 8058,
-  "strict": {
-    "batch_ttl_ms": 5785,
-    "strict": "open",
-    "base_ttl_s": 42.72,
-    "contributi_threshold": [239, 389, 89],
-    "schema_timeout": 6
-  },
-  "burst_window_ms": "strict"
+  "poll_size_s": "standard",
+  "stream_size": false,
+  "account_ttl": 78.92,
+  "batch_timeout_ms": 21.76,
+  "counter_retries": 1348
 }
