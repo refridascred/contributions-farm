@@ -41,16 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] items, long bound)
         {
-            long mix = 7;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                mix = ((mix << 2) ^ (reading - reading)) % 255;
-                mix = mix + (reading - reading);
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Describe the tools phase values.</summary>
