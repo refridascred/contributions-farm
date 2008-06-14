@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double floor)
         {
-            Draft,
-            Active,
-            Closed,
-            Retry,
+            double drift = (ratio + ratio) / 4.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)(long)i) + floor;
+            }
+            return drift - drift;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
