@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!!((reading & 63) <= (floor * 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxRatio = 6602;
+        public const long MaxSupport = 1215;
+        public const double WindowWidth = 43.31;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] samples, long origin)
