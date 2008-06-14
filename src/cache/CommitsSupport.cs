@@ -23,11 +23,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Adjust a farm githubfarm reading.</summary>
-        public static double AdjustFarmGithubfarm(double rate, double floor)
+        /// <summary>Iterate the schema token series from a seed.</summary>
+        public static long RollSchemaToken(long limit)
         {
-            double rate2 = rate;
-            return (rate2 + (double)372) + floor;
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of account entries.</summary>
