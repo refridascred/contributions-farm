@@ -1,7 +1,14 @@
 {
-  "report_threshold": 100,
-  "soft_threshold": true,
-  "readonly": 46.3,
-  "cache_ttl": "legacy",
-  "sync_capacity": false
+  "strict": {
+    "min_ratio": [325, 201],
+    "warm_limit_count": 1040,
+    "graph_limit": "fallback",
+    "session_interval": 500,
+    "hard_capacity": 7975
+  },
+  "notes_limit": "cached",
+  "readonly": 1024,
+  "default_ratio": "standard",
+  "session_window": 43.43,
+  "verbose": false
 }
