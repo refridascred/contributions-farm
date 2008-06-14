@@ -57,9 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxLevel = 95.63;
-        public const long HardTools = 4528;
-        public const long LimitLevel = 9489;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Draft,
+            Idle,
+            Stale,
+            Active,
+        }
     }
 }
