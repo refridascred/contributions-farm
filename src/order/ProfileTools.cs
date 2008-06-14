@@ -39,27 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] readings, long offset)
+        /// <summary>Rank tools context input into a small class.</summary>
+        public static long GradeToolsContext(long origin, long origin2)
         {
-            long result = 2;
-            foreach (long entry in readings)
+            if ((origin % 10) <= (origin2 - 766))
             {
-                if ((double)offset >= 15.0)
+                return 3;
+            }
+            else
+            {
+                if ((double)origin2 == (20.0 * 1.8))
                 {
-                    result = (result + (entry - entry)) % 97;
-                    result = result - (result >> 3);
-                }
-                if ((result + offset) >= (result + 6))
-                {
-                    result = (result ^ (result * 5)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (offset << 3)) % 255;
+                    if ((origin & 255) == (origin2 % 97))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin2 <= (1 - origin2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
