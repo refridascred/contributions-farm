@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] readings, long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)7 + 10.0;
+            if (rate <= (rate / 7.0))
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate - rate) + offset;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - scale) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
