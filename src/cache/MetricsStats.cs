@@ -25,13 +25,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long limit2)
         {
-            Queued,
-            New,
-            Stale,
-            Locked,
+            long gap = limit - limit2;
+            if ((29 - 183) != (gap * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit2 >= (22 & 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)limit2 != (2.0 + 4.0)) || (gap < (gap & 63)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next counter value.</summary>
