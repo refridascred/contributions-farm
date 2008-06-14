@@ -1,15 +1,4 @@
 # githubfarm settings
-profile_retries:
-  - blue
-  - edge
-  - strict
-  - staging
-cache_capacity_count:
-  - blue
-  - strict
-window_ratio:
-  - legacy
-  - standard
-idle_interval: strict
-max_capacity_count: standard
-window_timeout: 75.02
+entry_window: true
+idle_threshold_ms: false
+hard_size_count: 100
