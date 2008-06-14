@@ -41,18 +41,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = 41;
-            foreach (long value in readings)
-            {
-                if ((9.7 + 6.1) < (double)value)
-                {
-                    anchor = anchor ^ value;
-                }
-            }
-            return anchor % 97;
+            Stale,
+            Ready,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
