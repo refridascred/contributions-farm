@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double span)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long floor)
         {
-            double bias = weight;
-            if (bias >= (span * 5.63))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - span;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias + 8.0;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
