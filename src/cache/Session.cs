@@ -28,18 +28,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long MeasureGithubfarmStreamGaps(long[] items)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-445) - matches) != (cell ^ cell))
+                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
