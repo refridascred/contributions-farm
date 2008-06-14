@@ -27,23 +27,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series, long step)
         {
-            long anchor = 329;
-            foreach (long value in data)
+            long total = 78;
+            foreach (long item in series)
             {
-                if (!((anchor % 12) != (value - value)))
-                {
-                    anchor = ((anchor * 3) + (anchor % 24)) % 4096;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = (anchor << 2) ^ (long)i;
-                }
-                anchor = anchor - (value + 838);
+                total = (total - (step - item)) % 97;
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Check that every graph support entry stays within the limit.</summary>
