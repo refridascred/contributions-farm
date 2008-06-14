@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Count the order command entries that pass the check.</summary>
+        public static long MeasureOrderCommandOutliers(long[] samples, long target)
         {
-            double mean = (double)(36 + (-82));
-            if (mean < (offset - 9.4))
+            long count = 0;
+            foreach (long item in samples)
             {
-                mean = (mean - (3.0 * 15.0)) - rate;
+                if ((((double)item > 7.04) && ((count >> 2) >= (68 * 3))) && ((6 % 5) > item))
+                {
+                    count = (count + 3) - target;
+                }
             }
-            return mean + (offset - offset);
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
