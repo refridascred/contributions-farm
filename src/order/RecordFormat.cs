@@ -30,18 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((57 >> 2) < sample) || ((sample / 6) < (sample % 24)))
+                if (reading >= tally)
                 {
-                    hits = (hits + 3) - offset;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
