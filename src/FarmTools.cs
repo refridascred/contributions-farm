@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstFactor = 309;
-        public const long BurstAlready = 9543;
-        public const long CacheAlready = 9886;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long ScoreCluster(long[] values)
