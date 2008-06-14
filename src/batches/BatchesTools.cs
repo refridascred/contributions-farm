@@ -34,15 +34,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next commits contributi value.</summary>
-        public static double SmoothCommitsContributi(double weight, double span)
-        {
-            double load = (double)(109 ^ 371);
-            if (load < (load / 9.0))
-            {
-                load = (load - weight) + span;
-            }
-            return load - (weight + weight);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultBudget = 47.91;
+        public const string CacheLayout = "strict-1";
+        public const long BurstLayout = 493;
+        public const string BaseInterval = "cached-1";
     }
 }
