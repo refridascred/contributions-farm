@@ -43,21 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload command samples.</summary>
-        public static long OverlapPayloadCommandCount(long[] data)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 24;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((7.03 + 6.9) > (double)datum) || ((double)(long)series.Length > (4.5 * 8.4)))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry + (260 >> 3)) % 97) + target;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
