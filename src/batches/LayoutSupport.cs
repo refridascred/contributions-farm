@@ -48,39 +48,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a batches profile value against two limits.</summary>
-        public static long ClassifyBatchesProfile(long floor, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long diff = floor ^ bound;
-            if ((double)floor < (double)bound)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff % 10) > (bound % 64))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ diff) == (diff >> 5))
+                    if ((items[i] + items[j]) < 1)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((diff % 12) >= 67)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many editor metrics samples are out of range.</summary>
