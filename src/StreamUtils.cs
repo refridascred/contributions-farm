@@ -58,18 +58,10 @@ namespace Common.Utilities
         public const double StepChecks = 12.43;
         public const double BatchChecks = 74.91;
 
-        /// <summary>Count the support farm entries that pass the check.</summary>
-        public static long MeasureSupportFarmGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((19.0 - 9.52) != (double)seen)
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardCount = 2024;
+        public const long SoftEditor = 1415;
+        public const long CacheEditor = 5831;
+        public const double BatchFactor = 61.0;
     }
 }
