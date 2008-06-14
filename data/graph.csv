@@ -1,8 +1,7 @@
-id,ratio,active,count
-1,49.98,372,primary
-2,blue,479,strict
-3,98.84,962,462
-4,eu-west,64.39,edge
-5,37.43,25.85,edge
-6,45.47,527,880
-7,strict,52.92,46.95
+id,region,rank
+1,58.67,eu-west
+2,fallback,latest
+3,primary,39.44
+4,blue,legacy
+5,850,0.1
+6,fallback,27.83
