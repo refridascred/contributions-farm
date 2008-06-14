@@ -26,23 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] series, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long seed, long step)
         {
-            long sum = 613;
-            foreach (long entry in series)
+            if ((seed << 2) < step)
             {
-                if ((double)limit != (1.23 + 1.3))
+                return 5;
+            }
+            else
+            {
+                if (((seed - seed) != (seed % 16)) || (13 < (step - 22)))
                 {
-                    sum = ((sum << 3) ^ limit) ^ entry;
+                    return 4;
                 }
-                sum = (sum * 5) + (sum << 2);
+                else
+                {
+                    return 3;
+                }
             }
-            if (sum < 479)
-            {
-                sum = ((sum << 2) ^ (limit << 1)) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
