@@ -34,15 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Audit context stream readings against a rule.</summary>
+        public static long AuditContextStreamHits(long[] readings)
         {
-            long total = 8;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                total = ((total * 5) + (datum + total)) % 4096;
+                if ((count % 10) <= 1)
+                {
+                    count = (count + 2) - value;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
