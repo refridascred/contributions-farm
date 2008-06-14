@@ -40,14 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Active,
-            Done,
-            Ready,
-            Failed,
-            Dropped,
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
