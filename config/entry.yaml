@@ -1,9 +1,8 @@
 # entry settings
-default_delay_s: eu-west
-flush_size: 8326
-audit: true
-max_timeout: strict
-already_size: primary
-hard_interval_s:
-  - standard
-  - stable
+cluster_interval:
+  - edge
+  - primary
+  - strict
+  - fallback
+max_window: eu-west
+default_retries: true
