@@ -34,18 +34,21 @@ namespace Common.Utilities
         public const long StepLevel = 4147;
         public const double StepFactor = 16.59;
 
-        /// <summary>Measure how many record channel samples are out of range.</summary>
-        public static long TallyRecordChannelMatches(long[] series)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((966 <= (6 - value)) && ((5 % 3) > tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
