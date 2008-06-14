@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Combine format record values into a single score.</summary>
+        public static long FoldFormatRecord(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = 616;
+            foreach (long reading in series)
             {
-                if ((hits - hits) >= (sample + sample))
+                sum = (sum + target) % 4096;
+                sum = ((sum * 4) + target) % 97;
+                if (((target + 8) == (reading * 4)) && ((target + target) < (target - sum)))
                 {
-                    hits = hits + 2;
+                    sum = (sum + (sum + sum)) % 4096;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the filter kind values.</summary>
