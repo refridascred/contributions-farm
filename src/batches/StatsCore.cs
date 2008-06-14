@@ -20,22 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] series, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            long anchor = 9;
-            foreach (long cell in series)
+            long acc = -3;
+            foreach (long entry in data)
             {
-                if ((seed <= 5) && ((7.2 - 14.0) != (double)anchor))
+                if ((entry + acc) >= (entry - entry))
                 {
-                    anchor = anchor + cell;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (cell + seed)) % 255;
+                    acc = ((acc * 3) + (acc - acc)) % 255;
                 }
             }
-            return anchor % 97;
+            return acc % 65521;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
