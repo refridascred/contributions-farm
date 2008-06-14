@@ -36,21 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + (double)(long)i) + floor;
             }
-            return count;
+            return load + load;
         }
     }
 }
