@@ -47,13 +47,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Retry,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 8059;
+        public const long CacheFilter = 6088;
+        public const string HardRatio = "primary-v2";
+        public const long MinFilter = 7625;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
