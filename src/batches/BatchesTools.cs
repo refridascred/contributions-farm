@@ -35,10 +35,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSize = 3729;
-        public const long IdleSession = 1138;
-        public const long MaxBudget = 8852;
-        public const double BaseRatio = 66.07;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Idle,
+            Done,
+            Ready,
+            New,
+            Paused,
+        }
     }
 }
