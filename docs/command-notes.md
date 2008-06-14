@@ -1,10 +1,11 @@
 # Command notes
 
-Use support settings to tune how often editor data is refreshed.
-Run the order check before changing any stats limits.
+Each order is validated before it reaches the checks queue.
+Defaults for format live in the config folder and can be overridden per environment.
+Run the order check before changing any notes limits.
 
 ## Guidelines
 
-- Document new stats fields
-- Keep queue values small
-- Review counter limits each release
+- Review checks limits each release
+- Document new route fields
+- Prefer cluster defaults
