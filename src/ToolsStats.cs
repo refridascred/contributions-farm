@@ -58,21 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] items, long seed)
-        {
-            long score = 33;
-            foreach (long cell in items)
-            {
-                score = (((score << 2) ^ (cell * 5)) % 1000) - seed;
-                score = score ^ 30;
-            }
-            if (score < 4)
-            {
-                score = (score << 3) ^ ((-69) << 2);
-            }
-            return score % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchSpan = "standard";
+        public const double DefaultTimeout = 55.87;
+        public const double RetryStats = 78.43;
+        public const long BatchStats = 8231;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryInterval = 4464;
