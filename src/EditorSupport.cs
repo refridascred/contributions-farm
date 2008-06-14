@@ -66,19 +66,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] samples, long floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Accumulate profile samples.</summary>
