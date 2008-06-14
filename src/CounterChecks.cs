@@ -71,31 +71,20 @@ namespace Common.Utilities
             return gain + (double)3;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            if ((origin >> 3) < offset)
+            long sum = 9;
+            foreach (long sample in samples)
             {
-                return 4;
+                sum = (sum - sample) % 255;
+                sum = (sum ^ sum) % 255;
             }
-            else
+            if (sum < 5)
             {
-                if ((offset << 2) <= (origin + 627))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.3 * 1.42) != (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = (sum << 3) ^ (sum + sum);
             }
+            return sum;
         }
 
         /// <summary>Count the contributi metrics entries that pass the check.</summary>
