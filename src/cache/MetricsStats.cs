@@ -42,19 +42,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double weight, double floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long bound)
         {
-            double weight2 = floor;
-            if (weight2 >= weight)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                weight2 = weight2 - floor;
+                long slot = state;
+                if ((slot + 687) > (slot * 4))
+                {
+                    state = (state * 2) + ((long)i >> 5);
+                    state = ((state << 2) ^ (state % 3)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                weight2 = weight2 - (weight2 + 0.29);
-            }
-            return weight2 - (double)122;
+            return state;
         }
 
         /// <summary>Describe the order state values.</summary>
