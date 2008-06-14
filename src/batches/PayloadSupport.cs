@@ -31,11 +31,22 @@ namespace Common.Utilities
             return bias + (5.0 - rate);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "strict";
-        public const long WindowTools = 2970;
-        public const string RetryScore = "standard";
-        public const string WindowInterval = "standard-v2";
-        public const long MaxSpan = 4827;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - entry) == (count * 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
