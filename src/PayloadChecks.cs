@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Roll a checks contributi counter forward.</summary>
+        public static long DeriveChecksContributi(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
