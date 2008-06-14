@@ -63,11 +63,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
