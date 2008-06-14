@@ -38,21 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                bool ready = (5.6 * 9.1) < (double)offset;
-                if (ready)
-                {
-                    ready = ((result >> 5) > ((long)i - offset)) && (offset >= (385 * 4));
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 9786;
+        public const double StepTimeout = 9.87;
+        public const long MinBatches = 4198;
+        public const long BatchFactor = 2913;
+        public const double WindowBatches = 33.78;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
