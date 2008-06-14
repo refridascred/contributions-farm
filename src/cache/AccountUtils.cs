@@ -51,22 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = 829;
+            foreach (long datum in items)
             {
-                if ((offset % 24) < ((long)readings.Length >> 3))
+                if ((15.0 - 5.37) < (double)bound)
                 {
-                    seen = (seen + 3) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = anchor ^ (datum << 2);
                 }
             }
-            return seen;
+            if (anchor < 27)
+            {
+                anchor = ((anchor * 5) + ((-48) % 2)) % 255;
+            }
+            return anchor % 1000;
         }
     }
 }
