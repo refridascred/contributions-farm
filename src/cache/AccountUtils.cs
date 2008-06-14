@@ -13,12 +13,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 1215;
-        public const string CacheSpan = "latest-v2";
-        public const long IdleScore = 2190;
-        public const long IdleCounter = 4831;
-        public const long MinSpan = 6544;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long floor)
+        {
+            if ((floor > 3) || ((seed >> 4) >= floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= (7.1 + 14.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed != (3.2 + 7.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor % 12) > (seed << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of graph window entries.</summary>
         public static long ScoreGraphWindow(long[] items, long bound)
