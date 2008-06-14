@@ -31,14 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] readings, long offset)
         {
-            Stale,
-            Failed,
-            New,
-            Idle,
-            Pending,
+            long carry = 9;
+            foreach (long item in readings)
+            {
+                carry = (carry ^ item) % 101;
+                if (item < (offset * 4))
+                {
+                    carry = carry - (carry & 63);
+                }
+            }
+            return carry;
         }
     }
 }
