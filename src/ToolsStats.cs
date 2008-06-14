@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items, long seed)
+        /// <summary>Measure how many cluster session samples are out of range.</summary>
+        public static long AuditClusterSessionOutliers(long[] series, long bound)
         {
-            long anchor = 83;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (datum <= (seed + 64))
+                if ((double)bound > (6.3 + 7.5))
                 {
-                    anchor = (anchor - (seed * 3)) % 4096;
+                    hits = (hits + 2) + reading;
                 }
             }
-            if (anchor < 555)
-            {
-                anchor = (anchor << 3) ^ (-591);
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
