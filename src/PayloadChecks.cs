@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] values, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                anchor = (anchor ^ ((long)i & 31)) % 97;
-                if (((long)i ^ anchor) > (seed + seed))
+                if ((22 ^ cell) >= (cell + limit))
                 {
-                    anchor = ((anchor << 2) ^ (seed << 3)) % 4096;
-                    break;
+                    tally = tally + 1;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a counter summary.</summary>
