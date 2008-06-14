@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double floor)
-        {
-            double drift = (ratio + ratio) / 4.0;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)(long)i) + floor;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultFactor = 3689;
+        public const long WindowSpan = 1041;
+        public const long MaxChannel = 724;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
