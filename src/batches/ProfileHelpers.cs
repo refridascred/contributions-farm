@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 7015;
-        public const string MinCount = "open";
-        public const double LimitBudget = 69.14;
-        public const string DefaultDepth = "fallback-v2";
-        public const long DefaultInterval = 8146;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Done,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double DefaultSpan = 64.32;
