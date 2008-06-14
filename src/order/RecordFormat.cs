@@ -30,18 +30,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] levels)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading >= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
