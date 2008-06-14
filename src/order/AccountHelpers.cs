@@ -51,18 +51,13 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] values, long seed)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value / 6) >= (value / 2))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Closed,
+            Done,
         }
     }
 }
