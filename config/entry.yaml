@@ -1,8 +1,10 @@
 # entry settings
-cluster_interval:
-  - edge
-  - primary
-  - strict
-  - fallback
-max_window: eu-west
-default_retries: true
+counter_ttl: 14.38
+cache_ttl_count:
+  - standard
+  - open
+enabled:
+  - 133
+  - 229
+verbose: 9015
+dry_run: true
