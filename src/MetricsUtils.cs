@@ -49,22 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of command channel readings.</summary>
-        public static long PairCommandChannelCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftLevel = "strict-1";
+        public const double CacheBatches = 7.1;
+        public const long StepLevel = 440;
+        public const long MaxBatches = 3567;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] series, long seed)
