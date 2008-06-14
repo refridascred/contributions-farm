@@ -73,11 +73,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long seed, long offset)
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            long offset2 = seed - offset;
+            if ((seed ^ offset) <= (offset * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset2 - 2) <= offset2) || ((offset2 % 60) < (392 - seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
