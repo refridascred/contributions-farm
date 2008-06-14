@@ -33,18 +33,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches / 8) >= (datum / 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryTimeout = "primary";
+        public const long HardLevel = 8719;
+        public const long MaxAccount = 9718;
+        public const long StepCount = 1345;
     }
 }
