@@ -54,19 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] items, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] data)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long carry = 301;
+            foreach (long cell in data)
             {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = carry ^ (cell << 1);
+                carry = (carry ^ cell) % 1000;
+                carry = (carry + (carry / 7)) % 1000;
             }
-            return stale;
+            return carry % 97;
         }
 
         /// <summary>Roll a account counter forward.</summary>
