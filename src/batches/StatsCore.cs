@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next channel batches value from a seed.</summary>
-        public static long SeriesChannelBatches(long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] items, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit >= (double)126)
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
                 {
-                    total = (total ^ (total - 575)) % 1000;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
