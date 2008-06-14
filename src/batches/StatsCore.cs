@@ -36,13 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            Closed,
-            Paused,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)matches <= (9.6 - 3.5))
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
