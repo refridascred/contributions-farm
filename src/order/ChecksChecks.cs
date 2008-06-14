@@ -38,17 +38,14 @@ namespace Common.Utilities
         public const double DefaultReport = 73.53;
         public const long LimitSize = 7447;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Stale,
+            Dropped,
+            Paused,
         }
     }
 }
