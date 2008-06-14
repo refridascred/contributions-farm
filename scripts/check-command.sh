@@ -6,16 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=338
+COMMAND_LIMIT=156
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-local}"
+mode="${1:-green}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -24,3 +18,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in green fallback legacy open; do
+    log "checking ${item}"
+done
