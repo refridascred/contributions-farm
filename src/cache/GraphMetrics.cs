@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(((long)series.Length / 2) < ((long)series.Length + sample)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 1720;
+        public const long DefaultGithubfarm = 2248;
+        public const long SoftWidth = 2556;
+        public const string MaxRatio = "strict-edge";
+        public const string BatchCount = "cached";
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelOutliers(long[] series, long floor)
