@@ -31,17 +31,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] values, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (scale + offset) / 3.0;
+            if (mean < (offset * 9.0))
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = mean - (scale / 3.0);
             }
-            return -1;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - scale) - (double)(long)i;
+            }
+            return mean - 4.0;
         }
     }
 }
