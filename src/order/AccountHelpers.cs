@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
             Pending,
-            Draft,
-            Closed,
+            Stale,
+            Ready,
             Done,
         }
     }
