@@ -44,18 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] samples)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading << 1) > tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
