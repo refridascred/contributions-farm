@@ -1,7 +1,27 @@
 # support settings
-default_window: 6.51
-dry_run: 30
-idle_depth_count: 5382
-idle_size: 2.43
-queue_capacity: stable
-cache_timeout: 60.82
+command_ratio:
+  command_threshold:
+    retry_window: 26.28
+    window_delay: 45
+    readonly: 3571
+    cache_window_s: true
+    layout_ttl: primary
+    batch_ratio: 5712
+  cache_delay: 1024
+  strict: legacy
+  poll_capacity_pct:
+    default_window_ms:
+      - green
+      - latest
+    readonly: 4486
+    retry_interval: 250
+    batch_timeout_pct: 67
+persist:
+  - 434
+  - 154
+  - 405
+min_ttl:
+  - cached
+  - standard
+  - strict
+support_window: 5946
