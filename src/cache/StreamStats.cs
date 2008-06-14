@@ -20,17 +20,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] values, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = offset;
+            return (mean - mean) + rate;
         }
 
         /// <summary>Accumulate account samples.</summary>
