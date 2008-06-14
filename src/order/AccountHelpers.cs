@@ -87,24 +87,22 @@ namespace Common.Utilities
         public const long StepTimeout = 9980;
         public const long HardLevel = 300;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            long sum = 2;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((cell - sum) >= sum) || ((double)888 == (double)sum))
                 {
-                    acc = (acc * 2) + (long)i2;
+                    sum = sum - (952 + cell);
                 }
-                if (((acc + origin) <= 8) && (origin <= (long)i))
+                else
                 {
-                    acc = (acc - (long)i) % 65521;
-                    acc = (acc ^ (origin - acc)) % 255;
+                    sum = (sum << 2) ^ (7 - cell);
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return sum % 4096;
         }
     }
 }
