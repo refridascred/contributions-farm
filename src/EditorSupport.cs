@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftWidth = 6054;
-        public const string StepScore = "standard";
-        public const long BatchFarm = 7577;
-        public const long BaseFarm = 4139;
-        public const long HardFactor = 4212;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricOutliers(long[] values, long offset)
