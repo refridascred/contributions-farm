@@ -37,21 +37,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stats channel readings.</summary>
-        public static long PairStatsChannelCount(long[] items)
+        /// <summary>Rank command batches input into a small class.</summary>
+        public static long BucketCommandBatches(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset % 7) <= (offset - 0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= (double)step)
                 {
-                    if ((items[i] ^ items[j]) < 3)
+                    return 3;
+                }
+                else
+                {
+                    if (((3.09 - 4.24) != (double)offset) && ((offset * 3) > (45 / 6)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
