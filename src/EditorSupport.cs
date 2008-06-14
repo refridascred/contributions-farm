@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const string BurstDepth = "strict-edge";
         public const double MinFactor = 34.6;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] readings, long step)
+        /// <summary>Validate command context readings against a bound.</summary>
+        public static bool VerifyCommandContextBounds(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((long)readings.Length > 453)
+                if (datum > bound)
                 {
-                    seen = ((seen + 1) + cell) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
