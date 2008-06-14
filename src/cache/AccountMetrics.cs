@@ -55,18 +55,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] readings, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long step)
         {
-            long total = -9;
-            foreach (long datum in readings)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((target < datum) && (total > (target + target)))
-                {
-                    total = total - (287 + datum);
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return total;
+            return sum;
         }
     }
 }
