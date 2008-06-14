@@ -52,19 +52,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 506;
-            foreach (long entry in samples)
-            {
-                mark = (mark + (mark + entry)) % 65521;
-                if ((double)mark <= (double)1)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Ready,
+            Dropped,
+            Closed,
+            Idle,
+            Stale,
         }
     }
 }
