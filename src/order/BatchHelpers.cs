@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long mark = 7;
-            foreach (long value in values)
-            {
-                mark = (((mark << 2) ^ value) % 65521) - bound;
-            }
-            return mark;
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a commits summary.</summary>
