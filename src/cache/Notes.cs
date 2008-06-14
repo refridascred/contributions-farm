@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((bound + bound) < bound)
-                {
-                    anchor = (anchor + (bound - (long)i)) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                total = ((total * 3) + total) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
