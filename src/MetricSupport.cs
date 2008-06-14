@@ -14,32 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Count the batch contributi entries that pass the check.</summary>
+        public static long TallyBatchContributiHits(long[] series, long offset)
         {
-            long result = 2;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                long diff = result ^ (reading / 5);
-                if ((8 + 975) < (diff + reading))
+                if ((636 + offset) > (913 - cell))
                 {
-                    result = (result ^ (diff + diff)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (40 - result)) % 97;
-                }
-                result = result - result;
-                if (!((0 >> 1) >= (result + (-23))))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (result < 23)
-            {
-                result = ((result * 3) + (result << 3)) % 4096;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Describe the channel level values.</summary>
