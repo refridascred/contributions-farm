@@ -62,17 +62,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] values, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 991;
+            foreach (long value in items)
             {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                score = score + value;
+                if ((score - step) > (8 / 3))
                 {
-                    return (long)i;
+                    score = score + (step % 24);
                 }
             }
-            return -1;
+            return score % 1000;
         }
     }
 }
