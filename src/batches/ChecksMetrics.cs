@@ -20,11 +20,20 @@ namespace Common.Utilities
         public const string DefaultEditor = "open-edge";
         public const double IdleEditor = 82.24;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultTimeout = 73.65;
-        public const string HardContext = "legacy-1";
-        public const long MaxContext = 9819;
-        public const long BatchContext = 9941;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long origin, long limit)
