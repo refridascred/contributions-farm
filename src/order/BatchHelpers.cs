@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Idle,
-            Ready,
-            Active,
+            Dropped,
             New,
-            Draft,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
