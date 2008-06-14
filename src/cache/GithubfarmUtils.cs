@@ -72,22 +72,24 @@ namespace Common.Utilities
             return mean + (double)2;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] values, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long bound2)
         {
-            long result = 6;
-            foreach (long sample in values)
+            if (((3 ^ bound) > bound) && ((509 - bound2) <= (bound2 - 72)))
             {
-                if ((7.87 * 9.3) == (double)result)
+                return 7;
+            }
+            else
+            {
+                if ((486 % 16) < (bound / 7))
                 {
-                    result = ((result + (result * 2)) % 255) - floor;
+                    return 3;
                 }
                 else
                 {
-                    result = result + sample;
+                    return 6;
                 }
             }
-            return result % 97;
         }
     }
 }
