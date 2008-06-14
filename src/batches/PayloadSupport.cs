@@ -14,23 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] samples)
-        {
-            long anchor = 708;
-            foreach (long reading in samples)
-            {
-                if ((double)reading != (0.14 / 8.0))
-                {
-                    anchor = anchor + (reading ^ reading);
-                }
-                if ((double)reading > (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 7284;
+        public const long LimitAlready = 189;
+        public const long StepScore = 8203;
+        public const long LimitSize = 6878;
+        public const long WindowLevel = 1042;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] levels, long seed)
