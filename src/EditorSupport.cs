@@ -29,20 +29,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double floor)
-        {
-            double rate = (floor * 6.17) / 4.0;
-            if (rate >= 17.0)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate - (double)99;
-            }
-            return rate - scale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardSize = 1193;
+        public const long CacheWindow = 4627;
+        public const long SoftBudget = 9447;
+        public const double BaseWidth = 61.99;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] samples, long floor)
