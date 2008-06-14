@@ -22,19 +22,31 @@ namespace Common.Utilities
             return (load - ratio) + offset;
         }
 
-        /// <summary>Validate tools entry readings against a bound.</summary>
-        public static bool VerifyToolsEntryRange(long[] readings, long floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long bound)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            if ((7 - 29) > bound)
             {
-                if (reading <= floor)
+                return 2;
+            }
+            else
+            {
+                if (((bound / 6) <= (bound + 9)) || (step <= (bound + bound)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound - 5) > (2 << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the schema level values.</summary>
