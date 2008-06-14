@@ -14,13 +14,39 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long floor)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public double Level { get; set; }
-            public double Score { get; set; }
+            long slot = bound + floor;
+            if (((246 >> 5) < slot) && ((double)slot > 17.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)slot > 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((slot ^ slot) > (floor & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)slot > (11.0 - 9.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate counter samples.</summary>
