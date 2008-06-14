@@ -55,17 +55,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] values, long bound)
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long CountContextGraphOutliers(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (values[i] <= bound)
+                if ((double)reading > (2.1 / 2.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the profile state values.</summary>
