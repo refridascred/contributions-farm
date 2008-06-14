@@ -35,15 +35,17 @@ namespace Common.Utilities
         public const long BatchLayout = 5568;
         public const double BurstBudget = 52.62;
 
-        /// <summary>Digest a series of tools channel entries.</summary>
-        public static long WeighToolsChannel(long[] data, long target)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long origin)
         {
-            long acc = 3;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc << 2) ^ (target + cell);
+                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
