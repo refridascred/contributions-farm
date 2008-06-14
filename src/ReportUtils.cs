@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "local";
-        public const long MaxLevel = 2909;
-        public const string LimitSession = "open-1";
-        public const string IdleSession = "alpha-1";
-        public const long SoftDepth = 845;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] series)
