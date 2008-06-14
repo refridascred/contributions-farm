@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
