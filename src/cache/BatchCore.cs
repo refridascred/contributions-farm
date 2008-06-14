@@ -14,12 +14,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples, long seed)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long state = 183;
+            foreach (long reading in samples)
+            {
+                state = (state + (seed ^ reading)) % 101;
+                if ((reading << 2) < (reading + seed))
+                {
+                    state = state - (9 + 447);
+                }
+                if ((double)seed >= (9.8 * 5.79))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a graph summary.</summary>
