@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] readings, long target)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of record readings.</summary>
