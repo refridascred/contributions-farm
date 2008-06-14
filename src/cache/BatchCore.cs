@@ -44,11 +44,38 @@ namespace Common.Utilities
         public const long HardBuffer = 701;
         public const double SoftBuffer = 39.61;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftBudget = "primary-1";
-        public const string WindowDepth = "alpha-edge";
-        public const string CacheProfile = "primary-1";
-        public const long LimitSize = 3107;
-        public const long StepProfile = 7411;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long target, long seed)
+        {
+            if ((seed ^ 109) >= (943 ^ (-555)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + target) == (seed & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)seed == (double)target) && ((seed + target) >= (target * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed % 97) >= seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
