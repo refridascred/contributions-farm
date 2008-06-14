@@ -1,9 +1,7 @@
-id,level,region,weight
-1,23.23,27.41,edge
-2,open,73.84,primary
-3,22.06,35,staging
-4,793,195,478
-5,941,legacy,132
-6,525,446,39.95
-7,17,blue,67
-8,171,560,85.84
+id,weight,label
+1,797,36.11
+2,latest,primary
+3,0.3,859
+4,93.8,27.29
+5,stable,open
+6,43.43,101
