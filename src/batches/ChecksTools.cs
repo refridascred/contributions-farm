@@ -38,11 +38,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] samples)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading << 1) > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
