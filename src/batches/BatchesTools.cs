@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            double ratio = (double)843;
+            if (ratio > span)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor ^ (target + target)) % 4096) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                ratio = (ratio - ratio) + bias;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + 5.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio + span)) - (double)(long)i;
+            }
+            return ratio - (double)19;
         }
 
         /// <summary>Describe the layout mode values.</summary>
