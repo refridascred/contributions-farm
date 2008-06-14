@@ -27,17 +27,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                if ((8.0 * 3.57) < (double)floor)
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
