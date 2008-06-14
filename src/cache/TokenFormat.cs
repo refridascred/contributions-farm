@@ -13,23 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] samples)
         {
-            long mix = 579;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix - (long)samples.Length) % 255) + limit;
-                if ((cell - cell) >= (1 / 6))
+                if ((8.75 - 4.3) == (double)tally)
                 {
-                    mix = (mix << 3) ^ 9;
+                    tally = (tally + 1) + datum;
                 }
             }
-            if (mix > 7)
-            {
-                mix = ((mix << 3) ^ (mix * 4)) % 4096;
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
