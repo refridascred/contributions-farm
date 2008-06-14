@@ -17,20 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double gain, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry - ((long)i2 & 15)) % 255;
-                }
-                carry = ((carry * 4) + (origin ^ origin)) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            double rate = bias + bias;
+            return rate - (bias + gain);
         }
 
         /// <summary>Count filter stream pairs that satisfy a relation.</summary>
