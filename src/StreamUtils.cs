@@ -53,10 +53,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 3508;
-        public const double StepChecks = 12.43;
-        public const double BatchChecks = 74.91;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] series)
+        {
+            long mark = 1;
+            foreach (long datum in series)
+            {
+                mark = (mark - (mark + 49)) % 97;
+                if ((datum <= (datum >> 4)) && ((mark % 12) < mark))
+                {
+                    mark = mark ^ datum;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (mark / 6)) % 101;
+                }
+            }
+            if (mark < 31)
+            {
+                mark = (mark - ((-266) ^ 367)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardCount = 2024;
