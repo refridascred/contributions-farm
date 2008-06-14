@@ -1,7 +1,8 @@
 {
-  "batch_window": "green",
-  "min_threshold_s": "latest",
-  "entry_size": "standard",
-  "cluster_timeout": 98.4,
-  "compress": ["strict", "local", "cached"]
+  "readonly": 4492,
+  "audit": 57.84,
+  "default_retries": true,
+  "default_retries_s": "strict",
+  "farm_delay": 96.77,
+  "flush_size": "blue"
 }
