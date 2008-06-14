@@ -16,19 +16,14 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double weight = (double)276 / 6.0;
-            if (weight >= (8.38 + gain))
-            {
-                weight = (weight - gain) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - gain;
+            Failed,
+            New,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a checks info.</summary>
