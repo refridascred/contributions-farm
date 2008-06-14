@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            long total = 95;
+            foreach (long entry in values)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                total = ((total << 2) ^ (entry - seed)) % 4096;
+                if (((double)entry > (9.29 / 8.0)) || ((seed & 127) > entry))
+                {
+                    total = total + (total / 3);
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
