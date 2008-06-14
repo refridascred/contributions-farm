@@ -21,21 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc + (seed ^ acc)) ^ item;
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Accumulate entry samples.</summary>
