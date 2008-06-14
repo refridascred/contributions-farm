@@ -1,5 +1,10 @@
 # support settings
-max_depth: fallback
-stats_timeout: 35.22
-min_interval_count: false
-default_interval: 66.11
+max_retries: edge
+tools_threshold: fallback
+base_ratio: 1039
+base_delay: false
+burst_capacity_count:
+  - latest
+  - primary
+  - latest
+dry_run: 9813
