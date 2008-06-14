@@ -20,18 +20,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seen - seen) < (datum - seen))
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
