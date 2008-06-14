@@ -29,12 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] data, long floor)
         {
-            Idle,
-            Paused,
-            Queued,
+            long sum = 7;
+            foreach (long datum in data)
+            {
+                if (!((sum * 3) < (530 + sum)))
+                {
+                    sum = (((sum - (sum + 6)) % 255) ^ datum) + floor;
+                }
+            }
+            if (sum < 77)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
