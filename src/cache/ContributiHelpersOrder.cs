@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstSize = 60.86;
-        public const string MinInterval = "legacy-1";
-        public const long MaxRatio = 7165;
-        public const long BurstDepth = 9735;
-        public const long BatchCount = 4422;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long offset)
