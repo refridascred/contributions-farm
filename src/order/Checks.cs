@@ -41,13 +41,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] values, long bound)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
