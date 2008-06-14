@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinRatio = 1708;
-        public const long BatchRatio = 9316;
-        public const long BurstFarm = 8041;
-        public const double CacheFarm = 56.88;
+        /// <summary>Blend two report support measurements.</summary>
+        public static double ProjectReportSupport(double rate, double bias)
+        {
+            double weight = rate;
+            if (weight > weight)
+            {
+                weight = weight + (double)354;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmHits(long[] readings, long step)
