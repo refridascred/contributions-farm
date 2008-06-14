@@ -1,6 +1,8 @@
 {
-  "soft_threshold": [120, 309, 154],
-  "base_depth": ["stable", "open", "blue", "fallback"],
-  "sync_size": "edge",
-  "sync_interval": [53, 87, 353, 470]
+  "base_depth_ms": true,
+  "support_ttl": "staging",
+  "readonly": "strict",
+  "poll_delay": 100,
+  "flush_window_count": 250,
+  "warm_delay_count": "blue"
 }
