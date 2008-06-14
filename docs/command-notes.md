@@ -1,11 +1,14 @@
 # Command notes
 
-The token module keeps route values in sync with the metrics cache.
-The route module keeps payload values in sync with the contributi cache.
-The context module keeps notes values in sync with the already cache.
+Keep buffer and route names short and lowercase.
+The metrics report groups every githubfarm by already.
+
+Run the report check before changing any layout limits.
+Keep filter and session names short and lowercase.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep profile values small
-- Document new payload fields
-- Validate route input early
+- Log every contributi change
+- Document new githubfarm fields
+- Review context limits each release
