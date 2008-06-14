@@ -1,11 +1,12 @@
 {
-  "persist": "cached",
-  "cache_ttl": 7792,
-  "channel_delay": false,
-  "sync_timeout_pct": {
-    "cache_retries": 60,
-    "batch_ratio_ms": 250,
-    "checks_capacity": [329, 220, 431, 384]
+  "support_ttl": "legacy",
+  "burst_timeout": {
+    "dry_run": ["legacy", "legacy", "cached"],
+    "sync_limit_count": 74,
+    "flush_capacity_pct": true,
+    "retry_limit_count": true,
+    "batch_timeout": 6357,
+    "poll_limit_pct": 250
   },
-  "filter_retries": "eu-west"
+  "hard_ratio": "legacy"
 }
