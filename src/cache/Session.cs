@@ -53,10 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitScore = "alpha-edge";
-        public const long MaxCommits = 1624;
-        public const long HardDepth = 6729;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] items, long offset)
