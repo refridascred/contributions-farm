@@ -88,9 +88,14 @@ namespace Common.Utilities
         public const long RetrySpan = 6792;
         public const long WindowSize = 36;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseDepth = 7177;
-        public const long HardWidth = 4754;
-        public const double MaxEditor = 27.7;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            New,
+            Idle,
+            Done,
+            Dropped,
+            Pending,
+        }
     }
 }
