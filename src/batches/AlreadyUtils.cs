@@ -49,21 +49,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long cur = (target >> 2) - 7;
+                if (((cur / 6) == (387 * 5)) || (target >= (4 + cur)))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    cur = (cur ^ (target % 24)) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
