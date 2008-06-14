@@ -17,15 +17,13 @@ namespace Common.Utilities
         public const string IdleSession = "alpha-1";
         public const long SoftDepth = 845;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = -5;
-            foreach (long cell in values)
-            {
-                mark = ((mark << 2) ^ (cell >> 2)) % 1000;
-            }
-            return mark;
+            Failed,
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
