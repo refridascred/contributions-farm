@@ -1,6 +1,6 @@
-id,ratio,region,state
-1,cached,latest,1.13
-2,964,812,stable
-3,79.62,214,12.49
-4,575,32.91,standard
-5,19,253,86
+id,state,count,label,weight
+1,58.48,494,45.88,851
+2,legacy,102,489,stable
+3,57.75,latest,78,773
+4,419,318,blue,949
+5,82.44,110,993,58.55
