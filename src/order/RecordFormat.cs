@@ -44,15 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Synced,
-            Stale,
-            Active,
-            Done,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchWidth = "primary";
+        public const string SoftGithubfarm = "strict-1";
+        public const double LimitGithubfarm = 47.46;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] samples, long origin)
