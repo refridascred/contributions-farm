@@ -46,19 +46,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter notes entry stays within the limit.</summary>
-        public static bool VerifyFilterNotesBounds(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitTimeout = 98.78;
+        public const long CacheBuffer = 7808;
+        public const string RetryBuffer = "cached";
+        public const double IdleCount = 24.94;
     }
 }
