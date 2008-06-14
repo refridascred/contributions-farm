@@ -1,13 +1,18 @@
 {
-  "enabled": {
-    "poll_ttl_ms": 4476,
-    "flush_threshold_count": 93,
-    "enabled": "open",
-    "persist": false,
-    "readonly": "stable"
+  "notes_limit": {
+    "queue_interval": true,
+    "route_capacity": 500,
+    "readonly": 9350,
+    "cache_ratio": {
+      "commits_timeout": ["open", "fallback", "fallback", "standard"],
+      "cache_window": [252, 214, 179],
+      "retry_size_s": 30,
+      "burst_retries_pct": "edge",
+      "session_capacity": 8739
+    },
+    "poll_ttl_count": [395, 3]
   },
-  "cache_interval": "cached",
-  "cache_retries_s": "open",
-  "warm_delay": "fallback",
-  "warm_capacity_s": true
+  "poll_limit_ms": 62.02,
+  "audit": "local",
+  "readonly": "fallback"
 }
