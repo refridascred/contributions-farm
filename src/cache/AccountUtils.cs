@@ -16,39 +16,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long offset, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long bound)
         {
-            long prev = offset ^ floor;
-            if (((offset << 2) <= prev) && ((prev << 2) != (prev % 8)))
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev > (19.0 * 9.3))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 6;
+                    carry = ((carry * 2) + 998) ^ (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    if ((prev % 7) < (prev + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset << 1) <= (offset / 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = ((carry - carry) % 65521) + (long)i3;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
