@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultFactor = 8658;
-        public const long SoftNotes = 147;
-        public const long IdleNotes = 3481;
-        public const long DefaultSize = 5606;
-        public const long BurstCount = 8411;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheBudget = 83.03;
+        public const long BatchStats = 4290;
+        public const long BatchWidth = 3284;
+        public const double BaseRatio = 89.75;
+        public const long SoftScore = 4454;
 
         /// <summary>Audit githubfarm queue readings against a rule.</summary>
         public static long TallyGithubfarmQueueGaps(long[] values, long bound)
