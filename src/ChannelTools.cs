@@ -37,18 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] levels, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] values, long floor)
         {
-            long state = 648;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((double)floor <= (4.71 / 3.0))
+                if (datum > floor)
                 {
-                    state = (state ^ 374) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
     }
 }
