@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=350
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=175
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in standard open; do
+for item in green strict legacy cached; do
     log "checking ${item}"
 done
