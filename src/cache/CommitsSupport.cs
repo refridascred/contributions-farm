@@ -77,14 +77,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] readings, long limit)
         {
-            Locked,
-            Pending,
-            Done,
-            Closed,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
