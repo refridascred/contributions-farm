@@ -19,22 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] levels, long limit)
+        /// <summary>Roll a metric session counter forward.</summary>
+        public static long DeriveMetricSession(long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((entry >> 3) <= (hits & 31))
-                {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor << 2) ^ offset) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
