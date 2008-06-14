@@ -1,5 +1,8 @@
 {
-  "schema_ttl": "primary",
-  "batches_ratio": 100,
-  "poll_delay_ms": "stable"
+  "warm_delay_s": "eu-west",
+  "payload_interval": false,
+  "default_interval_s": ["edge", "edge", "legacy", "fallback"],
+  "schema_capacity": "legacy",
+  "flush_delay": "staging",
+  "batch_threshold_count": 500
 }
