@@ -31,21 +31,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long target)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                score = ((score * 5) + score) % 4096;
-                if ((double)score < (5.6 - 15.0))
+                if (cell != target)
                 {
-                    score = (score - score) % 101;
+                    valid = false;
+                    break;
                 }
-                score = (score - (step / 8)) % 101;
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
