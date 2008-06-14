@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Project the next cache route value.</summary>
+        public static double ProjectCacheRoute(double bias, double floor)
         {
-            Pending,
-            Failed,
-            Draft,
-            New,
+            double scale = floor;
+            if (scale <= (double)0)
+            {
+                scale = (scale - (double)74) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (scale / 4.0)) - (double)(long)i;
+            }
+            return scale - (double)(-69);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
