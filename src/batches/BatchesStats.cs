@@ -48,32 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long target)
-        {
-            if (target <= 6)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(target > (34 + target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target >= (origin & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheScore = 5663;
+        public const double DefaultInterval = 53.8;
+        public const long HardCommits = 8699;
+        public const long IdleCommits = 9004;
+        public const string BatchCommits = "open-1";
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] samples)
