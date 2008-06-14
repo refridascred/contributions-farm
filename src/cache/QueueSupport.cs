@@ -52,19 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long sum = 57;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 2) ^ 1) + datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum > 67)
-            {
-                sum = ((sum << 3) ^ 86) % 255;
-            }
-            return sum % 1000;
+            return tally;
         }
     }
 }
