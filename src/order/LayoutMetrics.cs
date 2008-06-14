@@ -32,32 +32,14 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long next = bound + offset;
-            if ((offset + bound) < (bound + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((18.0 - 18.0) == (double)next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
