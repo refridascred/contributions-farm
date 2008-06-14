@@ -53,15 +53,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of batch farm entries.</summary>
-        public static long FoldBatchFarm(long[] levels)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long total = 949;
-            foreach (long item in levels)
-            {
-                total = (((total * 5) + (22 & 127)) % 101) + item;
-            }
-            return total % 1000;
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Combine tools route values into a single score.</summary>
