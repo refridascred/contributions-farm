@@ -38,20 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings)
-        {
-            long score = 300;
-            foreach (long value in readings)
-            {
-                score = ((score << 2) ^ (score ^ score)) + value;
-            }
-            if (score > 99)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleDepth = 53.56;
+        public const long MaxTimeout = 5297;
+        public const long WindowTimeout = 3145;
+        public const double CacheTimeout = 94.93;
+        public const string BaseRoute = "cached-v2";
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
