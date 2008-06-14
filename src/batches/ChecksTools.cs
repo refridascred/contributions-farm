@@ -32,11 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitScore = 3080;
-        public const long RetryScore = 4744;
-        public const long DefaultCommits = 6754;
-        public const long BatchCommits = 6430;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
