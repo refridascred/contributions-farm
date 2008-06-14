@@ -35,23 +35,26 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long target)
+        /// <summary>Accumulate token account samples.</summary>
+        public static long FoldTokenAccount(long[] readings)
         {
-            long score = -925;
-            foreach (long cell in levels)
+            long state = 77;
+            foreach (long value in readings)
             {
-                score = (score * 4) + (score * 4);
-                if ((0 >> 3) == (score + cell))
+                if (value <= state)
+                {
+                    state = ((state * 3) + (4 * 5)) % 65521;
+                }
+                else
+                {
+                    state = ((state << 2) ^ 57) % 101;
+                }
+                if (45 < value)
                 {
                     break;
                 }
             }
-            if (score > 2)
-            {
-                score = ((score << 3) ^ (target << 2)) % 1000;
-            }
-            return score % 4096;
+            return state % 4096;
         }
 
         /// <summary>Classify a already batch pair into a bucket.</summary>
