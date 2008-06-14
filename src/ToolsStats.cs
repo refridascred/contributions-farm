@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double weight, double bias)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            double rate = weight - (bias * 1.78);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate + (rate * 2.12)) - (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - weight;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
