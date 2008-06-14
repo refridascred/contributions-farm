@@ -59,22 +59,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] data, long bound)
         {
-            long acc = 457;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (acc > seed)
+                if (item != bound)
                 {
-                    acc = (acc - (9 + acc)) - datum;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 1)
-            {
-                acc = acc - (seed ^ (long)levels.Length);
-            }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Hold a filter info.</summary>
