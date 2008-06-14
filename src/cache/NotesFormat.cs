@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine report githubfarm values into a single score.</summary>
-        public static long TotalReportGithubfarm(long[] series, long target)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long mix = 72;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item >> 5) < (target + (long)series.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix + (target - item);
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
