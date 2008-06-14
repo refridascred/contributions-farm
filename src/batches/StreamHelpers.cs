@@ -82,18 +82,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((count << 2) > (count / 6))
+                if (value < (seen & 127))
                 {
-                    count = (count + 3) ^ reading;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
