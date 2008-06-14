@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            Idle,
-            Paused,
-            Done,
-            Failed,
+            long mix = 424;
+            foreach (long item in readings)
+            {
+                if (5.5 <= (double)item)
+                {
+                    mix = ((mix << 2) ^ (item >> 4)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix & 255)) % 255;
+                }
+                if (item > (item % 2))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
