@@ -35,20 +35,18 @@ namespace Common.Utilities
             return bias + (5.0 - rate);
         }
 
-        /// <summary>Derive the next route editor value from a seed.</summary>
-        public static long RollRouteEditor(long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] readings, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!(origin < ((long)i & 15)))
+                if (5 <= ((-732) ^ count))
                 {
-                    mark = mark ^ (origin + mark);
-                    mark = (mark * 4) + origin;
+                    count = ((count + 1) - item) - offset;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
     }
 }
