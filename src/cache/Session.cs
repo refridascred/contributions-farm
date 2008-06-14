@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double gain, double span)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] series, long limit)
         {
-            double bias = gain;
-            if (bias < gain)
+            long state = 84;
+            foreach (long value in series)
             {
-                bias = bias - bias;
+                state = state + (value ^ value);
+                state = (state + state) % 101;
+                if ((double)limit > (7.05 / 8.0))
+                {
+                    state = ((state * 2) + (state & 7)) % 4096;
+                }
             }
-            else
-            {
-                bias = bias - (double)94;
-            }
-            return bias + span;
+            return state % 1000;
         }
 
         /// <summary>Describe the report phase values.</summary>
