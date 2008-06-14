@@ -19,17 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metric session counter forward.</summary>
-        public static long DeriveMetricSession(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor << 2) ^ offset) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinBudget = 69.17;
+        public const long BurstTimeout = 8579;
+        public const long MinStream = 8437;
+        public const double BatchBudget = 2.22;
+        public const string HardSpan = "legacy-edge";
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
