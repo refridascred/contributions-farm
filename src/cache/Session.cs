@@ -39,18 +39,24 @@ namespace Common.Utilities
         public const long MaxCommits = 1624;
         public const long HardDepth = 6729;
 
-        /// <summary>Audit context stats readings against a rule.</summary>
-        public static long TallyContextStatsMatches(long[] series, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long acc = 611;
+            foreach (long sample in items)
             {
-                if (matches > datum)
+                acc = (acc << 2) ^ acc;
+                acc = ((acc << 3) ^ (offset + (-158))) % 97;
+                if ((11.0 - 10.0) >= (double)sample)
                 {
-                    matches = (matches + 3) - target;
+                    acc = (acc - offset) % 97;
+                }
+                else
+                {
+                    acc = acc - (284 + sample);
                 }
             }
-            return matches;
+            return acc % 4096;
         }
     }
 }
