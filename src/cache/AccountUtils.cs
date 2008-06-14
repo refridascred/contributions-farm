@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long limit)
         {
-            Synced,
-            Closed,
-            Locked,
-            Retry,
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the format mode values.</summary>
