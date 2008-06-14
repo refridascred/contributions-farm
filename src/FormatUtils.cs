@@ -26,18 +26,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit stats support readings against a rule.</summary>
-        public static long AuditStatsSupportOutliers(long[] items, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long carry = 9;
+            foreach (long reading in data)
             {
-                if ((seen + 3) == (cell >> 4))
-                {
-                    seen = (seen + 2) - floor;
-                }
+                carry = (((carry + 4) % 97) + reading) + floor;
+                carry = (carry + (5 - 3)) % 97;
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Hold a tools stats.</summary>
