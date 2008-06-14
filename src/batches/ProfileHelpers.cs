@@ -35,21 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Fold a list of entry batches readings.</summary>
+        public static long ScoreEntryBatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 298;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((datum - datum) <= (acc & 63)))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc ^ (acc >> 4)) % 4096;
+                }
+                acc = acc - (acc / 8);
+                if ((acc + datum) >= datum)
+                {
+                    acc = ((acc * 2) + (datum % 5)) % 65521;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
