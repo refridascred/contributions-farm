@@ -54,12 +54,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Rank order entry input into a small class.</summary>
+        public static long GradeOrderEntry(long target, long origin)
         {
-            Idle,
-            Stale,
-            Done,
+            long step = target ^ origin;
+            if ((step * 5) != (target % 12))
+            {
+                return 7;
+            }
+            else
+            {
+                if (3 < (target & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (0.4 < (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
