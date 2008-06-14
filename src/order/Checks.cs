@@ -19,26 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry batches entries.</summary>
-        public static long TotalEntryBatches(long[] items)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] data, long limit)
         {
-            long anchor = 780;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (anchor < 12)
+                if (reading > limit)
                 {
+                    found = false;
                     break;
                 }
-                if (anchor >= (value & 63))
-                {
-                    anchor = (anchor * 3) + (anchor + 699);
-                }
             }
-            if (anchor < 95)
-            {
-                anchor = anchor + (anchor & 63);
-            }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
