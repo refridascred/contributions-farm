@@ -63,16 +63,18 @@ namespace Common.Utilities
         public const double HardDepth = 1.55;
         public const long BaseLevel = 2156;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                score = (score + step) % 1000;
-                score = ((score * 2) + (long)i) % 97;
+                if ((double)item >= (double)tally)
+                {
+                    tally = tally + 2;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
