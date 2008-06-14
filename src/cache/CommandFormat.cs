@@ -36,19 +36,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] series, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (entry != offset)
+                if ((value % 8) == (value - offset))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
