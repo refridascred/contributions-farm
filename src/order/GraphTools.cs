@@ -57,14 +57,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Stale,
-            Idle,
-            Retry,
-            New,
-            Failed,
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
