@@ -13,17 +13,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first stream command entry that matches the target.</summary>
-        public static long LookupStreamCommandIndex(long[] data, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
