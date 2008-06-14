@@ -26,11 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
