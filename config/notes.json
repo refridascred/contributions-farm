@@ -1,15 +1,19 @@
 {
-  "already_timeout": "standard",
-  "burst_interval": "local",
-  "warm_timeout": {
-    "context_limit": false,
-    "cache_depth_count": 87,
-    "buffer_depth": {
-      "hard_timeout_count": 29.1,
-      "record_ttl": true,
-      "hard_timeout_s": 80.18,
-      "graph_ttl": "cached"
-    },
-    "poll_timeout": 45
-  }
+  "flush_delay": [81, 80, 107, 254],
+  "batch_window_s": "stable",
+  "cache_interval_ms": "stable",
+  "channel_ttl": {
+    "channel_ttl": false,
+    "poll_window_pct": "stable",
+    "compress": "eu-west",
+    "layout_timeout": {
+      "idle_depth": ["blue", "legacy", "edge"],
+      "verbose": 44.66,
+      "burst_threshold": 19,
+      "readonly": 500,
+      "commits_ratio": "latest"
+    }
+  },
+  "max_depth": false,
+  "poll_capacity_pct": ["staging", "legacy", "staging"]
 }
