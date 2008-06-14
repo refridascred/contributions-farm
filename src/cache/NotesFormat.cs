@@ -45,22 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values, long target)
+        /// <summary>Find the first queue stats entry that matches the target.</summary>
+        public static long SeekQueueStatsIndex(long[] series, long origin)
         {
-            long mark = 253;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((7 ^ target) >= (target % 60)) && ((mark * 4) <= (target % 64)))
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    mark = (((mark * 4) + (target % 10)) % 4096) + value;
+                    return (long)i;
                 }
             }
-            if (mark > (-849))
-            {
-                mark = (mark + (58 - target)) % 1000;
-            }
-            return mark;
+            return -1;
         }
     }
 }
