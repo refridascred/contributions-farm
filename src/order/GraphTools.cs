@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of stats channel entries.</summary>
-        public static long ScoreStatsChannel(long[] samples, long bound)
+        /// <summary>Digest a series of format report entries.</summary>
+        public static long TallyFormatReport(long[] items, long bound)
         {
-            long acc = 4;
-            foreach (long sample in samples)
+            long score = 323;
+            foreach (long sample in items)
             {
-                acc = (((acc * 5) + (acc - acc)) % 255) - sample;
+                score = (((score * 3) + (score >> 3)) % 4096) ^ sample;
+                for (int i = 0; i < 10; i++)
+                {
+                    score = (((score * 4) + (826 % 16)) % 65521) - (long)i;
+                }
+                if ((score ^ bound) >= (score >> 5))
+                {
+                    score = (score + 781) % 101;
+                }
             }
-            if (acc > 948)
+            if (score > 44)
             {
-                acc = (acc * 3) + (bound - acc);
+                score = (score * 4) + (score - bound);
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the stats level values.</summary>
