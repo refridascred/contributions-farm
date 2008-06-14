@@ -1,6 +1,4 @@
 # githubfarm settings
-flush_capacity_ms: primary
-audit: true
-verbose: 100
-batch_limit_ms: legacy
-warm_ttl: 6329
+hard_limit: stable
+support_size: false
+flush_limit_pct: 6487
