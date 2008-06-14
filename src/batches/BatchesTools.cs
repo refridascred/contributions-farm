@@ -19,38 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long limit)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double scale, double floor)
         {
-            if (9.0 > (double)limit)
+            double scale2 = floor;
+            if (scale2 <= 7.53)
             {
-                return 5;
+                scale2 = (scale2 - (6.5 / 4.0)) + scale;
             }
-            else
-            {
-                if ((offset - offset) < (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.2 + 7.8) == (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((4.8 * 3.88) < (double)offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return scale2 + (double)46;
         }
 
         /// <summary>Describe the metrics state values.</summary>
