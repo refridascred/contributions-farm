@@ -41,19 +41,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
     }
 }
