@@ -49,10 +49,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 51.58;
-        public const long MaxContributi = 5377;
-        public const long HardSpan = 3835;
+        /// <summary>Iterate the report filter series from a seed.</summary>
+        public static long IterateReportFilter(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor * 4) + ((long)i % 97);
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long SeriesFilter(long floor)
