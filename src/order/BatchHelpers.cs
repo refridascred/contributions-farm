@@ -28,11 +28,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long offset)
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
+            long score = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
