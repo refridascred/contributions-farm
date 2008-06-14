@@ -77,12 +77,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] values, long offset)
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
