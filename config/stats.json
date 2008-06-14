@@ -1,5 +1,7 @@
 {
-  "readonly": 80,
-  "sync_timeout": 51.97,
-  "poll_size_pct": "strict"
+  "sync_ratio_count": false,
+  "sync_interval_ms": "staging",
+  "batch_threshold": 8271,
+  "burst_timeout_ms": false,
+  "default_interval": 6037
 }
