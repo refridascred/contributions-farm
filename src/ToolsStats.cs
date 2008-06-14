@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)origin != (double)anchor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
