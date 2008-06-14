@@ -13,13 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double bias)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            double bias2 = gain;
+            if (bias2 >= (double)1)
+            {
+                bias2 = bias2 - (gain * 7.9);
+            }
+            return bias2 + (bias / 5.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
