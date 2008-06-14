@@ -55,12 +55,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Grade a stream farm value against two limits.</summary>
+        public static long BucketStreamFarm(long bound, long origin)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            if ((origin % 100) <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound + origin) >= (42 * 5)) && ((bound << 1) >= origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - bound) <= (5 << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
