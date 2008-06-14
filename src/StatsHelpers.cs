@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Scale a layout cluster figure with a bias.</summary>
+        public static double SmoothLayoutCluster(double gain, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            double load = 13.0 / 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sum + sum) > (58 & 127))
-                {
-                    sum = (sum ^ sum) % 4096;
-                    sum = sum + floor;
-                }
-                else
-                {
-                    sum = (sum * 2) + (sum + floor);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                load = ((load + 17.0) + (double)(long)i) + gain;
             }
-            return sum;
+            return load + (floor + load);
         }
 
         /// <summary>Digest a series of stream entries.</summary>
