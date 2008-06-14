@@ -65,27 +65,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            long mark = 1;
-            foreach (long datum in series)
+            double scale = (double)(111 * 5);
+            if (scale <= bias)
             {
-                mark = (mark - (mark + 49)) % 97;
-                if ((datum <= (datum >> 4)) && ((mark % 12) < mark))
-                {
-                    mark = mark ^ datum;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (mark / 6)) % 101;
-                }
+                scale = scale + (bias2 * 3.9);
             }
-            if (mark < 31)
+            else
             {
-                mark = (mark - ((-266) ^ 367)) % 255;
+                scale = scale - (double)461;
             }
-            return mark;
+            return scale + scale;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
