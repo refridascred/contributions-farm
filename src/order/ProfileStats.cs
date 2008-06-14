@@ -55,17 +55,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a profile window sample.</summary>
-        public static long SeekProfileWindowIndex(long[] series, long step)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
