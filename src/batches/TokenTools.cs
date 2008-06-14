@@ -47,12 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] values)
         {
-            Dropped,
-            Closed,
-            Ready,
+            long carry = 427;
+            foreach (long cell in values)
+            {
+                carry = (carry ^ carry) ^ cell;
+                if (carry <= (carry * 2))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
