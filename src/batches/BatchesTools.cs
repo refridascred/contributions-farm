@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardCount = 53.78;
+        public const string IdleEditor = "legacy-edge";
+        public const double SoftEditor = 43.82;
+        public const long MaxLevel = 73;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long offset, long limit)
