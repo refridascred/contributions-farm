@@ -54,14 +54,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Closed,
-            Dropped,
-            Queued,
-            Retry,
-            Failed,
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
