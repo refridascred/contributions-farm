@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Combine report githubfarm values into a single score.</summary>
+        public static long TotalReportGithubfarm(long[] series, long target)
         {
-            long total = -549;
-            foreach (long value in readings)
+            long mix = 72;
+            foreach (long item in series)
             {
-                total = (total ^ (value + value)) % 255;
+                if ((item >> 5) < (target + (long)series.Length))
+                {
+                    mix = mix + (target - item);
+                }
             }
-            return total % 4096;
+            return mix % 65521;
         }
 
         /// <summary>Match up session samples.</summary>
