@@ -66,19 +66,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items, long step)
-        {
-            long score = 991;
-            foreach (long value in items)
-            {
-                score = score + value;
-                if ((score - step) > (8 / 3))
-                {
-                    score = score + (step % 24);
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "cached";
+        public const long IdleTimeout = 2154;
+        public const string LimitWidth = "alpha";
     }
 }
