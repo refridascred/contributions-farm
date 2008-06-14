@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine contributi cluster values into a single score.</summary>
-        public static long TotalContributiCluster(long[] levels, long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long anchor = 659;
-            foreach (long entry in levels)
-            {
-                if ((anchor + floor) != (entry - floor))
-                {
-                    anchor = ((anchor << 3) ^ (entry % 60)) % 255;
-                }
-            }
-            if (anchor > 794)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor % 4096;
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
