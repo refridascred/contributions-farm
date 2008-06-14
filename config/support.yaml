@@ -1,4 +1,4 @@
 # support settings
-flush_ratio: 1429
-hard_interval: open
-farm_ratio: open
+compress: 36.19
+batch_window: 100
+hard_window: strict
