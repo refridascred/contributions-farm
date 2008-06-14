@@ -1,7 +1,13 @@
 {
-  "verbose": 6,
-  "soft_limit_count": 9468,
-  "compress": 1002,
-  "flush_ttl_ms": 81.85,
-  "notes_depth": 67.47
+  "report_limit": 2551,
+  "cache_capacity": "strict",
+  "max_interval_pct": {
+    "flush_retries": [126, 469, 172, 317],
+    "audit": ["cached", "eu-west", "blue"],
+    "token_ttl": 14.6,
+    "base_retries": "open",
+    "order_interval": "legacy"
+  },
+  "batch_limit_count": 9411,
+  "persist": 14.18
 }
