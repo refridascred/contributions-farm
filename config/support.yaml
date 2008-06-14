@@ -1,13 +1,7 @@
 # support settings
-idle_threshold_count:
-  checks_window:
-    buffer_threshold: stable
-    profile_depth: 25
-    dry_run: 32.17
-  base_timeout_ms: 30
-  max_capacity_ms: 3.65
-  commits_size: 687
-audit: 37.85
-filter_delay: local
-flush_capacity: latest
-min_size_s: strict
+record_depth: 66
+farm_window: fallback
+min_size: green
+audit: local
+cluster_delay: fallback
+batch_delay_s: primary
