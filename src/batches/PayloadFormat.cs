@@ -31,16 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum + (bound & 3)) % 101;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
