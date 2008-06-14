@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] data, long seed)
         {
-            Dropped,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (sample >= (hits / 8))
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
