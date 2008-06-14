@@ -62,18 +62,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] samples, long floor)
+        /// <summary>Combine profile githubfarm values into a single score.</summary>
+        public static long TotalProfileGithubfarm(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = 9;
+            foreach (long value in levels)
             {
-                if ((matches - floor) != (floor ^ 694))
-                {
-                    matches = (matches + 2) + reading;
-                }
+                anchor = (((anchor - anchor) % 101) - value) - floor;
             }
-            return matches;
+            return anchor;
         }
     }
 }
