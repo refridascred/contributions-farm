@@ -16,13 +16,19 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double floor)
         {
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public double Limit { get; set; }
+            double weight = (double)276 / 6.0;
+            if (weight >= (8.38 + gain))
+            {
+                weight = (weight - gain) + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Hold a checks info.</summary>
