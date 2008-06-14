@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepScore = 19.46;
-        public const long HardWidth = 3610;
-        public const string WindowSpan = "open-1";
-        public const long BaseLevel = 6003;
-        public const long MaxBudget = 1308;
+        /// <summary>Derive the next payload stats value from a seed.</summary>
+        public static long IteratePayloadStats(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] series, long origin)
