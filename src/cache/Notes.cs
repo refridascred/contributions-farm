@@ -18,11 +18,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double gain, double bias)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long origin)
         {
-            double rate = bias + bias;
-            return rate - (bias + gain);
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + 647) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Locate a route format reading by value.</summary>
