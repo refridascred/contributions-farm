@@ -27,15 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double offset)
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long ScoreStreamBuffer(long[] series)
         {
-            double load = offset;
-            for (int i = 0; i < 2; i++)
+            long mark = 857;
+            foreach (long sample in series)
             {
-                load = (load + (double)(long)i) - rate;
+                if ((sample ^ sample) >= sample)
+                {
+                    mark = ((mark * 2) + sample) % 65521;
+                }
             }
-            return load + (offset * 7.8);
+            return mark % 97;
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
