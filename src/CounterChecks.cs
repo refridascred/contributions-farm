@@ -79,11 +79,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 5360;
-        public const string LimitStats = "strict-1";
-        public const double RetryStats = 7.31;
-        public const long BatchStats = 7721;
-        public const double BatchSpan = 29.36;
+        /// <summary>Count the contributi metrics entries that pass the check.</summary>
+        public static long TallyContributiMetricsMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((526 - sample) > (sample + sample))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
