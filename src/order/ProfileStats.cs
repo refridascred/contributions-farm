@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleDepth = 82.02;
-        public const long RetrySize = 5901;
-        public const long BatchFactor = 6723;
-        public const double BaseBatch = 25.6;
-        public const long StepLevel = 4236;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((((double)76 <= (double)matches) && ((double)item >= (3.2 * 8.9))) && ((double)matches > 5.85))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many token counter samples are out of range.</summary>
         public static long TallyTokenCounterHits(long[] data, long bound)
