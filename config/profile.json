@@ -1,8 +1,12 @@
 {
-  "strict": "staging",
-  "cache_ratio_pct": ["staging", "staging"],
-  "batch_depth": ["stable", "blue", "blue", "eu-west"],
-  "editor_interval": "blue",
-  "idle_ttl_s": "standard",
-  "entry_ratio": true
+  "min_depth_ms": {
+    "cache_ratio_count": "edge",
+    "hard_threshold_ms": 61.82,
+    "flush_limit_ms": 51.87,
+    "account_threshold": true,
+    "base_ttl_pct": 1602,
+    "default_ttl": ["fallback", "open"]
+  },
+  "base_size_s": 500,
+  "cache_ratio_count": ["eu-west", "staging", "open"]
 }
