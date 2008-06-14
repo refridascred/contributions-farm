@@ -45,18 +45,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen - entry) != (seen + 77))
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
