@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] series)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (90 > seen)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
