@@ -34,22 +34,10 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitScore = "alpha-edge";
+        public const long MaxCommits = 1624;
+        public const long HardDepth = 6729;
 
         /// <summary>Audit context stats readings against a rule.</summary>
         public static long TallyContextStatsMatches(long[] series, long target)
