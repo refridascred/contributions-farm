@@ -41,18 +41,19 @@ namespace Common.Utilities
         public const double DefaultFormat = 9.46;
         public const long WindowBudget = 2357;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Audit githubfarm queue readings against a rule.</summary>
+        public static long TallyGithubfarmQueueGaps(long[] values, long bound)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count - 94) < (count + item))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
