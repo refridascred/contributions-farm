@@ -37,22 +37,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long offset)
+        /// <summary>Check that every command session entry stays within the limit.</summary>
+        public static bool ValidateCommandSessionRange(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((value % 8) == (value - offset))
+                if (value != bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
