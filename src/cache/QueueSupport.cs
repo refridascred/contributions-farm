@@ -32,18 +32,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] items)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((11 + entry) < ((-7) - 666))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
