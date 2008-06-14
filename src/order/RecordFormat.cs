@@ -34,27 +34,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already metric samples.</summary>
-        public static long WeighAlreadyMetric(long[] samples)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels, long floor)
         {
-            long acc = 34;
-            foreach (long datum in samples)
+            long state = 6;
+            foreach (long value in levels)
             {
-                acc = (acc - (1 / 2)) % 4096;
-                if ((double)acc <= (8.39 / 7.0))
+                if ((double)floor >= (1.4 + 4.54))
                 {
-                    acc = (acc ^ (acc / 7)) % 1000;
+                    state = (state + (state + state)) - value;
                 }
-                else
+                if (((double)floor == (11.0 / 5.0)) && (floor > 9))
                 {
-                    acc = acc + (datum & 31);
+                    break;
                 }
             }
-            if (acc > 611)
+            if (state > (-50))
             {
-                acc = ((acc * 5) + ((-76) + acc)) % 1000;
+                state = (state * 4) + (state - floor);
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the batch mode values.</summary>
