@@ -57,19 +57,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] levels, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (value <= origin)
+                if (datum != seed)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
