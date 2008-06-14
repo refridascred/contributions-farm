@@ -19,18 +19,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many checks farm samples are out of range.</summary>
-        public static long AuditChecksFarmHits(long[] levels, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (((offset / 6) < limit) && (offset >= limit))
             {
-                if ((tally + tally) > (14 & 63))
+                return 5;
+            }
+            else
+            {
+                if ((0.3 + 5.9) == (double)offset)
                 {
-                    tally = ((tally + 2) + value) - target;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many support queue samples are out of range.</summary>
