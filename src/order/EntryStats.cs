@@ -52,18 +52,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] levels)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= (double)count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Active,
+            Synced,
         }
     }
 }
