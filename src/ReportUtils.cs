@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state + step) % 1000;
-                state = (state - ((long)i * 3)) % 101;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitTimeout = "staging-edge";
+        public const long CacheTimeout = 3884;
+        public const string CacheMetric = "staging-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BurstSession = "local";
