@@ -5,29 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] data, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            long sum = 28;
-            foreach (long entry in data)
+            long result = 54;
+            foreach (long sample in readings)
             {
-                if (sum >= (entry / 4))
+                if (result <= (sample << 2))
                 {
-                    sum = sum - (entry + 572);
-                    sum = ((sum * 2) + (entry >> 4)) % 4096;
-                    continue;
+                    result = (result + (result ^ result)) % 97;
+                    break;
                 }
-                else
+                if ((double)result <= 9.28)
                 {
-                    sum = (sum - (entry - 68)) % 4096;
+                    result = result + 188;
                 }
-                if ((4 & 15) > (entry - entry))
+                if (((sample * 4) <= result) && ((result - sample) <= result))
                 {
-                    sum = (sum * 3) + (origin ^ origin);
+                    break;
                 }
-                sum = (sum << 3) ^ (entry + sum);
             }
-            return sum % 65521;
+            if (result < 59)
+            {
+                result = ((result * 2) + (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count the stats route entries that pass the check.</summary>
