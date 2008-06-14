@@ -39,10 +39,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultInterval = 6874;
-        public const long IdleSize = 3387;
-        public const string StepContext = "latest";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 8147;
+        public const long HardBudget = 844;
+        public const double RetryDepth = 75.02;
+        public const long RetryWidth = 1954;
+        public const long BatchFactor = 7962;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] samples, long seed)
