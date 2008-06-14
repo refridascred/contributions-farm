@@ -55,13 +55,27 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels, long offset)
         {
-            Dropped,
-            Closed,
-            Failed,
-            Ready,
+            long carry = 988;
+            foreach (long reading in levels)
+            {
+                carry = (((carry << 2) ^ (reading & 127)) % 255) + offset;
+                if ((carry < (reading - reading)) || ((carry >> 2) != (17 + 25)))
+                {
+                    carry = (carry << 3) ^ (carry >> 3);
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry + 5)) % 255;
+                }
+            }
+            if (carry > 54)
+            {
+                carry = carry ^ (carry % 10);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
