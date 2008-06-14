@@ -23,12 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 1925;
+        public const long WindowDepth = 8716;
+        public const long DefaultDepth = 2816;
+        public const long IdleInterval = 1133;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricGaps(long[] samples)
