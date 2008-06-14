@@ -43,19 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (entry > floor)
+                if (tally >= (item ^ tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + limit;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Roll a record counter forward.</summary>
