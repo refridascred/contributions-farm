@@ -24,28 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] samples, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long acc = 259;
+            foreach (long value in samples)
             {
-                if ((long)i <= (state & 1))
-                {
-                    state = state + 7;
-                }
-                if ((13.0 / 7.0) < (double)state)
-                {
-                    state = (state + (state << 3)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (1 / 2)) % 1000;
-                    state = (state - ((-86) << 1)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                acc = ((acc * 2) + ((-1) & 3)) + value;
             }
-            return state;
+            if (acc > 723)
+            {
+                acc = (acc ^ (target & 3)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit context stream readings against a rule.</summary>
