@@ -23,15 +23,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double weight, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] levels)
         {
-            double mean = 1.0;
-            for (int i = 0; i < 4; i++)
+            long state = 12;
+            foreach (long cell in levels)
             {
-                mean = ((mean + weight) + (double)(long)i) - span;
+                state = state ^ (state % 97);
+                state = (state - cell) % 255;
             }
-            return mean - (weight + mean);
+            return state;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
