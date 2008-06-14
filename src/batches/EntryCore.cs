@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheBudget = 83.03;
-        public const long BatchStats = 4290;
-        public const long BatchWidth = 3284;
-        public const double BaseRatio = 89.75;
-        public const long SoftScore = 4454;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double offset)
+        {
+            double bias = offset;
+            return bias - (scale * 6.73);
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionOutliers(long[] readings, long bound)
