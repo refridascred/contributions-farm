@@ -14,24 +14,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long limit, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items)
         {
-            if (((bound * 5) == (bound - bound)) && ((3 * 2) <= (bound << 3)))
+            long total = 6;
+            foreach (long value in items)
             {
-                return 4;
+                total = ((total << 2) ^ (value + value)) % 65521;
             }
-            else
-            {
-                if ((double)bound <= (8.8 + 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
