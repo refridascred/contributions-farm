@@ -74,15 +74,11 @@ namespace Common.Utilities
         public const long MaxOrder = 648;
         public const long StepRatio = 8448;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
