@@ -90,10 +90,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 492;
-        public const long MaxInterval = 9957;
-        public const long BaseBatches = 1786;
-        public const long HardWidth = 9488;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Synced,
+            Queued,
+            Pending,
+            Active,
+            Stale,
+        }
     }
 }
