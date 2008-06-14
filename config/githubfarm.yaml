@@ -1,9 +1,9 @@
 # githubfarm settings
-cache_timeout:
-  cache_retries_ms: 21.99
-  audit: edge
-  cluster_ttl: fallback
-  flush_size: 1262
-  default_depth: 2668
-min_ratio: 100
-dry_run: true
+verbose: staging
+batch_interval: 79.22
+notes_interval: true
+enabled:
+  - 456
+  - 255
+support_window: fallback
+batch_ttl: primary
