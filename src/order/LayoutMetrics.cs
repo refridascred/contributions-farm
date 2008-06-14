@@ -27,11 +27,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryWidth = 50.84;
-        public const double RetryFarm = 83.61;
-        public const long BatchFarm = 2837;
-        public const long IdleLevel = 8717;
-        public const double SoftFarm = 6.78;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
