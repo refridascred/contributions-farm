@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = bound - target;
+            if ((219 - gap) < bound)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (gap <= (bound - target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 3) == (target % 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound > (gap & 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
