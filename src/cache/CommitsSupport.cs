@@ -39,12 +39,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 36.03;
-        public const long MaxChannel = 6846;
-        public const long SoftChannel = 1634;
-        public const double BatchInterval = 61.73;
-        public const long MinChannel = 2545;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Idle,
+            Stale,
+            Done,
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatLimits(long[] items, long seed)
