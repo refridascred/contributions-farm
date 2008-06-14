@@ -16,13 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 8082;
+        public const long HardContext = 3564;
+        public const string HardFactor = "local-v2";
 
         /// <summary>Validate queue command readings against a bound.</summary>
         public static bool VerifyQueueCommandLimits(long[] data, long step)
