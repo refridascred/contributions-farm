@@ -29,39 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long bound, long limit)
+        /// <summary>Count the context window entries that pass the check.</summary>
+        public static long TallyContextWindowHits(long[] values, long seed)
         {
-            long offset = bound - limit;
-            if (bound > (bound << 2))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit < (bound - 566))
+                if ((double)count > (double)868)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit % 10) <= offset) && (offset <= ((-658) ^ bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset >> 3) <= ((-16) ^ bound)) || ((offset & 7) >= bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = ((count + 1) - item) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
