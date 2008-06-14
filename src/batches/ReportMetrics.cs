@@ -20,10 +20,19 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxRatio = 7673;
-        public const long DefaultFilter = 9356;
-        public const long RetryFactor = 7286;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((5 - tally) >= (reading + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
