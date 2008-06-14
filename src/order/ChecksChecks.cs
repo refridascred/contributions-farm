@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Done,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardSize = "stable";
+        public const string LimitScore = "fallback-v2";
+        public const double DefaultReport = 73.53;
+        public const long LimitSize = 7447;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] levels, long offset)
