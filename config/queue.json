@@ -1,12 +1,8 @@
 {
-  "sync_depth_s": "green",
-  "cache_timeout": [395, 30, 269, 59],
-  "hard_timeout": false,
-  "context_limit": {
-    "tools_size": "stable",
-    "retry_limit_count": 33.52,
-    "persist": "fallback"
-  },
-  "batch_delay_pct": "fallback",
-  "cache_ttl_s": ["eu-west", "latest"]
+  "soft_size_count": 250,
+  "base_interval": 69,
+  "strict": "fallback",
+  "enabled": "strict",
+  "batch_limit_count": "open",
+  "idle_ttl_pct": 48.24
 }
