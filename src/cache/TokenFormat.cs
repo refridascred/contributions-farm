@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Queued,
-            Active,
-            Retry,
+            Closed,
+            Ready,
+            Paused,
+            Done,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
