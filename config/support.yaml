@@ -1,20 +1,30 @@
 # support settings
-sync_capacity:
-  hard_limit_pct:
-    base_capacity_ms: false
-    report_capacity:
-      - stable
-      - open
-    soft_ttl_count: eu-west
-  warm_threshold_count: false
-  tools_ratio: 6.78
-  githubfarm_limit: 500
-  farm_size: 21.84
-dry_run: 60
-default_window: true
-max_interval: 95
-hard_ratio_s:
-  - local
-  - strict
-  - strict
+cache_ttl:
   - blue
+  - legacy
+  - eu-west
+retry_retries_ms: true
+metrics_ratio: false
+burst_retries: 43
+burst_window: latest
+profile_limit:
+  audit: fallback
+  verbose:
+    retry_threshold_pct: 1694
+    filter_capacity: false
+    dry_run: 6314
+    route_depth: true
+    strict: primary
+  cache_depth:
+    metrics_ratio: 83
+    contributi_threshold: stable
+    warm_capacity_pct: 28.64
+    min_ttl_count:
+      - open
+      - open
+      - fallback
+      - edge
+    soft_interval_ms: false
+  checks_window: blue
+  poll_capacity_pct: 100
+  window_ratio: false
