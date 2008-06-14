@@ -1,15 +1,8 @@
 {
-  "max_depth_ms": {
-    "default_depth_pct": 250,
-    "soft_threshold": ["staging", "fallback", "stable"],
-    "max_interval_ms": "green",
-    "session_timeout": "local",
-    "entry_ttl": ["local", "strict", "edge", "fallback"],
-    "min_window_s": "stable"
-  },
-  "min_threshold_ms": "staging",
-  "batch_limit_s": 69.61,
-  "base_delay": 63,
-  "sync_depth": "fallback",
-  "checks_threshold": ["edge", "legacy"]
+  "batch_retries": [221, 315, 400, 91],
+  "cache_delay": "latest",
+  "verbose": 1780,
+  "min_window_s": "legacy",
+  "min_depth_count": false,
+  "support_window": "edge"
 }
