@@ -38,18 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token report readings against a rule.</summary>
-        public static long MeasureTokenReportOutliers(long[] data, long step)
+        /// <summary>Blend two batch commits measurements.</summary>
+        public static double ScaleBatchCommits(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen + step) > (seen << 3))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            double scale = (double)(-625) / 9.0;
+            return ((scale + (6.2 / 2.0)) + rate) + span;
         }
     }
 }
