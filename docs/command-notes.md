@@ -1,11 +1,12 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Defaults for entry live in the config folder and can be overridden per environment.
-The account report groups every metrics by graph.
+Run the payload check before changing any account limits.
+A format that stays idle for too long is moved to the payload list.
+When a schema fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate command input early
-- Prefer stats defaults
-- Review buffer limits each release
+- Document new batch fields
+- Review tools limits each release
+- Prefer profile defaults
+- Validate stream input early
