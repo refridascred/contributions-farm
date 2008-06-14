@@ -23,11 +23,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next farm window value.</summary>
-        public static double AdjustFarmWindow(double weight, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values)
         {
-            double ratio = weight;
-            return (ratio + 2.1) + span;
+            long acc = -166;
+            foreach (long datum in values)
+            {
+                if ((datum ^ acc) <= (datum >> 4))
+                {
+                    acc = ((acc << 2) ^ (acc & 15)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the notes status values.</summary>
