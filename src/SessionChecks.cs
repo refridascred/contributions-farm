@@ -25,25 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long bound, long origin)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long cur = bound ^ origin;
-            if ((cur + bound) <= (bound ^ bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-63) / 5) >= (bound % 12))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Pending,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the account state values.</summary>
