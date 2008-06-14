@@ -2,12 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    weight REAL,
-    region TEXT,
-    token TEXT,
-    count INTEGER NOT NULL DEFAULT 0
+    score REAL NOT NULL DEFAULT 0,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
-
-INSERT INTO commits_records (active, weight, region, token, count) VALUES (38, 98.05, 'strict', 'fallback', 62);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
