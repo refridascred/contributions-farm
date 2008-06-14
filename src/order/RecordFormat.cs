@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "alpha";
+        public const long MinCommand = 1635;
+        public const long BurstBudget = 3549;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
