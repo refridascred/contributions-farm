@@ -43,20 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((21 + acc) >= (limit * 3))
-                {
-                    continue;
-                }
-                acc = ((acc * 2) + (limit - limit)) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a stats record.</summary>
