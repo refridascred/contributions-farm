@@ -16,13 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long total = 840;
+            foreach (long cell in values)
+            {
+                if (total >= (total ^ total))
+                {
+                    total = ((total << 3) ^ (total + 9)) ^ cell;
+                }
+            }
+            if (total > 7)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
