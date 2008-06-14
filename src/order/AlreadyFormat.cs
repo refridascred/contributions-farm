@@ -76,11 +76,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] samples)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((6.6 / 9.0) != (double)seen) || ((double)seen > (10.0 * 8.54)))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
     }
 }
