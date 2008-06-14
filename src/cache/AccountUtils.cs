@@ -20,10 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchScore = 32.57;
-        public const long MinWidth = 9244;
-        public const long MaxGithubfarm = 3286;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterBounds(long[] readings, long step)
