@@ -1,14 +1,5 @@
 # githubfarm settings
-base_limit_pct: open
-commits_delay: true
-enabled: stable
-layout_threshold: local
-persist:
-  soft_limit: 77
-  hard_window:
-    - cached
-    - strict
-  metric_ttl: 45.73
-  flush_threshold: eu-west
-  compress: false
-base_delay_s: 80
+enabled: 1192
+base_interval: 9847
+default_timeout_pct: green
+dry_run: 9466
