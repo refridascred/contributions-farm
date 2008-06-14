@@ -43,18 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster batches readings against a rule.</summary>
-        public static long TallyClusterBatchesMatches(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((((long)levels.Length == (2 * 4)) && (76 > (count + count))) || !((count & 15) <= item))
+                if (entry > floor)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Roll a record counter forward.</summary>
