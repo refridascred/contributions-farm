@@ -47,22 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Blend two already schema measurements.</summary>
+        public static double SmoothAlreadySchema(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double weight = bias;
+            if (weight <= bias)
             {
-                if ((double)matches <= (9.6 - 3.5))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + gain;
             }
-            return matches;
+            else
+            {
+                weight = weight + (7.2 + gain);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (double)629;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
