@@ -30,13 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
