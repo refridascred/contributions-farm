@@ -72,17 +72,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] samples, long target)
+        /// <summary>Accumulate farm commits samples.</summary>
+        public static long ScoreFarmCommits(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 74;
+            foreach (long cell in readings)
             {
-                if (samples[i] <= target)
+                if ((total & 255) >= (step >> 1))
                 {
-                    return (long)i;
+                    total = ((total - (429 % 12)) % 101) ^ cell;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
