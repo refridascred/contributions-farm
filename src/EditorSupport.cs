@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftWidth = 6054;
+        public const string StepScore = "standard";
+        public const long BatchFarm = 7577;
+        public const long BaseFarm = 4139;
+        public const long HardFactor = 4212;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
