@@ -54,17 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long carry = 301;
-            foreach (long cell in data)
-            {
-                carry = carry ^ (cell << 1);
-                carry = (carry ^ cell) % 1000;
-                carry = (carry + (carry / 7)) % 1000;
-            }
-            return carry % 97;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
