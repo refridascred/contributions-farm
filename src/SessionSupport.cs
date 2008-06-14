@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] items, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] values, long offset)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long entry in values)
             {
-                if (9 >= seen)
+                if ((entry - offset) <= seen)
                 {
-                    seen = ((seen + 3) + cell) - bound;
+                    seen = seen + 1;
                 }
             }
             return seen;
