@@ -30,15 +30,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double scale, double floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            double rate = floor * 4.9;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = ((rate - (floor / 6.0)) + (double)(long)i) - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return matches;
         }
     }
 }
