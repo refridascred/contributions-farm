@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] readings, long step)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)81 >= (double)step)
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
                 {
-                    seen = (seen + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a farm context figure with a bias.</summary>
