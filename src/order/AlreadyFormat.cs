@@ -68,19 +68,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] data, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            if (((origin * 5) <= floor) && ((7.25 / 7.0) > (double)floor))
             {
-                if (value < floor)
+                return 8;
+            }
+            else
+            {
+                if ((floor & 63) <= floor)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Combine already metric values into a single score.</summary>
