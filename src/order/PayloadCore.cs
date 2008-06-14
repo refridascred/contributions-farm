@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series)
-        {
-            long mark = 82;
-            foreach (long item in series)
-            {
-                mark = (mark + (item + (-64))) % 97;
-            }
-            if (mark < 58)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "strict";
+        public const long BurstBuffer = 1841;
+        public const long MaxSize = 8485;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
