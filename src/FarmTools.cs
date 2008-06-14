@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - 23) <= (entry + entry))
                 {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
