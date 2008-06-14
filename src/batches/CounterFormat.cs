@@ -14,12 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 4682;
-        public const long IdleFactor = 541;
-        public const long WindowNotes = 722;
-        public const string HardNotes = "strict-edge";
-        public const long DefaultNotes = 2477;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Synced,
+            Pending,
+            New,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] data)
