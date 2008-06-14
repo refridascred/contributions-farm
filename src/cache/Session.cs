@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double gain, double floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double gain2 = gain * 4.81;
-            if (gain2 >= (gain * 9.07))
-            {
-                gain2 = gain2 - (floor + gain2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (gain + floor)) + (double)(long)i;
-            }
-            return gain2 - floor;
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
