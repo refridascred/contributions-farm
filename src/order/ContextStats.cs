@@ -43,20 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double ratio, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            double load = ratio;
+            if (load <= floor)
             {
-                if (((double)result < 4.9) || (limit <= (452 % 5)))
-                {
-                    result = (result + ((long)i << 1)) % 1000;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                load = load + (ratio + 5.4);
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (0.8 + load)) + (double)(long)i;
+            }
+            return load + (double)369;
         }
 
         /// <summary>Locate a token reading by value.</summary>
