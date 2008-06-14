@@ -19,16 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] readings, long offset)
         {
-            long mix = 6;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 3) ^ 43) % 4096) - origin;
-                mix = (mix + (sample - mix)) % 4096;
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
