@@ -43,12 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultBudget = 5180;
+        public const long DefaultFactor = 8242;
+        public const long StepWidth = 2626;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
