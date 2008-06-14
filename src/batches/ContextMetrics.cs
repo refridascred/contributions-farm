@@ -30,15 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] readings, long offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((seen % 16) <= (offset + seen)) || ((672 << 2) >= (seen + offset)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) ^ entry;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
