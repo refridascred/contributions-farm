@@ -34,15 +34,17 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long step)
+        /// <summary>Find the first window farm entry that matches the target.</summary>
+        public static long SeekWindowFarmIndex(long[] levels, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next session value.</summary>
