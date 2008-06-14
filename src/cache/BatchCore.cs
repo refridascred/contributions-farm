@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit format queue readings against a rule.</summary>
-        public static long CountFormatQueueHits(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mark = 2;
+            foreach (long value in samples)
             {
-                if ((double)hits <= (0.29 - 18.0))
+                if ((mark + value) < (floor / 2))
                 {
-                    hits = (hits + 3) + reading;
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = (mark - (719 + value)) % 97;
                 }
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
