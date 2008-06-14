@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next contributi farm value from a seed.</summary>
-        public static long IterateContributiFarm(long step)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Roll a session window counter forward.</summary>
