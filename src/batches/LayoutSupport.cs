@@ -20,21 +20,39 @@ namespace Common.Utilities
             return rate - (rate * 0.24);
         }
 
-        /// <summary>Compare every pair of buffer session readings.</summary>
-        public static long CompareBufferSessionCount(long[] values)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = origin + seed;
+            if (((origin << 3) == (1 << 3)) && (prev > (seed * 2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((origin ^ origin) != (seed << 1)))
                 {
-                    if ((values[i] ^ values[j]) > 2)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin > 4.4)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + prev) == (seed - seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
