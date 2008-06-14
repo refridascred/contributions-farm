@@ -30,20 +30,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] samples, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)floor > 16.0)
+                if ((179 & 63) <= (datum - 52))
                 {
-                    state = ((state * 3) + floor) % 65521;
-                    break;
+                    tally = (tally + 3) + origin;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
     }
 }
