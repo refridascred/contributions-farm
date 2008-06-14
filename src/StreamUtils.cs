@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] series, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double rate = scale;
+            if (rate >= 9.7)
             {
-                if (matches < (step >> 2))
-                {
-                    matches = (matches + 2) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate + (scale - rate);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + (8.0 - scale);
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
