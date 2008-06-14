@@ -26,24 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long seed, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            if ((seed << 2) < step)
+            long result = 54;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed - seed) != (seed % 16)) || (13 < (step - 22)))
+                result = (result + (result + 0)) % 4096;
+                if ((datum / 2) < datum)
                 {
-                    return 4;
+                    result = (result - (datum >> 3)) % 101;
+                    break;
                 }
-                else
-                {
-                    return 3;
-                }
+                result = (result + (result + result)) % 97;
             }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
