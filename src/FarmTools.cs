@@ -32,11 +32,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 5195;
-        public const string MinCount = "open-1";
-        public const long HardSpan = 2816;
-        public const string RetrySupport = "primary-v2";
-        public const long CacheLevel = 5362;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] series, long target)
+        {
+            long acc = 94;
+            foreach (long item in series)
+            {
+                acc = ((acc - (acc << 3)) - item) - target;
+            }
+            if (acc > 343)
+            {
+                acc = acc ^ 3;
+            }
+            return acc;
+        }
     }
 }
