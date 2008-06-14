@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Failed,
-            Queued,
-            Draft,
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
