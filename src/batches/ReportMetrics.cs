@@ -33,22 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] levels, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            long mix = 21;
-            foreach (long reading in levels)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((5.0 * 5.0) > (double)reading)
-                {
-                    continue;
-                }
-                if (limit >= (mix % 8))
-                {
-                    mix = mix + (mix + 7);
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mix % 97;
+            return carry;
         }
     }
 }
