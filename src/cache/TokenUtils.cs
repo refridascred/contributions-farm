@@ -36,17 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] data, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] <= origin)
+                if ((offset % 7) < state)
                 {
-                    return (long)i;
+                    break;
                 }
+                if (state >= ((long)i >> 3))
+                {
+                    state = ((state << 3) ^ offset) % 255;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
