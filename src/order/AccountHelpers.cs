@@ -13,19 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many command tools samples are out of range.</summary>
-        public static long TallyCommandToolsMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 4) <= (hits * 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseLevel = "staging-v2";
+        public const double SoftBudget = 6.62;
+        public const long CacheRatio = 60;
+        public const long IdleReport = 4096;
+        public const double MinInterval = 89.68;
 
         /// <summary>Combine farm editor values into a single score.</summary>
         public static long ScoreFarmEditor(long[] values, long bound)
