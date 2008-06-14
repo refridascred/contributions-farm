@@ -30,19 +30,18 @@ namespace Common.Utilities
             return (ratio + 2.1) + span;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] samples, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (entry >= offset)
+                if ((long)series.Length >= 779)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
