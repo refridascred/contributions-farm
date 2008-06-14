@@ -16,21 +16,18 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Measure how many filter farm samples are out of range.</summary>
+        public static long AuditFilterFarmHits(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((8.52 + 10.0) > (double)datum))
                 {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + step;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the context window entries that pass the check.</summary>
