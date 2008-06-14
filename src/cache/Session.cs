@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftFactor = 3721;
-        public const long MaxLevel = 2830;
-        public const long CacheBudget = 9183;
-        public const long BaseCounter = 8666;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((1.03 * 6.0) < (double)sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
