@@ -18,15 +18,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            long anchor = 4;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor - (anchor >> 3)) % 1000) ^ cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
