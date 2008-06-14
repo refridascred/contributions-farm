@@ -38,19 +38,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] series, long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] items, long seed)
         {
-            long acc = 94;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc - (acc << 3)) - item) - target;
+                if ((items[i] < seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 343)
-            {
-                acc = acc ^ 3;
-            }
-            return acc;
+            return -1;
         }
     }
 }
