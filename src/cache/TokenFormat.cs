@@ -15,11 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double weight, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] series, long origin)
         {
-            double rate = weight + weight;
-            return (rate - rate) + bias;
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (hits > (hits << 1))
+                {
+                    hits = ((hits + 3) ^ cell) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
