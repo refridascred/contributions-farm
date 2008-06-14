@@ -32,22 +32,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] series)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (8 >= (count % 100))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first batch layout entry that matches the target.</summary>
