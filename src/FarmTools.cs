@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = 36;
+            foreach (long item in samples)
             {
-                if ((seen - 23) <= (entry + entry))
+                acc = (acc ^ item) % 255;
+                if ((double)(long)samples.Length <= 0.7)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
