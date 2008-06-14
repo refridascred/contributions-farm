@@ -39,27 +39,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings, long floor)
-        {
-            long score = 57;
-            foreach (long reading in readings)
-            {
-                score = score - (897 & 63);
-                if ((double)floor != (3.0 + 3.7))
-                {
-                    score = ((score << 3) ^ (score & 7)) % 65521;
-                }
-                else
-                {
-                    score = score - (reading * 3);
-                }
-            }
-            if (score > 840)
-            {
-                score = ((score * 2) + floor) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseWidth = 2559;
+        public const long BaseMetric = 5482;
+        public const string StepBudget = "fallback-1";
     }
 }
