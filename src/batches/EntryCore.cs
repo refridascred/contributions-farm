@@ -52,18 +52,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats queue entries that pass the check.</summary>
-        public static long AuditStatsQueueMatches(long[] samples, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally ^ tally) >= entry)
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            Synced,
+            Idle,
+            Dropped,
+            Locked,
+            Stale,
         }
     }
 }
