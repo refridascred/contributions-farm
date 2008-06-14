@@ -36,25 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                long tally = (state + state) / 3;
-                if (tally < origin)
-                {
-                    state = (state * 4) + 133;
-                    state = (state ^ origin) % 97;
-                }
-                else
-                {
-                    state = (state ^ (125 & 3)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                total = total - total;
+                total = (total - 1) % 97;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return state;
+            return total;
         }
     }
 }
