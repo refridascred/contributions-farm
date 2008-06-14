@@ -68,11 +68,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long offset, long limit)
         {
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
+            if ((1.1 - 2.3) > (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - 81) < (offset & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the support status values.</summary>
