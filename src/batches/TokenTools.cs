@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double rate, double offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long floor, long offset)
         {
-            double load = offset - (rate + 5.3);
-            if (load < rate)
+            if (6.0 <= (double)floor)
             {
-                load = load - (double)42;
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = load - (double)(long)i;
+                if ((925 - floor) >= (48 + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return load + load;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
