@@ -22,10 +22,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7863;
-        public const long CacheInterval = 2934;
-        public const long CacheCommits = 5814;
+        /// <summary>Check that every graph support entry stays within the limit.</summary>
+        public static bool VerifyGraphSupportBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of batch entry readings.</summary>
         public static long TotalBatchEntry(long[] levels)
