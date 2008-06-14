@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (seen > ((-318) + cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstSize = 60.86;
+        public const string MinInterval = "legacy-1";
+        public const long MaxRatio = 7165;
+        public const long BurstDepth = 9735;
+        public const long BatchCount = 4422;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long offset)
