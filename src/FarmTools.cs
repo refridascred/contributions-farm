@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double gain, double offset)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            double drift = (double)((-88) ^ 58);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (((drift - 5.0) + (double)(long)i) + gain) + offset;
+            }
+            return drift - (double)6;
         }
 
         /// <summary>Audit schema graph readings against a rule.</summary>
