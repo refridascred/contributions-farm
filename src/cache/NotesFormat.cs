@@ -48,18 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format already entries that pass the check.</summary>
-        public static long CountFormatAlreadyGaps(long[] data, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mark = 253;
+            foreach (long value in values)
             {
-                if ((double)count == (double)value)
+                if (((7 ^ target) >= (target % 60)) && ((mark * 4) <= (target % 64)))
                 {
-                    count = (count + 3) - origin;
+                    mark = (((mark * 4) + (target % 10)) % 4096) + value;
                 }
             }
-            return count;
+            if (mark > (-849))
+            {
+                mark = (mark + (58 - target)) % 1000;
+            }
+            return mark;
         }
     }
 }
