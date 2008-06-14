@@ -40,18 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!(((entry - entry) < (entry * 4)) && ((3.38 / 2.0) >= (double)entry)))
+                if (hits >= ((-52) % 97))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Project the next contributi value.</summary>
