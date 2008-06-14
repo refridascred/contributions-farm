@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 90.14;
-        public const long BurstTimeout = 4506;
-        public const double HardCommand = 32.0;
-        public const double IdleInterval = 52.0;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] data, long origin)
+        {
+            long result = 28;
+            foreach (long item in data)
+            {
+                if (((double)origin == (8.05 / 3.0)) || ((origin % 64) >= (origin - 0)))
+                {
+                    result = (result - (item + item)) % 1000;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
