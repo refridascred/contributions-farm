@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const string BatchScore = "primary-v2";
         public const long LimitNotes = 2853;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 3) + (offset + (-14))) % 97;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
