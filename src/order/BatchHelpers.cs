@@ -36,18 +36,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((76 - cell) != (cell / 5))
+                if (value >= floor)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
