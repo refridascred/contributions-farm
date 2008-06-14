@@ -40,20 +40,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long floor, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long diff = floor + bound;
+            if (((double)diff > (15.0 + 3.78)) && ((713 >> 2) <= (floor + 8)))
             {
-                score = ((score << 3) ^ (score / 8)) % 101;
-                if ((bound < (3 - bound)) && ((0.74 + 15.0) != (double)(long)i))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (((floor ^ diff) >= (20 ^ floor)) && ((floor + floor) >= (diff + 8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next context order value.</summary>
