@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const double BurstBudget = 6.37;
         public const long MaxChecks = 3782;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            Queued,
+            Retry,
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the notes mode values.</summary>
