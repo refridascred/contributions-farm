@@ -11,38 +11,31 @@ namespace Common.Utilities
         public const double BurstScore = 28.96;
         public const long BurstStream = 9617;
 
-        /// <summary>Rank context format input into a small class.</summary>
-        public static long RankContextFormat(long bound, long floor)
+        /// <summary>Combine batches command values into a single score.</summary>
+        public static long FoldBatchesCommand(long[] items, long floor)
         {
-            if ((double)bound < 0.7)
+            long total = 38;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound + 23) <= (floor + bound)) || ((double)bound < (double)floor))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 4;
+                    total = (total - floor) ^ (long)i;
+                }
+                if (!((reading << 2) < (floor ^ reading)))
+                {
+                    total = ((total << 2) ^ (0 + floor)) % 4096;
+                    total = ((total << 3) ^ reading) % 65521;
+                }
+                if ((4.9 - 6.13) == (double)reading)
+                {
+                    total = (total << 2) ^ 89;
                 }
                 else
                 {
-                    if (((double)bound == (17.0 + 0.53)) && (floor > (floor ^ bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((floor & 7) >= (floor + floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = ((total << 2) ^ (total - floor)) % 4096;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Find the first queue stats entry that matches the target.</summary>
