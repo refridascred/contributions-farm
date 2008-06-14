@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] readings, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a payload info.</summary>
