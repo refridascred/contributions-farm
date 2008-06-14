@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardSpan = 2563;
-        public const long MaxCounter = 9064;
-        public const long BurstCounter = 4119;
-        public const string BaseTimeout = "staging-1";
-        public const string RetryCount = "primary-v2";
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double scale, double offset)
