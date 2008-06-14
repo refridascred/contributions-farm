@@ -25,22 +25,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine farm editor values into a single score.</summary>
-        public static long ScoreFarmEditor(long[] values, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long anchor = 0;
-            foreach (long reading in values)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((anchor & 15) > (bound + (long)values.Length))
-                {
-                    anchor = ((anchor << 2) ^ anchor) ^ reading;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (anchor < (-599))
-            {
-                anchor = ((anchor << 3) ^ (anchor + bound)) % 97;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
