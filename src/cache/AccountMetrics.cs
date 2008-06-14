@@ -68,30 +68,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mark = 414;
-            foreach (long value in items)
-            {
-                if (value < (mark / 4))
-                {
-                    mark = (mark << 3) ^ (63 % 100);
-                }
-                else
-                {
-                    mark = mark + (2 / 3);
-                }
-                if (mark <= (270 & 255))
-                {
-                    break;
-                }
-            }
-            if (mark > 0)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 4096;
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
