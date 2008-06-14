@@ -59,16 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools entry counter forward.</summary>
-        public static long StepToolsEntry(long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] data, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                anchor = (anchor - anchor) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
