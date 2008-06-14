@@ -30,23 +30,10 @@ namespace Common.Utilities
         public const string DefaultDepth = "fallback-v2";
         public const long DefaultInterval = 8146;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples)
-        {
-            long total = 29;
-            foreach (long datum in samples)
-            {
-                if (((datum - datum) != (total + total)) && ((3.2 * 15.0) <= (6.0 + 8.77)))
-                {
-                    total = ((total << 2) ^ 560) % 255;
-                }
-                if ((datum << 2) <= (total >> 3))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleCount = 8508;
+        public const long WindowContributi = 2819;
+        public const long StepSpan = 5275;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TallyCommand(long[] data, long bound)
