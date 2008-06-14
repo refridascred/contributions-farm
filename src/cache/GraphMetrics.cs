@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const long WindowAlready = 2633;
         public const string MinTimeout = "standard-edge";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] samples, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((1 << 3) <= origin) || ((entry / 2) <= (entry - tally)))
+                if ((12.0 + 6.32) == (double)floor)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a window options.</summary>
