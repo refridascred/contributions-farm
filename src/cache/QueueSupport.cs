@@ -5,15 +5,29 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] data, long origin)
         {
-            long sum = 991;
-            foreach (long item in readings)
+            long sum = 28;
+            foreach (long entry in data)
             {
-                sum = ((sum ^ limit) % 255) + item;
+                if (sum >= (entry / 4))
+                {
+                    sum = sum - (entry + 572);
+                    sum = ((sum * 2) + (entry >> 4)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - (entry - 68)) % 4096;
+                }
+                if ((4 & 15) > (entry - entry))
+                {
+                    sum = (sum * 3) + (origin ^ origin);
+                }
+                sum = (sum << 3) ^ (entry + sum);
             }
-            return sum;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
