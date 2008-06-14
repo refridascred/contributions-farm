@@ -65,18 +65,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the notes commits entries that pass the check.</summary>
-        public static long AuditNotesCommitsMatches(long[] samples, long step)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen < (double)step)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the context state values.</summary>
