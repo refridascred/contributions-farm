@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const string BaseTimeout = "cached";
         public const long CacheToken = 5367;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] values, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((seed >= (seed & 15)) || ((double)1 <= (double)count))
+                if (value >= origin)
                 {
-                    count = (count + 3) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
