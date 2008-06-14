@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (2 - origin)) % 4096;
-                mix = (mix * 2) + ((long)i ^ mix);
-                mix = ((mix * 3) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
