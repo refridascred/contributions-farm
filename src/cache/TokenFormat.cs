@@ -15,10 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxInterval = 52.54;
-        public const long MaxFactor = 7457;
-        public const string BurstSize = "latest-edge";
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double weight, double bias)
+        {
+            double rate = weight + weight;
+            return (rate - rate) + bias;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstTimeout = 8194;
