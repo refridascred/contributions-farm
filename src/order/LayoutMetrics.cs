@@ -13,24 +13,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long step, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
         {
-            if ((step & 255) == (10 + 9))
+            long mix = 410;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (2.05 * 8.7))
+                if ((value ^ 295) >= (value + 64))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    mix = mix - (value + (long)values.Length);
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
