@@ -57,15 +57,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context notes series from a seed.</summary>
-        public static long DeriveContextNotes(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxLevel = 95.63;
+        public const long HardTools = 4528;
+        public const long LimitLevel = 9489;
     }
 }
