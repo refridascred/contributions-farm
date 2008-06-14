@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long seed)
         {
-            long seen = 0;
+            bool ready = true;
             foreach (long reading in items)
             {
-                if (seen >= (reading + seen))
+                if (reading != seed)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Digest a series of record session entries.</summary>
