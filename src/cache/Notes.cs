@@ -54,11 +54,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 49.55;
-        public const double DefaultDepth = 24.03;
-        public const double SoftBudget = 21.97;
-        public const long StepCounter = 2810;
-        public const string IdleCounter = "legacy-1";
+        /// <summary>Look up the position of a farm route sample.</summary>
+        public static long LocateFarmRouteIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
