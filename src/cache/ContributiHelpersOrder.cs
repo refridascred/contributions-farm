@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 89.16;
-        public const long RetryWidth = 3843;
-        public const long WindowBudget = 8015;
-        public const string StepCluster = "strict";
-        public const long BurstCluster = 4259;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (seen > ((-318) + cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long offset)
