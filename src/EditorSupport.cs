@@ -18,14 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Ready,
-            Done,
-            Closed,
-            Idle,
             Retry,
+            Failed,
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Validate command context readings against a bound.</summary>
