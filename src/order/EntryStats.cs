@@ -81,21 +81,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 25;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum << 3) ^ (value * 4);
             }
-            return hits;
+            if (sum > 6)
+            {
+                sum = (sum + (bound << 1)) % 97;
+            }
+            return sum;
         }
     }
 }
