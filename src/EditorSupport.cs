@@ -70,21 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels, long target)
-        {
-            long result = 4;
-            foreach (long item in levels)
-            {
-                if ((result - target) <= (59 % 16))
-                {
-                    result = result + target;
-                    result = (result + (target + item)) % 4096;
-                    break;
-                }
-                result = (result * 5) + (result + (long)levels.Length);
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardDepth = 41.88;
+        public const long SoftCache = 3079;
+        public const long BatchBudget = 2863;
+        public const long BatchCache = 208;
+        public const long RetryScore = 4814;
     }
 }
