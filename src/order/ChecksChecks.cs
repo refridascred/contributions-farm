@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardSize = "stable";
-        public const string LimitScore = "fallback-v2";
-        public const double DefaultReport = 73.53;
-        public const long LimitSize = 7447;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxScore = 858;
