@@ -41,10 +41,11 @@ namespace Common.Utilities
         public const long LimitScore = 2172;
         public const long RetryDepth = 1371;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxInterval = 12.65;
-        public const string WindowCount = "cached-v2";
-        public const double MaxCount = 72.7;
-        public const long RetrySupport = 4197;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Flag { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
