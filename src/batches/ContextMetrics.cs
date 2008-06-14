@@ -58,21 +58,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next commits already value from a seed.</summary>
