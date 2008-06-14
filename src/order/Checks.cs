@@ -65,12 +65,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long target)
         {
-            Synced,
-            Ready,
-            Retry,
+            if (20.0 > (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) > (bound >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0.59 / 2.0) <= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)target < (8.0 / 4.0)) && ((target - bound) >= target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
