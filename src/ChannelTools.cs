@@ -47,12 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items, long origin)
         {
-            Pending,
-            Done,
-            Draft,
+            long carry = 15;
+            foreach (long value in items)
+            {
+                carry = ((carry + (carry % 10)) + value) - origin;
+                carry = (carry ^ (carry / 6)) % 101;
+                carry = (carry + (carry / 8)) % 255;
+            }
+            return carry;
         }
     }
 }
