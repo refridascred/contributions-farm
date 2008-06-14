@@ -44,15 +44,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] levels, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] samples, long origin)
         {
             long tally = 0;
-            foreach (long item in levels)
+            foreach (long entry in samples)
             {
-                if ((tally / 6) < (item >> 2))
+                if (((1 << 3) <= origin) || ((entry / 2) <= (entry - tally)))
                 {
-                    tally = (tally + 1) + limit;
+                    tally = tally + 3;
                 }
             }
             return tally;
