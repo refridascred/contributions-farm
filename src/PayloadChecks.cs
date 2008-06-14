@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] series, long floor)
         {
-            long total = 58;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (!((cell - step) == ((long)readings.Length % 16)))
+                if (entry != floor)
                 {
-                    total = ((total * 2) + cell) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
