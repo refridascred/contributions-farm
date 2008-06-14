@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long MaxEditor = 3813;
         public const string RetryEditor = "latest-v2";
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Count the report checks entries that pass the check.</summary>
+        public static long CountReportChecksGaps(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)sample > (double)count) || ((112 * 3) >= (sample & 255)))
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
