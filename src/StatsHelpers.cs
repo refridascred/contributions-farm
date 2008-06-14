@@ -56,23 +56,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long bound)
         {
-            long result = 1;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long item in series)
             {
-                result = result - (332 + 1);
-                if ((sample - sample) != (result & 127))
+                if (item < bound)
                 {
+                    ready = false;
                     break;
                 }
-                if ((sample & 255) <= (sample * 4))
-                {
-                    result = (result + (463 - result)) % 97;
-                }
             }
-            return result % 1000;
+            return ready;
         }
     }
 }
