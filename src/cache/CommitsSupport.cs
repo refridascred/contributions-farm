@@ -62,20 +62,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 3381;
+        public const long HardInterval = 8251;
+        public const long CacheRatio = 3272;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] values, long offset)
