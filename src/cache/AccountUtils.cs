@@ -16,12 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            New,
-            Idle,
+            Paused,
             Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
