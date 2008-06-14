@@ -53,19 +53,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Project the next farm commits value.</summary>
-        public static double SmoothFarmCommits(double weight, double span)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double rate = (double)862 - span;
-            if (rate < (double)(-4))
-            {
-                rate = rate + (span / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (weight + rate)) + (double)(long)i;
-            }
-            return rate + (weight - rate);
+            Closed,
+            Retry,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a route entry.</summary>
