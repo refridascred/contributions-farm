@@ -54,20 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] items, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((target % 10) > (target & 15))
+                if (item <= limit)
                 {
-                    long cur = (long)i;
-                    result = (result - cur) % 97;
+                    stale = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Roll a account counter forward.</summary>
