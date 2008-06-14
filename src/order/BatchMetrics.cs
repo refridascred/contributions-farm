@@ -10,39 +10,13 @@ namespace Common.Utilities
         public const string BatchCount = "staging-v2";
         public const long MinInterval = 6600;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long delta = origin - offset;
-            if (((-228) + 498) <= (offset * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((delta + delta) != (delta & 1)) || ((double)delta <= (8.0 + 7.1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((81 * 4) == (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset != (double)2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Combine schema batch values into a single score.</summary>
