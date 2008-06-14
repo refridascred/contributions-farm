@@ -29,13 +29,14 @@ namespace Common.Utilities
         public const long LimitDepth = 318;
         public const long BaseSize = 7517;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Synced,
             Failed,
+            Paused,
             Draft,
-            New,
+            Stale,
+            Queued,
         }
     }
 }
