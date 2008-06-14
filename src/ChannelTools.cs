@@ -28,18 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metrics commits readings against a rule.</summary>
-        public static long TallyMetricsCommitsGaps(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((1 + datum) < (hits - (-5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Failed,
+            Paused,
+            Ready,
         }
     }
 }
