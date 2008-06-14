@@ -33,11 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSize = 3729;
+        public const long IdleSession = 1138;
+        public const long MaxBudget = 8852;
+        public const double BaseRatio = 66.07;
     }
 }
