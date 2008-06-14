@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long score = 139;
-            foreach (long datum in data)
-            {
-                score = (((score * 3) + 286) % 1000) - datum;
-            }
-            return score % 97;
+            Failed,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
