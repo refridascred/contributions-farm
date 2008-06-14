@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double bias)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double bias2 = (gain / 7.0) + (bias + bias);
-            if (bias2 > 0.54)
-            {
-                bias2 = bias2 - (bias2 - bias);
-            }
-            return bias2 - gain;
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
