@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultDepth = "standard-v2";
-        public const long MaxQueue = 245;
-        public const long CacheQueue = 8696;
-        public const string BatchBudget = "primary-v2";
-        public const long BurstQueue = 9016;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepSpan = 83.63;
+        public const double HardChecks = 12.18;
+        public const long WindowChecks = 6225;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryRatio = 89.44;
