@@ -47,15 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] items, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long anchor = 928;
+            foreach (long entry in items)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (((entry >> 2) < entry) && ((double)target == (11.0 - 4.0)))
+                {
+                    anchor = (anchor + (anchor - target)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ target;
+                }
             }
-            return sum;
+            return anchor;
         }
     }
 }
