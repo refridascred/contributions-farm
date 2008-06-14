@@ -1,16 +1,8 @@
 # entry settings
-default_ttl_ms: true
-audit: 4048
-min_window_pct:
-  - 375
-  - 107
-already_retries: true
-flush_ratio_pct: cached
-commits_capacity:
-  default_interval_count:
-    - 225
-    - 45
-    - 488
-    - 181
-  burst_limit: true
-  payload_size: true
+retry_threshold: strict
+order_size: true
+hard_delay_ms: eu-west
+account_size:
+  - primary
+  - open
+base_retries_pct: 500
