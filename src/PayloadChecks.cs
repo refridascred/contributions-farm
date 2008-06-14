@@ -50,17 +50,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a commits graph reading by value.</summary>
-        public static long LookupCommitsGraphIndex(long[] items, long bound)
+        /// <summary>Iterate the graph metrics series from a seed.</summary>
+        public static long RollGraphMetrics(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] == bound)
+                if (offset <= (long)i)
                 {
-                    return (long)i;
+                    continue;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
