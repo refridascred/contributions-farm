@@ -60,18 +60,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] levels, long target)
+        /// <summary>Find the first batch layout entry that matches the target.</summary>
+        public static long LookupBatchLayoutIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target >= (6 + datum)) || ((datum - datum) >= (317 % 10)))
+                if (values[i] == seed)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
