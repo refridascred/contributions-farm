@@ -20,18 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream token samples are out of range.</summary>
-        public static long AuditStreamTokenHits(long[] samples)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item <= (double)count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
