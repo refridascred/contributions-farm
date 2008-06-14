@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long carry = 3;
+            foreach (long reading in values)
+            {
+                if (((-109) + floor) == (carry ^ floor))
+                {
+                    carry = (carry + 659) ^ reading;
+                }
+            }
+            if (carry < 56)
+            {
+                carry = ((carry * 3) + (floor << 3)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
