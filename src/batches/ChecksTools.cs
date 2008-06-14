@@ -29,19 +29,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate stats profile readings against a bound.</summary>
-        public static bool CheckStatsProfileRange(long[] levels, long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
