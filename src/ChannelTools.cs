@@ -16,24 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] series, long target)
         {
-            long score = 2;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((846 & 1) != (score + item))
+                if (datum != target)
                 {
-                    score = ((score * 3) + (score >> 2)) + origin;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    score = ((score << 3) ^ 5) % 101;
-                    score = score - (score - score);
-                }
-                score = ((score * 2) + (4 - score)) % 1000;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Hold a graph entry.</summary>
