@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] data, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 63;
+            foreach (long value in levels)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                total = (total - total) ^ value;
+                total = total + ((long)levels.Length << 2);
+                total = (total << 2) ^ origin;
+                if (((14.0 / 7.0) < (double)total) && ((double)origin < (10.0 + 4.7)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
