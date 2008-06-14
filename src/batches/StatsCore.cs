@@ -12,11 +12,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 65.99;
-        public const string CacheDepth = "cached-v2";
-        public const long RetryOrder = 4098;
-        public const long BurstOrder = 2791;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (score < (step << 2))
+                {
+                    score = (score ^ ((long)i << 2)) % 101;
+                }
+                else
+                {
+                    score = (score + ((long)i * 2)) % 97;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Find the first entry order entry that matches the target.</summary>
         public static long LocateEntryOrderIndex(long[] samples, long bound)
