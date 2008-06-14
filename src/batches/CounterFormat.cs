@@ -42,18 +42,14 @@ namespace Common.Utilities
             return rate + (weight - weight);
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally + tally) == (tally & 15))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Paused,
+            Stale,
+            Dropped,
         }
     }
 }
