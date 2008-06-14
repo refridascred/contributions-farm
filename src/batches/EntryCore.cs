@@ -30,18 +30,17 @@ namespace Common.Utilities
             return bias - (scale * 6.73);
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] samples, long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > (seed + seed))
+                if (values[i] >= bound)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
