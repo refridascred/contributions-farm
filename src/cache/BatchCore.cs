@@ -34,26 +34,10 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long floor, long offset)
-        {
-            long bound = floor + offset;
-            if ((5.0 - 15.0) != (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((2.09 + 7.09) > (double)floor) || (offset <= (bound >> 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheBudget = 4809;
+        public const long RetryLevel = 3022;
+        public const string SoftChecks = "legacy-1";
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
