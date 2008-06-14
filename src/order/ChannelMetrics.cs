@@ -26,12 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            Retry,
-            Paused,
-            Stale,
+            long acc = 925;
+            foreach (long entry in items)
+            {
+                if ((7.6 * 7.0) < (double)acc)
+                {
+                    acc = ((acc * 4) + (entry / 2)) % 1000;
+                    continue;
+                }
+                acc = (acc << 2) ^ entry;
+            }
+            return acc;
         }
     }
 }
