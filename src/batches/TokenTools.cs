@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] data)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double load = offset - (rate + 5.3);
+            if (load < rate)
             {
-                if ((entry ^ hits) < (hits << 3))
-                {
-                    hits = hits + 3;
-                }
+                load = load - (double)42;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
