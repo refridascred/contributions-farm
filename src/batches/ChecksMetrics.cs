@@ -29,20 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats command series from a seed.</summary>
-        public static long SeriesStatsCommand(long origin)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if (carry < (73 + carry))
-                {
-                    carry = (carry - (long)i) % 65521;
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
