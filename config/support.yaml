@@ -1,5 +1,9 @@
 # support settings
-max_capacity: latest
-readonly: true
-queue_limit: 10.61
-strict: standard
+readonly: open
+tools_interval: fallback
+soft_timeout_s: primary
+command_ratio:
+  - 290
+  - 346
+  - 11
+  - 259
