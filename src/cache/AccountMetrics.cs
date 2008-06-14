@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] items, long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            bool found = true;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
