@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long HardFactor = 566;
         public const long StepScore = 862;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double scale, double span)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] readings, long offset)
         {
-            double scale2 = scale - scale;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                scale2 = (scale2 - (span - scale)) + (double)(long)i;
+                if (datum <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale2 - (span / 3.0);
+            return found;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
