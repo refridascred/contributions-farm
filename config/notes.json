@@ -1,5 +1,12 @@
 {
-  "stats_timeout": 60.34,
-  "hard_depth": 38.29,
-  "audit": 62.32
+  "cache_timeout_pct": 500,
+  "readonly": [89, 359, 215, 435],
+  "format_ratio": 500,
+  "strict": {
+    "flush_interval_pct": [283, 385, 392],
+    "retry_ratio_count": 85,
+    "enabled": 250
+  },
+  "base_limit_s": true,
+  "commits_ttl": "blue"
 }
