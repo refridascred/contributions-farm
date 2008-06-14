@@ -18,22 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long result = 2;
+            foreach (long entry in readings)
             {
-                if (((3.79 - 6.4) <= (double)seen) || !((entry ^ seen) != (entry % 24)))
+                if ((double)offset >= 15.0)
                 {
-                    seen = seen + 3;
+                    result = (result + (entry - entry)) % 97;
+                    result = result - (result >> 3);
+                }
+                if ((result + offset) >= (result + 6))
+                {
+                    result = (result ^ (result * 5)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = ((result << 2) ^ (offset << 3)) % 255;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
