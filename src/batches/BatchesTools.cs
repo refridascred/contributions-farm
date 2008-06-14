@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double span)
-        {
-            double ratio = (double)843;
-            if (ratio > span)
-            {
-                ratio = (ratio - ratio) + bias;
-            }
-            else
-            {
-                ratio = ratio + 5.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio + span)) - (double)(long)i;
-            }
-            return ratio - (double)19;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseTimeout = 31.61;
+        public const double BatchSupport = 30.37;
+        public const long BaseLevel = 3356;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
