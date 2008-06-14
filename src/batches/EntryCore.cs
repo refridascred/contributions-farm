@@ -15,17 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] items, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (items[i] > offset)
+                if (datum < target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate order samples.</summary>
