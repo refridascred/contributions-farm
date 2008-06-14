@@ -1,9 +1,17 @@
 # entry settings
-support_depth:
-  - 211
-  - 453
-  - 70
-sync_interval_ms: latest
-readonly: 48
-session_threshold: open
-warm_limit_count: 7443
+checks_interval:
+  - 484
+  - 397
+entry_capacity: 100
+hard_timeout_count:
+  layout_limit: open
+  flush_window: eu-west
+  profile_threshold: standard
+  metric_capacity: false
+  dry_run: false
+poll_interval: false
+buffer_timeout:
+  - eu-west
+  - staging
+  - standard
+  - staging
