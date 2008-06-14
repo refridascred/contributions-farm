@@ -1,15 +1,14 @@
 # githubfarm settings
-hard_depth_pct:
-  retry_threshold_s: standard
-  readonly:
-    - 304
-    - 426
-    - 424
-  enabled: primary
-  support_size: 56.93
-min_interval_pct:
-  checks_delay: fallback
-  default_depth_s: 776
-  soft_window: fallback
-queue_limit: 7846
-stats_delay: local
+burst_threshold_count: cached
+notes_capacity:
+  retry_depth_s: 84.93
+  audit: false
+  flush_interval: strict
+  burst_depth_pct:
+    batches_capacity: 60
+    contributi_interval: 7783
+    hard_timeout_count: 9.94
+  batch_interval_pct: 2967
+  metric_window: primary
+default_window_ms: 58.74
+route_retries: 80.21
