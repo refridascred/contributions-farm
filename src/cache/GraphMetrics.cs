@@ -69,19 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command commits figure with a bias.</summary>
-        public static double BlendCommandCommits(double rate, double bias)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] items, long origin)
         {
-            double weight = 5.39;
-            if (weight < (rate - 2.0))
+            bool valid = true;
+            foreach (long value in items)
             {
-                weight = weight - bias;
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight - 5.0)) - (double)(long)i;
-            }
-            return weight + (double)5;
+            return valid;
         }
     }
 }
