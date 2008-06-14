@@ -1,7 +1,9 @@
-id,count,active,token,score
-1,38.07,79.38,6.51,854
-2,primary,230,815,16
-3,485,87.94,97,blue
-4,273,887,182,42.76
-5,staging,0.75,primary,844
-6,492,92,137,42.69
+id,score,rank,active
+1,949,244,60.43
+2,stable,2.79,stable
+3,2.1,807,297
+4,617,open,450
+5,latest,66.06,843
+6,eu-west,394,258
+7,staging,402,1.64
+8,staging,17,22.0
