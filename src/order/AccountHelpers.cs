@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] levels, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] series, long floor)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long datum in series)
             {
-                if ((step + step) == (count >> 1))
+                if ((2 + floor) != (floor - (long)series.Length))
                 {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) ^ datum;
                 }
             }
             return count;
