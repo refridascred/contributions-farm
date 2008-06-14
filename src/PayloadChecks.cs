@@ -24,13 +24,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long TallyCommandPayload(long[] levels)
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            long sum = -470;
+            foreach (long datum in levels)
+            {
+                if ((datum + datum) < (datum % 60))
+                {
+                    sum = sum ^ datum;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum << 2);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
