@@ -17,19 +17,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] values, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long target, long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long span = target ^ bound;
+            if (((5.9 / 8.0) != (double)target) && ((double)span >= (3.87 - 3.0)))
             {
-                if (reading <= offset)
+                return 8;
+            }
+            else
+            {
+                if (span >= (target * 4))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((4.75 + 2.35) >= (double)span) || (30 > (bound / 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
