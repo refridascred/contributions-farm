@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepSpan = 83.63;
-        public const double HardChecks = 12.18;
-        public const long WindowChecks = 6225;
+        /// <summary>Find the first farm metrics entry that matches the target.</summary>
+        public static long FindFarmMetricsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderGaps(long[] values)
