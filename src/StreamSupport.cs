@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long total = -345;
-            foreach (long datum in values)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total << 2) ^ (total >> 4)) % 4096;
-                if (!((-4) <= (datum + datum)))
+                mark = (mark + ((-897) + target)) % 97;
+                mark = (mark - target) % 255;
+                if ((double)(long)i != (8.5 + 8.41))
                 {
-                    break;
+                    mark = (mark * 3) + (target - 343);
+                    mark = mark - (target - (-659));
                 }
-                total = total + total;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (total < 29)
-            {
-                total = ((total * 4) + (271 << 3)) % 101;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
