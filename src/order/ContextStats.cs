@@ -43,18 +43,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] data, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (tally >= (item ^ tally))
+                if (((double)result < 4.9) || (limit <= (452 % 5)))
                 {
-                    tally = (tally + 1) + limit;
+                    result = (result + ((long)i << 1)) % 1000;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Locate a token reading by value.</summary>
