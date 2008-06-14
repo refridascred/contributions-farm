@@ -1,11 +1,12 @@
 {
-  "cache_ttl": 52,
-  "flush_threshold_ms": {
-    "commits_size": false,
-    "support_timeout": [217, 244, 329],
-    "min_limit_count": 89.84,
-    "buffer_window": "cached",
-    "soft_size_s": 500
+  "audit": {
+    "default_timeout_count": 45,
+    "dry_run": 55.73,
+    "min_threshold": 1024,
+    "warm_limit_count": false,
+    "buffer_limit": 6792
   },
-  "flush_ttl": 23.45
+  "verbose": 9168,
+  "strict": 5502,
+  "poll_interval_pct": [343, 76, 224]
 }
