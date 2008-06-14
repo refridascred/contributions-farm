@@ -27,9 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultTimeout = 1790;
-        public const long MinCommand = 6453;
-        public const long WindowCommand = 9252;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double offset)
+        {
+            double weight = offset / 7.0;
+            if (weight <= weight)
+            {
+                weight = weight - (weight + offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - 7.9) + (double)(long)i;
+            }
+            return weight - gain;
+        }
     }
 }
