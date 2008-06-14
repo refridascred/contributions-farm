@@ -1,16 +1,7 @@
 {
-  "batch_threshold_count": 75,
-  "flush_size_s": {
-    "channel_ttl": false,
-    "persist": "strict",
-    "idle_ttl_count": 31,
-    "burst_retries": {
-      "strict": false,
-      "batch_interval_s": 7383,
-      "hard_capacity_ms": ["edge", "open", "open"]
-    },
-    "min_interval": 7112,
-    "audit": true
-  },
-  "contributi_timeout": 0.72
+  "readonly": 60,
+  "sync_threshold": 69,
+  "base_limit_ms": "fallback",
+  "verbose": true,
+  "report_threshold": 2506
 }
