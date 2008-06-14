@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long origin, long step)
-        {
-            if (!((origin - origin) >= step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (8.08 < (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin <= (5.73 + 9.6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8108;
+        public const string DefaultStream = "latest-edge";
+        public const long IdleDepth = 2535;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
