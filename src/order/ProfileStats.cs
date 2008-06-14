@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] series, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = 26;
+            foreach (long reading in readings)
             {
-                if ((8.0 * 3.57) < (double)floor)
+                if (!((double)reading <= (double)19))
                 {
-                    matches = (matches + 2) ^ cell;
+                    state = ((state << 2) ^ 440) % 97;
                 }
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Hold a editor options.</summary>
