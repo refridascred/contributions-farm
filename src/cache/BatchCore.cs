@@ -34,17 +34,25 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Find the first window farm entry that matches the target.</summary>
-        public static long SeekWindowFarmIndex(long[] levels, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = floor + offset;
+            if ((5.0 - 15.0) != (double)bound)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((2.09 + 7.09) > (double)floor) || (offset <= (bound >> 3)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next session value.</summary>
