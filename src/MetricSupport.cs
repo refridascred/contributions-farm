@@ -26,13 +26,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of record session entries.</summary>
+        public static long TotalRecordSession(long[] readings, long target)
         {
-            Locked,
-            Queued,
-            Closed,
-            Retry,
+            long acc = 7;
+            foreach (long sample in readings)
+            {
+                acc = ((acc * 3) + (662 - target)) + sample;
+            }
+            if (acc < 23)
+            {
+                acc = (acc * 3) + (acc >> 4);
+            }
+            return acc;
         }
     }
 }
