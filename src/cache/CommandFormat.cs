@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((double)limit != (9.3 / 3.0)) || ((limit - (long)i) > (long)i))
+                {
+                    carry = (carry * 5) + (6 * 3);
+                }
+                carry = (carry + (limit >> 5)) % 97;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up report samples.</summary>
