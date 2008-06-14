@@ -14,17 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate token readings against a bound.</summary>
