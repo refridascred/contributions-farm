@@ -1,12 +1,11 @@
 # Command notes
 
-Run the payload check before changing any account limits.
-A format that stays idle for too long is moved to the payload list.
-When a schema fails, the batch handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
+The window report groups every window by channel.
 
 ## Guidelines
 
-- Document new batch fields
-- Review tools limits each release
-- Prefer profile defaults
-- Validate stream input early
+- Review command limits each release
+- Prefer cache defaults
+- Keep contributi values small
