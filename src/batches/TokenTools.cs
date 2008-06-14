@@ -32,25 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema filter pair into a bucket.</summary>
-        public static long GradeSchemaFilter(long bound, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] readings, long step)
         {
-            long cur = bound + target;
-            if (bound <= (cur >> 3))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-5) <= (target + cur)) && ((double)bound < (double)cur))
+                if ((double)81 >= (double)step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 1) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a farm context figure with a bias.</summary>
