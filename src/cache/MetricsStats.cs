@@ -45,11 +45,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 8059;
-        public const long CacheFilter = 6088;
-        public const string HardRatio = "primary-v2";
-        public const long MinFilter = 7625;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((step + entry) >= entry)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a tools entry counter forward.</summary>
         public static long StepToolsEntry(long seed)
