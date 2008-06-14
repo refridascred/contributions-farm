@@ -12,20 +12,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine format record values into a single score.</summary>
-        public static long FoldFormatRecord(long[] series, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long sum = 616;
-            foreach (long reading in series)
-            {
-                sum = (sum + target) % 4096;
-                sum = ((sum * 4) + target) % 97;
-                if (((target + 8) == (reading * 4)) && ((target + target) < (target - sum)))
-                {
-                    sum = (sum + (sum + sum)) % 4096;
-                }
-            }
-            return sum;
+            Done,
+            Draft,
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
