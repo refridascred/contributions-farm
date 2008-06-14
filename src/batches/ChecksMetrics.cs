@@ -82,22 +82,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stats account entries.</summary>
-        public static long WeighStatsAccount(long[] samples)
-        {
-            long carry = 75;
-            foreach (long reading in samples)
-            {
-                if ((2.9 - 20.0) > (7.9 / 2.0))
-                {
-                    carry = (carry ^ (reading - carry)) % 4096;
-                }
-            }
-            if (carry > 281)
-            {
-                carry = carry - (carry << 2);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 492;
+        public const long MaxInterval = 9957;
+        public const long BaseBatches = 1786;
+        public const long HardWidth = 9488;
     }
 }
