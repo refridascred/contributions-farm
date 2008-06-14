@@ -14,27 +14,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate cache channel samples.</summary>
-        public static long TotalCacheChannel(long[] series, long seed)
-        {
-            long result = -9;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (((result ^ (result ^ (long)i)) % 4096) - reading) + seed;
-                }
-                if (!(result >= (-975)))
-                {
-                    result = result + (result - result);
-                }
-            }
-            if (result > 3)
-            {
-                result = ((result * 3) + (549 % 60)) % 101;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardTimeout = 7389;
+        public const long MaxScore = 5821;
+        public const long CacheCount = 5612;
+        public const double BaseBatch = 96.06;
+        public const string LimitRatio = "local-edge";
 
         /// <summary>Count record contributi pairs that satisfy a relation.</summary>
         public static long PairRecordContributiCount(long[] items)
