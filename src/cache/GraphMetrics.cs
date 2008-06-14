@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] series)
         {
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!(((long)series.Length / 2) < ((long)series.Length + sample)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
