@@ -23,12 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxFactor = 1724;
+        public const long MaxInterval = 5678;
+        public const string MaxTimeout = "stable";
 
         /// <summary>Measure how many contributi format samples are out of range.</summary>
         public static long CountContributiFormatOutliers(long[] data)
