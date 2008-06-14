@@ -52,17 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] readings, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (readings[i] > limit)
+                if ((double)tally <= (10.0 - 5.35))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
