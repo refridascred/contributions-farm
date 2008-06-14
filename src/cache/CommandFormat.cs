@@ -32,19 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] levels, long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
