@@ -28,11 +28,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 8536;
-        public const long BaseScore = 2168;
-        public const long StepLevel = 4147;
-        public const double StepFactor = 16.59;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long origin, long target)
+        {
+            if (target <= 6)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(target > (34 + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target >= (origin & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] samples)
