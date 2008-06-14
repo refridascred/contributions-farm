@@ -18,17 +18,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a channel stream reading by value.</summary>
-        public static long LookupChannelStreamIndex(long[] data, long floor)
+        /// <summary>Classify a farm schema pair into a bucket.</summary>
+        public static long GradeFarmSchema(long origin, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset - origin) < offset)
             {
-                if (data[i] < floor)
+                return 6;
+            }
+            else
+            {
+                if (!((9.45 * 3.83) < (double)offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin >> 5) > origin) || (origin < (0 - 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((offset << 2) > (origin + origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
