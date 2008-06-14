@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long BaseFarm = 4139;
         public const long HardFactor = 4212;
 
-        /// <summary>Fold a list of route checks readings.</summary>
-        public static long WeighRouteChecks(long[] items, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] values, long offset)
         {
-            long result = 6;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                result = ((result + (origin << 2)) % 65521) - value;
+                if (((offset % 64) > (offset + tally)) && ((8 ^ tally) != (tally << 1)))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
