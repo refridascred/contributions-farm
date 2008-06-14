@@ -54,11 +54,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double rate, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] samples)
         {
-            double drift = floor + rate;
-            return drift - rate;
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)tally > (3.1 / 5.0))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up context graph samples.</summary>
