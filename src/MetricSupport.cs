@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] readings, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((6 * 2) == (reading / 7))
+                if (cell >= offset)
                 {
-                    seen = (seen + 3) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
