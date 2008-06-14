@@ -25,12 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            Idle,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < 4.04)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
