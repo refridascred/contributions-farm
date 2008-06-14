@@ -1,14 +1,6 @@
 # githubfarm settings
-burst_threshold_count: cached
-notes_capacity:
-  retry_depth_s: 84.93
-  audit: false
-  flush_interval: strict
-  burst_depth_pct:
-    batches_capacity: 60
-    contributi_interval: 7783
-    hard_timeout_count: 9.94
-  batch_interval_pct: 2967
-  metric_window: primary
-default_window_ms: 58.74
-route_retries: 80.21
+command_size: false
+queue_timeout: true
+token_depth: true
+sync_size: 6488
+schema_limit: 98.55
