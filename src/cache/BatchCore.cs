@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepLevel = 5370;
-        public const string RetryMetrics = "primary-v2";
-        public const double MaxMetrics = 58.2;
-        public const double StepMetrics = 36.44;
-        public const string CacheMetrics = "standard";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 6276;
+        public const long RetryInterval = 1542;
+        public const long RetryBatch = 1799;
+        public const double MaxBatch = 41.62;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long offset)
