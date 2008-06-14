@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix ^ (2 - origin)) % 4096;
+                mix = (mix * 2) + ((long)i ^ mix);
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Project the next command value.</summary>
