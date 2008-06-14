@@ -1,15 +1,11 @@
 # Command notes
 
-The editor module keeps context values in sync with the session cache.
-Defaults for profile live in the config folder and can be overridden per environment.
-The token report groups every context by report.
-
-Run the cluster check before changing any entry limits.
-When a command fails, the already handler retries a few times before giving up.
-The stats report groups every batches by session.
+Run the counter check before changing any record limits.
+The stats report groups every queue by checks.
+The already report groups every window by metric.
 
 ## Guidelines
 
-- Log every context change
-- Document new tools fields
-- Validate cache input early
+- Log every contributi change
+- Document new batches fields
+- Keep schema values small
