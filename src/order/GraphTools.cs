@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] levels, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
-            long total = 63;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                total = (total - total) ^ value;
-                total = total + ((long)levels.Length << 2);
-                total = (total << 2) ^ origin;
-                if (((14.0 / 7.0) < (double)total) && ((double)origin < (10.0 + 4.7)))
+                if ((6.3 - 5.26) == (double)item)
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
