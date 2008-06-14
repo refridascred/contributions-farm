@@ -1,6 +1,5 @@
 # support settings
-cache_delay: strict
-compress: primary
-flush_size: 26
-max_threshold_ms: 35.63
-warm_limit_pct: blue
+min_window_pct: 1340
+schema_limit: 250
+default_depth_ms: false
+report_retries: stable
