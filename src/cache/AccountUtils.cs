@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) <= (reading % 24))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchScore = 32.57;
+        public const long MinWidth = 9244;
+        public const long MaxGithubfarm = 3286;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterBounds(long[] readings, long step)
