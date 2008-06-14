@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] items, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (items[i] >= origin)
+                if ((sum + sum) > (58 & 127))
                 {
-                    return (long)i;
+                    sum = (sum ^ sum) % 4096;
+                    sum = sum + floor;
                 }
+                else
+                {
+                    sum = (sum * 2) + (sum + floor);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
