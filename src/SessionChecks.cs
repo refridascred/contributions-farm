@@ -35,36 +35,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a format buffer value against two limits.</summary>
-        public static long BucketFormatBuffer(long floor, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long bound, long origin)
         {
-            if (!((limit - floor) > (limit - 28)))
+            long cur = bound ^ origin;
+            if ((cur + bound) <= (bound ^ bound))
             {
                 return 2;
             }
             else
             {
-                if (((floor ^ 276) >= limit) || ((14.0 * 5.0) >= (double)floor))
+                if (((-63) / 5) >= (bound % 12))
                 {
                     return 7;
                 }
                 else
                 {
-                    if (((floor + floor) > (floor % 24)) || ((46 / 4) < (floor - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (3.39 - 6.8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
