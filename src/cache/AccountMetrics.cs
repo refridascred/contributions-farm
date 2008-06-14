@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a commits layout reading by value.</summary>
-        public static long SeekCommitsLayoutIndex(long[] samples, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (samples[i] < floor)
+                if (value >= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
