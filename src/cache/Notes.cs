@@ -25,21 +25,12 @@ namespace Common.Utilities
             return rate - (bias + gain);
         }
 
-        /// <summary>Count filter stream pairs that satisfy a relation.</summary>
-        public static long OverlapFilterStreamCount(long[] items)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Accumulate account checks samples.</summary>
