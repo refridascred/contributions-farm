@@ -56,15 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double span)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] samples)
         {
-            double drift = 6.4;
-            if (drift >= (double)2)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                drift = (drift - (span + span)) + rate;
+                if ((((double)entry < (6.69 * 5.9)) || ((entry + hits) >= (560 - entry))) && (20.0 < (double)hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return drift + 9.12;
+            return hits;
         }
     }
 }
