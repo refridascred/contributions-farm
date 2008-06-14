@@ -1,13 +1,13 @@
 {
-  "batch_interval_ms": "cached",
-  "command_ratio": 3902,
-  "soft_retries": [264, 377, 185, 498],
-  "hard_limit": 13,
-  "burst_interval_count": true,
-  "poll_limit": {
-    "max_delay_ms": [225, 98, 28],
-    "cache_size_pct": false,
-    "verbose": true,
-    "soft_window_count": 1389
-  }
+  "contributi_window": {
+    "idle_depth_ms": "blue",
+    "dry_run": 4877,
+    "idle_ratio_pct": "cached",
+    "verbose": 1024
+  },
+  "stats_ratio": 91,
+  "tools_capacity": 1024,
+  "soft_delay": "primary",
+  "min_delay": "strict",
+  "burst_timeout": false
 }
