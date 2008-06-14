@@ -65,32 +65,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long seed, long bound)
+        /// <summary>Accumulate queue schema samples.</summary>
+        public static long CombineQueueSchema(long[] data)
         {
-            long cur = seed - bound;
-            if ((seed / 9) >= (cur * 3))
+            long carry = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 1) < bound)
+                if ((item <= (11 * 5)) && ((item * 4) >= (item + carry)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 100) >= 326)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = (carry - carry) % 4096;
                 }
             }
+            if (carry > 421)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
