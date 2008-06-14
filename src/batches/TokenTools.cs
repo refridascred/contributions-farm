@@ -25,26 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] values, long limit)
+        /// <summary>Classify a schema filter pair into a bucket.</summary>
+        public static long GradeSchemaFilter(long bound, long target)
         {
-            long carry = 8;
-            foreach (long reading in values)
+            long cur = bound + target;
+            if (bound <= (cur >> 3))
             {
-                for (int i = 0; i < 4; i++)
+                return 5;
+            }
+            else
+            {
+                if (((-5) <= (target + cur)) && ((double)bound < (double)cur))
                 {
-                    carry = (((carry + carry) % 101) ^ (long)i) - limit;
-                }
-                if ((reading * 2) > (reading >> 1))
-                {
-                    carry = ((carry * 2) + (reading / 3)) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry & 31)) % 1000;
+                    return 1;
                 }
             }
-            return carry;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
