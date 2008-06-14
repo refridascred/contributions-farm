@@ -36,18 +36,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many githubfarm support samples are out of range.</summary>
-        public static long TallyGithubfarmSupportHits(long[] samples)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((item - item) > item) && !((count & 7) >= (item ^ count)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
