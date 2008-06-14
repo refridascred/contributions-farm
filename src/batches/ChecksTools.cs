@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const double LimitTimeout = 13.39;
         public const double BatchEntry = 98.71;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            Ready,
-            Retry,
-            New,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cache info.</summary>
