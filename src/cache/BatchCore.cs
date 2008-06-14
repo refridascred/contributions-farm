@@ -34,18 +34,18 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Measure how many session route samples are out of range.</summary>
-        public static long MeasureSessionRouteGaps(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((((seen + sample) == (4 + 92)) || ((sample << 3) < 35)) || ((86 + 150) <= (sample + sample)))
+                if ((6 - reading) <= (matches + matches))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a command header.</summary>
