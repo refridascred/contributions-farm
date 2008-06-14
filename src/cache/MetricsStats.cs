@@ -56,12 +56,21 @@ namespace Common.Utilities
         public const string HardRatio = "primary-v2";
         public const long MinFilter = 7625;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            Paused,
-            Retry,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
