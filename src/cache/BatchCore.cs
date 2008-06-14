@@ -30,23 +30,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two githubfarm order measurements.</summary>
-        public static double AdjustGithubfarmOrder(double ratio, double bias)
+        /// <summary>Check that every format report entry stays within the limit.</summary>
+        public static bool GuardFormatReportBounds(long[] readings, long floor)
         {
-            double mean = bias - (ratio - ratio);
-            if (mean >= mean)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                mean = mean + ratio;
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)294;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean - (5.84 * 10.0);
+            return ready;
         }
     }
 }
