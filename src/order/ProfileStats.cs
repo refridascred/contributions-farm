@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const long LimitCount = 4634;
         public const long StepChecks = 5089;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] data, long target)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((5.0 + 2.1) >= (double)sample) && ((sample + target) <= 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
