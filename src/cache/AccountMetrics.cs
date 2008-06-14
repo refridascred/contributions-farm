@@ -29,19 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long offset)
         {
-            long anchor = 63;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 5) + (item & 15)) % 1000;
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor > 457)
-            {
-                anchor = (anchor ^ anchor) % 65521;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
