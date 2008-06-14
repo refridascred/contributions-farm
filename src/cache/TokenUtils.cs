@@ -31,12 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] samples)
         {
-            Closed,
-            Dropped,
-            Pending,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((((matches - 5) > matches) && ((cell + matches) > (7 + matches))) || ((matches - matches) >= cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
