@@ -48,32 +48,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long delta = seed ^ step;
-            if ((double)delta >= (8.0 - 4.75))
+            long mix = 2;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (double)80)
+                mix = mix + (mix & 127);
+                if ((15 >> 4) == (value - value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step <= (1.95 * 5.6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix - (50 + value)) % 4096;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
