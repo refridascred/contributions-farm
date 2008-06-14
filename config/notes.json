@@ -1,5 +1,5 @@
 {
-  "max_ratio_count": ["latest", "fallback"],
-  "graph_ratio": 6323,
-  "batch_retries_s": "fallback"
+  "soft_depth": "edge",
+  "batch_ratio_count": true,
+  "min_depth_pct": 500
 }
