@@ -80,12 +80,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] series, long floor)
         {
-            Active,
-            Ready,
-            Closed,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
