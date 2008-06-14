@@ -50,11 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 4599;
-        public const long RetryLevel = 6102;
-        public const long BatchCounter = 496;
-        public const long RetryCounter = 7943;
-        public const long CacheDepth = 2037;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Done,
+            Idle,
+            Failed,
+            Draft,
+            Stale,
+        }
     }
 }
