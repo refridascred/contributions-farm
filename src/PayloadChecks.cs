@@ -13,19 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (value <= (value + value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 8643;
+        public const string SoftSize = "local";
+        public const long StepFarm = 3854;
 
         /// <summary>Scale a record format figure with a bias.</summary>
         public static double SmoothRecordFormat(double gain, double span)
