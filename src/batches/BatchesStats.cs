@@ -52,19 +52,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] items, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mark = 506;
+            foreach (long entry in samples)
             {
-                if (sample < bound)
+                mark = (mark + (mark + entry)) % 65521;
+                if ((double)mark <= (double)1)
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return mark;
         }
     }
 }
