@@ -1,27 +1,12 @@
 # support settings
-command_ratio:
-  command_threshold:
-    retry_window: 26.28
-    window_delay: 45
-    readonly: 3571
-    cache_window_s: true
-    layout_ttl: primary
-    batch_ratio: 5712
-  cache_delay: 1024
-  strict: legacy
-  poll_capacity_pct:
-    default_window_ms:
-      - green
-      - latest
-    readonly: 4486
-    retry_interval: 250
-    batch_timeout_pct: 67
-persist:
-  - 434
-  - 154
-  - 405
-min_ttl:
+max_interval_s: 30
+cluster_ttl:
+  - fallback
+  - local
+  - cached
+sync_delay_ms: true
+idle_capacity_pct:
   - cached
   - standard
-  - strict
-support_window: 5946
+  - local
+  - primary
