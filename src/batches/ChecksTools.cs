@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double LimitTimeout = 13.39;
         public const double BatchEntry = 98.71;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((score ^ seed) < score) || ((score * 5) <= (seed - 24)))
-                {
-                    score = ((score * 5) + (score - score)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a cache info.</summary>
