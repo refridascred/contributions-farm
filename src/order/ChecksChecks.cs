@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every stream format entry stays within the limit.</summary>
-        public static bool ValidateStreamFormatBounds(long[] values, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long floor, long floor2)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long diff = floor ^ floor2;
+            if ((13.0 >= (double)diff) || ((3.17 / 3.0) >= (double)floor))
             {
-                if (item < limit)
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ diff) > (floor * 5))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((diff / 4) == (16 & 3)) && ((double)diff < (8.0 / 7.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5 / 3) == (diff + floor2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
