@@ -36,12 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Queued,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 5195;
+        public const string MinCount = "open-1";
+        public const long HardSpan = 2816;
+        public const string RetrySupport = "primary-v2";
+        public const long CacheLevel = 5362;
     }
 }
