@@ -1,15 +1,6 @@
 {
-  "format_window": 15.97,
-  "verbose": {
-    "entry_ttl": 9527,
-    "default_window_ms": 19.95,
-    "compress": {
-      "verbose": [350, 327, 340, 216],
-      "retry_ttl": "eu-west",
-      "default_retries_pct": 5165,
-      "warm_ttl": "eu-west",
-      "sync_interval_s": 6035
-    }
-  },
-  "default_ratio": 1024
+  "already_limit": 500,
+  "base_delay_count": true,
+  "warm_delay": 100,
+  "hard_capacity": 250
 }
