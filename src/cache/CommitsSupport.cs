@@ -55,30 +55,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank order entry input into a small class.</summary>
-        public static long GradeOrderEntry(long target, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long origin, long seed)
         {
-            long step = target ^ origin;
-            if ((step * 5) != (target % 12))
+            if ((double)origin > (5.0 * 1.17))
             {
                 return 7;
             }
             else
             {
-                if (3 < (target & 127))
+                if ((5.75 * 3.5) < (double)origin)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (0.4 < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 8;
                 }
             }
         }
