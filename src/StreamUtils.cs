@@ -59,18 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] readings, long target)
         {
-            long anchor = 32;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((anchor - sample) <= (anchor >> 5))
+                if (entry < target)
                 {
-                    anchor = (anchor + (anchor - 0)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Accumulate cache samples.</summary>
