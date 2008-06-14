@@ -27,21 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Look up the position of a contributi account sample.</summary>
+        public static long LocateContributiAccountIndex(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
                 {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
