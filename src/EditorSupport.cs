@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long BaseFarm = 4139;
         public const long HardFactor = 4212;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of route checks readings.</summary>
+        public static long WeighRouteChecks(long[] items, long origin)
         {
-            Synced,
-            Stale,
-            Done,
-            Draft,
+            long result = 6;
+            foreach (long value in items)
+            {
+                result = ((result + (origin << 2)) % 65521) - value;
+            }
+            return result;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
