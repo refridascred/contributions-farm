@@ -1,5 +1,8 @@
 {
-  "readonly": [88, 215],
-  "audit": "edge",
-  "poll_ttl": [112, 248]
+  "strict": 4192,
+  "burst_capacity_s": 6253,
+  "compress": 15.86,
+  "base_depth_count": "blue",
+  "flush_limit_pct": "blue",
+  "hard_size_pct": "stable"
 }
