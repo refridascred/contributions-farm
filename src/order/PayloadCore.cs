@@ -29,14 +29,14 @@ namespace Common.Utilities
         public const long LimitDepth = 318;
         public const long BaseSize = 7517;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Failed,
-            Paused,
-            Draft,
-            Stale,
+            Dropped,
             Queued,
+            Closed,
+            Paused,
+            Ready,
         }
     }
 }
