@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long anchor = 730;
-            foreach (long entry in series)
-            {
-                if ((entry / 2) < (76 + (long)series.Length))
-                {
-                    anchor = (anchor + ((-720) >> 1)) % 65521;
-                }
-            }
-            return anchor % 4096;
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
