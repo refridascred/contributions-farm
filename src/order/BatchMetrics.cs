@@ -62,15 +62,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                mark = ((mark << 3) ^ mark) % 101;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
