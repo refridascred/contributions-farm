@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] items)
         {
-            long mark = 49;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((7.1 - 1.36) < (double)(long)series.Length)
+                if (sample < ((long)items.Length << 3))
                 {
-                    mark = (mark ^ (reading / 9)) % 101;
+                    tally = tally + 3;
                 }
-                mark = ((mark << 3) ^ (floor - 935)) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
