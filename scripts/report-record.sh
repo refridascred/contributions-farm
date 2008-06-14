@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached green local; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=155
+log "limit is ${RECORD_LIMIT}"
 
 mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
