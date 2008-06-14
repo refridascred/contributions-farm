@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinDepth = 3689;
-        public const double HardEditor = 63.41;
-        public const long MaxEditor = 3813;
-        public const string RetryEditor = "latest-v2";
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Count the report checks entries that pass the check.</summary>
         public static long CountReportChecksGaps(long[] values)
