@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] values, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings, long target)
         {
-            long anchor = 23;
-            foreach (long sample in values)
+            long carry = 2;
+            foreach (long item in readings)
             {
-                if (!((sample >= (floor << 2)) && ((sample + sample) < (sample + floor))))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - (long)values.Length)) % 65521;
-                    anchor = (anchor ^ sample) % 4096;
-                }
-                if ((anchor >= (floor & 7)) || (floor < sample))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                    continue;
-                }
-                if ((sample & 1) > (sample % 60))
-                {
-                    anchor = ((anchor << 3) ^ ((-5) / 9)) % 255;
-                }
+                carry = (carry ^ ((-7) & 15)) ^ item;
             }
-            if (anchor > (-94))
+            if (carry > 81)
             {
-                anchor = ((anchor << 3) ^ (floor << 1)) % 1000;
+                carry = (carry - target) % 1000;
             }
-            return anchor % 1000;
+            return carry % 1000;
         }
 
         /// <summary>Describe the channel kind values.</summary>
