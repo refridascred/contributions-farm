@@ -1,9 +1,9 @@
 # support settings
-readonly: open
-tools_interval: fallback
-soft_timeout_s: primary
-command_ratio:
-  - 290
-  - 346
-  - 11
-  - 259
+already_capacity: cached
+layout_limit:
+  - stable
+  - stable
+  - eu-west
+  - staging
+batches_ttl: strict
+retry_timeout_count: false
