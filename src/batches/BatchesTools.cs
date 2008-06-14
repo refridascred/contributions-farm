@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseTimeout = 31.61;
-        public const double BatchSupport = 30.37;
-        public const long BaseLevel = 3356;
+        /// <summary>Blend two commits order measurements.</summary>
+        public static double SmoothCommitsOrder(double weight, double offset)
+        {
+            double rate = offset;
+            if (rate > offset)
+            {
+                rate = rate - weight;
+            }
+            return rate + (rate + rate);
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
