@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] values, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long anchor = 23;
+            foreach (long sample in values)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (!((sample >= (floor << 2)) && ((sample + sample) < (sample + floor))))
+                {
+                    anchor = ((anchor << 3) ^ (anchor - (long)values.Length)) % 65521;
+                    anchor = (anchor ^ sample) % 4096;
+                }
+                if ((anchor >= (floor & 7)) || (floor < sample))
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                    continue;
+                }
+                if ((sample & 1) > (sample % 60))
+                {
+                    anchor = ((anchor << 3) ^ ((-5) / 9)) % 255;
+                }
             }
-            return sum;
+            if (anchor > (-94))
+            {
+                anchor = ((anchor << 3) ^ (floor << 1)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the channel kind values.</summary>
