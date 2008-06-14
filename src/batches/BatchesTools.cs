@@ -34,21 +34,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Project the next commits contributi value.</summary>
+        public static double SmoothCommitsContributi(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)(109 ^ 371);
+            if (load < (load / 9.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - weight) + span;
             }
-            return tally;
+            return load - (weight + weight);
         }
     }
 }
