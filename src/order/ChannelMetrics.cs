@@ -13,13 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double bias, double floor)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            double drift = (double)((-87) & 7);
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Rank account stats input into a small class.</summary>
