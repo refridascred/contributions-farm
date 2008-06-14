@@ -45,12 +45,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long step)
         {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next session value.</summary>
