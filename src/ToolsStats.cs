@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next githubfarm metric value from a seed.</summary>
-        public static long SeriesGithubfarmMetric(long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] levels, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long total = -6;
+            foreach (long value in levels)
             {
-                carry = (carry - bound) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                total = total ^ value;
             }
-            return carry;
+            if (total > 6)
+            {
+                total = total ^ (seed % 12);
+            }
+            return total;
         }
 
         /// <summary>Hold a context options.</summary>
