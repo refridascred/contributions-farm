@@ -1,14 +1,17 @@
 {
-  "warm_interval": 70.17,
-  "flush_ttl": {
-    "filter_depth": 50.15,
-    "soft_timeout_ms": "local",
-    "retry_delay_s": "open",
-    "already_delay": "strict",
-    "max_delay": false
+  "warm_retries_ms": {
+    "batch_depth": "legacy",
+    "enabled": 82.91,
+    "default_retries": "eu-west",
+    "flush_delay_ms": "standard",
+    "idle_timeout_s": "standard",
+    "readonly": 47
   },
-  "soft_timeout": "edge",
-  "max_interval": 56,
-  "retry_ttl_s": ["legacy", "cached", "fallback"],
-  "dry_run": 100
+  "audit": 30,
+  "cache_threshold": {
+    "account_ttl": 60,
+    "default_limit_count": 7491,
+    "idle_window_s": false,
+    "base_interval_pct": "cached"
+  }
 }
