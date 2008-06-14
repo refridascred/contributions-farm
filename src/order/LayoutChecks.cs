@@ -59,25 +59,18 @@ namespace Common.Utilities
         public const string MaxNotes = "staging";
         public const long LimitNotes = 2927;
 
-        /// <summary>Grade a metric checks value against two limits.</summary>
-        public static long BucketMetricChecks(long step, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values, long bound)
         {
-            long offset = step ^ target;
-            if ((target + 2) == (target + offset))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) < step)
+                if ((bound % 10) > reading)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
