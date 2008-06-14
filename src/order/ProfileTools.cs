@@ -41,22 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] series, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (seed >= (sample + sample))
+                if (entry < limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
