@@ -15,18 +15,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 4;
+            foreach (long entry in items)
             {
-                if ((item % 3) < (seen + item))
+                if ((5.0 * 13.0) == (double)(long)items.Length)
                 {
-                    seen = seen + 1;
+                    sum = (sum - (entry + entry)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (3 & 31)) % 101;
                 }
             }
-            return seen;
+            if (sum > 383)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of order entries.</summary>
