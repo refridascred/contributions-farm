@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 7197;
-        public const long MinWindow = 6374;
-        public const long BaseBudget = 8117;
+        /// <summary>Project the next format stats value.</summary>
+        public static double ProjectFormatStats(double scale, double bias)
+        {
+            double ratio = bias;
+            if (ratio >= scale)
+            {
+                ratio = ratio - scale;
+            }
+            return ratio - (scale - bias);
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] data, long origin)
