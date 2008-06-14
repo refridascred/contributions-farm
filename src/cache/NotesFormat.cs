@@ -38,17 +38,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first queue stats entry that matches the target.</summary>
-        public static long SeekQueueStatsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleSize = 9082;
+        public const long BatchCluster = 8824;
+        public const long StepCluster = 6881;
+        public const long LimitRatio = 191;
+        public const string HardCluster = "fallback-edge";
     }
 }
