@@ -59,21 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = 5.5;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (((bias2 - bias2) + (double)(long)i) + bias) + span;
             }
-            return seen;
+            return bias2 + 15.0;
         }
     }
 }
