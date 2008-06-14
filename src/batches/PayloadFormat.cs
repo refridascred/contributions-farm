@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] series, long step)
+        /// <summary>Check that every filter record entry stays within the limit.</summary>
+        public static bool VerifyFilterRecordLimits(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (datum < step)
+                if (item < step)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
