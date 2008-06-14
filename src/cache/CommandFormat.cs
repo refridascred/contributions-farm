@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxLevel = 7413;
-        public const long RetrySpan = 1847;
-        public const long BatchSpan = 6120;
-        public const double BaseCounter = 34.84;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Token { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] samples)
