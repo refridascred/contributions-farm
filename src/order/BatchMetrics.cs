@@ -68,19 +68,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] data, long floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate farm commits samples.</summary>
