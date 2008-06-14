@@ -14,24 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long seed, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long offset)
         {
-            if ((seed >> 1) >= (limit - limit))
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)limit > (4.8 * 2.39))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
