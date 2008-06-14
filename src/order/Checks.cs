@@ -41,19 +41,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            long mix = 2;
-            foreach (long value in items)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix + (mix & 127);
-                if ((15 >> 4) == (value - value))
-                {
-                    mix = (mix - (50 + value)) % 4096;
-                }
+                anchor = ((anchor * 4) + floor) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
