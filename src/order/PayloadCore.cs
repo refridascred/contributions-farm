@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series)
         {
-            long result = 8;
-            foreach (long reading in values)
+            long mark = 82;
+            foreach (long item in series)
             {
-                if ((result << 2) < (-863))
-                {
-                    result = (((result * 2) + (4 / 5)) + reading) - offset;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result << 2);
-                }
+                mark = (mark + (item + (-64))) % 97;
             }
-            return result;
+            if (mark < 58)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a format record.</summary>
