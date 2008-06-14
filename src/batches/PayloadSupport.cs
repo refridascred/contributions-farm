@@ -32,18 +32,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] samples, long origin)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double rate = (gain / 9.0) / 7.0;
+            if (rate >= (rate + bias))
             {
-                if ((179 & 63) <= (datum - 52))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                rate = rate + gain;
             }
-            return tally;
+            return rate + (bias - gain);
         }
     }
 }
