@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Adjust a graph already reading.</summary>
+        public static double ProjectGraphAlready(double scale, double span)
         {
-            long carry = 63;
-            foreach (long cell in data)
+            double load = scale;
+            if (load < 0.86)
             {
-                if (((90 * 3) != (cell / 8)) || ((double)cell != (double)carry))
-                {
-                    carry = (carry - (52 >> 5)) % 4096;
-                }
-                if ((carry % 100) == (cell % 5))
-                {
-                    break;
-                }
+                load = load + (3.2 * 1.0);
             }
-            if (carry > 9)
+            else
             {
-                carry = (carry + (carry - carry)) % 1000;
+                load = load - load;
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + 17.0) - (double)(long)i;
+            }
+            return load + (span + span);
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
