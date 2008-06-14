@@ -23,20 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 1514;
+        public const long MaxBudget = 9233;
+        public const string CacheSize = "primary";
+        public const long SoftLevel = 8369;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] items, long bound)
