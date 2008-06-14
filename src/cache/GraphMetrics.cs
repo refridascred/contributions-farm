@@ -61,13 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a command commits figure with a bias.</summary>
+        public static double BlendCommandCommits(double rate, double bias)
         {
-            Locked,
-            Failed,
-            Done,
-            Paused,
+            double weight = 5.39;
+            if (weight < (rate - 2.0))
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight - 5.0)) - (double)(long)i;
+            }
+            return weight + (double)5;
         }
     }
 }
