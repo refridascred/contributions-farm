@@ -98,25 +98,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long bound)
-        {
-            long slot = seed ^ bound;
-            if (((double)slot <= (5.77 / 2.0)) || ((slot + seed) < seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((711 / 2) != (slot - 407))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryFactor = "legacy-1";
+        public const double BatchDepth = 39.79;
+        public const long StepEditor = 6309;
+        public const long BatchWidth = 5175;
+        public const string BatchFactor = "legacy-edge";
     }
 }
