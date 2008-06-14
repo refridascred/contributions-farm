@@ -40,19 +40,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] series, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
