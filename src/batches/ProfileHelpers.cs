@@ -88,12 +88,9 @@ namespace Common.Utilities
         public const long RetrySpan = 6792;
         public const long WindowSize = 36;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Locked,
-            Pending,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseDepth = 7177;
+        public const long HardWidth = 4754;
+        public const double MaxEditor = 27.7;
     }
 }
