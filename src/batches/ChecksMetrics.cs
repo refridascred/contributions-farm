@@ -40,17 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long origin)
+        /// <summary>Scale a account support figure with a bias.</summary>
+        public static double BlendAccountSupport(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = scale;
+            if (load >= (double)(-32))
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                load = load + (double)47;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (floor / 2.0)) - (double)(long)i;
+            }
+            return load - (floor / 9.0);
         }
 
         /// <summary>Hold a format summary.</summary>
