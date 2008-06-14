@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const double BatchBatches = 21.94;
         public const long SoftBudget = 7787;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] data, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Ready,
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
