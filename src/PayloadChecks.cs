@@ -16,18 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = 58;
+            foreach (long cell in readings)
             {
-                if ((22 ^ cell) >= (cell + limit))
+                if (!((cell - step) == ((long)readings.Length % 16)))
                 {
-                    tally = tally + 1;
+                    total = ((total * 2) + cell) % 101;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Describe the support phase values.</summary>
