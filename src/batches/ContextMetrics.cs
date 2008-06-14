@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally * 4) <= 380)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
