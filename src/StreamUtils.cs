@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] data, long origin)
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((-169) - sample) != (origin / 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
