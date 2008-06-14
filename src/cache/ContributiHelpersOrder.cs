@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long StepCount = 9186;
         public const string RetrySize = "standard-v2";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long offset)
+        /// <summary>Audit counter layout readings against a rule.</summary>
+        public static long MeasureCounterLayoutHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (items[i] > offset)
+                if ((count <= (44 << 3)) || (count <= (entry & 15)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
