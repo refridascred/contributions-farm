@@ -59,18 +59,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long AuditNotesChannelHits(long[] series)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length - (long)series.Length) != (entry >> 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Closed,
+            Ready,
+            Retry,
+            Synced,
         }
     }
 }
