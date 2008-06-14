@@ -33,18 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] levels, long limit)
         {
-            long anchor = 738;
-            foreach (long value in data)
+            long mix = 21;
+            foreach (long reading in levels)
             {
-                if (((7.3 * 9.33) < (double)anchor) || (((-8) ^ anchor) > (value % 60)))
+                if ((5.0 * 5.0) > (double)reading)
                 {
-                    anchor = (anchor ^ (anchor - 0)) % 4096;
+                    continue;
+                }
+                if (limit >= (mix % 8))
+                {
+                    mix = mix + (mix + 7);
                 }
             }
-            return anchor % 65521;
+            return mix % 97;
         }
     }
 }
