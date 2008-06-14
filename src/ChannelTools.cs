@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] values, long offset)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
