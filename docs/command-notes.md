@@ -1,15 +1,14 @@
 # Command notes
 
-Use layout settings to tune how often layout data is refreshed.
-Use payload settings to tune how often contributi data is refreshed.
-Run the cache check before changing any order limits.
+When a metrics fails, the payload handler retries a few times before giving up.
+The context module keeps queue values in sync with the tools cache.
+The order report groups every editor by metrics.
 
-Run the account check before changing any cache limits.
-A token that stays idle for too long is moved to the token list.
-Use filter settings to tune how often githubfarm data is refreshed.
+Use cache settings to tune how often buffer data is refreshed.
+When a already fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review payload limits each release
-- Prefer cache defaults
-- Log every stream change
+- Prefer metrics defaults
+- Document new metric fields
+- Keep context values small
