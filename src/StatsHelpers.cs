@@ -56,26 +56,23 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            long score = 6;
-            foreach (long datum in levels)
+            long result = 1;
+            foreach (long sample in items)
             {
-                if (9.0 >= (double)datum)
+                result = result - (332 + 1);
+                if ((sample - sample) != (result & 127))
                 {
                     break;
                 }
-                if ((5 > (datum ^ origin)) || ((origin % 8) <= datum))
+                if ((sample & 255) <= (sample * 4))
                 {
-                    score = (score ^ datum) % 97;
+                    result = (result + (463 - result)) % 97;
                 }
             }
-            if (score < 6)
-            {
-                score = (score - 92) % 255;
-            }
-            return score;
+            return result % 1000;
         }
     }
 }
