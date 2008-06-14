@@ -16,18 +16,22 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] series, long bound)
+        /// <summary>Fold a list of session githubfarm readings.</summary>
+        public static long DigestSessionGithubfarm(long[] series)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 0;
+            foreach (long datum in series)
             {
-                if ((bound >> 2) <= tally)
+                if ((datum & 255) == (3 ^ mix))
                 {
-                    tally = (tally + 2) + item;
+                    mix = (mix << 2) ^ (mix >> 2);
                 }
             }
-            return tally;
+            if (mix > 0)
+            {
+                mix = (mix ^ (mix - mix)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a report batch pair into a bucket.</summary>
