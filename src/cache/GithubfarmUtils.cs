@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next order buffer value from a seed.</summary>
-        public static long SeriesOrderBuffer(long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long seed, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            if (seed < step)
             {
-                score = (score - (39 + bound)) % 1000;
-                if ((((long)i + 3) < (long)i) && (score <= (bound * 2)))
-                {
-                    score = score ^ score;
-                    score = ((score * 3) + (score + 625)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (seed >= (seed / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed >= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - 27) >= (seed + 560))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every already buffer entry stays within the limit.</summary>
