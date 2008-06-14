@@ -42,10 +42,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSize = "legacy-v2";
-        public const long StepSchema = 1854;
-        public const string CacheFactor = "primary-edge";
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings, long bound)
+        {
+            long mix = -481;
+            foreach (long datum in readings)
+            {
+                if ((datum <= 78) && (datum < mix))
+                {
+                    mix = ((mix ^ (mix / 7)) % 1000) + bound;
+                }
+            }
+            if (mix < 373)
+            {
+                mix = ((mix * 3) + (4 + mix)) % 4096;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long seed, long bound)
