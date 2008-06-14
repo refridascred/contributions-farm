@@ -13,15 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen - seen) > (bound & 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) - datum;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
