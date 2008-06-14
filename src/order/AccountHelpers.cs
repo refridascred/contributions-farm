@@ -27,18 +27,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long ScoreStreamBuffer(long[] series)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long seed, long bound)
         {
-            long mark = 857;
-            foreach (long sample in series)
+            if ((bound > (seed >> 3)) && ((seed / 5) < 7))
             {
-                if ((sample ^ sample) >= sample)
+                return 5;
+            }
+            else
+            {
+                if (((2.0 / 7.0) == (double)bound) && ((3.1 - 7.26) <= (double)bound))
                 {
-                    mark = ((mark * 2) + sample) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)8 < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
