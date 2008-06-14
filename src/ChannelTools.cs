@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] values, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long acc = -7;
+            foreach (long item in values)
             {
-                if (offset > (matches - datum))
+                if (!((8.6 / 5.0) >= (double)acc))
                 {
-                    matches = matches + 2;
+                    acc = (acc - (acc & 1)) % 101;
+                }
+                if (((4 - acc) <= (acc / 2)) && ((item & 7) > target))
+                {
+                    acc = acc + (item & 63);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
