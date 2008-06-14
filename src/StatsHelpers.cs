@@ -56,19 +56,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long bound)
+        /// <summary>Project the next context order value.</summary>
+        public static double ScaleContextOrder(double gain, double span)
         {
-            bool ready = true;
-            foreach (long item in series)
+            double gain2 = (double)(34 - 30);
+            for (int i = 0; i < 2; i++)
             {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                gain2 = (((gain2 + (double)3) - (double)(long)i) - gain) - span;
             }
-            return ready;
+            return gain2 - gain2;
         }
     }
 }
