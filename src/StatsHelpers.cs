@@ -25,15 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long score = 8;
+            foreach (long cell in series)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (1 >= (cell / 5))
+                {
+                    score = score - score;
+                }
+                if ((72 ^ (-556)) >= cell)
+                {
+                    break;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a checks info.</summary>
