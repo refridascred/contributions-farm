@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double scale, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] values)
         {
-            double bias = (scale * 3.38) / 6.0;
-            if (bias < bias)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                bias = (bias + (double)598) + span;
+                if (((2.81 / 4.0) == (double)cell) || (7.38 < (double)matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return bias - 8.01;
+            return matches;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
