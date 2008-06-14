@@ -30,13 +30,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] samples, long origin)
         {
-            Pending,
-            Idle,
-            Paused,
-            Locked,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
