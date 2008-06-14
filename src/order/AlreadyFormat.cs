@@ -56,21 +56,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 169;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-348) - sum) > (reading % 64))
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum - (sum >> 3)) % 255;
+                }
+                if ((2.7 * 6.92) < (1.6 * 16.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum > 363)
+            {
+                sum = ((sum * 5) + (7 / 3)) % 97;
+            }
+            return sum;
         }
     }
 }
