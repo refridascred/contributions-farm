@@ -1,8 +1,8 @@
 {
-  "retry_ratio_pct": 60,
-  "already_interval": "blue",
-  "support_interval": 71,
-  "route_depth": [253, 329, 483],
-  "retry_window": 97.73,
-  "flush_timeout_count": 60
+  "max_capacity": "strict",
+  "verbose": 87,
+  "idle_size_ms": false,
+  "tools_ttl": "stable",
+  "metric_retries": true,
+  "hard_timeout": [105, 87, 165]
 }
