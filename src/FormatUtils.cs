@@ -12,21 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            long result = 54;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                result = (result + (result + 0)) % 4096;
-                if ((datum / 2) < datum)
+                if ((5.04 / 4.0) >= (2.2 + 1.4))
                 {
-                    result = (result - (datum >> 3)) % 101;
-                    break;
+                    tally = (tally + 3) + cell;
                 }
-                result = (result + (result + result)) % 97;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
