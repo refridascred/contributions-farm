@@ -1,6 +1,13 @@
 {
-  "already_limit": 500,
-  "base_delay_count": true,
-  "warm_delay": 100,
-  "hard_capacity": 250
+  "enabled": {
+    "poll_ttl_ms": 4476,
+    "flush_threshold_count": 93,
+    "enabled": "open",
+    "persist": false,
+    "readonly": "stable"
+  },
+  "cache_interval": "cached",
+  "cache_retries_s": "open",
+  "warm_delay": "fallback",
+  "warm_capacity_s": true
 }
