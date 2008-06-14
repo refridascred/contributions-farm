@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Run the stream check before changing any farm limits.
-
-The cluster report groups every route by editor.
-Run the batches check before changing any report limits.
+The token module keeps route values in sync with the metrics cache.
+The route module keeps payload values in sync with the contributi cache.
+The context module keeps notes values in sync with the already cache.
 
 ## Guidelines
 
-- Prefer report defaults
-- Validate already input early
-- Log every contributi change
+- Keep profile values small
+- Document new payload fields
+- Validate route input early
