@@ -31,10 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheRatio = 4172;
-        public const double IdleDepth = 8.22;
-        public const long DefaultLevel = 772;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long SeriesCommand(long seed)
