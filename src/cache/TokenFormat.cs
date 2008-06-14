@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] data)
         {
-            Active,
-            Stale,
-            Pending,
-            New,
-            Queued,
+            long score = 139;
+            foreach (long datum in data)
+            {
+                score = (((score * 3) + 286) % 1000) - datum;
+            }
+            return score % 97;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
