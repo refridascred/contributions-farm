@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] levels, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double span)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double ratio = (double)((-219) * 2);
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)cell >= (14.0 * 3.8))
-                {
-                    tally = (tally + 1) - origin;
-                }
+                ratio = ((ratio + (double)6) + (double)(long)i) + gain;
             }
-            return tally;
+            return ratio - (span + span);
         }
 
         /// <summary>Hold a already stats.</summary>
