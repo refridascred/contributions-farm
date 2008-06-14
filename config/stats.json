@@ -1,8 +1,5 @@
 {
-  "readonly": ["open", "fallback", "open", "fallback"],
-  "batch_retries_s": 4,
-  "channel_interval": 71.95,
-  "sync_delay_count": 25.16,
-  "soft_ttl_pct": ["cached", "legacy", "green", "staging"],
-  "idle_ttl_count": true
+  "min_size": true,
+  "burst_ratio": 84,
+  "cache_threshold_s": 60
 }
