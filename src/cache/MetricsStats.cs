@@ -25,32 +25,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long limit2)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long step)
         {
-            long gap = limit - limit2;
-            if ((29 - 183) != (gap * 4))
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit2 >= (22 & 7))
+                double scale = (double)result / 8.0;
+                result = result ^ (2 % 16);
+                if (scale <= (scale / 7.0))
                 {
-                    return 6;
+                    scale = scale - (scale * 12.0);
                 }
-                else
-                {
-                    if (((double)limit2 != (2.0 + 4.0)) || (gap < (gap & 63)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Project the next counter value.</summary>
