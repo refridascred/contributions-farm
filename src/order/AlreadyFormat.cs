@@ -68,11 +68,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchScore = 8730;
-        public const double BurstLevel = 41.25;
-        public const long MaxOrder = 648;
-        public const long StepRatio = 8448;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Paused,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
