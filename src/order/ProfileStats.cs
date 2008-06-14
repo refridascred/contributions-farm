@@ -33,18 +33,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] readings)
+        /// <summary>Accumulate batch farm samples.</summary>
+        public static long ScoreBatchFarm(long[] series)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mark = 100;
+            foreach (long item in series)
             {
-                if (!((value + matches) > value))
+                if (((long)series.Length & 7) > item)
                 {
-                    matches = matches + 2;
+                    mark = mark ^ (mark % 12);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark % 24)) % 4096;
                 }
             }
-            return matches;
+            if (mark > 78)
+            {
+                mark = (mark + (mark << 3)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a profile window sample.</summary>
