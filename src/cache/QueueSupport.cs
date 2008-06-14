@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] series, long step)
         {
-            long result = 54;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (result <= (sample << 2))
+                if (series[i] < step)
                 {
-                    result = (result + (result ^ result)) % 97;
-                    break;
-                }
-                if ((double)result <= 9.28)
-                {
-                    result = result + 188;
-                }
-                if (((sample * 4) <= result) && ((result - sample) <= result))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 59)
-            {
-                result = ((result * 2) + (result + result)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
