@@ -80,10 +80,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define record limits and defaults.</summary>
-        public const long LimitFactor = 863;
-        public const double MaxFactor = 30.4;
-        public const long LimitWidth = 8328;
-        public const long BaseRecord = 1244;
+        public const long BaseInterval = 3313;
+        public const long StepWidth = 3733;
+        public const long WindowRecord = 9742;
+        public const long StepTimeout = 9980;
+        public const long HardLevel = 300;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long RollGraph(long origin)
