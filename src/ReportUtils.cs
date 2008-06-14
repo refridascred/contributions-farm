@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitTimeout = "staging-edge";
-        public const long CacheTimeout = 3884;
-        public const string CacheMetric = "staging-v2";
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BurstSession = "local";
