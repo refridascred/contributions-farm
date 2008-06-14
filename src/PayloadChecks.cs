@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const string SoftSize = "local";
         public const long StepFarm = 3854;
 
-        /// <summary>Scale a record format figure with a bias.</summary>
-        public static double SmoothRecordFormat(double gain, double span)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double rate = gain;
-            if (rate > (rate * 15.0))
-            {
-                rate = (rate - (double)7) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + 7.0) - (double)(long)i;
-            }
-            return rate - 9.2;
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
