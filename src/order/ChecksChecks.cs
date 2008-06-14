@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)(long)data.Length > (18.0 * 5.81))
-                {
-                    count = ((count + 3) + entry) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinRatio = 1708;
+        public const long BatchRatio = 9316;
+        public const long BurstFarm = 8041;
+        public const double CacheFarm = 56.88;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmHits(long[] readings, long step)
