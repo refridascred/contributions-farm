@@ -11,14 +11,16 @@ namespace Common.Utilities
         public const long DefaultDepth = 8740;
         public const double DefaultTools = 77.39;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples, long target)
         {
-            Retry,
-            Failed,
-            New,
-            Dropped,
-            Draft,
+            long total = -951;
+            foreach (long reading in samples)
+            {
+                total = ((total - (reading * 3)) % 101) + target;
+                total = ((total << 2) ^ reading) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the format state values.</summary>
