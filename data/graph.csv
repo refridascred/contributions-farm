@@ -1,6 +1,8 @@
-id,active,label,region,count
-1,8.5,54.04,731,stable
-2,10.03,21.98,540,stable
-3,legacy,954,477,latest
-4,10.0,73.41,latest,70.22
-5,98.83,50.93,723,strict
+id,rank,region,token,weight
+1,739,blue,27.66,33.4
+2,408,blue,344,349
+3,33.79,open,715,85.9
+4,staging,31.49,77.89,341
+5,966,600,48.74,318
+6,683,834,636,blue
+7,open,84,340,199
