@@ -53,12 +53,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinSpan = 3935;
-        public const long StepNotes = 4016;
-        public const double BaseDepth = 18.96;
-        public const string MaxNotes = "staging";
-        public const long LimitNotes = 2927;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowInterval = 15.65;
+        public const long LimitLevel = 2613;
+        public const double BurstSpan = 76.94;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] values, long bound)
