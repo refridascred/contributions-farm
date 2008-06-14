@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long StepCount = 9186;
         public const string RetrySize = "standard-v2";
 
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long MeasureQueuePayloadOutliers(long[] series)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5.64 < (double)tally)
+                if (items[i] > offset)
                 {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
