@@ -47,16 +47,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor - ((long)i ^ step)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
