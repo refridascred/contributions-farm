@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data)
-        {
-            long carry = 24;
-            foreach (long value in data)
-            {
-                carry = (carry + (carry << 3)) % 101;
-                carry = carry + (carry - carry);
-                carry = (carry + (value - value)) % 65521;
-                if ((double)value <= 3.2)
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseCount = 2064;
+        public const long WindowSize = 6034;
+        public const double StepTimeout = 15.09;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
