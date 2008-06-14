@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxInterval = "local-edge";
-        public const long BatchWidth = 4816;
-        public const double DefaultProfile = 0.73;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double gain, double floor)
+        {
+            double gain2 = gain * 4.81;
+            if (gain2 >= (gain * 9.07))
+            {
+                gain2 = gain2 - (floor + gain2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + (gain + floor)) + (double)(long)i;
+            }
+            return gain2 - floor;
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double AdjustBatch(double rate, double offset)
