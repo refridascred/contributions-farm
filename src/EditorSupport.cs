@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine filter entry values into a single score.</summary>
-        public static long TallyFilterEntry(long[] series, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long step)
         {
-            long carry = 92;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)cell <= (9.1 - 20.0)))
+                if ((items[i] >= step) && ((items[i] % 5) == 0))
                 {
-                    carry = (carry - (step - (-1))) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (carry + cell)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
