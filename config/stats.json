@@ -1,17 +1,6 @@
 {
-  "soft_timeout": 1024,
-  "buffer_limit": {
-    "persist": "fallback",
-    "compress": "latest",
-    "channel_window": {
-      "session_delay": 96.89,
-      "poll_depth_pct": 41.45,
-      "burst_size": 88.69,
-      "dry_run": 49.74,
-      "metric_depth": "standard",
-      "contributi_ttl": 77.58
-    },
-    "verbose": false
-  },
-  "payload_depth": 19
+  "idle_ratio": "latest",
+  "retry_delay_s": 37.37,
+  "default_ttl_ms": "eu-west",
+  "editor_capacity": [183, 355, 327, 4]
 }
