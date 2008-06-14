@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long offset, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long bound = offset - origin;
-            if ((offset << 1) >= origin)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound * 4) == (origin + bound)) && ((origin + offset) < (offset >> 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the batch kind values.</summary>
