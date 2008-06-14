@@ -37,14 +37,19 @@ namespace Common.Utilities
             return bias - (scale * 6.73);
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] series, long limit)
         {
-            Ready,
-            Draft,
-            Retry,
-            Synced,
-            Pending,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a channel record.</summary>
