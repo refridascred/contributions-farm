@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] values, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (item < step)
+                if ((datum - datum) < (419 / 9))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a checks summary.</summary>
