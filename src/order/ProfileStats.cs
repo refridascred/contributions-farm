@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "fallback-v2";
+        public const long RetryLevel = 4259;
+        public const long SoftScore = 7884;
+        public const long HardSpan = 1563;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 9287;
