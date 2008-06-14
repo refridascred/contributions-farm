@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long total = 4;
+            foreach (long datum in series)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                total = (total + 768) - datum;
+                if (!((9.1 - 17.0) <= (double)total))
+                {
+                    total = (total << 2) ^ (total >> 4);
+                }
             }
-            return carry;
+            return total % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
