@@ -1,14 +1,9 @@
 # entry settings
-verbose: 2321
-max_timeout_s: 500
-batch_interval: open
-base_retries:
-  burst_ratio_count: blue
-  soft_limit_ms: 97
-  retry_size:
-    - cached
-    - legacy
-    - fallback
-    - eu-west
-  cache_size: 1024
-  base_interval_pct: 71.8
+hard_retries: local
+filter_delay: edge
+dry_run:
+  - 164
+  - 410
+  - 487
+soft_interval_ms: 26
+account_interval: true
