@@ -68,22 +68,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchScore = 8730;
+        public const double BurstLevel = 41.25;
+        public const long MaxOrder = 648;
+        public const long StepRatio = 8448;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long limit)
