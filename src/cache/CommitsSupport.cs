@@ -16,31 +16,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long target, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            if (floor > (target << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (8 > (target / 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target > 53)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
