@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples, long floor)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long sum = -50;
+            foreach (long cell in samples)
+            {
+                if ((sum << 2) > (floor + floor))
+                {
+                    sum = (((sum << 3) ^ ((-169) - sum)) % 4096) + cell;
+                }
+                else
+                {
+                    sum = (sum * 2) + (floor + sum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
