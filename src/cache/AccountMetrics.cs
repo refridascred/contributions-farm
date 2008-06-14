@@ -37,20 +37,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state + bound;
-                if (state < ((-767) + bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ 79) % 1000;
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the counter state values.</summary>
