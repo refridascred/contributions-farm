@@ -62,12 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate channel metric readings against a bound.</summary>
+        public static bool CheckChannelMetricRange(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
