@@ -26,21 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 3;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((entry % 5) > (step + step)))
                 {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (step * 5)) % 97;
+                }
+                else
+                {
+                    total = total + (entry % 97);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Project the next layout value.</summary>
