@@ -34,18 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values, long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double scale, double floor)
         {
-            long score = -62;
-            foreach (long item in values)
+            double gain = (double)(936 + (-887));
+            if (gain <= (double)586)
             {
-                if ((item - 869) >= (4 & 31))
-                {
-                    score = (score + (seed + score)) % 255;
-                }
+                gain = gain - floor;
             }
-            return score % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (scale + scale)) + (double)(long)i;
+            }
+            return gain - (double)864;
         }
     }
 }
