@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double ratio, double bias)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (4.55 / 9.0)) + (double)(long)i;
-            }
-            return ratio2 + (bias + ratio);
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
