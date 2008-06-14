@@ -19,10 +19,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardRatio = 458;
-        public const long BaseWindow = 5291;
-        public const double DefaultRatio = 87.32;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 3509;
+        public const string SoftNotes = "latest-edge";
+        public const double CacheSpan = 90.6;
+        public const long LimitDepth = 318;
+        public const long BaseSize = 7517;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsOutliers(long[] items, long step)
