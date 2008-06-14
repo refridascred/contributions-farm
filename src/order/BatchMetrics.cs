@@ -63,18 +63,17 @@ namespace Common.Utilities
         public const double HardDepth = 1.55;
         public const long BaseLevel = 2156;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] items)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item >= (double)tally)
+                if (series[i] >= offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
