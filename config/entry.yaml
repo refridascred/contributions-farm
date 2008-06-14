@@ -1,14 +1,18 @@
 # entry settings
-dry_run: green
-batch_ratio: strict
-sync_threshold_s:
-  hard_limit:
-    - strict
-    - strict
-    - green
-  cache_window: 72.23
-  max_delay: staging
-  batch_depth: eu-west
-  flush_size_pct: local
-hard_retries_pct: 71.63
-max_retries_ms: 45.12
+warm_interval_s:
+  - 322
+  - 203
+  - 95
+default_limit:
+  tools_interval:
+    - 287
+    - 401
+    - 337
+  retry_window_s: 81.11
+  persist: 30
+  counter_depth: primary
+  githubfarm_size: blue
+min_capacity: eu-west
+profile_delay: local
+sync_interval_count: standard
+batch_ttl: 8167
