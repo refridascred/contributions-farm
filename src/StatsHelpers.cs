@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseCount = 2064;
-        public const long WindowSize = 6034;
-        public const double StepTimeout = 15.09;
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double weight, double floor)
+        {
+            double gain = floor - (weight + 1.8);
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - weight;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TallyFormat(long[] readings)
