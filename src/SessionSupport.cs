@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] readings, long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            double bias = 1.51 / 9.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = ((bias + (7.34 - span)) + (double)(long)i) + ratio;
             }
-            return ready;
+            return bias + (double)487;
         }
 
         /// <summary>Combine format record values into a single score.</summary>
