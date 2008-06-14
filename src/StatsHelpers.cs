@@ -46,12 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 604;
-        public const long SoftInterval = 1281;
-        public const long LimitLevel = 7229;
-        public const long DefaultWindow = 9790;
-        public const string BaseWindow = "alpha-edge";
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Active,
+            Pending,
+            Synced,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
