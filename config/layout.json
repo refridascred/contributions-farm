@@ -1,8 +1,15 @@
 {
-  "max_capacity": "strict",
-  "verbose": 87,
-  "idle_size_ms": false,
-  "tools_ttl": "stable",
-  "metric_retries": true,
-  "hard_timeout": [105, 87, 165]
+  "dry_run": 8354,
+  "default_ratio_s": {
+    "sync_capacity": true,
+    "report_retries": {
+      "payload_interval": "staging",
+      "base_interval_count": 19,
+      "max_limit_ms": false
+    },
+    "default_capacity": 94
+  },
+  "schema_threshold": true,
+  "persist": 22,
+  "max_window": "blue"
 }
