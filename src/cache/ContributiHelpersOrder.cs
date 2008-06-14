@@ -31,23 +31,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Derive the next token cluster value from a seed.</summary>
+        public static long RollTokenCluster(long floor)
         {
-            double mean = (scale + offset) / 3.0;
-            if (mean < (offset * 9.0))
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mean = mean - (scale / 3.0);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (((acc * 4) + (floor * 2)) % 4096) + (long)i2;
+                }
+                acc = acc - (60 ^ (long)i);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - scale) - (double)(long)i;
-            }
-            return mean - 4.0;
+            return acc;
         }
     }
 }
