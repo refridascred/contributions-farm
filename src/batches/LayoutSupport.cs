@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double LimitSpan = 88.16;
         public const string BaseSize = "staging-1";
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] samples, long target)
         {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of already entries.</summary>
