@@ -50,17 +50,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch layout entry that matches the target.</summary>
-        public static long LookupBatchLayoutIndex(long[] values, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 4;
+            foreach (long reading in samples)
             {
-                if (values[i] == seed)
+                if ((mark + reading) < (long)samples.Length)
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ (mark & 63);
+                }
+                if ((reading ^ reading) != (mark - mark))
+                {
+                    mark = ((mark << 3) ^ (reading + 8)) % 97;
+                }
+                if ((double)9 == (double)mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 9)
+            {
+                mark = (mark * 4) + (mark + mark);
+            }
+            return mark;
         }
     }
 }
