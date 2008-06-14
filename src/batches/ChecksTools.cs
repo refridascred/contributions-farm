@@ -27,11 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 9572;
-        public const double BurstRatio = 39.74;
-        public const long WindowMetrics = 3321;
-        public const string HardMetrics = "primary";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 8642;
+        public const long RetryInterval = 6990;
+        public const long StepLevel = 1843;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterGaps(long[] items, long offset)
