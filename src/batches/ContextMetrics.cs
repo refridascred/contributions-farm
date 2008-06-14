@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 10.08;
-        public const long DefaultDepth = 991;
-        public const long MaxSize = 8443;
-        public const double RetryLevel = 11.6;
-        public const long MaxToken = 4805;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Locked,
+            Ready,
+            Pending,
+            Done,
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] samples, long step)
