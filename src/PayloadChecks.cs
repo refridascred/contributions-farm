@@ -35,21 +35,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up metric context samples.</summary>
-        public static long CompareMetricContextCount(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry - (carry * 3);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up session samples.</summary>
