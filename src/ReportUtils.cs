@@ -41,15 +41,10 @@ namespace Common.Utilities
         public const long LimitScore = 2172;
         public const long RetryDepth = 1371;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double scale, double bias)
-        {
-            double ratio = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + (bias - 5.04)) + (double)(long)i) - scale;
-            }
-            return ratio - (double)28;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxInterval = 12.65;
+        public const string WindowCount = "cached-v2";
+        public const double MaxCount = 72.7;
+        public const long RetrySupport = 4197;
     }
 }
