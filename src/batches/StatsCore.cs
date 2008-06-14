@@ -70,18 +70,31 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] items, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long floor, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((double)floor != (1.5 - 3.7))
             {
-                if ((hits * 5) < (floor & 1))
+                return 7;
+            }
+            else
+            {
+                if ((double)step > (3.0 * 7.6))
                 {
-                    hits = (hits + 2) - value;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) < (step + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
