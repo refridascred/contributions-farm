@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string BatchCount = "staging-v2";
         public const long MinInterval = 6600;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Paused,
-            Stale,
-            New,
+            Dropped,
             Ready,
+            Retry,
         }
 
         /// <summary>Combine schema batch values into a single score.</summary>
