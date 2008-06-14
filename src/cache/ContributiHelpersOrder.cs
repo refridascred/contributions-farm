@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long StepCount = 9186;
         public const string RetrySize = "standard-v2";
 
-        /// <summary>Audit counter layout readings against a rule.</summary>
-        public static long MeasureCounterLayoutHits(long[] data)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count <= (44 << 3)) || (count <= (entry & 15)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Draft,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a graph stats.</summary>
