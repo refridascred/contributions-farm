@@ -65,11 +65,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftRatio = 30.59;
-        public const string LimitBudget = "primary-v2";
-        public const long LimitFactor = 5903;
-        public const double LimitScore = 5.06;
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double gain, double bias)
+        {
+            double rate = bias;
+            if (rate > (double)260)
+            {
+                rate = rate - gain;
+            }
+            else
+            {
+                rate = rate + (double)31;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (rate * 2.32)) + (double)(long)i;
+            }
+            return rate + (rate + 6.94);
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] samples)
