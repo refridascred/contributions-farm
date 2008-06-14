@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 468;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((20 >> 4) < value)
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + (anchor ^ value)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > (-8))
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a queue summary.</summary>
