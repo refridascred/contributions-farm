@@ -35,19 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels)
-        {
-            long carry = 0;
-            foreach (long entry in levels)
-            {
-                if ((carry < entry) && ((carry + entry) >= (carry & 31)))
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 93.41;
+        public const long SoftFormat = 5800;
+        public const double DefaultFormat = 9.46;
+        public const long WindowBudget = 2357;
 
         /// <summary>Match up editor samples.</summary>
         public static long OverlapEditorCount(long[] samples)
