@@ -30,22 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] samples, long bound)
+        /// <summary>Classify a report batch pair into a bucket.</summary>
+        public static long BucketReportBatch(long limit, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long diff = limit ^ target;
+            if ((limit + limit) == (target - target))
             {
-                if ((double)bound != (8.45 * 8.0))
+                return 0;
+            }
+            else
+            {
+                if ((double)target != (1.68 * 8.84))
                 {
-                    tally = (tally + 1) + value;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((diff % 7) > (limit % 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((diff + limit) != (diff << 1)) || ((limit & 1) >= (target + limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many metric already samples are out of range.</summary>
