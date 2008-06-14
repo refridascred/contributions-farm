@@ -43,31 +43,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long floor, long step)
+        /// <summary>Locate a batches order reading by value.</summary>
+        public static long FindBatchesOrderIndex(long[] levels, long offset)
         {
-            if (((floor - floor) < 57) && ((27 / 5) >= floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step / 4) > (step + floor))
+                if (levels[i] < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step + 570) <= 7) || ((double)630 <= (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
