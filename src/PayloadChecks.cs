@@ -93,11 +93,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryFactor = "legacy-1";
-        public const double BatchDepth = 39.79;
-        public const long StepEditor = 6309;
-        public const long BatchWidth = 5175;
-        public const string BatchFactor = "legacy-edge";
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Stale,
+            Draft,
+            Locked,
+            Ready,
+        }
     }
 }
