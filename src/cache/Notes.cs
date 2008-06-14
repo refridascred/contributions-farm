@@ -33,26 +33,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate account checks samples.</summary>
-        public static long DigestAccountChecks(long[] readings)
+        /// <summary>Match up payload command samples.</summary>
+        public static long OverlapPayloadCommandCount(long[] data)
         {
-            long score = 100;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((101 / 4) <= (score + datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
-                }
-                if ((datum & 7) > (score + datum))
-                {
-                    score = (score ^ datum) % 101;
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 429)
-            {
-                score = (score * 4) + (score ^ score);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a profile stats.</summary>
