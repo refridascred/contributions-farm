@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items)
         {
-            Draft,
-            Ready,
-            Locked,
-            Idle,
-            Pending,
+            long carry = 473;
+            foreach (long cell in items)
+            {
+                if (cell < (carry / 3))
+                {
+                    carry = (carry ^ cell) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
