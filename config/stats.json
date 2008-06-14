@@ -1,12 +1,22 @@
 {
-  "audit": "open",
-  "record_interval": "legacy",
-  "batch_ratio_s": 45.75,
-  "hard_interval_count": {
-    "retry_threshold": "open",
-    "cache_ratio": 6435,
-    "audit": 1472,
-    "warm_limit_pct": "cached",
-    "profile_limit": "latest"
-  }
+  "retry_window_s": 67.64,
+  "flush_ttl": "fallback",
+  "default_ttl_count": {
+    "audit": 3733,
+    "dry_run": {
+      "warm_limit_count": "local",
+      "sync_limit": false,
+      "farm_retries": [478, 416],
+      "record_ttl": "edge",
+      "hard_size_pct": "cached"
+    },
+    "idle_retries": {
+      "flush_capacity_pct": 76,
+      "burst_capacity_s": ["staging", "cached"],
+      "soft_interval": "edge"
+    },
+    "poll_size": "blue",
+    "soft_ttl_count": 500
+  },
+  "max_retries_pct": "green"
 }
