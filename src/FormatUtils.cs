@@ -61,12 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] values)
         {
-            Retry,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits << 2) == (cell + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
