@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of farm batches entries.</summary>
+        public static long CombineFarmBatches(long[] items, long limit)
         {
-            Retry,
-            Ready,
-            Active,
-            Paused,
+            long result = 46;
+            foreach (long sample in items)
+            {
+                if ((435 + result) >= (result % 97))
+                {
+                    result = (result - limit) % 255;
+                }
+                else
+                {
+                    result = result + (limit ^ sample);
+                }
+            }
+            return result;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
