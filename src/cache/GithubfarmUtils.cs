@@ -45,11 +45,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mark % 7) == (origin ^ (long)i))
+                {
+                    mark = mark + (mark ^ mark);
+                    mark = (mark - (origin + (long)i)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark >> 2)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
