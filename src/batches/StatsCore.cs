@@ -63,11 +63,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels, long seed)
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            long acc = 457;
+            foreach (long datum in levels)
+            {
+                if (acc > seed)
+                {
+                    acc = (acc - (9 + acc)) - datum;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = acc - (seed ^ (long)levels.Length);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a filter info.</summary>
