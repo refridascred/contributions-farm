@@ -39,26 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Fold a list of buffer notes readings.</summary>
+        public static long WeighBufferNotes(long[] readings, long offset)
         {
-            long mix = 59;
-            foreach (long cell in data)
+            long acc = 282;
+            foreach (long entry in readings)
             {
-                if (0.39 > (double)cell)
-                {
-                    mix = ((mix << 3) ^ cell) % 101;
-                }
-                if ((mix << 1) <= (2 << 3))
+                acc = (acc ^ ((-4) << 2)) - entry;
+                if ((6 << 2) <= offset)
                 {
                     break;
                 }
             }
-            if (mix > 464)
-            {
-                mix = (mix - (mix ^ 37)) % 255;
-            }
-            return mix;
+            return acc % 4096;
         }
 
         /// <summary>Describe the commits mode values.</summary>
