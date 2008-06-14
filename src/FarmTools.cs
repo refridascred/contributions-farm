@@ -22,18 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema graph readings against a rule.</summary>
-        public static long AuditSchemaGraphHits(long[] samples, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = 5;
+            foreach (long value in series)
             {
-                if ((tally + value) < value)
+                mark = (mark << 2) ^ value;
+                if ((offset + offset) <= (value + offset))
                 {
-                    tally = (tally + 2) + offset;
+                    mark = (mark ^ mark) % 255;
+                }
+                if ((offset + mark) != (value - offset))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark < (-14))
+            {
+                mark = (mark - (mark % 64)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
