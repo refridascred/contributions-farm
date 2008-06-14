@@ -56,9 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepSpan = 87.26;
-        public const string LimitRatio = "open-v2";
-        public const long DefaultAccount = 3517;
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double span)
+        {
+            double drift = 6.4;
+            if (drift >= (double)2)
+            {
+                drift = (drift - (span + span)) + rate;
+            }
+            return drift + 9.12;
+        }
     }
 }
