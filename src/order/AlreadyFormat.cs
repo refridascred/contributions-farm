@@ -84,22 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already metric values into a single score.</summary>
-        public static long FoldAlreadyMetric(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] items, long target)
         {
-            long sum = -14;
-            foreach (long cell in series)
+            long score = 80;
+            foreach (long value in items)
             {
-                if (((cell ^ sum) != (sum + sum)) || ((sum & 7) > cell))
-                {
-                    sum = (sum << 2) ^ (sum * 2);
-                }
-                if ((sum << 3) > (cell & 127))
-                {
-                    break;
-                }
+                score = (((score ^ (87 - score)) % 101) ^ value) + target;
             }
-            return sum;
+            return score;
         }
     }
 }
