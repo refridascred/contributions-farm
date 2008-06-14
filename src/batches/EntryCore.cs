@@ -59,15 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] samples)
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long AuditNotesChannelHits(long[] series)
         {
             long hits = 0;
-            foreach (long entry in samples)
+            foreach (long entry in series)
             {
-                if ((((double)entry < (6.69 * 5.9)) || ((entry + hits) >= (560 - entry))) && (20.0 < (double)hits))
+                if (((long)series.Length - (long)series.Length) != (entry >> 3))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
                 }
             }
             return hits;
