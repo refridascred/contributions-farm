@@ -45,19 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] data, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (entry != seed)
+                if (entry != origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
