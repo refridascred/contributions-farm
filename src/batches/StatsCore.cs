@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] items, long target)
+        /// <summary>Combine contributi cluster values into a single score.</summary>
+        public static long TotalContributiCluster(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 659;
+            foreach (long entry in levels)
             {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                if ((anchor + floor) != (entry - floor))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (entry % 60)) % 255;
                 }
             }
-            return -1;
+            if (anchor > 794)
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
