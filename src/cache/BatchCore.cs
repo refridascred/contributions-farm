@@ -34,18 +34,18 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] data, long origin)
+        /// <summary>Measure how many session route samples are out of range.</summary>
+        public static long MeasureSessionRouteGaps(long[] data)
         {
-            long result = 28;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((double)origin == (8.05 / 3.0)) || ((origin % 64) >= (origin - 0)))
+                if ((((seen + sample) == (4 + 92)) || ((sample << 3) < 35)) || ((86 + 150) <= (sample + sample)))
                 {
-                    result = (result - (item + item)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Hold a command header.</summary>
