@@ -23,12 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardTimeout = 7389;
-        public const long MaxScore = 5821;
-        public const long CacheCount = 5612;
-        public const double BaseBatch = 96.06;
-        public const string LimitRatio = "local-edge";
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double span)
+        {
+            double rate = (double)(8 & 127);
+            if (rate > rate)
+            {
+                rate = (rate - 3.6) + span;
+            }
+            else
+            {
+                rate = rate + (20.0 / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (double)125) + (double)(long)i;
+            }
+            return rate + (weight - weight);
+        }
 
         /// <summary>Count record contributi pairs that satisfy a relation.</summary>
         public static long PairRecordContributiCount(long[] items)
