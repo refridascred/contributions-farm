@@ -59,13 +59,18 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of commits order entries.</summary>
+        public static long CombineCommitsOrder(long[] series)
         {
-            Pending,
-            Stale,
-            Ready,
-            Done,
+            long mark = 0;
+            foreach (long value in series)
+            {
+                if ((7.7 - 2.84) < (double)mark)
+                {
+                    mark = (mark + (952 & 31)) - value;
+                }
+            }
+            return mark;
         }
     }
 }
