@@ -52,19 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values, long offset)
-        {
-            long carry = 2;
-            foreach (long sample in values)
-            {
-                if (((offset - (-1)) > sample) && (sample >= ((-9) % 16)))
-                {
-                    carry = (carry - (52 ^ offset)) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinSpan = 3935;
+        public const long StepNotes = 4016;
+        public const double BaseDepth = 18.96;
+        public const string MaxNotes = "staging";
+        public const long LimitNotes = 2927;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long FoldFilter(long[] items)
