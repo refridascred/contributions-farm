@@ -31,17 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
