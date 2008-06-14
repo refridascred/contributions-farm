@@ -48,23 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double gain, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] levels, long origin)
         {
-            double drift = (double)7 + 9.73;
-            if (drift < (7.31 / 3.0))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                drift = (drift - offset) + gain;
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)(-15);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 1.5) + (double)(long)i;
-            }
-            return drift + (drift + 3.0);
+            return valid;
         }
     }
 }
