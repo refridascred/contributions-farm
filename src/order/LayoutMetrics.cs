@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double scale, double span)
         {
-            Dropped,
-            Stale,
-            Pending,
+            double bias = (scale * 3.38) / 6.0;
+            if (bias < bias)
+            {
+                bias = (bias + (double)598) + span;
+            }
+            return bias - 8.01;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
