@@ -30,11 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
