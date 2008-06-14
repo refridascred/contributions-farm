@@ -23,10 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "cached";
-        public const long LimitBatches = 2201;
-        public const long BurstBatches = 7354;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
