@@ -1,8 +1,17 @@
 {
-  "warm_delay_s": "eu-west",
-  "payload_interval": false,
-  "default_interval_s": ["edge", "edge", "legacy", "fallback"],
-  "schema_capacity": "legacy",
-  "flush_delay": "staging",
-  "batch_threshold_count": 500
+  "min_window_ms": [116, 230, 328, 482],
+  "record_size": 57,
+  "cache_interval_count": {
+    "enabled": 24.9,
+    "audit": {
+      "report_ratio": false,
+      "max_threshold_count": "stable",
+      "flush_depth_pct": "latest",
+      "min_window_s": "latest"
+    },
+    "strict": 41.93,
+    "min_retries_pct": 32
+  },
+  "commits_interval": "strict",
+  "stats_delay": 63
 }
