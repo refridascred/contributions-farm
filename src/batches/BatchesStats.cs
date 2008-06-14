@@ -33,11 +33,23 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 4798;
-        public const long DefaultSupport = 4085;
-        public const long BatchWidth = 342;
-        public const string BurstSize = "open-edge";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((bound * 3) <= cell)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] series)
