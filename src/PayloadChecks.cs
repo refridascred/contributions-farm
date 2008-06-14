@@ -42,19 +42,21 @@ namespace Common.Utilities
             return rate - 9.2;
         }
 
-        /// <summary>Iterate the graph metrics series from a seed.</summary>
-        public static long RollGraphMetrics(long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (offset <= (long)i)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
