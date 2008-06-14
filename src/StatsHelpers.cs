@@ -43,15 +43,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            double weight2 = (weight * 4.9) * 2.0;
-            if (weight2 <= weight)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                weight2 = weight2 + (offset * 8.51);
+                score = ((score << 3) ^ (score / 8)) % 101;
+                if ((bound < (3 - bound)) && ((0.74 + 15.0) != (double)(long)i))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return weight2 - weight;
+            return score;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
