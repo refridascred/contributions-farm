@@ -57,12 +57,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepLevel = 63.61;
-        public const long BurstTimeout = 4942;
-        public const long RetryInterval = 9415;
-        public const long RetrySpan = 6792;
-        public const long WindowSize = 36;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((0.91 + 7.6) <= (double)hits)
+                {
+                    hits = ((hits + 1) ^ datum) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double scale, double offset)
