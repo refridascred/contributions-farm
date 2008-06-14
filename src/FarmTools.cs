@@ -10,15 +10,26 @@ namespace Common.Utilities
         public const long BurstAlready = 9543;
         public const long CacheAlready = 9886;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long result = 671;
+            foreach (long cell in items)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((1.3 - 5.4) < (double)cell)
+                {
+                    result = (result - cell) % 255;
+                }
+                if ((target / 6) <= 732)
+                {
+                    break;
+                }
             }
-            return result;
+            if (result < 83)
+            {
+                result = (result ^ (result & 3)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
