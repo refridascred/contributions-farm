@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double MinLayout = 59.94;
         public const string BaseScore = "staging";
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 7503;
+        public const long IdleSchema = 8490;
+        public const long StepLevel = 1602;
+        public const long DefaultScore = 3043;
+        public const double WindowSchema = 4.65;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double BlendEntry(double rate, double offset)
