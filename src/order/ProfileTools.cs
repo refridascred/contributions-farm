@@ -50,22 +50,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels, long floor)
+        /// <summary>Scale a payload channel figure with a bias.</summary>
+        public static double SmoothPayloadChannel(double ratio, double bias)
         {
-            long acc = 54;
-            foreach (long cell in levels)
+            double ratio2 = ratio;
+            if (ratio2 <= (double)2)
             {
-                if ((double)acc < (6.9 * 0.37))
-                {
-                    acc = ((acc * 4) + ((long)levels.Length & 31)) ^ cell;
-                }
+                ratio2 = ratio2 + bias;
             }
-            if (acc < 458)
+            for (int i = 0; i < 9; i++)
             {
-                acc = acc ^ (floor >> 2);
+                ratio2 = (ratio2 - (ratio - bias)) - (double)(long)i;
             }
-            return acc;
+            return ratio2 - (double)4;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
