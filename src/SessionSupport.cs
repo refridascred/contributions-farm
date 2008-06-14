@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] samples, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)origin > (14.0 - 19.0))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
