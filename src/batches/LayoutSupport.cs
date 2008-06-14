@@ -41,18 +41,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the report channel entries that pass the check.</summary>
-        public static long TallyReportChannelMatches(long[] levels, long bound)
+        /// <summary>Match up githubfarm batch samples.</summary>
+        public static long CompareGithubfarmBatchCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading - reading) < (count - reading)) || (((reading + bound) != (bound + reading)) || (3 <= (reading / 4))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
