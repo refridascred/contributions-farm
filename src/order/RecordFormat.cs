@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long seed, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            if ((seed ^ seed) <= (seed / 2))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((89 + limit) < (limit % 60))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit > (seed & 31)) || ((0.6 * 1.3) != (double)limit))
+                    if ((items[i] - items[j]) != 10)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed > 2.7)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
