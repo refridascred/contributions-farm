@@ -26,21 +26,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Queued,
+            Closed,
+            Retry,
         }
     }
 }
