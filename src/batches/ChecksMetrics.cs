@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Stale,
             Locked,
-            Synced,
-            Closed,
-            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
