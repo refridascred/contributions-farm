@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Scale a cluster tools figure with a bias.</summary>
+        public static double ProjectClusterTools(double scale, double span)
         {
-            Locked,
-            Ready,
-            Pending,
-            Done,
+            double mean = (double)516 / 3.0;
+            if (mean >= 4.0)
+            {
+                mean = (mean - scale) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (1.6 - mean);
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
