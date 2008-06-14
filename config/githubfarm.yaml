@@ -1,30 +1,5 @@
 # githubfarm settings
-counter_ttl: 81.06
-idle_threshold_ms: 75.97
-cache_retries: false
-tools_window:
-  cache_ttl_s:
-    readonly: green
-    max_threshold_ms: 3
-    enabled: primary
-  record_timeout:
-    - green
-    - standard
-  enabled:
-    - open
-    - staging
-  strict: 33.85
-  cluster_ratio:
-    hard_capacity_ms: 250
-    stats_ttl: false
-    audit: 1024
-    persist: latest
-    default_delay_pct: eu-west
-    poll_delay_ms: 8
-default_interval_s:
-  warm_limit_pct: 30
-  enabled: true
-  window_timeout: 86.53
-  max_threshold_ms: 6
-  retry_size: legacy
-  hard_interval_pct: 72
+flush_ttl: 1250
+flush_ttl_ms: 8868
+flush_threshold_ms: cached
+max_limit_ms: 500
