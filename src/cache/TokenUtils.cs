@@ -23,12 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            Closed,
+            Dropped,
+            Pending,
         }
     }
 }
