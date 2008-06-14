@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] items, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a payload options.</summary>
