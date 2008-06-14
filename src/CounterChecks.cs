@@ -71,12 +71,31 @@ namespace Common.Utilities
             return gain + (double)3;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long offset)
         {
-            Pending,
-            New,
-            Stale,
+            if ((origin >> 3) < offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset << 2) <= (origin + 627))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1.3 * 1.42) != (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the contributi metrics entries that pass the check.</summary>
