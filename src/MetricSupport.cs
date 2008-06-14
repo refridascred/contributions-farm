@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch contributi entries that pass the check.</summary>
-        public static long TallyBatchContributiHits(long[] series, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long anchor = 730;
+            foreach (long entry in series)
             {
-                if ((636 + offset) > (913 - cell))
+                if ((entry / 2) < (76 + (long)series.Length))
                 {
-                    count = count + 3;
+                    anchor = (anchor + ((-720) >> 1)) % 65521;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the channel level values.</summary>
