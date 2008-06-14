@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every report cluster entry stays within the limit.</summary>
-        public static bool CheckReportClusterLimits(long[] levels, long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
