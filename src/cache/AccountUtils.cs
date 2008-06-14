@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph window entries.</summary>
-        public static long ScoreGraphWindow(long[] items, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] readings)
         {
-            long state = 2;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                state = ((state << 3) ^ (bound * 5)) + entry;
+                if ((entry <= (entry + entry)) && ((matches + matches) >= (entry / 7)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
