@@ -67,20 +67,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next commits already value from a seed.</summary>
-        public static long RollCommitsAlready(long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long acc = 2;
+            foreach (long item in items)
             {
-                if ((6.64 - 7.9) < (double)target)
+                acc = acc ^ item;
+                if ((14.0 * 0.1) == (double)item)
                 {
-                    result = result + (result << 1);
-                    result = ((result * 4) + (long)i) % 101;
+                    acc = (acc - (acc / 3)) % 97;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
     }
 }
