@@ -36,23 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema batch values into a single score.</summary>
-        public static long DigestSchemaBatch(long[] series)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long mark = -9;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - (20 << 1)) % 65521;
-                if ((mark + mark) <= (mark >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 3) + mark) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (value / 8)) % 1000;
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
