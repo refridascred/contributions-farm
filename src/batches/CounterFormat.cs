@@ -18,26 +18,11 @@ namespace Common.Utilities
         public const long LimitReport = 2118;
         public const long BurstSpan = 9214;
 
-        /// <summary>Combine already counter values into a single score.</summary>
-        public static long FoldAlreadyCounter(long[] series, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long carry = 742;
-            foreach (long cell in series)
-            {
-                if ((61 + bound) < 0)
-                {
-                    carry = ((carry << 2) ^ (carry ^ 6)) % 1000;
-                }
-                if ((double)cell >= (double)bound)
-                {
-                    break;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = ((carry * 5) + (carry & 255)) % 97;
-            }
-            return carry;
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
