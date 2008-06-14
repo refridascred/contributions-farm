@@ -1,22 +1,10 @@
 # entry settings
-profile_interval: 60
-sync_ttl_pct: 18.01
-warm_threshold_s: primary
-cache_timeout: 500
-cache_threshold_pct:
-  soft_depth_s:
-    - 71
-    - 435
-    - 195
-    - 144
-  flush_capacity_pct:
-    - 302
-    - 371
-    - 332
-  cache_window_s: cached
-  cache_window_count: 100
-hard_ttl_ms:
-  - 443
-  - 166
-  - 465
-  - 361
+persist: false
+burst_size_ms:
+  - 489
+  - 216
+  - 433
+  - 26
+hard_timeout: 2423
+compress: 11
+default_delay: true
