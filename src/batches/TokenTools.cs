@@ -47,22 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] items, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long anchor = 928;
-            foreach (long entry in items)
-            {
-                if (((entry >> 2) < entry) && ((double)target == (11.0 - 4.0)))
-                {
-                    anchor = (anchor + (anchor - target)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ target;
-                }
-            }
-            return anchor;
+            Dropped,
+            Closed,
+            Ready,
         }
     }
 }
