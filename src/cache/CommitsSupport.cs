@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series, long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample >> 4) <= (sample - matches))
-                {
-                    matches = (matches + 1) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Adjust a farm githubfarm reading.</summary>
