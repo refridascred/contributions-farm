@@ -28,19 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account githubfarm entry stays within the limit.</summary>
-        public static bool VerifyAccountGithubfarmRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseDepth = 6520;
+        public const long MaxChecks = 7266;
+        public const long DefaultChecks = 1063;
+        public const long BaseChecks = 6417;
+        public const long BurstCount = 6942;
     }
 }
