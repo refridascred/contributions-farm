@@ -57,11 +57,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftCount = 34.13;
-        public const long WindowFilter = 3421;
-        public const long StepTimeout = 7677;
-        public const double DefaultFilter = 63.35;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowLimits(long[] series, long limit)
