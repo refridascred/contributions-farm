@@ -12,17 +12,12 @@ namespace Common.Utilities
             return ratio + (scale + 0.1);
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
