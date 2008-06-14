@@ -85,39 +85,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long origin, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            long next = origin ^ target;
-            if ((double)next <= 9.15)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (next > origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(target >= (next + 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target << 1) > next)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
