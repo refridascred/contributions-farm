@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Locked,
-            Idle,
             Done,
-            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
