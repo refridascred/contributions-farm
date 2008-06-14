@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long SoftFactor = 8103;
         public const long DefaultCommits = 4370;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardScore = 9459;
+        public const string StepSupport = "alpha-edge";
+        public const long LimitSupport = 72;
+        public const long IdleSupport = 8983;
 
         /// <summary>Roll a batches session counter forward.</summary>
         public static long RollBatchesSession(long seed)
