@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] values, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (1.37 > (double)datum)
+                if ((count / 7) < (cell + cell))
                 {
-                    hits = (hits + 3) + offset;
+                    count = (count + 1) + floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the filter class values.</summary>
