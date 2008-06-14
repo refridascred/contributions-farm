@@ -28,15 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
