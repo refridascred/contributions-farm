@@ -1,10 +1,26 @@
 # support settings
-filter_retries: 37.2
-max_size_pct: 30
-poll_threshold_s: false
-max_delay: blue
-order_window:
-  - standard
-  - standard
-  - latest
-channel_limit: 5882
+base_delay_s: 10
+default_window_ms:
+  - 104
+  - 345
+  - 209
+hard_window_ms:
+  persist: true
+  batch_retries:
+    - green
+    - standard
+    - green
+    - cached
+  batch_depth_s:
+    - 43
+    - 411
+  hard_interval_s:
+    base_threshold: 62
+    batch_retries: 58
+    order_interval: 22.11
+    warm_size: cached
+    hard_retries: 1024
+  default_limit: 84.75
+dry_run: blue
+soft_ratio_ms: 9216
+entry_window: true
