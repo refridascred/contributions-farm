@@ -26,11 +26,14 @@ namespace Common.Utilities
         public const string BurstGithubfarm = "staging-edge";
         public const double IdleGithubfarm = 23.3;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleSize = 9082;
-        public const long BatchCluster = 8824;
-        public const long StepCluster = 6881;
-        public const long LimitRatio = 191;
-        public const string HardCluster = "fallback-edge";
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Synced,
+            Queued,
+            New,
+            Dropped,
+            Failed,
+        }
     }
 }
