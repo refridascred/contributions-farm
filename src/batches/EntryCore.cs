@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series, long target)
         {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            long mark = 20;
+            foreach (long entry in series)
+            {
+                mark = ((mark + target) % 255) ^ entry;
+            }
+            if (mark < 19)
+            {
+                mark = (mark ^ (target - (-56))) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
