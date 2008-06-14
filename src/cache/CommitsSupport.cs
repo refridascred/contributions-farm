@@ -43,17 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] readings, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
