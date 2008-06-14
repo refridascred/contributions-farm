@@ -13,21 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 7;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ value) % 65521) - bound;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
