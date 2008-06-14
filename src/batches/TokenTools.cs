@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchCount = 9014;
-        public const double StepSize = 50.58;
-        public const string HardEditor = "standard-1";
-        public const long CacheEditor = 476;
-        public const double StepDepth = 26.06;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long DeriveSchema(long origin)
