@@ -22,19 +22,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double gain, double offset)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            double weight = offset / 7.0;
-            if (weight <= weight)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (weight + offset);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - 7.9) + (double)(long)i;
-            }
-            return weight - gain;
+            return hits;
         }
     }
 }
