@@ -63,13 +63,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long AuditFormatLayoutMatches(long[] series)
         {
-            Synced,
-            Closed,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((((double)(long)series.Length > (double)tally) || ((tally - tally) > tally)) || ((((-67) + 8) > (tally % 7)) && ((8.9 * 8.0) <= (double)datum)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
