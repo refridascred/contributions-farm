@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] readings, long floor)
+        /// <summary>Check that every report cluster entry stays within the limit.</summary>
+        public static bool CheckReportClusterLimits(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                if (entry >= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Roll a session window counter forward.</summary>
