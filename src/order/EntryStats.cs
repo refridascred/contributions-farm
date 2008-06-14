@@ -33,18 +33,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] samples, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double mean = rate - (3.6 - rate);
+            if (mean <= (double)6)
             {
-                if ((-770) <= cell)
-                {
-                    tally = (tally + 2) - seed;
-                }
+                mean = mean - (floor + mean);
             }
-            return tally;
+            return mean + (double)5;
         }
 
         /// <summary>Describe the window level values.</summary>
