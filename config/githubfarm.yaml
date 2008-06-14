@@ -1,4 +1,4 @@
 # githubfarm settings
-base_capacity_ms: 500
-audit: true
-retry_interval: 1.25
+sync_depth_ms: stable
+retry_size_count: 100
+min_interval: 30
