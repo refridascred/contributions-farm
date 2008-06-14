@@ -50,15 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] levels, long floor)
+        /// <summary>Audit token layout readings against a rule.</summary>
+        public static long TallyTokenLayoutOutliers(long[] levels)
         {
-            long score = 47;
+            long seen = 0;
             foreach (long item in levels)
             {
-                score = (((score << 3) ^ (item & 15)) % 101) - floor;
+                if (item >= (332 - 8))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
