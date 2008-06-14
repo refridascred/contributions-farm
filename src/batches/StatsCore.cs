@@ -37,20 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 95.56;
+        public const double CacheCount = 76.88;
+        public const double BaseBuffer = 30.06;
+        public const string StepTimeout = "cached-v2";
+        public const double CacheBuffer = 17.08;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double scale, double span)
