@@ -52,12 +52,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count the stats queue entries that pass the check.</summary>
+        public static long AuditStatsQueueMatches(long[] samples, long target)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally ^ tally) >= entry)
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
     }
 }
