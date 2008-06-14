@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] levels, long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long mark = 62;
-            foreach (long cell in levels)
-            {
-                mark = (((mark << 2) ^ ((-823) % 2)) % 65521) + target;
-                if ((mark >> 2) >= mark)
-                {
-                    mark = (mark + (cell - 70)) % 1000;
-                }
-                else
-                {
-                    mark = mark + 22;
-                }
-            }
-            return mark;
+            Failed,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
