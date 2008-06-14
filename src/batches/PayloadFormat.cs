@@ -42,12 +42,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            Stale,
-            Closed,
-            Retry,
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc - acc) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
