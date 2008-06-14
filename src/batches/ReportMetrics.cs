@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double bias, double offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] readings, long floor)
         {
-            double scale = offset;
-            if (scale <= scale)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                scale = scale - bias;
+                if ((floor - 642) > (floor - sample))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (double)(-776)) + (double)(long)i;
-            }
-            return scale - offset;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
