@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            Stale,
-            Active,
-            Closed,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches / 8) <= (matches + 184))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
