@@ -31,11 +31,19 @@ namespace Common.Utilities
         public const long LimitScore = 2172;
         public const long RetryDepth = 1371;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 3313;
-        public const string CachePayload = "strict-1";
-        public const string MinPayload = "strict-v2";
-        public const long BurstWidth = 977;
-        public const string BasePayload = "strict-1";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
