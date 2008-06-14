@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long floor, long bound)
         {
-            long score = 317;
-            foreach (long value in data)
+            long span = floor ^ bound;
+            if ((double)span <= (4.8 + 0.79))
             {
-                score = (score - (score - 98)) + value;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (8.84 > (double)span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((3.48 * 6.7) <= (double)span) && ((171 + span) > span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((501 - 4) < bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
