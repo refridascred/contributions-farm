@@ -47,28 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long mark = -3;
-            foreach (long value in samples)
-            {
-                if ((0.08 <= (double)value) || ((1.16 - 7.01) <= (double)value))
-                {
-                    mark = (mark + 247) % 101;
-                }
-                else
-                {
-                    long cur = (value + mark) + mark;
-                    mark = (mark * 5) + (cur + 0);
-                }
-                mark = (mark + (mark + mark)) % 65521;
-            }
-            if (mark < 93)
-            {
-                mark = (mark - (mark - mark)) % 255;
-            }
-            return mark % 1000;
+            Pending,
+            Done,
+            Draft,
         }
     }
 }
