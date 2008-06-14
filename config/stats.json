@@ -1,6 +1,6 @@
 {
-  "default_retries_s": 1024,
-  "entry_interval": 2818,
-  "cache_interval": 8275,
-  "retry_window_ms": 3551
+  "min_size": 2562,
+  "min_timeout": "fallback",
+  "sync_timeout": 1250,
+  "base_interval_count": [55, 478]
 }
