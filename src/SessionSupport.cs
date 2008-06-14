@@ -36,21 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (hits < (seed ^ seed))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + item;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
