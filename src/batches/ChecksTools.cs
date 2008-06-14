@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardEntry = "local-1";
-        public const long RetryEntry = 6075;
-        public const long CacheLevel = 8565;
-        public const double LimitTimeout = 13.39;
-        public const double BatchEntry = 98.71;
+        /// <summary>Blend two window stream measurements.</summary>
+        public static double SmoothWindowStream(double weight, double bias)
+        {
+            double rate = (double)(503 / 5);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate - (rate / 7.0)) - (double)(long)i) - weight;
+            }
+            return rate - bias;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] samples)
