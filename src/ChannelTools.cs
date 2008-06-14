@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long limit, long origin)
         {
-            long carry = 99;
-            foreach (long item in samples)
+            long cur = limit - origin;
+            if (origin >= (limit - cur))
             {
-                carry = ((carry * 4) + (carry * 3)) ^ item;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((14.0 / 6.0) <= (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
