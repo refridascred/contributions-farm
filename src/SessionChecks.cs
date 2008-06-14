@@ -20,21 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item < target)
                 {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Grade a format buffer value against two limits.</summary>
