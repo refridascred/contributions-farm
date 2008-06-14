@@ -16,22 +16,13 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long score = 8;
-            foreach (long cell in series)
-            {
-                if (1 >= (cell / 5))
-                {
-                    score = score - score;
-                }
-                if ((72 ^ (-556)) >= cell)
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
