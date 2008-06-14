@@ -1,8 +1,16 @@
 {
-  "soft_size_count": 250,
-  "base_interval": 69,
-  "strict": "fallback",
-  "enabled": "strict",
-  "batch_limit_count": "open",
-  "idle_ttl_pct": 48.24
+  "cache_ratio_count": {
+    "record_capacity": "fallback",
+    "cache_delay": 38,
+    "sync_ttl_s": {
+      "min_limit_pct": false,
+      "hard_interval": true,
+      "retry_timeout": "local"
+    },
+    "readonly": "strict",
+    "verbose": 14.64
+  },
+  "verbose": 22.23,
+  "hard_limit": 76.72,
+  "flush_limit_s": [359, 174, 80, 57]
 }
