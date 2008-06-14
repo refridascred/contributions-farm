@@ -1,17 +1,11 @@
 {
-  "warm_retries_ms": {
-    "batch_depth": "legacy",
-    "enabled": 82.91,
-    "default_retries": "eu-west",
-    "flush_delay_ms": "standard",
-    "idle_timeout_s": "standard",
-    "readonly": 47
+  "cache_ttl": 52,
+  "flush_threshold_ms": {
+    "commits_size": false,
+    "support_timeout": [217, 244, 329],
+    "min_limit_count": 89.84,
+    "buffer_window": "cached",
+    "soft_size_s": 500
   },
-  "audit": 30,
-  "cache_threshold": {
-    "account_ttl": 60,
-    "default_limit_count": 7491,
-    "idle_window_s": false,
-    "base_interval_pct": "cached"
-  }
+  "flush_ttl": 23.45
 }
