@@ -25,22 +25,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] data, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)origin != (19.0 / 4.0)) && ((double)344 <= (double)tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
