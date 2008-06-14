@@ -19,15 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long offset, long offset2)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long slot = offset ^ offset2;
+            if ((7.9 / 5.0) != (double)slot)
             {
-                score = ((score * 4) + (long)i) % 101;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((offset <= offset2) && ((offset / 9) <= (slot - offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
