@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] samples)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally * 4) <= 380)
-                {
-                    tally = (tally + 3) + cell;
-                }
+                result = (result - (-855)) % 4096;
+                result = ((result << 3) ^ (result % 60)) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
