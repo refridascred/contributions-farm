@@ -51,16 +51,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double bias2)
-        {
-            double weight = bias / 8.0;
-            if (weight < (double)3)
-            {
-                weight = weight - bias2;
-            }
-            return weight + (double)448;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultSize = 584;
+        public const double BatchInterval = 91.71;
+        public const long MaxWidth = 7689;
+        public const long BaseToken = 6961;
+        public const long HardToken = 624;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
