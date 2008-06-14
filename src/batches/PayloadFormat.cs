@@ -30,21 +30,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Fold a list of channel queue readings.</summary>
+        public static long TallyChannelQueue(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -725;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark ^ (mark + sample)) % 255) + (long)i;
+                }
+                mark = ((mark * 4) + limit) % 101;
+                if (((4.9 - 12.0) >= (double)limit) && (((-54) ^ limit) >= 22))
+                {
+                    mark = (mark - (mark - 342)) % 101;
+                }
+                if ((mark % 7) < (3 + limit))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
