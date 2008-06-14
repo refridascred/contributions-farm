@@ -1,4 +1,9 @@
 # entry settings
-poll_ratio_count: stable
-burst_window_pct: strict
-strict: false
+support_depth:
+  - 211
+  - 453
+  - 70
+sync_interval_ms: latest
+readonly: 48
+session_threshold: open
+warm_limit_count: 7443
