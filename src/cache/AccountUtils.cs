@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            Retry,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Roll a route counter forward.</summary>
