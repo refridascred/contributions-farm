@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine payload schema values into a single score.</summary>
-        public static long DigestPayloadSchema(long[] readings, long offset)
+        /// <summary>Count the buffer commits entries that pass the check.</summary>
+        public static long CountBufferCommitsOutliers(long[] values)
         {
-            long acc = -963;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                acc = (acc + offset) + reading;
-                acc = (acc - (acc << 2)) % 1000;
-                acc = (acc - (offset * 2)) % 4096;
+                if ((95 & 63) < datum)
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Digest a series of session entries.</summary>
