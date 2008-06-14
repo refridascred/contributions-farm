@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 7264;
-        public const long CacheTimeout = 8158;
-        public const string BaseLevel = "staging";
-        public const long StepSupport = 7817;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double bias, double bias2)
