@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache command readings against a bound.</summary>
-        public static bool VerifyCacheCommandLimits(long[] samples, long bound)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a farm entry.</summary>
