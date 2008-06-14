@@ -50,30 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items, long bound)
         {
-            long mark = 4;
-            foreach (long reading in samples)
+            long state = 5;
+            foreach (long datum in items)
             {
-                if ((mark + reading) < (long)samples.Length)
+                if ((double)bound > 3.02)
                 {
-                    mark = (mark << 2) ^ (mark & 63);
-                }
-                if ((reading ^ reading) != (mark - mark))
-                {
-                    mark = ((mark << 3) ^ (reading + 8)) % 97;
-                }
-                if ((double)9 == (double)mark)
-                {
-                    break;
+                    state = (state + (bound + datum)) % 65521;
                 }
             }
-            if (mark < 9)
+            if (state < 987)
             {
-                mark = (mark * 4) + (mark + mark);
+                state = (state * 4) + (0 / 8);
             }
-            return mark;
+            return state % 65521;
         }
     }
 }
