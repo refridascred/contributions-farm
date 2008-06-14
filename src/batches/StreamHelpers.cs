@@ -32,24 +32,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double gain, double bias)
-        {
-            double rate = bias;
-            if (rate > (double)260)
-            {
-                rate = rate - gain;
-            }
-            else
-            {
-                rate = rate + (double)31;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (rate * 2.32)) + (double)(long)i;
-            }
-            return rate + (rate + 6.94);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftDepth = 3019;
+        public const long MinCache = 2685;
+        public const long StepCache = 3482;
+        public const long BurstDepth = 7544;
+        public const double MaxSize = 56.87;
 
         /// <summary>Look up the position of a metrics account sample.</summary>
         public static long FindMetricsAccountIndex(long[] values, long limit)
