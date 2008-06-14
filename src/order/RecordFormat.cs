@@ -54,19 +54,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data, long limit)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long origin)
         {
-            long state = 369;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state ^ (state + state)) % 255) ^ reading;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 324)
-            {
-                state = (state + limit) % 1000;
-            }
-            return state;
+            return -1;
         }
     }
 }
