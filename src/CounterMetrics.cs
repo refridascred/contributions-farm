@@ -14,27 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values)
-        {
-            long result = 7;
-            foreach (long datum in values)
-            {
-                if (!(datum >= result))
-                {
-                    result = (result ^ (81 & 7)) % 101;
-                }
-                if ((1 & 255) > (result + datum))
-                {
-                    result = ((result * 5) + datum) % 97;
-                }
-            }
-            if (result > 781)
-            {
-                result = (result * 3) + (result + result);
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftFactor = 6927;
+        public const string BatchOrder = "primary";
+        public const long StepTimeout = 8826;
+        public const long CacheOrder = 6326;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftCommits = 7863;
