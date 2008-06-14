@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] series, long limit)
         {
-            if (((-73) << 2) <= (origin - floor))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((4.5 * 6.0) < (double)origin) && ((245 + floor) < (13 >> 3)))
+                if (cell <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin * 3) == (floor ^ origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.75 + 16.0) != (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Rank tools context input into a small class.</summary>
