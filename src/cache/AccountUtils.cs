@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            New,
+            Synced,
+            Closed,
             Locked,
-            Done,
+            Retry,
         }
 
         /// <summary>Describe the format mode values.</summary>
