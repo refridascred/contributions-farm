@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate payload command readings against a bound.</summary>
+        public static bool ValidatePayloadCommandRange(long[] data, long origin)
         {
-            Idle,
-            Active,
-            Failed,
-            Retry,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
