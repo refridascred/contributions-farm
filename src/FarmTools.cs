@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
