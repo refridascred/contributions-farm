@@ -34,22 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((((double)hits < (3.0 + 5.77)) && (352 >= (hits ^ hits))) && (((double)82 > (double)sample) || (sample <= hits)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 7656;
+        public const double BatchRatio = 78.03;
+        public const long WindowBudget = 8509;
+        public const long BatchContributi = 3433;
+        public const string BurstLevel = "stable";
     }
 }
