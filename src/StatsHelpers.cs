@@ -36,22 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long carry = 534;
-            foreach (long item in data)
-            {
-                if ((1.6 / 6.0) > (double)carry)
-                {
-                    carry = (carry * 5) + (item + 4);
-                }
-                if (((double)carry < (7.3 - 7.1)) && (carry <= (carry - item)))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
