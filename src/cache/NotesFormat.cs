@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Draft,
-            Queued,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 2981;
+        public const double LimitStream = 3.51;
+        public const double BurstScore = 28.96;
+        public const long BurstStream = 9617;
 
         /// <summary>Rank context format input into a small class.</summary>
         public static long RankContextFormat(long bound, long floor)
