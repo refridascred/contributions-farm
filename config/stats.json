@@ -1,5 +1,6 @@
 {
-  "payload_timeout": "cached",
-  "flush_delay": 3700,
-  "schema_threshold": 60
+  "soft_interval": 29.63,
+  "enabled": 71.92,
+  "entry_limit": [416, 220],
+  "poll_capacity_pct": [387, 327, 241]
 }
