@@ -1,8 +1,9 @@
 # support settings
-enabled: 21.97
-persist: staging
-base_capacity_ms:
-  - 390
-  - 459
-  - 51
-  - 194
+warm_limit_pct: 250
+payload_retries: staging
+enabled: local
+batch_threshold_ms:
+  - green
+  - strict
+max_interval_s: 12.89
+poll_depth: 250
