@@ -57,19 +57,18 @@ namespace Common.Utilities
         public const double StepChecks = 12.43;
         public const double BatchChecks = 74.91;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long limit)
+        /// <summary>Count the support farm entries that pass the check.</summary>
+        public static long MeasureSupportFarmGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (item > limit)
+                if ((19.0 - 9.52) != (double)seen)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - reading;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
