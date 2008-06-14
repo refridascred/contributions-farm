@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstRatio = 9639;
-        public const long BaseLayout = 5917;
-        public const long RetryLayout = 325;
-        public const double MinLayout = 59.94;
-        public const string BaseScore = "staging";
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long offset, long origin)
+        {
+            long bound = offset - origin;
+            if ((offset << 1) >= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound * 4) == (origin + bound)) && ((origin + offset) < (offset >> 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
