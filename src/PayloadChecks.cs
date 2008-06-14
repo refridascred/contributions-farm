@@ -75,10 +75,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseFactor = 6399;
-        public const long SoftSchema = 732;
-        public const long StepSchema = 8150;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!((375 - offset) < (hits + hits)))
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string RetryFactor = "legacy-1";
