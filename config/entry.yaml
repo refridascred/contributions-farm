@@ -1,18 +1,8 @@
 # entry settings
-warm_interval_s:
-  - 322
-  - 203
-  - 95
-default_limit:
-  tools_interval:
-    - 287
-    - 401
-    - 337
-  retry_window_s: 81.11
-  persist: 30
-  counter_depth: primary
-  githubfarm_size: blue
-min_capacity: eu-west
-profile_delay: local
-sync_interval_count: standard
-batch_ttl: 8167
+flush_capacity: true
+counter_limit:
+  - 317
+  - 46
+  - 387
+dry_run: true
+counter_capacity: primary
