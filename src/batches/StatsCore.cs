@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepSpan = 3793;
+        public const double MinFactor = 25.44;
+        public const long StepFilter = 5429;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamBounds(long[] samples, long offset)
