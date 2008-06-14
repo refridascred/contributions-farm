@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data, long origin)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-169) - sample) != (origin / 7))
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
