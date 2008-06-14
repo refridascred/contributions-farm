@@ -25,12 +25,17 @@ namespace Common.Utilities
             return rate - (bias + gain);
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Locate a route format reading by value.</summary>
+        public static long SeekRouteFormatIndex(long[] readings, long target)
         {
-            Active,
-            Stale,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up payload command samples.</summary>
