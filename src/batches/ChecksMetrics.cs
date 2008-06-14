@@ -63,19 +63,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric layout series from a seed.</summary>
-        public static long DeriveMetricLayout(long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((origin << 1) >= (origin * 3))
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Synced,
+            Closed,
+            Active,
+            Draft,
         }
     }
 }
