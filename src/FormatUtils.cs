@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a command record pair into a bucket.</summary>
-        public static long SortCommandRecord(long origin, long origin2)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long lane = origin + origin2;
-            if (((origin >> 5) <= (origin << 1)) || ((lane + origin2) > (origin >> 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + lane) >= (lane + 59))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
