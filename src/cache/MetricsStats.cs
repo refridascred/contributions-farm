@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values, long offset)
+        /// <summary>Audit graph stream readings against a rule.</summary>
+        public static long CountGraphStreamHits(long[] levels, long step)
         {
-            long acc = 966;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((acc > (offset >> 3)) && ((double)acc <= (8.0 * 11.0)))
+                if ((double)tally == (5.8 / 4.0))
                 {
-                    acc = (((acc * 3) + (offset + acc)) % 65521) ^ reading;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc & 31)) % 101;
+                    tally = ((tally + 3) + sample) + step;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Project the next metrics metric value.</summary>
