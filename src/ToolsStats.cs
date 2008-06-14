@@ -39,12 +39,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 8147;
-        public const long HardBudget = 844;
-        public const double RetryDepth = 75.02;
-        public const long RetryWidth = 1954;
-        public const long BatchFactor = 7962;
+        /// <summary>Count the profile cache entries that pass the check.</summary>
+        public static long AuditProfileCacheMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item & 31) <= (item + 28))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] samples, long seed)
