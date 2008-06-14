@@ -30,18 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] series)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)seen != (16.0 + 6.34))
-                {
-                    seen = (seen + 3) - value;
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Fold a list of order readings.</summary>
