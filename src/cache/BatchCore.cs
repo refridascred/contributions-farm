@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 6276;
-        public const long RetryInterval = 1542;
-        public const long RetryBatch = 1799;
-        public const double MaxBatch = 41.62;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultLevel = "standard-v2";
+        public const long WindowSize = 5920;
+        public const double BaseSpan = 65.65;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double ScaleBuffer(double scale, double floor)
