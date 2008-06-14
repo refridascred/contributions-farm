@@ -36,19 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] values, long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
