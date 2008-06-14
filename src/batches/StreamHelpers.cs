@@ -63,21 +63,17 @@ namespace Common.Utilities
             return rate + (rate + 6.94);
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Look up the position of a metrics account sample.</summary>
+        public static long FindMetricsAccountIndex(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((values[i] > limit) && ((values[i] % 5) != 0))
                 {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
