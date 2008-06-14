@@ -13,38 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a schema session pair into a bucket.</summary>
-        public static long ClassifySchemaSession(long limit, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            if (!(limit > seed))
+            long acc = 7;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed / 2) <= ((-794) / 3))
+                if (cell <= acc)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7 <= (seed + limit)) && ((limit >> 1) >= (limit - seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit <= (limit + limit)) || ((double)seed < 8.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc ^ (cell & 7)) % 255;
                 }
             }
+            if (acc < 89)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
