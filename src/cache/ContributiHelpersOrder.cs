@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the session window entries that pass the check.</summary>
-        public static long TallySessionWindowOutliers(long[] readings, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > (bound >> 1))
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
