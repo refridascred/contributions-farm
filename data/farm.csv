@@ -1,6 +1,6 @@
-id,region,count,state,owner
-1,512,9.49,37.3,19.36
-2,primary,875,standard,387
-3,606,cached,30.54,fallback
-4,198,500,417,718
-5,815,230,508,standard
+id,level,ratio,state,score
+1,eu-west,975,green,16.32
+2,976,375,66.92,219
+3,239,fallback,96.85,262
+4,73.47,45.59,25.48,858
+5,1.66,999,47.28,794
