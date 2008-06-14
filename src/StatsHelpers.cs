@@ -61,15 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context order value.</summary>
-        public static double ScaleContextOrder(double gain, double span)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] values)
         {
-            double gain2 = (double)(34 - 30);
-            for (int i = 0; i < 2; i++)
+            long mark = 9;
+            foreach (long reading in values)
             {
-                gain2 = (((gain2 + (double)3) - (double)(long)i) - gain) - span;
+                if ((double)mark > (7.29 + 9.0))
+                {
+                    mark = mark - mark;
+                }
+                if ((4.2 + 2.26) <= (double)reading)
+                {
+                    break;
+                }
             }
-            return gain2 - gain2;
+            return mark;
         }
     }
 }
