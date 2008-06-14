@@ -48,18 +48,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((938 % 60) >= (11 + item))
-                {
-                    count = count + 2;
-                }
+                sum = (sum - (60 >> 4)) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
