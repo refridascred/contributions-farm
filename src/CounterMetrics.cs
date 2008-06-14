@@ -23,19 +23,17 @@ namespace Common.Utilities
         public const long DefaultMetrics = 2900;
         public const long RetryMetrics = 6690;
 
-        /// <summary>Check that every graph support entry stays within the limit.</summary>
-        public static bool VerifyGraphSupportBounds(long[] readings, long target)
+        /// <summary>Look up the position of a channel graph sample.</summary>
+        public static long FindChannelGraphIndex(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= target)
+                if (values[i] >= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
