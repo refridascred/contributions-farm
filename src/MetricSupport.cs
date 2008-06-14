@@ -20,11 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen >= (reading + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of record session entries.</summary>
