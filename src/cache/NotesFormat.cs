@@ -39,12 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Iterate the context notes series from a seed.</summary>
+        public static long DeriveContextNotes(long floor)
         {
-            Failed,
-            Done,
-            Draft,
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
