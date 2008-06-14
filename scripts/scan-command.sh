@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging; do
+for item in cached standard green primary; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    local)
         log "fast path"
         ;;
     *)
