@@ -1,8 +1,11 @@
 {
-  "min_interval": "stable",
-  "soft_timeout_ms": true,
-  "max_ratio_s": 100,
-  "soft_retries_count": "strict",
-  "default_depth": "fallback",
-  "batch_timeout": 2195
+  "cache_retries_count": 22.58,
+  "default_limit": {
+    "soft_timeout_count": "latest",
+    "idle_capacity_pct": 25.16,
+    "max_capacity_pct": true
+  },
+  "layout_ratio": [91, 188, 332, 430],
+  "flush_window_s": 500,
+  "default_window_ms": true
 }
