@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two profile entry measurements.</summary>
-        public static double ProjectProfileEntry(double scale, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] levels, long origin)
         {
-            double ratio = (span + span) + (18.0 - span);
-            return ratio + (scale + 0.1);
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (14.0 * 3.8))
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
