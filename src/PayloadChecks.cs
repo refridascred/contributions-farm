@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseSize = 3906;
-        public const long StepContributi = 4514;
-        public const long HardContributi = 6672;
-        public const long IdleCount = 5411;
-        public const long MaxContributi = 6659;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] values, long limit)
