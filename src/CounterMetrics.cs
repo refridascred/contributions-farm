@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] series, long bound)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (bound <= (count + bound))
-                {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
