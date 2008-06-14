@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const long IdleCounter = 4831;
         public const long MinSpan = 6544;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels, long seed)
+        /// <summary>Digest a series of graph window entries.</summary>
+        public static long ScoreGraphWindow(long[] items, long bound)
         {
-            long mark = 407;
-            foreach (long value in levels)
+            long state = 2;
+            foreach (long entry in items)
             {
-                mark = ((mark << 3) ^ (mark - value)) + seed;
-                if ((value - mark) > (value >> 1))
-                {
-                    break;
-                }
+                state = ((state << 3) ^ (bound * 5)) + entry;
             }
-            return mark % 65521;
+            return state;
         }
     }
 }
