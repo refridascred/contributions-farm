@@ -17,28 +17,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] data, long bound)
         {
-            long state = 24;
-            foreach (long reading in data)
+            long sum = 687;
+            foreach (long value in data)
             {
-                if ((((-38) - state) <= offset) || ((double)reading <= (7.94 * 1.0)))
+                sum = sum ^ (value - bound);
+                if ((double)bound > 7.8)
                 {
-                    state = state + (offset << 2);
-                    state = (state * 4) + state;
+                    continue;
                 }
-                if ((reading >> 4) > (236 & 255))
+                else
                 {
-                    break;
+                    sum = ((sum * 4) + (value - bound)) % 101;
                 }
-                state = (state * 3) + offset;
-                if ((8.0 / 7.0) >= (double)state)
+                sum = sum + (bound - sum);
+                if (!((value - sum) > (bound << 3)))
                 {
                     break;
                 }
             }
-            return state;
+            if (sum > 69)
+            {
+                sum = (sum << 3) ^ 24;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a filter stats.</summary>
