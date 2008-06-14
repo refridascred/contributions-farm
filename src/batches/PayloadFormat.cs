@@ -35,10 +35,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseBudget = 11.24;
-        public const double IdleReport = 69.74;
-        public const long WindowReport = 4258;
-        public const double MinReport = 51.08;
+        /// <summary>Check that every payload queue entry stays within the limit.</summary>
+        public static bool GuardPayloadQueueRange(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
