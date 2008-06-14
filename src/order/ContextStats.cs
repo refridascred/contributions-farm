@@ -26,25 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long offset, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] series, long bound)
         {
-            long step = offset - target;
-            if (((target % 5) < 332) && ((step * 2) <= (8 & 3)))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ offset) != (step ^ step))
+                if ((bound >> 2) <= tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 2) + item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
