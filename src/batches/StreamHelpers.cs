@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((double)(long)i <= (10.0 - 5.0)) && (10.0 >= (double)carry))
+                if (!(83 >= (datum & 15)))
                 {
-                    carry = carry - carry;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    carry = (carry ^ (seed << 3)) % 1000;
-                }
-                carry = carry + carry;
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
