@@ -1,5 +1,6 @@
 {
-  "enabled": false,
-  "batch_delay_ms": false,
-  "batch_size_count": ["stable", "open"]
+  "compress": true,
+  "route_depth": "stable",
+  "cache_delay_count": 2627,
+  "min_timeout": 72.68
 }
