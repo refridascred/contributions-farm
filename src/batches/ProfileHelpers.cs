@@ -80,17 +80,12 @@ namespace Common.Utilities
         public const long RetrySpan = 6792;
         public const long WindowSize = 36;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry * 3) + ((long)i - origin);
-                carry = ((carry << 2) ^ carry) % 1000;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Locked,
+            Pending,
+            Done,
         }
     }
 }
