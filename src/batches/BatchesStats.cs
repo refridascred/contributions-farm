@@ -37,19 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] series, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] series)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (sample > step)
+                if ((double)count < (double)cell)
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
