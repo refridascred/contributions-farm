@@ -35,17 +35,26 @@ namespace Common.Utilities
         public const long BatchLayout = 5568;
         public const double BurstBudget = 52.62;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long origin)
+        /// <summary>Fold a list of batch entry readings.</summary>
+        public static long TotalBatchEntry(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -4;
+            foreach (long datum in levels)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
+                if ((7.5 * 0.9) < (double)datum)
                 {
-                    return (long)i;
+                    score = ((score * 5) + ((long)levels.Length ^ score)) % 255;
+                }
+                if (((8.13 - 1.4) != (double)datum) && (score >= (score + score)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 81)
+            {
+                score = ((score * 5) + (score - score)) % 1000;
+            }
+            return score % 65521;
         }
     }
 }
