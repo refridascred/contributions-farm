@@ -63,12 +63,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
+            Ready,
             Active,
-            Draft,
-            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Look up the position of a layout filter sample.</summary>
