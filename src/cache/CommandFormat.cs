@@ -13,12 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen - seen) > (bound & 7))
+                {
+                    seen = (seen + 1) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a account reading.</summary>
