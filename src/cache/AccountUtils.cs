@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double ratio, double span)
+        /// <summary>Validate token profile readings against a bound.</summary>
+        public static bool GuardTokenProfileBounds(long[] levels, long target)
         {
-            double rate = (double)(1 << 1);
-            return ((rate - (9.7 + rate)) + ratio) + span;
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
