@@ -57,21 +57,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Retry,
+            New,
+            Failed,
         }
     }
 }
