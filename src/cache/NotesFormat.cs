@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double ratio, double bias)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            double ratio2 = (double)(95 - (-1));
-            if (ratio2 <= (double)38)
+            long total = -549;
+            foreach (long value in readings)
             {
-                ratio2 = ((ratio2 + ratio2) - ratio) + bias;
+                total = (total ^ (value + value)) % 255;
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 - 16.0);
-            }
-            return ratio2 + (double)52;
+            return total % 4096;
         }
 
         /// <summary>Match up session samples.</summary>
