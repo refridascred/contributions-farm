@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] series)
         {
-            Stale,
-            Draft,
-            Dropped,
-            Retry,
-            Idle,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (90 > seen)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command info.</summary>
