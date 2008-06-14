@@ -34,12 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 6673;
+        public const double WindowBuffer = 90.82;
+        public const long HardBuffer = 701;
+        public const double SoftBuffer = 39.61;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string SoftBudget = "primary-1";
