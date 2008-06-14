@@ -51,15 +51,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
