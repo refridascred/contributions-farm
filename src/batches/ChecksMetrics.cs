@@ -55,18 +55,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] levels)
+        /// <summary>Digest a series of stats account entries.</summary>
+        public static long WeighStatsAccount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = 75;
+            foreach (long reading in samples)
             {
-                if (((seen + item) <= (item - seen)) || !(seen <= (seen & 255)))
+                if ((2.9 - 20.0) > (7.9 / 2.0))
                 {
-                    seen = seen + 1;
+                    carry = (carry ^ (reading - carry)) % 4096;
                 }
             }
-            return seen;
+            if (carry > 281)
+            {
+                carry = carry - (carry << 2);
+            }
+            return carry % 4096;
         }
     }
 }
