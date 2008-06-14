@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultLevel = 3451;
-        public const long BurstBudget = 2323;
-        public const long SoftInterval = 6784;
-        public const long DefaultFactor = 7264;
-        public const double CacheQueue = 85.25;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 4013;
+        public const long DefaultInterval = 1150;
+        public const string CacheBatches = "local";
+        public const double BatchBatches = 21.94;
+        public const long SoftBudget = 7787;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] data, long seed)
