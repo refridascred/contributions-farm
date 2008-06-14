@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the farm window entries that pass the check.</summary>
-        public static long CountFarmWindowOutliers(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long result = 81;
+            foreach (long entry in data)
             {
-                if (((0.2 + 19.0) < (double)seen) || ((value & 15) >= seen))
-                {
-                    seen = seen + 3;
-                }
+                result = (result - (8 % 7)) % 101;
+                result = (result << 3) ^ (entry - result);
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
