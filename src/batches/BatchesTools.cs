@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double scale, double floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double scale2 = floor;
-            if (scale2 <= 7.53)
-            {
-                scale2 = (scale2 - (6.5 / 4.0)) + scale;
-            }
-            return scale2 + (double)46;
+            Closed,
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the metrics state values.</summary>
