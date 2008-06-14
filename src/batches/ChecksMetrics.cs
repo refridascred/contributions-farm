@@ -15,27 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
-        {
-            long sum = 4;
-            foreach (long entry in items)
-            {
-                if ((5.0 * 13.0) == (double)(long)items.Length)
-                {
-                    sum = (sum - (entry + entry)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (3 & 31)) % 101;
-                }
-            }
-            if (sum > 383)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 9249;
+        public const long MinEditor = 4468;
+        public const double BatchEditor = 10.36;
+        public const string DefaultEditor = "open-edge";
+        public const double IdleEditor = 82.24;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long CombineOrder(long[] data, long floor)
