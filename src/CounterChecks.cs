@@ -93,22 +93,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi metrics entries that pass the check.</summary>
-        public static long TallyContributiMetricsMatches(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((526 - sample) > (sample + sample))
+                if (cell < offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
