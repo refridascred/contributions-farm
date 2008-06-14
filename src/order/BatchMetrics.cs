@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "latest-1";
-        public const string BatchCount = "staging-v2";
-        public const long MinInterval = 6600;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item < (item + item)) || (item <= (seen - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first account batches entry that matches the target.</summary>
         public static long LookupAccountBatchesIndex(long[] values, long limit)
