@@ -21,19 +21,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            double load = (scale - 6.23) * 1.5;
-            if (load > (7.7 * 5.73))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 6.18) - (double)(long)i;
-            }
-            return load + (double)19;
+            return seen;
         }
     }
 }
