@@ -1,13 +1,11 @@
 {
-  "default_limit_count": 1024,
-  "idle_depth": {
-    "stats_limit": true,
-    "commits_ratio": {
-      "commits_window": "fallback",
-      "persist": ["latest", "blue", "blue"],
-      "counter_capacity": 250
-    },
-    "compress": true
+  "burst_threshold": {
+    "default_size_count": [406, 170, 480, 236],
+    "burst_retries_ms": 10.35,
+    "sync_limit_ms": 90.69,
+    "burst_threshold_pct": "primary"
   },
-  "format_delay": "local"
+  "burst_delay_s": false,
+  "min_ratio_count": false,
+  "hard_capacity": ["green", "stable"]
 }
