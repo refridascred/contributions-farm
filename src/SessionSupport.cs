@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double ratio, double span)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double bias = 1.51 / 9.0;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias + (7.34 - span)) + (double)(long)i) + ratio;
-            }
-            return bias + (double)487;
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine format record values into a single score.</summary>
