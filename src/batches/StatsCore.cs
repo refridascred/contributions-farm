@@ -55,19 +55,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double span)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double weight = scale;
-            if (weight > (double)979)
-            {
-                weight = weight - (8.0 * 18.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + (span - 1.12);
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
