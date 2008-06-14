@@ -44,22 +44,11 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "strict-1";
         public const double LimitGithubfarm = 47.46;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!((555 << 3) < matches))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "legacy-edge";
+        public const double BatchTimeout = 52.55;
+        public const double BatchFactor = 68.73;
+        public const string RetrySpan = "staging-1";
+        public const long HardRatio = 4981;
     }
 }
