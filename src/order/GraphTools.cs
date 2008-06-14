@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] items, long origin)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Look up the position of a cluster metric sample.</summary>
