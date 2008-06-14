@@ -49,11 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            Idle,
+            Synced,
+            Paused,
+            Pending,
         }
     }
 }
