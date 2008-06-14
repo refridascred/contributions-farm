@@ -14,18 +14,24 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] series, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long limit, long bound)
         {
-            long carry = 3;
-            foreach (long value in series)
+            if (((bound * 5) == (bound - bound)) && ((3 * 2) <= (bound << 3)))
             {
-                if (((2.8 * 3.86) < (double)carry) && ((value + origin) < (value ^ 90)))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound <= (8.8 + 2.0))
                 {
-                    carry = carry - (value / 2);
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
