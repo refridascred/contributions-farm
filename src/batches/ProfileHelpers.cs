@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] readings, long step)
+        /// <summary>Look up the position of a support format sample.</summary>
+        public static long LocateSupportFormatIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step - entry) >= tally)
+                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a farm contributi value against two limits.</summary>
