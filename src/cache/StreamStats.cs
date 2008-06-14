@@ -29,12 +29,22 @@ namespace Common.Utilities
             return ratio2 + (bias + ratio);
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values, long limit)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public double Region { get; set; }
+            long sum = 143;
+            foreach (long entry in values)
+            {
+                if (sum <= limit)
+                {
+                    sum = ((sum - (limit - sum)) % 65521) + entry;
+                }
+                if (limit >= (limit - 57))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Accumulate account samples.</summary>
