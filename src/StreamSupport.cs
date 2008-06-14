@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -345;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = ((total << 2) ^ (total >> 4)) % 4096;
+                if (!((-4) <= (datum + datum)))
                 {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                total = total + total;
             }
-            return seen;
+            if (total < 29)
+            {
+                total = ((total * 4) + (271 << 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
