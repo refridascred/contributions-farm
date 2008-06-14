@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step - entry) >= tally)
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of entry batches readings.</summary>
