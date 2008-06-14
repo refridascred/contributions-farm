@@ -39,10 +39,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstRatio = 2432;
-        public const long MaxInterval = 9343;
-        public const string HardInterval = "local";
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = mix + (offset % 5);
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long SeriesMetrics(long step)
