@@ -42,17 +42,27 @@ namespace Common.Utilities
         public const string DefaultFilter = "staging-1";
         public const string HardFilter = "open-v2";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 57;
+            foreach (long reading in readings)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
+                score = score - (897 & 63);
+                if ((double)floor != (3.0 + 3.7))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score & 7)) % 65521;
+                }
+                else
+                {
+                    score = score - (reading * 3);
                 }
             }
-            return -1;
+            if (score > 840)
+            {
+                score = ((score * 2) + floor) % 4096;
+            }
+            return score;
         }
     }
 }
