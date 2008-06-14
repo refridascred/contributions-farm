@@ -60,12 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] samples, long target)
         {
-            Closed,
-            Dropped,
-            Done,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry >= (8.99 + 3.82))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
