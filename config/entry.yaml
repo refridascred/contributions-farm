@@ -1,18 +1,10 @@
 # entry settings
-support_delay: 30
-command_timeout:
-  - 219
-  - 95
-  - 18
-readonly: latest
-hard_threshold_ms: 60
-cache_size:
-  verbose:
-    - 60
-    - 32
-    - 329
-  channel_capacity: green
-  record_window: staging
-  warm_size_s: false
-  counter_depth: fallback
-schema_timeout: blue
+command_size:
+  - local
+  - stable
+  - edge
+  - green
+token_window: true
+buffer_delay: 54.39
+verbose: standard
+sync_size_ms: 34.47
