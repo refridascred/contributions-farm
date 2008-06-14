@@ -43,10 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 8054;
-        public const long LimitScore = 2172;
-        public const long RetryDepth = 1371;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((21 + acc) >= (limit * 3))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (limit - limit)) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
