@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] data, long origin)
         {
-            Stale,
-            Idle,
-            Ready,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (621 > ((long)data.Length + origin))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
