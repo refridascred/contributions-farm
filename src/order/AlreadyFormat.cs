@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BurstCount = 3014;
         public const double MinCommand = 37.81;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long anchor = 4;
+            foreach (long sample in data)
             {
-                if (reading <= offset)
+                if ((step << 3) >= sample)
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor - (step << 1)) % 65521;
                 }
             }
-            return flag;
+            if (anchor > 7)
+            {
+                anchor = ((anchor * 5) + (83 % 8)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
