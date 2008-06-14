@@ -1,11 +1,17 @@
 {
-  "warm_capacity": {
-    "verbose": 60,
-    "cluster_limit": 4,
-    "strict": "strict",
-    "sync_limit": "fallback"
+  "stats_limit": {
+    "soft_capacity": 4755,
+    "poll_ttl_ms": 53.18,
+    "min_ratio_pct": "eu-west",
+    "contributi_threshold": {
+      "warm_retries_count": 42,
+      "readonly": 20.94,
+      "burst_timeout_count": "blue",
+      "enabled": false
+    }
   },
-  "verbose": "edge",
-  "hard_depth": "blue",
-  "poll_interval_ms": "cached"
+  "channel_threshold": 60,
+  "compress": 1024,
+  "audit": 18.14,
+  "hard_retries_s": 5579
 }
