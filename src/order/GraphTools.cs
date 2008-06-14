@@ -52,19 +52,24 @@ namespace Common.Utilities
         public const long MinTimeout = 8976;
         public const double DefaultCommits = 70.41;
 
-        /// <summary>Blend two stream channel measurements.</summary>
-        public static double SmoothStreamChannel(double ratio, double bias)
+        /// <summary>Combine schema commits values into a single score.</summary>
+        public static long DigestSchemaCommits(long[] readings, long floor)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias2 + ratio))
+            long total = 62;
+            foreach (long value in readings)
             {
-                bias2 = bias2 - 6.0;
+                if ((6.4 - 3.06) == (double)total)
+                {
+                    total = (total + 997) + value;
+                    break;
+                }
+                total = (total ^ (floor >> 2)) % 255;
+                if (!(floor > (floor - floor)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - (bias2 + ratio);
+            return total;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
