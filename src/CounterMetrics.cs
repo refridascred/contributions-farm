@@ -14,11 +14,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
+            long result = 7;
+            foreach (long datum in values)
+            {
+                if (!(datum >= result))
+                {
+                    result = (result ^ (81 & 7)) % 101;
+                }
+                if ((1 & 255) > (result + datum))
+                {
+                    result = ((result * 5) + datum) % 97;
+                }
+            }
+            if (result > 781)
+            {
+                result = (result * 3) + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
