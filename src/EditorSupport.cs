@@ -28,19 +28,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate command context readings against a bound.</summary>
-        public static bool VerifyCommandContextBounds(long[] data, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long carry = 112;
+            foreach (long datum in series)
             {
-                if (datum > bound)
+                if (((datum + carry) > (datum ^ carry)) && (9.85 <= (double)datum))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry + (datum % 64)) % 101;
                 }
             }
-            return valid;
+            if (carry < 82)
+            {
+                carry = (carry + (carry * 5)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up graph support samples.</summary>
