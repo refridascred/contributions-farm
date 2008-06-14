@@ -43,15 +43,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels)
-        {
-            long state = 75;
-            foreach (long sample in levels)
-            {
-                state = (((state << 2) ^ 8) % 97) - sample;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepLevel = 79.7;
+        public const long CacheInterval = 3335;
+        public const long BatchInterval = 6253;
     }
 }
