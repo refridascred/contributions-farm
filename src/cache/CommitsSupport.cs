@@ -77,19 +77,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] items, long origin)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
