@@ -40,18 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools order samples are out of range.</summary>
-        public static long MeasureToolsOrderOutliers(long[] readings, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound * 2) <= (reading % 24))
+                if (levels[i] > origin)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
