@@ -37,17 +37,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long floor)
+        /// <summary>Grade a format buffer value against two limits.</summary>
+        public static long BucketFormatBuffer(long floor, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((limit - floor) > (limit - 28)))
             {
-                if (levels[i] == floor)
+                return 2;
+            }
+            else
+            {
+                if (((floor ^ 276) >= limit) || ((14.0 * 5.0) >= (double)floor))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor + floor) > (floor % 24)) || ((46 / 4) < (floor - floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (3.39 - 6.8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
