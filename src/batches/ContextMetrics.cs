@@ -61,19 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 1940;
+        public const double BatchTools = 39.59;
+        public const long IdleFactor = 4385;
+        public const long DefaultTools = 6532;
+        public const string RetrySize = "staging";
     }
 }
