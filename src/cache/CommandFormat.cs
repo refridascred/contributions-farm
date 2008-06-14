@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((double)limit != (9.3 / 3.0)) || ((limit - (long)i) > (long)i))
-                {
-                    carry = (carry * 5) + (6 * 3);
-                }
-                carry = (carry + (limit >> 5)) % 97;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Fold a list of window readings.</summary>
