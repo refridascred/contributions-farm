@@ -25,18 +25,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values, long offset)
         {
-            long state = 49;
-            foreach (long item in samples)
+            long carry = 33;
+            foreach (long reading in values)
             {
-                if (((-77) >> 1) < (item + state))
+                if ((12.0 - 1.0) != (double)reading)
                 {
-                    state = state - (-16);
+                    carry = (carry + (reading * 5)) % 4096;
+                }
+                if ((5.0 / 5.0) < (double)reading)
+                {
+                    carry = ((carry << 3) ^ (offset & 7)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (988 * 3)) % 4096;
                 }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Project the next counter value.</summary>
