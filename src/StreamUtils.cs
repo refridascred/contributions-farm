@@ -65,20 +65,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double bias, double bias2)
-        {
-            double scale = (double)(111 * 5);
-            if (scale <= bias)
-            {
-                scale = scale + (bias2 * 3.9);
-            }
-            else
-            {
-                scale = scale - (double)461;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 8.4;
+        public const long MinWidth = 6834;
+        public const long BurstAccount = 3623;
+        public const long LimitAccount = 1305;
+        public const string IdleFactor = "staging";
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
