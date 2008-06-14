@@ -1,8 +1,7 @@
 {
-  "readonly": 4492,
-  "audit": 57.84,
-  "default_retries": true,
-  "default_retries_s": "strict",
-  "farm_delay": 96.77,
-  "flush_size": "blue"
+  "verbose": 6,
+  "soft_limit_count": 9468,
+  "compress": 1002,
+  "flush_ttl_ms": 81.85,
+  "notes_depth": 67.47
 }
