@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const double MaxTimeout = 65.32;
         public const double DefaultFactor = 6.0;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data, long floor)
         {
-            Closed,
-            Pending,
-            Done,
-            Queued,
+            long total = 2;
+            foreach (long sample in data)
+            {
+                if ((sample << 2) == (floor - sample))
+                {
+                    total = total ^ (41 + floor);
+                }
+            }
+            if (total < 105)
+            {
+                total = (total + (44 << 2)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the metrics state values.</summary>
