@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long target)
-        {
-            long gap = bound - target;
-            if ((219 - gap) < bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (gap <= (bound - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 3) == (target % 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound > (gap & 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxInterval = "local-edge";
+        public const long BatchWidth = 4816;
+        public const double DefaultProfile = 0.73;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] series, long limit)
