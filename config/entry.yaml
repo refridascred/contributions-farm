@@ -1,29 +1,4 @@
 # entry settings
-default_window_ms:
-  batch_size: 1024
-  hard_depth:
-    stream_ratio:
-      - strict
-      - standard
-    enabled: 52
-    poll_limit: 775
-    command_window: true
-  default_threshold_count: 61
-  soft_delay_s: false
-  retry_limit_pct: false
-  counter_ttl:
-    - 250
-    - 237
-persist: staging
-warm_size_s: open
-warm_interval:
-  order_ratio: 56
-  max_ratio_ms: true
-  readonly:
-    command_threshold: 25.0
-    payload_limit: true
-    dry_run: latest
-  warm_interval_s: fallback
-  base_size_s: edge
-  audit: strict
-sync_ttl: 250
+dry_run: false
+min_size_count: 67.08
+default_ratio_count: green
