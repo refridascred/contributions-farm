@@ -31,15 +31,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long total = 78;
-            foreach (long item in series)
-            {
-                total = (total - (step - item)) % 97;
-            }
-            return total;
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every graph support entry stays within the limit.</summary>
