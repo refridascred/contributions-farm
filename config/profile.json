@@ -1,7 +1,7 @@
 {
-  "cache_depth_pct": 6864,
-  "idle_timeout_pct": [380, 203, 413],
-  "metrics_window": false,
-  "githubfarm_timeout": false,
-  "sync_ttl_pct": true
+  "stream_delay": "standard",
+  "burst_capacity_count": 74.82,
+  "retry_delay": 90.95,
+  "flush_depth_ms": "primary",
+  "order_window": "legacy"
 }
