@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long step, long limit)
-        {
-            if ((limit % 7) == (46 ^ step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step < (step ^ 47))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step * 5) >= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8 % 5) > limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheFactor = 8881;
+        public const double LimitTimeout = 80.02;
+        public const string MinSize = "staging";
+        public const long BatchStats = 726;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
