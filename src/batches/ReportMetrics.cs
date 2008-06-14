@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit notes command readings against a rule.</summary>
-        public static long CountNotesCommandGaps(long[] levels, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(target <= (tally * 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ value;
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count layout account pairs that satisfy a relation.</summary>
