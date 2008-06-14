@@ -32,13 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the schema report entries that pass the check.</summary>
+        public static long AuditSchemaReportHits(long[] series, long step)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((9.0 / 6.0) == (double)reading)
+                {
+                    seen = (seen + 1) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first batch layout entry that matches the target.</summary>
