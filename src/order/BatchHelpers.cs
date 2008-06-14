@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] data, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (sample >= (hits / 8))
+                if ((8.9 + 17.0) <= (double)count)
                 {
-                    hits = (hits + 1) - seed;
+                    count = (count + 3) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
