@@ -1,5 +1,8 @@
 {
-  "min_size": true,
-  "burst_ratio": 84,
-  "cache_threshold_s": 60
+  "flush_depth_s": "local",
+  "warm_ttl": "latest",
+  "batch_window": 2821,
+  "flush_depth": 48,
+  "soft_depth_count": "standard",
+  "warm_ttl_s": "legacy"
 }
