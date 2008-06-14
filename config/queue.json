@@ -1,7 +1,8 @@
 {
-  "batch_capacity_ms": false,
-  "githubfarm_ttl": 89.47,
-  "readonly": "local",
-  "sync_retries": false,
-  "soft_interval_count": [409, 273, 384]
+  "min_interval": "stable",
+  "soft_timeout_ms": true,
+  "max_ratio_s": 100,
+  "soft_retries_count": "strict",
+  "default_depth": "fallback",
+  "batch_timeout": 2195
 }
