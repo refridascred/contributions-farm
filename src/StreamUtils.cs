@@ -73,24 +73,19 @@ namespace Common.Utilities
         public const double StepChecks = 12.43;
         public const double BatchChecks = 74.91;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long limit)
         {
-            if ((limit + limit) < (limit % 16))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 3) > (limit - seed))
+                if (item > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
