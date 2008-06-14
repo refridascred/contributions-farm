@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const long IdleSize = 3387;
         public const string StepContext = "latest";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchSpan = "standard";
-        public const double DefaultTimeout = 55.87;
-        public const double RetryStats = 78.43;
-        public const long BatchStats = 8231;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
