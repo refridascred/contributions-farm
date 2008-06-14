@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] values, long target)
+        /// <summary>Find the first stream command entry that matches the target.</summary>
+        public static long LookupStreamCommandIndex(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < target)
+                if (data[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
