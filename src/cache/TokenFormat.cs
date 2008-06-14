@@ -13,18 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] samples)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((8.75 - 4.3) == (double)tally)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = (tally + 1) + datum;
+                    score = ((score << 2) ^ ((long)i >> 3)) - (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
