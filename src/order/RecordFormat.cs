@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Validate cache command readings against a bound.</summary>
+        public static bool VerifyCacheCommandLimits(long[] samples, long bound)
         {
-            Done,
-            Paused,
-            Stale,
-            Active,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a farm entry.</summary>
