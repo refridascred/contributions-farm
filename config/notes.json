@@ -1,8 +1,8 @@
 {
-  "strict": 4192,
-  "burst_capacity_s": 6253,
-  "compress": 15.86,
-  "base_depth_count": "blue",
-  "flush_limit_pct": "blue",
-  "hard_size_pct": "stable"
+  "account_retries": false,
+  "dry_run": true,
+  "commits_capacity": [438, 460],
+  "default_depth": true,
+  "batch_ratio": 63.1,
+  "filter_ratio": 49
 }
