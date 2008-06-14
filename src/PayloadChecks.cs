@@ -47,21 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= target)
                 {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Combine token values into a single score.</summary>
