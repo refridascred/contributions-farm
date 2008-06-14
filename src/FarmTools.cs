@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 3354;
-        public const double BatchReport = 6.19;
-        public const double MinLevel = 53.64;
-        public const double StepReport = 74.72;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Combine batch schema values into a single score.</summary>
         public static long CombineBatchSchema(long[] levels, long limit)
