@@ -1,7 +1,10 @@
 {
-  "poll_size_s": "standard",
-  "stream_size": false,
-  "account_ttl": 78.92,
-  "batch_timeout_ms": 21.76,
-  "counter_retries": 1348
+  "record_delay": ["staging", "open", "cached"],
+  "hard_depth": "standard",
+  "retry_timeout_ms": {
+    "payload_ttl": 67,
+    "soft_interval": 34.18,
+    "audit": 100
+  },
+  "route_retries": [436, 38, 465]
 }
