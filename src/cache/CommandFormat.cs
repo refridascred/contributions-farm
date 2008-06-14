@@ -24,22 +24,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the report checks entries that pass the check.</summary>
-        public static long CountReportChecksGaps(long[] values)
+        /// <summary>Validate queue command readings against a bound.</summary>
+        public static bool VerifyQueueCommandLimits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (((double)sample > (double)count) || ((112 * 3) >= (sample & 255)))
+                if (value <= step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
