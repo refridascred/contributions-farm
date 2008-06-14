@@ -32,13 +32,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Closed,
-            Stale,
-            Dropped,
-            Locked,
+            Active,
+            Queued,
+            New,
         }
     }
 }
