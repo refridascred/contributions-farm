@@ -50,19 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry <= (entry << 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 4196;
+        public const long HardBudget = 8356;
+        public const double BatchMetrics = 49.23;
+        public const long RetryMetrics = 2336;
+        public const long MaxBudget = 1142;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
