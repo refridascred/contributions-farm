@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long seed)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                mix = ((mix * 5) + (reading & 31)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
