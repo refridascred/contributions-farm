@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 2981;
-        public const double LimitStream = 3.51;
-        public const double BurstScore = 28.96;
-        public const long BurstStream = 9617;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double ratio, double bias)
+        {
+            double ratio2 = (double)(95 - (-1));
+            if (ratio2 <= (double)38)
+            {
+                ratio2 = ((ratio2 + ratio2) - ratio) + bias;
+            }
+            else
+            {
+                ratio2 = ratio2 + (ratio2 - 16.0);
+            }
+            return ratio2 + (double)52;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchRatio = 4937;
