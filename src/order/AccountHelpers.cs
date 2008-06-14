@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Ready,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxBudget = "strict-v2";
+        public const double DefaultPayload = 96.61;
+        public const string IdleRatio = "fallback-v2";
+        public const long WindowBudget = 2504;
 
         /// <summary>Count the cache contributi entries that pass the check.</summary>
         public static long MeasureCacheContributiHits(long[] series, long offset)
