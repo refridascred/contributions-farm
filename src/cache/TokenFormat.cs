@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] readings, long origin)
         {
-            Retry,
-            Failed,
-            Active,
-            Synced,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
