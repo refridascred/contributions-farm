@@ -13,12 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseLevel = "staging-v2";
-        public const double SoftBudget = 6.62;
-        public const long CacheRatio = 60;
-        public const long IdleReport = 4096;
-        public const double MinInterval = 89.68;
+        /// <summary>Count the cache contributi entries that pass the check.</summary>
+        public static long MeasureCacheContributiHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally <= (offset % 60)) && ((entry > (446 + offset)) && (((long)series.Length + offset) >= (offset + tally))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine farm editor values into a single score.</summary>
         public static long ScoreFarmEditor(long[] values, long bound)
