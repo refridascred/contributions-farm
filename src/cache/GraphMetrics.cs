@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double span)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double weight = span;
-            if (weight <= weight)
-            {
-                weight = (weight + (weight + weight)) + scale;
-            }
-            return weight + (span / 3.0);
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
