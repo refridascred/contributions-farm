@@ -87,12 +87,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            Active,
-            Retry,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
