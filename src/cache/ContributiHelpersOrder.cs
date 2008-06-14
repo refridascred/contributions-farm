@@ -24,13 +24,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] values, long offset)
         {
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
