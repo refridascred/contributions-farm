@@ -46,21 +46,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long carry = 532;
-            foreach (long entry in readings)
-            {
-                if ((4.0 / 4.0) >= (double)carry)
-                {
-                    carry = carry - carry;
-                    carry = (carry - (2 - (-6))) % 1000;
-                }
-                carry = carry - (carry - (long)readings.Length);
-                carry = ((carry * 4) + (entry * 5)) % 1000;
-            }
-            return carry % 97;
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
