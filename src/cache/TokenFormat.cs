@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            Active,
+            Stale,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
