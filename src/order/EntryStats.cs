@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long score = -439;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ (142 << 2)) ^ cell;
-                if (!(94 < (23 - score)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score ^ score;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
