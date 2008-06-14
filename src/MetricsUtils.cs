@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] samples, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > target)
+                if (levels[i] == step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
