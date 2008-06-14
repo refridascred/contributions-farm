@@ -65,12 +65,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] items, long seed)
         {
-            Done,
-            Stale,
-            Dropped,
+            long score = 33;
+            foreach (long cell in items)
+            {
+                score = (((score << 2) ^ (cell * 5)) % 1000) - seed;
+                score = score ^ 30;
+            }
+            if (score < 4)
+            {
+                score = (score << 3) ^ ((-69) << 2);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the command kind values.</summary>
