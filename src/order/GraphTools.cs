@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of format report entries.</summary>
-        public static long TallyFormatReport(long[] items, long bound)
+        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
+        public static bool ValidateToolsBufferLimits(long[] samples, long origin)
         {
-            long score = 323;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                score = (((score * 3) + (score >> 3)) % 4096) ^ sample;
-                for (int i = 0; i < 10; i++)
+                if (datum > origin)
                 {
-                    score = (((score * 4) + (826 % 16)) % 65521) - (long)i;
-                }
-                if ((score ^ bound) >= (score >> 5))
-                {
-                    score = (score + 781) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (score > 44)
-            {
-                score = (score * 4) + (score - bound);
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Describe the stats level values.</summary>
