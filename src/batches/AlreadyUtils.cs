@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long carry = 3;
-            foreach (long item in values)
+            long carry = 193;
+            foreach (long value in items)
             {
-                if (((double)(long)values.Length != (19.0 * 4.98)) || ((long)values.Length > (carry * 2)))
+                if ((long)items.Length >= (7 % 97))
                 {
-                    carry = (carry + (item - 5)) % 4096;
+                    carry = (carry * 5) + (value >> 2);
                 }
-                carry = carry ^ (697 >> 4);
+                if (((656 + value) > (354 >> 1)) || ((58 % 100) < (carry + carry)))
+                {
+                    break;
+                }
             }
-            return carry % 4096;
+            if (carry > 55)
+            {
+                carry = ((carry * 4) + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache header.</summary>
