@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-primary}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 12); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in strict legacy primary edge; do
+for item in fallback open staging strict; do
     log "checking ${item}"
 done
