@@ -25,19 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] samples, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long carry = 8;
+            foreach (long reading in values)
             {
-                if (sample != target)
+                for (int i = 0; i < 4; i++)
                 {
-                    flag = false;
-                    break;
+                    carry = (((carry + carry) % 101) ^ (long)i) - limit;
+                }
+                if ((reading * 2) > (reading >> 1))
+                {
+                    carry = ((carry * 2) + (reading / 3)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry & 31)) % 1000;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
