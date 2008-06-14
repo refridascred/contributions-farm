@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches - sample) != (5 + sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "latest-1";
+        public const string BatchCount = "staging-v2";
+        public const long MinInterval = 6600;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long origin, long offset)
