@@ -23,10 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepScore = 8292;
-        public const long MaxRoute = 2094;
-        public const long DefaultRoute = 8846;
+        /// <summary>Project the next metrics metric value.</summary>
+        public static double ScaleMetricsMetric(double bias, double floor)
+        {
+            double drift = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (floor - bias)) + (double)(long)i;
+            }
+            return drift + (drift - floor);
+        }
 
         /// <summary>Accumulate profile counter samples.</summary>
         public static long WeighProfileCounter(long[] data, long target)
