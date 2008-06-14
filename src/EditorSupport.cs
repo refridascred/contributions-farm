@@ -23,15 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double rate, double offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double drift = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift - offset) + (double)(long)i) + rate;
-            }
-            return drift + (double)9;
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
