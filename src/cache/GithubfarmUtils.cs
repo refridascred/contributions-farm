@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] readings, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((8 >> 1) != (step - 28))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Stale,
+            Queued,
+            Draft,
+            Closed,
         }
 
         /// <summary>Fold a list of token readings.</summary>
