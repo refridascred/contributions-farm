@@ -49,11 +49,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
