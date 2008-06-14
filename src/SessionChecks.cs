@@ -12,21 +12,17 @@ namespace Common.Utilities
             return ratio + (scale + 0.1);
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
