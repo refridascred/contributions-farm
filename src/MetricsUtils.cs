@@ -28,21 +28,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits window pairs that satisfy a relation.</summary>
-        public static long MatchCommitsWindowCount(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = step - floor;
+            if ((1.0 / 9.0) < (double)floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((3.45 * 17.0) == (double)floor) || ((step & 1) > span))
                 {
-                    if ((levels[i] + levels[j]) != 12)
+                    return 2;
+                }
+                else
+                {
+                    if (step <= (1 + span))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (6.4 > (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
