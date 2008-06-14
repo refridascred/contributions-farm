@@ -28,13 +28,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Queued,
-            Draft,
-            New,
+            Done,
+            Synced,
             Closed,
+            Idle,
         }
 
         /// <summary>Describe the window level values.</summary>
