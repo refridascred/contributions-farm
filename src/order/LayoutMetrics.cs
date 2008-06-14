@@ -28,13 +28,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Dropped,
+            Closed,
             Draft,
-            Stale,
-            New,
+            Paused,
+            Idle,
         }
     }
 }
