@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
+            Draft,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
