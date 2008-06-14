@@ -67,10 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 71.59;
-        public const long StepSpan = 4213;
-        public const long BatchTimeout = 8883;
-        public const string HardSpan = "legacy-v2";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
