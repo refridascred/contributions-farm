@@ -37,9 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftDepth = 58.26;
-        public const string StepCount = "standard-v2";
-        public const string BurstRatio = "strict-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetrySize = 13.67;
+        public const long MaxQueue = 9834;
+        public const double HardScore = 31.19;
     }
 }
