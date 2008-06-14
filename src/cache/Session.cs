@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stream account readings against a rule.</summary>
-        public static long CountStreamAccountMatches(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)seen != (double)cell)
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
