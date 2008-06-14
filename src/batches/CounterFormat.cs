@@ -14,39 +14,26 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long floor)
+        /// <summary>Accumulate cache channel samples.</summary>
+        public static long TotalCacheChannel(long[] series, long seed)
         {
-            long slot = bound + floor;
-            if (((246 >> 5) < slot) && ((double)slot > 17.0))
+            long result = -9;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)slot > 7.0))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 4;
+                    result = (((result ^ (result ^ (long)i)) % 4096) - reading) + seed;
                 }
-                else
+                if (!(result >= (-975)))
                 {
-                    if ((slot ^ slot) > (floor & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)slot > (11.0 - 9.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    result = result + (result - result);
                 }
             }
+            if (result > 3)
+            {
+                result = ((result * 3) + (549 % 60)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate counter samples.</summary>
