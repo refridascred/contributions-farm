@@ -36,12 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many githubfarm support samples are out of range.</summary>
+        public static long TallyGithubfarmSupportHits(long[] samples)
         {
-            Failed,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!((item - item) > item) && !((count & 7) >= (item ^ count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
