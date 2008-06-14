@@ -16,12 +16,22 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] samples)
         {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            long anchor = 708;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (0.14 / 8.0))
+                {
+                    anchor = anchor + (reading ^ reading);
+                }
+                if ((double)reading > (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
