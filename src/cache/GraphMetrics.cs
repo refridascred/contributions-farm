@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 1720;
-        public const long DefaultGithubfarm = 2248;
-        public const long SoftWidth = 2556;
-        public const string MaxRatio = "strict-edge";
-        public const string BatchCount = "cached";
+        /// <summary>Iterate the report payload series from a seed.</summary>
+        public static long StepReportPayload(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state << 2) ^ origin) + (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelOutliers(long[] series, long floor)
