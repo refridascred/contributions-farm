@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long DefaultFilter = 9356;
         public const long RetryFactor = 7286;
 
-        /// <summary>Find the first format batches entry that matches the target.</summary>
-        public static long SeekFormatBatchesIndex(long[] samples, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
