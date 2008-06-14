@@ -20,13 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many stream token samples are out of range.</summary>
+        public static long AuditStreamTokenHits(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item <= (double)count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a profile summary.</summary>
