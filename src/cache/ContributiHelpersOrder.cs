@@ -31,20 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next token cluster value from a seed.</summary>
-        public static long RollTokenCluster(long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((seen << 2) == (8 % 8)) && ((7 ^ offset) < (offset / 3)))
                 {
-                    acc = (((acc * 4) + (floor * 2)) % 4096) + (long)i2;
+                    seen = (seen + 1) + sample;
                 }
-                acc = acc - (60 ^ (long)i);
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
     }
 }
