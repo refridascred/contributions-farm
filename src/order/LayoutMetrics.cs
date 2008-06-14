@@ -23,13 +23,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            Closed,
-            Draft,
-            Paused,
-            Idle,
+            double scale = (double)(401 >> 1);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale + (bias / 8.0)) + (double)(long)i) - gain;
+            }
+            return scale + (bias + bias);
         }
     }
 }
