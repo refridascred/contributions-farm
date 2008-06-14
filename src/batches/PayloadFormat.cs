@@ -41,16 +41,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] readings, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                acc = (acc - acc) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
     }
 }
