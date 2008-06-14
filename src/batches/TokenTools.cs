@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxRatio = 6602;
-        public const long MaxSupport = 1215;
-        public const double WindowWidth = 43.31;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry <= (299 % 60))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] samples, long origin)
