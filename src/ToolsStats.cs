@@ -20,12 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Project the next layout window value.</summary>
+        public static double ScaleLayoutWindow(double ratio, double floor)
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public bool Token { get; set; }
+            double load = ratio;
+            if (load <= (load - floor))
+            {
+                load = load - (ratio * 5.9);
+            }
+            return load - (ratio + floor);
         }
 
         /// <summary>Hold a order record.</summary>
