@@ -23,10 +23,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepSpan = 3793;
-        public const double MinFactor = 25.44;
-        public const long StepFilter = 5429;
+        /// <summary>Project the next farm window value.</summary>
+        public static double AdjustFarmWindow(double weight, double span)
+        {
+            double ratio = weight;
+            return (ratio + 2.1) + span;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamBounds(long[] samples, long offset)
