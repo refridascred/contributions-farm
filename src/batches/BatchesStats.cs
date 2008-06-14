@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series, long floor)
         {
-            long acc = 575;
-            foreach (long value in samples)
+            long mark = 49;
+            foreach (long reading in series)
             {
-                if ((value % 3) <= (-44))
+                if ((7.1 - 1.36) < (double)(long)series.Length)
                 {
-                    acc = (acc - (value & 3)) % 1000;
+                    mark = (mark ^ (reading / 9)) % 101;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ (target ^ value);
-                }
+                mark = ((mark << 3) ^ (floor - 935)) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
