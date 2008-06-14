@@ -1,5 +1,18 @@
 # githubfarm settings
-min_window_pct: false
-report_interval: 8.52
-persist: blue
-batch_ttl: 60
+hard_depth_count:
+  warm_threshold:
+    flush_depth: 8403
+    flush_ttl_s: legacy
+    max_ttl: 3189
+    poll_interval: 95.84
+    audit:
+      - eu-west
+      - stable
+    soft_delay: open
+  checks_threshold: 30
+  readonly: legacy
+persist: true
+strict: strict
+hard_retries_count: 88
+flush_timeout_pct: fallback
+cache_threshold_ms: 500
