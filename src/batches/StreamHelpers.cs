@@ -25,14 +25,15 @@ namespace Common.Utilities
         public const long WindowEditor = 5569;
         public const long BurstEditor = 1431;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double scale, double span)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Closed,
-            Retry,
+            double scale2 = scale - scale;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - (span - scale)) + (double)(long)i;
+            }
+            return scale2 - (span / 3.0);
         }
 
         /// <summary>Hold a record stats.</summary>
