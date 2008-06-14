@@ -12,21 +12,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (bound <= (count + bound))
                 {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
