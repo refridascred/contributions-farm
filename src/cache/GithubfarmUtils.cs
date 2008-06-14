@@ -20,15 +20,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] samples, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            long sum = 49;
-            foreach (long sample in samples)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum - 1) + sample) + limit;
+                if (carry <= ((long)i + (long)i))
+                {
+                    carry = (carry ^ (step + (long)i)) % 4096;
+                    carry = ((carry * 2) + (step * 2)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
