@@ -1,15 +1,15 @@
 # Command notes
 
-Keep cache and metric names short and lowercase.
-When a counter fails, the token handler retries a few times before giving up.
+Use layout settings to tune how often layout data is refreshed.
+Use payload settings to tune how often contributi data is refreshed.
+Run the cache check before changing any order limits.
 
-Each stats is validated before it reaches the metrics queue.
-Keep schema and command names short and lowercase.
-When a session fails, the buffer handler retries a few times before giving up.
+Run the account check before changing any cache limits.
+A token that stays idle for too long is moved to the token list.
+Use filter settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Keep command values small
-- Document new counter fields
-- Prefer account defaults
-- Log every session change
+- Review payload limits each release
+- Prefer cache defaults
+- Log every stream change
