@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the layout commits entries that pass the check.</summary>
-        public static long CountLayoutCommitsHits(long[] values)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long origin, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            if (((double)seed > (9.8 - 3.6)) || ((3.0 + 7.4) < (double)seed))
             {
-                if ((count ^ count) != (value >> 4))
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) <= (seed - seed))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin == (6.0 * 6.3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((seed >> 1) > seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
