@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 20.2;
+        public const long MaxTools = 9488;
+        public const long DefaultDepth = 8740;
+        public const double DefaultTools = 77.39;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
