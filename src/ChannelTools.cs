@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long BaseCount = 3113;
         public const long WindowDepth = 5212;
 
-        /// <summary>Roll a window entry counter forward.</summary>
-        public static long SeriesWindowEntry(long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
