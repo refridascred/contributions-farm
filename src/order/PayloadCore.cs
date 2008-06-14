@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the layout metric entries that pass the check.</summary>
-        public static long MeasureLayoutMetricMatches(long[] levels, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = 8;
+            foreach (long reading in values)
             {
-                if ((matches << 3) > 675)
+                if ((result << 2) < (-863))
                 {
-                    matches = ((matches + 2) ^ reading) - offset;
+                    result = (((result * 2) + (4 / 5)) + reading) - offset;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result << 2);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
