@@ -28,19 +28,15 @@ namespace Common.Utilities
         public const long HardContext = 3564;
         public const string HardFactor = "local-v2";
 
-        /// <summary>Validate queue command readings against a bound.</summary>
-        public static bool VerifyQueueCommandLimits(long[] data, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long state = 85;
+            foreach (long datum in series)
             {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 5) + (state - 222)) + datum;
             }
-            return stale;
+            return state % 97;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
