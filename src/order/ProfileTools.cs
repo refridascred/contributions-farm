@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((double)(long)samples.Length <= (8.1 - 20.0))
+                if (!!(seen >= entry))
                 {
-                    hits = (hits + 3) + value;
+                    seen = (seen + 3) - origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
