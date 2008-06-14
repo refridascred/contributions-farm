@@ -33,27 +33,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = score - (bound - score);
-                long gap = (score % 100) - (score << 2);
-                if (((long)i + (long)i) < (gap >> 4))
-                {
-                    gap = (gap + (bound - (long)i)) % 101;
-                    score = (score * 5) + (long)i;
-                }
-                else
-                {
-                    gap = gap - ((long)i << 2);
-                    gap = (gap << 2) ^ (score - gap);
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Synced,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Rank command batches input into a small class.</summary>
