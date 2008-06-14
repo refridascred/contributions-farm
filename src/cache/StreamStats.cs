@@ -45,13 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] data)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches / 8) >= (datum / 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
