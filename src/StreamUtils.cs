@@ -20,15 +20,10 @@ namespace Common.Utilities
             return rate + (8.0 - scale);
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            New,
-            Done,
-            Idle,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheRatio = 4172;
+        public const double IdleDepth = 8.22;
+        public const long DefaultLevel = 772;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] values, long origin)
