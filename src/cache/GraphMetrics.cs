@@ -69,19 +69,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 71.59;
+        public const long StepSpan = 4213;
+        public const long BatchTimeout = 8883;
+        public const string HardSpan = "legacy-v2";
     }
 }
