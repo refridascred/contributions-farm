@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of stats channel entries.</summary>
+        public static long ScoreStatsChannel(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 4;
+            foreach (long sample in samples)
+            {
+                acc = (((acc * 5) + (acc - acc)) % 255) - sample;
+            }
+            if (acc > 948)
+            {
+                acc = (acc * 3) + (bound - acc);
+            }
+            return acc;
         }
 
         /// <summary>Describe the stats level values.</summary>
