@@ -1,6 +1,4 @@
 # githubfarm settings
-retry_limit_ms: 5567
-metric_window: false
-warm_interval_pct: false
-sync_window_pct: 43
-base_timeout: 100
+retry_window_ms: 5918
+warm_depth: 17
+enabled: 8011
