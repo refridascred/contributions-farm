@@ -13,17 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] items, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
