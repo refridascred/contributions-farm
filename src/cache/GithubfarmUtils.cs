@@ -46,24 +46,19 @@ namespace Common.Utilities
             return mean + (double)2;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long bound, long bound2)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long target)
         {
-            if (((3 ^ bound) > bound) && ((509 - bound2) <= (bound2 - 72)))
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((486 % 16) < (bound / 7))
+                if (datum < target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
