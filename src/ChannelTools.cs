@@ -23,11 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((926 % 3) < matches)
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
