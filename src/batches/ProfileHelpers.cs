@@ -54,12 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 4196;
-        public const long HardBudget = 8356;
-        public const double BatchMetrics = 49.23;
-        public const long RetryMetrics = 2336;
-        public const long MaxBudget = 1142;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] items, long floor)
+        {
+            long score = 5;
+            foreach (long value in items)
+            {
+                if ((9.8 / 3.0) >= (double)value)
+                {
+                    score = (score - 60) + floor;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double StepLevel = 63.61;
