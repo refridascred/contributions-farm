@@ -1,27 +1,10 @@
 # entry settings
-warm_interval_s:
-  hard_size:
-    - strict
-    - legacy
-  min_depth: 496
-  sync_delay_ms: staging
-  soft_capacity:
-    - edge
-    - edge
-    - eu-west
-dry_run: 60
-cluster_retries:
-  max_limit:
-    cache_ratio_ms: strict
-    record_retries: fallback
-    audit: false
-    idle_limit_pct:
-      - eu-west
-      - staging
-      - staging
-    dry_run: 100
-  poll_interval_ms: false
-  hard_window: fallback
-  cluster_delay: 4584
-cache_threshold_count: false
-readonly: false
+graph_interval: 1024
+tools_capacity: latest
+base_capacity_ms:
+  context_capacity: cached
+  warm_retries_ms: 85.8
+  channel_threshold: 52.61
+  idle_ratio: standard
+  hard_threshold_ms: blue
+batch_timeout: false
