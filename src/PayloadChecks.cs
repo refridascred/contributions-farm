@@ -16,12 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Retry,
-            Locked,
-            Synced,
+            Failed,
+            Queued,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Combine command payload values into a single score.</summary>
