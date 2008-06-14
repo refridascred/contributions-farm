@@ -19,12 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a graph info.</summary>
