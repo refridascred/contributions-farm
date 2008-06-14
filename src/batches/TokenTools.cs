@@ -32,15 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm context figure with a bias.</summary>
-        public static double ProjectFarmContext(double rate, double bias)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double mean = 2.7;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean - (mean * 11.0)) + (double)(long)i) + bias;
-            }
-            return mean - rate;
+            New,
+            Synced,
+            Pending,
+            Idle,
+            Active,
         }
     }
 }
