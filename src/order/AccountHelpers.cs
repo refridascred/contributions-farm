@@ -67,12 +67,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseInterval = 3313;
-        public const long StepWidth = 3733;
-        public const long WindowRecord = 9742;
-        public const long StepTimeout = 9980;
-        public const long HardLevel = 300;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 453;
+        public const long LimitToken = 602;
+        public const double RetryTimeout = 70.37;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
