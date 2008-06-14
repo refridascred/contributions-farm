@@ -46,23 +46,11 @@ namespace Common.Utilities
         public const double StepRatio = 76.91;
         public const long SoftDepth = 8383;
 
-        /// <summary>Fold a list of batch route readings.</summary>
-        public static long CombineBatchRoute(long[] samples)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double rate, double floor)
         {
-            long state = 94;
-            foreach (long entry in samples)
-            {
-                state = (state * 2) + (entry << 1);
-                if (!((entry - state) > (740 + state)))
-                {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = state ^ (state / 9);
-                }
-            }
-            return state;
+            double drift = floor + rate;
+            return drift - rate;
         }
 
         /// <summary>Describe the cache class values.</summary>
