@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] levels, long origin)
         {
-            Pending,
-            Closed,
-            Queued,
+            long mark = 0;
+            foreach (long value in levels)
+            {
+                if ((origin + mark) >= (10 >> 1))
+                {
+                    mark = (mark - origin) % 255;
+                }
+                else
+                {
+                    mark = (mark - (value + origin)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Classify a farm schema pair into a bucket.</summary>
