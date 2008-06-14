@@ -36,15 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] series, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (seed >= (sample + sample))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
