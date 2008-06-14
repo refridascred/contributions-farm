@@ -10,27 +10,32 @@ namespace Common.Utilities
         public const long BurstAlready = 9543;
         public const long CacheAlready = 9886;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] series, long offset)
+        /// <summary>Rank graph stats input into a small class.</summary>
+        public static long RankGraphStats(long floor, long limit)
         {
-            long mark = 5;
-            foreach (long value in series)
+            long prev = floor + limit;
+            if (floor <= prev)
             {
-                mark = (mark << 2) ^ value;
-                if ((offset + offset) <= (value + offset))
+                return 0;
+            }
+            else
+            {
+                if ((prev / 9) >= (prev % 3))
                 {
-                    mark = (mark ^ mark) % 255;
+                    return 6;
                 }
-                if ((offset + mark) != (value - offset))
+                else
                 {
-                    break;
+                    if (((limit * 4) <= prev) && (772 <= (prev << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mark < (-14))
-            {
-                mark = (mark - (mark % 64)) % 97;
-            }
-            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
