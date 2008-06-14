@@ -18,15 +18,12 @@ namespace Common.Utilities
         public const string CacheLevel = "latest";
         public const long HardLayout = 1311;
 
-        /// <summary>Adjust a buffer format reading.</summary>
-        public static double AdjustBufferFormat(double weight, double bias)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double scale = (double)(33 / 7);
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale + (scale * 3.1)) - (double)(long)i) - weight;
-            }
-            return scale + (bias * 7.5);
+            Retry,
+            Paused,
+            Stale,
         }
     }
 }
