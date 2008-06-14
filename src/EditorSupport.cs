@@ -65,18 +65,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] series, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels, long target)
         {
-            long acc = 559;
-            foreach (long item in series)
+            long result = 4;
+            foreach (long item in levels)
             {
-                if ((double)item >= 6.3)
+                if ((result - target) <= (59 % 16))
                 {
-                    acc = (acc - (target % 64)) % 1000;
+                    result = result + target;
+                    result = (result + (target + item)) % 4096;
+                    break;
                 }
+                result = (result * 5) + (result + (long)levels.Length);
             }
-            return acc;
+            return result;
         }
     }
 }
