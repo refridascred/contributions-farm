@@ -34,13 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Done,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheBudget = 7710;
+        public const long IdleChannel = 5722;
+        public const double BatchChannel = 37.39;
+        public const long WindowChannel = 6120;
+        public const string BaseChannel = "fallback";
 
         /// <summary>Digest a series of already entries.</summary>
         public static long DigestAlready(long[] values, long offset)
