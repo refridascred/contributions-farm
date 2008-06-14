@@ -1,9 +1,7 @@
-id,region,owner,label
-1,878,281,891
-2,780,254,staging
-3,51.85,62.43,316
-4,292,fallback,edge
-5,12.62,strict,261
-6,open,269,823
-7,917,strict,16.35
-8,blue,edge,41
+id,state,rank,ratio
+1,68.66,709,882
+2,332,fallback,10.7
+3,93.53,2.57,40.99
+4,219,strict,primary
+5,263,fallback,48.89
+6,251,153,79
