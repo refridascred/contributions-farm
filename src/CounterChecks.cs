@@ -88,24 +88,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long target)
-        {
-            if ((floor / 7) >= (target & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target < (8.0 + 0.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 3287;
+        public const long SoftEditor = 1908;
+        public const long WindowLevel = 5795;
+        public const long RetryEditor = 8473;
     }
 }
