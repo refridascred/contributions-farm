@@ -1,18 +1,4 @@
 # entry settings
-soft_threshold_s: 1
-command_ttl:
-  flush_ratio_pct: 95
-  session_timeout: 867
-  batch_depth_ms:
-    - 434
-    - 461
-profile_interval: standard
-persist:
-  cache_limit_ms: 5854
-  persist: 4429
-  burst_capacity_s:
-    - strict
-    - latest
-    - strict
-  strict: 83.8
-  schema_limit: 5
+poll_ratio_count: stable
+burst_window_pct: strict
+strict: false
