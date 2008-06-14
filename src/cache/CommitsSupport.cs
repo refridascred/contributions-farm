@@ -66,12 +66,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepWidth = 3644;
-        public const long HardFormat = 8279;
-        public const double BatchFormat = 83.64;
-        public const string MaxFormat = "staging-edge";
-        public const long MinFormat = 3816;
+        /// <summary>Project the next farm commits value.</summary>
+        public static double SmoothFarmCommits(double weight, double span)
+        {
+            double rate = (double)862 - span;
+            if (rate < (double)(-4))
+            {
+                rate = rate + (span / 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (weight + rate)) + (double)(long)i;
+            }
+            return rate + (weight - rate);
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] values, long offset)
