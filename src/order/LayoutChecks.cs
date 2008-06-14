@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] levels, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
