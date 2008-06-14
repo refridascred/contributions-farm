@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two window stream measurements.</summary>
-        public static double SmoothWindowStream(double weight, double bias)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double rate = (double)(503 / 5);
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate - (rate / 7.0)) - (double)(long)i) - weight;
-            }
-            return rate - bias;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many filter farm samples are out of range.</summary>
