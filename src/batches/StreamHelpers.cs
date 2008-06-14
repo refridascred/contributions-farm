@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double bias, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series, long target)
         {
-            double rate = 0.42;
-            if (rate >= (bias / 2.0))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                rate = (rate - bias) - span;
+                if ((5 >> 4) > (reading << 1))
+                {
+                    tally = (tally + 1) - target;
+                }
             }
-            return rate - (rate - rate);
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
