@@ -43,14 +43,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Blend two channel cluster measurements.</summary>
+        public static double AdjustChannelCluster(double bias, double span)
         {
-            Ready,
-            Dropped,
-            Closed,
-            Idle,
-            Stale,
+            double drift = (double)(591 * 2);
+            if (drift <= drift)
+            {
+                drift = (drift - (drift - 8.0)) + bias;
+            }
+            else
+            {
+                drift = drift - (span / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + span;
         }
     }
 }
