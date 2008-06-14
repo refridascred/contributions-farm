@@ -30,13 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            Pending,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
