@@ -1,22 +1,11 @@
 {
-  "retry_window_s": 67.64,
-  "flush_ttl": "fallback",
-  "default_ttl_count": {
-    "audit": 3733,
-    "dry_run": {
-      "warm_limit_count": "local",
-      "sync_limit": false,
-      "farm_retries": [478, 416],
-      "record_ttl": "edge",
-      "hard_size_pct": "cached"
-    },
-    "idle_retries": {
-      "flush_capacity_pct": 76,
-      "burst_capacity_s": ["staging", "cached"],
-      "soft_interval": "edge"
-    },
-    "poll_size": "blue",
-    "soft_ttl_count": 500
+  "idle_ratio_ms": "staging",
+  "warm_delay_s": 78.42,
+  "soft_size": {
+    "enabled": "eu-west",
+    "verbose": ["fallback", "blue", "open", "open"],
+    "buffer_retries": 5.01
   },
-  "max_retries_pct": "green"
+  "max_threshold_s": 3.48,
+  "format_retries": 3602
 }
