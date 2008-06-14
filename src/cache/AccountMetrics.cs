@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (entry > ((long)data.Length - entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultLevel = 3451;
+        public const long BurstBudget = 2323;
+        public const long SoftInterval = 6784;
+        public const long DefaultFactor = 7264;
+        public const double CacheQueue = 85.25;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long ScoreGithubfarm(long[] values, long target)
