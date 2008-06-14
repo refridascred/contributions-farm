@@ -16,22 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long total = 840;
-            foreach (long cell in values)
-            {
-                if (total >= (total ^ total))
-                {
-                    total = ((total << 3) ^ (total + 9)) ^ cell;
-                }
-            }
-            if (total > 7)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
+            Paused,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the already kind values.</summary>
