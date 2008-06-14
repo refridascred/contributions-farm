@@ -30,10 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 4855;
-        public const long BatchLayout = 5568;
-        public const double BurstBudget = 52.62;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7863;
+        public const long CacheInterval = 2934;
+        public const long CacheCommits = 5814;
 
         /// <summary>Fold a list of batch entry readings.</summary>
         public static long TotalBatchEntry(long[] levels)
