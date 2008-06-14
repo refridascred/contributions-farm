@@ -34,15 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mark = 7;
-            foreach (long entry in data)
-            {
-                mark = ((mark - (entry / 9)) % 4096) - step;
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
