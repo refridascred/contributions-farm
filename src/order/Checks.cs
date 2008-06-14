@@ -20,11 +20,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowFactor = 7842;
-        public const long RetryMetrics = 8969;
-        public const double MinRatio = 70.79;
-        public const long CacheRatio = 8889;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)matches == (7.99 * 4.13))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] readings)
