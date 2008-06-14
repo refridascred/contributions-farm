@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Count the notes metric entries that pass the check.</summary>
+        public static long AuditNotesMetricGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((reading % 5) <= (count - count)) && ((reading + reading) <= (count >> 3)))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
