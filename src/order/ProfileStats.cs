@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Active,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
