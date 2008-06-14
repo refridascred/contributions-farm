@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (scale / 3.0) * 1.85;
+            if (bias > scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - (double)20;
             }
-            return seen;
+            else
+            {
+                bias = bias + offset;
+            }
+            return bias + (scale - 16.0);
         }
 
         /// <summary>Audit schema graph readings against a rule.</summary>
