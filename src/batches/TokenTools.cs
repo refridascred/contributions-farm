@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinSize = 17.07;
+        public const long SoftRatio = 5827;
+        public const double LimitScore = 74.3;
+        public const double BatchPayload = 66.23;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
