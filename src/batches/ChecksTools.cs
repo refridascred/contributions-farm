@@ -36,13 +36,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Validate stats profile readings against a bound.</summary>
+        public static bool CheckStatsProfileRange(long[] levels, long step)
         {
-            Stale,
-            New,
-            Queued,
-            Active,
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
