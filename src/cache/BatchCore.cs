@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long RetryBatch = 1799;
         public const double MaxBatch = 41.62;
 
-        /// <summary>Count session contributi pairs that satisfy a relation.</summary>
-        public static long PairSessionContributiCount(long[] series)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(-19) - (scale * 5.4);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = ((bias + (double)562) + (double)(long)i) - floor;
             }
-            return tally;
+            return bias - scale;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
