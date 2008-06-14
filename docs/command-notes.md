@@ -1,12 +1,11 @@
 # Command notes
 
-When a command fails, the record handler retries a few times before giving up.
-Each buffer is validated before it reaches the queue queue.
-Use tools settings to tune how often window data is refreshed.
+Use tools settings to tune how often tools data is refreshed.
+A metrics that stays idle for too long is moved to the record list.
+The support report groups every command by buffer.
 
 ## Guidelines
 
-- Validate route input early
-- Review format limits each release
-- Keep profile values small
-- Log every layout change
+- Log every tools change
+- Prefer stats defaults
+- Validate command input early
