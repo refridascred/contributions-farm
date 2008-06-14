@@ -22,13 +22,10 @@ namespace Common.Utilities
             return bias3 + (double)879;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 6664;
+        public const double BaseRecord = 89.36;
+        public const string MinWidth = "alpha-edge";
+        public const long LimitRecord = 1351;
     }
 }
