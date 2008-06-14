@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every cache contributi entry stays within the limit.</summary>
-        public static bool ValidateCacheContributiBounds(long[] samples, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (cell >= floor)
+                if (sample != bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
