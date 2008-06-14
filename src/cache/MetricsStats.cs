@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics metric value.</summary>
-        public static double ScaleMetricsMetric(double bias, double floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            double drift = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (floor - bias)) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + (drift - floor);
+            return matches;
         }
 
         /// <summary>Accumulate profile counter samples.</summary>
