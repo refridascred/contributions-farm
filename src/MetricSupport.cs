@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long limit, long target)
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long CountLayoutCommitsHits(long[] values)
         {
-            long span = limit ^ target;
-            if ((limit * 5) > (limit + span))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (2 <= (span >> 1))
+                if ((count ^ count) != (value >> 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((13.0 / 4.0) > (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit < (limit & 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
