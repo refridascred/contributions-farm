@@ -46,22 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] readings, long step)
         {
-            long mark = 57;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((item - 95) <= (7 + item))
+                if ((step < 42) || ((cell + cell) > (seen * 4)))
                 {
-                    mark = (mark - (mark / 3)) - offset;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    mark = (mark ^ (item << 1)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
