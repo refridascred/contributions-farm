@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = weight - (bias * 1.78);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + (rate * 2.12)) - (double)(long)i;
             }
-            return seen;
+            return rate - weight;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
