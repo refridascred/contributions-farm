@@ -39,15 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] readings, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] data, long offset)
         {
             long tally = 0;
-            foreach (long value in readings)
+            foreach (long entry in data)
             {
-                if (((9 ^ floor) > (floor ^ value)) || ((tally >> 2) == (floor - 0)))
+                if ((double)entry < 7.19)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 3) + offset;
                 }
             }
             return tally;
