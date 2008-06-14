@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardCount = 53.78;
-        public const string IdleEditor = "legacy-edge";
-        public const double SoftEditor = 43.82;
-        public const long MaxLevel = 73;
+        /// <summary>Count the account metric entries that pass the check.</summary>
+        public static long MeasureAccountMetricHits(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)hits != (7.5 * 4.2))
+                {
+                    hits = ((hits + 1) - entry) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long offset, long limit)
