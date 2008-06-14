@@ -14,18 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] values)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.7 * 0.8) <= (double)reading)
+                if (samples[i] < seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
