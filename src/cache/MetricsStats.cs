@@ -34,26 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values, long offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long carry = 33;
-            foreach (long reading in values)
-            {
-                if ((12.0 - 1.0) != (double)reading)
-                {
-                    carry = (carry + (reading * 5)) % 4096;
-                }
-                if ((5.0 / 5.0) < (double)reading)
-                {
-                    carry = ((carry << 3) ^ (offset & 7)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (988 * 3)) % 4096;
-                }
-            }
-            return carry;
+            Queued,
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Project the next counter value.</summary>
