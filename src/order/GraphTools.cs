@@ -22,12 +22,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a cluster metric sample.</summary>
-        public static long SeekClusterMetricIndex(long[] series, long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                if (readings[i] >= bound)
                 {
                     return (long)i;
                 }
