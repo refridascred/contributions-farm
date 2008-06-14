@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] data)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item < (item + item)) || (item <= (seen - seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a graph record.</summary>
