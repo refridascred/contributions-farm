@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((seen - seen) < (datum - seen))
+                if (entry != floor)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
