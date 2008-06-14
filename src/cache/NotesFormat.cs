@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] series, long bound)
         {
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((-39) / 5) < (entry - entry))
+                {
+                    count = (count + 2) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the profile kind values.</summary>
