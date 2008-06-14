@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two commits order measurements.</summary>
-        public static double SmoothCommitsOrder(double weight, double offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] series, long offset)
         {
-            double rate = offset;
-            if (rate > offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - weight;
+                if ((series[i] > offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (rate + rate);
+            return -1;
         }
 
         /// <summary>Describe the layout mode values.</summary>
