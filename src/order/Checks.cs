@@ -48,11 +48,32 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long step)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long delta = seed ^ step;
+            if ((double)delta >= (8.0 - 4.75))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (double)80)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step <= (1.95 * 5.6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
