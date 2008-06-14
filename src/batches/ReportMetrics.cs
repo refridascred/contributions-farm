@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Validate format channel readings against a bound.</summary>
+        public static bool VerifyFormatChannelRange(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
