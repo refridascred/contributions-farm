@@ -10,20 +10,18 @@ namespace Common.Utilities
         public const long BatchWidth = 4816;
         public const double DefaultProfile = 0.73;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] series, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] readings, long seed)
         {
-            long state = 84;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                state = state + (value ^ value);
-                state = (state + state) % 101;
-                if ((double)limit > (7.05 / 8.0))
+                if ((matches ^ seed) > (seed ^ matches))
                 {
-                    state = ((state * 2) + (state & 7)) % 4096;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Describe the report phase values.</summary>
