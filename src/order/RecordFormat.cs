@@ -78,11 +78,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "legacy-edge";
-        public const double BatchTimeout = 52.55;
-        public const double BatchFactor = 68.73;
-        public const string RetrySpan = "staging-1";
-        public const long HardRatio = 4981;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "open-v2";
+        public const double MinDepth = 98.55;
+        public const string LimitInterval = "fallback";
+        public const long MinReport = 9147;
     }
 }
