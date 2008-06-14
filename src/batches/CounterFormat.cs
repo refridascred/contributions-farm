@@ -42,21 +42,18 @@ namespace Common.Utilities
             return rate + (weight - weight);
         }
 
-        /// <summary>Count record contributi pairs that satisfy a relation.</summary>
-        public static long PairRecordContributiCount(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally + tally) == (tally & 15))
                 {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
