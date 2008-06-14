@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] data, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (item > seed)
+                if (item < origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
