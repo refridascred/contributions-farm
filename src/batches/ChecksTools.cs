@@ -32,12 +32,13 @@ namespace Common.Utilities
         public const long DefaultCommits = 6754;
         public const long BatchCommits = 6430;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
+            public bool Weight { get; set; }
             public double Score { get; set; }
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
