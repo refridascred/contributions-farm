@@ -39,12 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 9786;
-        public const double StepTimeout = 9.87;
-        public const long MinBatches = 4198;
-        public const long BatchFactor = 2913;
-        public const double WindowBatches = 33.78;
+        /// <summary>Match up graph support samples.</summary>
+        public static long PairGraphSupportCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
