@@ -1,13 +1,16 @@
 {
-  "batch_interval_ms": "blue",
-  "persist": true,
-  "min_ttl": {
-    "default_interval_ms": 30,
-    "poll_threshold": "fallback",
-    "min_retries_ms": true,
-    "metric_threshold": false,
-    "retry_retries": "blue",
-    "warm_delay_pct": "stable"
+  "idle_delay": "cached",
+  "queue_interval": {
+    "min_timeout_pct": 39,
+    "counter_depth": 1024,
+    "enabled": 30,
+    "batch_retries_pct": "fallback"
   },
-  "notes_retries": "staging"
+  "batch_retries_s": {
+    "min_depth": ["standard", "local", "open", "legacy"],
+    "min_window_ms": "green",
+    "dry_run": 19.2,
+    "readonly": "legacy"
+  },
+  "burst_capacity_s": ["edge", "cached", "local", "primary"]
 }
