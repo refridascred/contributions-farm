@@ -44,19 +44,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double weight, double span)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] items, long offset)
         {
-            double gain = span;
-            if (gain < weight)
+            long mix = 474;
+            foreach (long value in items)
             {
-                gain = gain + (double)593;
+                mix = ((mix << 3) ^ offset) + value;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (gain + span)) + (double)(long)i;
-            }
-            return gain + (double)2;
+            return mix % 1000;
         }
     }
 }
