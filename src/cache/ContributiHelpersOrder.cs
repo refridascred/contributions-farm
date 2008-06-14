@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long target)
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long MeasureQueuePayloadOutliers(long[] series)
         {
-            long state = -971;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (state < (364 + state))
+                if (5.64 < (double)tally)
                 {
-                    state = (state - (48 * 2)) % 255;
-                }
-                state = (state + state) % 255;
-                if ((target + target) >= (target - item))
-                {
-                    state = ((state << 2) ^ (state * 4)) % 255;
+                    tally = (tally + 1) ^ datum;
                 }
                 else
                 {
-                    state = state + item;
+                    tally = tally - 1;
                 }
             }
-            if (state < 352)
-            {
-                state = (state + (target << 1)) % 97;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the route phase values.</summary>
