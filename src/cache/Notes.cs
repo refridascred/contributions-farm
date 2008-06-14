@@ -43,18 +43,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long floor, long step)
         {
-            long carry = 24;
-            foreach (long datum in series)
+            if (((floor - floor) < 57) && ((27 / 5) >= floor))
             {
-                if (((7.03 + 6.9) > (double)datum) || ((double)(long)series.Length > (4.5 * 8.4)))
+                return 4;
+            }
+            else
+            {
+                if ((step / 4) > (step + floor))
                 {
-                    carry = ((carry + (260 >> 3)) % 97) + target;
+                    return 6;
+                }
+                else
+                {
+                    if (((step + 570) <= 7) || ((double)630 <= (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
