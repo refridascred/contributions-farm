@@ -14,15 +14,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            New,
-            Paused,
-            Idle,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 9905;
+        public const long MaxChecks = 6624;
+        public const long MinFactor = 9504;
 
         /// <summary>Look up the position of a contributi account sample.</summary>
         public static long LocateContributiAccountIndex(long[] values, long target)
