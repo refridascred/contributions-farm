@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const double HardChecks = 12.18;
         public const long WindowChecks = 6225;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((hits + hits) > (hits - target))
+                if (((3.79 - 6.4) <= (double)seen) || !((entry ^ seen) != (entry % 24)))
                 {
-                    hits = (hits + 1) + sample;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
