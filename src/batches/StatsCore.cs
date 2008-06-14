@@ -31,12 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 95.56;
-        public const double CacheCount = 76.88;
-        public const double BaseBuffer = 30.06;
-        public const string StepTimeout = "cached-v2";
-        public const double CacheBuffer = 17.08;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Retry,
+            Closed,
+            Synced,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double scale, double span)
