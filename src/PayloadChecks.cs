@@ -16,10 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 8643;
-        public const string SoftSize = "local";
-        public const long StepFarm = 3854;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Retry,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
