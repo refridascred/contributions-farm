@@ -23,10 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 8082;
-        public const long HardContext = 3564;
-        public const string HardFactor = "local-v2";
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] series)
