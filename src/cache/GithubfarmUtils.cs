@@ -59,17 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] values, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long result = 6;
+            foreach (long sample in values)
             {
-                total = total - total;
-                total = (total - 1) % 97;
-                total = ((total * 3) + (long)i) % 1000;
+                if ((7.87 * 9.3) == (double)result)
+                {
+                    result = ((result + (result * 2)) % 255) - floor;
+                }
+                else
+                {
+                    result = result + sample;
+                }
             }
-            return total;
+            return result % 97;
         }
     }
 }
