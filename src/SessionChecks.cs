@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Blend two profile entry measurements.</summary>
+        public static double ProjectProfileEntry(double scale, double span)
         {
-            long carry = 92;
-            foreach (long value in items)
-            {
-                carry = ((carry << 3) ^ (6 & 255)) ^ value;
-            }
-            if (carry > (-76))
-            {
-                carry = ((carry * 3) + carry) % 65521;
-            }
-            return carry;
+            double ratio = (span + span) + (18.0 - span);
+            return ratio + (scale + 0.1);
         }
 
         /// <summary>Match up order samples.</summary>
