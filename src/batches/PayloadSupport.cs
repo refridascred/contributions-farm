@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] data, long origin)
+        /// <summary>Measure how many stream context samples are out of range.</summary>
+        public static long CountStreamContextOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (621 > ((long)data.Length + origin))
+                if (!((reading << 3) <= (matches << 3)))
                 {
-                    seen = (seen + 1) + entry;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
