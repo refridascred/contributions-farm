@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string DefaultStream = "latest-edge";
         public const long IdleDepth = 2535;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen * 3) == (8 % 10))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
