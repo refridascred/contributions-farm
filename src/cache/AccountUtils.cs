@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] series)
         {
-            Retry,
-            Draft,
-            Ready,
-            Paused,
+            long carry = 40;
+            foreach (long sample in series)
+            {
+                if (((carry * 5) != (carry - sample)) && (carry >= (sample << 1)))
+                {
+                    carry = (carry + (sample + (-31))) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Roll a route counter forward.</summary>
