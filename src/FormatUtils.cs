@@ -70,11 +70,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long seed)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
