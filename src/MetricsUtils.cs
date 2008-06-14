@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchCount = 2864;
-        public const long MinLevel = 2253;
-        public const long LimitLevel = 7096;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowScore = 5050;
+        public const string HardDepth = "latest-1";
+        public const long SoftFactor = 8103;
+        public const long DefaultCommits = 4370;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] levels, long step)
