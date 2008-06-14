@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 9788;
-        public const string MaxGraph = "primary-edge";
-        public const long WindowRatio = 5539;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Look up the position of a contributi account sample.</summary>
         public static long LocateContributiAccountIndex(long[] values, long target)
