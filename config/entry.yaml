@@ -1,10 +1,9 @@
 # entry settings
-persist: false
-burst_size_ms:
-  - 489
-  - 216
-  - 433
-  - 26
-hard_timeout: 2423
-compress: 11
-default_delay: true
+default_delay_s: eu-west
+flush_size: 8326
+audit: true
+max_timeout: strict
+already_size: primary
+hard_interval_s:
+  - standard
+  - stable
