@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items)
         {
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = 92;
+            foreach (long value in items)
+            {
+                carry = ((carry << 3) ^ (6 & 255)) ^ value;
+            }
+            if (carry > (-76))
+            {
+                carry = ((carry * 3) + carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
