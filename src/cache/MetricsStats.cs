@@ -37,19 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate profile counter samples.</summary>
-        public static long WeighProfileCounter(long[] data, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] series)
         {
-            long score = 33;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                score = ((score ^ (entry + 604)) % 97) + target;
+                if ((618 + value) != (626 >> 1))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (score < 319)
-            {
-                score = ((score * 5) + score) % 1000;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
