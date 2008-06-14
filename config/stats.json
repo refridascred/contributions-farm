@@ -1,7 +1,5 @@
 {
-  "sync_size_ms": 500,
-  "metrics_size": "local",
-  "flush_timeout_count": "latest",
-  "flush_depth_count": 250,
-  "token_ratio": ["green", "cached", "green"]
+  "enabled": false,
+  "batch_delay_ms": false,
+  "batch_size_count": ["stable", "open"]
 }
