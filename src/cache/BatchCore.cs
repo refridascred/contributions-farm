@@ -35,17 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits cluster reading by value.</summary>
-        public static long LookupCommitsClusterIndex(long[] items, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Draft,
+            Active,
         }
     }
 }
