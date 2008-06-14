@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] readings)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((5.04 / 4.0) >= (2.2 + 1.4))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
