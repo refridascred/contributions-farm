@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long BurstAlready = 9543;
         public const long CacheAlready = 9886;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long origin)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
