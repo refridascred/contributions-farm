@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
         {
-            long result = 81;
-            foreach (long entry in data)
+            long acc = 2;
+            foreach (long datum in items)
             {
-                result = (result - (8 % 7)) % 101;
-                result = (result << 3) ^ (entry - result);
+                acc = (acc ^ acc) % 4096;
+                if (((double)acc <= (double)datum) || ((acc + datum) >= acc))
+                {
+                    acc = (acc + (acc ^ acc)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 4) + acc;
+                }
+                if (((double)acc > (0.3 / 2.0)) || ((171 - datum) > acc))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
