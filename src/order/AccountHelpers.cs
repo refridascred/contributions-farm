@@ -87,22 +87,21 @@ namespace Common.Utilities
         public const long StepTimeout = 9980;
         public const long HardLevel = 300;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell - sum) >= sum) || ((double)888 == (double)sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum - (952 + cell);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (7 - cell);
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return tally;
         }
     }
 }
