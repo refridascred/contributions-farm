@@ -20,15 +20,14 @@ namespace Common.Utilities
             return rate + (8.0 - scale);
         }
 
-        /// <summary>Accumulate payload context samples.</summary>
-        public static long TallyPayloadContext(long[] samples)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long total = 53;
-            foreach (long item in samples)
-            {
-                total = (total - (total + total)) - item;
-            }
-            return total % 65521;
+            New,
+            Done,
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
