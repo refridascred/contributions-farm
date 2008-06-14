@@ -1,6 +1,4 @@
 # entry settings
-retry_ratio: false
-dry_run: 3281
-verbose: 8939
-persist: false
-window_ttl: green
+cache_interval: 56.33
+queue_threshold: 80
+profile_window: blue
