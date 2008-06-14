@@ -47,39 +47,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long origin, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings, long offset)
         {
-            long step = origin ^ limit;
-            if ((double)limit < (double)origin)
+            long mark = 53;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit >> 4) < (step * 3))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 5;
+                    mark = (mark ^ (entry % 97)) - (long)i;
                 }
-                else
+                mark = (mark ^ (entry % 64)) % 1000;
+                if ((double)offset < (double)entry)
                 {
-                    if (((5.88 - 5.0) == (double)step) || (step >= (7 - step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)limit < (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mark > 9)
+            {
+                mark = ((mark * 4) + (offset + mark)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a format summary.</summary>
