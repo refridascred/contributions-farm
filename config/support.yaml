@@ -1,6 +1,4 @@
 # support settings
-already_ratio: strict
-cluster_limit: strict
-default_window:
-  - 445
-  - 26
+flush_ratio: 1429
+hard_interval: open
+farm_ratio: open
