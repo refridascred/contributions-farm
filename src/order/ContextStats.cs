@@ -25,12 +25,23 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "fallback";
-        public const long CacheMetrics = 7665;
-        public const long BurstScore = 5617;
-        public const string StepRatio = "stable-1";
-        public const long MaxWidth = 3240;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((double)origin != (19.0 / 4.0)) && ((double)344 <= (double)tally))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit cluster batches readings against a rule.</summary>
         public static long TallyClusterBatchesMatches(long[] levels)
