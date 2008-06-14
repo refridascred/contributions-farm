@@ -36,13 +36,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items)
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long acc = 333;
+            foreach (long cell in items)
+            {
+                if ((acc ^ 90) > (0 * 5))
+                {
+                    acc = (acc ^ (acc / 9)) + cell;
+                }
+                else
+                {
+                    acc = (acc + (373 % 12)) % 97;
+                }
+            }
+            return acc;
         }
     }
 }
