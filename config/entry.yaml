@@ -1,4 +1,22 @@
 # entry settings
-cache_interval: 56.33
-queue_threshold: 80
-profile_window: blue
+profile_interval: 60
+sync_ttl_pct: 18.01
+warm_threshold_s: primary
+cache_timeout: 500
+cache_threshold_pct:
+  soft_depth_s:
+    - 71
+    - 435
+    - 195
+    - 144
+  flush_capacity_pct:
+    - 302
+    - 371
+    - 332
+  cache_window_s: cached
+  cache_window_count: 100
+hard_ttl_ms:
+  - 443
+  - 166
+  - 465
+  - 361
