@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Check that every cache contributi entry stays within the limit.</summary>
+        public static bool ValidateCacheContributiBounds(long[] samples, long floor)
         {
-            Closed,
-            Idle,
-            Paused,
-            Ready,
-            Synced,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
