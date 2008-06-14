@@ -37,20 +37,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 900;
+        public const long SoftBudget = 3519;
+        public const long LimitSpan = 5186;
+        public const string HardEntry = "standard-edge";
+        public const long BaseInterval = 73;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
