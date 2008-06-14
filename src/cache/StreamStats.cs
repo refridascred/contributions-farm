@@ -29,22 +29,17 @@ namespace Common.Utilities
             return ratio2 + (bias + ratio);
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] items, long floor)
         {
-            long sum = 143;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sum <= limit)
+                if (items[i] < floor)
                 {
-                    sum = ((sum - (limit - sum)) % 65521) + entry;
-                }
-                if (limit >= (limit - 57))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
