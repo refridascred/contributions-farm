@@ -30,10 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitFactor = 70.56;
-        public const long RetryScore = 8194;
-        public const long DefaultInterval = 9555;
-        public const double SoftCount = 46.46;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
