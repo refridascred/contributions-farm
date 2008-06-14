@@ -1,6 +1,13 @@
 {
-  "queue_retries": 44.78,
-  "burst_limit_ms": "fallback",
-  "base_delay_ms": 83,
-  "poll_delay_ms": 2882
+  "batch_interval_ms": "blue",
+  "persist": true,
+  "min_ttl": {
+    "default_interval_ms": 30,
+    "poll_threshold": "fallback",
+    "min_retries_ms": true,
+    "metric_threshold": false,
+    "retry_retries": "blue",
+    "warm_delay_pct": "stable"
+  },
+  "notes_retries": "staging"
 }
