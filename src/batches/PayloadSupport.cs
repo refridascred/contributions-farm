@@ -32,15 +32,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double gain, double bias)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] levels, long seed)
         {
-            double rate = (gain / 9.0) / 7.0;
-            if (rate >= (rate + bias))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + gain;
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (bias - gain);
+            return -1;
         }
     }
 }
