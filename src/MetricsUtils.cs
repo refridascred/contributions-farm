@@ -37,11 +37,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long bound)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long diff = limit ^ bound;
+            if (((double)diff < (5.7 / 2.0)) || ((bound - diff) != (diff - bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (diff < (diff + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
