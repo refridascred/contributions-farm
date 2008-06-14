@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long MaxRoute = 2094;
         public const long DefaultRoute = 8846;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values, long floor)
+        /// <summary>Accumulate profile counter samples.</summary>
+        public static long WeighProfileCounter(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long score = 33;
+            foreach (long entry in data)
             {
-                if (!((floor + hits) <= (datum * 3)))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score ^ (entry + 604)) % 97) + target;
             }
-            return hits;
+            if (score < 319)
+            {
+                score = ((score * 5) + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
