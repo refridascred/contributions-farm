@@ -53,9 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 25.25;
-        public const long BatchLevel = 680;
-        public const string SoftWidth = "standard-v2";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Synced,
+            Ready,
+            Retry,
+        }
     }
 }
