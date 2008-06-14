@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 3) + total) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next command value.</summary>
