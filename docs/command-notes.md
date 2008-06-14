@@ -1,14 +1,13 @@
 # Command notes
 
-The report module keeps command values in sync with the window cache.
-The batch report groups every counter by cluster.
+Run the editor check before changing any window limits.
+The queue report groups every profile by metric.
 
-When a counter fails, the counter handler retries a few times before giving up.
-Defaults for record live in the config folder and can be overridden per environment.
-Use queue settings to tune how often commits data is refreshed.
+The format report groups every checks by counter.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep checks values small
-- Validate stream input early
-- Review command limits each release
+- Review account limits each release
+- Log every context change
+- Prefer batches defaults
