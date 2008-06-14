@@ -1,20 +1,10 @@
 # entry settings
-base_ttl_s: 9948
-burst_delay:
-  batch_delay_ms: 48.13
-  soft_window_pct: primary
-  batch_limit_pct:
-    warm_ratio_ms: 80
-    burst_timeout_pct: 90.18
-    cache_ttl_ms: 50
-    graph_retries: 18.73
-  max_ttl: 6495
-  compress:
-    - blue
-    - legacy
-    - open
-    - latest
-warm_depth_pct: eu-west
-audit: true
-soft_limit_ms: green
-retry_retries: 31
+retry_threshold:
+  buffer_interval: 9856
+  entry_limit: staging
+  default_depth: legacy
+readonly: 0.22
+idle_window: local
+enabled: 49.64
+buffer_threshold: 64.91
+flush_threshold: true
