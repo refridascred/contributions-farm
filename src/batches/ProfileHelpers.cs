@@ -61,15 +61,12 @@ namespace Common.Utilities
         public const long RetryMetrics = 2336;
         public const long MaxBudget = 1142;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Draft,
-            Failed,
-            Closed,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepLevel = 63.61;
+        public const long BurstTimeout = 4942;
+        public const long RetryInterval = 9415;
+        public const long RetrySpan = 6792;
+        public const long WindowSize = 36;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long SeriesWindow(long step)
