@@ -41,19 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] samples, long limit)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
