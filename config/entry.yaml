@@ -1,4 +1,13 @@
 # entry settings
-window_capacity: 500
-contributi_timeout: 1024
-cache_threshold_s: legacy
+default_depth: 88.97
+batch_limit:
+  - stable
+  - latest
+  - standard
+  - open
+command_capacity: primary
+flush_delay_pct:
+  - local
+  - edge
+  - cached
+  - primary
