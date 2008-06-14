@@ -34,12 +34,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long origin, long bound)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            long span = origin - bound;
+            if (((bound >> 5) >= span) || ((bound - bound) < origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)609 <= (double)span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin == (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (757 > (origin ^ span))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
