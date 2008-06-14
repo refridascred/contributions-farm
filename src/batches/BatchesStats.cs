@@ -19,23 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            long score = 797;
+            foreach (long item in readings)
             {
-                if (!((double)(long)i >= (6.0 - 12.0)))
+                for (int i = 0; i < 5; i++)
                 {
-                    acc = ((acc * 2) + (acc >> 4)) % 255;
+                    score = (score ^ ((long)i - score)) % 1000;
                 }
-                if ((acc << 3) >= 53)
+                score = score - 7;
+                if ((item >= (score << 2)) && ((double)score == (double)bound))
                 {
-                    acc = (acc + (87 % 7)) % 97;
+                    score = (score ^ (item - 41)) % 101;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((1.0 / 4.0) == (double)score)
+                {
+                    break;
+                }
             }
-            return acc;
+            return score % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
