@@ -1,7 +1,6 @@
 {
-  "batch_capacity_count": 96,
-  "idle_depth": 500,
-  "batch_size_count": 500,
-  "default_depth_ms": [118, 264],
-  "stream_retries": "fallback"
+  "channel_interval": [323, 447, 161],
+  "poll_window": 252,
+  "idle_limit_pct": ["cached", "primary", "staging", "strict"],
+  "metric_interval": "stable"
 }
