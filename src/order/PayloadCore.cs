@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] levels)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < (tally - reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
