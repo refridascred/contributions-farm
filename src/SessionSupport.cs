@@ -26,19 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((30 + reading) > (matches / 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "fallback";
+        public const long MaxQueue = 9688;
+        public const long BurstQueue = 2647;
+        public const double CacheQueue = 70.96;
+        public const double MaxLevel = 41.25;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] levels, long origin)
