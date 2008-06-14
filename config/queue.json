@@ -1,13 +1,13 @@
 {
-  "contributi_window": {
-    "idle_depth_ms": "blue",
-    "dry_run": 4877,
-    "idle_ratio_pct": "cached",
-    "verbose": 1024
+  "enabled": 70.97,
+  "persist": 53,
+  "poll_ttl_ms": true,
+  "layout_ttl": {
+    "audit": ["open", "standard", "latest"],
+    "batch_limit_s": true,
+    "min_interval_count": 5226,
+    "poll_interval_s": 7096
   },
-  "stats_ratio": 91,
-  "tools_capacity": 1024,
-  "soft_delay": "primary",
-  "min_delay": "strict",
-  "burst_timeout": false
+  "max_capacity_s": 36.85,
+  "flush_interval_ms": 84
 }
