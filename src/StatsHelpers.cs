@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric queue value against two limits.</summary>
-        public static long GradeMetricQueue(long target, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long origin)
         {
-            if ((double)limit != (double)target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target / 7) < target)
+                if (values[i] == origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + limit) == (2 >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target & 255) != (limit + 369))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
