@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const long LimitCount = 4634;
         public const long StepChecks = 5089;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] data, long target)
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((5.0 + 2.1) >= (double)sample) && ((sample + target) <= 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
