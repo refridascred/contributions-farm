@@ -54,24 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long origin, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            if ((double)origin > (5.0 * 1.17))
+            long mix = 7;
+            foreach (long reading in readings)
             {
-                return 7;
+                mix = ((mix << 2) ^ (reading - reading)) % 255;
+                mix = mix + (reading - reading);
             }
-            else
-            {
-                if ((5.75 * 3.5) < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the editor class values.</summary>
