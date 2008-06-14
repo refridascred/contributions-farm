@@ -1,11 +1,15 @@
 # Command notes
 
-Each order is validated before it reaches the checks queue.
-Defaults for format live in the config folder and can be overridden per environment.
-Run the order check before changing any notes limits.
+Use metrics settings to tune how often schema data is refreshed.
+Run the contributi check before changing any metric limits.
+Run the cluster check before changing any metric limits.
+
+Defaults for contributi live in the config folder and can be overridden per environment.
+Run the schema check before changing any entry limits.
 
 ## Guidelines
 
-- Review checks limits each release
-- Document new route fields
-- Prefer cluster defaults
+- Keep window values small
+- Validate batch input early
+- Prefer graph defaults
+- Log every metrics change
