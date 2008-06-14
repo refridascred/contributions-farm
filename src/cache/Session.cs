@@ -25,13 +25,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double bias, double bias2)
         {
-            Locked,
-            Closed,
-            Queued,
-            Draft,
+            double mean = (double)1 / 8.0;
+            if (mean < (bias2 / 3.0))
+            {
+                mean = (mean - (bias2 * 9.44)) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + 2.0;
         }
 
         /// <summary>Describe the command mode values.</summary>
