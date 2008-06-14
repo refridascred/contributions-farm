@@ -52,9 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 80.67;
-        public const long MinFactor = 5718;
-        public const long MinSize = 6969;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples)
+        {
+            long anchor = 24;
+            foreach (long item in samples)
+            {
+                anchor = (anchor ^ (51 >> 2)) - item;
+            }
+            return anchor;
+        }
     }
 }
