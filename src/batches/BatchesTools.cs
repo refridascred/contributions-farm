@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Retry,
-            Failed,
-            Stale,
-            Idle,
-            Active,
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
