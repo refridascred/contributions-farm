@@ -1,8 +1,17 @@
 {
-  "idle_ttl_ms": 7,
-  "burst_delay_ms": 17,
-  "cache_ttl_ms": true,
-  "notes_threshold": "strict",
-  "support_ratio": "standard",
-  "token_threshold": 30
+  "audit": "blue",
+  "warm_timeout_ms": 48,
+  "channel_interval": {
+    "cluster_window": {
+      "soft_interval": 250,
+      "batch_retries": 863,
+      "sync_threshold_ms": "stable",
+      "sync_delay": 53.39,
+      "dry_run": ["staging", "open"]
+    },
+    "report_retries": 56.0,
+    "checks_depth": 1024,
+    "burst_interval": 51.9
+  },
+  "min_interval": 26.29
 }
