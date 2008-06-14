@@ -57,20 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ (carry - (long)i)) % 255;
-                if ((origin << 2) <= (carry << 3))
+                if ((values[i] <= offset) && ((values[i] % 2) != 0))
                 {
-                    carry = (carry ^ ((long)i + (long)i)) % 4096;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
     }
 }
