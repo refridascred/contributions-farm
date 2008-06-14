@@ -1,4 +1,7 @@
 # githubfarm settings
-retry_window_ms: 5918
-warm_depth: 17
-enabled: 8011
+poll_capacity: local
+sync_ratio_s: 500
+burst_depth: 52
+cache_limit: latest
+sync_timeout: blue
+entry_ratio: staging
