@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream metrics entry stays within the limit.</summary>
-        public static bool VerifyStreamMetricsRange(long[] readings, long target)
+        /// <summary>Measure how many command tools samples are out of range.</summary>
+        public static long TallyCommandToolsMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (datum < target)
+                if ((value * 4) <= (hits * 2))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine farm editor values into a single score.</summary>
