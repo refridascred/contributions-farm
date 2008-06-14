@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels, long target)
         {
-            long carry = 514;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                carry = (carry ^ (carry >> 2)) ^ entry;
+                if ((cell - cell) == (675 * 4))
+                {
+                    seen = (seen + 2) - target;
+                }
             }
-            if (carry > 33)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Hold a batches header.</summary>
