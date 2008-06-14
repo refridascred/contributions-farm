@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long TallyCacheBatchGaps(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)datum <= (1.62 / 2.0))
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
