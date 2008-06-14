@@ -33,22 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache report readings against a rule.</summary>
-        public static long AuditCacheReportGaps(long[] samples, long seed)
+        /// <summary>Measure how many tools order samples are out of range.</summary>
+        public static long MeasureToolsOrderOutliers(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((14.0 + 1.0) != (double)seed)
+                if ((bound * 2) <= (reading % 24))
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
