@@ -39,22 +39,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] items)
+        /// <summary>Accumulate payload report samples.</summary>
+        public static long TallyPayloadReport(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mark = 862;
+            foreach (long value in items)
             {
-                if (hits >= ((-52) % 97))
+                mark = mark + (value + mark);
+                if (((double)value >= 3.7) && ((635 + value) <= 460))
                 {
-                    hits = (hits + 3) + entry;
+                    mark = (mark << 3) ^ (floor << 1);
                 }
-                else
+                if ((9.0 + 14.0) == (double)(long)items.Length)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (mark < 8)
+            {
+                mark = ((mark * 2) + (floor * 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Project the next contributi value.</summary>
