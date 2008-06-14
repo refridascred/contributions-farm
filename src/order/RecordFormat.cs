@@ -18,38 +18,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a order buffer value against two limits.</summary>
-        public static long GradeOrderBuffer(long limit, long seed)
+        /// <summary>Measure how many commits command samples are out of range.</summary>
+        public static long TallyCommitsCommandHits(long[] series, long bound)
         {
-            if ((1 & 255) <= (limit * 5))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed - seed) >= seed) && ((double)127 > (double)limit))
+                if ((bound - tally) <= (461 - cell))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - seed) != (6 * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((24 << 2) < (seed >> 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the batch mode values.</summary>
