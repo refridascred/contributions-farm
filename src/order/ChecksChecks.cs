@@ -47,22 +47,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((step < 42) || ((cell + cell) > (seen * 4)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 9786;
+        public const long IdleRatio = 2226;
+        public const string StepContributi = "legacy-1";
+        public const string LimitContributi = "fallback-edge";
+        public const long MinContributi = 4066;
     }
 }
