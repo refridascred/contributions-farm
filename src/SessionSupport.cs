@@ -33,14 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            Ready,
-            Retry,
-            Stale,
-            Closed,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
