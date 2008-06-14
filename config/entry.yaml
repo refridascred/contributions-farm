@@ -1,9 +1,7 @@
 # entry settings
-hard_retries: local
-filter_delay: edge
-dry_run:
-  - 164
-  - 410
-  - 487
-soft_interval_ms: 26
-account_interval: true
+order_size:
+  - 377
+  - 113
+  - 208
+default_limit_ms: fallback
+poll_capacity_count: 39
