@@ -23,16 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long state = 12;
-            foreach (long cell in levels)
-            {
-                state = state ^ (state % 97);
-                state = (state - cell) % 255;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
