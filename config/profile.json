@@ -1,12 +1,6 @@
 {
-  "min_depth_ms": {
-    "cache_ratio_count": "edge",
-    "hard_threshold_ms": 61.82,
-    "flush_limit_ms": 51.87,
-    "account_threshold": true,
-    "base_ttl_pct": 1602,
-    "default_ttl": ["fallback", "open"]
-  },
-  "base_size_s": 500,
-  "cache_ratio_count": ["eu-west", "staging", "open"]
+  "route_timeout": 60,
+  "base_ratio_count": 69.79,
+  "queue_threshold": "fallback",
+  "route_ttl": "latest"
 }
