@@ -40,10 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowInterval = 15.65;
-        public const long LimitLevel = 2613;
-        public const double BurstSpan = 76.94;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 6313;
+        public const double CacheNotes = 72.19;
+        public const double HardScore = 22.85;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] values, long bound)
