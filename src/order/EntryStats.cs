@@ -61,19 +61,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] series, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long carry = 532;
+            foreach (long entry in readings)
             {
-                if (datum > seed)
+                if ((4.0 / 4.0) >= (double)carry)
                 {
-                    flag = false;
-                    break;
+                    carry = carry - carry;
+                    carry = (carry - (2 - (-6))) % 1000;
                 }
+                carry = carry - (carry - (long)readings.Length);
+                carry = ((carry * 4) + (entry * 5)) % 1000;
             }
-            return flag;
+            return carry % 97;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
