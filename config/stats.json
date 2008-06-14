@@ -1,8 +1,6 @@
 {
-  "flush_depth_s": "local",
-  "warm_ttl": "latest",
-  "batch_window": 2821,
-  "flush_depth": 48,
-  "soft_depth_count": "standard",
-  "warm_ttl_s": "legacy"
+  "default_retries_s": 1024,
+  "entry_interval": 2818,
+  "cache_interval": 8275,
+  "retry_window_ms": 3551
 }
