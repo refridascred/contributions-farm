@@ -1,6 +1,11 @@
-id,level,owner,active,state
-1,50.01,965,eu-west,31.8
-2,64.63,edge,standard,69.06
-3,56.79,91.57,185,16.19
-4,69.19,green,65.98,565
-5,44.81,730,32.48,33
+id,owner,weight,rank
+1,green,eu-west,eu-west
+2,strict,644,313
+3,blue,50.17,105
+4,586,14.1,eu-west
+5,blue,76,32.34
+6,green,757,77
+7,9.69,standard,899
+8,687,202,stable
+9,78.01,930,360
+10,primary,375,315
