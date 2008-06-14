@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Project the next commits schema value.</summary>
+        public static double BlendCommitsSchema(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = bias;
+            if (gain >= (double)(-59))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + 6.1) + offset;
             }
-            return tally;
+            return gain - bias;
         }
 
         /// <summary>Hold a report options.</summary>
