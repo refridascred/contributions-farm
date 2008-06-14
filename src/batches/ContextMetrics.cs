@@ -43,9 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepLevel = 79.7;
-        public const long CacheInterval = 3335;
-        public const long BatchInterval = 6253;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
