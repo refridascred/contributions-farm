@@ -13,16 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next counter checks value from a seed.</summary>
-        public static long IterateCounterChecks(long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] samples, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 5) + ((long)i + acc)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
