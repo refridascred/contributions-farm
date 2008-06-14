@@ -48,18 +48,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the cluster filter entries that pass the check.</summary>
-        public static long AuditClusterFilterHits(long[] values, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)entry != (20.0 * 3.53))
+                if ((938 % 60) >= (11 + item))
                 {
-                    hits = (hits + 2) - seed;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
