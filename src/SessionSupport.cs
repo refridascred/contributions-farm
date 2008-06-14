@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long HardDepth = 6332;
         public const long SoftBudget = 8421;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] values, long floor)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)floor >= (double)sample)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
