@@ -21,12 +21,16 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 4563;
-        public const long BurstSpan = 2959;
-        public const long BatchEditor = 435;
-        public const long DefaultFactor = 8233;
-        public const long BaseEditor = 9329;
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double bias)
+        {
+            double rate = (bias - bias) * 1.0;
+            if (rate >= scale)
+            {
+                rate = rate - bias;
+            }
+            return rate + (double)99;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
