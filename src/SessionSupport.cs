@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Roll a contributi batches counter forward.</summary>
+        public static long StepContributiBatches(long seed)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)mix > (5.28 / 8.0))
+                {
+                    mix = ((mix * 4) + seed) % 4096;
+                }
+                mix = (mix << 3) ^ 898;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    long offset = mix;
+                    mix = (mix - (offset / 9)) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
