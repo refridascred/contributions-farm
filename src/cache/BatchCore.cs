@@ -29,11 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 6673;
-        public const double WindowBuffer = 90.82;
-        public const long HardBuffer = 701;
-        public const double SoftBuffer = 39.61;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Blend two githubfarm order measurements.</summary>
         public static double AdjustGithubfarmOrder(double ratio, double bias)
