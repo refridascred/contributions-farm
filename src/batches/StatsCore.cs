@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Check that every contributi account entry stays within the limit.</summary>
+        public static bool ValidateContributiAccountRange(long[] samples, long limit)
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
