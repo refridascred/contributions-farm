@@ -33,12 +33,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 5480;
-        public const double BaseToken = 10.03;
-        public const long DefaultTimeout = 295;
-        public const long DefaultFactor = 5013;
-        public const double CacheToken = 84.15;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] data)
