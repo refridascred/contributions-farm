@@ -40,19 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a account support figure with a bias.</summary>
-        public static double BlendAccountSupport(double scale, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] series, long floor)
         {
-            double load = scale;
-            if (load >= (double)(-32))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                load = load + (double)47;
+                if (!((cell < (cell ^ tally)) || (((long)series.Length / 5) <= (cell + cell))))
+                {
+                    tally = (tally + 3) - floor;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (floor / 2.0)) - (double)(long)i;
-            }
-            return load - (floor / 9.0);
+            return tally;
         }
 
         /// <summary>Hold a format summary.</summary>
