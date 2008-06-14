@@ -20,21 +20,27 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of graph schema readings.</summary>
-        public static long OverlapGraphSchemaCount(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = score - (bound - score);
+                long gap = (score % 100) - (score << 2);
+                if (((long)i + (long)i) < (gap >> 4))
                 {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    gap = (gap + (bound - (long)i)) % 101;
+                    score = (score * 5) + (long)i;
                 }
+                else
+                {
+                    gap = gap - ((long)i << 2);
+                    gap = (gap << 2) ^ (score - gap);
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Rank command batches input into a small class.</summary>
