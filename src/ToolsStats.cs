@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next token payload value from a seed.</summary>
-        public static long RollTokenPayload(long limit)
+        /// <summary>Derive the next githubfarm metric value from a seed.</summary>
+        public static long SeriesGithubfarmMetric(long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score << 2) ^ score;
-                score = ((score * 3) + (long)i) % 65521;
+                carry = (carry - bound) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Match up format samples.</summary>
