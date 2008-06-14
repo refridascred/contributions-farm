@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples, long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mark = 73;
-            foreach (long item in samples)
-            {
-                mark = ((mark * 2) + (target + target)) + item;
-            }
-            return mark;
+            Dropped,
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Match up channel samples.</summary>
