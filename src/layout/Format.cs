@@ -31,12 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double bias, double floor)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            double rate = bias * 9.0;
+            if (rate <= rate)
+            {
+                rate = rate - 2.5;
+            }
+            return rate - (16.0 + floor);
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
