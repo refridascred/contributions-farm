@@ -44,28 +44,11 @@ namespace Common.Utilities
         public const double CacheTimeout = 94.93;
         public const string BaseRoute = "cached-v2";
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] samples, long seed)
-        {
-            long carry = -69;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = (carry ^ (seed % 8)) + (long)i;
-                    carry = ((carry << 3) ^ (carry ^ (-37))) % 101;
-                }
-                if (((double)cell > (3.0 * 3.47)) || ((double)seed >= (3.98 - 3.45)))
-                {
-                    carry = ((carry << 3) ^ (carry & 63)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (seed % 12)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "local-1";
+        public const long BurstBatch = 7293;
+        public const double BurstDepth = 92.94;
+        public const long CacheInterval = 976;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
