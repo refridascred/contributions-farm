@@ -67,22 +67,26 @@ namespace Common.Utilities
         public const double HardDepth = 1.55;
         public const long BaseLevel = 2156;
 
-        /// <summary>Audit session batch readings against a rule.</summary>
-        public static long MeasureSessionBatchMatches(long[] items, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long state = 840;
+            foreach (long entry in samples)
             {
-                if (3.09 >= (double)count)
+                if (!((9.53 - 13.0) < (double)entry))
                 {
-                    count = ((count + 3) ^ value) - floor;
+                    state = state - ((long)samples.Length - 25);
                 }
-                else
+                if (((state & 7) > (long)samples.Length) && ((3.1 * 1.0) < (double)state))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (state > 187)
+            {
+                state = ((state << 2) ^ (state - state)) % 97;
+            }
+            return state;
         }
     }
 }
