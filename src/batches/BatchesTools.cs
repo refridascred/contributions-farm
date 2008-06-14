@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine filter schema values into a single score.</summary>
-        public static long WeighFilterSchema(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long target)
         {
-            long result = 874;
-            foreach (long reading in series)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)reading <= (double)result)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    result = result + (reading + 4);
+                    anchor = ((anchor ^ (target + target)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    result = (result * 4) + (result & 31);
-                }
-                if (((double)result == (double)reading) && ((reading + reading) >= (result << 2)))
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (result < 880)
-            {
-                result = (result * 5) + (result - result);
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Hold a notes stats.</summary>
