@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ratio2 + (double)52;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchRatio = 4937;
-        public const long CacheRatio = 4651;
-        public const string BurstGithubfarm = "staging-edge";
-        public const double IdleGithubfarm = 23.3;
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
