@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 40;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)bound == (double)item)
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc * 3) + (acc + item);
+                }
+                else
+                {
+                    acc = (acc - (acc + bound)) % 4096;
                 }
             }
-            return seen;
+            if (acc < 0)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Hold a contributi summary.</summary>
