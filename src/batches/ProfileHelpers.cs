@@ -30,10 +30,10 @@ namespace Common.Utilities
         public const string DefaultDepth = "fallback-v2";
         public const long DefaultInterval = 8146;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleCount = 8508;
-        public const long WindowContributi = 2819;
-        public const long StepSpan = 5275;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultSpan = 64.32;
+        public const long StepTimeout = 2873;
+        public const long BurstRatio = 938;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TallyCommand(long[] data, long bound)
