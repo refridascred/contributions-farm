@@ -20,18 +20,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)matches == (7.99 * 4.13))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
