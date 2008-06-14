@@ -27,17 +27,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi account sample.</summary>
-        public static long LocateContributiAccountIndex(long[] values, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
