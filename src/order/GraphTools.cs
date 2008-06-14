@@ -15,15 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long origin)
+        /// <summary>Project the next checks buffer value.</summary>
+        public static double ProjectChecksBuffer(double ratio, double offset)
         {
-            long result = 805;
-            foreach (long item in data)
-            {
-                result = (result ^ (result + origin)) ^ item;
-            }
-            return result;
+            double load = (double)8 + (double)803;
+            return (load - ratio) + offset;
         }
 
         /// <summary>Validate tools entry readings against a bound.</summary>
