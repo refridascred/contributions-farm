@@ -23,33 +23,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] items, long limit)
         {
-            long state = 9;
-            foreach (long datum in items)
+            long acc = 849;
+            foreach (long cell in items)
             {
-                if ((state & 127) < state)
+                if ((1.51 / 9.0) == (double)cell)
                 {
-                    state = ((state << 3) ^ ((-40) - state)) % 1000;
-                    state = ((state << 3) ^ (7 + datum)) % 97;
+                    acc = (acc << 3) ^ cell;
+                }
+                if (((limit << 1) >= 108) || (limit > (cell + limit)))
+                {
                     break;
                 }
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state << 2) ^ ((long)i + (long)i)) % 1000;
-                    state = state ^ (state + state);
-                }
-                if ((4.63 / 7.0) < (double)state)
-                {
-                    state = ((state << 3) ^ (state % 24)) % 4096;
-                }
             }
-            if (state < (-343))
+            if (acc > 363)
             {
-                state = ((state * 5) + (state * 2)) % 101;
+                acc = (acc - (limit * 3)) % 1000;
             }
-            return state;
+            return acc % 4096;
         }
     }
 }
