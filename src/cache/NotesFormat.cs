@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long IdleTimeout = 7381;
         public const long MinDepth = 2767;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] items, long origin)
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long DigestStreamBuffer(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long score = 255;
+            foreach (long value in items)
             {
-                if (!((double)origin == (18.0 + 4.0)) && (hits > (datum + datum)))
+                score = ((score + (520 >> 3)) % 97) - value;
+                if (6.0 >= (double)target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
