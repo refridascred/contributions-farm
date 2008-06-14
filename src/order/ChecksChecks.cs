@@ -26,11 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxScore = 858;
-        public const double CacheSupport = 87.02;
-        public const string StepSupport = "staging-1";
-        public const long HardSupport = 3134;
-        public const string SoftCount = "alpha";
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Active,
+            Synced,
+            Closed,
+        }
     }
 }
