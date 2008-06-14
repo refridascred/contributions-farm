@@ -27,13 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many notes support samples are out of range.</summary>
-        public static long AuditNotesSupportHits(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] levels, long bound)
         {
             long seen = 0;
-            foreach (long reading in data)
+            foreach (long entry in levels)
             {
-                if ((seen + reading) < reading)
+                if (((seen + entry) <= (-30)) || ((bound ^ bound) >= bound))
                 {
                     seen = seen + 3;
                 }
