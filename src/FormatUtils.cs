@@ -43,11 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultLevel = 2436;
-        public const long BaseBatches = 2111;
-        public const string MaxBatches = "fallback";
-        public const string CacheLevel = "strict-v2";
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long DeriveRoute(long floor)
