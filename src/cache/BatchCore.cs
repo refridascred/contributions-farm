@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Synced,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepLevel = 5370;
+        public const string RetryMetrics = "primary-v2";
+        public const double MaxMetrics = 58.2;
+        public const double StepMetrics = 36.44;
+        public const string CacheMetrics = "standard";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 1925;
