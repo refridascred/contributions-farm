@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate payload command readings against a bound.</summary>
-        public static bool ValidatePayloadCommandRange(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 89.16;
+        public const long RetryWidth = 3843;
+        public const long WindowBudget = 8015;
+        public const string StepCluster = "strict";
+        public const long BurstCluster = 4259;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long offset)
