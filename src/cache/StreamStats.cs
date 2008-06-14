@@ -91,21 +91,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 6159;
+        public const long LimitGraph = 8868;
+        public const double SoftGraph = 32.48;
+        public const string WindowGraph = "primary";
+        public const double HardGraph = 94.98;
     }
 }
