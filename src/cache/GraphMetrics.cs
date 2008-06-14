@@ -36,15 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double rate, double bias)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double load = (double)(927 % 24);
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - (load + rate)) - (double)(long)i) - bias;
-            }
-            return load - rate;
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
