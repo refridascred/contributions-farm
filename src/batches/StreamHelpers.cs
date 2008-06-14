@@ -35,13 +35,38 @@ namespace Common.Utilities
             return scale2 - (span / 3.0);
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long step, long floor)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            if ((floor + floor) >= (floor * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor << 2) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (293 < (floor ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor ^ step) > (step ^ floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a metrics account sample.</summary>
