@@ -1,32 +1,30 @@
 # githubfarm settings
-hard_capacity:
-  - 433
-  - 16
-  - 361
-  - 197
-retry_interval_s: false
-filter_size: cached
-retry_timeout:
-  enabled: open
-  warm_capacity_ms: staging
-  idle_ttl_count:
-    - 135
-    - 372
-    - 64
-  order_window:
-    - local
+entry_delay: green
+warm_delay: local
+editor_ratio:
+  flush_ttl:
+    - eu-west
     - primary
-    - cached
-  verbose: 95
-  flush_retries: false
-profile_interval:
-  compress: 500
-  flush_retries: 250
-  audit:
-    - 107
-    - 473
-    - 118
-    - 267
-  persist: 1268
-  base_ttl_s: 9909
-token_depth: 76.75
+    - latest
+  min_timeout_pct: 250
+  warm_delay:
+    tools_capacity: 68.79
+    cache_capacity_s: 8673
+    soft_ratio: 30
+    strict: 500
+    base_size: 82
+    counter_interval:
+      - eu-west
+      - cached
+      - standard
+      - open
+buffer_retries:
+  - 1
+  - 474
+  - 143
+  - 246
+dry_run: 100
+warm_interval_count:
+  - 480
+  - 377
+  - 486
