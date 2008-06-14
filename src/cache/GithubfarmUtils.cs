@@ -50,17 +50,22 @@ namespace Common.Utilities
             return weight + 5.16;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] readings, long bound)
+        /// <summary>Count the account notes entries that pass the check.</summary>
+        public static long AuditAccountNotesOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] == bound)
+                if (((-479) - sample) != (sample * 2))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate queue samples.</summary>
