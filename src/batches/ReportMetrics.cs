@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] samples)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((5 - tally) >= (reading + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a support entry.</summary>
