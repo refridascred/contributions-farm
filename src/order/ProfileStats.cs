@@ -35,19 +35,24 @@ namespace Common.Utilities
         public const long LimitCount = 4634;
         public const long StepChecks = 5089;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long seed, long seed2)
         {
-            long state = -947;
-            foreach (long value in samples)
+            if (((seed - seed2) >= (seed2 * 3)) && ((seed % 97) > (seed2 - seed2)))
             {
-                state = ((state ^ value) % 1000) - step;
+                return 3;
             }
-            if (state > 0)
+            else
             {
-                state = state - (state - 8);
+                if (64 > seed2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return state;
         }
     }
 }
