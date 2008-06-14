@@ -1,14 +1,11 @@
 # Command notes
 
-Keep buffer and route names short and lowercase.
-The metrics report groups every githubfarm by already.
-
-Run the report check before changing any layout limits.
-Keep filter and session names short and lowercase.
+The order helpers are pure functions, so they are safe to call from any thread.
 Defaults for entry live in the config folder and can be overridden per environment.
+The account report groups every metrics by graph.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new githubfarm fields
-- Review context limits each release
+- Validate command input early
+- Prefer stats defaults
+- Review buffer limits each release
