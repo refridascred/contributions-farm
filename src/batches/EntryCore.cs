@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            double scale = 1.9;
+            if (scale > (1.28 * 1.0))
+            {
+                scale = (scale + (scale + scale)) - weight;
+            }
+            else
+            {
+                scale = scale - span;
+            }
+            return scale + span;
         }
 
         /// <summary>Describe the order state values.</summary>
