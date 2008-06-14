@@ -31,18 +31,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long CountContributiFormatOutliers(long[] data)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((((datum * 2) == (57 + (-31))) && ((matches % 60) > datum)) || ((matches + 11) < datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
