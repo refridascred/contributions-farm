@@ -61,11 +61,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Check that every support stats entry stays within the limit.</summary>
+        public static bool VerifySupportStatsLimits(long[] items, long limit)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
