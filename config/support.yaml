@@ -1,12 +1,10 @@
 # support settings
-max_interval_s: 30
-cluster_ttl:
-  - fallback
-  - local
-  - cached
-sync_delay_ms: true
-idle_capacity_pct:
-  - cached
+filter_retries: 37.2
+max_size_pct: 30
+poll_threshold_s: false
+max_delay: blue
+order_window:
   - standard
-  - local
-  - primary
+  - standard
+  - latest
+channel_limit: 5882
