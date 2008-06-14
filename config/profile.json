@@ -1,8 +1,13 @@
 {
-  "base_depth_ms": true,
-  "support_ttl": "staging",
-  "readonly": "strict",
-  "poll_delay": 100,
-  "flush_window_count": 250,
-  "warm_delay_count": "blue"
+  "default_limit_count": 1024,
+  "idle_depth": {
+    "stats_limit": true,
+    "commits_ratio": {
+      "commits_window": "fallback",
+      "persist": ["latest", "blue", "blue"],
+      "counter_capacity": 250
+    },
+    "compress": true
+  },
+  "format_delay": "local"
 }
