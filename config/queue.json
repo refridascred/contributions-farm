@@ -1,5 +1,11 @@
 {
-  "layout_depth": "latest",
-  "retry_timeout_pct": false,
-  "hard_interval": "staging"
+  "already_ratio": {
+    "base_timeout_pct": [492, 7],
+    "token_delay": "eu-west",
+    "queue_size": 88.43,
+    "cache_timeout": "stable",
+    "retry_size_count": 16
+  },
+  "support_window": "blue",
+  "persist": false
 }
