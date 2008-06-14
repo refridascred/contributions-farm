@@ -35,21 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
