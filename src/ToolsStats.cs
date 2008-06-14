@@ -36,10 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxCount = 5329;
-        public const string IdleReport = "staging";
-        public const double IdleSpan = 31.11;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultSpan = 5109;
+        public const long BatchTools = 759;
+        public const string CacheTools = "stable-edge";
+        public const long LimitTools = 8923;
+        public const long IdleTimeout = 3270;
 
         /// <summary>Accumulate token account samples.</summary>
         public static long FoldTokenAccount(long[] readings)
