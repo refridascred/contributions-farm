@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long seed, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            if ((seed ^ seed) <= (seed / 2))
             {
-                if (((step - step) < (step ^ step)) || ((step - total) == (66 + 9)))
-                {
-                    total = (total - total) % 97;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((89 + limit) < (limit % 60))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit > (seed & 31)) || ((0.6 * 1.3) != (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed > 2.7)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
