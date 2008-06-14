@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "primary-1";
+        public const long MaxCount = 4059;
+        public const long HardInterval = 9925;
+        public const double MinAlready = 97.82;
+        public const string CacheAlready = "staging";
 
         /// <summary>Define report limits and defaults.</summary>
         public const string HardReport = "fallback-v2";
