@@ -31,12 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            Ready,
+            New,
+            Retry,
+            Closed,
         }
     }
 }
