@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support format sample.</summary>
-        public static long LocateSupportFormatIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 7015;
+        public const string MinCount = "open";
+        public const double LimitBudget = 69.14;
+        public const string DefaultDepth = "fallback-v2";
+        public const long DefaultInterval = 8146;
 
         /// <summary>Grade a farm contributi value against two limits.</summary>
         public static long RankFarmContributi(long seed, long target)
