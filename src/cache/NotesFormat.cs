@@ -30,13 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] items, long origin)
         {
-            Draft,
-            Idle,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!((double)origin == (18.0 + 4.0)) && (hits > (datum + datum)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
