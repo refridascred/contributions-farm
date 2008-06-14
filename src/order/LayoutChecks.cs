@@ -72,18 +72,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] samples, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((target % 12) >= (reading * 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
