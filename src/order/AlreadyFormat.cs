@@ -33,13 +33,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleInterval = 904;
+        public const string BatchBudget = "strict";
+        public const long IdleBudget = 7432;
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] data)
