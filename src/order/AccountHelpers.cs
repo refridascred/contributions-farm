@@ -65,18 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric filter readings against a rule.</summary>
-        public static long AuditMetricFilterMatches(long[] series, long target)
+        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
+        public static bool GuardClusterToolsRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((target - cell) < (target + tally))
+                if (entry <= limit)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
