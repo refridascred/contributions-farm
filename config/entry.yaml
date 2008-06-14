@@ -1,8 +1,22 @@
 # entry settings
-flush_capacity: true
-counter_limit:
-  - 317
-  - 46
-  - 387
-dry_run: true
-counter_capacity: primary
+default_ratio_pct:
+  batch_depth_count: 60.3
+  retry_delay_s: 250
+  batch_timeout:
+    - stable
+    - stable
+  soft_retries_s: stable
+  audit: false
+  max_threshold_ms: eu-west
+cache_limit_pct: false
+checks_ttl: false
+sync_capacity:
+  format_window: eu-west
+  idle_threshold: 46
+  hard_window_ms: local
+hard_timeout:
+  session_size: staging
+  context_delay: edge
+  filter_ratio: 60
+  support_limit: 500
+  poll_size_count: 51.66
