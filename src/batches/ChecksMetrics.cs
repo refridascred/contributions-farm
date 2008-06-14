@@ -26,12 +26,40 @@ namespace Common.Utilities
         public const long MaxContext = 9819;
         public const long BatchContext = 9941;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 900;
-        public const long SoftBudget = 3519;
-        public const long LimitSpan = 5186;
-        public const string HardEntry = "standard-edge";
-        public const long BaseInterval = 73;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long origin, long limit)
+        {
+            long step = origin ^ limit;
+            if ((double)limit < (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit >> 4) < (step * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((5.88 - 5.0) == (double)step) || (step >= (7 - step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)limit < (double)origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
