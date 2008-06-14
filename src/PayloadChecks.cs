@@ -26,22 +26,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long TallyCommandPayload(long[] levels)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long sum = -470;
-            foreach (long datum in levels)
-            {
-                if ((datum + datum) < (datum % 60))
-                {
-                    sum = sum ^ datum;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum << 2);
-                }
-            }
-            return sum;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
