@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstFactor = 4441;
-        public const long DefaultSpan = 3080;
-        public const double BatchEntry = 65.79;
-        public const string BatchDepth = "strict-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseInterval = 1299;
+        public const double MaxCommand = 43.39;
+        public const long WindowCommand = 3404;
+        public const long IdleCommand = 4110;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BaseReport = "primary-edge";
