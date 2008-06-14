@@ -43,18 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] items, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally + entry) != (15 % 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) + offset;
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
