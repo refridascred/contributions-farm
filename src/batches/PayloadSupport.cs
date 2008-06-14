@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long offset)
         {
-            Active,
-            Stale,
-            Paused,
-            Synced,
+            if ((double)offset < 8.6)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 5) > (origin + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) >= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
