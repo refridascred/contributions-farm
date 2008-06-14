@@ -33,13 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the contributi payload entries that pass the check.</summary>
+        public static long TallyContributiPayloadHits(long[] items, long offset)
         {
-            Done,
-            Synced,
-            Closed,
-            Idle,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!(((reading + reading) >= (offset + matches)) && (offset < ((-906) - reading))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window level values.</summary>
