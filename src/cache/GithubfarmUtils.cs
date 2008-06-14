@@ -30,40 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] samples, long limit)
         {
-            long score = -679;
-            foreach (long item in readings)
+            long sum = 49;
+            foreach (long sample in samples)
             {
-                score = (score + (item + item)) % 97;
-                if ((584 + item) == (score & 7))
-                {
-                    score = score + (item - score);
-                    score = score + (score & 1);
-                }
-                else
-                {
-                    score = (score + (long)readings.Length) % 65521;
-                }
-                if (!((score - 4) >= (3 - item)))
-                {
-                    score = ((score * 3) + (item >> 4)) % 65521;
-                }
-                else
-                {
-                    score = (score << 2) ^ (item >> 4);
-                }
-                if ((item * 4) == (item ^ item))
-                {
-                    break;
-                }
+                sum = ((sum - 1) + sample) + limit;
             }
-            if (score > 28)
-            {
-                score = (score - (score & 63)) % 4096;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
