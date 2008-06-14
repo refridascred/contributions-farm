@@ -19,24 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long origin2)
+        /// <summary>Measure how many payload report samples are out of range.</summary>
+        public static long TallyPayloadReportGaps(long[] series, long limit)
         {
-            if (origin >= (0 << 2))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 <= (7 - origin2)) && ((origin2 % 3) <= (origin2 / 4)))
+                if (!(sample < (sample ^ matches)))
                 {
-                    return 0;
+                    matches = (matches + 2) - limit;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
