@@ -1,9 +1,8 @@
 {
-  "persist": {
-    "min_limit": 3991,
-    "dry_run": ["open", "cached", "stable", "cached"],
-    "strict": "green"
-  },
-  "base_window": "cached",
-  "account_delay": "blue"
+  "strict": "staging",
+  "cache_ratio_pct": ["staging", "staging"],
+  "batch_depth": ["stable", "blue", "blue", "eu-west"],
+  "editor_interval": "blue",
+  "idle_ttl_s": "standard",
+  "entry_ratio": true
 }
