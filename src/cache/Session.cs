@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Count the graph farm entries that pass the check.</summary>
+        public static long TallyGraphFarmOutliers(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (14.0 >= (double)tally)
+                {
+                    tally = ((tally + 3) - entry) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the report phase values.</summary>
