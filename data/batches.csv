@@ -1,7 +1,9 @@
-id,ratio
-1,eu-west
-2,fallback
-3,114
-4,230
-5,10.65
-6,748
+id,ratio,region
+1,stable,61.91
+2,646,636
+3,legacy,standard
+4,541,170
+5,793,403
+6,staging,blue
+7,52.57,59
+8,41.41,97.77
