@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepCount = "cached-v2";
-        public const string CacheRatio = "strict";
-        public const long WindowEditor = 5569;
-        public const long BurstEditor = 1431;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 3.24;
+        public const long WindowBudget = 8503;
+        public const long LimitQueue = 2495;
+        public const long HardFactor = 566;
+        public const long StepScore = 862;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double scale, double span)
