@@ -19,19 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double rate, double offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long seed, long seed2)
         {
-            double bias = (offset - 8.45) / 6.0;
-            if (bias < (double)5)
+            if (seed > (seed + seed2))
             {
-                bias = (bias - offset) - rate;
+                return 6;
             }
             else
             {
-                bias = bias + bias;
+                if ((double)seed < (5.0 + 3.61))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 + seed) >= (seed2 + seed2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(31 > seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return bias - bias;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
