@@ -2,13 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1,
-    count INTEGER NOT NULL DEFAULT 0
+    weight REAL,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
 
-INSERT INTO layout_items (region, active, count) VALUES ('local', 86, 61);
-INSERT INTO layout_items (region, active, count) VALUES ('fallback', 42, 11);
-INSERT INTO layout_items (region, active, count) VALUES ('local', 55, 3);
+INSERT INTO layout_items (region, weight, active) VALUES ('standard', 51.91, 53);
+INSERT INTO layout_items (region, weight, active) VALUES ('fallback', 35.11, 74);
