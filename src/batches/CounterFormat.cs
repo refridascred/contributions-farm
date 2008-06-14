@@ -39,14 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] data)
         {
-            Closed,
-            New,
-            Paused,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches & 3) != ((-905) << 1))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
