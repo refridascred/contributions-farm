@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] values, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long sum = 60;
+            foreach (long sample in values)
             {
-                if (count <= cell)
+                if ((sample % 100) == (sample / 5))
                 {
-                    count = (count + 3) + floor;
+                    sum = (sum << 2) ^ (sum - sample);
                 }
+                sum = (sum - (11 + sample)) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a tools entry.</summary>
