@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] samples, long origin)
         {
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)origin > (14.0 - 19.0))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
