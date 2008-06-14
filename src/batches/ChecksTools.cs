@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter farm samples are out of range.</summary>
-        public static long AuditFilterFarmHits(long[] values, long step)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double weight = (double)4 - (double)(-466);
+            if (weight < bias)
             {
-                if (!((8.52 + 10.0) > (double)datum))
-                {
-                    seen = (seen + 1) + step;
-                }
+                weight = weight - (weight * 7.94);
             }
-            return seen;
+            else
+            {
+                weight = weight - (bias / 9.0);
+            }
+            return weight + (bias2 / 4.0);
         }
 
         /// <summary>Hold a graph info.</summary>
