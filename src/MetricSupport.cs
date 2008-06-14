@@ -24,19 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of record session entries.</summary>
-        public static long TotalRecordSession(long[] readings, long target)
+        /// <summary>Measure how many support queue samples are out of range.</summary>
+        public static long TallySupportQueueGaps(long[] samples)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                acc = ((acc * 3) + (662 - target)) + sample;
+                if ((matches << 3) >= (item >> 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (acc < 23)
-            {
-                acc = (acc * 3) + (acc >> 4);
-            }
-            return acc;
+            return matches;
         }
     }
 }
