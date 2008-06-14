@@ -34,15 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel route values into a single score.</summary>
-        public static long DigestChannelRoute(long[] levels)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = 2;
-            foreach (long reading in levels)
-            {
-                sum = ((sum ^ sum) % 97) ^ reading;
-            }
-            return sum;
+            Queued,
+            Failed,
+            Pending,
         }
     }
 }
