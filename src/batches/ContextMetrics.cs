@@ -29,18 +29,19 @@ namespace Common.Utilities
             return bias2 - gain;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((reading << 3) <= reading)
+                if (datum > target)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
