@@ -26,19 +26,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double scale, double offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] readings, long limit)
         {
-            double ratio = offset;
-            if (ratio < 15.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - (double)472) + scale;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
