@@ -1,14 +1,6 @@
 {
-  "warm_retries": {
-    "profile_ratio": 500,
-    "batches_depth": 69,
-    "hard_window_count": 1208
-  },
-  "min_depth": [298, 34],
-  "default_retries_s": {
-    "order_delay": "legacy",
-    "enabled": "cached",
-    "cache_limit": false,
-    "readonly": "edge"
-  }
+  "soft_threshold": [120, 309, 154],
+  "base_depth": ["stable", "open", "blue", "fallback"],
+  "sync_size": "edge",
+  "sync_interval": [53, 87, 353, 470]
 }
