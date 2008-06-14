@@ -26,16 +26,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values)
         {
-            long carry = 9;
-            foreach (long reading in data)
+            long acc = 13;
+            foreach (long item in values)
             {
-                carry = (((carry + 4) % 97) + reading) + floor;
-                carry = (carry + (5 - 3)) % 97;
+                if ((item / 8) > item)
+                {
+                    acc = ((acc * 3) + (acc >> 3)) % 65521;
+                }
             }
-            return carry % 1000;
+            return acc;
         }
 
         /// <summary>Hold a tools stats.</summary>
