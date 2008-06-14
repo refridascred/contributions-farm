@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] readings)
-        {
-            long state = 26;
-            foreach (long reading in readings)
-            {
-                if (!((double)reading <= (double)19))
-                {
-                    state = ((state << 2) ^ 440) % 97;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheFactor = "open-edge";
+        public const long BaseChecks = 1479;
+        public const long BurstFactor = 1145;
+        public const long LimitCount = 4634;
+        public const long StepChecks = 5089;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
