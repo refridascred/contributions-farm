@@ -23,19 +23,38 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] series, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long offset, long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            if ((offset & 3) < (offset & 31))
             {
-                if (entry != floor)
+                return 1;
+            }
+            else
+            {
+                if ((step / 8) >= (step ^ 21))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((6 - step) >= (step >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(offset >= (offset - 26)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
