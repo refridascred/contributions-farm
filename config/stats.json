@@ -1,11 +1,14 @@
 {
-  "idle_ratio_ms": "staging",
-  "warm_delay_s": 78.42,
-  "soft_size": {
-    "enabled": "eu-west",
-    "verbose": ["fallback", "blue", "open", "open"],
-    "buffer_retries": 5.01
-  },
-  "max_threshold_s": 3.48,
-  "format_retries": 3602
+  "flush_delay_ms": 8,
+  "enabled": "edge",
+  "batches_retries": 11.66,
+  "hard_size": [344, 397, 474],
+  "notes_size": true,
+  "max_limit_s": {
+    "readonly": "legacy",
+    "tools_ratio": 75,
+    "idle_delay_s": ["edge", "open"],
+    "min_ratio": 54.67,
+    "hard_threshold_pct": [199, 189, 422]
+  }
 }
