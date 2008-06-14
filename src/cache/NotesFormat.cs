@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine entry editor values into a single score.</summary>
-        public static long DigestEntryEditor(long[] values)
+        /// <summary>Measure how many farm metrics samples are out of range.</summary>
+        public static long MeasureFarmMetricsMatches(long[] readings)
         {
-            long anchor = 25;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                anchor = (anchor - (sample >> 3)) % 65521;
+                if ((937 - seen) == (295 + 0))
+                {
+                    seen = (seen + 2) - item;
+                }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Match up session samples.</summary>
