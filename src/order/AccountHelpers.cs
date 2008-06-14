@@ -59,18 +59,24 @@ namespace Common.Utilities
         public const long LimitWidth = 8328;
         public const long BaseRecord = 1244;
 
-        /// <summary>Digest a series of commits order entries.</summary>
-        public static long CombineCommitsOrder(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long mark = 0;
-            foreach (long value in series)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((7.7 - 2.84) < (double)mark)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mark = (mark + (952 & 31)) - value;
+                    acc = (acc * 2) + (long)i2;
                 }
+                if (((acc + origin) <= 8) && (origin <= (long)i))
+                {
+                    acc = (acc - (long)i) % 65521;
+                    acc = (acc ^ (origin - acc)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return mark;
+            return acc;
         }
     }
 }
