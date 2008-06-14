@@ -20,17 +20,15 @@ namespace Common.Utilities
             return rate + (8.0 - scale);
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long bound)
+        /// <summary>Accumulate payload context samples.</summary>
+        public static long TallyPayloadContext(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 53;
+            foreach (long item in samples)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                total = (total - (total + total)) - item;
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
