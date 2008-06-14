@@ -68,12 +68,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the support status values.</summary>
