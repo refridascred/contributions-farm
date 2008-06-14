@@ -54,22 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue schema samples.</summary>
-        public static long CombineQueueSchema(long[] data)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long carry = 0;
-            foreach (long item in data)
-            {
-                if ((item <= (11 * 5)) && ((item * 4) >= (item + carry)))
-                {
-                    carry = (carry - carry) % 4096;
-                }
-            }
-            if (carry > 421)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry % 4096;
+            Locked,
+            Failed,
+            Done,
+            Paused,
         }
     }
 }
