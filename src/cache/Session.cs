@@ -34,19 +34,21 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double bias, double bias2)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            double mean = (double)1 / 8.0;
-            if (mean < (bias2 / 3.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - (bias2 * 9.44)) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + 2.0;
+            return count;
         }
 
         /// <summary>Audit context stats readings against a rule.</summary>
