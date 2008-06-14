@@ -43,15 +43,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels, long floor)
+        /// <summary>Count order format pairs that satisfy a relation.</summary>
+        public static long OverlapOrderFormatCount(long[] samples)
         {
-            long acc = 595;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc * 3) + (item + acc)) % 4096) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
