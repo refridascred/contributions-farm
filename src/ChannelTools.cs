@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long limit, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long cur = limit - origin;
-            if (origin >= (limit - cur))
+            long score = 317;
+            foreach (long value in data)
             {
-                return 5;
+                score = (score - (score - 98)) + value;
             }
-            else
-            {
-                if ((14.0 / 6.0) <= (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
