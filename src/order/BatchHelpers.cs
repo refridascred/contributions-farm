@@ -14,16 +14,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a counter layout counter forward.</summary>
-        public static long RollCounterLayout(long step)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total << 2) ^ total;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Failed,
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
