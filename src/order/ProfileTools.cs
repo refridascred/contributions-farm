@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] series, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (series[i] < step)
+                if ((double)(long)samples.Length <= (8.1 - 20.0))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
