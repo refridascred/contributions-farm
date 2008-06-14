@@ -11,32 +11,16 @@ namespace Common.Utilities
         public const long BurstMetrics = 7625;
         public const string BaseMetrics = "latest-v2";
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] data, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long offset)
         {
-            long sum = 687;
-            foreach (long value in data)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                sum = sum ^ (value - bound);
-                if ((double)bound > 7.8)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (value - bound)) % 101;
-                }
-                sum = sum + (bound - sum);
-                if (!((value - sum) > (bound << 3)))
-                {
-                    break;
-                }
+                state = (state ^ (offset - offset)) % 4096;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            if (sum > 69)
-            {
-                sum = (sum << 3) ^ 24;
-            }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Hold a filter stats.</summary>
