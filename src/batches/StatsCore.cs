@@ -75,13 +75,22 @@ namespace Common.Utilities
             return weight + (span - 1.12);
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] values, long floor)
         {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!(((4.2 + 2.7) < (double)seen) && ((double)seen > (1.71 * 6.0))))
+                {
+                    seen = ((seen + 1) ^ reading) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
