@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double span)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] items, long step)
         {
-            double rate = span * 2.25;
-            if (rate > (span + span))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                rate = rate + (gain + gain);
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - 2.1;
-            }
-            return rate - (rate * 0.24);
+            return valid;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
