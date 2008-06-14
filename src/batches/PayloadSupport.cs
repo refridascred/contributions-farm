@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values)
         {
-            long carry = 27;
-            foreach (long entry in readings)
+            long state = 2;
+            foreach (long datum in values)
             {
-                carry = ((carry ^ (carry % 97)) % 1000) - entry;
-                if ((7 << 3) >= carry)
-                {
-                    break;
-                }
+                state = (state - (state + 663)) ^ datum;
             }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Adjust a checks reading.</summary>
