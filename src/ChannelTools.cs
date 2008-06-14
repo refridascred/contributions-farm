@@ -47,17 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] levels, long floor)
         {
-            long carry = 15;
-            foreach (long value in items)
+            long state = 648;
+            foreach (long reading in levels)
             {
-                carry = ((carry + (carry % 10)) + value) - origin;
-                carry = (carry ^ (carry / 6)) % 101;
-                carry = (carry + (carry / 8)) % 255;
+                if ((double)floor <= (4.71 / 3.0))
+                {
+                    state = (state ^ 374) ^ reading;
+                }
             }
-            return carry;
+            return state % 97;
         }
     }
 }
