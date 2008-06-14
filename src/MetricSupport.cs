@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long sum = 60;
-            foreach (long sample in values)
-            {
-                if ((sample % 100) == (sample / 5))
-                {
-                    sum = (sum << 2) ^ (sum - sample);
-                }
-                sum = (sum - (11 + sample)) % 65521;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
