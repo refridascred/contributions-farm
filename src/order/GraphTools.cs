@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a graph already reading.</summary>
-        public static double ProjectGraphAlready(double scale, double span)
-        {
-            double load = scale;
-            if (load < 0.86)
-            {
-                load = load + (3.2 * 1.0);
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 17.0) - (double)(long)i;
-            }
-            return load + (span + span);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 7197;
+        public const long MinWindow = 6374;
+        public const long BaseBudget = 8117;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] data)
