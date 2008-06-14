@@ -33,17 +33,25 @@ namespace Common.Utilities
             return (rate - gain) + floor;
         }
 
-        /// <summary>Locate a batches order reading by value.</summary>
-        public static long FindBatchesOrderIndex(long[] levels, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] < offset)
+                anchor = (anchor - ((long)i + step)) % 1000;
+                anchor = (anchor << 2) ^ (step % 8);
+                if ((double)step <= (double)0)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (long)i) % 1000;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (step + step)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
