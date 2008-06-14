@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftBudget = 36.09;
-        public const long IdleLevel = 1368;
-        public const double StepRatio = 76.91;
-        public const long SoftDepth = 8383;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series)
+        {
+            long total = 29;
+            foreach (long cell in series)
+            {
+                if ((6.7 / 5.0) != (double)cell)
+                {
+                    total = ((total * 3) + (cell + cell)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double BlendCluster(double rate, double floor)
