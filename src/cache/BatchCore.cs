@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
+        public static bool VerifyClusterProfileBounds(long[] readings, long seed)
         {
-            long mark = 2;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                mark = ((mark * 3) + (value << 1)) % 4096;
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark < 712)
-            {
-                mark = mark - (3 - 249);
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
