@@ -23,17 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account batches entry that matches the target.</summary>
-        public static long LookupAccountBatchesIndex(long[] values, long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up contributi samples.</summary>
