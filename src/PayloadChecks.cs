@@ -45,11 +45,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 3925;
-        public const string RetryStream = "fallback-edge";
-        public const long SoftSize = 49;
-        public const long StepSpan = 1972;
+        /// <summary>Digest a series of batch farm entries.</summary>
+        public static long FoldBatchFarm(long[] levels)
+        {
+            long total = 949;
+            foreach (long item in levels)
+            {
+                total = (((total * 5) + (22 & 127)) % 101) + item;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] values, long target)
