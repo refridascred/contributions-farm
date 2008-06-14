@@ -69,18 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((190 + 240) <= (value << 3))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseBudget = 11.24;
+        public const double IdleReport = 69.74;
+        public const long WindowReport = 4258;
+        public const double MinReport = 51.08;
     }
 }
