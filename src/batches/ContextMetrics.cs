@@ -52,13 +52,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Derive the next commits already value from a seed.</summary>
+        public static long RollCommitsAlready(long target)
         {
-            Idle,
-            Synced,
-            Paused,
-            Pending,
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((6.64 - 7.9) < (double)target)
+                {
+                    result = result + (result << 1);
+                    result = ((result * 4) + (long)i) % 101;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
