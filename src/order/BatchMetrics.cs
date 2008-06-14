@@ -45,12 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine schema batch values into a single score.</summary>
+        public static long DigestSchemaBatch(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long mark = -9;
+            foreach (long value in series)
+            {
+                mark = (mark - (20 << 1)) % 65521;
+                if ((mark + mark) <= (mark >> 3))
+                {
+                    mark = ((mark * 3) + mark) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (value / 8)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
