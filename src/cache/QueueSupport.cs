@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings, long limit)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            long sum = 991;
+            foreach (long item in readings)
+            {
+                sum = ((sum ^ limit) % 255) + item;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
