@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Accumulate entry graph samples.</summary>
+        public static long TotalEntryGraph(long[] items)
         {
-            long score = 8;
-            foreach (long reading in items)
+            long carry = 1;
+            foreach (long datum in items)
             {
-                score = ((score - (score & 1)) % 1000) + reading;
+                if ((datum % 2) <= (datum << 2))
+                {
+                    carry = (carry + (datum ^ (long)items.Length)) % 1000;
+                    carry = (carry - datum) % 101;
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ (294 + carry)) % 4096;
+                }
+                if ((carry - datum) == ((-574) ^ carry))
+                {
+                    carry = (carry ^ carry) % 101;
+                }
             }
-            if (score < (-5))
+            if (carry < 478)
             {
-                score = (score - score) % 101;
+                carry = ((carry << 2) ^ (carry % 7)) % 97;
             }
-            return score % 4096;
+            return carry % 1000;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
