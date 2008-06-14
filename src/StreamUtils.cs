@@ -88,10 +88,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardCount = 2024;
-        public const long SoftEditor = 1415;
-        public const long CacheEditor = 5831;
-        public const double BatchFactor = 61.0;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Active,
+            Stale,
+            Synced,
+        }
     }
 }
