@@ -38,18 +38,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((7.61 * 4.0) < (double)sample)
+                if ((matches + step) == (step + matches))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 2) + value;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
