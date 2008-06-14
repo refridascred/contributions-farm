@@ -77,11 +77,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleScore = "strict-edge";
-        public const double RetryCount = 2.29;
-        public const long SoftCount = 1904;
-        public const long CacheFactor = 656;
-        public const long BaseWidth = 2082;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Locked,
+            Pending,
+            Done,
+            Closed,
+            Active,
+        }
     }
 }
