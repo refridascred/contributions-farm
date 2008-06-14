@@ -57,14 +57,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long origin)
         {
-            Idle,
-            Failed,
-            Pending,
-            Draft,
-            Retry,
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry ^ (carry - (long)i)) % 255;
+                if ((origin << 2) <= (carry << 3))
+                {
+                    carry = (carry ^ ((long)i + (long)i)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
