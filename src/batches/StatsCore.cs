@@ -70,22 +70,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] values, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (!(((4.2 + 2.7) < (double)seen) && ((double)seen > (1.71 * 6.0))))
+                if ((hits * 5) < (floor & 1))
                 {
-                    seen = ((seen + 1) ^ reading) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) - value;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
