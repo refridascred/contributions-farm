@@ -1,8 +1,6 @@
 # entry settings
-command_window: 61
-idle_ttl: false
-max_ratio_s:
-  - blue
-  - local
-  - fallback
-  - primary
+checks_delay: legacy
+min_ratio: edge
+batch_interval: 9602
+persist: 60
+poll_depth_pct: primary
