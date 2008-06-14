@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long seed)
         {
-            Failed,
-            Idle,
-            Queued,
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result ^ ((-2) + seed)) % 1000;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
