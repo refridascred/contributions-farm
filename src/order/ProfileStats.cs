@@ -35,12 +35,19 @@ namespace Common.Utilities
         public const long LimitCount = 4634;
         public const long StepChecks = 5089;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples, long step)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
+            long state = -947;
+            foreach (long value in samples)
+            {
+                state = ((state ^ value) % 1000) - step;
+            }
+            if (state > 0)
+            {
+                state = state - (state - 8);
+            }
+            return state;
         }
     }
 }
