@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string BatchBudget = "primary-v2";
         public const long BurstQueue = 9016;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches + datum) > offset)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryRatio = 89.44;
+        public const string WindowFactor = "local-edge";
+        public const long IdleGraph = 4896;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricOutliers(long[] series)
