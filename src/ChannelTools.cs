@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long bound)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long span = floor ^ bound;
-            if ((double)span <= (4.8 + 0.79))
-            {
-                return 3;
-            }
-            else
-            {
-                if (8.84 > (double)span)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((3.48 * 6.7) <= (double)span) && ((171 + span) > span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((501 - 4) < bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
