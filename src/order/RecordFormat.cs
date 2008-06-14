@@ -30,26 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long offset)
         {
-            long state = 6;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)floor >= (1.4 + 4.54))
+                if (((57 >> 2) < sample) || ((sample / 6) < (sample % 24)))
                 {
-                    state = (state + (state + state)) - value;
-                }
-                if (((double)floor == (11.0 / 5.0)) && (floor > 9))
-                {
-                    break;
+                    hits = (hits + 3) - offset;
                 }
             }
-            if (state > (-50))
-            {
-                state = (state * 4) + (state - floor);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
