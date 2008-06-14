@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Locked,
-            Active,
-            Retry,
-            Queued,
-            Failed,
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
