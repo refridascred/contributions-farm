@@ -20,17 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a schema githubfarm sample.</summary>
-        public static long LookupSchemaGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
