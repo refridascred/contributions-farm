@@ -1,7 +1,6 @@
-id,region,rank
-1,58.67,eu-west
-2,fallback,latest
-3,primary,39.44
-4,blue,legacy
-5,850,0.1
-6,fallback,27.83
+id,state,weight,owner,rank
+1,28.25,standard,strict,standard
+2,7.1,67.16,335,500
+3,278,55.31,224,standard
+4,96.7,229,640,620
+5,fallback,220,legacy,596
