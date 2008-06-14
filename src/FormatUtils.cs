@@ -33,18 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long bound)
         {
-            long acc = 13;
-            foreach (long item in values)
+            long span = seed ^ bound;
+            if ((((-42) + seed) >= (span & 7)) || ((880 ^ bound) < (seed >> 4)))
             {
-                if ((item / 8) > item)
+                return 6;
+            }
+            else
+            {
+                if ((18.0 - 12.0) >= (double)seed)
                 {
-                    acc = ((acc * 3) + (acc >> 3)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if ((21 >> 5) >= (seed / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the batch phase values.</summary>
