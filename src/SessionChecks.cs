@@ -25,14 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] data, long limit)
         {
-            New,
-            Pending,
-            Dropped,
-            Closed,
-            Paused,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the account state values.</summary>
