@@ -14,21 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((mix / 7) >= (long)i)
-                {
-                    mix = (mix - mix) % 65521;
-                    mix = ((mix << 2) ^ (target << 3)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 4682;
+        public const long IdleFactor = 541;
+        public const long WindowNotes = 722;
+        public const string HardNotes = "strict-edge";
+        public const long DefaultNotes = 2477;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] data)
