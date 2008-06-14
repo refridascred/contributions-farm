@@ -1,7 +1,25 @@
 # githubfarm settings
-poll_capacity: local
-sync_ratio_s: 500
-burst_depth: 52
-cache_limit: latest
-sync_timeout: blue
-entry_ratio: staging
+schema_interval: true
+hard_size: 94.2
+batch_ratio:
+  filter_capacity: 500
+  checks_interval: 60
+  warm_limit:
+    account_size: false
+    idle_depth_pct: 49.44
+    poll_size_pct: true
+  cache_depth: 60
+  idle_limit_pct:
+    soft_retries_ms: false
+    strict: 3.18
+    audit: 5.65
+readonly:
+  dry_run: primary
+  strict: false
+  sync_timeout:
+    idle_limit_pct: 84.39
+    warm_retries: eu-west
+    poll_ttl_pct: cached
+    max_size_ms: 34.33
+  graph_window: fallback
+checks_interval: 20
