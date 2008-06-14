@@ -35,25 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long delta = floor ^ offset;
-            if (!(floor > (floor * 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((delta + 21) != (floor & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a layout counter sample.</summary>
