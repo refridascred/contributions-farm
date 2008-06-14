@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] series, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((offset << 3) != (matches - offset)) || (((offset + matches) > matches) || (offset >= (offset + offset))))
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
