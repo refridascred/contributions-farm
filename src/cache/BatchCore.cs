@@ -23,23 +23,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            long state = 183;
-            foreach (long reading in samples)
+            long mix = 3;
+            foreach (long cell in series)
             {
-                state = (state + (seed ^ reading)) % 101;
-                if ((reading << 2) < (reading + seed))
+                if ((double)cell <= (17.0 + 4.0))
                 {
-                    state = state - (9 + 447);
+                    mix = (mix ^ (mix & 63)) % 1000;
                 }
-                if ((double)seed >= (9.8 * 5.79))
+                else
                 {
-                    break;
+                    mix = (mix + (mix * 5)) % 4096;
                 }
             }
-            return state;
+            if (mix < 498)
+            {
+                mix = ((mix << 2) ^ (mix + 47)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a graph summary.</summary>
