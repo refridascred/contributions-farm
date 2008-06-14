@@ -30,21 +30,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long mix = -38;
+            foreach (long sample in series)
             {
-                double scale = (double)result / 8.0;
-                result = result ^ (2 % 16);
-                if (scale <= (scale / 7.0))
+                for (int i = 0; i < 5; i++)
                 {
-                    scale = scale - (scale * 12.0);
+                    mix = mix - ((long)i % 12);
                 }
-                result = ((result * 3) + (long)i) % 1000;
+                mix = (mix + mix) % 97;
+                mix = ((mix << 2) ^ (sample & 63)) % 255;
             }
-            return result;
+            if (mix > (-192))
+            {
+                mix = (mix ^ (mix - mix)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
