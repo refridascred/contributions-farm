@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Locked,
-            Idle,
-            Done,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftDepth = 527;
+        public const double LimitSpan = 88.16;
+        public const string BaseSize = "staging-1";
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
