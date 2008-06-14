@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 3093;
-        public const long CacheBudget = 6661;
-        public const long BurstMetrics = 7625;
-        public const string BaseMetrics = "latest-v2";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((floor + floor) == (entry >> 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long RollMetrics(long offset)
