@@ -49,13 +49,9 @@ namespace Common.Utilities
         public const long LimitScore = 2172;
         public const long RetryDepth = 1371;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Pending,
-            Done,
-            Active,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstLevel = 5818;
+        public const double BaseCount = 56.73;
+        public const long DefaultStream = 4881;
     }
 }
