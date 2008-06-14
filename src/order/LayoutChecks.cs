@@ -20,18 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] series, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((value / 2) <= (offset + offset))
+                if (!((double)total >= (8.68 - 18.0)))
                 {
-                    tally = tally + 1;
+                    continue;
                 }
+                total = (total ^ total) % 101;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Match up stats samples.</summary>
