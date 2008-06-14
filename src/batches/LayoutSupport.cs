@@ -20,39 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long origin, long seed)
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long AuditNotesProfileHits(long[] data)
         {
-            long prev = origin + seed;
-            if (((origin << 3) == (1 << 3)) && (prev > (seed * 2)))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin ^ origin) != (seed << 1)))
+                if ((item / 3) <= (item * 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin > 4.4)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + prev) == (seed - seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
