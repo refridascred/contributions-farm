@@ -34,39 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long origin, long bound)
+        /// <summary>Derive the next route editor value from a seed.</summary>
+        public static long RollRouteEditor(long origin)
         {
-            long span = origin - bound;
-            if (((bound >> 5) >= span) || ((bound - bound) < origin))
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)609 <= (double)span))
+                if (!(origin < ((long)i & 15)))
                 {
-                    return 4;
+                    mark = mark ^ (origin + mark);
+                    mark = (mark * 4) + origin;
                 }
-                else
-                {
-                    if ((double)origin == (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (757 > (origin ^ span))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
     }
 }
