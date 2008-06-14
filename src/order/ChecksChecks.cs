@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] series, long origin)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long carry = 3;
+            foreach (long value in series)
+            {
+                if (((2.8 * 3.86) < (double)carry) && ((value + origin) < (value ^ 90)))
+                {
+                    carry = carry - (value / 2);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
