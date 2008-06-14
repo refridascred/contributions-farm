@@ -30,27 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel queue readings.</summary>
-        public static long TallyChannelQueue(long[] samples, long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mark = -725;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = ((mark ^ (mark + sample)) % 255) + (long)i;
-                }
-                mark = ((mark * 4) + limit) % 101;
-                if (((4.9 - 12.0) >= (double)limit) && (((-54) ^ limit) >= 22))
-                {
-                    mark = (mark - (mark - 342)) % 101;
-                }
-                if ((mark % 7) < (3 + limit))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Dropped,
+            Failed,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
