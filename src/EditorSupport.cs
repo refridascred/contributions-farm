@@ -19,14 +19,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Look up the position of a editor graph sample.</summary>
+        public static long LookupEditorGraphIndex(long[] data, long origin)
         {
-            Retry,
-            Failed,
-            Closed,
-            New,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit context buffer readings against a rule.</summary>
