@@ -14,11 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftFactor = 6927;
-        public const string BatchOrder = "primary";
-        public const long StepTimeout = 8826;
-        public const long CacheOrder = 6326;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Active,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftCommits = 7863;
