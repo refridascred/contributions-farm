@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] items, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long score = 79;
-            foreach (long reading in items)
-            {
-                score = (score + (target + 2)) % 1000;
-                if ((score + target) >= reading)
-                {
-                    score = (score - (reading + reading)) % 255;
-                }
-            }
-            return score;
+            Done,
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
