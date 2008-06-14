@@ -57,18 +57,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor metrics samples are out of range.</summary>
-        public static long MeasureEditorMetricsHits(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)tally > 1.0)
-                {
-                    tally = ((tally + 2) - value) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 80.67;
+        public const long MinFactor = 5718;
+        public const long MinSize = 6969;
     }
 }
