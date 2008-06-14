@@ -1,6 +1,16 @@
 {
-  "min_size": 2562,
-  "min_timeout": "fallback",
-  "sync_timeout": 1250,
-  "base_interval_count": [55, 478]
+  "strict": 2851,
+  "min_ttl_s": {
+    "verbose": false,
+    "farm_delay": {
+      "entry_window": false,
+      "cluster_ttl": 9701,
+      "cache_size": "fallback",
+      "default_ratio": 91,
+      "burst_delay": 27.43
+    },
+    "dry_run": 72.0
+  },
+  "cache_limit_pct": 63,
+  "soft_size": [226, 163, 257, 288]
 }
