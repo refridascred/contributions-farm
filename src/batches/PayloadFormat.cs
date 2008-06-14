@@ -34,31 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            if ((floor - step) != (66 - floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step <= (3.1 / 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor == (3.43 + 6.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
