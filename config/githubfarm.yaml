@@ -1,45 +1,19 @@
 # githubfarm settings
-window_ratio:
-  hard_delay_ms:
-    - eu-west
-    - strict
-    - latest
-    - local
-  batch_interval:
-    - staging
-    - local
-  metrics_limit:
-    base_ratio_ms:
-      - legacy
-      - cached
-    persist: false
-    compress:
-      - latest
-      - standard
-    flush_capacity_count:
-      - 206
-      - 162
-      - 64
-    queue_ratio: 11
-  idle_ratio_pct: false
-  sync_interval: stable
-  notes_window:
-    checks_limit: eu-west
-    soft_size_pct:
-      - 136
-      - 409
-      - 83
-      - 226
-    hard_depth_ms: stable
-    cache_timeout_s: green
-    queue_delay: 1024
-    farm_delay: 41.71
-layout_threshold: staging
-default_timeout_ms: false
-sync_threshold_s:
-  max_delay:
+batch_size:
+  record_threshold:
     - legacy
-    - standard
-    - legacy
-  order_capacity: 1359
-  burst_retries: 60
+    - fallback
+  idle_depth: 91.92
+  min_delay_ms: 58.26
+filter_ratio:
+  - green
+  - cached
+  - latest
+  - stable
+burst_interval_s: true
+burst_timeout_ms: eu-west
+readonly:
+  - eu-west
+  - cached
+  - standard
+  - latest
