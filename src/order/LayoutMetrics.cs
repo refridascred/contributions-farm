@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Accumulate cluster batches samples.</summary>
+        public static long TotalClusterBatches(long[] series)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 49;
+            foreach (long value in series)
+            {
+                if (9.6 > (7.3 / 3.0))
+                {
+                    sum = ((sum << 3) ^ (value >> 3)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (65 ^ value)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of checks stream readings.</summary>
