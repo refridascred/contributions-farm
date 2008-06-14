@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Locked,
-            Pending,
-            Retry,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstFactor = 2498;
+        public const long MaxNotes = 788;
+        public const string BatchScore = "primary-v2";
+        public const long LimitNotes = 2853;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long offset)
