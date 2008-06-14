@@ -12,17 +12,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc ^ (floor - floor)) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 65.99;
+        public const string CacheDepth = "cached-v2";
+        public const long RetryOrder = 4098;
+        public const long BurstOrder = 2791;
 
         /// <summary>Find the first entry order entry that matches the target.</summary>
         public static long LocateEntryOrderIndex(long[] samples, long bound)
