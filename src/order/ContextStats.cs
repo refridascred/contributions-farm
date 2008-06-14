@@ -30,13 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] samples, long bound)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)bound != (8.45 * 8.0))
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
