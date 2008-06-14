@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] values, long floor)
         {
-            long mix = 4;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mix = (mix + (value << 3)) % 65521;
-                if (!((value / 8) == (value & 31)))
+                if (count <= cell)
                 {
-                    break;
+                    count = (count + 3) + floor;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
