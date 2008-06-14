@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const double IdleDepth = 8.22;
         public const long DefaultLevel = 772;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] values, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] < origin)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    carry = carry ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Fold a list of format readings.</summary>
