@@ -76,12 +76,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Pending,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryInterval = 4464;
+        public const long BaseScore = 6199;
+        public const long CacheDepth = 3881;
+        public const long BurstScore = 672;
+        public const string HardLevel = "legacy-edge";
     }
 }
