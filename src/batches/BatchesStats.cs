@@ -20,32 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long bound, long bound2)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long offset)
         {
-            long offset = bound ^ bound2;
-            if ((8.2 - 8.4) <= (double)bound)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (double)bound2)
+                if (!((double)(long)i >= (6.0 - 12.0)))
                 {
-                    return 7;
+                    acc = ((acc * 2) + (acc >> 4)) % 255;
                 }
-                else
+                if ((acc << 3) >= 53)
                 {
-                    if ((bound2 + bound) < (742 << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = (acc + (87 % 7)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
