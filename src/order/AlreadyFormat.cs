@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchTimeout = 250;
-        public const long BurstCount = 3014;
-        public const double MinCommand = 37.81;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Digest a series of cluster support entries.</summary>
         public static long ScoreClusterSupport(long[] values)
