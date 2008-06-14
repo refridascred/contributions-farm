@@ -36,12 +36,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((76 - cell) != (cell / 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
