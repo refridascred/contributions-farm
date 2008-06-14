@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a payload info.</summary>
