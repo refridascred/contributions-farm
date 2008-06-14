@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "legacy-v2";
+        public const double WindowFarm = 41.34;
+        public const double RetryCount = 60.81;
+        public const double BurstRatio = 69.77;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
