@@ -1,4 +1,10 @@
 # githubfarm settings
-sync_depth_ms: stable
-retry_size_count: 100
-min_interval: 30
+sync_capacity_count: false
+format_capacity: blue
+default_ratio_ms:
+  - 325
+  - 320
+  - 22
+  - 198
+poll_threshold: fallback
+burst_depth_ms: 3.21
