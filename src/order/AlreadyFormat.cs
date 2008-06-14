@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public double Token { get; set; }
             public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of cluster support entries.</summary>
