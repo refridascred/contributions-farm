@@ -34,19 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double scale, double floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] series)
         {
-            double gain = (double)(936 + (-887));
-            if (gain <= (double)586)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                gain = gain - floor;
+                if (((tally * 3) >= (tally << 2)) && ((sample & 15) == (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (scale + scale)) + (double)(long)i;
-            }
-            return gain - (double)864;
+            return tally;
         }
     }
 }
