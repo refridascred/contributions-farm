@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardDepth = 8356;
+        public const long BatchRatio = 4479;
+        public const string BurstDepth = "strict-edge";
+        public const double MinFactor = 34.6;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheMatches(long[] readings, long step)
