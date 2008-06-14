@@ -37,23 +37,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long mark = 7;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = (((score << 3) ^ score) % 255) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    score = ((score * 3) + score) + (long)i3;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                mark = ((mark - (entry / 9)) % 4096) - step;
             }
-            return score;
+            return mark;
         }
     }
 }
