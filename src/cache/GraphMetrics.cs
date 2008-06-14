@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] series, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double weight = span;
+            if (weight <= weight)
             {
-                if ((count / 7) < (cell + cell))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = (weight + (weight + weight)) + scale;
             }
-            return count;
+            return weight + (span / 3.0);
         }
 
         /// <summary>Define already limits and defaults.</summary>
