@@ -37,16 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] samples, long step)
         {
-            long total = -951;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total - (reading * 3)) % 101) + target;
-                total = ((total << 2) ^ reading) % 255;
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
