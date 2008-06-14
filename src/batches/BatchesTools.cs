@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
