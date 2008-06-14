@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit stream account readings against a rule.</summary>
+        public static long CountStreamAccountMatches(long[] samples)
         {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)seen != (double)cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
