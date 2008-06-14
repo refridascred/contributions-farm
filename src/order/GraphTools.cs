@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Done,
-            Failed,
-            Paused,
-            Dropped,
-            Ready,
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
