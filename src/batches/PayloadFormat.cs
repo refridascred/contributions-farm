@@ -24,14 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] data, long bound)
         {
-            Dropped,
-            Failed,
-            New,
-            Locked,
-            Ready,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((1.92 / 5.0) < (double)count) || (((count + bound) <= (cell - cell)) || ((double)bound < (2.6 * 8.5))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
