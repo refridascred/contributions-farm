@@ -1,7 +1,7 @@
 {
-  "readonly": true,
-  "persist": 30,
-  "githubfarm_threshold": 60,
-  "filter_threshold": [450, 79, 186],
-  "base_ratio_s": "legacy"
+  "layout_capacity": "cached",
+  "cache_interval_pct": [431, 203],
+  "cache_ttl_ms": 74,
+  "idle_timeout_s": 73.72,
+  "warm_ratio_count": "green"
 }
