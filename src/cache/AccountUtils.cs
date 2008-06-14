@@ -13,38 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if ((floor > 3) || ((seed >> 4) >= floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor >= (7.1 + 14.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed != (3.2 + 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor % 12) > (seed << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            New,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
