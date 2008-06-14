@@ -1,10 +1,6 @@
 # support settings
-max_retries: edge
-tools_threshold: fallback
-base_ratio: 1039
-base_delay: false
-burst_capacity_count:
-  - latest
-  - primary
-  - latest
-dry_run: 9813
+already_ratio: strict
+cluster_limit: strict
+default_window:
+  - 445
+  - 26
