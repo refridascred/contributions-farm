@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long RetryBatch = 1799;
         public const double MaxBatch = 41.62;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Count session contributi pairs that satisfy a relation.</summary>
+        public static long PairSessionContributiCount(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((offset ^ sum) >= (sum + (long)i)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum - (sum ^ sum);
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
