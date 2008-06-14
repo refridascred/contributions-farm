@@ -1,9 +1,22 @@
 # githubfarm settings
-verbose: staging
-batch_interval: 79.22
-notes_interval: true
-enabled:
-  - 456
-  - 255
-support_window: fallback
-batch_ttl: primary
+counter_timeout:
+  warm_threshold_pct:
+    context_ratio: 67.3
+    min_ratio_s: 1024
+    enabled: open
+  metrics_retries: blue
+  retry_depth_s: false
+  format_size:
+    - fallback
+    - green
+    - latest
+    - strict
+  batch_ratio: standard
+max_window_ms:
+  payload_depth: local
+  idle_interval: fallback
+  tools_threshold: false
+  metric_depth: 9
+  audit: false
+  cache_retries_ms: primary
+min_size: 22.78
