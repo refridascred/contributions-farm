@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)total <= (6.18 + 9.46))
-                {
-                    total = (total << 3) ^ offset;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a commits entry.</summary>
