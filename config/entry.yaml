@@ -1,10 +1,8 @@
 # entry settings
-counter_ttl: 14.38
-cache_ttl_count:
-  - standard
-  - open
-enabled:
-  - 133
-  - 229
-verbose: 9015
-dry_run: true
+default_ttl_count: 55.76
+default_window_count: false
+readonly:
+  burst_timeout_pct: green
+  sync_limit: standard
+  min_interval: 34.3
+  editor_limit: 10
