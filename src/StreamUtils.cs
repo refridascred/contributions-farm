@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double span)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double rate = scale;
-            if (rate >= 9.7)
-            {
-                rate = rate + (scale - rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + (8.0 - scale);
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
