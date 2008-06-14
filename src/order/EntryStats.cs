@@ -56,13 +56,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] items, long offset)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)offset <= (double)2)
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
     }
 }
