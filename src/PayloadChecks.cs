@@ -16,14 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Failed,
             Queued,
-            Draft,
-            Done,
-            Ready,
+            Closed,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a counter summary.</summary>
