@@ -13,17 +13,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
