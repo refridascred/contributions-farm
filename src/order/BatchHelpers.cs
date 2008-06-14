@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultLevel = 3305;
-        public const long BaseSize = 5639;
-        public const double WindowBatches = 16.5;
-        public const string MinScore = "cached-1";
-        public const long SoftBatches = 3303;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Idle,
+            Ready,
+            Active,
+            New,
+            Draft,
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] data)
