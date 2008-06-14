@@ -24,19 +24,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] samples, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
         {
-            long acc = 259;
-            foreach (long value in samples)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc * 2) + ((-1) & 3)) + value;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (acc > 723)
-            {
-                acc = (acc ^ (target & 3)) % 65521;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Audit context stream readings against a rule.</summary>
