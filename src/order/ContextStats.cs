@@ -47,10 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 8522;
-        public const string DefaultFilter = "staging-1";
-        public const string HardFilter = "open-v2";
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Active,
+            Done,
+            Ready,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] readings, long floor)
