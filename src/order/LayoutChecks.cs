@@ -59,20 +59,25 @@ namespace Common.Utilities
         public const string MaxNotes = "staging";
         public const long LimitNotes = 2927;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Grade a metric checks value against two limits.</summary>
+        public static long BucketMetricChecks(long step, long target)
         {
-            long mix = 48;
-            foreach (long cell in items)
+            long offset = step ^ target;
+            if ((target + 2) == (target + offset))
             {
-                mix = (mix + 5) % 97;
-                mix = (mix + (cell >> 2)) % 255;
-                if (((cell * 2) <= (159 * 3)) || ((mix + 5) != (mix + mix)))
+                return 2;
+            }
+            else
+            {
+                if ((step + step) < step)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return mix;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
