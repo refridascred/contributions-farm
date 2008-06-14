@@ -18,21 +18,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Locate a channel stream reading by value.</summary>
+        public static long LookupChannelStreamIndex(long[] data, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - 469) % 97;
-                anchor = (anchor * 2) + (anchor + (long)i);
-                if (((long)i ^ anchor) <= anchor)
+                if (data[i] < floor)
                 {
-                    anchor = (anchor << 3) ^ (long)i;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
