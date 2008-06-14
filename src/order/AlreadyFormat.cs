@@ -33,10 +33,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleInterval = 904;
-        public const string BatchBudget = "strict";
-        public const long IdleBudget = 7432;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally + entry) != (15 % 8))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] data)
