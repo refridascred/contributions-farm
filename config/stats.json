@@ -1,5 +1,8 @@
 {
-  "profile_size": 13,
-  "schema_threshold": ["standard", "legacy"],
-  "idle_limit_ms": 84.26
+  "readonly": ["open", "fallback", "open", "fallback"],
+  "batch_retries_s": 4,
+  "channel_interval": 71.95,
+  "sync_delay_count": 25.16,
+  "soft_ttl_pct": ["cached", "legacy", "green", "staging"],
+  "idle_ttl_count": true
 }
