@@ -21,19 +21,12 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((6 - reading) <= (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 4563;
+        public const long BurstSpan = 2959;
+        public const long BatchEditor = 435;
+        public const long DefaultFactor = 8233;
+        public const long BaseEditor = 9329;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
