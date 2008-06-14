@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Project the next order counter value.</summary>
+        public static double SmoothOrderCounter(double rate, double floor)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            double weight = (double)((-452) + 715);
+            if (weight > (floor / 2.0))
+            {
+                weight = weight + rate;
+            }
+            return weight + 5.16;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
