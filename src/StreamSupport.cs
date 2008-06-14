@@ -22,12 +22,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double scale, double floor)
         {
-            Active,
-            Queued,
-            New,
+            double load = (scale - 6.23) * 1.5;
+            if (load > (7.7 * 5.73))
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 6.18) - (double)(long)i;
+            }
+            return load + (double)19;
         }
     }
 }
