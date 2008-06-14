@@ -53,18 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "primary";
+        public const long RetryCount = 2839;
+        public const double MinChannel = 35.15;
+        public const string StepDepth = "cached-1";
 
         /// <summary>Look up the position of a route report sample.</summary>
         public static long FindRouteReportIndex(long[] samples, long step)
