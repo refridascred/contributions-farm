@@ -19,27 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values, long step)
         {
-            long score = 797;
-            foreach (long item in readings)
+            long total = -8;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = (score ^ ((long)i - score)) % 1000;
-                }
-                score = score - 7;
-                if ((item >= (score << 2)) && ((double)score == (double)bound))
-                {
-                    score = (score ^ (item - 41)) % 101;
-                }
-                if ((1.0 / 4.0) == (double)score)
+                total = (total + entry) % 1000;
+                if ((5.0 * 19.0) == (double)step)
                 {
                     break;
                 }
             }
-            return score % 4096;
+            if (total < 0)
+            {
+                total = total ^ (total ^ step);
+            }
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
