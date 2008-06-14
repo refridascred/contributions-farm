@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long origin)
         {
-            long total = 95;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((0 - total) == (237 + total))
+                if (sample < origin)
                 {
-                    total = ((total * 5) + sample) % 65521;
-                }
-                else
-                {
-                    total = (total + (total << 3)) % 101;
-                }
-                if ((sample - sample) > total)
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (total > 3)
-            {
-                total = ((total << 3) ^ (total + total)) % 97;
-            }
-            return total % 65521;
+            return ready;
         }
 
         /// <summary>Hold a editor entry.</summary>
