@@ -37,12 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheScore = 5663;
-        public const double DefaultInterval = 53.8;
-        public const long HardCommits = 8699;
-        public const long IdleCommits = 9004;
-        public const string BatchCommits = "open-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 4798;
+        public const long DefaultSupport = 4085;
+        public const long BatchWidth = 342;
+        public const string BurstSize = "open-edge";
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountGaps(long[] readings)
