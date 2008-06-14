@@ -20,17 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a session window counter forward.</summary>
-        public static long StepSessionWindow(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + 382) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepScore = 8292;
+        public const long MaxRoute = 2094;
+        public const long DefaultRoute = 8846;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] series)
