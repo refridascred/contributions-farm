@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryBudget = 7451;
-        public const long CacheLevel = 2387;
-        public const long BaseFactor = 2892;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardLevel = 4189;
+        public const long DefaultSpan = 2582;
+        public const long HardSupport = 1767;
+        public const long BaseCount = 3113;
+        public const long WindowDepth = 5212;
 
         /// <summary>Roll a window entry counter forward.</summary>
         public static long SeriesWindowEntry(long bound)
