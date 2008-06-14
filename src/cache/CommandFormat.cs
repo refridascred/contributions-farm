@@ -28,11 +28,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data, long origin)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long mix = 63;
+            foreach (long entry in data)
+            {
+                if ((double)origin != (9.67 + 9.7))
+                {
+                    mix = ((mix - (origin % 7)) % 4096) - entry;
+                }
+                if (!((8.0 + 1.16) >= (double)mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 75)
+            {
+                mix = mix + (-815);
+            }
+            return mix;
         }
 
         /// <summary>Combine session values into a single score.</summary>
