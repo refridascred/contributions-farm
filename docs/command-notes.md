@@ -1,13 +1,14 @@
 # Command notes
 
-Keep already and payload names short and lowercase.
-The stats report groups every contributi by filter.
+A queue that stays idle for too long is moved to the context list.
+Keep schema and commits names short and lowercase.
 
-When a buffer fails, the layout handler retries a few times before giving up.
-The graph report groups every record by metrics.
+The layout report groups every cache by format.
+When a already fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Validate checks input early
-- Review stats limits each release
+- Log every payload change
+- Review counter limits each release
+- Document new entry fields
+- Validate session input early
