@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next commits schema value.</summary>
-        public static double BlendCommitsSchema(double bias, double offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double gain = bias;
-            if (gain >= (double)(-59))
-            {
-                gain = (gain + 6.1) + offset;
-            }
-            return gain - bias;
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
