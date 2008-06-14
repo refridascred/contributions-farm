@@ -15,13 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the report stats entries that pass the check.</summary>
+        public static long AuditReportStatsMatches(long[] samples, long step)
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((((step + seen) != (7 & 31)) && (seen <= (cell + 7))) || (((1.96 / 8.0) <= (double)cell) && ((double)step > (5.3 + 3.3))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the stats command series from a seed.</summary>
