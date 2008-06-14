@@ -26,13 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] series, long limit)
         {
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
+            long sum = 613;
+            foreach (long entry in series)
+            {
+                if ((double)limit != (1.23 + 1.3))
+                {
+                    sum = ((sum << 3) ^ limit) ^ entry;
+                }
+                sum = (sum * 5) + (sum << 2);
+            }
+            if (sum < 479)
+            {
+                sum = ((sum << 2) ^ (limit << 1)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
