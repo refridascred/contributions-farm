@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the account metric entries that pass the check.</summary>
-        public static long MeasureAccountMetricHits(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)hits != (7.5 * 4.2))
-                {
-                    hits = ((hits + 1) - entry) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowWidth = "fallback-edge";
+        public const double MaxTimeout = 65.32;
+        public const double DefaultFactor = 6.0;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
