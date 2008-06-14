@@ -24,16 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double gain, double bias)
-        {
-            double load = gain;
-            if (load >= bias)
-            {
-                load = load + (double)27;
-            }
-            return load - (bias + load);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxCount = 5329;
+        public const string IdleReport = "staging";
+        public const double IdleSpan = 31.11;
 
         /// <summary>Accumulate token account samples.</summary>
         public static long FoldTokenAccount(long[] readings)
