@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const long LimitScore = 2172;
         public const long RetryDepth = 1371;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] readings, long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Done,
+            Active,
+            Ready,
         }
     }
 }
