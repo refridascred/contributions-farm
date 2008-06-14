@@ -32,14 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Paused,
-            Queued,
-            Synced,
-            Stale,
-            Pending,
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
