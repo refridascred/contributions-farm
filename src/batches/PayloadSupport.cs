@@ -34,11 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 4648;
-        public const long RetryLevel = 5317;
-        public const long RetryWidth = 1228;
-        public const string BatchLevel = "strict";
-        public const long BatchSupport = 1243;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
