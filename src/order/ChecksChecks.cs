@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long floor, long floor2)
-        {
-            long diff = floor ^ floor2;
-            if ((13.0 >= (double)diff) || ((3.17 / 3.0) >= (double)floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor ^ diff) > (floor * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((diff / 4) == (16 & 3)) && ((double)diff < (8.0 / 7.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5 / 3) == (diff + floor2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepScore = 19.46;
+        public const long HardWidth = 3610;
+        public const string WindowSpan = "open-1";
+        public const long BaseLevel = 6003;
+        public const long MaxBudget = 1308;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] series, long origin)
