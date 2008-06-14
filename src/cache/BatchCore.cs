@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double StepMetrics = 36.44;
         public const string CacheMetrics = "standard";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 1925;
-        public const long WindowDepth = 8716;
-        public const long DefaultDepth = 2816;
-        public const long IdleInterval = 1133;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((offset ^ sum) >= (sum + (long)i)))
+                {
+                    sum = sum - (sum ^ sum);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricGaps(long[] samples)
