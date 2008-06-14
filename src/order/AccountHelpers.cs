@@ -19,12 +19,21 @@ namespace Common.Utilities
         public const double BurstFactor = 36.41;
         public const long BaseCount = 4621;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
