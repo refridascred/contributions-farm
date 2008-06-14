@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double bias2)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double weight = (double)4 - (double)(-466);
-            if (weight < bias)
-            {
-                weight = weight - (weight * 7.94);
-            }
-            else
-            {
-                weight = weight - (bias / 9.0);
-            }
-            return weight + (bias2 / 4.0);
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
