@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] values, long offset)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (offset > (matches - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
