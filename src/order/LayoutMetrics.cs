@@ -13,23 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double gain, double bias)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            double scale = (double)(395 % 16);
-            if (scale < bias)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale + bias;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale + (gain + 8.81);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale - bias;
+            return acc;
         }
 
         /// <summary>Describe the batch mode values.</summary>
