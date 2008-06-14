@@ -32,23 +32,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry batches readings.</summary>
-        public static long ScoreEntryBatches(long[] readings)
+        /// <summary>Grade a farm contributi value against two limits.</summary>
+        public static long RankFarmContributi(long seed, long target)
         {
-            long acc = 298;
-            foreach (long datum in readings)
+            if ((target + target) < (seed & 1))
             {
-                if (!((datum - datum) <= (acc & 63)))
+                return 8;
+            }
+            else
+            {
+                if (!((double)seed > (2.55 / 5.0)))
                 {
-                    acc = (acc ^ (acc >> 4)) % 4096;
+                    return 3;
                 }
-                acc = acc - (acc / 8);
-                if ((acc + datum) >= datum)
+                else
                 {
-                    acc = ((acc * 2) + (datum % 5)) % 65521;
+                    if ((11 - 717) != (seed + 42))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed + (-6)) == (target & 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Hold a command summary.</summary>
