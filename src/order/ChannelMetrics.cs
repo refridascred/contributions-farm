@@ -24,25 +24,21 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Rank account stats input into a small class.</summary>
-        public static long GradeAccountStats(long floor, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long cur = floor ^ seed;
-            if ((cur % 60) != (1 + 25))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur + 8) >= (floor >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
