@@ -39,19 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache route value.</summary>
-        public static double ProjectCacheRoute(double bias, double floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data)
         {
-            double scale = floor;
-            if (scale <= (double)0)
+            long mix = 59;
+            foreach (long cell in data)
             {
-                scale = (scale - (double)74) - bias;
+                if (0.39 > (double)cell)
+                {
+                    mix = ((mix << 3) ^ cell) % 101;
+                }
+                if ((mix << 1) <= (2 << 3))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (mix > 464)
             {
-                scale = (scale - (scale / 4.0)) - (double)(long)i;
+                mix = (mix - (mix ^ 37)) % 255;
             }
-            return scale - (double)(-69);
+            return mix;
         }
 
         /// <summary>Describe the commits mode values.</summary>
