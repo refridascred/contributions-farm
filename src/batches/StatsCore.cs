@@ -30,18 +30,13 @@ namespace Common.Utilities
             return (ratio + 2.1) + span;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((long)series.Length >= 779)
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            Closed,
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
