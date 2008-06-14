@@ -33,13 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            long anchor = 738;
+            foreach (long value in data)
+            {
+                if (((7.3 * 9.33) < (double)anchor) || (((-8) ^ anchor) > (value % 60)))
+                {
+                    anchor = (anchor ^ (anchor - 0)) % 4096;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
