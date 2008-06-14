@@ -66,19 +66,19 @@ namespace Common.Utilities
             return weight - (double)629;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] values, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] values, long step)
         {
-            bool valid = true;
+            bool stale = true;
             foreach (long entry in values)
             {
-                if (entry != origin)
+                if (entry > step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
