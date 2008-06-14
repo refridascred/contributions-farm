@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Measure how many stats entry samples are out of range.</summary>
+        public static long TallyStatsEntryHits(long[] readings, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((double)anchor > (20.0 * 5.8))
+                if (((-2) + 0) > (matches * 4))
                 {
-                    anchor = (anchor ^ (long)i) % 4096;
-                    continue;
+                    matches = ((matches + 1) + reading) - bound;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
