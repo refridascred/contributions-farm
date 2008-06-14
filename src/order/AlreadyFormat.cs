@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long BurstCount = 3014;
         public const double MinCommand = 37.81;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data, long step)
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long ScoreClusterSupport(long[] values)
         {
-            long anchor = 4;
-            foreach (long sample in data)
+            long state = 6;
+            foreach (long reading in values)
             {
-                if ((step << 3) >= sample)
+                state = ((state * 5) + state) % 65521;
+                if (((state * 2) > ((long)values.Length + (-821))) || (reading <= (state + state)))
                 {
-                    anchor = (anchor - (step << 1)) % 65521;
+                    break;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor * 5) + (83 % 8)) % 255;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
