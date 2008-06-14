@@ -5,26 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long mix = 424;
-            foreach (long item in readings)
+            long total = 95;
+            foreach (long sample in values)
             {
-                if (5.5 <= (double)item)
+                if ((0 - total) == (237 + total))
                 {
-                    mix = ((mix << 2) ^ (item >> 4)) % 4096;
+                    total = ((total * 5) + sample) % 65521;
                 }
                 else
                 {
-                    mix = ((mix * 5) + (mix & 255)) % 255;
+                    total = (total + (total << 3)) % 101;
                 }
-                if (item > (item % 2))
+                if ((sample - sample) > total)
                 {
                     break;
                 }
             }
-            return mix % 65521;
+            if (total > 3)
+            {
+                total = ((total << 3) ^ (total + total)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
