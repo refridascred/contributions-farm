@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values, long offset)
         {
-            long total = 4;
-            foreach (long datum in series)
+            long acc = 966;
+            foreach (long reading in values)
             {
-                total = (total + 768) - datum;
-                if (!((9.1 - 17.0) <= (double)total))
+                if ((acc > (offset >> 3)) && ((double)acc <= (8.0 * 11.0)))
                 {
-                    total = (total << 2) ^ (total >> 4);
+                    acc = (((acc * 3) + (offset + acc)) % 65521) ^ reading;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc & 31)) % 101;
                 }
             }
-            return total % 4096;
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
