@@ -7,18 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in strict primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-staging}"
 case "${mode}" in
-    fallback)
+    latest)
         log "fast path"
         ;;
     *)
