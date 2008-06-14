@@ -43,11 +43,40 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCount = "fallback-v2";
-        public const double CacheCount = 84.46;
-        public const long MinTimeout = 8976;
-        public const double DefaultCommits = 70.41;
+        /// <summary>Rank command channel input into a small class.</summary>
+        public static long BucketCommandChannel(long limit, long offset)
+        {
+            long gap = limit - offset;
+            if ((limit - offset) >= (6 + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((gap / 2) < (offset ^ limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((gap >> 2) != ((-954) - 68))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((gap ^ 588) == (32 - gap))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine schema commits values into a single score.</summary>
         public static long DigestSchemaCommits(long[] readings, long floor)
