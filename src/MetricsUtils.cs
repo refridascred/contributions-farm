@@ -23,39 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long step, long floor)
+        /// <summary>Compare every pair of batch layout readings.</summary>
+        public static long PairBatchLayoutCount(long[] data)
         {
-            long span = step - floor;
-            if ((1.0 / 9.0) < (double)floor)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3.45 * 17.0) == (double)floor) || ((step & 1) > span))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step <= (1 + span))
+                    if ((data[i] ^ data[j]) > 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (6.4 > (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
