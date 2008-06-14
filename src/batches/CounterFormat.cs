@@ -36,26 +36,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] items, long limit)
+        /// <summary>Count record contributi pairs that satisfy a relation.</summary>
+        public static long PairRecordContributiCount(long[] items)
         {
-            long acc = 849;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.51 / 9.0) == (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc << 3) ^ cell;
-                }
-                if (((limit << 1) >= 108) || (limit > (cell + limit)))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 363)
-            {
-                acc = (acc - (limit * 3)) % 1000;
-            }
-            return acc % 4096;
+            return seen;
         }
     }
 }
