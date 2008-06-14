@@ -18,21 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (9.0 > (double)limit)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) < (offset + offset))
                 {
-                    if ((items[i] + items[j]) != 10)
+                    return 6;
+                }
+                else
+                {
+                    if ((5.2 + 7.8) == (double)offset)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((4.8 * 3.88) < (double)offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the metrics state values.</summary>
