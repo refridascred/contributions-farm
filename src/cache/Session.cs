@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BatchWidth = 4816;
         public const double DefaultProfile = 0.73;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] readings, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double bias = (offset - 8.45) / 6.0;
+            if (bias < (double)5)
             {
-                if ((matches ^ seed) > (seed ^ matches))
-                {
-                    matches = (matches + 2) + cell;
-                }
+                bias = (bias - offset) - rate;
             }
-            return matches;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias - bias;
         }
 
         /// <summary>Describe the report phase values.</summary>
