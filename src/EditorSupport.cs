@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardDepth = 8356;
-        public const long BatchRatio = 4479;
-        public const string BurstDepth = "strict-edge";
-        public const double MinFactor = 34.6;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Ready,
+            Done,
+            Closed,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Validate command context readings against a bound.</summary>
         public static bool VerifyCommandContextBounds(long[] data, long bound)
