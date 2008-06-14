@@ -1,6 +1,6 @@
 {
-  "route_timeout": 60,
-  "base_ratio_count": 69.79,
-  "queue_threshold": "fallback",
-  "route_ttl": "latest"
+  "retry_delay": ["legacy", "primary"],
+  "command_window": "fallback",
+  "strict": 35,
+  "layout_limit": "edge"
 }
