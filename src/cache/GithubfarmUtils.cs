@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long StepFormat = 640;
         public const long BaseFormat = 8126;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Check that every already buffer entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBufferRange(long[] data, long step)
         {
-            Stale,
-            Queued,
-            Draft,
-            Closed,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
