@@ -41,25 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank support session input into a small class.</summary>
-        public static long RankSupportSession(long step, long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long offset2 = step - offset;
-            if (((double)offset2 != (6.11 - 5.5)) && (step <= offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((235 ^ offset) >= (offset - offset2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Match up channel samples.</summary>
