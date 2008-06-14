@@ -15,15 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the report stats entries that pass the check.</summary>
-        public static long AuditReportStatsMatches(long[] samples, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] items)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            foreach (long item in items)
             {
-                if ((((step + seen) != (7 & 31)) && (seen <= (cell + 7))) || (((1.96 / 8.0) <= (double)cell) && ((double)step > (5.3 + 3.3))))
+                if ((item % 3) < (seen + item))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
