@@ -45,27 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings, long offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long mark = 53;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = (mark ^ (entry % 97)) - (long)i;
-                }
-                mark = (mark ^ (entry % 64)) % 1000;
-                if ((double)offset < (double)entry)
-                {
-                    break;
-                }
-            }
-            if (mark > 9)
-            {
-                mark = ((mark * 4) + (offset + mark)) % 1000;
-            }
-            return mark % 65521;
+            Pending,
+            Paused,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
