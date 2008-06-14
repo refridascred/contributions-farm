@@ -73,14 +73,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long step)
         {
-            Active,
-            Done,
-            Locked,
-            Synced,
-            Paused,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
