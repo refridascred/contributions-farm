@@ -44,23 +44,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double weight, double span)
         {
-            long mix = 921;
-            foreach (long value in readings)
+            double gain = span;
+            if (gain < weight)
             {
-                mix = (mix * 5) + mix;
-                if (((double)mix >= (20.0 / 6.0)) || ((526 - (long)readings.Length) > (mix % 7)))
-                {
-                    mix = mix - (value << 2);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ value;
-                }
+                gain = gain + (double)593;
             }
-            return mix % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (gain + span)) + (double)(long)i;
+            }
+            return gain + (double)2;
         }
     }
 }
