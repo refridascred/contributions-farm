@@ -41,19 +41,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every format report entry stays within the limit.</summary>
-        public static bool GuardFormatReportBounds(long[] readings, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            double weight = (double)((-410) % 10);
+            for (int i = 0; i < 2; i++)
             {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (((weight - weight) + (double)(long)i) - rate) - bias;
             }
-            return ready;
+            return weight + (0.8 / 4.0);
         }
     }
 }
