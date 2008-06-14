@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 5437;
-        public const string MinSpan = "stable-1";
-        public const long RetryFarm = 8985;
+        /// <summary>Adjust a route farm reading.</summary>
+        public static double ProjectRouteFarm(double rate, double span)
+        {
+            double weight = rate * 7.38;
+            if (weight < (span - rate))
+            {
+                weight = weight - span;
+            }
+            else
+            {
+                weight = weight + (span - rate);
+            }
+            return weight - 5.0;
+        }
 
         /// <summary>Find the first entry profile entry that matches the target.</summary>
         public static long SeekEntryProfileIndex(long[] readings, long bound)
