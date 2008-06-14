@@ -1,11 +1,11 @@
 # Command notes
 
-Use tools settings to tune how often tools data is refreshed.
-A metrics that stays idle for too long is moved to the record list.
-The support report groups every command by buffer.
+When a report fails, the layout handler retries a few times before giving up.
+When a cache fails, the schema handler retries a few times before giving up.
+When a cache fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every tools change
-- Prefer stats defaults
-- Validate command input early
+- Validate notes input early
+- Keep channel values small
+- Prefer notes defaults
