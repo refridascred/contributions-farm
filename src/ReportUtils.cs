@@ -53,11 +53,20 @@ namespace Common.Utilities
             return weight + (span + 3.7);
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] items, long step)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long sum = 5;
+            foreach (long datum in items)
+            {
+                sum = ((sum + step) % 65521) ^ datum;
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = sum ^ (708 + (long)i);
+                }
+                sum = (sum - (sum + 613)) % 101;
+            }
+            return sum;
         }
     }
 }
