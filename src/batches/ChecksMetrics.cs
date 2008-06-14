@@ -13,12 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 9249;
-        public const long MinEditor = 4468;
-        public const double BatchEditor = 10.36;
-        public const string DefaultEditor = "open-edge";
-        public const double IdleEditor = 82.24;
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double span)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 - (double)784) + (double)(long)i) + span;
+            }
+            return bias2 + (bias2 + bias);
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportBounds(long[] items, long limit)
