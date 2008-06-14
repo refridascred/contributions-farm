@@ -45,10 +45,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitTimeout = 98.78;
-        public const long CacheBuffer = 7808;
-        public const string RetryBuffer = "cached";
-        public const double IdleCount = 24.94;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultTimeout = "cached-1";
+        public const long MaxLayout = 2387;
+        public const string RetryTimeout = "standard-1";
     }
 }
