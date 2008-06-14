@@ -15,20 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxInterval = 52.54;
+        public const long MaxFactor = 7457;
+        public const string BurstSize = "latest-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstTimeout = 8194;
