@@ -34,19 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] readings, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = 3;
-            foreach (long sample in readings)
-            {
-                score = (((score * 2) + (561 + 9)) % 4096) ^ sample;
-            }
-            if (score < 86)
-            {
-                score = (score ^ (floor * 3)) % 101;
-            }
-            return score;
+            Failed,
+            Done,
+            Closed,
         }
     }
 }
