@@ -57,14 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] values)
         {
-            Idle,
-            Closed,
-            Synced,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count << 2) > (count / 6))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
