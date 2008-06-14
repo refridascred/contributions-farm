@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long ScoreClusterSupport(long[] values)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = 6;
-            foreach (long reading in values)
-            {
-                state = ((state * 5) + state) % 65521;
-                if (((state * 2) > ((long)values.Length + (-821))) || (reading <= (state + state)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Pending,
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
