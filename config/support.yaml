@@ -1,9 +1,14 @@
 # support settings
-warm_limit_pct: 250
-payload_retries: staging
-enabled: local
-batch_threshold_ms:
-  - green
-  - strict
-max_interval_s: 12.89
-poll_depth: 250
+base_retries:
+  cache_interval_s: 79.03
+  hard_capacity_count: 60
+  persist: latest
+  retry_delay: stable
+  counter_ttl: edge
+min_delay_count: primary
+retry_capacity_ms:
+  - staging
+  - fallback
+  - standard
+  - fallback
+record_window: strict
