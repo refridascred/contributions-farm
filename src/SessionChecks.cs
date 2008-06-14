@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Accumulate token samples.</summary>
