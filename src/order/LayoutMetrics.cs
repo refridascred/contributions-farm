@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double mean = (double)(36 + (-82));
+            if (mean < (offset - 9.4))
             {
-                if (((2.81 / 4.0) == (double)cell) || (7.38 < (double)matches))
-                {
-                    matches = matches + 3;
-                }
+                mean = (mean - (3.0 * 15.0)) - rate;
             }
-            return matches;
+            return mean + (offset - offset);
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
