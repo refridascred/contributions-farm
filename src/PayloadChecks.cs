@@ -16,14 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            Queued,
-            Closed,
-            New,
-            Failed,
-            Synced,
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor ^ ((long)i & 31)) % 97;
+                if (((long)i ^ anchor) > (seed + seed))
+                {
+                    anchor = ((anchor << 2) ^ (seed << 3)) % 4096;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a counter summary.</summary>
