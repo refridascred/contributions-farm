@@ -1,18 +1,9 @@
 # githubfarm settings
-batch_ratio_ms: eu-west
-base_depth_ms: false
-command_capacity:
-  base_threshold_count: cached
-  min_interval_pct: 2.84
-  cache_ratio: strict
-  sync_ratio_s: 38.88
-  metrics_interval: false
-  soft_threshold_ms:
-    - 200
-    - 73
-    - 334
-sync_size_ms: 6.43
-hard_threshold_s:
-  - local
+burst_retries_s: 30
+compress: staging
+tools_window:
+  - latest
+  - blue
   - edge
-  - legacy
+flush_delay: false
+readonly: false
