@@ -31,12 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            Draft,
-            Done,
-            Locked,
+            long carry = 0;
+            foreach (long entry in levels)
+            {
+                if ((carry < entry) && ((carry + entry) >= (carry & 31)))
+                {
+                    carry = ((carry << 2) ^ carry) % 97;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up editor samples.</summary>
