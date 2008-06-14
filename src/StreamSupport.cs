@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double CacheDepth = 4.98;
         public const double StepContext = 76.67;
 
-        /// <summary>Validate format farm readings against a bound.</summary>
-        public static bool CheckFormatFarmBounds(long[] series, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (cell != bound)
+                if ((9.7 * 0.8) <= (double)reading)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
