@@ -13,19 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] series, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long state = 7;
-            foreach (long sample in series)
-            {
-                state = (((state * 5) + sample) % 65521) + origin;
-            }
-            if (state < 106)
-            {
-                state = state - (state % 7);
-            }
-            return state;
+            Pending,
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
