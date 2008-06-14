@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseInterval = 1299;
-        public const double MaxCommand = 43.39;
-        public const long WindowCommand = 3404;
-        public const long IdleCommand = 4110;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsGaps(long[] data)
