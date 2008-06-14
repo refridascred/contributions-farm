@@ -36,18 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] series, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum < (90 ^ hits)) && ((hits < (hits % 100)) || (hits <= 94)))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
