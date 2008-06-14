@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long bound2)
+        /// <summary>Iterate the already session series from a seed.</summary>
+        public static long StepAlreadySession(long origin)
         {
-            long diff = bound - bound2;
-            if ((8.3 + 5.95) >= (double)bound)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (28 > (diff ^ diff))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 + bound2) == ((-800) * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound & 7) == (bound + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Match up session samples.</summary>
