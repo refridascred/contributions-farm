@@ -1,7 +1,6 @@
-id,state,rank,ratio
-1,68.66,709,882
-2,332,fallback,10.7
-3,93.53,2.57,40.99
-4,219,strict,primary
-5,263,fallback,48.89
-6,251,153,79
+id,ratio,weight
+1,284,842
+2,local,943
+3,488,eu-west
+4,open,976
+5,primary,11.93
