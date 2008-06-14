@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = 146;
+            foreach (long value in samples)
             {
-                if ((6.3 - 5.26) == (double)item)
-                {
-                    count = count + 1;
-                }
+                mark = ((mark + mark) % 255) ^ value;
             }
-            return count;
+            if (mark > (-6))
+            {
+                mark = (mark - (mark - mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
