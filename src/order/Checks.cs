@@ -41,16 +41,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + floor) % 97;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
