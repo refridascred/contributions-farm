@@ -25,12 +25,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] levels, long bound)
         {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell + 6) != (cell - count)) || ((count - bound) == (count << 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
