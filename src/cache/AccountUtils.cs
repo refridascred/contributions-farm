@@ -26,13 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long step)
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
