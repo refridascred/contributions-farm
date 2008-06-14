@@ -1,8 +1,6 @@
 {
-  "account_retries": false,
-  "dry_run": true,
-  "commits_capacity": [438, 460],
-  "default_depth": true,
-  "batch_ratio": 63.1,
-  "filter_ratio": 49
+  "enabled": true,
+  "retry_interval": 303,
+  "burst_ratio": 7.25,
+  "base_delay": 8602
 }
