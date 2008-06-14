@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine stats record values into a single score.</summary>
-        public static long TotalStatsRecord(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            long acc = -3;
-            foreach (long datum in data)
+            long score = -439;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 3; i++)
+                score = (score ^ (142 << 2)) ^ cell;
+                if (!(94 < (23 - score)))
                 {
-                    acc = (acc << 3) ^ (long)i;
-                }
-                if ((datum >> 4) >= (acc >> 2))
-                {
-                    acc = (acc * 4) + (acc * 5);
-                }
-                else
-                {
-                    acc = (acc + acc) % 1000;
+                    score = score ^ score;
                 }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Accumulate checks samples.</summary>
