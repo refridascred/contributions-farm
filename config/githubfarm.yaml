@@ -1,16 +1,18 @@
 # githubfarm settings
-stream_ttl:
-  flush_limit_s: false
-  session_depth: fallback
-  stats_limit: 5504
-  support_limit: 500
-  base_size:
-    - 355
-    - 475
-  support_capacity: eu-west
+enabled:
+  - latest
+  - latest
+order_retries: cached
+poll_limit_count: 70.94
 compress:
-  default_timeout_pct: 1024
-  flush_interval: open
-  strict: 84
-  retry_retries_pct: true
-warm_size_s: latest
+  - 113
+  - 289
+dry_run:
+  buffer_retries: 85.63
+  farm_capacity: eu-west
+  strict:
+    max_retries_count: cached
+    base_limit_s: 60
+    already_timeout: false
+    audit: edge
+  max_retries_count: 6.36
