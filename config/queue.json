@@ -1,5 +1,5 @@
 {
-  "idle_threshold_pct": true,
-  "idle_timeout_s": 37.99,
-  "compress": 35
+  "layout_depth": "latest",
+  "retry_timeout_pct": false,
+  "hard_interval": "staging"
 }
