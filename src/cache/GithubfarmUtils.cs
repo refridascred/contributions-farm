@@ -13,22 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] items)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)item != (double)count)
+                if ((double)total <= (6.18 + 9.46))
                 {
-                    count = count + 2;
+                    total = (total << 3) ^ offset;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
