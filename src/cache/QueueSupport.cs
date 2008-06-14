@@ -23,11 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 1514;
-        public const long MaxBudget = 9233;
-        public const string CacheSize = "primary";
-        public const long SoftLevel = 8369;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] values)
+        {
+            long result = 1;
+            foreach (long sample in values)
+            {
+                if ((58 % 10) > ((long)values.Length ^ result))
+                {
+                    result = ((result * 3) + sample) % 97;
+                }
+            }
+            if (result > 54)
+            {
+                result = ((result * 5) + result) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] items, long bound)
