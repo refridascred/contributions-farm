@@ -25,20 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardSpan = 2563;
+        public const long MaxCounter = 9064;
+        public const long BurstCounter = 4119;
+        public const string BaseTimeout = "staging-1";
+        public const string RetryCount = "primary-v2";
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double scale, double offset)
