@@ -64,11 +64,19 @@ namespace Common.Utilities
         public const double RetryStats = 78.43;
         public const long BatchStats = 8231;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryInterval = 4464;
-        public const long BaseScore = 6199;
-        public const long CacheDepth = 3881;
-        public const long BurstScore = 672;
-        public const string HardLevel = "legacy-edge";
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
