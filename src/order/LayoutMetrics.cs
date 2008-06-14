@@ -24,39 +24,17 @@ namespace Common.Utilities
         public const string MinSpan = "stable-1";
         public const long RetryFarm = 8985;
 
-        /// <summary>Grade a githubfarm report value against two limits.</summary>
-        public static long BucketGithubfarmReport(long offset, long floor)
+        /// <summary>Find the first entry profile entry that matches the target.</summary>
+        public static long SeekEntryProfileIndex(long[] readings, long bound)
         {
-            long bound = offset ^ floor;
-            if (((16 & 15) >= offset) || ((bound - 89) > (offset + offset)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)993 > (double)offset) || ((double)offset != (18.0 * 20.0)))
+                if (readings[i] > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - floor) <= 2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((8.0 * 0.15) == (double)bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
