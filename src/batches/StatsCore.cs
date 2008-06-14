@@ -23,18 +23,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Locate a command support reading by value.</summary>
+        public static long LocateCommandSupportIndex(long[] data, long floor)
         {
-            long acc = -166;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum ^ acc) <= (datum >> 4))
+                if ((data[i] > floor) && ((data[i] % 5) != 0))
                 {
-                    acc = ((acc << 2) ^ (acc & 15)) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the notes status values.</summary>
