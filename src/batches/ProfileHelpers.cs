@@ -54,18 +54,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] items, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = 5;
-            foreach (long value in items)
-            {
-                if ((9.8 / 3.0) >= (double)value)
-                {
-                    score = (score - 60) + floor;
-                }
-            }
-            return score;
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
