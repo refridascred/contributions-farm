@@ -1,19 +1,16 @@
 # entry settings
-cache_depth_ms: legacy
-default_threshold_count: false
-strict: fallback
-cluster_retries:
-  - edge
-  - primary
-entry_capacity:
-  dry_run: 5900
-  warm_retries: strict
-  hard_interval_count: eu-west
-  persist:
-    compress:
-      - standard
-      - staging
-    soft_interval: strict
-    context_size: true
-  cluster_retries: green
-compress: 30
+default_ttl_ms: true
+audit: 4048
+min_window_pct:
+  - 375
+  - 107
+already_retries: true
+flush_ratio_pct: cached
+commits_capacity:
+  default_interval_count:
+    - 225
+    - 45
+    - 488
+    - 181
+  burst_limit: true
+  payload_size: true
