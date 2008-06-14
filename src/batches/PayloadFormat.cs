@@ -13,14 +13,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data)
         {
-            Closed,
-            Queued,
-            Paused,
-            Failed,
-            New,
+            long anchor = 4;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor - (anchor >> 3)) % 1000) ^ cell;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the farm phase values.</summary>
