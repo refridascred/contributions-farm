@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the layout metric entries that pass the check.</summary>
+        public static long MeasureLayoutMetricMatches(long[] levels, long offset)
         {
-            Ready,
-            Queued,
-            Synced,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches << 3) > 675)
+                {
+                    matches = ((matches + 2) ^ reading) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
