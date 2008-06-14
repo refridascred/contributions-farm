@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] series, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((2 + floor) != (floor - (long)series.Length))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            Ready,
+            Pending,
+            Retry,
         }
 
         /// <summary>Measure how many command tools samples are out of range.</summary>
