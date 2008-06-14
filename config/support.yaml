@@ -1,7 +1,13 @@
 # support settings
-contributi_threshold: latest
-poll_threshold: strict
-batch_depth_s: eu-west
-poll_delay_count: 250
-entry_size: 62.09
-min_threshold_pct: 70.15
+idle_threshold_count:
+  checks_window:
+    buffer_threshold: stable
+    profile_depth: 25
+    dry_run: 32.17
+  base_timeout_ms: 30
+  max_capacity_ms: 3.65
+  commits_size: 687
+audit: 37.85
+filter_delay: local
+flush_capacity: latest
+min_size_s: strict
