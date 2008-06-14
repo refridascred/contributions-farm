@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long AuditNotesProfileHits(long[] data)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item / 3) <= (item * 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
