@@ -27,12 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many notes support samples are out of range.</summary>
+        public static long AuditNotesSupportHits(long[] data)
         {
-            public bool Level { get; set; }
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen + reading) < reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
