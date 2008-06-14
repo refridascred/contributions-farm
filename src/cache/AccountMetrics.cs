@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items, long floor)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long mix = -7;
+            foreach (long reading in items)
+            {
+                mix = (mix << 2) ^ (mix + reading);
+                mix = ((mix << 2) ^ (mix + floor)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a commits stats.</summary>
