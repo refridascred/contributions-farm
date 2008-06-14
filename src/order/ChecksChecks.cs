@@ -40,11 +40,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 9786;
-        public const long IdleRatio = 2226;
-        public const string StepContributi = "legacy-1";
-        public const string LimitContributi = "fallback-edge";
-        public const long MinContributi = 4066;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
