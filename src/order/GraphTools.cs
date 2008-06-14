@@ -41,24 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine schema commits values into a single score.</summary>
-        public static long DigestSchemaCommits(long[] readings, long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long total = 62;
-            foreach (long value in readings)
-            {
-                if ((6.4 - 3.06) == (double)total)
-                {
-                    total = (total + 997) + value;
-                    break;
-                }
-                total = (total ^ (floor >> 2)) % 255;
-                if (!(floor > (floor - floor)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
