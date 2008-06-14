@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of profile batches entries.</summary>
-        public static long DigestProfileBatches(long[] data, long bound)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] items, long origin)
         {
-            long anchor = -2;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((items[i] <= origin) && ((items[i] % 5) == 0))
                 {
-                    anchor = (anchor + ((long)i & 31)) % 97;
-                }
-                if (anchor >= bound)
-                {
-                    anchor = (anchor + (value ^ bound)) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor < 184)
-            {
-                anchor = ((anchor << 2) ^ bound) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
