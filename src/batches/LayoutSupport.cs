@@ -41,12 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the report channel entries that pass the check.</summary>
+        public static long TallyReportChannelMatches(long[] levels, long bound)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading - reading) < (count - reading)) || (((reading + bound) != (bound + reading)) || (3 <= (reading / 4))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
