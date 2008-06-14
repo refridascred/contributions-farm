@@ -23,19 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] series, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
