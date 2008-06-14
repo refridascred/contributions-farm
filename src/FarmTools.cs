@@ -36,15 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Combine channel route values into a single score.</summary>
+        public static long DigestChannelRoute(long[] levels)
         {
-            double load = bias;
-            for (int i = 0; i < 6; i++)
+            long sum = 2;
+            foreach (long reading in levels)
             {
-                load = (load + (double)(long)i) + floor;
+                sum = ((sum ^ sum) % 97) ^ reading;
             }
-            return load + load;
+            return sum;
         }
     }
 }
