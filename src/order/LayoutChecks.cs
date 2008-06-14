@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many token session samples are out of range.</summary>
-        public static long AuditTokenSessionGaps(long[] levels, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = 79;
+            foreach (long reading in items)
             {
-                if ((double)(-485) != (double)value)
+                score = (score + (target + 2)) % 1000;
+                if ((score + target) >= reading)
                 {
-                    matches = (matches + 2) + floor;
+                    score = (score - (reading + reading)) % 255;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
