@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 7264;
         public const double CacheQueue = 85.25;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] values, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] data, long seed)
         {
-            long sum = 463;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (sum > (target >> 3))
+                if (item > seed)
                 {
-                    sum = ((sum - (sum << 3)) % 97) - datum;
-                }
-                else
-                {
-                    sum = sum - 405;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
