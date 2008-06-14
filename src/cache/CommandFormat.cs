@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen - (-993)) < (seen + 41))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinDepth = 3689;
+        public const double HardEditor = 63.41;
+        public const long MaxEditor = 3813;
+        public const string RetryEditor = "latest-v2";
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] series)
