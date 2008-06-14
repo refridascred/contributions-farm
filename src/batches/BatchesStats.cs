@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every metric window entry stays within the limit.</summary>
-        public static bool CheckMetricWindowLimits(long[] series, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (entry <= floor)
+                if (entry != offset)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a buffer summary.</summary>
