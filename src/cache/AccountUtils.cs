@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Count the session batch entries that pass the check.</summary>
+        public static long CountSessionBatchOutliers(long[] values, long step)
         {
-            long carry = 40;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((carry * 5) != (carry - sample)) && (carry >= (sample << 1)))
+                if (47 > (step ^ sample))
                 {
-                    carry = (carry + (sample + (-31))) % 4096;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Roll a route counter forward.</summary>
