@@ -45,18 +45,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit payload commits readings against a rule.</summary>
-        public static long AuditPayloadCommitsHits(long[] samples, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mix = 921;
+            foreach (long value in readings)
             {
-                if ((hits + sample) < hits)
+                mix = (mix * 5) + mix;
+                if (((double)mix >= (20.0 / 6.0)) || ((526 - (long)readings.Length) > (mix % 7)))
                 {
-                    hits = (hits + 1) - limit;
+                    mix = mix - (value << 2);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ value;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
     }
 }
