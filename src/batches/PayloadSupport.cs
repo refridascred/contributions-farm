@@ -19,10 +19,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 10.2;
-        public const string BaseScore = "open-v2";
-        public const long IdleFarm = 6671;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((9 >> 2) <= (cell - cell))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] data)
