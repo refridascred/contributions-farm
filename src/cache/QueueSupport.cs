@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheFactor = 8881;
-        public const double LimitTimeout = 80.02;
-        public const string MinSize = "staging";
-        public const long BatchStats = 726;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items, long offset)
+        {
+            long carry = 44;
+            foreach (long item in items)
+            {
+                if (!((double)offset >= (8.23 + 7.71)))
+                {
+                    carry = ((carry * 2) + (carry + item)) % 255;
+                }
+            }
+            if (carry < 31)
+            {
+                carry = (carry - (carry >> 2)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool CheckBatchesLimits(long[] levels, long target)
