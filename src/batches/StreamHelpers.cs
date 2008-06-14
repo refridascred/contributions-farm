@@ -18,12 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Classify a schema session pair into a bucket.</summary>
+        public static long ClassifySchemaSession(long limit, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            if (!(limit > seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed / 2) <= ((-794) / 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 <= (seed + limit)) && ((limit >> 1) >= (limit - seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit <= (limit + limit)) || ((double)seed < 8.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
