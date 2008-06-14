@@ -14,11 +14,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long offset, long target)
         {
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
+            if ((578 >> 3) < (target + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (15.0 < (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset < target) || (29 < target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch status values.</summary>
