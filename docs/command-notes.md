@@ -1,15 +1,14 @@
 # Command notes
 
-Use metrics settings to tune how often schema data is refreshed.
-Run the contributi check before changing any metric limits.
-Run the cluster check before changing any metric limits.
+The report module keeps command values in sync with the window cache.
+The batch report groups every counter by cluster.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Run the schema check before changing any entry limits.
+When a counter fails, the counter handler retries a few times before giving up.
+Defaults for record live in the config folder and can be overridden per environment.
+Use queue settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Keep window values small
-- Validate batch input early
-- Prefer graph defaults
-- Log every metrics change
+- Keep checks values small
+- Validate stream input early
+- Review command limits each release
