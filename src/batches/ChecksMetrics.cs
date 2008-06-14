@@ -62,15 +62,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine profile githubfarm values into a single score.</summary>
-        public static long TotalProfileGithubfarm(long[] levels, long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long anchor = 9;
-            foreach (long value in levels)
-            {
-                anchor = (((anchor - anchor) % 101) - value) - floor;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
