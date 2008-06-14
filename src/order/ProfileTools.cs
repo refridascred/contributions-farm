@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const double HardChecks = 12.18;
         public const long WindowChecks = 6225;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryRatio = 89.44;
-        public const string WindowFactor = "local-edge";
-        public const long IdleGraph = 4896;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits + hits) > (hits - target))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] values)
