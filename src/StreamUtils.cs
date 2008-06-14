@@ -59,19 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] readings, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate cache samples.</summary>
