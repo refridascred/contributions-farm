@@ -63,18 +63,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the farm stream entries that pass the check.</summary>
-        public static long TallyFarmStreamHits(long[] items)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (entry > (matches * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
