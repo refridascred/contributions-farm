@@ -1,4 +1,9 @@
 # githubfarm settings
-readonly: edge
-retry_window_count: 3245
-warm_ttl_s: legacy
+cache_timeout:
+  cache_retries_ms: 21.99
+  audit: edge
+  cluster_ttl: fallback
+  flush_size: 1262
+  default_depth: 2668
+min_ratio: 100
+dry_run: true
