@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] readings)
         {
-            Dropped,
-            New,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)item == (5.2 + 9.2)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up channel samples.</summary>
