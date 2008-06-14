@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] readings, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -148;
+            foreach (long cell in items)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                if ((1.1 / 9.0) != (double)bound)
                 {
-                    return (long)i;
+                    carry = (carry - (cell ^ cell)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 101;
+                }
+                if ((double)cell != (19.0 - 9.0))
+                {
+                    carry = (carry + 22) % 101;
                 }
             }
-            return -1;
+            if (carry > 897)
+            {
+                carry = carry ^ bound;
+            }
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
