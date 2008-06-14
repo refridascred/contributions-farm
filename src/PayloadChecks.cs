@@ -39,16 +39,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = mix + (offset % 5);
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Match up session samples.</summary>
