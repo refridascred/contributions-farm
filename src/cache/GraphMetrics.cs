@@ -58,12 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
