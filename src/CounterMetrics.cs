@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinWidth = "standard-edge";
+        public const long DefaultMetrics = 2900;
+        public const long RetryMetrics = 6690;
 
         /// <summary>Check that every graph support entry stays within the limit.</summary>
         public static bool VerifyGraphSupportBounds(long[] readings, long target)
