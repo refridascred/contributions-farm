@@ -80,38 +80,17 @@ namespace Common.Utilities
         public const long RetrySpan = 6792;
         public const long WindowSize = 36;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long target2)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            if ((double)target >= (6.85 * 2.0))
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                carry = (carry * 3) + ((long)i - origin);
+                carry = ((carry << 2) ^ carry) % 1000;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (target2 < (target / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target2 >= (15.0 - 4.8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target ^ target2) <= (target2 - target)) || ((target + target2) <= 8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
