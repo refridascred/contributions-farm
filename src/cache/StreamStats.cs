@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const double MinLayout = 59.94;
         public const string BaseScore = "staging";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 7503;
-        public const long IdleSchema = 8490;
-        public const long StepLevel = 1602;
-        public const long DefaultScore = 3043;
-        public const double WindowSchema = 4.65;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Pending,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatHits(long[] data)
