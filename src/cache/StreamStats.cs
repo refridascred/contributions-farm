@@ -81,10 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryTimeout = "primary";
-        public const long HardLevel = 8719;
-        public const long MaxAccount = 9718;
-        public const long StepCount = 1345;
+        /// <summary>Find the first farm stats entry that matches the target.</summary>
+        public static long LocateFarmStatsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
