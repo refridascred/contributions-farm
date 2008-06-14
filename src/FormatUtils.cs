@@ -46,15 +46,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] items, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
