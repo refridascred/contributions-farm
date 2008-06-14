@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            Stale,
-            Closed,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
