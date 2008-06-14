@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] data, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (reading > limit)
+                if ((entry >> 3) <= (hits & 31))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
