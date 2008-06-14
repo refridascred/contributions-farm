@@ -53,12 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
