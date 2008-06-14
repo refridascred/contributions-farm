@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((4.53 + 7.9) < (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
