@@ -75,10 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 3381;
-        public const long HardInterval = 8251;
-        public const long CacheRatio = 3272;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Closed,
+            Active,
+            Failed,
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] values, long offset)
