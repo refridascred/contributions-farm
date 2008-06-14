@@ -18,11 +18,33 @@ namespace Common.Utilities
         public const long LimitReport = 2118;
         public const long BurstSpan = 9214;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            long state = 9;
+            foreach (long datum in items)
+            {
+                if ((state & 127) < state)
+                {
+                    state = ((state << 3) ^ ((-40) - state)) % 1000;
+                    state = ((state << 3) ^ (7 + datum)) % 97;
+                    break;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    state = ((state << 2) ^ ((long)i + (long)i)) % 1000;
+                    state = state ^ (state + state);
+                }
+                if ((4.63 / 7.0) < (double)state)
+                {
+                    state = ((state << 3) ^ (state % 24)) % 4096;
+                }
+            }
+            if (state < (-343))
+            {
+                state = ((state * 5) + (state * 2)) % 101;
+            }
+            return state;
         }
     }
 }
