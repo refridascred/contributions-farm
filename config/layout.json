@@ -1,6 +1,7 @@
 {
-  "idle_limit_s": ["strict", "staging", "legacy", "local"],
-  "batch_ratio": 44,
-  "commits_retries": true,
-  "filter_size": "latest"
+  "schema_size": 30,
+  "poll_interval": 65,
+  "sync_ratio_ms": "stable",
+  "enabled": 60,
+  "flush_depth_ms": 5863
 }
