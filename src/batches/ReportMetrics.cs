@@ -32,15 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
