@@ -46,26 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long floor, long bound)
-        {
-            long diff = floor + bound;
-            if (((double)diff > (15.0 + 3.78)) && ((713 >> 2) <= (floor + 8)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor ^ diff) >= (20 ^ floor)) && ((floor + floor) >= (diff + 8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 604;
+        public const long SoftInterval = 1281;
+        public const long LimitLevel = 7229;
+        public const long DefaultWindow = 9790;
+        public const string BaseWindow = "alpha-edge";
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
