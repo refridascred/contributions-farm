@@ -43,22 +43,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] levels, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry * 3) < (tally >> 4))
-                {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            New,
+            Closed,
+            Stale,
+            Idle,
         }
     }
 }
