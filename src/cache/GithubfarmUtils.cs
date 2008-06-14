@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 73.83;
+        public const string LimitCount = "legacy";
+        public const long StepFormat = 640;
+        public const long BaseFormat = 8126;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
