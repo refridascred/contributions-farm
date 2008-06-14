@@ -34,10 +34,11 @@ namespace Common.Utilities
             return mean - (weight + mean);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheBudget = 4809;
-        public const long RetryLevel = 3022;
-        public const string SoftChecks = "legacy-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCommand = 90.14;
+        public const long BurstTimeout = 4506;
+        public const double HardCommand = 32.0;
+        public const double IdleInterval = 52.0;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
