@@ -28,24 +28,18 @@ namespace Common.Utilities
         public const long MaxRoute = 2094;
         public const long DefaultRoute = 8846;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values, long floor)
         {
-            long mix = -38;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 5; i++)
+                if (!((floor + hits) <= (datum * 3)))
                 {
-                    mix = mix - ((long)i % 12);
+                    hits = hits + 1;
                 }
-                mix = (mix + mix) % 97;
-                mix = ((mix << 2) ^ (sample & 63)) % 255;
             }
-            if (mix > (-192))
-            {
-                mix = (mix ^ (mix - mix)) % 101;
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
