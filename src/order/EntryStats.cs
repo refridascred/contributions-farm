@@ -52,13 +52,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] levels)
         {
-            Synced,
-            Closed,
-            Done,
-            Draft,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading >= (double)count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
