@@ -39,22 +39,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double gain, double bias)
         {
-            long acc = 333;
-            foreach (long cell in items)
+            double rate = gain;
+            if (rate >= (double)549)
             {
-                if ((acc ^ 90) > (0 * 5))
-                {
-                    acc = (acc ^ (acc / 9)) + cell;
-                }
-                else
-                {
-                    acc = (acc + (373 % 12)) % 97;
-                }
+                rate = (rate + 20.0) - bias;
             }
-            return acc;
+            else
+            {
+                rate = rate + (double)80;
+            }
+            return rate + (double)11;
         }
     }
 }
