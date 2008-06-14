@@ -21,15 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] values, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long acc = 4;
-            foreach (long item in values)
+            long total = 0;
+            foreach (long value in data)
             {
-                acc = (acc + (seed ^ acc)) ^ item;
+                total = total ^ value;
             }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Hold a cache info.</summary>
