@@ -23,15 +23,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Iterate the counter batch series from a seed.</summary>
+        public static long DeriveCounterBatch(long limit)
         {
-            double scale = (double)(401 >> 1);
-            for (int i = 0; i < 8; i++)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                scale = ((scale + (bias / 8.0)) + (double)(long)i) - gain;
+                carry = carry ^ limit;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return scale + (bias + bias);
+            return carry;
         }
     }
 }
