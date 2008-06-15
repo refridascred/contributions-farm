@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count tools graph pairs that satisfy a relation.</summary>
-        public static long CompareToolsGraphCount(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 815;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry - (261 & 1)) % 4096) ^ reading;
             }
-            return matches;
+            if (carry > 367)
+            {
+                carry = (carry * 4) + (origin - 285);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate farm samples.</summary>
