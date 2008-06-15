@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long MaxScore = 9171;
         public const long IdleGithubfarm = 4209;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] items, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long total = 37;
+            foreach (long sample in series)
             {
-                if (cell > offset)
+                if (((total >> 2) < sample) && ((14.0 - 2.74) >= (1.02 / 9.0)))
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 3) + (target / 3)) % 97;
                 }
             }
-            return valid;
+            if (total < 86)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
