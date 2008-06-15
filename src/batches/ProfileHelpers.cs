@@ -20,12 +20,18 @@ namespace Common.Utilities
             return drift - (3.59 / 5.0);
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit channel token readings against a rule.</summary>
+        public static long MeasureChannelTokenGaps(long[] values, long seed)
         {
-            Done,
-            Dropped,
-            Failed,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((81 << 1) >= seen)
+                {
+                    seen = ((seen + 3) ^ reading) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
