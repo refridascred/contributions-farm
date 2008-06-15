@@ -1,13 +1,14 @@
 # support settings
-idle_threshold_s: false
-burst_capacity: edge
-metric_interval: true
-hard_ratio_pct: stable
-default_timeout_pct:
-  readonly: true
-  githubfarm_ratio: false
-  sync_timeout_pct:
-    - 37
-    - 407
-    - 78
-  max_delay_s: edge
+persist:
+  - 263
+  - 22
+hard_ratio: 17
+entry_timeout:
+  - stable
+  - edge
+  - primary
+poll_retries_s:
+  - primary
+  - local
+  - stable
+flush_delay_s: false
