@@ -29,13 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
