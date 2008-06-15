@@ -60,19 +60,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of context record entries.</summary>
-        public static long FoldContextRecord(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            long mix = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mix = mix ^ (sample - mix);
+                if ((tally + tally) > (tally + (long)data.Length))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
             }
-            if (mix > 854)
-            {
-                mix = (mix - (mix >> 2)) % 65521;
-            }
-            return mix;
+            return tally;
         }
     }
 }
