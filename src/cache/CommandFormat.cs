@@ -45,18 +45,20 @@ namespace Common.Utilities
         public const long LimitCount = 1562;
         public const double CacheReport = 53.78;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] items)
+        /// <summary>Iterate the batch cluster series from a seed.</summary>
+        public static long StepBatchCluster(long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count + cell) != (364 >> 4))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    count = count + 1;
+                    acc = (((acc << 3) ^ floor) % 97) ^ (long)i2;
                 }
+                acc = (acc ^ acc) % 4096;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
