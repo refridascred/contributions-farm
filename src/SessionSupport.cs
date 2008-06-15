@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
