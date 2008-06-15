@@ -85,18 +85,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] values, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((hits << 1) > (hits << 3))
+                if (datum <= floor)
                 {
-                    hits = ((hits + 1) ^ sample) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
