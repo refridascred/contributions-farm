@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the batch metric entries that pass the check.</summary>
+        public static long MeasureBatchMetricHits(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((5.1 + 1.3) >= (double)cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
