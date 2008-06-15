@@ -22,13 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of format support entries.</summary>
+        public static long DigestFormatSupport(long[] data)
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long carry = -365;
+            foreach (long sample in data)
+            {
+                if ((sample + carry) == (sample / 8))
+                {
+                    carry = (carry - (carry + sample)) % 97;
+                    carry = (carry ^ (carry % 64)) % 255;
+                }
+                else
+                {
+                    carry = (carry + carry) % 65521;
+                    carry = ((carry * 5) + (72 + sample)) % 65521;
+                }
+                if (((carry % 8) < (7 & 127)) && ((723 ^ carry) != (carry + 6)))
+                {
+                    carry = (carry ^ (sample & 3)) % 101;
+                }
+            }
+            if (carry > 26)
+            {
+                carry = (carry + (carry + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
