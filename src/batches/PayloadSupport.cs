@@ -29,22 +29,18 @@ namespace Common.Utilities
         public const long BatchReport = 9656;
         public const string IdleTimeout = "open-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((entry - entry) == (count * 2))
+                if (cell >= seen)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
