@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
