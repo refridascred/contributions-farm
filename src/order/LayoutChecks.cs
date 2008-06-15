@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double rate, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long seed, long step)
         {
-            double weight = (offset / 9.0) - rate;
-            if (weight < 0.54)
+            long gap = seed + step;
+            if ((5.13 - 8.0) == (double)gap)
             {
-                weight = weight - rate;
+                return 3;
             }
             else
             {
-                weight = weight - (double)23;
+                if (7.3 > (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step + gap) < (gap + seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return weight + offset;
         }
 
         /// <summary>Hold a stream record.</summary>
