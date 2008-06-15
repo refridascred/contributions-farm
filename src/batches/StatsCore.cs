@@ -33,17 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total ^ limit) % 4096;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 9294;
+        public const long DefaultWidth = 9073;
+        public const double WindowDepth = 44.76;
+        public const long LimitCommits = 4371;
+        public const long SoftWidth = 8253;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double SmoothCache(double bias, double span)
