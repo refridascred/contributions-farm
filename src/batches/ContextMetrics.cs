@@ -49,16 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score << 2) ^ (772 / 9)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Done,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
