@@ -1,38 +1,8 @@
 # githubfarm settings
-soft_window: 19
-sync_size_count: green
-audit:
-  readonly:
-    - local
-    - fallback
-    - staging
-    - eu-west
-  default_ttl: fallback
-  sync_threshold:
-    - 438
-    - 408
-  stats_window: 3239
-  tools_threshold: 60
-  token_ttl: 1024
-warm_timeout_s:
-  - fallback
-  - primary
-  - standard
-min_window_ms:
-  already_depth: 100
-  sync_retries_count:
-    retry_window: 93
-    commits_interval: false
-    retry_interval_pct: local
-    cache_limit_count: primary
-    compress: 500
-    burst_capacity_s: green
-  layout_limit:
-    persist: 1443
-    base_threshold: false
-    readonly: latest
-    burst_window_ms: legacy
-    retry_ttl_count: blue
-  filter_depth: cached
-  idle_delay_ms: standard
-  graph_delay: true
+retry_threshold: staging
+route_threshold:
+  - 240
+  - 156
+max_window_pct: cached
+sync_size_count: 4.23
+contributi_retries: false
