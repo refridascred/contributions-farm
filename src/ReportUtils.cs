@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double floor)
         {
-            long diff = bound ^ target;
-            if ((target % 60) != (diff % 60))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target >= 9.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (32 < (bound * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double weight = (floor * 0.96) + floor;
+            return (weight + floor) + scale;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
