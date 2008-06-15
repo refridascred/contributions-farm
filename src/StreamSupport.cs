@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Paused,
-            Ready,
+            New,
             Synced,
-            Idle,
-            Failed,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a payload entry.</summary>
