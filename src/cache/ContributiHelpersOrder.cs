@@ -27,11 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data, long origin)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            long carry = 7;
+            foreach (long entry in data)
+            {
+                carry = (carry ^ (entry + 282)) % 4096;
+                if (!(carry > (origin * 5)))
+                {
+                    carry = (carry - carry) % 255;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
