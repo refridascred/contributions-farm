@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels, long target)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long sum = -753;
+            foreach (long reading in levels)
+            {
+                if (((target * 2) == (target >> 4)) || ((3.54 / 4.0) >= (double)target))
+                {
+                    sum = ((sum << 3) ^ (reading & 127)) % 65521;
+                }
+                if ((double)target >= (double)sum)
+                {
+                    sum = (sum + target) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 3) + reading) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a checks options.</summary>
