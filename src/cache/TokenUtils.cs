@@ -26,11 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values, long bound)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            long total = 502;
+            foreach (long value in values)
+            {
+                if ((double)value > (1.4 + 4.28))
+                {
+                    total = (total + (value - bound)) % 255;
+                }
+                if ((bound < (total - value)) || (value >= total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
