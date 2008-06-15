@@ -62,20 +62,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a token notes reading.</summary>
-        public static double ScaleTokenNotes(double bias, double offset)
-        {
-            double rate = offset;
-            if (rate > 5.24)
-            {
-                rate = (rate + (double)414) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (double)69) + (double)(long)i;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseSize = 5188;
+        public const long MinFactor = 9391;
+        public const long BatchCount = 2383;
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
         public static long TallyChecksFilterOutliers(long[] data, long step)
