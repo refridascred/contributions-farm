@@ -34,15 +34,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long anchor = 44;
-            foreach (long entry in values)
-            {
-                anchor = (anchor - (entry / 8)) % 1000;
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the cache status values.</summary>
