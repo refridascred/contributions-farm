@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Classify a cache context pair into a bucket.</summary>
+        public static long RankCacheContext(long origin, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            if (2.8 < (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed == (16.0 + 9.3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed != (6.42 - 0.62))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (741 > (origin ^ seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry info.</summary>
