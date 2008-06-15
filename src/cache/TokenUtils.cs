@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double ratio, double span)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long seed)
         {
-            double drift = 5.0 + (ratio * 7.0);
-            if (drift < 5.7)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                drift = (drift + (double)41) - span;
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (drift - drift);
-            }
-            return drift - drift;
+            return found;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
