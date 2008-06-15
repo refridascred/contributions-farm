@@ -80,21 +80,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long step, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step2 = step ^ target;
+            if ((5.0 - 4.06) > (double)step2)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((786 & 3) <= (target ^ step))
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
+                    return 2;
+                }
+                else
+                {
+                    if (!(target <= (step << 2)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
