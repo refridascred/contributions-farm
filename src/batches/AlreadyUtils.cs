@@ -19,28 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] values)
-        {
-            long sum = 33;
-            foreach (long cell in values)
-            {
-                sum = (sum + (915 - sum)) % 65521;
-                if (((double)sum == (double)93) || ((double)sum <= (18.0 + 0.4)))
-                {
-                    sum = (sum - 2) % 1000;
-                }
-                else
-                {
-                    sum = sum + (cell & 1);
-                }
-            }
-            if (sum > 2)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardWidth = 75.17;
+        public const long MinBuffer = 8868;
+        public const long StepInterval = 4842;
+        public const string BaseWidth = "stable";
+        public const long RetryBuffer = 2039;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitFactor = 3187;
