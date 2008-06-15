@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] series, long origin)
+        /// <summary>Look up the position of a session editor sample.</summary>
+        public static long SeekSessionEditorIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)708 != (double)datum)
+                if (samples[i] > origin)
                 {
-                    matches = (matches + 1) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next editor commits value.</summary>
