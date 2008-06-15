@@ -1,6 +1,5 @@
 {
-  "dry_run": 37,
-  "compress": 4647,
-  "idle_threshold_ms": 98.11,
-  "strict": [232, 230, 388, 484]
+  "retry_interval_ms": 30,
+  "idle_limit_pct": "strict",
+  "checks_capacity": false
 }
