@@ -67,9 +67,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "strict-v2";
-        public const string SoftSize = "local";
-        public const string MinSpan = "primary";
+        /// <summary>Blend two commits token measurements.</summary>
+        public static double BlendCommitsToken(double ratio, double offset)
+        {
+            double rate = (ratio / 7.0) / 8.0;
+            return (rate - rate) + offset;
+        }
     }
 }
