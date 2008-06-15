@@ -26,10 +26,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstDepth = 461;
-        public const long BatchTimeout = 8060;
-        public const double BurstCache = 18.74;
-        public const double DefaultScore = 53.74;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value / 3) == (0 + seen))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
+        }
     }
 }
