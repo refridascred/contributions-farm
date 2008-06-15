@@ -66,14 +66,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Synced,
             Queued,
-            Pending,
-            Active,
-            Stale,
+            Synced,
+            Failed,
         }
     }
 }
