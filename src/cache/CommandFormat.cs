@@ -45,20 +45,19 @@ namespace Common.Utilities
         public const long LimitCount = 1562;
         public const double CacheReport = 53.78;
 
-        /// <summary>Iterate the batch cluster series from a seed.</summary>
-        public static long StepBatchCluster(long floor)
+        /// <summary>Check that every channel commits entry stays within the limit.</summary>
+        public static bool ValidateChannelCommitsRange(long[] levels, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (entry > seed)
                 {
-                    acc = (((acc << 3) ^ floor) % 97) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                acc = (acc ^ acc) % 4096;
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Digest a series of context record entries.</summary>
