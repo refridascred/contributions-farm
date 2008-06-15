@@ -1,14 +1,7 @@
 # entry settings
-min_capacity_ms: 60
-hard_capacity_count: 78.57
-hard_retries_pct: 98.17
-session_capacity:
-  poll_threshold_ms: latest
-  max_size: eu-west
-  poll_capacity_ms: open
-  retry_ttl_count: 94.2
-order_interval:
-  - 362
-  - 274
-  - 54
-  - 249
+batch_size_count: false
+verbose: 5801
+poll_ttl: 250
+notes_ratio: 250
+strict: 57
+window_ratio: edge
