@@ -27,10 +27,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSpan = 1485;
-        public const string LimitCounter = "alpha-v2";
-        public const double RetryCounter = 84.7;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmBounds(long[] readings, long seed)
