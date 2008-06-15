@@ -36,18 +36,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] samples, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + 383) == (count ^ entry))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Stale,
+            Retry,
         }
     }
 }
