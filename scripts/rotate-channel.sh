@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict open blue; do
+CHANNEL_LIMIT=254
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in fallback legacy; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=251
-log "limit is ${CHANNEL_LIMIT}"
