@@ -28,26 +28,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            long mark = 263;
-            foreach (long reading in data)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((reading + step) <= (reading - mark))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 101;
-                }
-                if ((mark ^ reading) != (reading - reading))
-                {
-                    break;
-                }
+                score = ((score << 2) ^ (long)i) % 1000;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return mark % 65521;
+            return score;
         }
 
         /// <summary>Describe the already phase values.</summary>
