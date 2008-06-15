@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 5389;
-        public const long LimitCount = 1562;
-        public const double CacheReport = 53.78;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Check that every channel commits entry stays within the limit.</summary>
         public static bool ValidateChannelCommitsRange(long[] levels, long seed)
