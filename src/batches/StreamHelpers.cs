@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstInterval = 6496;
+        public const double SoftCount = 37.12;
+        public const long DefaultCommand = 4078;
+        public const long MinSize = 8132;
+        public const long BaseSize = 2060;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
