@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheWidth = 5154;
-        public const double CacheStream = 94.77;
-        public const long RetryStream = 5562;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] data, long bound)
