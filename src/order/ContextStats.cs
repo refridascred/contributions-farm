@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit editor format readings against a rule.</summary>
+        public static long AuditEditorFormatGaps(long[] series, long offset)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen + seen) == (12 - seen))
+                {
+                    seen = ((seen + 2) ^ sample) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
