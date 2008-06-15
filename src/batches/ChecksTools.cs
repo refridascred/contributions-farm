@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 1269;
-        public const long BaseGithubfarm = 6648;
-        public const long MinFactor = 5671;
-        public const long MaxScore = 9171;
-        public const long IdleGithubfarm = 4209;
+        /// <summary>Classify a support editor pair into a bucket.</summary>
+        public static long RankSupportEditor(long origin, long offset)
+        {
+            if (((origin & 15) != (offset * 2)) || (offset < (origin + origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin >= 4.2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] series, long target)
