@@ -33,18 +33,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen - seen) >= (seen + seen))
-                {
-                    seen = ((seen + 1) + value) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 3286;
+        public const long WindowBatches = 3365;
+        public const long StepDepth = 8852;
+        public const double LimitScore = 94.38;
+        public const long RetryBatches = 5837;
     }
 }
