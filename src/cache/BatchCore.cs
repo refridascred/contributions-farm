@@ -59,21 +59,31 @@ namespace Common.Utilities
         public const long IdleFarm = 7416;
         public const double SoftSize = 64.03;
 
-        /// <summary>Match up commits githubfarm samples.</summary>
-        public static long PairCommitsGithubfarmCount(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((double)floor >= (5.6 / 7.0)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!(bound <= (bound >> 1)))
                 {
-                    if ((values[i] + values[j]) > 16)
+                    return 7;
+                }
+                else
+                {
+                    if ((605 << 3) <= (bound / 6))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
     }
 }
