@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Measure how many stream format samples are out of range.</summary>
+        public static long MeasureStreamFormatHits(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((double)datum <= 9.54)
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
