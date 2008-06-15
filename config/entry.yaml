@@ -1,20 +1,8 @@
 # entry settings
-base_ttl_count: 250
-retry_delay: true
-contributi_capacity: 100
-audit:
-  already_delay:
-    retry_ttl_ms: edge
-    base_interval_count: 100
-    batch_ttl_pct: 67.1
-    compress: strict
-    hard_capacity_count: 83
-    retry_ratio_pct: 60
-  cluster_window: false
-  verbose: open
-  retry_ttl_count:
-    idle_size_s: local
-    session_retries: 4453
-    readonly: 2563
-  idle_window_pct: standard
-max_interval_s: 6879
+cluster_window: 87.56
+metrics_limit: false
+command_depth: standard
+min_delay_s:
+  - 280
+  - 376
+  - 412
