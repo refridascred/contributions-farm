@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const long HardRecord = 3021;
         public const long MaxLevel = 3644;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Failed,
-            Queued,
-            Ready,
-            New,
+            Dropped,
+            Done,
+            Closed,
+            Active,
             Pending,
         }
 
