@@ -31,14 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] data, long seed)
         {
-            Active,
-            New,
-            Queued,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (seed <= item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
