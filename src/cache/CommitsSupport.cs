@@ -33,21 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
