@@ -66,18 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] series, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long score = 4;
+            foreach (long cell in samples)
             {
-                if ((12.0 + 6.32) == (double)floor)
-                {
-                    matches = (matches + 2) + cell;
-                }
+                score = ((score * 4) + (7 - score)) + cell;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
