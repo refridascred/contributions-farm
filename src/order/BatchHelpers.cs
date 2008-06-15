@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a token contributi sample.</summary>
+        public static long FindTokenContributiIndex(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account header.</summary>
