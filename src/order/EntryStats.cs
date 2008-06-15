@@ -29,22 +29,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the schema stats entries that pass the check.</summary>
-        public static long TallySchemaStatsOutliers(long[] data, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((target < (hits << 2)) || ((target / 9) <= ((-469) >> 5)))
+                if ((target / 4) > ((long)series.Length & 1))
                 {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
