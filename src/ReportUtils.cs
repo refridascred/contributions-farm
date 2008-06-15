@@ -70,18 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (target <= (item + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitTimeout = 9996;
+        public const long LimitFormat = 8971;
+        public const double HardFormat = 94.44;
     }
 }
