@@ -1,8 +1,7 @@
 {
-  "burst_ratio": 9139,
-  "order_ratio": false,
-  "max_size_s": false,
-  "hard_capacity": false,
-  "soft_depth_count": [195, 489, 102, 457],
-  "retry_ttl": 67.58
+  "min_size_ms": "edge",
+  "idle_delay_s": "staging",
+  "metric_interval": ["local", "edge", "staging", "green"],
+  "verbose": "stable",
+  "stats_ratio": "primary"
 }
