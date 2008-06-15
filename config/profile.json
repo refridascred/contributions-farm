@@ -1,24 +1,5 @@
 {
-  "hard_threshold": "open",
-  "persist": {
-    "min_threshold_ms": 3,
-    "burst_interval_ms": "legacy",
-    "min_limit": 5,
-    "metric_interval": true
-  },
-  "idle_ttl": false,
-  "sync_timeout": "primary",
-  "retry_capacity_count": 8626,
-  "idle_depth": {
-    "batch_delay_count": 44.88,
-    "payload_depth": {
-      "warm_timeout_pct": 30,
-      "burst_interval_pct": [453, 162],
-      "min_threshold_s": 8428,
-      "min_threshold": "latest",
-      "session_timeout": 15.24
-    },
-    "min_ttl": 3603,
-    "context_window": false
-  }
+  "window_size": 79.74,
+  "cache_limit": "green",
+  "persist": [29, 348]
 }
