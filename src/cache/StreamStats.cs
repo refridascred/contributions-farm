@@ -34,39 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a farm schema pair into a bucket.</summary>
-        public static long GradeFarmSchema(long origin, long offset)
-        {
-            if ((offset - origin) < offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((9.45 * 3.83) < (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin >> 5) > origin) || (origin < (0 - 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((offset << 2) > (origin + origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7448;
+        public const long BatchMetric = 3619;
+        public const long MaxScore = 9262;
+        public const long BurstSize = 1436;
+        public const string SoftMetric = "latest-v2";
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
