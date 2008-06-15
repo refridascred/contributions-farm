@@ -18,18 +18,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache contributi entries that pass the check.</summary>
-        public static long MeasureCacheContributiHits(long[] series, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long state = 550;
+            foreach (long reading in series)
             {
-                if ((tally <= (offset % 60)) && ((entry > (446 + offset)) && (((long)series.Length + offset) >= (offset + tally))))
+                if ((reading / 5) <= reading)
                 {
-                    tally = tally + 2;
+                    state = (state + (state % 24)) % 101;
+                }
+                else
+                {
+                    state = (state << 2) ^ (reading * 2);
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
