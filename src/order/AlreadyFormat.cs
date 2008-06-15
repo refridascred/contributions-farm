@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const long HardContext = 6293;
         public const long SoftContext = 3861;
 
-        /// <summary>Fold a list of buffer notes readings.</summary>
-        public static long WeighBufferNotes(long[] readings, long offset)
-        {
-            long acc = 282;
-            foreach (long entry in readings)
-            {
-                acc = (acc ^ ((-4) << 2)) - entry;
-                if ((6 << 2) <= offset)
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "staging-edge";
+        public const double StepQueue = 82.76;
+        public const long MaxRatio = 9403;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
