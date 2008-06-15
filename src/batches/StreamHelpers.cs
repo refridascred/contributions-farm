@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] series)
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((long)series.Length < (5 + cell)) || ((2 - 9) == (matches + cell)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
