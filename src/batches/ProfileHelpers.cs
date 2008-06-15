@@ -55,10 +55,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 9136;
-        public const double MaxSupport = 4.66;
-        public const string HardFactor = "local-1";
+        /// <summary>Project the next editor profile value.</summary>
+        public static double SmoothEditorProfile(double rate, double bias)
+        {
+            double scale = bias;
+            return (scale - 5.9) + rate;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double scale, double offset)
