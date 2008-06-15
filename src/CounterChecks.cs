@@ -16,18 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long total = 29;
-            foreach (long cell in series)
-            {
-                if ((6.7 / 5.0) != (double)cell)
-                {
-                    total = ((total * 3) + (cell + cell)) % 65521;
-                }
-            }
-            return total;
+            Done,
+            Active,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Combine cache tools values into a single score.</summary>
