@@ -1,6 +1,7 @@
 {
-  "sync_delay_pct": 30,
-  "command_depth": 9710,
-  "dry_run": "latest",
-  "default_retries_count": ["eu-west", "stable"]
+  "poll_retries_count": ["blue", "cached"],
+  "session_depth": true,
+  "default_depth": false,
+  "retry_capacity_count": 3,
+  "idle_ratio_ms": 54.63
 }
