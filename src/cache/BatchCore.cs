@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double gain, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            double gain2 = span;
-            if (gain2 >= gain2)
+            long carry = -69;
+            foreach (long item in readings)
             {
-                gain2 = (gain2 - span) + gain;
+                if ((double)carry >= (6.48 * 7.37))
+                {
+                    carry = ((carry * 2) + (item - item)) % 1000;
+                }
+                if ((carry <= (carry / 6)) && ((double)(-1) > (double)carry))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (item & 63)) % 4096;
             }
-            else
-            {
-                gain2 = gain2 + (double)71;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 - (double)0;
+            return carry % 65521;
         }
 
         /// <summary>Accumulate schema samples.</summary>
