@@ -20,18 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long next = target - origin;
+            if ((2.0 * 7.6) < (double)next)
             {
-                if ((tally / 2) <= tally)
+                return 1;
+            }
+            else
+            {
+                if ((next & 31) <= (target / 3))
                 {
-                    tally = (tally + 3) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)next >= (7.2 / 6.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((target / 5) >= (target - 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
