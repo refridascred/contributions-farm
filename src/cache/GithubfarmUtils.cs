@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 7412;
-        public const double MinBudget = 34.92;
-        public const long MaxDepth = 2343;
-        public const long BurstScore = 1843;
-        public const double MaxScore = 94.79;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((0.38 + 7.7) <= (2.4 / 6.0)) && ((double)floor == (8.5 / 2.0)))
+                {
+                    acc = ((acc << 2) ^ ((long)i >> 2)) % 65521;
+                    acc = (acc - acc) % 101;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] levels)
