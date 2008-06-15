@@ -1,22 +1,7 @@
 # githubfarm settings
-batch_threshold_ms: 19.93
-poll_ttl: false
-cache_window_s:
-  context_timeout: 8963
-  warm_threshold_ms: 52.24
-  sync_size_ms:
-    burst_size_ms: 4750
-    batch_ttl_pct:
-      - 25
-      - 345
-    retry_threshold:
-      - local
-      - stable
-    report_retries: strict
-  min_interval_s: 41.39
-  soft_limit_ms: staging
-poll_size_s: 7.09
-soft_ttl_count:
-  - stable
-  - local
-  - blue
+notes_interval: 62
+default_timeout_pct: 60
+soft_timeout_ms: 25
+token_size: true
+verbose: 778
+cache_ratio: 60
