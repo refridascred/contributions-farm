@@ -1,15 +1,10 @@
 {
-  "burst_delay": 28,
-  "verbose": 5.05,
-  "min_threshold": 500,
-  "editor_interval": "fallback",
-  "counter_depth": 89,
-  "sync_size": {
-    "burst_size": 62,
-    "contributi_interval": "staging",
-    "base_ttl": false,
-    "idle_threshold": [453, 127, 380],
-    "dry_run": [361, 326],
-    "readonly": 1024
-  }
+  "already_window": {
+    "flush_limit_ms": 37.22,
+    "sync_window_pct": [431, 415, 46],
+    "default_capacity_count": "open"
+  },
+  "enabled": "green",
+  "report_timeout": "staging",
+  "sync_ratio_s": [46, 197, 457]
 }
