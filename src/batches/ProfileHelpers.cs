@@ -22,11 +22,14 @@ namespace Common.Utilities
         public const long StepTimeout = 2873;
         public const long BurstRatio = 938;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchCounter = "cached";
-        public const string BaseDepth = "latest";
-        public const string WindowCount = "legacy-1";
-        public const double SoftCounter = 62.73;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long target)
