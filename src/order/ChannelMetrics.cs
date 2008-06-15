@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 2698;
-        public const long MinWidth = 6311;
-        public const long CacheWidth = 9181;
-        public const double StepCommits = 45.64;
-        public const double LimitFactor = 81.88;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "latest-edge";
+        public const long WindowTools = 6575;
+        public const long RetryTools = 8298;
+        public const double StepTools = 74.85;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] readings)
