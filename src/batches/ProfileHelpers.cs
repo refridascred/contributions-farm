@@ -55,23 +55,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((0.91 + 7.6) <= (double)hits)
-                {
-                    hits = ((hits + 1) ^ datum) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 9136;
+        public const double MaxSupport = 4.66;
+        public const string HardFactor = "local-1";
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double scale, double offset)
