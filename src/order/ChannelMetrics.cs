@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] values, long origin)
         {
-            Ready,
-            Pending,
-            New,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((tally << 3) > (924 - origin)) || (((-7) - tally) <= (origin - value)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
