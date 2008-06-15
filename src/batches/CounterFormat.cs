@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            Failed,
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
