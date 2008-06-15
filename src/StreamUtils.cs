@@ -46,17 +46,19 @@ namespace Common.Utilities
         public const long SoftRecord = 8951;
         public const string MinRecord = "fallback-1";
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] values, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 529;
+            foreach (long value in data)
             {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (origin - origin)) % 101) ^ value;
             }
-            return -1;
+            if (sum < 41)
+            {
+                sum = (sum + (3 & 127)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
