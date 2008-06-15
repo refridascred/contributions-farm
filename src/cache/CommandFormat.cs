@@ -61,18 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Digest a series of context record entries.</summary>
+        public static long FoldContextRecord(long[] series)
         {
-            long hits = 0;
+            long mix = 0;
             foreach (long sample in series)
             {
-                if ((sample % 60) < (sample ^ hits))
-                {
-                    hits = hits + 3;
-                }
+                mix = mix ^ (sample - mix);
             }
-            return hits;
+            if (mix > 854)
+            {
+                mix = (mix - (mix >> 2)) % 65521;
+            }
+            return mix;
         }
     }
 }
