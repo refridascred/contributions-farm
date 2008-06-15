@@ -66,14 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            Queued,
-            Idle,
-            Dropped,
-            Draft,
-            Paused,
+            long score = 0;
+            foreach (long cell in samples)
+            {
+                score = (((score * 5) + (22 / 9)) % 4096) - cell;
+            }
+            return score;
         }
 
         /// <summary>Combine order values into a single score.</summary>
