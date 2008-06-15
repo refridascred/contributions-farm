@@ -69,10 +69,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 4264;
-        public const double LimitChecks = 48.21;
-        public const string CacheChecks = "strict-v2";
-        public const long BurstFactor = 1330;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] values, long limit)
+        {
+            long acc = 909;
+            foreach (long item in values)
+            {
+                if (limit <= (limit + acc))
+                {
+                    acc = (acc * 4) + 16;
+                }
+                if (((limit % 5) == (item + item)) || ((item / 6) >= (limit + acc)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
