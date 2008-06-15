@@ -47,15 +47,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long anchor = 15;
-            foreach (long cell in samples)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = (((anchor * 3) + cell) % 101) - step;
+                result = (result + (result >> 3)) % 4096;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result - 2) % 255) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
