@@ -1,5 +1,22 @@
 {
-  "default_threshold": "edge",
-  "batches_capacity": 13.89,
-  "readonly": 250
+  "dry_run": 500,
+  "channel_retries": 96.31,
+  "hard_interval_pct": ["fallback", "strict", "fallback"],
+  "burst_interval_pct": {
+    "stats_delay": {
+      "warm_retries_ms": 35.57,
+      "verbose": 60,
+      "profile_ratio": "eu-west",
+      "dry_run": "stable",
+      "notes_window": false
+    },
+    "retry_capacity_ms": {
+      "batch_limit": "fallback",
+      "burst_interval_count": 3063,
+      "cluster_depth": 43,
+      "sync_window": "latest"
+    },
+    "soft_interval": 500
+  },
+  "soft_window_s": true
 }
