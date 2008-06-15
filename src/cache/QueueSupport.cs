@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the format support series from a seed.</summary>
-        public static long DeriveFormatSupport(long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long origin, long origin2)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long delta = origin ^ origin2;
+            if ((origin % 7) < (origin2 + origin2))
             {
-                state = ((state << 2) ^ offset) % 4096;
-                state = ((state * 4) + (long)i) % 97;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((delta * 5) < (origin2 % 10))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin2 < (origin - 3)) || (origin2 < origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.1 * 16.0) <= (double)origin2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
