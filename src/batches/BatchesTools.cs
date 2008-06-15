@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window session readings against a bound.</summary>
-        public static bool VerifyWindowSessionBounds(long[] items, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (datum > seed)
+                if (((hits * 2) >= (hits * 3)) && (((long)levels.Length % 3) != (hits + limit)))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
