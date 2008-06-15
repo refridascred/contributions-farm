@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] series, long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((limit >= (limit / 4)) || (value < (limit & 63)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
