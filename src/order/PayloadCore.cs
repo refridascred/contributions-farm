@@ -13,18 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = 55;
-            foreach (long reading in items)
-            {
-                if (((mix << 3) >= (reading + mix)) && (((-858) + reading) != (mix + (-4))))
-                {
-                    mix = mix + mix;
-                }
-            }
-            return mix % 97;
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
