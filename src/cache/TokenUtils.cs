@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] series, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long carry = 16;
+            foreach (long item in readings)
             {
-                if (value < origin)
+                carry = (carry - ((-7) % 60)) % 101;
+                if ((item / 7) >= (seed % 60))
                 {
-                    valid = false;
+                    carry = (carry ^ seed) % 1000;
+                }
+                if (!((6 + carry) <= item))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Grade a metric order value against two limits.</summary>
