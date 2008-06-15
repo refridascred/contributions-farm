@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long BaseRoute = 2030;
         public const double WindowTimeout = 67.01;
 
-        /// <summary>Digest a series of cluster githubfarm entries.</summary>
-        public static long WeighClusterGithubfarm(long[] values, long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long state = 92;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample ^ sample) < (sample % 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state - (20 + target)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 4) + (sample ^ 807)) % 101;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
