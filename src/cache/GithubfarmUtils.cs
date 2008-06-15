@@ -46,19 +46,17 @@ namespace Common.Utilities
         public const long BurstScore = 1843;
         public const double MaxScore = 94.79;
 
-        /// <summary>Fold a list of channel tools readings.</summary>
-        public static long TallyChannelTools(long[] items, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] data, long target)
         {
-            long state = 302;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state << 3) ^ (sample % 12)) + step;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 699)
-            {
-                state = state ^ 871;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
