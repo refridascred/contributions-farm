@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long StepTimeout = 3214;
         public const long IdleBatch = 8216;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] values, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Active,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a batches options.</summary>
