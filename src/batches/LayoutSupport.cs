@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftDepth = 527;
-        public const double LimitSpan = 88.16;
-        public const string BaseSize = "staging-1";
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] samples, long target)
