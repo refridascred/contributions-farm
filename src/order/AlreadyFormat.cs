@@ -62,17 +62,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] readings, long bound)
+        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
+        public static long AuditGithubfarmLayoutHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (readings[i] > bound)
+                if ((((item + matches) >= (matches / 8)) || ((73 + matches) <= (438 ^ item))) && ((item >> 4) >= matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
