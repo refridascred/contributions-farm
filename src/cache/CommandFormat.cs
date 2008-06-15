@@ -35,32 +35,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long offset2 = offset + floor;
-            if (12 > floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset2 * 2) <= 738) || (floor <= (477 * 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset2 >= (offset - offset2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
