@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of format entry readings.</summary>
-        public static long WeighFormatEntry(long[] levels, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] series, long offset)
         {
-            long state = 85;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 6; i++)
+                if (sample != offset)
                 {
-                    state = ((((state * 3) + offset) % 255) - (long)i) - sample;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 4) + (state + state)) % 101;
-                state = (state + offset) % 65521;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Accumulate token samples.</summary>
