@@ -12,19 +12,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
