@@ -36,21 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format stream samples.</summary>
-        public static long MatchFormatStreamCount(long[] values)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Project the next record value.</summary>
