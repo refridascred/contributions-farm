@@ -22,22 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] levels, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (!!((reading + count) < (count % 12)))
+                if (value != limit)
                 {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the payload class values.</summary>
