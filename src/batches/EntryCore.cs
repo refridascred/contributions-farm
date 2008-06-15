@@ -63,12 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
+            public bool Stamp { get; set; }
             public double Score { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
