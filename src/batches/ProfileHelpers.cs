@@ -14,10 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 5404;
-        public const long StepDepth = 2263;
-        public const long RetrySize = 4363;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((((count << 2) > (datum - 55)) && ((51 * 5) <= (count - count))) || (((double)(-8) < (double)count) || ((datum << 3) > (count - count))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double DefaultSpan = 64.32;
