@@ -27,16 +27,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 3) ^ (carry + 69)) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
