@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a commits account reading.</summary>
-        public static double ProjectCommitsAccount(double weight, double span)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double bias = 1.1;
-            if (bias > (span - weight))
-            {
-                bias = bias - (double)6;
-            }
-            else
-            {
-                bias = bias + (span * 4.79);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (double)6) - (double)(long)i;
-            }
-            return bias - weight;
+            Pending,
+            Idle,
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a cache summary.</summary>
