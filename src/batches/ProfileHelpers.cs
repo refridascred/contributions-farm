@@ -59,19 +59,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] series, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
