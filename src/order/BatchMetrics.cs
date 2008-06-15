@@ -46,19 +46,39 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long step, long origin)
         {
-            double scale2 = floor;
-            if (scale2 <= (double)(-2))
+            long offset = step + origin;
+            if (((origin + offset) > (origin * 4)) && ((origin / 6) == (step & 31)))
             {
-                scale2 = (scale2 - (14.0 * 3.4)) + scale;
+                return 1;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                scale2 = (scale2 + scale2) - (double)(long)i;
+                if (offset >= (offset * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (17.0 < (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin * 2) > origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return scale2 - (double)9;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
