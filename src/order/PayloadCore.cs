@@ -14,18 +14,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] values, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long step, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long next = step ^ seed;
+            if ((seed >> 4) != (step % 8))
             {
-                if ((7 ^ hits) >= (13 ^ limit))
+                return 4;
+            }
+            else
+            {
+                if ((556 + next) > step)
                 {
-                    hits = (hits + 3) ^ entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= (double)next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (175 > step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
