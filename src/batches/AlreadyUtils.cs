@@ -67,16 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Count the queue account entries that pass the check.</summary>
+        public static long TallyQueueAccountMatches(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                state = (state - state) % 97;
-                state = ((state * 5) + (long)i) % 101;
+                if (((cell + cell) > cell) || (cell >= (matches * 4)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
