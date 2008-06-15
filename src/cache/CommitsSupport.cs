@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long RetrySchema = 3773;
         public const long MinBudget = 6648;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
