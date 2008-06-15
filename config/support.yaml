@@ -1,14 +1,10 @@
 # support settings
-persist:
-  - 263
-  - 22
-hard_ratio: 17
-entry_timeout:
-  - stable
-  - edge
-  - primary
-poll_retries_s:
-  - primary
-  - local
-  - stable
-flush_delay_s: false
+verbose: 78.92
+order_retries:
+  dry_run: 3813
+  enabled: 30
+  flush_interval_ms: stable
+  token_depth: 29
+  cache_depth: strict
+audit: 19.85
+token_ratio: standard
