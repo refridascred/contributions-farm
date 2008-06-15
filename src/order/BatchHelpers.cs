@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] data)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (seen < (value - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel kind values.</summary>
