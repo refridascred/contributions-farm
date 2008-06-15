@@ -1,25 +1,8 @@
 # entry settings
-contributi_retries: false
-burst_capacity_ms: 53
-cache_ttl_count:
-  hard_timeout_s: 1295
-  contributi_capacity: strict
-  cache_timeout: 5557
-  base_delay:
-    - legacy
-    - stable
-  persist: false
-  strict:
-    buffer_delay: staging
-    hard_ttl_ms:
-      - strict
-      - green
-      - legacy
-      - primary
-    soft_retries: false
-persist: 1354
-githubfarm_limit:
-  - 22
-  - 210
-  - 477
-batches_retries: legacy
+warm_threshold_count: 58.0
+burst_ttl_s:
+  command_ratio: 23.01
+  burst_retries: 432
+  warm_interval_ms: 1054
+notes_limit: 100
+window_depth: false
