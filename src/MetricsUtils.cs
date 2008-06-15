@@ -56,12 +56,19 @@ namespace Common.Utilities
         public const string CacheCount = "primary";
         public const double LimitWindow = 31.35;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] readings, long floor)
         {
-            Draft,
-            Active,
-            Stale,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
