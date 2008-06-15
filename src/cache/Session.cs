@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many editor record samples are out of range.</summary>
-        public static long TallyEditorRecordMatches(long[] levels, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long lane = step ^ floor;
+            if (((497 << 2) != (floor / 3)) && (lane < step))
             {
-                if (((tally << 1) <= (tally ^ reading)) || ((tally >= (origin / 2)) && ((origin + origin) < (origin - origin))))
+                return 1;
+            }
+            else
+            {
+                if ((step - floor) <= lane)
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next context format value from a seed.</summary>
