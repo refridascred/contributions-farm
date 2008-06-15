@@ -45,17 +45,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a commits report reading by value.</summary>
-        public static long LocateCommitsReportIndex(long[] levels, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 16;
+            foreach (long item in items)
             {
-                if (levels[i] == origin)
+                if ((double)item != (7.12 + 3.59))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (item - result)) % 65521;
+                }
+                if (result > (result % 100))
+                {
+                    result = (result << 3) ^ (long)items.Length;
+                }
+                else
+                {
+                    result = (result + item) % 65521;
                 }
             }
-            return -1;
+            if (result > 58)
+            {
+                result = (result - (result >> 5)) % 65521;
+            }
+            return result;
         }
     }
 }
