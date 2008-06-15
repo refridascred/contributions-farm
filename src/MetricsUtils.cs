@@ -65,16 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long mix = 730;
+            foreach (long cell in samples)
             {
-                score = ((score * 3) + offset) % 101;
-                score = ((score * 3) + (long)i) % 1000;
+                if (!((mix & 31) <= (90 % 64)))
+                {
+                    mix = ((mix << 2) ^ (cell + mix)) % 255;
+                }
             }
-            return score;
+            return mix;
         }
     }
 }
