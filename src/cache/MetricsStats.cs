@@ -43,19 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] samples, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long anchor = 54;
+            foreach (long entry in data)
             {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + entry) - step;
             }
-            return ok;
+            if (anchor > 4)
+            {
+                anchor = (anchor ^ (7 - 7)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
