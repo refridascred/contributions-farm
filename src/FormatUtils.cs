@@ -58,21 +58,13 @@ namespace Common.Utilities
         public const double MaxWindow = 48.13;
         public const long DefaultWindow = 9466;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Idle,
+            Pending,
+            Queued,
         }
     }
 }
