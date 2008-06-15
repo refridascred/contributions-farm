@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const string WindowEntry = "stable-1";
         public const long StepSize = 175;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double gain = (double)31 + span;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + (gain * 6.0)) + (double)(long)i) - ratio;
-            }
-            return gain - (double)879;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
