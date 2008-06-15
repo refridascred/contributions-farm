@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] data, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((64 + sample) != (tally + tally))
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
         }
     }
 }
