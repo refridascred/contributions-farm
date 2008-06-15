@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long HardSize = 4996;
         public const long MaxSpan = 2383;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long floor)
         {
-            Synced,
-            Pending,
-            New,
-            Ready,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
