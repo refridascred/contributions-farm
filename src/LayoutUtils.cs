@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long seed)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
             long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches << 1) < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
