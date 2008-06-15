@@ -20,19 +20,39 @@ namespace Common.Utilities
             return (weight + bias2) + bias;
         }
 
-        /// <summary>Validate contributi report readings against a bound.</summary>
-        public static bool CheckContributiReportBounds(long[] series, long target)
+        /// <summary>Rank tools entry input into a small class.</summary>
+        public static long GradeToolsEntry(long step, long target)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long edge = step + target;
+            if (edge < (950 * 4))
             {
-                if (sample != target)
+                return 3;
+            }
+            else
+            {
+                if ((target >> 4) <= step)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (edge < (step * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target >> 3) >= (34 & 255)) && ((double)99 == (double)step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
