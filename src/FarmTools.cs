@@ -37,19 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Compare every pair of batch cache readings.</summary>
+        public static long PairBatchCacheCount(long[] values)
         {
-            long acc = 36;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc ^ item) % 255;
-                if ((double)(long)samples.Length <= 0.7)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
