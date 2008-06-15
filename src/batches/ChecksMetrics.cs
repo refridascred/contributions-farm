@@ -49,19 +49,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] samples, long target)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < target)
+                if (levels[i] < bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
