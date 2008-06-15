@@ -48,10 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 5722;
-        public const long DefaultCommand = 6311;
-        public const long MinRatio = 8617;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
