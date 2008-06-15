@@ -40,13 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Done,
-            Active,
+            Queued,
             Ready,
-            Pending,
+            Synced,
         }
 
         /// <summary>Iterate the report filter series from a seed.</summary>
