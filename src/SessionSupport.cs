@@ -37,19 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] items, long limit)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Stale,
+            Draft,
         }
     }
 }
