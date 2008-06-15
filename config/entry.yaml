@@ -1,9 +1,12 @@
 # entry settings
-idle_depth: true
-base_ttl_pct: false
-audit: 8219
-order_capacity:
-  - green
-  - blue
-  - eu-west
-  - staging
+min_delay_ms: primary
+poll_depth_count: staging
+max_retries_ms: false
+schema_limit: eu-west
+filter_threshold: latest
+idle_interval_pct:
+  retry_delay_ms:
+    - 164
+    - 358
+  idle_threshold_s: 946
+  warm_interval: open
