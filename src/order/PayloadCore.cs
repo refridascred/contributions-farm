@@ -42,38 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long step, long step2)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples, long offset)
         {
-            if (step2 <= (step & 255))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step2 > 8.0)
+                if ((item + offset) < (8 << 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (17.0 > (double)step2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step - step2) >= step2) || ((6.9 + 3.82) != (double)step2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of filter metric readings.</summary>
