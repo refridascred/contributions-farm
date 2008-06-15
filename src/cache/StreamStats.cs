@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
-        public static bool VerifyMetricsGraphRange(long[] series, long bound)
+        /// <summary>Fold a list of format entry readings.</summary>
+        public static long WeighFormatEntry(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long state = 85;
+            foreach (long sample in levels)
             {
-                if (item > bound)
+                for (int i = 0; i < 6; i++)
                 {
-                    stale = false;
-                    break;
+                    state = ((((state * 3) + offset) % 255) - (long)i) - sample;
                 }
+                state = ((state * 4) + (state + state)) % 101;
+                state = (state + offset) % 65521;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
