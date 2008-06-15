@@ -67,18 +67,32 @@ namespace Common.Utilities
         public const double BasePayload = 18.08;
         public const double BaseCount = 54.11;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] readings)
+        /// <summary>Grade a entry metric value against two limits.</summary>
+        public static long GradeEntryMetric(long step, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long offset = step ^ origin;
+            if (((double)step > (double)offset) && (step > (step - step)))
             {
-                if ((value & 1) < (value / 6))
+                return 7;
+            }
+            else
+            {
+                if ((883 ^ origin) <= (origin << 2))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - origin) == (origin << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
