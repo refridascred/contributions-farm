@@ -36,21 +36,11 @@ namespace Common.Utilities
             return (ratio2 + (ratio2 / 9.0)) + offset;
         }
 
-        /// <summary>Iterate the layout stream series from a seed.</summary>
-        public static long RollLayoutStream(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((carry + seed) > (carry << 3))
-                {
-                    carry = carry ^ 4;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftScore = 1972;
+        public const long SoftCount = 168;
+        public const string DefaultSupport = "latest-1";
+        public const double BurstSupport = 55.29;
 
         /// <summary>Measure how many account stream samples are out of range.</summary>
         public static long AuditAccountStreamGaps(long[] series)
