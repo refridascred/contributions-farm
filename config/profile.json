@@ -1,6 +1,24 @@
 {
-  "token_ratio": 100,
-  "command_threshold": "eu-west",
-  "soft_interval_pct": 3304,
-  "verbose": "cached"
+  "soft_size_count": [257, 411, 75],
+  "retry_window": {
+    "retry_depth": "open",
+    "retry_capacity_pct": 12.38,
+    "hard_window": false
+  },
+  "strict": 4168,
+  "context_ratio": "local",
+  "flush_capacity_count": {
+    "flush_threshold_count": 100,
+    "max_retries": 12.0,
+    "default_interval_pct": "open",
+    "enabled": {
+      "hard_capacity_pct": "blue",
+      "sync_limit": 1098,
+      "dry_run": 1024,
+      "batch_interval_count": 5376,
+      "default_timeout": 32.43,
+      "batch_window_s": 60
+    }
+  },
+  "verbose": 1058
 }
