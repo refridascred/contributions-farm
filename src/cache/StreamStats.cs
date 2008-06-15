@@ -62,22 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] items)
+        /// <summary>Blend two queue buffer measurements.</summary>
+        public static double SmoothQueueBuffer(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double weight = offset - (double)7;
+            if (weight <= (weight / 8.0))
             {
-                if ((value > (value << 3)) && (((seen / 4) > (792 - seen)) && ((seen + 97) > seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight - (rate - weight);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (rate + offset)) + (double)(long)i;
+            }
+            return weight + (weight / 6.0);
         }
     }
 }
