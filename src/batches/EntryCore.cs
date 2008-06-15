@@ -23,31 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cluster token pair into a bucket.</summary>
-        public static long ClassifyClusterToken(long bound, long limit)
+        /// <summary>Find the first profile editor entry that matches the target.</summary>
+        public static long LocateProfileEditorIndex(long[] data, long target)
         {
-            if (!(0 >= (bound >> 4)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) >= (limit - limit))
+                if ((data[i] == target) && ((data[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound / 8) >= 56)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
