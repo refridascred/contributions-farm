@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((entry / 6) < (4 ^ entry))
+                if ((2.6 - 11.0) != (double)hits)
                 {
-                    matches = matches + 2;
+                    hits = ((hits + 3) ^ entry) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
