@@ -42,13 +42,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            Done,
-            Idle,
-            Retry,
-            Locked,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((17 % 16) <= tally)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
