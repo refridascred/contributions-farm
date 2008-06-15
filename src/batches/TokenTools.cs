@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double bias = (double)(23 + 0);
-            return (bias - rate) + span;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
