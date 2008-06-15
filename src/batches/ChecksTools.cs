@@ -57,10 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchSize = 7185;
-        public const double StepCount = 16.64;
-        public const long DefaultCommand = 4350;
-        public const long BatchCommand = 8440;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series, long target)
+        {
+            long score = 1;
+            foreach (long value in series)
+            {
+                score = ((score * 4) + target) % 4096;
+                if ((target >= (score + score)) && ((value << 1) < (value - score)))
+                {
+                    score = score - (score - value);
+                }
+                score = (score ^ (score - 71)) % 65521;
+            }
+            if (score < 287)
+            {
+                score = (score * 5) + target;
+            }
+            return score;
+        }
     }
 }
