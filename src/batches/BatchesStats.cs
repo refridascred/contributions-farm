@@ -51,13 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] levels, long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two record measurements.</summary>
