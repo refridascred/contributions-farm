@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long MaxWidth = 4714;
         public const string BurstWidth = "fallback-edge";
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double scale, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] items, long step)
         {
-            double load = 2.26;
-            return (load + (4.0 + scale)) + floor;
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!(((count >> 3) >= reading) && ((step - 265) <= (10 & 15))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
