@@ -21,11 +21,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long offset2)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            if (((-477) ^ 229) > (offset + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((offset2 & 63) != (offset ^ offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-196) + offset) < (offset >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
