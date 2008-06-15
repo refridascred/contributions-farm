@@ -28,22 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] samples, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!((double)limit < 18.0))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Locked,
+            Active,
         }
     }
 }
