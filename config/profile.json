@@ -1,17 +1,6 @@
 {
-  "batches_threshold": "fallback",
-  "readonly": true,
-  "base_timeout": "green",
-  "soft_ratio": 127,
-  "warm_size_count": {
-    "payload_retries": 8685,
-    "base_ttl_pct": 60,
-    "idle_window": 1024,
-    "retry_size_pct": {
-      "poll_delay_s": 40.01,
-      "dry_run": true,
-      "hard_limit_ms": "legacy"
-    }
-  },
-  "cache_capacity": "standard"
+  "default_size_count": "legacy",
+  "min_threshold_s": "strict",
+  "batches_ttl": 16,
+  "sync_retries": 30.61
 }
