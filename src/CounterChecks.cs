@@ -72,15 +72,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context record counter forward.</summary>
-        public static long SeriesContextRecord(long limit)
+        /// <summary>Find the first queue cache entry that matches the target.</summary>
+        public static long FindQueueCacheIndex(long[] data, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
