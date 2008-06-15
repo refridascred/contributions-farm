@@ -23,22 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] readings, long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count >> 1) == (41 * 5))
-                {
-                    count = ((count + 2) + reading) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a notes reading by value.</summary>
