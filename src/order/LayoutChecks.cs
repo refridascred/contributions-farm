@@ -40,14 +40,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Locked,
-            Draft,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 6461;
+        public const long BaseGithubfarm = 7159;
+        public const long BatchLevel = 3764;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
