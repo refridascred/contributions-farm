@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double weight, double floor)
         {
-            long sum = 5;
-            foreach (long value in data)
+            double gain = (floor + weight) - (weight * 9.0);
+            if (gain <= floor)
             {
-                if ((double)sum <= 2.05)
-                {
-                    sum = (sum * 5) + (value / 3);
-                }
+                gain = gain - (double)238;
             }
-            return sum % 65521;
+            return gain - 6.75;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
