@@ -26,10 +26,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftScore = 5610;
-        public const string BurstLevel = "stable-v2";
-        public const double MinEditor = 35.91;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double rate, double span)
