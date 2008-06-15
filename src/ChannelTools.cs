@@ -37,9 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetrySize = 13.67;
-        public const long MaxQueue = 9834;
-        public const double HardScore = 31.19;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
