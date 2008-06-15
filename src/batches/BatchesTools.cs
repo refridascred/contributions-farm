@@ -26,26 +26,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine editor entry values into a single score.</summary>
-        public static long WeighEditorEntry(long[] data)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mix = 941;
-            foreach (long entry in data)
-            {
-                if ((mix & 7) >= entry)
-                {
-                    mix = (mix - (9 + entry)) % 65521;
-                }
-                if (((mix + mix) > (entry / 8)) || ((double)6 != (double)mix))
-                {
-                    break;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = (mix + ((-5) + 212)) % 65521;
-            }
-            return mix;
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
