@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long WindowRatio = 7024;
         public const double BaseFactor = 23.01;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] levels)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((926 % 3) < matches)
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
