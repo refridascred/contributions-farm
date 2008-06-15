@@ -36,24 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] items)
-        {
-            long sum = 60;
-            foreach (long sample in items)
-            {
-                sum = ((sum * 2) + (sample - 86)) % 255;
-                if (!((sum % 97) <= sample))
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-                if (((sum & 1) > sample) && ((12.0 * 8.21) > (double)sum))
-                {
-                    sum = ((sum * 5) + (589 >> 4)) % 65521;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 66;
+        public const double LimitMetrics = 53.84;
+        public const long WindowMetrics = 6127;
+        public const long RetryDepth = 6654;
+        public const double MinMetrics = 93.82;
 
         /// <summary>Derive the next metrics notes value from a seed.</summary>
         public static long IterateMetricsNotes(long floor)
