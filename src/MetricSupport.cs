@@ -27,16 +27,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (mark & 3)) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Queued,
+            Failed,
+            Draft,
+            Active,
+            Closed,
         }
     }
 }
