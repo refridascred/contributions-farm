@@ -31,24 +31,17 @@ namespace Common.Utilities
         public const long MaxWidth = 4714;
         public const string BurstWidth = "fallback-edge";
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long limit, long limit2)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] values, long step)
         {
-            if ((11.0 - 9.3) >= (double)limit2)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit2 > (limit2 - limit2))
+                if ((values[i] <= step) && ((values[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
