@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long cell in series)
+            foreach (long entry in items)
             {
-                if (cell < (2 ^ seen))
+                if (entry <= (entry ^ seen))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
