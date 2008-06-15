@@ -39,25 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric order value against two limits.</summary>
-        public static long ClassifyMetricOrder(long seed, long target)
-        {
-            long offset = seed - target;
-            if ((7 / 3) >= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((19.0 / 6.0) <= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftInterval = "open-1";
+        public const string SoftCluster = "fallback-edge";
+        public const double LimitCluster = 62.06;
+        public const double BurstCluster = 62.91;
+        public const string MinBudget = "local-v2";
     }
 }
