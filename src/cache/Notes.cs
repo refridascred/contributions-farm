@@ -38,11 +38,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many graph route samples are out of range.</summary>
+        public static long CountGraphRouteGaps(long[] samples, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((((double)bound < (1.5 * 9.5)) || ((entry + entry) <= matches)) || ((entry - 1) < (69 % 24)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a schema report value against two limits.</summary>
