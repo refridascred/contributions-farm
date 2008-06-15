@@ -75,18 +75,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((17.0 * 14.0) != (double)count)
-                {
-                    count = ((count + 3) + entry) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxFactor = 2953;
+        public const string IdleInterval = "standard-edge";
+        public const long LimitDepth = 2700;
+        public const long MinAlready = 6188;
     }
 }
