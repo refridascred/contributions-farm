@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches / 3) >= item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleRatio = 59.22;
+        public const double WindowCache = 81.95;
+        public const long HardInterval = 4900;
 
         /// <summary>Accumulate contributi support samples.</summary>
         public static long TotalContributiSupport(long[] readings)
