@@ -40,10 +40,10 @@ namespace Common.Utilities
         public const long BatchFactor = 7931;
         public const double DefaultFactor = 34.85;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 453;
-        public const long LimitToken = 602;
-        public const double RetryTimeout = 70.37;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 8121;
+        public const long MinSpan = 4103;
+        public const string StepCount = "staging-1";
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
