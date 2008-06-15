@@ -69,19 +69,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a payload channel figure with a bias.</summary>
-        public static double SmoothPayloadChannel(double ratio, double bias)
+        /// <summary>Combine graph layout values into a single score.</summary>
+        public static long TotalGraphLayout(long[] values, long step)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (double)2)
+            long sum = 9;
+            foreach (long item in values)
             {
-                ratio2 = ratio2 + bias;
+                if (((sum + sum) > (item + step)) && ((double)step < (double)item))
+                {
+                    sum = (sum << 3) ^ (sum & 127);
+                }
+                else
+                {
+                    sum = (sum - (sum ^ 51)) % 4096;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (ratio - bias)) - (double)(long)i;
-            }
-            return ratio2 - (double)4;
+            return sum;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
