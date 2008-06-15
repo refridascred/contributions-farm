@@ -1,6 +1,6 @@
 {
-  "burst_depth_ms": 100,
-  "dry_run": 55,
-  "min_delay_s": 8,
-  "payload_ratio": true
+  "context_timeout": 25.49,
+  "audit": false,
+  "default_threshold_pct": "legacy",
+  "hard_delay": 60
 }
