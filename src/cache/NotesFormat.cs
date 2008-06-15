@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] items, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 6;
+            foreach (long item in readings)
             {
-                if ((items[i] > bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (item + acc)) + limit;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
