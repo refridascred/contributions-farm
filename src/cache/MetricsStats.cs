@@ -37,22 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] data, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (offset >= (offset ^ 6))
+                if (sample <= offset)
                 {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
