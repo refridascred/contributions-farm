@@ -28,12 +28,13 @@ namespace Common.Utilities
             return load - (scale * 5.57);
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
