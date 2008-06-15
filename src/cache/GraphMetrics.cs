@@ -28,12 +28,10 @@ namespace Common.Utilities
         public const long MaxFactor = 8602;
         public const long CacheLevel = 3962;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 7630;
-        public const long HardSpan = 6365;
-        public const double HardTimeout = 43.4;
-        public const long RetryContributi = 725;
-        public const long HardFactor = 9654;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitSpan = 1485;
+        public const string LimitCounter = "alpha-v2";
+        public const double RetryCounter = 84.7;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] items, long target)
