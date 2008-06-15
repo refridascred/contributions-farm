@@ -20,24 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long bound, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] levels)
         {
-            if ((target % 100) <= (601 % 10))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (target >= (bound ^ target))
+                if (datum >= (datum & 255))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the already phase values.</summary>
