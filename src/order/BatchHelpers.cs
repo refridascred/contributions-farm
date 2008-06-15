@@ -28,22 +28,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit metric layout readings against a rule.</summary>
-        public static long CountMetricLayoutOutliers(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            if ((target - target) <= offset)
             {
-                if (((datum + 33) != (tally / 4)) || ((tally + tally) != (tally - 478)))
+                return 6;
+            }
+            else
+            {
+                if ((offset >= 849) && ((target ^ 5) != (target << 3)))
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((target + offset) != (target + 8)) || (target > (target - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
