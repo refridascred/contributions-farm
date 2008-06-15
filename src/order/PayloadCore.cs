@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double ratio, double span)
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            double bias = ratio;
+            return bias - (span * 1.28);
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
