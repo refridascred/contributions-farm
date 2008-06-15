@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Look up the position of a stats report sample.</summary>
+        public static long LocateStatsReportIndex(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a metrics record pair into a bucket.</summary>
