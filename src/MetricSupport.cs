@@ -14,18 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series)
         {
-            long state = 898;
-            foreach (long value in items)
+            long mix = 601;
+            foreach (long cell in series)
             {
-                if (((value - value) <= (state % 2)) || ((state - 78) <= state))
-                {
-                    state = (state << 2) ^ (value - value);
-                }
+                mix = (((mix * 4) + (mix + mix)) % 65521) ^ cell;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Rank account input into a small class.</summary>
