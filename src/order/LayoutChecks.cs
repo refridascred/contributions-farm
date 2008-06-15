@@ -69,11 +69,14 @@ namespace Common.Utilities
         public const long RetryFactor = 4275;
         public const long LimitMetrics = 8755;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            Locked,
+            Queued,
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
