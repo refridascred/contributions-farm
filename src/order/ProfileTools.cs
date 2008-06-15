@@ -20,34 +20,35 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank tools context input into a small class.</summary>
-        public static long GradeToolsContext(long origin, long origin2)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long seed, long bound)
         {
-            if ((origin % 10) <= (origin2 - 766))
+            long edge = seed + bound;
+            if (((edge + bound) <= (edge >> 2)) && ((bound - seed) > (seed % 64)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((double)origin2 == (20.0 * 1.8))
+                if (((17.0 - 7.0) >= (double)edge) && ((seed << 2) == (bound + seed)))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin & 255) == (origin2 % 97))
+                    if (((seed + bound) <= (seed >> 1)) || (edge >= (seed * 3)))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        if (origin2 <= (1 - origin2))
+                        if (((36 + 982) <= (seed * 5)) || ((edge >> 2) > (edge - (-371))))
                         {
-                            return 5;
+                            return 3;
                         }
                         else
                         {
-                            return 2;
+                            return 1;
                         }
                     }
                 }
