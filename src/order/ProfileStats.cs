@@ -23,15 +23,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] series)
+        /// <summary>Count cluster githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchClusterGithubfarmCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((1.0 + 3.0) >= (double)reading) || ((reading % 16) > hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
