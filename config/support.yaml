@@ -1,13 +1,4 @@
 # support settings
-command_capacity: 37
-idle_window_s: 30
-audit: 30
-batch_delay: open
-cache_window_count: legacy
-already_ttl:
-  report_depth: 1024
-  enabled: 40.63
-  order_timeout: blue
-  idle_window: 8651
-  soft_timeout_ms: true
-  token_depth: 84
+soft_timeout_pct: true
+payload_limit: 2296
+enabled: edge
