@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double bias, double bias2)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] data, long floor)
         {
-            double gain = bias;
-            if (gain <= gain)
+            long sum = 0;
+            foreach (long sample in data)
             {
-                gain = gain + (double)86;
+                if (!((floor * 5) <= (sum + sum)))
+                {
+                    sum = (((sum * 3) + (floor / 3)) % 97) ^ sample;
+                }
             }
-            return gain + (bias2 + bias);
+            return sum % 65521;
         }
 
         /// <summary>Describe the record level values.</summary>
