@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            Retry,
-            Active,
-            Synced,
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel status values.</summary>
