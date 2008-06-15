@@ -21,19 +21,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] series, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long seed, long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long offset2 = seed + offset;
+            if ((offset >= (92 / 8)) || ((offset2 + offset2) >= offset2))
             {
-                if (reading < limit)
+                return 8;
+            }
+            else
+            {
+                if ((offset <= (seed * 3)) || ((double)offset2 >= (4.03 + 8.7)))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
