@@ -42,22 +42,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] items, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((4.49 <= (double)entry) || ((seen <= (seen ^ 5)) && ((9.66 + 5.2) == (double)entry)))
-                {
-                    seen = (seen + 1) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
