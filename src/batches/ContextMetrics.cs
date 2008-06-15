@@ -40,16 +40,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                result = (result << 2) ^ (step >> 3);
-                result = ((result * 3) + (long)i) % 65521;
+                if (!(((long)i % 24) < seed))
+                {
+                    anchor = (anchor << 3) ^ seed;
+                }
+                else
+                {
+                    anchor = (anchor + (seed + seed)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Fold a list of contributi order readings.</summary>
