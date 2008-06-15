@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long step)
         {
-            if (((-6) % 16) <= (limit - bound))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 5) <= bound)
+                if (item < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >> 1) >= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
