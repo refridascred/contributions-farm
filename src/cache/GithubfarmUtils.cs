@@ -29,11 +29,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Roll a context notes counter forward.</summary>
+        public static long IterateContextNotes(long limit)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = carry + 3;
+                carry = (carry << 2) ^ (662 + limit);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
