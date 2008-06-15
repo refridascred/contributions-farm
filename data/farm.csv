@@ -1,6 +1,9 @@
-id,owner,ratio,rank
-1,46,823,583
-2,eu-west,7.49,local
-3,635,994,778
-4,edge,799,cached
-5,133,740,535
+id,rank,count
+1,91.23,blue
+2,17.6,486
+3,0.0,legacy
+4,local,open
+5,663,13.57
+6,staging,517
+7,green,801
+8,blue,76.29
