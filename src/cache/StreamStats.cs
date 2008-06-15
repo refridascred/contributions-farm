@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 1519;
+        public const string RetryStream = "staging-edge";
+        public const long BurstStream = 1530;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] values)
