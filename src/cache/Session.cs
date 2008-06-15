@@ -31,38 +31,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] readings, long limit)
         {
-            if ((4.11 / 6.0) >= (double)step)
+            long sum = 1;
+            foreach (long datum in readings)
             {
-                return 8;
+                if ((sum > (datum % 3)) || ((50 * 4) == (limit / 7)))
+                {
+                    break;
+                }
+                sum = (sum * 4) + limit;
             }
-            else
+            if (sum > (-433))
             {
-                if (!((step - 54) > (816 ^ floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - floor) < (floor % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + 573) >= (floor ^ step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                sum = (sum ^ limit) % 97;
             }
+            return sum % 4096;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
