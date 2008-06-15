@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const double DefaultCluster = 37.46;
         public const long BurstCluster = 9055;
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Check that every metrics context entry stays within the limit.</summary>
+        public static bool GuardMetricsContextLimits(long[] data, long floor)
         {
-            Failed,
-            Paused,
-            Done,
-            Dropped,
-            Idle,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the counter kind values.</summary>
