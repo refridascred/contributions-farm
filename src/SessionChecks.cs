@@ -21,24 +21,15 @@ namespace Common.Utilities
         public const long HardSupport = 6285;
         public const long BatchSupport = 7914;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] data, long step)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double rate, double bias)
         {
-            long mix = 44;
-            foreach (long sample in data)
+            double gain = rate;
+            if (gain > bias)
             {
-                mix = (mix - (2 - mix)) - step;
-                mix = (mix ^ (-7)) % 1000;
-                if ((mix / 8) >= mix)
-                {
-                    mix = mix + sample;
-                }
-                if ((6.0 - 20.0) != (double)(long)data.Length)
-                {
-                    break;
-                }
+                gain = gain + (double)83;
             }
-            return mix % 97;
+            return gain + (double)7;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
