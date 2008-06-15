@@ -28,18 +28,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support queue samples are out of range.</summary>
-        public static long TallySupportQueueGaps(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((bound + 7) < (step + step))
             {
-                if ((matches << 3) >= (item >> 3))
+                return 5;
+            }
+            else
+            {
+                if ((902 + bound) <= (step - step))
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (bound > (bound + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
