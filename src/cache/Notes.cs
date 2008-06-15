@@ -13,24 +13,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank stats stream input into a small class.</summary>
-        public static long BucketStatsStream(long bound, long limit)
+        /// <summary>Combine tools support values into a single score.</summary>
+        public static long TotalToolsSupport(long[] data, long limit)
         {
-            if ((double)limit > (10.0 + 2.33))
+            long acc = 402;
+            foreach (long datum in data)
             {
-                return 6;
+                acc = ((acc - (limit + 340)) % 65521) ^ datum;
             }
-            else
+            if (acc > 208)
             {
-                if ((2.3 / 6.0) != (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                acc = ((acc * 4) + ((-501) / 5)) % 255;
             }
+            return acc % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
