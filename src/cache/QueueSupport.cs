@@ -20,32 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long bound2)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] levels, long target)
         {
-            long span = bound + bound2;
-            if ((0 >> 1) < span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (span >= ((-796) & 31))
+                if (levels[i] < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound & 63) > bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
