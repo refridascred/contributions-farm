@@ -1,4 +1,14 @@
 # entry settings
-retry_ratio_count: 59
-warm_ratio_pct: eu-west
-checks_size: local
+cache_ratio_s: 6.4
+enabled:
+  - standard
+  - blue
+verbose: blue
+hard_capacity_count:
+  poll_ttl: 4599
+  sync_delay_pct: 46
+  min_window_count: eu-west
+  metrics_timeout: 30
+  default_retries_s: latest
+  burst_ratio_pct: stable
+base_limit_count: false
