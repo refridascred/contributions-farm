@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading / 2) != (step - 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "stable-1";
+        public const long MaxDepth = 3179;
+        public const string SoftFactor = "staging";
 
         /// <summary>Blend two profile measurements.</summary>
         public static double SmoothProfile(double scale, double floor)
