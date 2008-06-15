@@ -1,7 +1,6 @@
 {
-  "format_ttl": ["primary", "fallback", "latest", "eu-west"],
-  "checks_limit": "primary",
-  "strict": 87,
-  "verbose": 38,
-  "min_interval_pct": 77.55
+  "min_ratio_s": "edge",
+  "flush_capacity": "stable",
+  "dry_run": "eu-west",
+  "cache_ttl": "staging"
 }
