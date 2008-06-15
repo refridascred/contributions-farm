@@ -1,6 +1,8 @@
 {
-  "window_depth": true,
-  "default_ratio": "primary",
-  "burst_delay_count": "legacy",
-  "burst_timeout_pct": "fallback"
+  "burst_size_pct": 43,
+  "max_threshold_pct": "latest",
+  "soft_threshold_count": "open",
+  "soft_depth": false,
+  "dry_run": 58.18,
+  "contributi_limit": "staging"
 }
