@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSize = 6260;
-        public const long MinCluster = 4664;
-        public const string BatchInterval = "local-v2";
-        public const long DefaultCluster = 6821;
-        public const long HardBudget = 5614;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit schema editor readings against a rule.</summary>
         public static long AuditSchemaEditorMatches(long[] levels)
