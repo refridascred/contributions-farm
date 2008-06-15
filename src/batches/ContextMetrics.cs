@@ -40,12 +40,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long step)
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result << 2) ^ (step >> 3);
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of contributi order readings.</summary>
