@@ -20,19 +20,24 @@ namespace Common.Utilities
         public const double DefaultCluster = 37.46;
         public const long BurstCluster = 9055;
 
-        /// <summary>Check that every metrics context entry stays within the limit.</summary>
-        public static bool GuardMetricsContextLimits(long[] data, long floor)
+        /// <summary>Rank commits command input into a small class.</summary>
+        public static long GradeCommitsCommand(long bound, long floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            if ((bound + (-77)) >= (bound ^ bound))
             {
-                if (sample != floor)
+                return 2;
+            }
+            else
+            {
+                if (bound >= floor)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next route session value from a seed.</summary>
