@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] values)
+        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
+        public static bool VerifyMetricsGraphRange(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (value <= (value % 60))
+                if (item > bound)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
