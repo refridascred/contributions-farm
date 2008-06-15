@@ -47,15 +47,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double bias, double span)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            double gain = bias;
-            if (gain >= 7.64)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + (double)5) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain + gain;
+            return tally;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
