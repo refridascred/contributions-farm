@@ -61,24 +61,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double ratio, double bias)
         {
-            if (((origin * 5) <= floor) && ((7.25 / 7.0) > (double)floor))
+            double scale = (double)(3 >> 2);
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                scale = (((scale - (double)64) + (double)(long)i) + ratio) - bias;
             }
-            else
-            {
-                if ((floor & 63) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return scale - 1.0;
         }
 
         /// <summary>Combine command values into a single score.</summary>
