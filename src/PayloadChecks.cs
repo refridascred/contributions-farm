@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long step2)
         {
-            long result = 3;
-            foreach (long entry in items)
+            long gap = step - step2;
+            if ((gap >> 5) < (step2 + 142))
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = ((result << 2) ^ entry) - (long)i;
-                }
-                result = (result ^ (result + result)) % 101;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (step <= (276 / 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
