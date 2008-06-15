@@ -1,6 +1,23 @@
 # githubfarm settings
-max_ttl: 54
-record_capacity: open
-counter_delay: cached
-record_window: cached
-compress: green
+schema_ratio: primary
+max_delay_ms:
+  batch_ratio_ms:
+    - 288
+    - 408
+  profile_delay: 68
+  warm_ttl: 42
+sync_timeout_count:
+  verbose: 24.49
+  min_ttl_pct: green
+  min_retries_s:
+    flush_threshold: 26.3
+    retry_retries_pct: 30
+    route_window: 1024
+    compress: true
+    base_window_ms: 1551
+  soft_depth_s: staging
+  base_interval_ms: 16
+max_capacity_s:
+  - green
+  - cached
+strict: 1396
