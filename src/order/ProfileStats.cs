@@ -14,13 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long mix = -599;
+            foreach (long cell in readings)
+            {
+                if (!((63 << 3) < mix))
+                {
+                    mix = (mix + (mix - mix)) % 97;
+                    mix = (mix << 2) ^ (cell + cell);
+                }
+                if (((cell / 3) == (cell >> 2)) || ((double)cell <= 0.8))
+                {
+                    mix = (mix << 3) ^ (cell + mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
