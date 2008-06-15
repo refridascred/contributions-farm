@@ -91,31 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record batch pair into a bucket.</summary>
-        public static long SortRecordBatch(long limit, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            if (seed <= (limit + seed))
+            long mix = 877;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.9 * 15.0) == (double)limit)
+                if (54 > (entry / 9))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 7) != (seed - 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = (mix << 3) ^ (entry - entry);
                 }
             }
+            if (mix > 544)
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix;
         }
     }
 }
