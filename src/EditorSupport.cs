@@ -12,24 +12,20 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
         {
-            if ((seed - target) > (seed - 538))
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed != (6.0 / 5.0))
+                result = (result ^ (27 >> 5)) % 255;
+                if ((12.0 * 9.33) < (double)origin)
                 {
-                    return 0;
+                    result = result ^ (9 % 60);
                 }
-                else
-                {
-                    return 2;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
