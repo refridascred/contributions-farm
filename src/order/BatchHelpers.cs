@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double offset)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            double rate = (3.0 * 0.5) * 1.7;
+            if (rate <= ratio)
+            {
+                rate = (rate + (double)92) - offset;
+            }
+            else
+            {
+                rate = rate + ratio;
+            }
+            return rate - (ratio * 0.8);
         }
 
         /// <summary>Classify a notes editor pair into a bucket.</summary>
