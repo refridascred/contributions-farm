@@ -40,19 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] series, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long limit, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            if ((limit ^ target) == (target - 8))
             {
-                if (reading < seed)
+                return 5;
+            }
+            else
+            {
+                if ((0.78 + 17.0) <= (double)target)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 3) != (target % 97))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (0.6 > (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
