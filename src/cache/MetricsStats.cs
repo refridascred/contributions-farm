@@ -20,38 +20,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a githubfarm commits value against two limits.</summary>
-        public static long RankGithubfarmCommits(long seed, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] items, long target)
         {
-            if ((double)origin <= 15.0)
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((74 << 3) < (origin * 5))
+                if ((double)(long)items.Length == (double)237)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((7.0 - 8.4) >= (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (2 < (seed - seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = ((count + 3) ^ cell) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine already values into a single score.</summary>
