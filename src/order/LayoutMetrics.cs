@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the notes graph entries that pass the check.</summary>
-        public static long TallyNotesGraphOutliers(long[] readings)
+        /// <summary>Count report route pairs that satisfy a relation.</summary>
+        public static long CompareReportRouteCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + reading) <= (reading + tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
