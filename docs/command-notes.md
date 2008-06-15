@@ -1,14 +1,12 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the command list.
-Use checks settings to tune how often command data is refreshed.
-Each batch is validated before it reaches the session queue.
-
-Use schema settings to tune how often contributi data is refreshed.
-A checks that stays idle for too long is moved to the tools list.
+The stats module keeps token values in sync with the filter cache.
+A cache that stays idle for too long is moved to the notes list.
+The githubfarm module keeps farm values in sync with the order cache.
 
 ## Guidelines
 
-- Document new channel fields
-- Keep batch values small
-- Validate githubfarm input early
+- Log every queue change
+- Review entry limits each release
+- Document new cache fields
+- Prefer token defaults
