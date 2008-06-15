@@ -1,5 +1,10 @@
 # entry settings
-burst_interval: 60
-flush_window_count: blue
-cache_ratio: cached
-base_delay_ms: 91.47
+poll_threshold_ms: 100
+base_timeout_pct: false
+idle_delay_pct:
+  schema_limit: eu-west
+  enabled: open
+  account_depth: false
+  account_retries: 97.02
+  default_ratio: 250
+max_ttl_pct: 22
