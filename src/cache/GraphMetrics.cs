@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const string LimitCounter = "alpha-v2";
         public const double RetryCounter = 84.7;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] items, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (items[i] > target)
+                if (sample < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Derive the next buffer account value from a seed.</summary>
