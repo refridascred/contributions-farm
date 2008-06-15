@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a cache context pair into a bucket.</summary>
-        public static long RankCacheContext(long origin, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] data)
         {
-            if (2.8 < (double)seed)
+            long state = 809;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed == (16.0 + 9.3))
+                if ((5.67 <= (double)state) && ((state & 63) >= state))
                 {
-                    return 0;
+                    state = (state - state) % 1000;
                 }
                 else
                 {
-                    if ((double)seed != (6.42 - 0.62))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (741 > (origin ^ seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = (state ^ (reading << 2)) % 4096;
+                }
+                if ((1.78 / 7.0) < (double)reading)
+                {
+                    state = (state - (reading - reading)) % 1000;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a entry info.</summary>
