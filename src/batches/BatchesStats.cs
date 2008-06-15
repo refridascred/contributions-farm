@@ -27,18 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] series)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count < (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
