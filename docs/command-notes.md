@@ -1,15 +1,15 @@
 # Command notes
 
-Keep queue and checks names short and lowercase.
-Defaults for farm live in the config folder and can be overridden per environment.
+Defaults for batches live in the config folder and can be overridden per environment.
+Use counter settings to tune how often support data is refreshed.
+A entry that stays idle for too long is moved to the batch list.
 
-Run the session check before changing any account limits.
-A graph that stays idle for too long is moved to the graph list.
-Defaults for already live in the config folder and can be overridden per environment.
+Each editor is validated before it reaches the order queue.
+The queue report groups every already by command.
 
 ## Guidelines
 
-- Keep already values small
-- Document new filter fields
-- Validate buffer input early
-- Prefer filter defaults
+- Document new stats fields
+- Review entry limits each release
+- Log every payload change
+- Keep graph values small
