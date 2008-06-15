@@ -16,17 +16,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long bound)
+        /// <summary>Validate farm session readings against a bound.</summary>
+        public static bool GuardFarmSessionRange(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (data[i] < bound)
+                if (datum < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the payload status values.</summary>
