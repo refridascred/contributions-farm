@@ -20,22 +20,19 @@ namespace Common.Utilities
             return rate - (ratio * 0.8);
         }
 
-        /// <summary>Digest a series of metrics graph entries.</summary>
-        public static long DigestMetricsGraph(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] levels, long target)
         {
-            long mix = -3;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (mix <= (3 + (long)readings.Length))
+                if (sample > target)
                 {
-                    mix = (mix + (datum ^ datum)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 33)
-            {
-                mix = mix ^ (mix % 64);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
