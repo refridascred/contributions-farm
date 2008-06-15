@@ -1,8 +1,10 @@
 {
-  "burst_depth": 25.73,
-  "dry_run": false,
-  "session_depth": false,
-  "persist": "latest",
-  "base_ttl_ms": false,
-  "verbose": 70.26
+  "record_threshold": "eu-west",
+  "max_ratio_count": false,
+  "idle_interval": {
+    "warm_threshold": true,
+    "min_depth_s": 1764,
+    "strict": 174
+  },
+  "stream_capacity": false
 }
