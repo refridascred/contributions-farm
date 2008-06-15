@@ -45,38 +45,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            if ((bound * 4) >= (10 / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound << 1) != (bound % 2)) && (bound > (limit * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + bound) >= (bound >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound < limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
