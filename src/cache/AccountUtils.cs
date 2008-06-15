@@ -16,19 +16,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate farm session readings against a bound.</summary>
-        public static bool GuardFarmSessionRange(long[] data, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (datum < limit)
+                if (datum < step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Describe the payload status values.</summary>
