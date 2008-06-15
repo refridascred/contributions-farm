@@ -61,15 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] levels, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
