@@ -44,17 +44,13 @@ namespace Common.Utilities
         public const string StepFormat = "strict-v2";
         public const string DefaultFormat = "latest-1";
 
-        /// <summary>Look up the position of a channel buffer sample.</summary>
-        public static long SeekChannelBufferIndex(long[] series, long seed)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Grade a cache account value against two limits.</summary>
