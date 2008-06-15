@@ -43,10 +43,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 8051;
-        public const long RetryAccount = 9626;
-        public const long MinAccount = 39;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long floor)
