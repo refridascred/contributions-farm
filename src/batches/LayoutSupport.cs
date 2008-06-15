@@ -54,20 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultSize = 4050;
+        public const long LimitSpan = 8763;
+        public const long MinChecks = 5926;
+        public const string LimitChecks = "primary-v2";
+        public const long IdleBudget = 2207;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MinQueue = "standard-1";
