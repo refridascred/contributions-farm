@@ -15,19 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] values, long target)
+        /// <summary>Accumulate notes support samples.</summary>
+        public static long TotalNotesSupport(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long sum = 431;
+            foreach (long value in samples)
             {
-                if (cell < target)
+                sum = ((sum + sum) % 101) - value;
+                if ((offset % 97) == (offset * 4))
                 {
-                    ok = false;
-                    break;
+                    sum = sum + (offset + 613);
+                }
+                else
+                {
+                    sum = (sum - (offset << 3)) % 97;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
