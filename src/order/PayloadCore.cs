@@ -64,15 +64,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] samples, long bound)
         {
             long matches = 0;
-            foreach (long item in readings)
+            foreach (long sample in samples)
             {
-                if ((item + item) >= matches)
+                if (!((sample + 49) <= 1))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 2) - bound;
                 }
             }
             return matches;
