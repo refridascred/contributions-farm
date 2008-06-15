@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of queue command entries.</summary>
-        public static long DigestQueueCommand(long[] readings, long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long total = 6;
-            foreach (long entry in readings)
-            {
-                total = ((total ^ 5) % 4096) - entry;
-                if ((origin / 6) < origin)
-                {
-                    total = ((total * 2) + (long)readings.Length) % 255;
-                }
-            }
-            return total;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a githubfarm route counter forward.</summary>
