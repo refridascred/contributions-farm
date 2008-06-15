@@ -20,18 +20,11 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] data, long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long anchor = 5;
-            foreach (long cell in data)
-            {
-                if ((bound >> 2) > cell)
-                {
-                    anchor = (anchor << 3) ^ (anchor + anchor);
-                }
-            }
-            return anchor;
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the support mode values.</summary>
