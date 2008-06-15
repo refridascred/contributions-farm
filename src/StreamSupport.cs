@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] samples, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double bias, double bias2)
         {
-            long acc = 40;
-            foreach (long item in samples)
-            {
-                if ((double)bound == (double)item)
-                {
-                    acc = (acc * 3) + (acc + item);
-                }
-                else
-                {
-                    acc = (acc - (acc + bound)) % 4096;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            double load = bias - (bias / 9.0);
+            return (load - 9.07) + bias2;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
