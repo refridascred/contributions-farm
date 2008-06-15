@@ -1,20 +1,8 @@
 {
-  "filter_ttl": "open",
-  "sync_ttl_count": true,
-  "format_delay": "blue",
-  "base_ttl_count": {
-    "cluster_ttl": {
-      "account_size": [93, 393, 496],
-      "burst_ttl_s": "primary",
-      "batch_delay": "edge",
-      "hard_threshold": 3351,
-      "batch_limit": 250,
-      "enabled": true
-    },
-    "soft_depth_count": 2733,
-    "enabled": 94,
-    "dry_run": ["open", "staging", "latest", "standard"]
-  },
-  "batches_timeout": 32.61,
-  "compress": "primary"
+  "poll_threshold_ms": ["standard", "strict"],
+  "max_delay": [92, 18, 87],
+  "poll_ttl": "eu-west",
+  "batch_ttl": ["stable", "staging", "strict"],
+  "metric_ratio": "primary",
+  "stats_interval": ["standard", "strict", "legacy"]
 }
