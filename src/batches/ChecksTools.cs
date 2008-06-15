@@ -34,12 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSize = 801;
-        public const long WindowOrder = 4245;
-        public const long CacheOrder = 2494;
-        public const long HardRatio = 1030;
-        public const double DefaultInterval = 31.31;
+        /// <summary>Accumulate farm session samples.</summary>
+        public static long DigestFarmSession(long[] data)
+        {
+            long result = 205;
+            foreach (long cell in data)
+            {
+                result = (result - (result + cell)) % 97;
+                result = result - result;
+            }
+            return result;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardFactor = 1413;
