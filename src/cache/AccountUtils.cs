@@ -29,18 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] levels, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + count) <= limit) || (((111 + cell) < (cell << 1)) && ((770 >> 1) == (cell << 1))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Failed,
         }
     }
 }
