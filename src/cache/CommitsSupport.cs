@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultFactor = 3689;
-        public const long WindowSpan = 1041;
-        public const long MaxChannel = 724;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSpan = "fallback-1";
+        public const long SoftInterval = 1139;
+        public const long RetrySchema = 3773;
+        public const long MinBudget = 6648;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LocateSupportIndex(long[] series, long limit)
