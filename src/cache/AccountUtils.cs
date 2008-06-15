@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits << 1) <= (hits + datum))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultScore = 2374;
+        public const long CacheDepth = 6305;
+        public const long BurstCount = 6695;
+        public const long BaseInterval = 2007;
+        public const double SoftCommand = 74.48;
     }
 }
