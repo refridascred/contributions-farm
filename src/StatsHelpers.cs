@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first stats schema entry that matches the target.</summary>
-        public static long SeekStatsSchemaIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 2943;
+        public const long RetryContributi = 2000;
+        public const string LimitContributi = "open-v2";
+        public const long StepSpan = 2575;
+        public const long IdleScore = 6872;
 
         /// <summary>Blend two token measurements.</summary>
         public static double ProjectToken(double weight, double floor)
