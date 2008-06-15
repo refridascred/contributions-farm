@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] items, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if (((floor + origin) >= 167) || ((1 << 1) != ((-8) ^ floor)))
             {
-                if (!((tally - entry) != (entry * 4)) && !((entry >> 1) != (bound + tally)))
+                return 5;
+            }
+            else
+            {
+                if ((origin & 7) != (floor - 82))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) <= (floor & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
