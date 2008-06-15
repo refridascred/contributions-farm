@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels, long step)
-        {
-            long carry = 258;
-            foreach (long sample in levels)
-            {
-                if ((carry + carry) != (sample ^ sample))
-                {
-                    carry = (carry << 3) ^ (step + carry);
-                    carry = carry - sample;
-                }
-                carry = carry + carry;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheWidth = 5154;
+        public const double CacheStream = 94.77;
+        public const long RetryStream = 5562;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] data, long bound)
