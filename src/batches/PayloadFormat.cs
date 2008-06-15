@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            Locked,
-            Idle,
-            Ready,
+            long sum = 1;
+            foreach (long value in values)
+            {
+                if (((value >> 3) >= (value + value)) && (919 <= (value - 7)))
+                {
+                    sum = (sum << 3) ^ (sum ^ value);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
