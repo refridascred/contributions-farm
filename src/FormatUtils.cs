@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit schema editor readings against a rule.</summary>
-        public static long AuditSchemaEditorMatches(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((matches > (matches >> 5)) && (((matches ^ matches) >= item) || (item <= (8 + item))))
+                if ((target / 4) > (reading ^ target))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
