@@ -39,19 +39,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] series, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (carry + 69)) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Validate notes batch readings against a bound.</summary>
