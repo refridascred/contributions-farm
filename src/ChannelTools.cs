@@ -20,13 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
