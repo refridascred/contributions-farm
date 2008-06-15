@@ -1,7 +1,15 @@
 {
-  "readonly": "open",
-  "soft_capacity": "fallback",
-  "hard_limit": "local",
-  "warm_ttl_ms": 60,
-  "batch_ratio_s": [159, 425]
+  "cache_interval": 60,
+  "enabled": "latest",
+  "profile_threshold": {
+    "verbose": 65.22,
+    "schema_delay": "edge",
+    "hard_ttl_ms": ["local", "latest"],
+    "cache_capacity_s": "staging",
+    "compress": [19, 263, 182],
+    "persist": 32.9
+  },
+  "context_timeout": "strict",
+  "strict": "staging",
+  "min_limit_s": 59
 }
