@@ -13,13 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Roll a schema notes counter forward.</summary>
+        public static long StepSchemaNotes(long target)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            long carry = target;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = carry + (target * 2);
+                carry = ((carry << 3) ^ target) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics header.</summary>
