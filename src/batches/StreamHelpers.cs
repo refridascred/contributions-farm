@@ -19,13 +19,14 @@ namespace Common.Utilities
         public const long HardRecord = 3021;
         public const long MaxLevel = 3644;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            Failed,
+            Queued,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Audit queue command readings against a rule.</summary>
