@@ -65,23 +65,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] readings, long bound)
         {
-            double weight = bias;
-            if (weight > (double)435)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                weight = weight - (offset - weight);
+                if (((-99) % 100) <= (bound & 63))
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            else
-            {
-                weight = weight - (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (8.5 / 7.0)) + (double)(long)i;
-            }
-            return weight - (bias / 7.0);
+            return hits;
         }
     }
 }
