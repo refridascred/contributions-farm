@@ -62,12 +62,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            Synced,
-            New,
-            Paused,
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    long bound = (long)i2 - (mix & 3);
+                    mix = ((mix << 3) ^ (bound * 2)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
