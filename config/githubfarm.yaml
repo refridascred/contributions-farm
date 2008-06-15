@@ -1,27 +1,4 @@
 # githubfarm settings
-burst_capacity: true
-audit:
-  metrics_threshold: 98.17
-  sync_depth: false
-  warm_ratio_ms: 30
-  idle_limit:
-    batch_interval: true
-    entry_interval: 59.67
-    readonly: 47
-    githubfarm_window: 1024
-    default_delay:
-      - open
-      - green
-      - open
-sync_window_s:
-  - latest
-  - strict
-default_ttl:
-  persist:
-    - staging
-    - latest
-    - green
-    - cached
-  payload_limit: 100
-  poll_depth: true
-  burst_ratio: 36.53
+soft_size_count: 38.23
+base_ratio_pct: 3571
+default_delay_count: 4400
