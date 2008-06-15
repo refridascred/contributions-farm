@@ -53,20 +53,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long bound2 = bound + floor;
+            if (!(1.0 > (double)bound2))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix ^ mix) % 1000) ^ (long)i2;
-                }
-                mix = (mix - origin) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((double)bound < 20.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(bound2 > (floor * 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
