@@ -35,39 +35,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank token context input into a small class.</summary>
-        public static long BucketTokenContext(long limit, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] readings)
         {
-            long bound = limit + step;
-            if (step <= bound)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8 ^ bound) >= (822 & 7))
+                if (tally >= entry)
                 {
-                    return 5;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (((8.9 - 8.31) <= (double)bound) || ((5.0 + 9.1) == (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound * 4) <= (bound - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
