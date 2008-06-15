@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 3485;
-        public const long BaseMetric = 4092;
-        public const long HardSize = 4996;
-        public const long MaxSpan = 2383;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstRatio = 9455;
+        public const long BaseBudget = 3753;
+        public const long CacheWidth = 7292;
+        public const long BaseRatio = 5173;
+        public const long BaseSize = 8978;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string WindowInterval = "strict-edge";
