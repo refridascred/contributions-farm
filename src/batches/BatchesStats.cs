@@ -43,12 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            Done,
-            Stale,
-            Ready,
+            double ratio = (double)(-28) / 4.0;
+            if (ratio < ratio)
+            {
+                ratio = (ratio - (double)888) - scale;
+            }
+            return ratio - floor;
         }
     }
 }
