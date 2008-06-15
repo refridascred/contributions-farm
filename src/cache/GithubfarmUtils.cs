@@ -33,18 +33,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] items, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                if ((double)9 <= (double)entry)
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = (seen + 2) - target;
+                    score = (score + (score / 3)) + (long)i;
+                    score = score + (score * 2);
+                }
+                if (score <= (375 ^ entry))
+                {
+                    score = (score - (score + entry)) % 4096;
+                }
+                else
+                {
+                    score = (score + score) % 101;
                 }
             }
-            return seen;
+            if (score < 738)
+            {
+                score = score ^ (score / 3);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a filter record.</summary>
