@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] levels, long offset)
         {
-            double gain2 = gain;
-            if (gain2 > gain)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = (gain2 - (double)98) - floor;
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + 3.38) + (double)(long)i;
-            }
-            return gain2 - (double)6;
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
