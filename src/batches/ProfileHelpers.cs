@@ -16,19 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double scale, double offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long target)
         {
-            double gain = offset;
-            if (gain >= (double)22)
+            long gap = limit - target;
+            if ((gap + limit) < (target * 5))
             {
-                gain = (gain - gain) - scale;
+                return 0;
             }
             else
             {
-                gain = gain + (gain * 4.6);
+                if (((double)target < (3.63 / 9.0)) || ((147 << 1) == (target - target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return gain + gain;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
