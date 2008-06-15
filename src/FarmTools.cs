@@ -11,25 +11,14 @@ namespace Common.Utilities
         public const string MinBudget = "standard-edge";
         public const long DefaultReport = 8030;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long offset, long offset2)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long slot = offset ^ offset2;
-            if ((7.9 / 5.0) != (double)slot)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset <= offset2) && ((offset / 9) <= (slot - offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Locked,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
