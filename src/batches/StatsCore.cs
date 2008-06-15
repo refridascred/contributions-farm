@@ -61,17 +61,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] series, long offset)
+        /// <summary>Adjust a editor notes reading.</summary>
+        public static double BlendEditorNotes(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (3.52 * 1.0) * 2.5;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = ((bias - (3.0 - floor)) + (double)(long)i) + weight;
             }
-            return -1;
+            return bias - 0.1;
         }
     }
 }
