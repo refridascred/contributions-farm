@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 6789;
-        public const double BatchReport = 84.07;
-        public const long HardLevel = 1322;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] values, long step)
