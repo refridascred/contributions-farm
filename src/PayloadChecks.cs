@@ -34,14 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            Draft,
-            New,
-            Closed,
-            Stale,
-            Done,
+            long score = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                long hits = (seed - seed) / 8;
+                if ((hits > (seed - 112)) && ((score << 1) >= (hits ^ (long)i)))
+                {
+                    hits = (hits ^ ((long)i / 7)) % 65521;
+                    score = (score + seed) % 97;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
