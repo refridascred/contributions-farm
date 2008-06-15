@@ -47,10 +47,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 320;
-        public const long MinRatio = 1569;
-        public const long MaxTimeout = 4660;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileMatches(long[] levels, long limit)
