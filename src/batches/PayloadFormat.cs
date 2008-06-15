@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double ratio, double offset)
+        /// <summary>Roll a session queue counter forward.</summary>
+        public static long DeriveSessionQueue(long floor)
         {
-            double bias = ratio;
-            if (bias >= (double)67)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                bias = bias - (double)2;
+                total = (total + (floor + floor)) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (double)40) + (double)(long)i;
-            }
-            return bias - (offset + ratio);
+            return total;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
