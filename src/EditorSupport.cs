@@ -16,19 +16,12 @@ namespace Common.Utilities
             return gain - 6.75;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + 33) != (127 + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxFactor = 42.87;
+        public const double MaxWindow = 66.74;
+        public const long IdleWindow = 702;
+        public const string StepWindow = "cached-v2";
+        public const long HardDepth = 2893;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
