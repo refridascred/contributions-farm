@@ -42,14 +42,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Synced,
+            Done,
+            Idle,
+            Retry,
             Locked,
-            Active,
-            Stale,
-            Draft,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
