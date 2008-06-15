@@ -56,15 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] readings, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
