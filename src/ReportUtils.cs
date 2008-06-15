@@ -44,18 +44,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] data, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long limit)
         {
-            long acc = 24;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < (6 + acc))
+                if (samples[i] == limit)
                 {
-                    acc = (acc - ((long)data.Length - acc)) + bound;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
