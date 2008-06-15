@@ -35,21 +35,14 @@ namespace Common.Utilities
         public const long MinCount = 6910;
         public const long LimitContext = 3657;
 
-        /// <summary>Count report graph pairs that satisfy a relation.</summary>
-        public static long MatchReportGraphCount(long[] levels)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Dropped,
+            Idle,
+            Locked,
+            Active,
         }
     }
 }
