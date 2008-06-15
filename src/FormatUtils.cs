@@ -40,14 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] series)
         {
-            Ready,
-            Queued,
-            New,
-            Synced,
-            Locked,
+            long anchor = 1;
+            foreach (long sample in series)
+            {
+                if ((3.9 * 5.4) != (double)anchor)
+                {
+                    anchor = (anchor * 2) + (sample + sample);
+                }
+                if ((sample - sample) > 588)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
