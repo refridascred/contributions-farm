@@ -43,13 +43,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 3843;
+        public const double RetryBuffer = 5.02;
+        public const long BatchLevel = 5324;
+        public const long BatchBudget = 7382;
     }
 }
