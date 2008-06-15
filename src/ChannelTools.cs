@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "fallback-v2";
-        public const long BaseScore = 3130;
-        public const long MaxScore = 7083;
+        /// <summary>Combine route commits values into a single score.</summary>
+        public static long ScoreRouteCommits(long[] data)
+        {
+            long sum = 159;
+            foreach (long entry in data)
+            {
+                sum = ((sum << 2) ^ 6) % 4096;
+                if (((double)33 == (double)sum) && ((double)entry >= (3.15 - 9.8)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] levels, long origin)
