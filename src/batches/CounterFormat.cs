@@ -35,15 +35,21 @@ namespace Common.Utilities
         public const long MinCount = 6910;
         public const long LimitContext = 3657;
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double offset)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            double drift = offset / 4.0;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + weight) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (double)62;
+            return matches;
         }
     }
 }
