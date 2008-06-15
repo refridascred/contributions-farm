@@ -1,8 +1,25 @@
 # entry settings
-base_timeout_pct:
-  - 401
-  - 190
-  - 137
-  - 500
-flush_ratio_pct: 93.66
-profile_limit: cached
+window_retries: blue
+batch_delay:
+  hard_limit_count: 2.01
+  readonly: green
+  strict: 6020
+  dry_run:
+    idle_interval: 65
+    farm_retries: cached
+    flush_retries:
+      - standard
+      - local
+      - open
+    sync_size: 8.11
+    cache_window_count: strict
+  idle_capacity_ms: 500
+  soft_ratio_count: false
+sync_limit_pct:
+  account_window:
+    min_ratio_s: eu-west
+    warm_ttl_count: 69.82
+    idle_threshold_pct: 19.89
+    window_timeout: standard
+  account_delay: primary
+  stream_interval: false
