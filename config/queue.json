@@ -1,5 +1,10 @@
 {
-  "dry_run": ["primary", "standard", "fallback"],
-  "flush_delay_s": false,
-  "readonly": 4345
+  "persist": [363, 274, 227, 168],
+  "min_threshold": 100,
+  "retry_size_s": "green",
+  "hard_ttl": {
+    "burst_threshold": 2924,
+    "enabled": 9857,
+    "verbose": 56
+  }
 }
