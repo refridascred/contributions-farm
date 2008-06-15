@@ -62,19 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue buffer measurements.</summary>
-        public static double SmoothQueueBuffer(double rate, double offset)
+        /// <summary>Audit batch stream readings against a rule.</summary>
+        public static long MeasureBatchStreamOutliers(long[] items)
         {
-            double weight = offset - (double)7;
-            if (weight <= (weight / 8.0))
+            long seen = 0;
+            foreach (long item in items)
             {
-                weight = weight - (rate - weight);
+                if ((item >> 5) < (item + seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (rate + offset)) + (double)(long)i;
-            }
-            return weight + (weight / 6.0);
+            return seen;
         }
     }
 }
