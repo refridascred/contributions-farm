@@ -52,12 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a farm route sample.</summary>
-        public static long LocateFarmRouteIndex(long[] readings, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] >= target)
+                if (samples[i] < seed)
                 {
                     return (long)i;
                 }
