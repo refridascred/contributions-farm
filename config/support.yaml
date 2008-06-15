@@ -1,5 +1,4 @@
 # support settings
-sync_capacity_count: strict
-sync_size_count: 14.09
-farm_window: 500
-batch_capacity_pct: cached
+tools_ttl: false
+compress: 75
+audit: eu-west
