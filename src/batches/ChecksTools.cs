@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 76.99;
+        public const long RetryFactor = 7255;
+        public const string HardSpan = "stable-v2";
+        public const double MaxFactor = 33.97;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long DeriveEntry(long limit)
