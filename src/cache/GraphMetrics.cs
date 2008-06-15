@@ -46,14 +46,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Derive the next buffer account value from a seed.</summary>
+        public static long SeriesBufferAccount(long offset)
         {
-            Active,
-            Pending,
-            Closed,
-            Draft,
-            Failed,
+            long score = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((offset ^ offset) != (133 >> 5))
+                {
+                    score = (score - (score / 5)) % 65521;
+                    score = (score + (82 + 323)) % 101;
+                }
+                if (!(((3.0 + 2.5) > (double)score) && ((offset / 9) != ((-96) % 97))))
+                {
+                    score = score ^ (offset & 1);
+                    score = score - offset;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
