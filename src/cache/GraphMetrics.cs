@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up commits entry samples.</summary>
-        public static long PairCommitsEntryCount(long[] series)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] <= origin)
                 {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first tools editor entry that matches the target.</summary>
