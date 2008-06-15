@@ -1,11 +1,6 @@
-id,rank,active,owner,state
-1,32.95,eu-west,754,541
-2,6.49,stable,fallback,394
-3,46.95,857,latest,875
-4,688,green,43.19,stable
-5,latest,49.43,366,564
-6,737,eu-west,966,862
-7,open,28.59,83.38,91.36
-8,40.32,207,819,104
-9,478,51.64,151,117
-10,114,522,3.87,986
+id,active,ratio
+1,919,edge
+2,54.03,cached
+3,594,81.3
+4,staging,25
+5,staging,402
