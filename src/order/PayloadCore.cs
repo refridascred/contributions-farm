@@ -19,12 +19,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long seed)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Count { get; set; }
+            long score = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = ((score - ((long)i + score)) % 4096) + (long)i2;
+                    score = (score * 4) + (score / 5);
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the notes level values.</summary>
