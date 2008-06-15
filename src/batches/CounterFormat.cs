@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 76;
+            foreach (long sample in readings)
             {
-                if (hits <= (hits * 3))
+                if (((double)carry <= (8.0 * 2.27)) && ((carry % 60) <= sample))
                 {
-                    hits = (hits + 3) ^ reading;
+                    carry = carry - (sample & 63);
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Describe the counter class values.</summary>
