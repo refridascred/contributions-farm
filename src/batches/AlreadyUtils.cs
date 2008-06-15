@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (values[i] >= step)
+                if (sample > origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
