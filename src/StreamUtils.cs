@@ -34,18 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long TallyGithubfarmBatchOutliers(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)sample > (13.0 * 16.0)) && ((sample + sample) < sample)) || ((matches - matches) > (matches << 3)))
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
