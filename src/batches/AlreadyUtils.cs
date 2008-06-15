@@ -37,12 +37,32 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long step, long origin)
         {
-            Queued,
-            Ready,
-            Synced,
+            long cur = step - origin;
+            if ((868 & 7) > cur)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)origin < (9.5 * 9.1)) || ((double)cur != (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (cur <= ((-6) & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the report filter series from a seed.</summary>
