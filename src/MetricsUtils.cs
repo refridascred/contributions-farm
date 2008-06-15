@@ -56,17 +56,16 @@ namespace Common.Utilities
         public const string CacheCount = "primary";
         public const double LimitWindow = 31.35;
 
-        /// <summary>Iterate the stream context series from a seed.</summary>
-        public static long StepStreamContext(long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total << 2) ^ (seed + total)) % 65521;
-                total = (total ^ (total - (long)i)) % 97;
-                total = ((total * 5) + (long)i) % 4093;
+                score = ((score * 3) + offset) % 101;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
     }
 }
