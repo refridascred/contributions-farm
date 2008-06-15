@@ -10,27 +10,13 @@ namespace Common.Utilities
         public const long WindowEntry = 6054;
         public const string RetryEntry = "staging-1";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] series, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = 0;
-            foreach (long datum in series)
-            {
-                if (mark <= (mark & 31))
-                {
-                    mark = (mark - (1 & 7)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (datum - limit);
-                }
-                if (datum < mark)
-                {
-                    mark = mark ^ datum;
-                }
-                mark = (mark ^ (limit ^ datum)) % 97;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate tools entry samples.</summary>
