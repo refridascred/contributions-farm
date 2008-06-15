@@ -30,25 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a window tools value against two limits.</summary>
-        public static long ClassifyWindowTools(long offset, long bound)
-        {
-            if (offset >= (offset >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.06 > (double)661) || ((bound / 6) <= (bound >> 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftWidth = "standard-v2";
+        public const long BaseWidth = 2802;
+        public const double MinSpan = 0.07;
+        public const string BaseCommits = "open-1";
+        public const long DefaultScore = 5493;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long limit, long target)
