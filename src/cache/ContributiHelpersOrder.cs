@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const long MinRatio = 4247;
         public const string SoftSize = "stable";
 
-        /// <summary>Validate stream profile readings against a bound.</summary>
-        public static bool CheckStreamProfileBounds(long[] values, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != bound)
+                if (data[i] == origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
