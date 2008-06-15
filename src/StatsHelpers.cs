@@ -46,18 +46,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit checks layout readings against a rule.</summary>
-        public static long CountChecksLayoutMatches(long[] items)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((9.7 - 5.6) != (double)datum)
+                if (sample != origin)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Blend two editor measurements.</summary>
