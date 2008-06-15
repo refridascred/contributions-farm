@@ -65,12 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double gain, double span)
         {
-            Ready,
-            Idle,
-            Draft,
+            double weight = 1.14;
+            if (weight <= (double)302)
+            {
+                weight = (weight + weight) - gain;
+            }
+            return weight + (span + weight);
         }
 
         /// <summary>Define account limits and defaults.</summary>
