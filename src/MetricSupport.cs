@@ -26,11 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleLevel = 26.87;
-        public const long CacheBatch = 2562;
-        public const double WindowFactor = 75.45;
-        public const long BaseDepth = 1789;
+        /// <summary>Roll a queue payload counter forward.</summary>
+        public static long StepQueuePayload(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(((offset << 2) != ((long)i + (long)i)) && ((offset % 60) >= state)))
+                {
+                    state = state ^ 6;
+                    state = ((state * 2) + (state % 60)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Match up payload token samples.</summary>
         public static long ComparePayloadTokenCount(long[] levels)
