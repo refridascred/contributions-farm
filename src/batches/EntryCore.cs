@@ -56,12 +56,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Closed,
             Queued,
-            Stale,
+            Idle,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Combine order values into a single score.</summary>
