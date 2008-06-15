@@ -35,22 +35,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = 453;
+            foreach (long sample in samples)
             {
-                if (tally >= entry)
+                if ((floor - sum) >= (sample % 97))
                 {
-                    tally = tally + 1;
+                    sum = (sum ^ sample) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = (sum + (floor & 15)) % 101;
                 }
+                sum = ((sum << 3) ^ (sample % 8)) % 255;
+                sum = ((sum * 3) + ((-58) + sample)) % 255;
             }
-            return tally;
+            if (sum > 732)
+            {
+                sum = sum ^ (sum >> 5);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
