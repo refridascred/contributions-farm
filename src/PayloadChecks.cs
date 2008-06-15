@@ -20,25 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long step, long step2)
+        /// <summary>Roll a githubfarm route counter forward.</summary>
+        public static long DeriveGithubfarmRoute(long step)
         {
-            long gap = step - step2;
-            if ((gap >> 5) < (step2 + 142))
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step <= (276 / 6))
+                if (((long)i * 5) <= (step + anchor))
                 {
-                    return 5;
+                    anchor = (anchor + (step / 2)) % 1000;
                 }
-                else
-                {
-                    return 7;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
