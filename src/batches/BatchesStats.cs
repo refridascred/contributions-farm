@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up command tools samples.</summary>
-        public static long OverlapCommandToolsCount(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 75;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark * 4) + datum;
             }
-            return matches;
+            if (mark > 39)
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a order entry.</summary>
