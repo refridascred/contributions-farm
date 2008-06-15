@@ -1,13 +1,16 @@
 # githubfarm settings
-verbose: 30
-profile_ratio: 2063
-readonly:
-  - blue
-  - local
-  - strict
-record_ratio:
-  - 130
-  - 483
-  - 154
-hard_ttl_pct: 100
-sync_limit_count: true
+cache_delay_s: false
+already_interval: 1973
+soft_interval_pct:
+  flush_depth_ms: 45.53
+  idle_capacity_ms: blue
+  hard_interval: staging
+  token_ttl: green
+  cache_interval: true
+  poll_ttl_ms: 26.54
+sync_size:
+  sync_size_s: 8114
+  session_retries: 500
+  cache_ratio_count: open
+  warm_threshold: 30
+persist: cached
