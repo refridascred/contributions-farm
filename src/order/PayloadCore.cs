@@ -34,19 +34,22 @@ namespace Common.Utilities
         public const long LimitDepth = 318;
         public const long BaseSize = 7517;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Fold a list of filter metric readings.</summary>
+        public static long TotalFilterMetric(long[] data, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            long acc = 386;
+            foreach (long value in data)
             {
-                if ((double)target >= 0.7)
+                if ((double)value <= (double)13)
                 {
-                    sum = (sum ^ sum) % 4096;
+                    acc = (acc - (acc - (-1))) % 4096;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((limit * 2) < (2 - (-736)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return acc;
         }
     }
 }
