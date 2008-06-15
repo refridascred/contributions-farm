@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 6339;
-        public const double RetryInterval = 85.84;
-        public const long MaxReport = 5902;
-        public const double RetryFactor = 39.55;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 5104;
+        public const double BatchOrder = 70.95;
+        public const long LimitSpan = 2012;
+        public const long BaseOrder = 7915;
+        public const long CacheSpan = 6534;
 
         /// <summary>Project the next editor commits value.</summary>
         public static double AdjustEditorCommits(double bias, double bias2)
