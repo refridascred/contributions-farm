@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every contributi account entry stays within the limit.</summary>
-        public static bool ValidateContributiAccountRange(long[] samples, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            if ((8 - offset) >= (7 + offset))
             {
-                if (item > limit)
+                return 1;
+            }
+            else
+            {
+                if (offset > (offset2 * 3))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset2 & 15) < (offset + (-110)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a counter record.</summary>
