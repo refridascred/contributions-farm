@@ -1,10 +1,9 @@
 # support settings
-soft_ratio_count: primary
-compress: eu-west
-flush_size_s:
-  - 172
-  - 217
-  - 13
-  - 53
-hard_interval: cached
-cache_interval_pct: stable
+default_ttl_ms: fallback
+enabled:
+  - stable
+  - legacy
+sync_ratio_s:
+  - green
+  - edge
+  - latest
