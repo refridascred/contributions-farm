@@ -14,19 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
-        public static bool VerifyCommitsGithubfarmRange(long[] data, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (entry != seed)
+                if ((double)tally <= (double)step)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Roll a command counter forward.</summary>
