@@ -51,26 +51,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] items, long target)
         {
-            long score = 660;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((seed - seed) >= 780)
+                if ((value >= (count * 5)) && !((double)value > (double)target))
                 {
-                    score = ((score << 3) ^ reading) % 101;
-                }
-                else
-                {
-                    score = score - (seed + reading);
-                }
-                if ((score & 127) == (seed - score))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
