@@ -19,22 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] values, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)floor >= (double)sample)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Active,
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the farm status values.</summary>
