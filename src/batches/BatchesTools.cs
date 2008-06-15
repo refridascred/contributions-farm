@@ -27,9 +27,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchScore = 1466;
-        public const string HardSupport = "local-edge";
-        public const long LimitInterval = 998;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Stale,
+            Locked,
+            Ready,
+            Queued,
+            Active,
+        }
     }
 }
