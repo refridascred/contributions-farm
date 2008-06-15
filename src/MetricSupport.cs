@@ -26,21 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue payload counter forward.</summary>
-        public static long StepQueuePayload(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(((offset << 2) != ((long)i + (long)i)) && ((offset % 60) >= state)))
-                {
-                    state = state ^ 6;
-                    state = ((state * 2) + (state % 60)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 9991;
+        public const long MaxWidth = 4714;
+        public const string BurstWidth = "fallback-edge";
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long limit, long limit2)
