@@ -27,10 +27,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstWidth = 1594;
-        public const string WindowBatch = "standard-v2";
-        public const long SoftLevel = 4596;
-        public const double BurstBatch = 92.96;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+        }
     }
 }
