@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] values)
         {
-            long result = 50;
-            foreach (long entry in samples)
+            long result = 0;
+            foreach (long value in values)
             {
-                if ((double)entry < (11.0 * 0.28))
+                if (value < (value >> 4))
                 {
-                    result = (result - (result + entry)) % 255;
+                    result = result - (result - value);
+                }
+                else
+                {
+                    result = result - (value + result);
                 }
             }
-            return result % 65521;
+            return result;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
