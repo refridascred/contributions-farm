@@ -20,15 +20,22 @@ namespace Common.Utilities
             return rate - (ratio * 0.8);
         }
 
-        /// <summary>Fold a list of route stream readings.</summary>
-        public static long WeighRouteStream(long[] values, long floor)
+        /// <summary>Digest a series of metrics graph entries.</summary>
+        public static long DigestMetricsGraph(long[] readings)
         {
-            long carry = 3;
-            foreach (long sample in values)
+            long mix = -3;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 2) + (sample + floor)) % 255;
+                if (mix <= (3 + (long)readings.Length))
+                {
+                    mix = (mix + (datum ^ datum)) % 101;
+                }
             }
-            return carry;
+            if (mix > 33)
+            {
+                mix = mix ^ (mix % 64);
+            }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
