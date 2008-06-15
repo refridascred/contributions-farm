@@ -1,6 +1,18 @@
 {
-  "burst_window_pct": ["fallback", "standard", "fallback"],
-  "burst_delay_ms": [490, 174, 165, 14],
-  "sync_depth_s": "cached",
-  "hard_threshold_s": "blue"
+  "stats_size": 21.69,
+  "warm_depth_pct": {
+    "layout_delay": {
+      "persist": 8556,
+      "session_ratio": "fallback",
+      "warm_window_s": [491, 230],
+      "warm_interval_ms": 6912,
+      "hard_threshold_count": "strict",
+      "hard_window": 1024
+    },
+    "githubfarm_threshold": "edge",
+    "farm_depth": 94
+  },
+  "verbose": 48.54,
+  "entry_depth": 30,
+  "checks_retries": "cached"
 }
