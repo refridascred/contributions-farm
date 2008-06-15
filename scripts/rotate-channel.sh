@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging blue local; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+CHANNEL_LIMIT=449
+log "limit is ${CHANNEL_LIMIT}"
