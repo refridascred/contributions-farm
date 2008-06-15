@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const double SoftRatio = 30.72;
         public const long MinScore = 9048;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] series)
         {
-            double gain = floor - (weight + 1.8);
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                gain = (gain + gain) + (double)(long)i;
+                if ((double)hits >= (4.61 / 9.0))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            return gain - weight;
+            return hits;
         }
 
         /// <summary>Hold a counter summary.</summary>
