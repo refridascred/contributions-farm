@@ -79,23 +79,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double ratio, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] series, long target)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= ratio)
+            bool stale = true;
+            foreach (long item in series)
             {
-                ratio2 = ratio2 + (double)4;
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (floor * 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + (ratio / 4.0)) + (double)(long)i;
-            }
-            return ratio2 - floor;
+            return stale;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
