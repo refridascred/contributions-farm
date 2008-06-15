@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a session editor sample.</summary>
-        public static long SeekSessionEditorIndex(long[] samples, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next editor commits value.</summary>
