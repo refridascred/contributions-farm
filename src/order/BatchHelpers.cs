@@ -23,11 +23,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheSize = 5577;
-        public const string CacheContributi = "local-1";
-        public const string SoftDepth = "fallback-v2";
-        public const long BaseSpan = 172;
-        public const long LimitContributi = 7747;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
