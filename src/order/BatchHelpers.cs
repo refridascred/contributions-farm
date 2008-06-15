@@ -28,15 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] series, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
     }
 }
