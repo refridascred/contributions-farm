@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
