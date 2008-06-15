@@ -38,25 +38,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long floor, long seed)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long cur = floor ^ seed;
-            if (((14.0 * 19.0) < (double)seed) && ((double)floor <= (double)42))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - 2) == (floor - cur))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
