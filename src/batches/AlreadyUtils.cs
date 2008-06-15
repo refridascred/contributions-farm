@@ -70,18 +70,18 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] levels)
+        /// <summary>Measure how many commits checks samples are out of range.</summary>
+        public static long MeasureCommitsChecksHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (!((matches - entry) < (entry + entry)))
+                if ((count < (841 << 3)) && ((reading + reading) <= reading))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
