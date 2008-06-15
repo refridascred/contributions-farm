@@ -58,25 +58,21 @@ namespace Common.Utilities
         public const double MaxWindow = 48.13;
         public const long DefaultWindow = 9466;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long floor, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long span = floor - seed;
-            if ((span & 31) < seed)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((span & 1) > (3 / 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
