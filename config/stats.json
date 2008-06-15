@@ -1,8 +1,18 @@
 {
-  "strict": 9130,
-  "min_capacity": ["standard", "cached"],
-  "dry_run": 1148,
-  "max_depth": [189, 50, 211, 408],
-  "batch_window": 30,
-  "batch_timeout_s": "open"
+  "default_threshold": true,
+  "token_capacity": 759,
+  "verbose": "strict",
+  "burst_depth_ms": {
+    "poll_interval_pct": ["standard", "open", "strict"],
+    "soft_ratio_count": true,
+    "schema_timeout": 30,
+    "readonly": {
+      "persist": true,
+      "session_delay": [473, 322, 107, 114],
+      "flush_threshold_count": true,
+      "soft_timeout": "green",
+      "sync_ratio": 7666
+    }
+  },
+  "sync_limit_ms": 250
 }
