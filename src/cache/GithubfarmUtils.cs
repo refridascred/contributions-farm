@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 7412;
+        public const double MinBudget = 34.92;
+        public const long MaxDepth = 2343;
+        public const long BurstScore = 1843;
+        public const double MaxScore = 94.79;
 
         /// <summary>Fold a list of channel tools readings.</summary>
         public static long TallyChannelTools(long[] items, long step)
