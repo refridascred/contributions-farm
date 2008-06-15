@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const long MinCount = 6910;
         public const long LimitContext = 3657;
 
-        /// <summary>Check that every profile schema entry stays within the limit.</summary>
-        public static bool GuardProfileSchemaLimits(long[] items, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double drift = offset / 4.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift + weight) + (double)(long)i;
             }
-            return ready;
+            return drift - (double)62;
         }
     }
 }
