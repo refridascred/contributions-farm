@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long step, long limit)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long cur = step + limit;
+            if (((cur - 2) <= (cur + cur)) && ((double)step == (9.0 + 7.94)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((1 + step) > (limit % 5)) && ((43 << 2) <= (cur & 127)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)step >= 5.3) && ((limit - limit) > (step / 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5.0 <= (double)limit) || ((step + cur) > (step - limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
