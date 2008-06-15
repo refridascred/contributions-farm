@@ -51,15 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double bias, double span)
+        /// <summary>Roll a cache context counter forward.</summary>
+        public static long SeriesCacheContext(long floor)
         {
-            double bias2 = 5.5;
-            for (int i = 0; i < 9; i++)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                bias2 = (((bias2 - bias2) + (double)(long)i) + bias) + span;
+                acc = (acc - (acc - (long)i)) % 65521;
+                acc = (acc + (acc * 2)) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return bias2 + 15.0;
+            return acc;
         }
     }
 }
