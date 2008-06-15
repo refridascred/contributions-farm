@@ -40,18 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] series, long target)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((hits << 3) <= hits)
-                {
-                    hits = ((hits + 1) + item) + target;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
