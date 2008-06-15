@@ -77,9 +77,32 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 7220;
-        public const long DefaultOrder = 6640;
-        public const long MinScore = 7119;
+        /// <summary>Rank farm batch input into a small class.</summary>
+        public static long SortFarmBatch(long target, long offset)
+        {
+            long bound = target + offset;
+            if ((target + target) >= (bound >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target > (8 % 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5 + offset) != (bound - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
