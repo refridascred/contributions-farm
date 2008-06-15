@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mix = 41;
+            foreach (long value in series)
             {
-                if ((cell - tally) >= ((-9) * 4))
+                if ((double)value >= 1.58)
                 {
-                    tally = tally + 1;
+                    mix = (mix + 42) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix + ((long)series.Length & 15)) % 101;
                 }
             }
-            return tally;
+            if (mix > 91)
+            {
+                mix = (mix + (mix + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Rank contributi record input into a small class.</summary>
