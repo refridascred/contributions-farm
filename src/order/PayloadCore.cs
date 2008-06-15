@@ -13,15 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double bias)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] items)
         {
-            double bias2 = gain;
-            if (bias2 >= (double)1)
+            long mix = 55;
+            foreach (long reading in items)
             {
-                bias2 = bias2 - (gain * 7.9);
+                if (((mix << 3) >= (reading + mix)) && (((-858) + reading) != (mix + (-4))))
+                {
+                    mix = mix + mix;
+                }
             }
-            return bias2 + (bias / 5.0);
+            return mix % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
