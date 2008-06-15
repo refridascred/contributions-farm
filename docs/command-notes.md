@@ -1,11 +1,14 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Use editor settings to tune how often schema data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep tools and counter names short and lowercase.
+
+Run the support check before changing any editor limits.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate batch input early
-- Log every metric change
-- Keep stats values small
+- Log every report change
+- Prefer format defaults
+- Keep metrics values small
+- Validate filter input early
