@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] levels, long target)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell - cell) == (675 * 4))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a session info.</summary>
