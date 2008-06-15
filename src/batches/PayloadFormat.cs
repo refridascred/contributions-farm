@@ -15,37 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long step, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long step)
         {
-            long cur = step + limit;
-            if (((cur - 2) <= (cur + cur)) && ((double)step == (9.0 + 7.94)))
+            long step2 = offset + step;
+            if ((double)offset < (double)step2)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((1 + step) > (limit % 5)) && ((43 << 2) <= (cur & 127)))
+                if (step <= 38)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if (((double)step >= 5.3) && ((limit - limit) > (step / 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5.0 <= (double)limit) || ((step + cur) > (step - limit)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
