@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every batches channel entry stays within the limit.</summary>
-        public static bool GuardBatchesChannelBounds(long[] series, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long step)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result * 3) + (1 * 4);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
