@@ -35,21 +35,21 @@ namespace Common.Utilities
         public const long MinCount = 6910;
         public const long LimitContext = 3657;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Count report graph pairs that satisfy a relation.</summary>
+        public static long MatchReportGraphCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 2)
+                    if ((levels[i] - levels[j]) == 15)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
