@@ -32,18 +32,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data, long target)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long step, long step2)
         {
-            long total = 212;
-            foreach (long item in data)
+            if (step2 <= (step & 255))
             {
-                if ((item * 4) == (item % 8))
+                return 3;
+            }
+            else
+            {
+                if ((double)step2 > 8.0)
                 {
-                    total = (total - (item ^ item)) - target;
+                    return 7;
+                }
+                else
+                {
+                    if (17.0 > (double)step2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step - step2) >= step2) || ((6.9 + 3.82) != (double)step2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Fold a list of filter metric readings.</summary>
