@@ -36,19 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] data, long bound)
         {
-            long total = 540;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                total = ((total << 2) ^ (entry - (-27))) % 4096;
+                if ((double)bound < (3.0 * 5.92))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
             }
-            if (total > 183)
-            {
-                total = (total * 5) + total;
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
