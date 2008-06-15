@@ -55,12 +55,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] levels, long seed)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample << 2) < (hits + sample))
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
     }
 }
