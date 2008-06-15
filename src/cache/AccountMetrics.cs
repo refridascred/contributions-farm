@@ -40,12 +40,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Measure how many checks filter samples are out of range.</summary>
+        public static long TallyChecksFilterOutliers(long[] data, long step)
         {
-            Failed,
-            Closed,
-            Idle,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((11.0 - 3.91) < (double)matches)
+                {
+                    matches = ((matches + 2) + item) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric record.</summary>
