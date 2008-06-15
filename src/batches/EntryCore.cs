@@ -76,31 +76,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a queue metric pair into a bucket.</summary>
-        public static long GradeQueueMetric(long limit, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            if (seed >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) < (seed & 63))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + limit) != (seed / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Retry,
+            Queued,
+            Synced,
         }
     }
 }
