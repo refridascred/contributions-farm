@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in staging eu-west fallback local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-cached}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=476
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
