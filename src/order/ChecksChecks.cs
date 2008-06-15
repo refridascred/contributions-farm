@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (cell > floor)
+                if (reading < floor)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Combine order values into a single score.</summary>
