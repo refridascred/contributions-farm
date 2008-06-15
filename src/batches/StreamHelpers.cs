@@ -55,18 +55,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (((double)63 < (double)cell) && (cell > (count - 6)))
+                if (entry >= seed)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
