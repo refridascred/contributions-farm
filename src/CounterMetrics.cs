@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double scale, double offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] readings)
         {
-            double rate = (double)7 + 10.0;
-            if (rate <= (rate / 7.0))
+            long count = 0;
+            foreach (long value in readings)
             {
-                rate = (rate - rate) + offset;
+                if (!((count + count) >= (value - value)))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - scale) - (double)(long)i;
-            }
-            return rate + rate;
+            return count;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
