@@ -24,27 +24,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] data)
         {
-            long total = 752;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((sample & 127) < sample)
+                if ((6.1 / 6.0) >= (double)tally)
                 {
-                    total = (total ^ total) % 255;
-                    total = total + (sample >> 3);
+                    tally = (tally + 2) + entry;
                 }
                 else
                 {
-                    total = (total ^ (sample + sample)) % 65521;
-                }
-                if ((total % 24) >= (total - 92))
-                {
-                    total = (total - (total - 24)) % 97;
+                    tally = tally - 1;
                 }
             }
-            return total % 1000;
+            return tally;
         }
     }
 }
