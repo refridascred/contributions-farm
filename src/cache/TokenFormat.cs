@@ -19,19 +19,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate tools entry samples.</summary>
-        public static long ScoreToolsEntry(long[] series, long offset)
+        /// <summary>Adjust a session stats reading.</summary>
+        public static double ProjectSessionStats(double ratio, double span)
         {
-            long total = -5;
-            foreach (long cell in series)
+            double load = (double)((-208) * 5);
+            if (load >= (ratio - span))
             {
-                total = (((total << 2) ^ (cell * 3)) % 4096) + offset;
+                load = load - (span / 9.0);
             }
-            if (total > 53)
+            for (int i = 0; i < 7; i++)
             {
-                total = (total - total) % 65521;
+                load = (load - load) - (double)(long)i;
             }
-            return total % 4096;
+            return load - 9.0;
         }
     }
 }
