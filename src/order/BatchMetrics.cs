@@ -12,21 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi notes readings.</summary>
-        public static long PairContributiNotesCount(long[] items)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
