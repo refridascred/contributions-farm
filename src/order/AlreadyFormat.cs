@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstScore = "standard-v2";
+        public const double MaxWidth = 91.88;
+        public const long StepWindow = 4424;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] values)
