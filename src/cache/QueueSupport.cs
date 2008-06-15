@@ -32,17 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
