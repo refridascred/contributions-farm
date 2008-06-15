@@ -93,13 +93,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Match up cluster filter samples.</summary>
+        public static long OverlapClusterFilterCount(long[] samples)
         {
-            Stale,
-            Draft,
-            Locked,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
