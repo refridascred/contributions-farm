@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 4487;
-        public const string DefaultContext = "fallback-1";
-        public const long WindowContext = 4107;
-        public const long HardContext = 6293;
-        public const long SoftContext = 3861;
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double floor)
+        {
+            double load = floor;
+            if (load < load)
+            {
+                load = load - (load / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (weight - weight)) - (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] levels, long offset)
