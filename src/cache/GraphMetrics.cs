@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first tools editor entry that matches the target.</summary>
-        public static long LookupToolsEditorIndex(long[] items, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] items, long offset)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
