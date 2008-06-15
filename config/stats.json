@@ -1,6 +1,6 @@
 {
-  "batch_interval": [391, 265, 244, 327],
-  "base_retries": "standard",
-  "strict": false,
-  "soft_ratio": "eu-west"
+  "window_depth": true,
+  "default_ratio": "primary",
+  "burst_delay_count": "legacy",
+  "burst_timeout_pct": "fallback"
 }
