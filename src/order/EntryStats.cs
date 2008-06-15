@@ -59,11 +59,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 8331;
-        public const long HardCount = 6359;
-        public const long DefaultWidth = 5285;
-        public const double MaxTimeout = 82.97;
-        public const long WindowLevel = 9033;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double gain, double offset)
+        {
+            double drift = offset * 6.0;
+            return drift + (gain + drift);
+        }
     }
 }
