@@ -16,18 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] values, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)seen >= (6.9 - 2.0)) && (((seen & 3) < (long)values.Length) || (step > (step - 87))))
+                if (data[i] < bound)
                 {
-                    seen = (seen + 3) - value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a batch stats.</summary>
