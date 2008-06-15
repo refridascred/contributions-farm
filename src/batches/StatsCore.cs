@@ -33,24 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long bound, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            if (bound > (bound - seed))
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
+                total = (total ^ limit) % 4096;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)seed >= 10.0)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
 
         /// <summary>Adjust a cache reading.</summary>
