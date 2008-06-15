@@ -23,17 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] values, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                if ((count >> 1) == (41 * 5))
                 {
-                    return (long)i;
+                    count = ((count + 2) + reading) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
