@@ -33,22 +33,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many graph route samples are out of range.</summary>
-        public static long CountGraphRouteGaps(long[] samples, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long step2)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long cur = step - step2;
+            if (!((8.1 - 2.7) < (double)step2))
             {
-                if ((((double)bound < (1.5 * 9.5)) || ((entry + entry) <= matches)) || ((entry - 1) < (69 % 24)))
+                return 0;
+            }
+            else
+            {
+                if ((3 + 5) != (cur & 63))
                 {
-                    matches = matches + 3;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the profile class values.</summary>
