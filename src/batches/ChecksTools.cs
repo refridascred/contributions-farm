@@ -27,36 +27,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long origin, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long step, long target)
         {
-            long gap = origin ^ bound;
-            if ((double)gap <= 2.35)
+            if ((target + target) == (step / 8))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((origin - 28) <= bound)
+                if ((step - target) >= (target << 2))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (bound > (bound + bound))
+                    if ((double)target < (2.1 - 0.21))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        if ((origin >> 4) < bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 2;
                     }
                 }
             }
