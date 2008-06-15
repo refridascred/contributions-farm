@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
             public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a stream record.</summary>
