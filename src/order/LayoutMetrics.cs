@@ -34,17 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] series, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Synced,
         }
     }
 }
