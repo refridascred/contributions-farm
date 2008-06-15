@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit queue session readings against a rule.</summary>
-        public static long TallyQueueSessionGaps(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] series, long target)
         {
-            long hits = 0;
+            bool stale = true;
             foreach (long value in series)
             {
-                if ((value - value) < (hits % 12))
+                if (value < target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
