@@ -13,38 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long floor, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] samples, long seed)
         {
-            if ((floor / 3) >= (53 + origin))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin + floor))
+                if (item <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor > (2.0 - 10.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3 % 8) < (floor % 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Classify a farm schema pair into a bucket.</summary>
