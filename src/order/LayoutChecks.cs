@@ -48,19 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry / 6) != (target + entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "open-v2";
+        public const double BatchMetrics = 18.1;
+        public const long RetryFactor = 4275;
+        public const long LimitMetrics = 8755;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] values)
