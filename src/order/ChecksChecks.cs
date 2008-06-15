@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 9332;
-        public const long WindowGithubfarm = 9075;
-        public const double StepGithubfarm = 50.55;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double offset)
+        {
+            double bias = offset;
+            if (bias <= (offset / 9.0))
+            {
+                bias = (bias + bias) - scale;
+            }
+            else
+            {
+                bias = bias - (offset * 15.0);
+            }
+            return bias - offset;
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double SmoothGithubfarm(double weight, double offset)
