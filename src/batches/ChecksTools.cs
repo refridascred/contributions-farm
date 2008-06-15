@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 76.99;
-        public const long RetryFactor = 7255;
-        public const string HardSpan = "stable-v2";
-        public const double MaxFactor = 33.97;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] samples, long bound)
+        {
+            long total = 975;
+            foreach (long reading in samples)
+            {
+                if ((1.92 - 2.55) == (double)total)
+                {
+                    total = (((total << 2) ^ bound) % 97) ^ reading;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long DeriveEntry(long limit)
