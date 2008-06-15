@@ -1,15 +1,11 @@
 {
-  "max_capacity_ms": {
-    "account_depth": "eu-west",
-    "readonly": "open",
-    "base_interval_ms": "stable",
-    "metric_depth": [55, 229, 325, 6],
-    "idle_interval": "staging",
-    "audit": [94, 130, 449, 249]
+  "retry_timeout_count": {
+    "flush_timeout_pct": "open",
+    "min_depth_count": [497, 176],
+    "audit": "primary"
   },
-  "tools_capacity": 94.43,
-  "hard_ratio": "primary",
-  "soft_capacity": ["latest", "open", "fallback", "strict"],
-  "readonly": ["stable", "fallback", "edge"],
-  "audit": "local"
+  "checks_limit": false,
+  "sync_delay_pct": ["legacy", "latest", "standard"],
+  "warm_ttl_pct": 5492,
+  "graph_retries": 8921
 }
