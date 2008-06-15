@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] values, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long anchor = 3;
+            foreach (long item in readings)
             {
-                if (reading < origin)
+                if ((item + anchor) > item)
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
                 }
+                else
+                {
+                    anchor = (anchor + (anchor + 14)) % 4096;
+                    anchor = (anchor - (313 - 75)) % 1000;
+                }
+                anchor = (anchor + (item - anchor)) % 4096;
             }
-            return stale;
+            return anchor % 4096;
         }
 
         /// <summary>Locate a context batch reading by value.</summary>
