@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Accumulate layout samples.</summary>
