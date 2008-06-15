@@ -22,19 +22,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] samples, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor + offset;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Describe the payload class values.</summary>
