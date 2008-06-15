@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((tally << 3) > (924 - origin)) || (((-7) - tally) <= (origin - value)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 2698;
+        public const long MinWidth = 6311;
+        public const long CacheWidth = 9181;
+        public const double StepCommits = 45.64;
+        public const double LimitFactor = 81.88;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] readings)
