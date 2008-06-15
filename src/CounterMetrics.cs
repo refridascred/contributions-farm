@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Locked,
-            Idle,
-            Failed,
-            Done,
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of notes account readings.</summary>
