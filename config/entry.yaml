@@ -1,8 +1,25 @@
 # entry settings
-cluster_window: 87.56
-metrics_limit: false
-command_depth: standard
-min_delay_s:
-  - 280
-  - 376
-  - 412
+flush_threshold_ms: legacy
+default_interval:
+  - 385
+  - 149
+  - 325
+poll_limit: 33.09
+min_size_pct: 83
+base_ttl_s:
+  flush_timeout:
+    metric_delay:
+      - 94
+      - 9
+      - 258
+      - 281
+    poll_depth_ms:
+      - 132
+      - 427
+      - 42
+    route_interval: legacy
+    compress: 80
+  burst_limit_count: 36.56
+  account_timeout: 60
+  idle_depth_count: 7045
+  githubfarm_delay: true
