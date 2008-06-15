@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const string IdlePayload = "fallback";
         public const long BasePayload = 3820;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] series)
         {
-            Synced,
-            Closed,
-            Paused,
-            Idle,
-            Active,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry ^ seen) > (464 - seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a window tools value against two limits.</summary>
