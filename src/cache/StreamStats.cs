@@ -26,26 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Match up format batch samples.</summary>
+        public static long PairFormatBatchCount(long[] data)
         {
-            long mark = 35;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= (mark % 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark + (item ^ item);
-                }
-                if ((mark + mark) <= item)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 24)
-            {
-                mark = (mark << 2) ^ (mark >> 3);
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
