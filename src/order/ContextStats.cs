@@ -40,15 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Combine cache profile values into a single score.</summary>
+        public static long TallyCacheProfile(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long mix = 542;
+            foreach (long item in values)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                mix = mix - (item - 9);
             }
-            return carry;
+            if (mix < 35)
+            {
+                mix = ((mix * 2) + (mix >> 4)) % 101;
+            }
+            return mix;
         }
     }
 }
