@@ -26,15 +26,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] series, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] series)
         {
             long seen = 0;
-            foreach (long value in series)
+            foreach (long reading in series)
             {
-                if ((value / 3) == (0 + seen))
+                if ((reading >> 2) > seen)
                 {
-                    seen = (seen + 1) - seed;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
