@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
