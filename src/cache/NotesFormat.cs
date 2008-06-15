@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheInterval = 7184;
-        public const double LimitSize = 14.55;
-        public const string HardSize = "alpha";
-        public const long StepEditor = 5767;
-        public const long MaxScore = 6779;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Active,
+            Stale,
+            Dropped,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values)
