@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] series, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (reading <= ((long)series.Length >> 5))
+                if ((5.0 / 7.0) <= (double)value)
                 {
-                    count = (count + 3) - step;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a batches options.</summary>
