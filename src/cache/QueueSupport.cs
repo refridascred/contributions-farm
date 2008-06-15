@@ -14,22 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            long result = 1;
-            foreach (long sample in values)
+            double scale = weight / 9.0;
+            if (scale > (floor / 2.0))
             {
-                if ((58 % 10) > ((long)values.Length ^ result))
-                {
-                    result = ((result * 3) + sample) % 97;
-                }
+                scale = scale + (weight / 8.0);
             }
-            if (result > 54)
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 5) + result) % 101;
+                scale = (scale - weight) + (double)(long)i;
             }
-            return result;
+            return scale + weight;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
