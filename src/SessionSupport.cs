@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] samples, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long mark = 147;
+            foreach (long cell in values)
             {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (((mark * 5) + (40 - mark)) ^ cell) - offset;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Describe the report state values.</summary>
