@@ -40,11 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 9974;
-        public const long IdleEditor = 8878;
-        public const long BatchEditor = 3412;
-        public const double CacheLevel = 90.12;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 5389;
+        public const long LimitCount = 1562;
+        public const double CacheReport = 53.78;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 2090;
