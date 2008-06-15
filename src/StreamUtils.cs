@@ -60,18 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] values, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long result = 7;
+            foreach (long sample in data)
             {
-                if ((reading + matches) == (110 + matches))
-                {
-                    matches = (matches + 1) + step;
-                }
+                result = (((result - (552 >> 4)) % 101) + sample) - bound;
             }
-            return matches;
+            if (result < 764)
+            {
+                result = (result - (result / 7)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
