@@ -59,10 +59,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "alpha-1";
-        public const double SoftDepth = 68.9;
-        public const long RetryScore = 9622;
-        public const string StepSpan = "stable-edge";
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
