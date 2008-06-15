@@ -1,6 +1,6 @@
 {
-  "idle_depth": 69.76,
-  "cache_threshold": "primary",
-  "batch_retries_ms": ["latest", "staging", "cached"],
-  "strict": false
+  "poll_window_pct": "stable",
+  "dry_run": ["eu-west", "fallback"],
+  "max_size_s": ["fallback", "stable"],
+  "batch_limit": ["local", "primary", "fallback", "legacy"]
 }
