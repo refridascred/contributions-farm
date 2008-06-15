@@ -57,15 +57,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseBudget = 9814;
+        public const double LimitGraph = 20.44;
+        public const long HardGraph = 9185;
+        public const long WindowGraph = 1640;
     }
 }
