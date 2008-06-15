@@ -56,12 +56,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Synced,
-            New,
-            Stale,
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
