@@ -1,14 +1,9 @@
 # support settings
-contributi_retries: true
-retry_depth_s: 250
-poll_ratio_pct:
-  tools_ratio: 72.3
-  idle_depth_pct: primary
-  profile_window: 47.91
-  cache_timeout:
-    - primary
-    - legacy
-    - standard
-poll_capacity_ms: standard
-batch_depth_ms: 561
-metric_depth: 70.45
+retry_capacity: standard
+idle_interval:
+  - staging
+  - eu-west
+  - standard
+  - legacy
+max_depth_ms: true
+strict: 8521
