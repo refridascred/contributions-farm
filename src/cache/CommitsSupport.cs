@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long WindowSpan = 1041;
         public const long MaxChannel = 724;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] data, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= limit)
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
