@@ -20,25 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long step, long step2)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] samples, long target)
         {
-            long prev = step - step2;
-            if (!((prev % 8) < (step << 2)))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step2 * 2) > (prev + prev)) && ((double)step2 > (2.3 + 2.0)))
+                if (reading <= (reading + target))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
