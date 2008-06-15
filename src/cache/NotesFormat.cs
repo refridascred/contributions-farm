@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] data, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] data, long step)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (entry <= bound)
+                if (cell < step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
