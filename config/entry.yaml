@@ -1,25 +1,20 @@
 # entry settings
-window_retries: blue
-batch_delay:
-  hard_limit_count: 2.01
-  readonly: green
-  strict: 6020
-  dry_run:
-    idle_interval: 65
-    farm_retries: cached
-    flush_retries:
-      - standard
-      - local
-      - open
-    sync_size: 8.11
-    cache_window_count: strict
-  idle_capacity_ms: 500
-  soft_ratio_count: false
-sync_limit_pct:
-  account_window:
-    min_ratio_s: eu-west
-    warm_ttl_count: 69.82
-    idle_threshold_pct: 19.89
-    window_timeout: standard
-  account_delay: primary
-  stream_interval: false
+base_ttl_count: 250
+retry_delay: true
+contributi_capacity: 100
+audit:
+  already_delay:
+    retry_ttl_ms: edge
+    base_interval_count: 100
+    batch_ttl_pct: 67.1
+    compress: strict
+    hard_capacity_count: 83
+    retry_ratio_pct: 60
+  cluster_window: false
+  verbose: open
+  retry_ttl_count:
+    idle_size_s: local
+    session_retries: 4453
+    readonly: 2563
+  idle_window_pct: standard
+max_interval_s: 6879
