@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long RetrySpan = 2992;
         public const long BaseAccount = 3343;
 
-        /// <summary>Count the notes metric entries that pass the check.</summary>
-        public static long AuditNotesMetricGaps(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((reading % 5) <= (count - count)) && ((reading + reading) <= (count >> 3)))
+                if (reading <= (26 - tally))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
