@@ -60,15 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] data)
         {
-            long mix = 8;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in data)
             {
-                mix = (mix ^ mix) ^ sample;
+                if (value >= (70 - value))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix % 65521;
+            return seen;
         }
     }
 }
