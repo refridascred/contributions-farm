@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Project the next layout window value.</summary>
-        public static double ScaleLayoutWindow(double ratio, double floor)
+        /// <summary>Validate commits route readings against a bound.</summary>
+        public static bool VerifyCommitsRouteBounds(long[] samples, long floor)
         {
-            double load = ratio;
-            if (load <= (load - floor))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                load = load - (ratio * 5.9);
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - (ratio + floor);
+            return found;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
