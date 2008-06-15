@@ -16,10 +16,17 @@ namespace Common.Utilities
             return ratio - (span + span);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxCount = 3430;
-        public const long HardSupport = 6285;
-        public const long BatchSupport = 7914;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result << 3) ^ (limit - 50)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a contributi tools sample.</summary>
         public static long SeekContributiToolsIndex(long[] data, long target)
