@@ -1,12 +1,16 @@
 {
-  "audit": 29,
-  "default_size": {
-    "editor_timeout": "edge",
-    "contributi_ttl": true,
-    "base_retries_ms": 4448,
-    "warm_depth_ms": 500,
-    "sync_depth_pct": "legacy"
-  },
-  "batch_timeout": "legacy",
-  "flush_limit_count": true
+  "already_retries": 100,
+  "poll_window": "blue",
+  "strict": "staging",
+  "sync_capacity_count": {
+    "idle_threshold_pct": "stable",
+    "batches_retries": "cached",
+    "queue_window": {
+      "batch_limit_count": [121, 208],
+      "stream_timeout": "blue",
+      "burst_limit_pct": 68.15,
+      "verbose": "cached",
+      "payload_retries": 7515
+    }
+  }
 }
