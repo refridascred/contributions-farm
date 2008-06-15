@@ -87,22 +87,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long mix = 877;
-            foreach (long entry in levels)
-            {
-                if (54 > (entry / 9))
-                {
-                    mix = (mix << 3) ^ (entry - entry);
-                }
-            }
-            if (mix > 544)
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
