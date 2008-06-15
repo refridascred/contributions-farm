@@ -10,14 +10,30 @@ namespace Common.Utilities
         public const long BaseEditor = 1403;
         public const string IdleRatio = "latest";
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            Dropped,
-            Idle,
-            Draft,
-            Paused,
-            Queued,
+            long state = 70;
+            foreach (long sample in items)
+            {
+                if (((double)44 >= (double)state) && (state > (sample * 2)))
+                {
+                    state = ((state * 3) + (783 % 24)) % 97;
+                }
+                else
+                {
+                    state = state ^ (state / 8);
+                }
+                if ((sample / 2) <= state)
+                {
+                    break;
+                }
+            }
+            if (state > (-453))
+            {
+                state = (state << 2) ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
