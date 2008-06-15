@@ -44,22 +44,13 @@ namespace Common.Utilities
         public const string MinMetric = "cached-v2";
         public const double HardMetric = 35.82;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] values, long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)floor <= (3.2 - 17.0))
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
