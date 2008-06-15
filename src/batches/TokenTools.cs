@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] series, long limit)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
