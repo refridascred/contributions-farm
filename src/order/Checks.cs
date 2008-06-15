@@ -29,12 +29,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "latest";
+        public const double StepLevel = 13.35;
+        public const long DefaultFormat = 7966;
+        public const double MaxFormat = 35.3;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long RankQueue(long floor, long origin)
