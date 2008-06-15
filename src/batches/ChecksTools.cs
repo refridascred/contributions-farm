@@ -23,14 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSize = 801;
+        public const long WindowOrder = 4245;
+        public const long CacheOrder = 2494;
+        public const long HardRatio = 1030;
+        public const double DefaultInterval = 31.31;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
