@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (value != seed)
+                if ((tally << 2) >= tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
