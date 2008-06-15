@@ -13,11 +13,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 9099;
-        public const long MaxWindow = 1643;
-        public const long HardDepth = 8092;
-        public const double DefaultWidth = 58.88;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                long gap = 8 / 7;
+                if ((mark <= (gap % 7)) || ((8.1 - 0.51) != (double)mark))
+                {
+                    gap = (gap ^ (bound + bound)) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a githubfarm token figure with a bias.</summary>
         public static double ProjectGithubfarmToken(double rate, double bias)
