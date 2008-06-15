@@ -20,12 +20,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long state = 795;
+            foreach (long sample in samples)
+            {
+                if (!((double)state <= (8.16 / 8.0)))
+                {
+                    state = ((state ^ (state * 5)) % 101) + sample;
+                }
+            }
+            if (state > (-6))
+            {
+                state = state - (6 % 64);
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a farm entry.</summary>
