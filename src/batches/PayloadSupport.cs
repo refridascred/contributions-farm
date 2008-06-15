@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            double scale = 9.0;
-            if (scale < bias)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                scale = scale + (floor + floor);
+                if ((cell - tally) >= ((-9) * 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                scale = scale - (double)21;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - scale;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
