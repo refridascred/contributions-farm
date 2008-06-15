@@ -1,20 +1,4 @@
 # entry settings
-batch_interval_pct: true
-graph_ttl: false
-burst_window_pct:
-  hard_timeout_ms: 250
-  window_limit: 376
-  min_capacity_pct: 7353
-poll_ttl_pct: false
-hard_delay:
-  verbose: 52.82
-  burst_interval_ms: blue
-  context_ratio: true
-  default_depth_pct:
-    - 25
-    - 345
-filter_window:
-  - standard
-  - open
-  - local
-  - latest
+burst_depth_pct: 100
+cache_threshold_s: 81.49
+sync_ttl: 58
