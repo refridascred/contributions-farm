@@ -55,24 +55,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long offset, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long bound)
         {
-            if ((1.1 - 2.3) > (double)offset)
+            long total = -66;
+            foreach (long cell in data)
             {
-                return 7;
+                total = ((total << 3) ^ ((-21) - bound)) ^ cell;
             }
-            else
-            {
-                if ((offset - 81) < (offset & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the support status values.</summary>
