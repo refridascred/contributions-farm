@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Idle,
-            Dropped,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 6789;
+        public const double BatchReport = 84.07;
+        public const long HardLevel = 1322;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] values, long step)
