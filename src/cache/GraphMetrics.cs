@@ -63,18 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] items, long target)
         {
-            long mark = 70;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item >= (double)mark)
+                if (items[i] > target)
                 {
-                    mark = (mark - (599 >> 5)) - seed;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the stream mode values.</summary>
