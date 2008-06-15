@@ -26,14 +26,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Combine editor entry values into a single score.</summary>
+        public static long WeighEditorEntry(long[] data)
         {
-            Stale,
-            Locked,
-            Ready,
-            Queued,
-            Active,
+            long mix = 941;
+            foreach (long entry in data)
+            {
+                if ((mix & 7) >= entry)
+                {
+                    mix = (mix - (9 + entry)) % 65521;
+                }
+                if (((mix + mix) > (entry / 8)) || ((double)6 != (double)mix))
+                {
+                    break;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = (mix + ((-5) + 212)) % 65521;
+            }
+            return mix;
         }
     }
 }
