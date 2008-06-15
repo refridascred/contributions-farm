@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate report stats readings against a bound.</summary>
-        public static bool GuardReportStatsLimits(long[] samples, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (datum != bound)
+                if ((double)step > (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the schema state values.</summary>
