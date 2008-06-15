@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] items, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (44 > step)
+                if (item > bound)
                 {
-                    count = (count + 1) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a session info.</summary>
