@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(result > (4 + (long)i)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = result ^ ((long)i & 31);
-                    result = ((result << 3) ^ (result << 3)) % 1000;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (((long)i >> 2) != ((long)i - (long)i))
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
