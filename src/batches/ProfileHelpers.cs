@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long floor, long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            if (((floor % 60) == (floor & 15)) && ((floor + floor) > (bound + floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 1) > (bound + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.0 * 8.04) > (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit channel token readings against a rule.</summary>
