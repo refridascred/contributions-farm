@@ -19,16 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long state = 278;
+            foreach (long sample in values)
             {
-                result = ((result << 3) ^ (limit - 50)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
+                if (((sample / 9) >= (sample << 1)) || (919 <= (state + 63)))
+                {
+                    state = ((state * 2) + (state & 15)) % 97;
+                }
+                else
+                {
+                    state = ((state * 4) + origin) % 97;
+                }
             }
-            return result;
+            if (state > 38)
+            {
+                state = state + (8 - origin);
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
