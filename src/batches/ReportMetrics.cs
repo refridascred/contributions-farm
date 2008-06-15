@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Count the profile metrics entries that pass the check.</summary>
+        public static long MeasureProfileMetricsHits(long[] levels, long seed)
         {
-            long state = 2;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 5; i++)
+                if ((entry << 3) <= 98)
                 {
-                    state = ((state - (state << 2)) % 101) - (long)i;
+                    tally = (tally + 1) + seed;
                 }
-                state = (state - (cell - state)) % 101;
             }
-            if (state < 196)
-            {
-                state = (state - (state >> 3)) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
