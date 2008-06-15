@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long limit)
         {
-            Stale,
-            New,
-            Dropped,
+            if (17 >= (limit + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (475 > (limit / 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)511 <= (double)limit) || ((7.53 / 6.0) < (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter already entries that pass the check.</summary>
