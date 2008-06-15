@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] data, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 2) + (floor * 2)) % 255;
+                mark = mark ^ (mark + mark);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
