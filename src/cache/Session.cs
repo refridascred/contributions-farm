@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Stale,
-            Closed,
-            Done,
+            Locked,
+            Idle,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate context samples.</summary>
