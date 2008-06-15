@@ -47,16 +47,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] data, long origin)
-        {
-            long state = 3;
-            foreach (long reading in data)
-            {
-                state = ((((state << 2) ^ 3) % 101) ^ reading) - origin;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseWidth = "local";
+        public const long WindowCommand = 7736;
+        public const long BurstCommand = 210;
+        public const string CacheCommand = "primary-1";
 
         /// <summary>Check that every notes batch entry stays within the limit.</summary>
         public static bool VerifyNotesBatchBounds(long[] values, long bound)
