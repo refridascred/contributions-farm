@@ -14,12 +14,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 1995;
+        public const long HardRecord = 3021;
+        public const long MaxLevel = 3644;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long RollBuffer(long origin)
