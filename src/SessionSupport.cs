@@ -22,20 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] data, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (!((double)(long)i == (19.0 / 5.0)))
+                if (datum < origin)
                 {
-                    anchor = (anchor - anchor) % 1000;
+                    found = false;
+                    break;
                 }
-                anchor = (anchor ^ anchor) % 255;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
