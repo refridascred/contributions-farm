@@ -32,15 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits order values into a single score.</summary>
-        public static long FoldCommitsOrder(long[] readings)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long result = 3;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + (-805)) ^ value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return seen;
         }
     }
 }
