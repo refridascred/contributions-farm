@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] samples, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((limit * 3) > limit)
+                if (cell >= target)
                 {
-                    state = state - state;
-                    continue;
+                    found = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
