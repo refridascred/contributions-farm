@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] values, long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
