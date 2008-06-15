@@ -20,22 +20,24 @@ namespace Common.Utilities
         public const long LimitStream = 3052;
         public const long DefaultRatio = 8042;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels, long seed)
+        /// <summary>Classify a graph already pair into a bucket.</summary>
+        public static long ClassifyGraphAlready(long limit, long floor)
         {
-            long carry = 626;
-            foreach (long item in levels)
+            if ((double)limit < 3.39)
             {
-                if (seed <= (carry + 15))
+                return 6;
+            }
+            else
+            {
+                if (((double)limit >= 3.25) || (floor <= (4 >> 2)))
                 {
-                    carry = ((carry ^ (carry - seed)) % 97) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (carry < 144)
-            {
-                carry = (carry ^ (seed + carry)) % 1000;
-            }
-            return carry;
         }
 
         /// <summary>Describe the support status values.</summary>
