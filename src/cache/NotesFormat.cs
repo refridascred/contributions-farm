@@ -35,10 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardCount = 7823;
-        public const long LimitBuffer = 8498;
-        public const double IdleBudget = 19.9;
-        public const long MinScore = 3863;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Region { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
