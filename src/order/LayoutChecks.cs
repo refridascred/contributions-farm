@@ -20,13 +20,18 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] data, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
+            long anchor = 5;
+            foreach (long cell in data)
+            {
+                if ((bound >> 2) > cell)
+                {
+                    anchor = (anchor << 3) ^ (anchor + anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
