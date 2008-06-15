@@ -30,19 +30,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] values, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (datum >= offset)
+                if (value >= step)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Match up commits githubfarm samples.</summary>
