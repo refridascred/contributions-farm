@@ -37,21 +37,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long floor, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (floor > origin)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((207 * 3) >= floor))
                 {
-                    if ((series[i] ^ series[j]) > 3)
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin / 4) == (origin - origin)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + floor) > (floor - origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
