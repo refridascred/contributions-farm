@@ -40,22 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] series, long target)
         {
-            long anchor = 1;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((3.9 * 5.4) != (double)anchor)
+                if ((hits << 3) <= hits)
                 {
-                    anchor = (anchor * 2) + (sample + sample);
-                }
-                if ((sample - sample) > 588)
-                {
-                    break;
+                    hits = ((hits + 1) + item) + target;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
