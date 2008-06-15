@@ -1,18 +1,5 @@
 # support settings
-persist:
-  - legacy
-  - latest
-  - standard
-  - edge
-min_timeout_s:
-  readonly: legacy
-  queue_depth:
-    default_retries: 100
-    report_interval: false
-    dry_run: 2372
-    max_size: 100
-  base_limit_pct: 500
-  max_depth_s: primary
-  warm_size_s: 58.87
-burst_interval_count: true
-already_limit: true
+cache_ttl_ms: eu-west
+idle_capacity_count: open
+strict: 60
+max_ratio_ms: blue
