@@ -31,11 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] values, long target)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
