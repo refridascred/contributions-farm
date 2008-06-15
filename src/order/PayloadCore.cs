@@ -39,13 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data, long target)
         {
-            New,
-            Draft,
-            Done,
-            Queued,
+            long total = 212;
+            foreach (long item in data)
+            {
+                if ((item * 4) == (item % 8))
+                {
+                    total = (total - (item ^ item)) - target;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of filter metric readings.</summary>
