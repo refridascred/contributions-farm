@@ -20,24 +20,15 @@ namespace Common.Utilities
         public const long LimitStream = 3052;
         public const long DefaultRatio = 8042;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long offset2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            if (!((-672) <= (offset + offset)))
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (!((offset2 % 7) >= offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the support status values.</summary>
