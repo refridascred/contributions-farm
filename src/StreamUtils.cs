@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items, long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long carry = -148;
-            foreach (long cell in items)
-            {
-                if ((1.1 / 9.0) != (double)bound)
-                {
-                    carry = (carry - (cell ^ cell)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 101;
-                }
-                if ((double)cell != (19.0 - 9.0))
-                {
-                    carry = (carry + 22) % 101;
-                }
-            }
-            if (carry > 897)
-            {
-                carry = carry ^ bound;
-            }
-            return carry;
+            Stale,
+            Pending,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
