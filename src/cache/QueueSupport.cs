@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the format support series from a seed.</summary>
+        public static long DeriveFormatSupport(long offset)
         {
-            Queued,
-            Locked,
-            Idle,
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state << 2) ^ offset) % 4096;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
