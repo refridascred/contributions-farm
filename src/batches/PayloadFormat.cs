@@ -34,13 +34,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double offset)
         {
-            Idle,
-            Done,
-            Retry,
-            Queued,
+            double weight = bias;
+            if (weight <= offset)
+            {
+                weight = weight - (offset + weight);
+            }
+            else
+            {
+                weight = weight - (bias / 5.0);
+            }
+            return weight + offset;
         }
     }
 }
