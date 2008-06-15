@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state - state) % 1000;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = (((state << 3) ^ (state - state)) % 97) ^ (long)i2;
+                    state = ((state << 2) ^ (1 << 3)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
