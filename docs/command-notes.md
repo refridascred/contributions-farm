@@ -1,13 +1,13 @@
 # Command notes
 
-Use filter settings to tune how often channel data is refreshed.
-A stats that stays idle for too long is moved to the counter list.
+Defaults for tools live in the config folder and can be overridden per environment.
+Each stream is validated before it reaches the support queue.
 
-When a cache fails, the context handler retries a few times before giving up.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The stats report groups every cluster by graph.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate profile input early
-- Prefer filter defaults
-- Keep stats values small
+- Validate tools input early
+- Review cache limits each release
+- Keep command values small
