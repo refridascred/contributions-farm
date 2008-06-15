@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long carry = 655;
-            foreach (long entry in items)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((entry + entry) >= ((long)items.Length / 3))
+                if (!(step > 850))
                 {
-                    continue;
+                    mix = mix ^ ((long)i / 2);
                 }
-                if ((carry < (540 - carry)) && ((12.0 / 3.0) >= (double)entry))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    carry = carry + entry;
+                    mix = (((mix * 2) + step) % 1000) + (long)i2;
                 }
-                else
-                {
-                    carry = (carry + ((long)items.Length + carry)) % 4096;
-                }
-                if (entry < (entry - entry))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Hold a window info.</summary>
