@@ -20,17 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
