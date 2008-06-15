@@ -25,14 +25,22 @@ namespace Common.Utilities
         public const long DefaultMetrics = 2900;
         public const long RetryMetrics = 6690;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] values, long target)
         {
-            Dropped,
-            Active,
-            Idle,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((double)target == (double)64) && !((target >> 3) < (target - datum)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
