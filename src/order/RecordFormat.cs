@@ -34,13 +34,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long origin, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            if (!((limit ^ 686) <= (limit - limit)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)limit > (8.8 + 4.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit <= 5)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
