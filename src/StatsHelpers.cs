@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double SoftRatio = 30.72;
         public const long MinScore = 9048;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)hits >= (4.61 / 9.0))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
