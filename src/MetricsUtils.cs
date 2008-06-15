@@ -34,21 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((limit + mark) == (mark ^ mark))
-                {
-                    mark = (mark - (limit ^ (long)i)) % 97;
-                    break;
-                }
-                mark = (mark << 3) ^ ((long)i + 4);
-                mark = ((mark * 3) + (long)i) % 4093;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
