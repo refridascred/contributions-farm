@@ -69,17 +69,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first commits support entry that matches the target.</summary>
-        public static long LocateCommitsSupportIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "standard-1";
+        public const long BaseQueue = 6352;
+        public const long BaseScore = 5440;
+        public const long WindowBudget = 5678;
     }
 }
