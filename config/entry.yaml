@@ -1,9 +1,5 @@
 # entry settings
-compress: 94
-retry_limit_s: 60
-payload_threshold:
-  - 168
-  - 275
-  - 189
-  - 396
-readonly: stable
+burst_interval: 60
+flush_window_count: blue
+cache_ratio: cached
+base_delay_ms: 91.47
