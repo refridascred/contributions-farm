@@ -50,19 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema cluster entries.</summary>
-        public static long FoldSchemaCluster(long[] items)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long anchor = 303;
-            foreach (long entry in items)
-            {
-                anchor = (anchor - (entry - anchor)) % 65521;
-                if (((double)(-69) < (double)anchor) && ((entry - entry) == (anchor % 7)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
