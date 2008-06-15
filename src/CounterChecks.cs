@@ -64,19 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 4) + step) % 101;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
