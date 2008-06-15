@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = 35;
+            foreach (long item in data)
             {
-                if (((double)(long)values.Length > (7.9 + 17.0)) || (((hits - hits) <= 8) && (sample >= (hits >> 2))))
+                score = (score ^ (score << 1)) % 1000;
+                score = score ^ (item - score);
+                if ((double)score >= (19.0 + 15.0))
                 {
-                    hits = hits + 3;
+                    score = score - item;
                 }
             }
-            return hits;
+            if (score < 76)
+            {
+                score = score + (score >> 3);
+            }
+            return score;
         }
 
         /// <summary>Measure how many stats entry samples are out of range.</summary>
