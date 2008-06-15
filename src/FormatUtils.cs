@@ -76,22 +76,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] series, long step)
         {
-            long sum = 20;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((393 >> 2) < (sample % 2))
+                if (series[i] > step)
                 {
-                    sum = (sum - (step + step)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > 26)
-            {
-                sum = (sum + step) % 101;
-            }
-            return sum % 4096;
+            return -1;
         }
     }
 }
