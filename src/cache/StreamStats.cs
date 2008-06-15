@@ -68,11 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinScore = "primary-edge";
-        public const double LimitFactor = 34.42;
-        public const string BatchCount = "alpha-edge";
-        public const double WindowRatio = 91.23;
-        public const long LimitTimeout = 5018;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Paused,
+            Pending,
+            Locked,
+            Retry,
+            Closed,
+        }
     }
 }
