@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const long HardRatio = 1030;
         public const double DefaultInterval = 31.31;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardFactor = 1413;
+        public const string BaseQueue = "open-edge";
+        public const long LimitQueue = 7224;
+        public const long StepQueue = 8093;
+        public const string SoftQueue = "fallback-v2";
     }
 }
