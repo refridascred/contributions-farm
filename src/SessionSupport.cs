@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double weight, double bias)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] data, long origin)
         {
-            double scale = (double)(8 + 7);
-            if (scale >= (scale / 3.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + scale) - weight;
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (bias + scale)) - (double)(long)i;
-            }
-            return scale - (6.81 * 2.98);
+            return -1;
         }
 
         /// <summary>Describe the command status values.</summary>
