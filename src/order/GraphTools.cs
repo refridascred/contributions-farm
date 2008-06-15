@@ -40,13 +40,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] values, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)floor <= (3.2 - 17.0))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
