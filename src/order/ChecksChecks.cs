@@ -20,18 +20,13 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Count the stream batch entries that pass the check.</summary>
-        public static long AuditStreamBatchHits(long[] readings, long origin)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((origin * 2) >= (entry / 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
