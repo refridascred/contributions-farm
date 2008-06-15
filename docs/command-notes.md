@@ -1,15 +1,16 @@
 # Command notes
 
-Keep editor and notes names short and lowercase.
-Each entry is validated before it reaches the batch queue.
+Defaults for command live in the config folder and can be overridden per environment.
+The githubfarm module keeps profile values in sync with the order cache.
+Keep editor and cluster names short and lowercase.
 
-The token report groups every contributi by context.
-A checks that stays idle for too long is moved to the queue list.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep farm values small
-- Review tools limits each release
-- Log every command change
+- Prefer session defaults
+- Document new cache fields
+- Review contributi limits each release
+- Validate layout input early
