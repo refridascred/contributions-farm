@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double bias, double bias2)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double mean = bias2;
-            if (mean < bias2)
-            {
-                mean = (mean - (double)24) + bias;
-            }
-            else
-            {
-                mean = mean + bias2;
-            }
-            return mean - (double)(-8);
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
