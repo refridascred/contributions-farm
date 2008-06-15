@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
