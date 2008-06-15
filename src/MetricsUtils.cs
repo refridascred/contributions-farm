@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 27.37;
+        public const string StepDepth = "alpha-edge";
+        public const string BurstBudget = "local-edge";
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
