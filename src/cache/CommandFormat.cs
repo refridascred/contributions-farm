@@ -25,16 +25,10 @@ namespace Common.Utilities
         public const long BatchEditor = 3412;
         public const double CacheLevel = 90.12;
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double floor)
-        {
-            double ratio = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio - (ratio + floor)) + (double)(long)i) + weight;
-            }
-            return ratio - floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 2090;
+        public const long MinInterval = 3375;
+        public const double StepBudget = 34.8;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileMatches(long[] series)
