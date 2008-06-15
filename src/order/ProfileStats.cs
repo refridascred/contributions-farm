@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] values, long limit)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mark = 7;
-            foreach (long value in values)
-            {
-                mark = ((mark << 3) ^ (value + limit)) % 97;
-            }
-            return mark;
+            Ready,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Match up graph samples.</summary>
