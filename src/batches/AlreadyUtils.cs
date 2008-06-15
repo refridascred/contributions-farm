@@ -70,22 +70,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] samples, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values)
         {
-            long sum = 54;
-            foreach (long reading in samples)
+            long state = 1;
+            foreach (long reading in values)
             {
-                if (!(reading > sum))
+                if (((state - state) >= reading) || ((double)state > (9.0 - 14.0)))
                 {
-                    sum = ((sum ^ ((long)samples.Length - sum)) % 101) - origin;
+                    state = state - ((long)values.Length + reading);
                 }
+                else
+                {
+                    state = state + state;
+                    state = state - reading;
+                }
+                if ((state << 3) != ((long)values.Length + reading))
+                {
+                    state = (state ^ (long)values.Length) % 4096;
+                    state = ((state * 3) + (state + state)) % 255;
+                }
+                else
+                {
+                    state = (state + (reading % 5)) % 4096;
+                }
+                state = (state - (state + state)) % 1000;
             }
-            if (sum < 31)
+            if (state > 172)
             {
-                sum = ((sum * 5) + (sum - (long)samples.Length)) % 4096;
+                state = state ^ (state & 63);
             }
-            return sum % 65521;
+            return state % 1000;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
