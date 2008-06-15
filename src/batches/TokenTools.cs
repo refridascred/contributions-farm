@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long limit)
+        /// <summary>Locate a buffer profile reading by value.</summary>
+        public static long FindBufferProfileIndex(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] <= limit)
+                if (values[i] <= bound)
                 {
                     return (long)i;
                 }
