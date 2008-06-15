@@ -50,11 +50,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] series, long offset)
+        public static long LookupCounterIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= offset)
+                if (series[i] > step)
                 {
                     return (long)i;
                 }
