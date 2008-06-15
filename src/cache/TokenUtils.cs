@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm editor samples.</summary>
-        public static long ScoreGithubfarmEditor(long[] values, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] series, long origin)
         {
-            long mark = 5;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((double)165 == (double)item)
+                if (value < origin)
                 {
-                    mark = (mark * 3) + step;
-                }
-                else
-                {
-                    mark = (mark - (6 + 90)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
