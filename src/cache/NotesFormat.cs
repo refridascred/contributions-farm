@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] data, long step)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long origin)
         {
-            long state = 21;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell ^ step) <= 62)
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
                 {
-                    state = (state << 2) ^ cell;
-                    state = (state * 3) + (state & 63);
+                    return (long)i;
                 }
-                state = state + (17 << 2);
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
