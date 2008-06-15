@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinDepth = 3991;
-        public const double BurstContributi = 26.01;
-        public const long BatchContributi = 8925;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Stale,
+            Paused,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 5627;
