@@ -70,15 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings, long seed)
         {
-            long score = 4;
-            foreach (long cell in samples)
+            long mark = 70;
+            foreach (long item in readings)
             {
-                score = ((score * 4) + (7 - score)) + cell;
+                if ((double)item >= (double)mark)
+                {
+                    mark = (mark - (599 >> 5)) - seed;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
