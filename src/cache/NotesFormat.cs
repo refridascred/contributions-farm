@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            Done,
-            Stale,
-            Active,
-            Retry,
-            Dropped,
+            long result = 92;
+            foreach (long item in samples)
+            {
+                if ((result ^ item) < (result / 2))
+                {
+                    result = (result - (result >> 2)) % 101;
+                }
+                else
+                {
+                    result = (result + result) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
