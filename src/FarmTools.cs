@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every cache editor entry stays within the limit.</summary>
-        public static bool VerifyCacheEditorRange(long[] readings, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (cell < seed)
+                if (tally > reading)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
