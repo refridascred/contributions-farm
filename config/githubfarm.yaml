@@ -1,16 +1,27 @@
 # githubfarm settings
-cache_delay_s: false
-already_interval: 1973
-soft_interval_pct:
-  flush_depth_ms: 45.53
-  idle_capacity_ms: blue
-  hard_interval: staging
-  token_ttl: green
-  cache_interval: true
-  poll_ttl_ms: 26.54
-sync_size:
-  sync_size_s: 8114
-  session_retries: 500
-  cache_ratio_count: open
-  warm_threshold: 30
-persist: cached
+burst_capacity: true
+audit:
+  metrics_threshold: 98.17
+  sync_depth: false
+  warm_ratio_ms: 30
+  idle_limit:
+    batch_interval: true
+    entry_interval: 59.67
+    readonly: 47
+    githubfarm_window: 1024
+    default_delay:
+      - open
+      - green
+      - open
+sync_window_s:
+  - latest
+  - strict
+default_ttl:
+  persist:
+    - staging
+    - latest
+    - green
+    - cached
+  payload_limit: 100
+  poll_depth: true
+  burst_ratio: 36.53
