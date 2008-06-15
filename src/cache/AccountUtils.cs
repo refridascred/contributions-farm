@@ -13,17 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] items, long offset)
+        /// <summary>Count the filter already entries that pass the check.</summary>
+        public static long MeasureFilterAlreadyMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] <= offset)
+                if (((datum >= (datum % 60)) && ((4 + datum) < (matches >> 1))) && ((7.5 / 4.0) <= (double)matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
