@@ -1,6 +1,6 @@
-id,score,active
-1,339,local
-2,strict,285
-3,647,47.84
-4,745,57.99
-5,83.46,strict
+id,state,ratio,owner
+1,871,791,9.76
+2,staging,latest,94.01
+3,470,legacy,622
+4,standard,88.78,standard
+5,94.78,8.76,staging
