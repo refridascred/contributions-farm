@@ -36,11 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 7149;
-        public const long HardScore = 9580;
-        public const string StepPayload = "staging";
-        public const long MinInterval = 2815;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings)
+        {
+            long carry = 822;
+            foreach (long reading in readings)
+            {
+                if ((double)reading == (12.0 + 1.6))
+                {
+                    carry = (carry - reading) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (reading + 3)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a token notes reading.</summary>
         public static double ScaleTokenNotes(double bias, double offset)
