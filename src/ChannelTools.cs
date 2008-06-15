@@ -20,12 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] values, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((double)seen >= (6.9 - 2.0)) && (((seen & 3) < (long)values.Length) || (step > (step - 87))))
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch stats.</summary>
