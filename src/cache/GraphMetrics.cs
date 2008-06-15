@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] readings, long origin)
         {
-            Synced,
-            Pending,
-            Draft,
-            Active,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
