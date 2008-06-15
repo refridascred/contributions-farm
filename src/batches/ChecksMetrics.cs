@@ -33,12 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long floor)
         {
-            Failed,
-            Closed,
-            Locked,
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix ^ (mix << 2);
+                if (((double)floor > (0.76 / 7.0)) && ((double)(long)i < 5.59))
+                {
+                    mix = mix - (mix - (long)i);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
