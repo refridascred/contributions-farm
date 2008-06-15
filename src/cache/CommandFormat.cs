@@ -60,13 +60,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Locked,
-            Dropped,
-            Closed,
-            Queued,
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
