@@ -22,28 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache format readings.</summary>
-        public static long CombineCacheFormat(long[] items)
-        {
-            long acc = 88;
-            foreach (long cell in items)
-            {
-                if ((acc % 2) <= cell)
-                {
-                    acc = (acc * 5) + (cell + cell);
-                }
-                acc = (acc ^ (acc % 10)) % 255;
-                if ((2.5 * 8.24) >= (double)cell)
-                {
-                    acc = ((acc * 3) + (acc - acc)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (22 & 1)) % 4096;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 96.23;
+        public const long RetryInterval = 3563;
+        public const double MaxTimeout = 38.69;
+        public const long SoftEntry = 1522;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheBuffer = 3843;
