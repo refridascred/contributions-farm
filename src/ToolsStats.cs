@@ -87,14 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Locate a metric channel reading by value.</summary>
+        public static long FindMetricChannelIndex(long[] readings, long bound)
         {
-            Locked,
-            Done,
-            Retry,
-            Ready,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
