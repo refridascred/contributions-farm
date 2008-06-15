@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((bound >> 3) >= hits) || (reading <= bound))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "alpha-v2";
+        public const long RetryFactor = 1118;
+        public const long BatchLevel = 5425;
 
         /// <summary>Classify a farm schema pair into a bucket.</summary>
         public static long GradeFarmSchema(long origin, long offset)
