@@ -24,15 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Fold a list of notes account readings.</summary>
+        public static long DigestNotesAccount(long[] series, long step)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            long carry = 318;
+            foreach (long sample in series)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                carry = (((carry << 2) ^ (sample + 53)) % 1000) + step;
+                if ((sample % 5) > (sample + sample))
+                {
+                    break;
+                }
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Describe the account status values.</summary>
