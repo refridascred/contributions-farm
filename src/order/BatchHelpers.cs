@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] items, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (cell < origin)
+                if ((2.3 * 6.91) > (7.0 / 4.0))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + sample;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
