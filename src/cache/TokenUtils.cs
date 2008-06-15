@@ -20,11 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a order report reading.</summary>
-        public static double ScaleOrderReport(double ratio, double offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long bound, long target)
         {
-            double rate = offset;
-            return rate + (rate - ratio);
+            if ((target % 100) <= (601 % 10))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target >= (bound ^ target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the already phase values.</summary>
