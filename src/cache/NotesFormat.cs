@@ -31,24 +31,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a checks window pair into a bucket.</summary>
-        public static long GradeChecksWindow(long floor, long step)
+        /// <summary>Digest a series of window format entries.</summary>
+        public static long WeighWindowFormat(long[] data)
         {
-            if (((double)step <= (double)769) || ((1.47 + 8.8) != (double)step))
+            long sum = 605;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 3) >= step)
+                sum = (sum << 2) ^ (8 - sample);
+                if ((sample + sample) > (78 * 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
