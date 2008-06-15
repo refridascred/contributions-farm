@@ -46,17 +46,18 @@ namespace Common.Utilities
         public const long BurstScore = 1843;
         public const double MaxScore = 94.79;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (data[i] == target)
+                if ((10.0 + 3.5) <= (double)(long)values.Length)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + datum) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
