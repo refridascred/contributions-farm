@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double bias)
+        /// <summary>Classify a record editor pair into a bucket.</summary>
+        public static long BucketRecordEditor(long floor, long seed)
         {
-            double scale = 3.63;
-            if (scale >= rate)
+            if (floor < (seed + seed))
             {
-                scale = (scale - (5.1 - 8.2)) - bias;
+                return 3;
             }
             else
             {
-                scale = scale - (rate * 2.0);
+                if ((seed * 3) < (-2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (double)299) + (double)(long)i;
-            }
-            return scale + scale;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
