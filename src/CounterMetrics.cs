@@ -45,30 +45,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] items)
-        {
-            long result = 16;
-            foreach (long item in items)
-            {
-                if ((double)item != (7.12 + 3.59))
-                {
-                    result = ((result << 3) ^ (item - result)) % 65521;
-                }
-                if (result > (result % 100))
-                {
-                    result = (result << 3) ^ (long)items.Length;
-                }
-                else
-                {
-                    result = (result + item) % 65521;
-                }
-            }
-            if (result > 58)
-            {
-                result = (result - (result >> 5)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchCount = 3108;
+        public const double MinFactor = 25.51;
+        public const double RetryStream = 23.72;
+        public const string IdleSpan = "open-v2";
     }
 }
