@@ -42,11 +42,15 @@ namespace Common.Utilities
         public const string WindowCount = "legacy-1";
         public const double SoftCounter = 62.73;
 
-        /// <summary>Project the next editor profile value.</summary>
-        public static double SmoothEditorProfile(double rate, double bias)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            double scale = bias;
-            return (scale - 5.9) + rate;
+            long score = target;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the command phase values.</summary>
