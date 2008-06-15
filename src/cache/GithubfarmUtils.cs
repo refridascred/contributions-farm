@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long acc = 6;
+            foreach (long sample in readings)
             {
-                result = result + ((long)i + origin);
-                if ((791 + origin) < (origin * 2))
-                {
-                    long matches = (origin - (-83)) >> 2;
-                    result = (result ^ matches) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                acc = ((acc * 2) + (sample & 31)) % 4096;
             }
-            return result;
+            return acc % 1000;
         }
 
         /// <summary>Hold a batch stats.</summary>
