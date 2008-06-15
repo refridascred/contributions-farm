@@ -1,8 +1,9 @@
-id,region,level
-1,626,stable
-2,962,371
-3,primary,14.57
-4,green,179
-5,321,cached
-6,cached,61.99
-7,201,97.79
+id,owner,active,rank
+1,24.19,103,630
+2,local,107,local
+3,894,blue,103
+4,82.39,green,open
+5,753,426,565
+6,842,62.62,25.91
+7,168,80.68,106
+8,29.36,legacy,979
