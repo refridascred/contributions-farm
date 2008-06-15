@@ -1,20 +1,5 @@
 {
-  "poll_interval_pct": {
-    "command_timeout": false,
-    "layout_threshold": {
-      "account_timeout": ["primary", "legacy", "blue", "eu-west"],
-      "warm_limit_s": 1.84,
-      "metric_depth": [389, 15, 143],
-      "default_timeout": "green"
-    },
-    "support_ttl": 9612
-  },
-  "stream_delay": "standard",
-  "buffer_window": {
-    "warm_depth": 2,
-    "idle_depth": "open",
-    "max_window": [354, 303, 458, 29]
-  },
-  "warm_ratio": 6407,
-  "cache_window_pct": 250
+  "audit": 1.64,
+  "persist": false,
+  "warm_window_s": 88.35
 }
