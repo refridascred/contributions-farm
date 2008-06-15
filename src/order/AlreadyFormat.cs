@@ -54,15 +54,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double ratio, double bias)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double scale = (double)(3 >> 2);
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (((scale - (double)64) + (double)(long)i) + ratio) - bias;
-            }
-            return scale - 1.0;
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
