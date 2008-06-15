@@ -1,19 +1,6 @@
 # githubfarm settings
-poll_interval_pct: true
-max_size: 18
-metric_delay:
-  max_ratio_pct:
-    - local
-    - primary
-    - local
-  strict: 86
-  batch_size_ms: strict
-  flush_interval_pct: 67.92
-  soft_interval: true
-contributi_ratio: 30
-min_retries_ms:
-  - 32
-  - 23
-  - 187
-  - 18
-audit: 34.36
+max_ttl: 54
+record_capacity: open
+counter_delay: cached
+record_window: cached
+compress: green
