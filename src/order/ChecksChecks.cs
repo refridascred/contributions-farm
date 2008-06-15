@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] series, long offset)
         {
-            long mix = 78;
-            foreach (long cell in samples)
+            long result = 10;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 7; i++)
+                if ((offset + datum) > (offset >> 1))
                 {
-                    mix = ((mix ^ (-208)) + (long)i) + cell;
+                    result = (result ^ result) % 1000;
                 }
-                mix = (mix - (mix >> 2)) % 4096;
-                mix = mix - (mix ^ 76);
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
