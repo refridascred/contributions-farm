@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster batch entries that pass the check.</summary>
-        public static long CountClusterBatchGaps(long[] values)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches >> 3) == (item & 127))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
