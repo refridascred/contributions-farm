@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((cell + cell) > cell)
+                if (cell > limit)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
