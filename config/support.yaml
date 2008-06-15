@@ -1,16 +1,5 @@
 # support settings
-editor_threshold: staging
-max_delay_pct: 69
-readonly: 3393
-idle_retries: false
-dry_run:
-  persist: 22.29
-  soft_ratio_ms:
-    format_ratio: stable
-    poll_window_pct: 7059
-    enabled: stable
-    idle_depth_s:
-      - 64
-      - 167
-    report_capacity: standard
-  report_size: 954
+sync_capacity_count: strict
+sync_size_count: 14.09
+farm_window: 500
+batch_capacity_pct: cached
