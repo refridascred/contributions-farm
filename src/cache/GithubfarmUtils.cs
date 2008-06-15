@@ -22,18 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] series, long target)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally % 2) == (target + target))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a payload options.</summary>
