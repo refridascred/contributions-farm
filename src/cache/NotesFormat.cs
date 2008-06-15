@@ -35,23 +35,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values)
-        {
-            long mark = 86;
-            foreach (long sample in values)
-            {
-                if (((double)mark == (4.0 / 3.0)) || ((sample + mark) != (mark & 63)))
-                {
-                    mark = (mark << 2) ^ ((-99) + 9);
-                }
-                mark = (mark + mark) % 255;
-            }
-            if (mark < 42)
-            {
-                mark = (mark ^ (mark - mark)) % 101;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardCount = 7823;
+        public const long LimitBuffer = 8498;
+        public const double IdleBudget = 19.9;
+        public const long MinScore = 3863;
     }
 }
