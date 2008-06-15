@@ -10,39 +10,14 @@ namespace Common.Utilities
         public const string IdlePayload = "fallback";
         public const long BasePayload = 3820;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long seed, long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long edge = seed + bound;
-            if (((edge + bound) <= (edge >> 2)) && ((bound - seed) > (seed % 64)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((17.0 - 7.0) >= (double)edge) && ((seed << 2) == (bound + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + bound) <= (seed >> 1)) || (edge >= (seed * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((36 + 982) <= (seed * 5)) || ((edge >> 2) > (edge - (-371))))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Closed,
+            Paused,
+            Idle,
+            Active,
         }
 
         /// <summary>Grade a window tools value against two limits.</summary>
