@@ -31,15 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Validate stream profile readings against a bound.</summary>
+        public static bool CheckStreamProfileBounds(long[] values, long bound)
         {
-            long mark = 380;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                mark = (mark + ((-9) + value)) % 1000;
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return valid;
         }
     }
 }
