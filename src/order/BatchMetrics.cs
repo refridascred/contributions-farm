@@ -12,32 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long origin, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] data, long seed)
         {
-            long prev = origin - bound;
-            if ((19.0 - 5.61) >= (double)origin)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.51 - 8.0) < (double)prev)
+                if ((double)reading > (double)52)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + prev) >= (bound + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 1) + seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a metric entry.</summary>
