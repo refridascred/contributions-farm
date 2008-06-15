@@ -1,15 +1,5 @@
 {
-  "cache_interval": 60,
-  "enabled": "latest",
-  "profile_threshold": {
-    "verbose": 65.22,
-    "schema_delay": "edge",
-    "hard_ttl_ms": ["local", "latest"],
-    "cache_capacity_s": "staging",
-    "compress": [19, 263, 182],
-    "persist": 32.9
-  },
-  "context_timeout": "strict",
-  "strict": "staging",
-  "min_limit_s": 59
+  "dry_run": 30,
+  "cluster_ratio": 4565,
+  "poll_depth": "staging"
 }
