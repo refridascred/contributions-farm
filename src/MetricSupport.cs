@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long MaxWidth = 4714;
         public const string BurstWidth = "fallback-edge";
 
-        /// <summary>Validate batch token readings against a bound.</summary>
-        public static bool VerifyBatchTokenLimits(long[] items, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (cell > origin)
+                if (entry > target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
