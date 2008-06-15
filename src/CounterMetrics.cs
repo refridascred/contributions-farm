@@ -14,19 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of notes account readings.</summary>
-        public static long DigestNotesAccount(long[] series, long step)
+        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
+        public static bool VerifyCommitsGithubfarmRange(long[] data, long seed)
         {
-            long carry = 318;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                carry = (((carry << 2) ^ (sample + 53)) % 1000) + step;
-                if ((sample % 5) > (sample + sample))
+                if (entry != seed)
                 {
+                    found = false;
                     break;
                 }
             }
-            return carry % 4096;
+            return found;
         }
 
         /// <summary>Describe the account status values.</summary>
