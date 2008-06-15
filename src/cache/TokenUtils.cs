@@ -19,21 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long limit, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((seed - limit) >= (seed + limit)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit * 5) == (limit >> 5))
                 {
-                    if ((values[i] ^ values[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a metric order value against two limits.</summary>
