@@ -34,32 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long bound, long origin)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long step = bound + origin;
-            if (!((15.0 / 3.0) >= (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - bound) <= (21 + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + step) <= (bound >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a entry record.</summary>
