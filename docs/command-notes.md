@@ -1,14 +1,12 @@
 # Command notes
 
-Run the context check before changing any command limits.
-Defaults for schema live in the config folder and can be overridden per environment.
-Run the tools check before changing any githubfarm limits.
-
-Keep farm and notes names short and lowercase.
-The batches helpers are pure functions, so they are safe to call from any thread.
+A payload that stays idle for too long is moved to the githubfarm list.
+Run the already check before changing any schema limits.
+Run the metrics check before changing any support limits.
 
 ## Guidelines
 
-- Document new contributi fields
-- Keep batch values small
-- Log every filter change
+- Prefer route defaults
+- Document new checks fields
+- Review cluster limits each release
+- Keep cache values small
