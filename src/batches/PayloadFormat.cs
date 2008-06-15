@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] samples)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum < (matches + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the command cluster series from a seed.</summary>
