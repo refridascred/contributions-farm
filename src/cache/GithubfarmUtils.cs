@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double ratio, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double gain = ratio;
-            if (gain <= (ratio + 10.0))
-            {
-                gain = (gain - ratio) + floor;
-            }
-            else
-            {
-                gain = gain + ratio;
-            }
-            return gain - gain;
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of route readings.</summary>
