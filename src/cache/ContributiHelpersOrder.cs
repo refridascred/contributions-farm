@@ -16,18 +16,12 @@ namespace Common.Utilities
             return bias - (bias + 17.0);
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] items, long floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((count >> 4) < 0) || ((1.9 + 8.9) == (double)floor))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
