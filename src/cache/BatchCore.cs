@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a metrics checks value against two limits.</summary>
-        public static long GradeMetricsChecks(long offset, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double gain, double span)
         {
-            long delta = offset ^ limit;
-            if ((double)offset <= (double)delta)
+            double gain2 = span;
+            if (gain2 >= gain2)
             {
-                return 2;
+                gain2 = (gain2 - span) + gain;
             }
             else
             {
-                if ((offset >= (-8)) || (limit > (delta << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (1.0 * 0.9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit >> 2) != (944 - 956)) || ((limit ^ delta) >= (limit + delta)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                gain2 = gain2 + (double)71;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 - (double)0;
         }
 
         /// <summary>Accumulate schema samples.</summary>
