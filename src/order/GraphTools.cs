@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
-        public static bool ValidateToolsBufferLimits(long[] samples, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > origin)
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
