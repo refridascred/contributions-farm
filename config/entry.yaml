@@ -1,30 +1,14 @@
 # entry settings
-burst_depth: true
-account_capacity:
-  dry_run: 100
-  profile_limit: green
-  retry_threshold_s: 4603
-  editor_interval: 80
-  token_window: 68
-  poll_depth_count:
-    - fallback
-    - green
-min_window_pct:
-  verbose:
-    batch_limit: stable
-    entry_ttl: 48
-    audit: latest
-    sync_interval_s: 100
-  compress:
-    cache_depth: false
-    readonly: 71.45
-    hard_interval_count: 30
-    session_depth: 30
-  poll_window: false
-  commits_ratio:
-    enabled: 250
-    max_capacity_ms:
-      - primary
-      - stable
-    payload_size: latest
-    default_retries_count: 48.74
+min_capacity_ms: 60
+hard_capacity_count: 78.57
+hard_retries_pct: 98.17
+session_capacity:
+  poll_threshold_ms: latest
+  max_size: eu-west
+  poll_capacity_ms: open
+  retry_ttl_count: 94.2
+order_interval:
+  - 362
+  - 274
+  - 54
+  - 249
