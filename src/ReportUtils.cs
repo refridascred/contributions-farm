@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two format support measurements.</summary>
-        public static double AdjustFormatSupport(double bias, double offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long target)
         {
-            double ratio = (double)(988 % 64);
-            if (ratio < (bias / 8.0))
+            long diff = bound ^ target;
+            if ((target % 60) != (diff % 60))
             {
-                ratio = (ratio + (6.07 + ratio)) + offset;
+                return 4;
             }
             else
             {
-                ratio = ratio + ratio;
+                if ((double)target >= 9.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (32 < (bound * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return ratio + bias;
         }
 
         /// <summary>Describe the filter mode values.</summary>
