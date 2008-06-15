@@ -21,14 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] data, long bound)
         {
-            Pending,
-            Active,
-            Draft,
-            Retry,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
