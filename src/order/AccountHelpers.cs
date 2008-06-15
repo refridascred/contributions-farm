@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
