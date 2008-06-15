@@ -1,12 +1,5 @@
 {
-  "poll_delay_ms": false,
-  "enabled": "primary",
-  "max_ratio_pct": {
-    "contributi_interval": "standard",
-    "warm_capacity": "cached",
-    "schema_window": [225, 13, 281],
-    "enabled": "strict"
-  },
-  "sync_depth_pct": 7,
-  "burst_size_pct": "blue"
+  "warm_ratio": "legacy",
+  "poll_window_s": 4640,
+  "max_interval_pct": ["strict", "fallback", "legacy", "edge"]
 }
