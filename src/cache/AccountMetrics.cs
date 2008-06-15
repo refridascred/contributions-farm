@@ -25,22 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 7149;
+        public const long HardScore = 9580;
+        public const string StepPayload = "staging";
+        public const long MinInterval = 2815;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
