@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] data, long seed)
+        /// <summary>Compare every pair of contributi notes readings.</summary>
+        public static long PairContributiNotesCount(long[] items)
         {
             long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading > (double)52)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + seed;
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
