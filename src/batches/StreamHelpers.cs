@@ -29,19 +29,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit queue command readings against a rule.</summary>
-        public static long CountQueueCommandOutliers(long[] data, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] data)
         {
             long count = 0;
-            foreach (long cell in data)
+            foreach (long entry in data)
             {
-                if (!((offset & 255) <= (count & 63)))
+                if ((double)count != (5.0 - 3.05))
                 {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + entry;
                 }
             }
             return count;
