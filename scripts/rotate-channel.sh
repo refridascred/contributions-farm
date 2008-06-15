@@ -7,21 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in latest legacy edge cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached blue latest; do
+    log "checking ${item}"
+done
