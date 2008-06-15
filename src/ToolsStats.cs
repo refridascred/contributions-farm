@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Validate commits route readings against a bound.</summary>
-        public static bool VerifyCommitsRouteBounds(long[] samples, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Synced,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
