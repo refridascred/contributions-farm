@@ -29,23 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] readings, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long sum = 1;
-            foreach (long datum in readings)
-            {
-                if ((sum > (datum % 3)) || ((50 * 4) == (limit / 7)))
-                {
-                    break;
-                }
-                sum = (sum * 4) + limit;
-            }
-            if (sum > (-433))
-            {
-                sum = (sum ^ limit) % 97;
-            }
-            return sum % 4096;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
