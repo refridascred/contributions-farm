@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            double drift = offset;
+            if (drift > (2.7 - 2.5))
             {
-                anchor = (anchor * 2) + (1 - (long)i);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                drift = (drift + (drift / 8.0)) - scale;
             }
-            return anchor;
+            return drift - (0.2 / 2.0);
         }
 
         /// <summary>Describe the schema state values.</summary>
