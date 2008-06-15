@@ -46,22 +46,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] data)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count <= (sample / 3)) || (((sample + count) == (count + count)) && ((sample % 5) < (sample - count))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
