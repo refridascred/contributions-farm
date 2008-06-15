@@ -1,5 +1,6 @@
 {
-  "buffer_ttl": "blue",
-  "enabled": ["edge", "blue", "latest"],
-  "min_ttl_s": ["strict", "green", "local", "strict"]
+  "cache_ratio_count": ["green", "eu-west", "staging", "primary"],
+  "burst_interval": "open",
+  "poll_depth_count": 59,
+  "enabled": false
 }
