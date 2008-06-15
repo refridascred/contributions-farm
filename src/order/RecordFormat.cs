@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const long RetrySpan = 7274;
         public const long RetryRatio = 9837;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] values, long floor)
         {
-            Synced,
-            Active,
-            New,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
