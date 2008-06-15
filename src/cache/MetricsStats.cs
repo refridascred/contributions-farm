@@ -20,18 +20,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] items, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)(long)items.Length == (double)237)
-                {
-                    count = ((count + 3) ^ cell) + target;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
