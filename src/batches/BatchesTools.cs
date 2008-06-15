@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] samples, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.6 - 11.0) != (double)hits)
+                if (readings[i] == limit)
                 {
-                    hits = ((hits + 3) ^ entry) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
