@@ -67,17 +67,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
