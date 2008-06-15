@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long anchor = 4;
-            foreach (long datum in items)
-            {
-                if ((907 <= (anchor * 2)) || ((double)anchor != (6.15 * 9.32)))
-                {
-                    anchor = ((anchor - (anchor << 1)) % 97) - datum;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (0 + anchor);
-                }
-            }
-            return anchor;
+            Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
