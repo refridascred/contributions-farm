@@ -23,21 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] series, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (((0.38 + 7.7) <= (2.4 / 6.0)) && ((double)floor == (8.5 / 2.0)))
+                if ((tally % 2) == (target + target))
                 {
-                    acc = ((acc << 2) ^ ((long)i >> 2)) % 65521;
-                    acc = (acc - acc) % 101;
-                    break;
+                    tally = (tally + 2) ^ datum;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
