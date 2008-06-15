@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
