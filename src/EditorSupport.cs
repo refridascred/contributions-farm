@@ -63,16 +63,18 @@ namespace Common.Utilities
         public const long RetryRecord = 3668;
         public const long HardBudget = 3983;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor << 2) ^ (floor ^ (long)i)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((609 - datum) >= tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
