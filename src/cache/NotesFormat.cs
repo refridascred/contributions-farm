@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheInterval = 7184;
+        public const double LimitSize = 14.55;
+        public const string HardSize = "alpha";
+        public const long StepEditor = 5767;
+        public const long MaxScore = 6779;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values)
