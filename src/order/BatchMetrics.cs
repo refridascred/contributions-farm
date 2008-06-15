@@ -34,13 +34,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] items, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long total = 430;
+            foreach (long reading in items)
+            {
+                if (!((double)offset != (16.0 + 6.64)))
+                {
+                    total = (total * 5) + (offset * 4);
+                }
+                if ((7.38 + 18.0) > (double)reading)
+                {
+                    total = ((total << 3) ^ (3 - (-1))) % 255;
+                }
+            }
+            if (total > 1)
+            {
+                total = (total << 2) ^ (offset - 62);
+            }
+            return total;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
