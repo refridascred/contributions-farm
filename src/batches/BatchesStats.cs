@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long bound)
         {
-            long mark = 75;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long item in items)
             {
-                mark = (mark * 4) + datum;
+                if (item >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mark > 39)
-            {
-                mark = ((mark << 2) ^ mark) % 65521;
-            }
-            return mark % 65521;
+            return found;
         }
 
         /// <summary>Hold a order entry.</summary>
