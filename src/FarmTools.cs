@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next editor commits value.</summary>
-        public static double AdjustEditorCommits(double bias, double bias2)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] series, long origin)
         {
-            double weight = (double)(76 - 402);
-            return (weight + bias2) + bias;
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank tools entry input into a small class.</summary>
