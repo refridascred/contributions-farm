@@ -21,22 +21,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] data)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((6.1 / 6.0) >= (double)tally)
+                if (datum < step)
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
