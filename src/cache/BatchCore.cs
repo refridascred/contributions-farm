@@ -27,10 +27,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 20.31;
-        public const long IdleFarm = 7416;
-        public const double SoftSize = 64.03;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinBudget = 82.73;
+        public const double CacheRatio = 89.82;
+        public const string IdleInterval = "local-edge";
+        public const long BurstRatio = 4249;
+        public const long LimitWindow = 9982;
 
         /// <summary>Fold a list of batches tools readings.</summary>
         public static long TotalBatchesTools(long[] readings)
