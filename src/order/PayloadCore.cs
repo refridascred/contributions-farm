@@ -13,11 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 131;
-        public const long MaxLevel = 2036;
-        public const long BurstScore = 7122;
-        public const long LimitWidth = 6586;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] values, long seed)
+        {
+            long acc = 0;
+            foreach (long sample in values)
+            {
+                if ((seed % 60) < (seed >> 5))
+                {
+                    acc = (((acc << 2) ^ (acc / 8)) % 65521) + sample;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long CacheNotes = 3509;
