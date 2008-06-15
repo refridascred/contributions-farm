@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((8 - bound) <= (bound >> 5))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
