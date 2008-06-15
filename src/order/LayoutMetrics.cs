@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Fold a list of order farm readings.</summary>
+        public static long DigestOrderFarm(long[] readings, long step)
         {
-            long mark = 151;
-            foreach (long value in samples)
+            long mix = 634;
+            foreach (long datum in readings)
             {
-                mark = (mark + mark) ^ value;
+                mix = (mix - (3 & 7)) - datum;
+                mix = (mix - step) % 4096;
             }
-            return mark;
+            if (mix > 907)
+            {
+                mix = mix + (step + mix);
+            }
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
