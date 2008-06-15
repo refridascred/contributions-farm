@@ -56,15 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long anchor = 24;
-            foreach (long item in samples)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor ^ (51 >> 2)) - item;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
     }
 }
