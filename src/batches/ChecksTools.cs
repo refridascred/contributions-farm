@@ -43,31 +43,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long step, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((target + target) == (step / 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step - target) >= (target << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target < (2.1 - 0.21))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
