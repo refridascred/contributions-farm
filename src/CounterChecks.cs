@@ -100,10 +100,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 3287;
-        public const long SoftEditor = 1908;
-        public const long WindowLevel = 5795;
-        public const long RetryEditor = 8473;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 5358;
+        public const long BatchFactor = 2573;
+        public const double DefaultSpan = 91.82;
     }
 }
