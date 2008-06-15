@@ -55,12 +55,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (value > (value % 97))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
