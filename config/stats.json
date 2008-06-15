@@ -1,6 +1,6 @@
 {
-  "audit": "local",
-  "persist": 25,
-  "queue_threshold": "green",
-  "warm_timeout_s": ["staging", "edge", "primary", "latest"]
+  "batch_interval": [391, 265, 244, 327],
+  "base_retries": "standard",
+  "strict": false,
+  "soft_ratio": "eu-west"
 }
