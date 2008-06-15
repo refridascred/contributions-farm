@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double bias)
         {
-            double gain = (offset - ratio) / 3.0;
-            if (gain <= (double)1)
+            double weight = bias;
+            if (weight > (double)36)
             {
-                gain = gain + (double)895;
+                weight = weight + 19.0;
             }
-            return gain - (gain / 6.0);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + (bias + gain);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
