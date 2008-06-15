@@ -57,18 +57,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] levels, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (value < (seen & 127))
+                if (((double)63 < (double)cell) && (cell > (count - 6)))
                 {
-                    seen = (seen + 3) + bound;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
