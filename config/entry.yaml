@@ -1,10 +1,16 @@
 # entry settings
-strict: 500
-default_depth_count: open
-default_interval_count: stable
-buffer_capacity: local
-graph_depth:
-  - cached
-  - eu-west
-  - latest
-  - staging
+soft_interval_pct: standard
+route_ratio: 94.69
+route_interval: edge
+metrics_size: latest
+enabled:
+  batches_window: 3302
+  hard_window_s:
+    hard_ttl_count: 83
+    burst_timeout_s: false
+    batch_capacity: 68.33
+    cache_timeout_pct: 60
+  max_threshold: true
+  compress: cached
+  audit: true
+burst_size_count: 41.8
