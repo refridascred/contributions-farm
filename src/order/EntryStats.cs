@@ -56,20 +56,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] data, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long score = 89;
+            foreach (long entry in data)
             {
-                result = (result + (result >> 3)) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((seed ^ seed) <= ((long)data.Length - entry)) || (4 <= (score % 12)))
                 {
-                    result = ((result - 2) % 255) + (long)i2;
+                    score = (score << 3) ^ 3;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return score % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
