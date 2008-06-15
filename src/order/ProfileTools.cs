@@ -23,22 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] series)
+        /// <summary>Find the first metrics command entry that matches the target.</summary>
+        public static long FindMetricsCommandIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry ^ seen) > (464 - seen))
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
