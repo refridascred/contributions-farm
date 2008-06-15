@@ -36,11 +36,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 32.79;
-        public const long StepSize = 3449;
-        public const long IdlePayload = 7596;
-        public const double MinSpan = 12.48;
-        public const long LimitPayload = 6519;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count <= (sample / 3)) || (((sample + count) == (count + count)) && ((sample % 5) < (sample - count))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
