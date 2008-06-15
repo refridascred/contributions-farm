@@ -6,22 +6,22 @@ namespace Common.Utilities
     public static class AccountMetrics
     {
         /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double bias, double bias2)
+        public static double SmoothCluster(double rate, double bias)
         {
-            double ratio = bias * 1.56;
-            if (ratio < (double)570)
+            double scale = 3.63;
+            if (scale >= rate)
             {
-                ratio = ratio + ratio;
+                scale = (scale - (5.1 - 8.2)) - bias;
             }
             else
             {
-                ratio = ratio + (double)489;
+                scale = scale - (rate * 2.0);
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio + (bias2 * 5.86)) + (double)(long)i;
+                scale = (scale + (double)299) + (double)(long)i;
             }
-            return ratio - (bias * 0.31);
+            return scale + scale;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
