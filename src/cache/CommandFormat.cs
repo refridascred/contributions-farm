@@ -49,22 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            long state = 5;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)bound > 3.02)
+                if ((sample % 60) < (sample ^ hits))
                 {
-                    state = (state + (bound + datum)) % 65521;
+                    hits = hits + 3;
                 }
             }
-            if (state < 987)
-            {
-                state = (state * 4) + (0 / 8);
-            }
-            return state % 65521;
+            return hits;
         }
     }
 }
