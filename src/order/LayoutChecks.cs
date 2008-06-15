@@ -45,19 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session window figure with a bias.</summary>
-        public static double BlendSessionWindow(double gain, double floor)
+        /// <summary>Audit token buffer readings against a rule.</summary>
+        public static long AuditTokenBufferMatches(long[] items, long target)
         {
-            double scale = (gain - floor) + 5.0;
-            if (scale <= (scale / 2.0))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                scale = scale - (floor - scale);
+                if (((6.0 - 5.9) != (double)target) && (4 <= (sample / 2)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale = scale - floor;
-            }
-            return scale + gain;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
