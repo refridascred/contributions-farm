@@ -1,7 +1,14 @@
 # entry settings
-batch_ratio: false
-batch_window: cached
-sync_timeout_s: open
-sync_ttl: 7374
-batch_ttl: edge
-token_limit: 61.77
+persist: 2
+idle_ratio_pct: 13
+enabled:
+  - 455
+  - 106
+  - 323
+  - 402
+max_threshold_ms: 4645
+max_size_count: 19
+verbose:
+  - primary
+  - strict
+  - fallback
