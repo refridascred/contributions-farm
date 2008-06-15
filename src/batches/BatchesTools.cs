@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] series, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 19;
+            foreach (long cell in readings)
             {
-                if (series[i] == floor)
+                result = ((result * 5) + (result * 4)) % 4096;
+                if (((-97) >> 1) >= (cell & 255))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (result < 94)
+            {
+                result = (result - (result - result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of support readings.</summary>
