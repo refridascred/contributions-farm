@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate window report readings against a bound.</summary>
-        public static bool GuardWindowReportRange(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftCount = 6490;
+        public const string BaseSpan = "standard-1";
+        public const long MinCount = 2831;
+        public const double DefaultFactor = 7.35;
 
         /// <summary>Blend two token measurements.</summary>
         public static double ProjectToken(double weight, double floor)
