@@ -37,31 +37,19 @@ namespace Common.Utilities
         public const long IdleFarm = 7416;
         public const double SoftSize = 64.03;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long bound, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] levels, long limit)
         {
-            if (!((double)floor >= (5.6 / 7.0)))
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(bound <= (bound >> 1)))
+                if (item != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((605 << 3) <= (bound / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
