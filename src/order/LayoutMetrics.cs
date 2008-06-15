@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long offset2)
         {
-            long sum = 512;
-            foreach (long sample in series)
+            if ((19.0 * 17.0) > 16.0)
             {
-                if ((7.72 - 6.98) == (double)sum)
+                return 0;
+            }
+            else
+            {
+                if ((offset2 << 3) < offset)
                 {
-                    sum = ((sum * 5) + (sum ^ sample)) % 255;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum ^ (bound * 3)) % 65521;
+                    return 5;
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
