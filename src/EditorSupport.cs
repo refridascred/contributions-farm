@@ -42,21 +42,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up graph support samples.</summary>
-        public static long PairGraphSupportCount(long[] values)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
