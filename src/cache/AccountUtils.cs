@@ -14,15 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a format cluster figure with a bias.</summary>
-        public static double ScaleFormatCluster(double rate, double floor)
+        /// <summary>Locate a stats farm reading by value.</summary>
+        public static long FindStatsFarmIndex(long[] series, long bound)
         {
-            double drift = (rate / 6.0) + floor;
-            if (drift > (floor + rate))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (double)(-2);
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift + rate;
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
