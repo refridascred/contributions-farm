@@ -32,12 +32,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardWidth = 75.17;
-        public const long MinBuffer = 8868;
-        public const long StepInterval = 4842;
-        public const string BaseWidth = "stable";
-        public const long RetryBuffer = 2039;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long step, long origin)
+        {
+            long diff = step + origin;
+            if (((step + origin) < (diff << 2)) && ((double)origin > (20.0 + 15.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin > (6.0 * 10.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)diff > (4.4 * 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)origin > (double)193) || (644 < step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long floor)
