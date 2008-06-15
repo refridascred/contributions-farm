@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Check that every layout record entry stays within the limit.</summary>
+        public static bool CheckLayoutRecordRange(long[] readings, long seed)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two token measurements.</summary>
