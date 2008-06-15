@@ -19,26 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data, long offset)
+        /// <summary>Audit layout support readings against a rule.</summary>
+        public static long AuditLayoutSupportMatches(long[] readings, long offset)
         {
-            long carry = 29;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)offset > 2.0)
+                if ((seen % 12) <= (2 + seen))
                 {
-                    carry = ((carry * 2) + sample) % 97;
-                }
-                if (((sample >> 1) <= (sample + sample)) && ((carry + sample) < (carry >> 2)))
-                {
-                    break;
+                    seen = ((seen + 3) - reading) - offset;
                 }
             }
-            if (carry < 608)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
