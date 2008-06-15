@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Locked,
-            Draft,
-            Retry,
-            New,
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
