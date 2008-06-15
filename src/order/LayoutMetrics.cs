@@ -38,15 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepRatio = 7580;
+        public const double BaseEntry = 74.79;
+        public const double BatchScore = 20.61;
+        public const string IdleEntry = "stable";
+        public const long BatchEntry = 1376;
     }
 }
