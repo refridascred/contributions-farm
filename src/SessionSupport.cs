@@ -37,39 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long offset, long step)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long edge = offset - step;
-            if (((double)edge >= 5.8) || ((offset << 2) < offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((43 & 255) < edge)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset - offset) < (edge + offset)) && ((offset + step) < (edge * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step ^ step) <= (edge >> 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Paused,
+            Done,
+            New,
         }
     }
 }
