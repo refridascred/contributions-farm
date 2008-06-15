@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] data, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long sum = 0;
-            foreach (long sample in data)
-            {
-                if (!((floor * 5) <= (sum + sum)))
-                {
-                    sum = (((sum * 3) + (floor / 3)) % 97) ^ sample;
-                }
-            }
-            return sum % 65521;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
