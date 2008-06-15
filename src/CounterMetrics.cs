@@ -43,13 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Queued,
-            Stale,
-            Done,
-            New,
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
