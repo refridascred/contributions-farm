@@ -67,15 +67,32 @@ namespace Common.Utilities
         public const double BasePayload = 18.08;
         public const double BaseCount = 54.11;
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long seed)
         {
-            double mean = 3.0;
-            if (mean < (gain * 9.73))
+            long step = target - seed;
+            if ((step > (step / 6)) || (18 > (seed * 4)))
             {
-                mean = (mean + (double)(-16)) - span;
+                return 3;
             }
-            return mean - (mean * 0.05);
+            else
+            {
+                if ((seed % 10) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((848 + seed) <= (target ^ seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
