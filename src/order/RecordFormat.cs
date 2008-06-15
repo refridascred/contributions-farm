@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long RetrySpan = 7274;
         public const long RetryRatio = 9837;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] series, long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Rank session input into a small class.</summary>
