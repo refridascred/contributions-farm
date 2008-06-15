@@ -36,14 +36,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] values, long origin)
         {
-            Ready,
-            Paused,
-            Done,
-            Synced,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the layout class values.</summary>
