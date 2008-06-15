@@ -69,17 +69,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] series, long step)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = rate;
+            if (gain > offset)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                gain = gain + (rate * 3.29);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain - (double)82;
         }
     }
 }
