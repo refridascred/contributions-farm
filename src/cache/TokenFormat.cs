@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the batch metric entries that pass the check.</summary>
-        public static long MeasureBatchMetricHits(long[] readings)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((5.1 + 1.3) >= (double)cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
