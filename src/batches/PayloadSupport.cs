@@ -27,34 +27,35 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank contributi record input into a small class.</summary>
-        public static long ClassifyContributiRecord(long offset, long limit)
+        /// <summary>Grade a cluster report value against two limits.</summary>
+        public static long ClassifyClusterReport(long origin, long origin2)
         {
-            if ((double)offset <= (double)limit)
+            long bound = origin ^ origin2;
+            if ((origin2 - origin2) == (bound << 1))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((offset + 4) == (limit % 60))
+                if (!((origin2 / 2) <= bound))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((offset - offset) <= (limit - offset))
+                    if ((origin2 - 66) > (bound & 31))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((limit >> 4) != (offset + offset))
+                        if ((10 + origin2) >= bound)
                         {
-                            return 2;
+                            return 5;
                         }
                         else
                         {
-                            return 1;
+                            return 2;
                         }
                     }
                 }
