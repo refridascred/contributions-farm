@@ -47,18 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric already samples are out of range.</summary>
-        public static long TallyMetricAlreadyHits(long[] levels, long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.9 / 8.0) >= (double)floor)
+                if (data[i] <= target)
                 {
-                    hits = (hits + 3) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
