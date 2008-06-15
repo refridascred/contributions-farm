@@ -26,14 +26,28 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 7159;
         public const long BatchLevel = 3764;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long bound)
         {
-            Stale,
-            Locked,
-            Active,
-            Synced,
-            Closed,
+            long carry = 959;
+            foreach (long reading in levels)
+            {
+                carry = (carry - (carry ^ carry)) % 4096;
+                if ((11.0 + 10.0) == (double)reading)
+                {
+                    continue;
+                }
+                carry = (carry ^ (537 << 3)) % 4096;
+                if ((bound + carry) >= reading)
+                {
+                    break;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = (carry + (0 + 232)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
