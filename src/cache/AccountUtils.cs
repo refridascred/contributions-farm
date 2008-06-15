@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stats farm reading by value.</summary>
-        public static long FindStatsFarmIndex(long[] series, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] == bound)
+                if (data[i] < bound)
                 {
                     return (long)i;
                 }
