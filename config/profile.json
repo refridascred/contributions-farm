@@ -1,5 +1,12 @@
 {
-  "dry_run": 30,
-  "cluster_ratio": 4565,
-  "poll_depth": "staging"
+  "counter_capacity": {
+    "persist": 8,
+    "channel_ttl": "stable",
+    "burst_ratio_count": "staging",
+    "contributi_limit": 30
+  },
+  "context_timeout": ["blue", "blue", "eu-west", "staging"],
+  "editor_depth": false,
+  "batch_capacity": true,
+  "warm_threshold_count": 42.64
 }
