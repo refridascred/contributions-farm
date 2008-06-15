@@ -23,21 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings, long target)
+        /// <summary>Rank contributi record input into a small class.</summary>
+        public static long ClassifyContributiRecord(long offset, long limit)
         {
-            long mark = -880;
-            foreach (long sample in readings)
+            if ((double)offset <= (double)limit)
             {
-                mark = (mark + (target & 3)) ^ sample;
-                mark = (mark ^ ((long)readings.Length + mark)) % 97;
-                mark = (mark << 2) ^ target;
+                return 6;
             }
-            if (mark < 542)
+            else
             {
-                mark = ((mark << 2) ^ target) % 97;
+                if ((offset + 4) == (limit % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - offset) <= (limit - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit >> 4) != (offset + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Combine schema queue values into a single score.</summary>
