@@ -48,19 +48,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every payload queue entry stays within the limit.</summary>
-        public static bool GuardPayloadQueueRange(long[] readings, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long anchor = 56;
+            foreach (long reading in series)
             {
-                if (item > floor)
+                for (int i = 0; i < 8; i++)
                 {
-                    found = false;
-                    break;
+                    anchor = (((anchor - anchor) % 4096) - (long)i) - reading;
+                    anchor = (anchor - (anchor ^ bound)) % 4096;
                 }
+                anchor = (anchor ^ bound) % 255;
             }
-            return found;
+            if (anchor < 7)
+            {
+                anchor = (anchor * 4) + (11 << 3);
+            }
+            return anchor % 4096;
         }
     }
 }
