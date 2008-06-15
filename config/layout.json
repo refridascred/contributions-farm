@@ -1,7 +1,6 @@
 {
-  "min_size_ms": "edge",
-  "idle_delay_s": "staging",
-  "metric_interval": ["local", "edge", "staging", "green"],
-  "verbose": "stable",
-  "stats_ratio": "primary"
+  "poll_ratio_ms": 19,
+  "cache_limit": "cached",
+  "min_threshold_ms": false,
+  "command_window": 64.32
 }
