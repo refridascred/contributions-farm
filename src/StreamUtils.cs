@@ -80,13 +80,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the buffer order entries that pass the check.</summary>
+        public static long TallyBufferOrderOutliers(long[] data, long origin)
         {
-            Draft,
-            Done,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (tally >= origin)
+                {
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
