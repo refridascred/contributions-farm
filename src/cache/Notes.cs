@@ -53,15 +53,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support layout figure with a bias.</summary>
-        public static double AdjustSupportLayout(double gain, double span)
+        /// <summary>Grade a queue batches value against two limits.</summary>
+        public static long ClassifyQueueBatches(long origin, long seed)
         {
-            double gain2 = (double)(80 - 4);
-            if (gain2 > (span + 1.25))
+            if (!((seed ^ origin) < origin))
             {
-                gain2 = gain2 + gain;
+                return 8;
             }
-            return gain2 - (span + 2.0);
+            else
+            {
+                if (!(1.3 <= (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
