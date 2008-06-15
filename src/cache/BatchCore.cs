@@ -54,20 +54,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 20.31;
+        public const long IdleFarm = 7416;
+        public const double SoftSize = 64.03;
 
         /// <summary>Match up commits githubfarm samples.</summary>
         public static long PairCommitsGithubfarmCount(long[] values)
