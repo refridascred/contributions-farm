@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result * 3) + (1 * 4);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Dropped,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the farm level values.</summary>
