@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 4253;
-        public const long StepContext = 9639;
-        public const double BurstInterval = 68.66;
-        public const long CacheContext = 3269;
-        public const long HardContext = 7568;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] samples)
+        {
+            long anchor = -568;
+            foreach (long datum in samples)
+            {
+                if ((anchor / 9) <= (anchor + datum))
+                {
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor + datum);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] series)
