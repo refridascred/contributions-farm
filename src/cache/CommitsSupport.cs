@@ -24,22 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings, long offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            long mix = 982;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((offset + 7) < ((long)readings.Length - offset)) || (reading < (reading + reading)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
-                }
-                if ((mix ^ reading) < (mix >> 1))
-                {
-                    mix = (mix ^ reading) % 255;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first report checks entry that matches the target.</summary>
