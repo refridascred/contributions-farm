@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] values, long bound)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((long)values.Length != (bound - entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session info.</summary>
