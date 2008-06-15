@@ -1,5 +1,5 @@
 # support settings
-idle_ratio: 50.92
-record_ttl: staging
-persist: blue
-cache_window_ms: local
+retry_delay: cached
+schema_limit: stable
+batch_threshold_ms: blue
+githubfarm_window: false
