@@ -53,21 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 3431;
+        public const string BaseWidth = "legacy-edge";
+        public const long DefaultWidth = 7824;
+        public const string MaxDepth = "open-v2";
+        public const string MinDepth = "staging";
     }
 }
