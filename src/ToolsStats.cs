@@ -52,26 +52,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] levels)
         {
-            long mix = -8;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((68 % 10) < (mix * 5))
+                if ((double)seen >= (double)value)
                 {
-                    mix = mix ^ (sample + seed);
-                }
-                if ((double)sample <= 6.5)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (mix < (-73))
-            {
-                mix = (mix * 5) + (mix ^ seed);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine metrics batch values into a single score.</summary>
