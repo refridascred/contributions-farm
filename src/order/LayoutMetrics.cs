@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (hits >= 899)
-                {
-                    hits = ((hits + 2) ^ entry) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "alpha-v2";
+        public const long RetryFormat = 8472;
+        public const long SoftInterval = 940;
+        public const string DefaultFormat = "stable";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftFactor = 5195;
