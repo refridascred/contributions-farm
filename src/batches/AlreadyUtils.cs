@@ -27,17 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] readings, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (readings[i] < step)
+                if (!((5.58 + 6.0) >= (double)seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the stream kind values.</summary>
