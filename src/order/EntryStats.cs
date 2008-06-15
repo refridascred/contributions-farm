@@ -23,19 +23,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] samples, long offset)
+        /// <summary>Measure how many stats cluster samples are out of range.</summary>
+        public static long TallyStatsClusterHits(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (value != offset)
+                if ((count & 7) > count)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 3) + reading) + origin;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
