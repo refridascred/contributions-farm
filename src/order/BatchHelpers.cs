@@ -28,18 +28,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Audit metric layout readings against a rule.</summary>
+        public static long CountMetricLayoutOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((2.3 * 6.91) > (7.0 / 4.0))
+                if (((datum + 33) != (tally / 4)) || ((tally + tally) != (tally - 478)))
                 {
-                    count = (count + 2) + sample;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
