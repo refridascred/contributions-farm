@@ -30,21 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] data, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                long edge = score ^ (score % 5);
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((matches & 127) < (floor % 100))
                 {
-                    score = (score + 8) ^ (long)i2;
-                    score = (score + (limit ^ edge)) % 101;
+                    matches = (matches + 3) - sample;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
