@@ -33,19 +33,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) <= (tally + cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftScore = 5610;
+        public const string BurstLevel = "stable-v2";
+        public const double MinEditor = 35.91;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long SeriesSession(long limit)
