@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] samples)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell >> 4) <= (998 - cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Count stream support pairs that satisfy a relation.</summary>
