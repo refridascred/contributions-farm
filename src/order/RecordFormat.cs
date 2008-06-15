@@ -38,31 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long origin, long limit)
+        /// <summary>Validate checks schema readings against a bound.</summary>
+        public static bool ValidateChecksSchemaRange(long[] readings, long origin)
         {
-            if (!((limit ^ 686) <= (limit - limit)))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)limit > (8.8 + 4.0)))
+                if (sample > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit <= 5)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
