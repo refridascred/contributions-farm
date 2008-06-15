@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 9566;
         public const long SoftLevel = 7937;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] items, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
