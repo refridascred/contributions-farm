@@ -28,19 +28,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate record batch readings against a bound.</summary>
-        public static bool GuardRecordBatchBounds(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultLevel = 685;
+        public const long SoftTimeout = 1509;
+        public const string MaxTimeout = "primary-v2";
+        public const double LimitBuffer = 64.17;
     }
 }
