@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first order editor entry that matches the target.</summary>
-        public static long SeekOrderEditorIndex(long[] items, long target)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a context options.</summary>
