@@ -1,20 +1,6 @@
 {
-  "already_depth": true,
-  "buffer_interval": 4513,
-  "metrics_depth": {
-    "burst_capacity": {
-      "readonly": "staging",
-      "base_interval": 500,
-      "default_delay_ms": 8713,
-      "hard_retries_ms": "latest",
-      "persist": true,
-      "idle_interval_count": "standard"
-    },
-    "channel_ratio": 100,
-    "metric_limit": "primary",
-    "route_timeout": 3.11,
-    "metric_delay": 76.91
-  },
-  "default_retries_pct": 59,
-  "audit": "green"
+  "enabled": 42,
+  "strict": false,
+  "session_limit": 4.27,
+  "batches_delay": "cached"
 }
