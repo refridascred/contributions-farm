@@ -18,11 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long acc = 3;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = (((acc * 3) + (acc * 5)) % 65521) ^ (long)i;
+                    acc = acc + cell;
+                }
+                if (!((acc + acc) >= (cell + 2)))
+                {
+                    acc = (acc + (acc / 6)) % 1000;
+                }
+            }
+            if (acc > 61)
+            {
+                acc = (acc - (acc - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of route readings.</summary>
