@@ -19,28 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine commits tools values into a single score.</summary>
-        public static long TotalCommitsTools(long[] samples, long floor)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            long acc = 94;
-            foreach (long item in samples)
+            double bias = (double)(3 + 0);
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc << 3) ^ (84 << 2);
-                if (!(((floor << 2) < 9) && (49 <= (item ^ 8))))
-                {
-                    acc = (acc - (acc << 3)) % 101;
-                    acc = ((acc << 2) ^ 648) % 101;
-                }
-                if ((acc % 10) <= 860)
-                {
-                    acc = ((acc * 3) + (item % 100)) % 255;
-                }
+                bias = (((bias + 0.5) + (double)(long)i) - ratio) - span;
             }
-            if (acc > (-628))
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc % 1000;
+            return bias - (9.7 / 8.0);
         }
 
         /// <summary>Blend two batch commits measurements.</summary>
