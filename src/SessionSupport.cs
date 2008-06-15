@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Find the first order editor entry that matches the target.</summary>
+        public static long SeekOrderEditorIndex(long[] items, long target)
         {
-            long anchor = 6;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= (sample + sample))
+                if (items[i] < target)
                 {
-                    anchor = anchor + (sample * 4);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (sample << 1)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
