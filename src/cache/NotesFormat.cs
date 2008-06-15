@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > origin)
+                if (values[i] == step)
                 {
                     return (long)i;
                 }
