@@ -55,18 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] samples, long target)
+        /// <summary>Measure how many schema context samples are out of range.</summary>
+        public static long MeasureSchemaContextOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((target <= (seen >> 1)) && !((double)(long)samples.Length < (7.4 * 9.8)))
+                if ((sample <= (86 - tally)) || ((0 & 63) <= (sample * 5)))
                 {
-                    seen = (seen + 3) + item;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Scale a payload channel figure with a bias.</summary>
