@@ -13,11 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 9097;
-        public const long StepWidth = 4304;
-        public const double LimitScore = 22.05;
-        public const string SoftCommits = "alpha-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 418;
+        public const double BaseBatches = 84.28;
+        public const long StepBatches = 9563;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
