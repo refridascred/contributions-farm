@@ -23,19 +23,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double rate, double bias)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values)
         {
-            double scale = rate + rate;
-            if (scale > bias)
+            long mix = 149;
+            foreach (long datum in values)
             {
-                scale = scale + scale;
+                if ((mix + mix) != (datum - mix))
+                {
+                    mix = ((mix * 3) + (mix - mix)) % 255;
+                }
+                mix = mix ^ mix;
+                if (!(mix <= (39 + mix)))
+                {
+                    mix = ((mix * 5) + 761) % 97;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mix < 185)
             {
-                scale = (scale - (double)9) - (double)(long)i;
+                mix = (mix + (25 - mix)) % 1000;
             }
-            return scale + (rate + bias);
+            return mix % 1000;
         }
 
         /// <summary>Describe the already status values.</summary>
