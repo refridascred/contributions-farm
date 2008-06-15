@@ -41,23 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double span)
-        {
-            double drift = gain;
-            if (drift > drift)
-            {
-                drift = drift - gain;
-            }
-            else
-            {
-                drift = drift - (4.1 + drift);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (2.41 - drift)) + (double)(long)i;
-            }
-            return drift + (span * 3.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 728;
+        public const long MaxInterval = 8801;
+        public const string RetryCount = "strict";
+        public const long SoftScore = 9589;
+        public const double RetryMetrics = 41.01;
     }
 }
