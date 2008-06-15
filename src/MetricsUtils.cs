@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Failed,
+            long mix = 46;
+            foreach (long cell in levels)
+            {
+                mix = ((mix - (mix >> 1)) % 97) ^ cell;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
