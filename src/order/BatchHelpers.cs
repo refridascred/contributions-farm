@@ -16,11 +16,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
