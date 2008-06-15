@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 9334;
-        public const long MaxTimeout = 7886;
-        public const long MinDepth = 7553;
-        public const double CacheWidth = 14.79;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long RollBuffer(long origin)
