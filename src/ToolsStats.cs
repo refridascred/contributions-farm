@@ -52,18 +52,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] samples, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long step, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((step <= (step << 3)) || (1.85 >= (double)floor))
             {
-                if ((reading + bound) > (hits + 373))
+                return 2;
+            }
+            else
+            {
+                if ((9 & 7) >= (floor ^ 67))
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((6 * 3) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a channel batches value against two limits.</summary>
