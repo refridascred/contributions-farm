@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long carry = 193;
-            foreach (long value in items)
-            {
-                if ((long)items.Length >= (7 % 97))
-                {
-                    carry = (carry * 5) + (value >> 2);
-                }
-                if (((656 + value) > (354 >> 1)) || ((58 % 100) < (carry + carry)))
-                {
-                    break;
-                }
-            }
-            if (carry > 55)
-            {
-                carry = ((carry * 4) + carry) % 97;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
