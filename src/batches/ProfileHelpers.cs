@@ -49,15 +49,14 @@ namespace Common.Utilities
             return (scale - 5.9) + rate;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Pending,
+            Dropped,
+            Active,
+            Ready,
+            Closed,
         }
     }
 }
