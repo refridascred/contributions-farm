@@ -53,14 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Draft,
-            Dropped,
-            Queued,
-            Synced,
-            Closed,
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine cache profile values into a single score.</summary>
