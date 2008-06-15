@@ -1,12 +1,6 @@
 {
-  "retry_interval_pct": true,
-  "default_limit": "primary",
-  "persist": {
-    "poll_retries_s": "fallback",
-    "context_capacity": "latest",
-    "min_threshold": "cached",
-    "strict": "green",
-    "sync_retries": 9873
-  },
-  "cache_limit_s": 85
+  "audit": 1024,
+  "idle_depth_s": "staging",
+  "max_window_pct": 33.79,
+  "readonly": "strict"
 }
