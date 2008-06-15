@@ -1,7 +1,4 @@
 # githubfarm settings
-default_capacity_count:
-  base_threshold_pct: 86.72
-  channel_threshold: 87.7
-  sync_delay_ms: 1024
-compress: stable
-batch_depth_count: 12
+strict: 8649
+githubfarm_delay: 65.13
+burst_delay: 5
