@@ -1,4 +1,5 @@
 # githubfarm settings
-strict: 8649
-githubfarm_delay: 65.13
-burst_delay: 5
+max_delay_pct: eu-west
+soft_timeout_s: fallback
+poll_size_pct: 30
+soft_timeout_ms: false
