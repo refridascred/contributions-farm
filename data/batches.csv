@@ -1,9 +1,7 @@
-id,owner,active,rank
-1,24.19,103,630
-2,local,107,local
-3,894,blue,103
-4,82.39,green,open
-5,753,426,565
-6,842,62.62,25.91
-7,168,80.68,106
-8,29.36,legacy,979
+id,owner,level,active
+1,208,strict,77.68
+2,682,96.45,blue
+3,68.09,72.03,green
+4,929,local,strict
+5,61,629,primary
+6,open,55.64,27.08
