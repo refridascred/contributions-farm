@@ -1,22 +1,13 @@
 {
-  "strict": {
-    "min_delay_s": 699,
-    "graph_limit": {
-      "warm_ttl": "strict",
-      "audit": "edge",
-      "stream_size": 68.64,
-      "tools_capacity": "green"
-    },
-    "cache_ttl": 250,
-    "enabled": "staging",
-    "audit": 75.86
-  },
-  "audit": {
-    "verbose": 1973,
-    "githubfarm_ttl": [417, 307, 36],
-    "hard_limit_s": false
-  },
-  "notes_size": 37.76,
-  "order_threshold": 60,
-  "warm_threshold": "eu-west"
+  "channel_interval": false,
+  "context_capacity": "cached",
+  "metrics_retries": "open",
+  "batch_timeout": {
+    "persist": [254, 466, 424],
+    "metric_interval": "green",
+    "strict": "legacy",
+    "soft_depth_count": 30,
+    "cache_ratio": true,
+    "min_depth": "strict"
+  }
 }
