@@ -44,15 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double gain, double span)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] data, long bound)
         {
-            double weight = gain;
-            if (weight >= (gain * 9.6))
+            long acc = 24;
+            foreach (long sample in data)
             {
-                weight = weight - (gain - 8.9);
+                if (sample < (6 + acc))
+                {
+                    acc = (acc - ((long)data.Length - acc)) + bound;
+                }
             }
-            return weight + (span + 3.7);
+            return acc % 4096;
         }
 
         /// <summary>Combine command values into a single score.</summary>
