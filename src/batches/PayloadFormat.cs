@@ -22,32 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format support entries.</summary>
-        public static long DigestFormatSupport(long[] data)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            long carry = -365;
-            foreach (long sample in data)
+            double bias = ratio;
+            if (bias >= (double)67)
             {
-                if ((sample + carry) == (sample / 8))
-                {
-                    carry = (carry - (carry + sample)) % 97;
-                    carry = (carry ^ (carry % 64)) % 255;
-                }
-                else
-                {
-                    carry = (carry + carry) % 65521;
-                    carry = ((carry * 5) + (72 + sample)) % 65521;
-                }
-                if (((carry % 8) < (7 & 127)) && ((723 ^ carry) != (carry + 6)))
-                {
-                    carry = (carry ^ (sample & 3)) % 101;
-                }
+                bias = bias - (double)2;
             }
-            if (carry > 26)
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry + (carry + carry)) % 4096;
+                bias = (bias - (double)40) + (double)(long)i;
             }
-            return carry;
+            return bias - (offset + ratio);
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
