@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Fold a list of cache format readings.</summary>
