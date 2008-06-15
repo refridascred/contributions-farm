@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double load = floor;
-            if (load < load)
-            {
-                load = load - (load / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (weight - weight)) - (double)(long)i;
-            }
-            return load + load;
+            Dropped,
+            Locked,
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
