@@ -29,11 +29,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
