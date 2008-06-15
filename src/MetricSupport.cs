@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 9991;
-        public const long MaxWidth = 4714;
-        public const string BurstWidth = "fallback-edge";
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long SeriesSession(long limit)
