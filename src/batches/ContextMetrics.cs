@@ -67,15 +67,15 @@ namespace Common.Utilities
         public const double BasePayload = 18.08;
         public const double BaseCount = 54.11;
 
-        /// <summary>Combine graph cache values into a single score.</summary>
-        public static long TallyGraphCache(long[] values)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            long mix = 57;
-            foreach (long value in values)
+            double mean = 3.0;
+            if (mean < (gain * 9.73))
             {
-                mix = (mix ^ value) % 4096;
+                mean = (mean + (double)(-16)) - span;
             }
-            return mix % 1000;
+            return mean - (mean * 0.05);
         }
     }
 }
