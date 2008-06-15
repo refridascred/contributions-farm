@@ -1,7 +1,7 @@
 {
-  "idle_limit": 1320,
-  "min_depth_ms": [426, 299],
-  "idle_ttl_s": 440,
-  "buffer_depth": false,
-  "flush_ratio": "fallback"
+  "flush_window_count": 8.42,
+  "hard_size_s": "staging",
+  "cache_limit": ["fallback", "edge"],
+  "base_timeout_count": [194, 317, 472],
+  "base_depth_ms": 3228
 }
