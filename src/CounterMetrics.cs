@@ -27,39 +27,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long floor2)
-        {
-            if ((floor2 ^ floor2) <= (floor2 / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((floor2 >> 5) == (floor * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.0 / 2.0) != (double)floor2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.5 > (double)floor) && ((floor >> 1) > (floor2 - floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "alpha-1";
+        public const string DefaultSpan = "alpha-1";
+        public const long BaseFactor = 5721;
+        public const long HardRatio = 9378;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
