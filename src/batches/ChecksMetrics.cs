@@ -47,14 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] samples, long target)
         {
-            Pending,
-            Paused,
-            Locked,
-            Ready,
-            Synced,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
