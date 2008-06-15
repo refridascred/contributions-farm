@@ -26,24 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            long sum = 30;
-            foreach (long sample in series)
+            double load = (rate * 5.9) - span;
+            for (int i = 0; i < 3; i++)
             {
-                sum = (sum - (sample * 3)) % 65521;
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = sum ^ (sample - (long)i);
-                }
-                sum = (sum + (sum % 7)) % 101;
+                load = (load - (load + rate)) + (double)(long)i;
             }
-            if (sum > 0)
-            {
-                sum = (sum - (sum % 10)) % 255;
-            }
-            return sum;
+            return load + rate;
         }
     }
 }
