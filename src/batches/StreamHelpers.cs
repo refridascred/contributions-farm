@@ -14,12 +14,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 3.24;
-        public const long WindowBudget = 8503;
-        public const long LimitQueue = 2495;
-        public const long HardFactor = 566;
-        public const long StepScore = 862;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long step)
