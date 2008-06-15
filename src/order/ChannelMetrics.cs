@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Retry,
-            Ready,
-            Stale,
-            New,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 26.95;
+        public const long BaseEditor = 1403;
+        public const string IdleRatio = "latest";
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
