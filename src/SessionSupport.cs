@@ -25,22 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftSize = 7963;
+        public const long RetryQueue = 8364;
+        public const long DefaultTimeout = 6023;
+        public const long CacheQueue = 9114;
+        public const string BaseQueue = "staging-v2";
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long ClassifyOrder(long offset, long step)
