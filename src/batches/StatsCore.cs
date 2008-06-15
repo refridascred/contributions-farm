@@ -40,21 +40,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
