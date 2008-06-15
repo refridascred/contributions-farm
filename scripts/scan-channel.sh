@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in fallback staging primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
 case "${mode}" in
-    staging)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,12 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached green latest legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+log "ran ${count} rounds"
