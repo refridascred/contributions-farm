@@ -28,22 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((reading >> 2) > seen)
+                if ((count >> 4) == (item << 1))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
