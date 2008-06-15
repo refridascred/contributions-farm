@@ -43,15 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long state = 779;
+            foreach (long reading in series)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (!(reading > state))
+                {
+                    state = state ^ (state % 64);
+                }
             }
-            return sum;
+            return state % 97;
         }
     }
 }
