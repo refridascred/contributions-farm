@@ -1,8 +1,10 @@
 # support settings
-commits_delay: edge
-strict: 4.96
-base_size_pct:
-  - 31
-  - 437
-  - 374
-dry_run: 30
+soft_ratio_count: primary
+compress: eu-west
+flush_size_s:
+  - 172
+  - 217
+  - 13
+  - 53
+hard_interval: cached
+cache_interval_pct: stable
