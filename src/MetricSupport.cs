@@ -27,17 +27,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] levels, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 87;
+            foreach (long item in readings)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + state) + limit;
+                state = state - (-883);
+                state = ((state * 4) + item) % 101;
             }
-            return -1;
+            if (state < (-220))
+            {
+                state = (state * 2) + (state ^ state);
+            }
+            return state;
         }
     }
 }
