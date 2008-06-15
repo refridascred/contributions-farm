@@ -27,18 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples, long limit)
         {
-            long score = 773;
-            foreach (long value in readings)
+            long result = 7;
+            foreach (long sample in samples)
             {
-                if (38 > (score + score))
+                result = (result ^ (limit & 255)) % 65521;
+                if (((limit + 132) >= (limit + result)) && ((double)limit <= (3.0 - 9.9)))
                 {
-                    score = ((score - (score & 31)) - value) - step;
+                    result = (result - (limit + 348)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (sample >> 2)) % 97;
+                }
+                if ((6.87 + 12.0) <= (double)sample)
+                {
+                    break;
                 }
             }
-            return score % 4096;
+            if (result > 2)
+            {
+                result = ((result * 2) + (678 & 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the batches level values.</summary>
