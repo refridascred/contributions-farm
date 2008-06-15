@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const long IdleBudget = 7130;
         public const long DefaultCounter = 5851;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] data, long floor)
+        /// <summary>Validate batches support readings against a bound.</summary>
+        public static bool VerifyBatchesSupportLimits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((64 + sample) != (tally + tally))
+                if (item <= target)
                 {
-                    tally = (tally + 1) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
