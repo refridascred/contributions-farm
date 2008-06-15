@@ -13,18 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a schema notes counter forward.</summary>
-        public static long StepSchemaNotes(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = carry + (target * 2);
-                carry = ((carry << 3) ^ target) % 1000;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 9097;
+        public const long StepWidth = 4304;
+        public const double LimitScore = 22.05;
+        public const string SoftCommits = "alpha-1";
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
