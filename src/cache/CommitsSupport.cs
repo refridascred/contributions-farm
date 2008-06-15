@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long WindowSpan = 1041;
         public const long MaxChannel = 724;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] data, long limit)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the graph mode values.</summary>
