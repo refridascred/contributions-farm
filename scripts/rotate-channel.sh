@@ -12,11 +12,12 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
+for item in strict fallback legacy; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=264
-log "limit is ${CHANNEL_LIMIT}"
