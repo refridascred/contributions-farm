@@ -21,13 +21,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Find the first schema report entry that matches the target.</summary>
+        public static long SeekSchemaReportIndex(long[] samples, long step)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
