@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
