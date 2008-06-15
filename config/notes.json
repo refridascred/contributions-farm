@@ -1,6 +1,6 @@
 {
-  "base_capacity": 100,
-  "readonly": "open",
-  "queue_threshold": "eu-west",
-  "schema_ratio": 18
+  "checks_limit": "primary",
+  "enabled": [94, 176],
+  "payload_interval": "eu-west",
+  "verbose": true
 }
