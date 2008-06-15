@@ -1,7 +1,4 @@
 # githubfarm settings
-poll_timeout_s: cached
-tools_limit:
-  - eu-west
-  - stable
-dry_run: 5999
-hard_threshold_ms: 7927
+enabled: legacy
+stats_delay: false
+dry_run: staging
