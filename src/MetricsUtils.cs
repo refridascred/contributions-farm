@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] values, long step)
         {
-            long mix = 46;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix - (mix >> 1)) % 97) ^ cell;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
