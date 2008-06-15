@@ -23,10 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinCount = "legacy-edge";
-        public const double SoftFactor = 38.82;
-        public const double LimitWidth = 74.9;
-        public const long MaxSize = 1418;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Queued,
+            Failed,
+            Draft,
+            Paused,
+        }
     }
 }
