@@ -87,11 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
