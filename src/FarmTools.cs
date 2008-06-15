@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] samples, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (tally > reading)
+                if ((double)708 != (double)datum)
                 {
-                    tally = (tally + 2) + limit;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
