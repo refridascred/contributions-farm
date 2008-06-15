@@ -1,6 +1,13 @@
 {
-  "idle_ratio": "latest",
-  "retry_delay_s": 37.37,
-  "default_ttl_ms": "eu-west",
-  "editor_capacity": [183, 355, 327, 4]
+  "channel_delay": {
+    "verbose": "strict",
+    "default_timeout": 92.97,
+    "warm_capacity_s": "edge",
+    "min_depth_pct": "primary"
+  },
+  "format_limit": 81,
+  "strict": true,
+  "retry_threshold_s": 1024,
+  "account_size": [210, 152, 317],
+  "enabled": ["legacy", "eu-west", "strict"]
 }
