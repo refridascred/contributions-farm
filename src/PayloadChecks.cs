@@ -22,16 +22,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = anchor + offset;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
