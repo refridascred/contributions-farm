@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftCount = 6490;
-        public const string BaseSpan = "standard-1";
-        public const long MinCount = 2831;
-        public const double DefaultFactor = 7.35;
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double bias)
+        {
+            double scale2 = scale;
+            if (scale2 > (bias * 7.0))
+            {
+                scale2 = scale2 + scale;
+            }
+            else
+            {
+                scale2 = scale2 + (scale + 1.3);
+            }
+            return scale2 + (scale2 * 4.0);
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double ProjectToken(double weight, double floor)
