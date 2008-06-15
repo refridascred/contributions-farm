@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardWidth = "open-v2";
+        public const string StepBatch = "fallback-v2";
+        public const long MinBatch = 4681;
+        public const long RetryRatio = 3063;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
