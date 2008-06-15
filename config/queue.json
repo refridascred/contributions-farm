@@ -1,18 +1,6 @@
 {
-  "notes_limit": {
-    "queue_interval": true,
-    "route_capacity": 500,
-    "readonly": 9350,
-    "cache_ratio": {
-      "commits_timeout": ["open", "fallback", "fallback", "standard"],
-      "cache_window": [252, 214, 179],
-      "retry_size_s": 30,
-      "burst_retries_pct": "edge",
-      "session_capacity": 8739
-    },
-    "poll_ttl_count": [395, 3]
-  },
-  "poll_limit_ms": 62.02,
-  "audit": "local",
-  "readonly": "fallback"
+  "dry_run": "fallback",
+  "max_limit_count": false,
+  "hard_ttl_s": 60,
+  "format_threshold": 59
 }
