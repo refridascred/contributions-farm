@@ -45,21 +45,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Grade a schema report value against two limits.</summary>
+        public static long ClassifySchemaReport(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = target + offset;
+            if ((7 ^ offset) < (step + offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step * 3) <= step)
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
