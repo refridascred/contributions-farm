@@ -29,11 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Audit report cluster readings against a rule.</summary>
+        public static long AuditReportClusterOutliers(long[] readings, long step)
         {
-            double ratio2 = ratio;
-            return (ratio2 + (ratio2 / 9.0)) + offset;
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)count <= (3.0 / 7.0))
+                {
+                    count = ((count + 3) - value) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
