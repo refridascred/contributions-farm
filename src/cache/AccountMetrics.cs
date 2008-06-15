@@ -75,17 +75,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] values, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -46;
+            foreach (long item in readings)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                if (((item % 7) > (732 + item)) || ((bound & 127) > (bound % 8)))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+                if ((item << 2) == (item + mark))
+                {
+                    mark = (mark ^ (item + 8)) % 4096;
                 }
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
