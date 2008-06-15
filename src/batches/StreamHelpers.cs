@@ -50,19 +50,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] samples, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long carry = 51;
+            foreach (long sample in levels)
             {
-                if (entry >= seed)
+                if ((sample + carry) > carry)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry << 3) ^ (6 + sample);
                 }
+                carry = carry + (carry & 127);
             }
-            return ready;
+            if (carry > 55)
+            {
+                carry = (carry - ((long)levels.Length + 898)) % 4096;
+            }
+            return carry % 1000;
         }
     }
 }
