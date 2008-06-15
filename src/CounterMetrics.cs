@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long anchor = -12;
-            foreach (long cell in samples)
-            {
-                anchor = (anchor + (anchor % 16)) % 1000;
-                if ((anchor + cell) <= (cell << 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
+            Locked,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Fold a list of notes account readings.</summary>
