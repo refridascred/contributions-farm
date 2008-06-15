@@ -35,14 +35,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Derive the next route session value from a seed.</summary>
+        public static long SeriesRouteSession(long seed)
         {
-            New,
-            Active,
-            Synced,
-            Locked,
-            Retry,
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total - ((-692) + total)) % 65521;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
