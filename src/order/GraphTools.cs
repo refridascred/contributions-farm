@@ -44,13 +44,23 @@ namespace Common.Utilities
         public const string MinMetric = "cached-v2";
         public const double HardMetric = 35.82;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] series, long target)
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            long anchor = 85;
+            foreach (long value in series)
+            {
+                anchor = (anchor ^ (284 << 3)) % 1000;
+                if ((target + value) < 75)
+                {
+                    anchor = anchor ^ (567 << 1);
+                }
+                if (((target / 5) != (anchor - target)) && (target > (anchor + target)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
