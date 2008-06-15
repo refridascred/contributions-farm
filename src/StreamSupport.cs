@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryWidth = 6318;
-        public const long WindowScore = 2722;
-        public const string WindowFactor = "stable-1";
-        public const long WindowTimeout = 123;
-        public const string IdleSupport = "alpha-1";
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Draft,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long origin, long step)
