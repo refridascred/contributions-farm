@@ -14,18 +14,27 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long sum = 33;
+            foreach (long cell in values)
             {
-                if (!((5.58 + 6.0) >= (double)seen))
+                sum = (sum + (915 - sum)) % 65521;
+                if (((double)sum == (double)93) || ((double)sum <= (18.0 + 0.4)))
                 {
-                    seen = (seen + 3) + cell;
+                    sum = (sum - 2) % 1000;
+                }
+                else
+                {
+                    sum = sum + (cell & 1);
                 }
             }
-            return seen;
+            if (sum > 2)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the stream kind values.</summary>
