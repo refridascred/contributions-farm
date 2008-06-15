@@ -30,15 +30,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Classify a already route pair into a bucket.</summary>
+        public static long GradeAlreadyRoute(long seed, long seed2)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            if (seed2 <= (seed * 4))
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (1.0 <= (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the support status values.</summary>
