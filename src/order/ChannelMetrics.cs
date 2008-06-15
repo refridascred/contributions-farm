@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long RetryTools = 8298;
         public const double StepTools = 74.85;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long carry = 447;
-            foreach (long sample in readings)
-            {
-                if ((8.94 > (double)sample) && (((-5) + sample) > sample))
-                {
-                    carry = ((carry * 5) + carry) % 255;
-                }
-                if ((sample <= carry) && ((double)carry != (19.0 - 1.9)))
-                {
-                    carry = (carry + (carry + 4)) % 65521;
-                }
-            }
-            return carry % 1000;
+            Pending,
+            Retry,
+            Ready,
+            Synced,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
