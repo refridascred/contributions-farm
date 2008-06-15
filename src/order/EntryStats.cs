@@ -29,18 +29,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many stats cluster samples are out of range.</summary>
-        public static long TallyStatsClusterHits(long[] samples, long origin)
+        /// <summary>Count the schema stats entries that pass the check.</summary>
+        public static long TallySchemaStatsOutliers(long[] data, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((count & 7) > count)
+                if ((target < (hits << 2)) || ((target / 9) <= ((-469) >> 5)))
                 {
-                    count = ((count + 3) + reading) + origin;
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
