@@ -37,14 +37,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 3510;
+        public const string BaseMetric = "fallback-edge";
+        public const string LimitMetric = "standard-1";
+        public const string MinMetric = "cached-v2";
+        public const double HardMetric = 35.82;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksGaps(long[] values, long floor)
