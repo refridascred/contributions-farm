@@ -63,13 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
