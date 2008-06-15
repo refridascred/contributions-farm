@@ -32,11 +32,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 17.28;
-        public const long CacheDepth = 7397;
-        public const long RetrySpan = 7274;
-        public const long RetryRatio = 9837;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Stale,
+            Failed,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Roll a queue already counter forward.</summary>
         public static long IterateQueueAlready(long origin)
