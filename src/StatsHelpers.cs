@@ -48,11 +48,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "strict-v2";
-        public const long MaxEntry = 8735;
-        public const string CacheScore = "standard-edge";
-        public const long HardEntry = 3084;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
+        {
+            long anchor = 4;
+            foreach (long item in series)
+            {
+                if (item > (item / 4))
+                {
+                    anchor = (anchor - ((long)series.Length - anchor)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (item >> 2);
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] values, long limit)
