@@ -36,18 +36,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] samples, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if (!((5.43 + 9.5) == (double)limit))
             {
-                if (matches <= (target * 2))
+                return 3;
+            }
+            else
+            {
+                if (94 > (limit - seed))
                 {
-                    matches = (matches + 1) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if (limit > (limit - limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a tools header.</summary>
