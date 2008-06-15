@@ -84,19 +84,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double rate, double bias)
-        {
-            double gain = bias * 3.0;
-            if (gain > (gain * 5.34))
-            {
-                gain = gain - (rate - gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain + rate)) + (double)(long)i;
-            }
-            return gain - rate;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchScore = 2993;
+        public const long MinWidth = 6581;
+        public const long MinCount = 2799;
+        public const string HardBudget = "primary-edge";
     }
 }
