@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Ready,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the command class values.</summary>
