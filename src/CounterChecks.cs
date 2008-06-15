@@ -72,18 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context graph samples.</summary>
-        public static long CompareContextGraphCount(long[] items)
+        /// <summary>Audit record batches readings against a rule.</summary>
+        public static long CountRecordBatchesMatches(long[] values, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (bound < 80)
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) - reading;
                 }
             }
             return seen;
