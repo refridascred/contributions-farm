@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings)
         {
-            Ready,
-            Dropped,
-            New,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((5.4 - 6.08) != (double)sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
