@@ -30,11 +30,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchStream = "alpha-1";
-        public const string DefaultSpan = "alpha-1";
-        public const long BaseFactor = 5721;
-        public const long HardRatio = 9378;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Ready,
+            Locked,
+            Stale,
+            Synced,
+            Done,
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
