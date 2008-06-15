@@ -21,14 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Stale,
-            Dropped,
-            Paused,
-            Done,
-            New,
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
