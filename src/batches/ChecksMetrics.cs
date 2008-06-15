@@ -64,22 +64,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] values, long offset)
+        /// <summary>Count the channel schema entries that pass the check.</summary>
+        public static long CountChannelSchemaHits(long[] series)
         {
-            long sum = 597;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((8.35 / 6.0) <= (double)value)
+                if ((count ^ item) >= (count - count))
                 {
-                    sum = ((sum * 4) + 806) - offset;
+                    count = count + 2;
                 }
             }
-            if (sum < 0)
-            {
-                sum = ((sum << 2) ^ (sum & 31)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Project the next graph notes value.</summary>
