@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = mix - (mix >> 4);
+                if (((sample << 2) >= (sample + sample)) && (mix > (79 + mix)))
                 {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + (-800);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (2 >> 5);
+                }
+                if (((0.27 * 6.0) == (double)mix) && ((5 + sample) > (sample - sample)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Accumulate cluster counter samples.</summary>
