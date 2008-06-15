@@ -23,17 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first schema report entry that matches the target.</summary>
-        public static long SeekSchemaReportIndex(long[] samples, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 764;
+            foreach (long datum in samples)
             {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                if ((anchor + datum) <= (anchor ^ 969))
                 {
-                    return (long)i;
+                    anchor = anchor - 8;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
