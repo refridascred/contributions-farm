@@ -40,18 +40,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the tools route entries that pass the check.</summary>
-        public static long AuditToolsRouteHits(long[] levels, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((20.0 / 9.0) <= (double)count)
-                {
-                    count = ((count + 2) ^ cell) + bound;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
