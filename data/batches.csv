@@ -1,6 +1,6 @@
-id,state,ratio,owner
-1,871,791,9.76
-2,staging,latest,94.01
-3,470,legacy,622
-4,standard,88.78,standard
-5,94.78,8.76,staging
+id,label,level,region,count
+1,92.68,752,823,338
+2,latest,93.11,50.52,313
+3,strict,legacy,15.51,102
+4,65.67,472,fallback,21.1
+5,26.75,75.85,standard,42.8
