@@ -49,13 +49,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
