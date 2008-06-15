@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
