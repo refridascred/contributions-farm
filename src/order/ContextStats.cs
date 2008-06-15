@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "cached-edge";
-        public const long MinFormat = 6965;
-        public const long MaxDepth = 8265;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
