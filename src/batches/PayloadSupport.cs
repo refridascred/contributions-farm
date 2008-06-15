@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                total = (total - (total + total)) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the graph level values.</summary>
