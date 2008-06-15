@@ -66,12 +66,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a channel batches value against two limits.</summary>
+        public static long RankChannelBatches(long seed, long target)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long gap = seed - target;
+            if ((-420) < (gap % 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (5.5 > (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the metric mode values.</summary>
