@@ -64,22 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph layout values into a single score.</summary>
-        public static long TotalGraphLayout(long[] values, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] series, long seed)
         {
-            long sum = 9;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (((sum + sum) > (item + step)) && ((double)step < (double)item))
+                if (reading < seed)
                 {
-                    sum = (sum << 3) ^ (sum & 127);
-                }
-                else
-                {
-                    sum = (sum - (sum ^ 51)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
