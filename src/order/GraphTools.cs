@@ -43,13 +43,31 @@ namespace Common.Utilities
         public const long DefaultCommand = 6311;
         public const long MinRatio = 8617;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long origin, long bound)
         {
-            Closed,
-            Pending,
-            Idle,
-            Done,
+            if (!((double)862 != (double)bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((127 >= (56 + bound)) || ((origin ^ origin) >= (6 / 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9 * 4) >= (bound & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
