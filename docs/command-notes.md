@@ -1,14 +1,11 @@
 # Command notes
 
-A order that stays idle for too long is moved to the cache list.
-Defaults for session live in the config folder and can be overridden per environment.
-When a contributi fails, the context handler retries a few times before giving up.
-
-When a profile fails, the account handler retries a few times before giving up.
-The payload report groups every metrics by queue.
+The token helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Log every support change
-- Keep report values small
-- Validate account input early
+- Prefer command defaults
+- Validate batch input early
+- Log every metric change
+- Keep stats values small
