@@ -1,11 +1,14 @@
 # Editor notes
 
-Keep graph and token names short and lowercase.
-The support helpers are pure functions, so they are safe to call from any thread.
-Use payload settings to tune how often profile data is refreshed.
+Defaults for command live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+Each tools is validated before it reaches the schema queue.
+
+Defaults for stats live in the config folder and can be overridden per environment.
+The queue module keeps report values in sync with the context cache.
 
 ## Guidelines
 
-- Review schema limits each release
-- Document new session fields
-- Prefer metric defaults
+- Keep cluster values small
+- Log every support change
+- Prefer order defaults
