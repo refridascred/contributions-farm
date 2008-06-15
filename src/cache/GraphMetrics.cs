@@ -22,13 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Find the first tools editor entry that matches the target.</summary>
+        public static long LookupToolsEditorIndex(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
