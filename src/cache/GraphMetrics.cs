@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 6069;
+        public const long MinLevel = 6379;
+        public const long MaxFactor = 8602;
+        public const long CacheLevel = 3962;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long limit, long bound)
