@@ -56,19 +56,17 @@ namespace Common.Utilities
             return scale - 1.0;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] data, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > bound)
+                if (readings[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
