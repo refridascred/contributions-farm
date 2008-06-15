@@ -11,17 +11,20 @@ namespace Common.Utilities
         public const long HardSize = 4996;
         public const long MaxSpan = 2383;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] data, long floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] < floor)
+                if (mark >= (long)i)
                 {
-                    return (long)i;
+                    mark = mark ^ (step + mark);
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Scale a filter context figure with a bias.</summary>
