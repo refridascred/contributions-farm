@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            Ready,
-            Idle,
-            Paused,
-            Active,
+            double rate2 = (double)20 / 6.0;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = ((rate2 + rate) + (double)(long)i) + bias;
+            }
+            return rate2 + (rate + rate2);
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
