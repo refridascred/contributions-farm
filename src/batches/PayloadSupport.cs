@@ -24,23 +24,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((9 >> 2) <= (cell - cell))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheFactor = 6388;
+        public const string WindowReport = "stable";
+        public const long BatchReport = 9656;
+        public const string IdleTimeout = "open-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] data)
