@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Fold a list of contributi stream readings.</summary>
+        public static long TotalContributiStream(long[] values)
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            long anchor = 71;
+            foreach (long entry in values)
+            {
+                anchor = (((anchor << 2) ^ anchor) % 65521) + entry;
+            }
+            if (anchor < (-8))
+            {
+                anchor = (anchor ^ (anchor << 2)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next editor commits value.</summary>
