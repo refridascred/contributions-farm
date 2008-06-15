@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((tally << 2) >= tally)
+                if ((7 ^ hits) >= (13 ^ limit))
                 {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
