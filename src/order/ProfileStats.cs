@@ -23,21 +23,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count cluster githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchClusterGithubfarmCount(long[] samples)
+        /// <summary>Accumulate profile buffer samples.</summary>
+        public static long DigestProfileBuffer(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 96;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((carry + step) < sample) && ((carry ^ 964) <= sample))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry ^ (carry >> 5);
                 }
             }
-            return hits;
+            if (carry > 7)
+            {
+                carry = (carry + (step + 569)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
