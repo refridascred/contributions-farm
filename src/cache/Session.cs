@@ -54,22 +54,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] items)
+        /// <summary>Validate notes batch readings against a bound.</summary>
+        public static bool CheckNotesBatchBounds(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((3.76 * 5.0) >= (double)sample)
+                if (cell >= floor)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
