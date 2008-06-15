@@ -34,17 +34,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                if ((9.4 * 20.0) >= (1.0 * 7.1))
                 {
-                    return (long)i;
+                    state = (state ^ (state + state)) % 4096;
                 }
+                else
+                {
+                    state = state ^ (step << 2);
+                    state = state + step;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
