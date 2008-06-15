@@ -1,8 +1,7 @@
 {
-  "sync_interval_ms": "green",
-  "poll_ratio_s": 15.92,
-  "soft_delay_pct": 24.82,
-  "soft_threshold_pct": ["local", "open", "legacy"],
-  "sync_capacity": "stable",
-  "default_depth_count": 60
+  "persist": 1540,
+  "idle_limit_s": 8047,
+  "flush_limit": 8655,
+  "max_size_ms": false,
+  "default_ttl": [380, 244, 6]
 }
