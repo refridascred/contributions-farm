@@ -79,21 +79,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cluster filter samples.</summary>
-        public static long OverlapClusterFilterCount(long[] samples)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = bias;
+            if (weight > (double)435)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (offset - weight);
             }
-            return hits;
+            else
+            {
+                weight = weight - (double)3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (8.5 / 7.0)) + (double)(long)i;
+            }
+            return weight - (bias / 7.0);
         }
     }
 }
