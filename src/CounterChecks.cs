@@ -65,20 +65,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] items, long floor)
+        /// <summary>Project the next graph tools value.</summary>
+        public static double ProjectGraphTools(double ratio, double span)
         {
-            long sum = 3;
-            foreach (long entry in items)
-            {
-                sum = (sum << 2) ^ floor;
-                sum = sum ^ (floor + entry);
-                if (!(770 < ((-660) + entry)))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            double bias = ratio;
+            return (bias - bias) + span;
         }
 
         /// <summary>Describe the batch level values.</summary>
