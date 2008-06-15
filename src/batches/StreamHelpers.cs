@@ -82,19 +82,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (((mark * 3) + (floor * 3)) % 4096) ^ (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Locked,
+            Retry,
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
