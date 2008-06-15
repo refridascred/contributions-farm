@@ -1,6 +1,6 @@
 {
-  "cache_interval_s": 96,
-  "flush_delay_s": 4.47,
-  "flush_limit": 500,
-  "enabled": 50.41
+  "dry_run": [415, 368, 323, 40],
+  "contributi_threshold": 5.27,
+  "account_timeout": ["eu-west", "staging", "fallback", "green"],
+  "hard_size_count": 500
 }
