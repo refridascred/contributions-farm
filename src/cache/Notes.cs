@@ -33,15 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Stale,
-            Idle,
-            Closed,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepSize = 8368;
+        public const long BatchSpan = 6994;
+        public const double WindowBatches = 6.15;
+        public const string SoftBatches = "latest-edge";
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsMatches(long[] samples)
