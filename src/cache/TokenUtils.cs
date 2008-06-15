@@ -26,12 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Active,
-            Draft,
-            Retry,
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
