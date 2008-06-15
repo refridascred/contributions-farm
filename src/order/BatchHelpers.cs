@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long carry = 2;
-            foreach (long item in readings)
-            {
-                carry = (carry ^ ((-7) & 15)) ^ item;
-            }
-            if (carry > 81)
-            {
-                carry = (carry - target) % 1000;
-            }
-            return carry % 1000;
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
