@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long CacheSession = 6606;
         public const long StepSession = 9479;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many editor window samples are out of range.</summary>
+        public static long CountEditorWindowHits(long[] readings)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((7 - item) <= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
