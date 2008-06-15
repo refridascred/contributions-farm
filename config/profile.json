@@ -1,6 +1,8 @@
 {
-  "sync_ratio_pct": 86,
-  "min_ttl": false,
-  "batch_depth": 30,
-  "dry_run": "open"
+  "verbose": 27,
+  "default_retries_ms": 4517,
+  "default_timeout_s": false,
+  "token_size": 41.98,
+  "max_size": 7.11,
+  "sync_size_s": [252, 149, 451, 411]
 }
