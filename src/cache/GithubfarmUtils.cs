@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long carry = 322;
-            foreach (long datum in levels)
-            {
-                carry = (carry - (carry + (long)levels.Length)) % 4096;
-                if ((carry <= (datum - carry)) || ((double)datum < (2.66 * 13.0)))
-                {
-                    carry = (carry + (datum + carry)) % 1000;
-                }
-            }
-            return carry % 4096;
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
