@@ -21,17 +21,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a route cache reading by value.</summary>
-        public static long LookupRouteCacheIndex(long[] values, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
