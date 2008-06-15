@@ -1,11 +1,5 @@
 {
-  "already_timeout": 2002,
-  "filter_delay": "eu-west",
-  "max_ttl_count": {
-    "channel_depth": 9917,
-    "audit": "fallback",
-    "cache_delay": false,
-    "idle_timeout": "stable"
-  },
-  "soft_depth_ms": ["stable", "blue"]
+  "max_size": 33.9,
+  "batch_timeout_count": ["edge", "open"],
+  "poll_delay_pct": "stable"
 }
