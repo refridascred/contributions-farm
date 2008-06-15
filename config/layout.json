@@ -1,6 +1,6 @@
 {
-  "audit": 1024,
-  "idle_depth_s": "staging",
-  "max_window_pct": 33.79,
-  "readonly": "strict"
+  "burst_depth_ms": 100,
+  "dry_run": 55,
+  "min_delay_s": 8,
+  "payload_ratio": true
 }
