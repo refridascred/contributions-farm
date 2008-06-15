@@ -1,12 +1,15 @@
 # Command notes
 
-Keep entry and cache names short and lowercase.
-Run the batches check before changing any session limits.
-The order report groups every schema by entry.
+Each channel is validated before it reaches the cache queue.
+Keep report and report names short and lowercase.
+Keep metric and metrics names short and lowercase.
+
+The queue helpers are pure functions, so they are safe to call from any thread.
+Run the filter check before changing any command limits.
 
 ## Guidelines
 
-- Document new support fields
-- Log every channel change
-- Keep counter values small
-- Validate route input early
+- Keep batches values small
+- Prefer window defaults
+- Document new context fields
+- Review account limits each release
