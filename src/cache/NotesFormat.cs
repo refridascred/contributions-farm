@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] data, long bound)
         {
-            double ratio = floor;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                ratio = (ratio - (rate / 2.0)) + (double)(long)i;
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - ratio;
+            return found;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
