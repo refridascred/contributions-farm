@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Locked,
-            Active,
-            Done,
-            Ready,
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
