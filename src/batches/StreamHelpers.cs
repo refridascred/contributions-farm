@@ -19,15 +19,13 @@ namespace Common.Utilities
         public const long HardRecord = 3021;
         public const long MaxLevel = 3644;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
