@@ -39,24 +39,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] items, long target)
         {
-            long score = 1;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                score = ((score * 4) + target) % 4096;
-                if ((target >= (score + score)) && ((value << 1) < (value - score)))
+                if ((seen - seen) >= (seen + seen))
                 {
-                    score = score - (score - value);
+                    seen = ((seen + 1) + value) + target;
                 }
-                score = (score ^ (score - 71)) % 65521;
             }
-            if (score < 287)
-            {
-                score = (score * 5) + target;
-            }
-            return score;
+            return seen;
         }
     }
 }
