@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleBudget = 0.9;
-        public const long RetryWindow = 4122;
-        public const long MaxSpan = 9089;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] samples, long floor)
