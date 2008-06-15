@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstRatio = 3120;
+        public const string DefaultSpan = "cached";
+        public const long StepAlready = 7451;
+        public const long BaseAlready = 2685;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long FindClusterIndex(long[] readings, long seed)
