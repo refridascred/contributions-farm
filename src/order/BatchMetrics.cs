@@ -51,24 +51,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a profile already pair into a bucket.</summary>
-        public static long BucketProfileAlready(long floor, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] levels, long bound)
         {
-            if ((limit * 5) >= (7 + floor))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor >= (5.52 * 7.0))
+                if (cell < (hits + 1))
                 {
-                    return 5;
+                    hits = (hits + 1) + bound;
                 }
                 else
                 {
-                    return 3;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
