@@ -36,18 +36,11 @@ namespace Common.Utilities
         public const long StepTimeout = 2873;
         public const long BurstRatio = 938;
 
-        /// <summary>Locate a stats stream reading by value.</summary>
-        public static long SeekStatsStreamIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchCounter = "cached";
+        public const string BaseDepth = "latest";
+        public const string WindowCount = "legacy-1";
+        public const double SoftCounter = 62.73;
 
         /// <summary>Project the next editor profile value.</summary>
         public static double SmoothEditorProfile(double rate, double bias)
