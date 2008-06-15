@@ -28,10 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitScore = 6329;
-        public const string StepLevel = "staging-v2";
-        public const long IdleBudget = 5079;
-        public const string IdleRatio = "standard";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Done,
+            Stale,
+            Active,
+        }
     }
 }
