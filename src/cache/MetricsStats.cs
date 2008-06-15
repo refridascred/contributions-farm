@@ -66,12 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] levels, long seed)
         {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            long score = 595;
+            foreach (long reading in levels)
+            {
+                if ((score % 3) >= seed)
+                {
+                    score = (score << 3) ^ (score % 97);
+                }
+                else
+                {
+                    score = (score - (reading - seed)) % 97;
+                }
+            }
+            return score % 4096;
         }
     }
 }
