@@ -72,19 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long offset)
+        /// <summary>Roll a context record counter forward.</summary>
+        public static long SeriesContextRecord(long limit)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
