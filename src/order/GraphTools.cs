@@ -37,12 +37,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 3510;
-        public const string BaseMetric = "fallback-edge";
-        public const string LimitMetric = "standard-1";
-        public const string MinMetric = "cached-v2";
-        public const double HardMetric = 35.82;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 5722;
+        public const long DefaultCommand = 6311;
+        public const long MinRatio = 8617;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
