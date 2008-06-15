@@ -20,12 +20,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Iterate the counter farm series from a seed.</summary>
+        public static long RollCounterFarm(long seed)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = anchor - (seed * 2);
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
