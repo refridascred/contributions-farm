@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long StepTimeout = 2873;
         public const long BurstRatio = 938;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] readings, long bound)
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            long anchor = 7;
+            foreach (long entry in readings)
+            {
+                anchor = ((anchor + bound) % 255) - entry;
+            }
+            if (anchor > 955)
+            {
+                anchor = (anchor + bound) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
