@@ -35,16 +35,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next route session value from a seed.</summary>
-        public static long SeriesRouteSession(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total - ((-692) + total)) % 65521;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchRatio = 7531;
+        public const double MaxInterval = 30.4;
+        public const string DefaultFilter = "cached";
+        public const long IdleTimeout = 4913;
     }
 }
