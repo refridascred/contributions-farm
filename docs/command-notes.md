@@ -1,10 +1,12 @@
 # Command notes
 
-Use contributi settings to tune how often schema data is refreshed.
-The support helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often command data is refreshed.
+The layout module keeps checks values in sync with the stream cache.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every tools change
-- Prefer stream defaults
-- Document new stats fields
+- Keep graph values small
+- Document new queue fields
+- Log every counter change
+- Prefer format defaults
