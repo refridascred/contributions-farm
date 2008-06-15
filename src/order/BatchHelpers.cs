@@ -32,12 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Classify a notes editor pair into a bucket.</summary>
+        public static long GradeNotesEditor(long bound, long target)
         {
-            Draft,
-            Queued,
-            Ready,
+            long next = bound ^ target;
+            if ((next * 4) <= (81 - target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound - target) <= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
