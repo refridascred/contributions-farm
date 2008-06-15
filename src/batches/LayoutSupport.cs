@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report cluster readings against a rule.</summary>
-        public static long AuditReportClusterOutliers(long[] readings, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count <= (3.0 / 7.0))
+                if ((values[i] > limit) && ((values[i] % 5) != 0))
                 {
-                    count = ((count + 3) - value) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
