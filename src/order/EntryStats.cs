@@ -48,17 +48,15 @@ namespace Common.Utilities
             return mean + (double)5;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] series, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 15;
+            foreach (long cell in samples)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 3) + cell) % 101) - step;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
