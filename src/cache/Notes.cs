@@ -51,25 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a schema report value against two limits.</summary>
-        public static long ClassifySchemaReport(long target, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long step = target + offset;
-            if ((7 ^ offset) < (step + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step * 3) <= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Draft,
+            New,
+            Done,
         }
     }
 }
