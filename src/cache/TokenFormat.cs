@@ -19,11 +19,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinCount = "legacy-edge";
+        public const double SoftFactor = 38.82;
+        public const double LimitWidth = 74.9;
+        public const long MaxSize = 1418;
     }
 }
