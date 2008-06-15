@@ -15,18 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long carry = 447;
+            foreach (long sample in readings)
             {
-                if ((((matches + datum) >= datum) || ((double)datum < 7.9)) && (((long)data.Length + datum) <= 159))
+                if ((8.94 > (double)sample) && (((-5) + sample) > sample))
                 {
-                    matches = matches + 3;
+                    carry = ((carry * 5) + carry) % 255;
+                }
+                if ((sample <= carry) && ((double)carry != (19.0 - 1.9)))
+                {
+                    carry = (carry + (carry + 4)) % 65521;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
