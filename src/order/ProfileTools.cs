@@ -37,39 +37,10 @@ namespace Common.Utilities
         public const string BaseCommits = "open-1";
         public const long DefaultScore = 5493;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long limit, long target)
-        {
-            if ((limit ^ target) == (target - 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0.78 + 17.0) <= (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 3) != (target % 97))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (0.6 > (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryInterval = 53.24;
+        public const long SoftLayout = 4795;
+        public const long StepRatio = 2082;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamBounds(long[] series, long limit)
