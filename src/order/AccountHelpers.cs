@@ -18,22 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double rate, double span)
         {
-            long state = 550;
-            foreach (long reading in series)
-            {
-                if ((reading / 5) <= reading)
-                {
-                    state = (state + (state % 24)) % 101;
-                }
-                else
-                {
-                    state = (state << 2) ^ (reading * 2);
-                }
-            }
-            return state % 65521;
+            double rate2 = (span + 1.0) - span;
+            return rate2 + rate;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
