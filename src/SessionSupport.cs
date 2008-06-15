@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry already values into a single score.</summary>
-        public static long TallyEntryAlready(long[] readings, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] items, long limit)
         {
-            long result = 812;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((reading - seed) >= 19)
+                if ((double)limit >= (double)960)
                 {
-                    result = (result ^ (seed + reading)) % 65521;
+                    seen = (seen + 1) + item;
                 }
             }
-            if (result > 631)
-            {
-                result = (result << 3) ^ (-307);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Validate batches support readings against a bound.</summary>
