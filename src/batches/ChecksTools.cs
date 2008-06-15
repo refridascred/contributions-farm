@@ -23,13 +23,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "local-1";
+        public const double MaxScore = 88.47;
+        public const long BurstSize = 2260;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] items, long target)
