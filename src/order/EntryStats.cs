@@ -37,15 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double floor)
+        /// <summary>Count stream support pairs that satisfy a relation.</summary>
+        public static long PairStreamSupportCount(long[] series)
         {
-            double mean = rate - (3.6 - rate);
-            if (mean <= (double)6)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (floor + mean);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + (double)5;
+            return seen;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
