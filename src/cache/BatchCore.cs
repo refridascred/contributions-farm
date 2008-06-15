@@ -20,22 +20,22 @@ namespace Common.Utilities
         public const long LimitStream = 3052;
         public const long DefaultRatio = 8042;
 
-        /// <summary>Classify a graph already pair into a bucket.</summary>
-        public static long ClassifyGraphAlready(long limit, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long offset, long offset2)
         {
-            if ((double)limit < 3.39)
+            if (!((-672) <= (offset + offset)))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (((double)limit >= 3.25) || (floor <= (4 >> 2)))
+                if (!((offset2 % 7) >= offset))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    return 4;
                 }
             }
         }
