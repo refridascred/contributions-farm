@@ -58,22 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((hits << 2) == (cell + hits))
+                if (item != bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
