@@ -33,25 +33,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long step2)
+        /// <summary>Match up window context samples.</summary>
+        public static long PairWindowContextCount(long[] levels)
         {
-            long cur = step - step2;
-            if (!((8.1 - 2.7) < (double)step2))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3 + 5) != (cur & 63))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the profile class values.</summary>
