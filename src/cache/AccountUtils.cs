@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricMetricsCount(long[] series)
         {
-            Closed,
-            Draft,
-            Retry,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a stats farm reading by value.</summary>
