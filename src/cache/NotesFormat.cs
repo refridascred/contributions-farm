@@ -33,21 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Classify a checks window pair into a bucket.</summary>
+        public static long GradeChecksWindow(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((double)step <= (double)769) || ((1.47 + 8.8) != (double)step))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 3) >= step)
                 {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
