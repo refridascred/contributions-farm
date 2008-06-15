@@ -1,8 +1,6 @@
 {
-  "command_retries": 48,
-  "order_ratio": 32.83,
-  "warm_limit": ["local", "standard", "legacy"],
-  "batch_capacity": "local",
-  "cache_threshold": 100,
-  "enabled": false
+  "readonly": [434, 216, 268],
+  "base_capacity_s": 31,
+  "warm_limit_ms": "primary",
+  "max_timeout_pct": 81
 }
