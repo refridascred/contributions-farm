@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheDepth = 4805;
-        public const long WindowEntry = 6054;
-        public const string RetryEntry = "staging-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseLevel = 9968;
+        public const double CacheWidth = 60.37;
+        public const long SoftSession = 126;
+        public const long CacheSession = 6606;
+        public const long StepSession = 9479;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
