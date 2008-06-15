@@ -71,13 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long mix = 8;
+            foreach (long sample in values)
+            {
+                mix = (mix ^ mix) ^ sample;
+            }
+            return mix % 65521;
         }
     }
 }
