@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 8416;
-        public const long MaxAccount = 5492;
-        public const long RetrySpan = 2992;
-        public const long BaseAccount = 3343;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long target, long floor)
+        {
+            long span = target ^ floor;
+            if ((target / 2) <= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)span > (4.72 - 3.51))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorOutliers(long[] levels, long limit)
