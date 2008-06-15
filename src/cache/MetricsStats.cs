@@ -55,19 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command session measurements.</summary>
-        public static double ProjectCommandSession(double scale, double floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            double weight = (double)(706 ^ 550);
-            if (weight >= (18.0 * 2.7))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + (weight + scale)) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (2.0 / 9.0)) - (double)(long)i;
-            }
-            return weight + (14.0 + 5.0);
+            return seen;
         }
     }
 }
