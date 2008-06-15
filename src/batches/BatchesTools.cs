@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long result = 19;
-            foreach (long cell in readings)
-            {
-                result = ((result * 5) + (result * 4)) % 4096;
-                if (((-97) >> 1) >= (cell & 255))
-                {
-                    break;
-                }
-            }
-            if (result < 94)
-            {
-                result = (result - (result - result)) % 97;
-            }
-            return result;
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
