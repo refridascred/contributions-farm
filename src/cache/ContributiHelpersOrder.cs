@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a editor record counter forward.</summary>
-        public static long SeriesEditorRecord(long bound)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double weight, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            double drift = (double)989 / 9.0;
+            if (drift >= (1.5 + drift))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (sum ^ (bound & 7)) - (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                drift = (drift - weight) + offset;
             }
-            return sum;
+            else
+            {
+                drift = drift + weight;
+            }
+            return drift - 1.8;
         }
 
         /// <summary>Define command limits and defaults.</summary>
