@@ -36,11 +36,11 @@ namespace Common.Utilities
         public const double MinSize = 8.11;
         public const long MinBudget = 4316;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Project the next contributi editor value.</summary>
+        public static double SmoothContributiEditor(double bias, double bias2)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            double drift = 4.3;
+            return (drift - (bias2 + bias2)) + bias;
         }
     }
 }
