@@ -63,23 +63,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Find the first cache report entry that matches the target.</summary>
+        public static long FindCacheReportIndex(long[] levels, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)i % 24) < seed))
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
                 {
-                    anchor = (anchor << 3) ^ seed;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor + (seed + seed)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
