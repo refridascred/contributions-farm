@@ -53,9 +53,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseInterval = 9811;
-        public const double CacheScore = 32.38;
-        public const long BatchDepth = 4675;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long offset, long bound)
+        {
+            if ((5.31 - 2.0) != (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)2 > (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0.77 - 1.43) == (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset / 8) <= (bound * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
