@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long DefaultCount = 3255;
         public const long SoftCache = 3988;
 
-        /// <summary>Iterate the order cluster series from a seed.</summary>
-        public static long StepOrderCluster(long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                long prev = state;
-                if ((double)origin == (6.3 / 7.0))
+                if ((((matches + datum) >= datum) || ((double)datum < 7.9)) && (((long)data.Length + datum) <= 159))
                 {
-                    state = (state << 2) ^ (prev - state);
-                    break;
+                    matches = matches + 3;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a editor record.</summary>
