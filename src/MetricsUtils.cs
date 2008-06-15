@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] values, long step)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = offset - (double)159;
+            if (drift >= (double)673)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                drift = drift - ratio;
             }
-            return -1;
+            return drift + drift;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
