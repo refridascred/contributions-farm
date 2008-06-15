@@ -20,15 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] readings, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long step, long step2)
         {
-            long acc = 6;
-            foreach (long item in readings)
+            long prev = step - step2;
+            if (!((prev % 8) < (step << 2)))
             {
-                acc = ((acc * 5) + (item + acc)) + limit;
+                return 0;
             }
-            return acc % 97;
+            else
+            {
+                if (((step2 * 2) > (prev + prev)) && ((double)step2 > (2.3 + 2.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
