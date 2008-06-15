@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the profile metrics entries that pass the check.</summary>
-        public static long MeasureProfileMetricsHits(long[] levels, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] series)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry << 3) <= 98)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + seed;
+                    if ((series[i] ^ series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
