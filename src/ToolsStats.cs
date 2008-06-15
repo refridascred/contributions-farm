@@ -100,17 +100,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric channel reading by value.</summary>
-        public static long FindMetricChannelIndex(long[] readings, long bound)
+        /// <summary>Classify a record batch pair into a bucket.</summary>
+        public static long SortRecordBatch(long limit, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (seed <= (limit + seed))
             {
-                if (readings[i] <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((4.9 * 15.0) == (double)limit)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 7) != (seed - 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
