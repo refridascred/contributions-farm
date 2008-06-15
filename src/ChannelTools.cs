@@ -24,17 +24,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] data, long seed)
+        /// <summary>Fold a list of contributi layout readings.</summary>
+        public static long WeighContributiLayout(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = -347;
+            foreach (long cell in data)
             {
-                if (data[i] < seed)
+                if (!((960 * 5) >= (mix % 2)))
                 {
-                    return (long)i;
+                    mix = (((mix << 2) ^ 3) + cell) + offset;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
