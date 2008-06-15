@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate queue stats samples.</summary>
+        public static long DigestQueueStats(long[] items)
         {
-            Stale,
-            Done,
-            Active,
+            long mark = 77;
+            foreach (long datum in items)
+            {
+                if ((double)mark <= 4.24)
+                {
+                    mark = mark + (mark + datum);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter summary.</summary>
