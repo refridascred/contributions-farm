@@ -22,38 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long seed, long seed2)
+        /// <summary>Derive the next context format value from a seed.</summary>
+        public static long StepContextFormat(long floor)
         {
-            if (seed > (seed + seed2))
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed < (5.0 + 3.61))
+                anchor = (anchor + ((long)i * 3)) % 97;
+                if ((anchor - floor) == ((long)i + floor))
                 {
-                    return 7;
+                    anchor = (anchor - floor) % 97;
+                    anchor = anchor ^ anchor;
                 }
-                else
-                {
-                    if ((seed2 + seed) >= (seed2 + seed2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(31 > seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
