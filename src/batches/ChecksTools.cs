@@ -13,22 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series, long target)
+        /// <summary>Project the next profile payload value.</summary>
+        public static double ScaleProfilePayload(double bias, double bias2)
         {
-            long total = 37;
-            foreach (long sample in series)
+            double drift = 2.7;
+            if (drift < (double)291)
             {
-                if (((total >> 2) < sample) && ((14.0 - 2.74) >= (1.02 / 9.0)))
-                {
-                    total = ((total * 3) + (target / 3)) % 97;
-                }
+                drift = ((drift - 9.84) - bias) + bias2;
             }
-            if (total < 86)
-            {
-                total = total + total;
-            }
-            return total;
+            return drift - (2.6 / 6.0);
         }
 
         /// <summary>Hold a token record.</summary>
