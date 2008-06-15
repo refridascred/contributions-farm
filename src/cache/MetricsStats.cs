@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] levels, long origin)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long anchor = 50;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor + (origin + cell)) % 1000;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a checks options.</summary>
