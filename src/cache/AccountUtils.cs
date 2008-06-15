@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the session batch entries that pass the check.</summary>
-        public static long CountSessionBatchOutliers(long[] values, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long score = 101;
+            foreach (long cell in series)
             {
-                if (47 > (step ^ sample))
+                if (!((cell + score) == (cell + cell)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = ((score << 3) ^ (cell - 759)) % 255;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Combine commits tools values into a single score.</summary>
