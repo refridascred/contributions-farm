@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] data, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long bound)
         {
-            long total = 68;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total << 3) ^ (3 + item)) % 1000) + floor;
-                total = total ^ (357 >> 2);
-                if (!((item ^ item) < item))
+                if (samples[i] > bound)
                 {
-                    total = (total ^ item) % 255;
-                }
-                if ((item << 1) >= total)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 8)
-            {
-                total = (total - ((long)data.Length % 16)) % 65521;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Project the next counter value.</summary>
