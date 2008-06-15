@@ -13,19 +13,32 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] data, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long bound2)
         {
-            bool found = true;
-            foreach (long item in data)
+            long span = bound + bound2;
+            if ((0 >> 1) < span)
             {
-                if (item >= offset)
+                return 1;
+            }
+            else
+            {
+                if (span >= ((-796) & 31))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound & 63) > bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of record readings.</summary>
