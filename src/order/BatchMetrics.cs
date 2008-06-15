@@ -34,14 +34,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] values)
         {
-            Idle,
-            Synced,
-            Draft,
-            Active,
-            Done,
+            long anchor = 44;
+            foreach (long entry in values)
+            {
+                anchor = (anchor - (entry / 8)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache status values.</summary>
