@@ -48,24 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] series, long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long anchor = 56;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = (((anchor - anchor) % 4096) - (long)i) - reading;
-                    anchor = (anchor - (anchor ^ bound)) % 4096;
-                }
-                anchor = (anchor ^ bound) % 255;
-            }
-            if (anchor < 7)
-            {
-                anchor = (anchor * 4) + (11 << 3);
-            }
-            return anchor % 4096;
+            public double Ratio { get; set; }
+            public double Region { get; set; }
         }
     }
 }
