@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a token contributi sample.</summary>
-        public static long FindTokenContributiIndex(long[] items, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                state = ((state << 2) ^ ((long)i - state)) % 97;
+                if ((double)floor > (double)state)
                 {
-                    return (long)i;
+                    state = (state - floor) % 97;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a account header.</summary>
