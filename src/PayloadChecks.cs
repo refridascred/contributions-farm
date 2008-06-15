@@ -40,30 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long score = 922;
-            foreach (long sample in values)
-            {
-                if (((double)score <= (8.48 / 2.0)) && ((double)sample != (0.13 / 8.0)))
-                {
-                    score = ((score * 3) + (-5)) % 255;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    score = (score - (sample & 7)) ^ (long)i;
-                }
-                if (!((4.5 * 4.1) > (double)sample))
-                {
-                    score = (score - sample) % 97;
-                }
-                if ((score * 2) < ((long)values.Length & 255))
-                {
-                    break;
-                }
-            }
-            return score;
+            Draft,
+            New,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
