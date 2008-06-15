@@ -66,15 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long mix = -3;
-            foreach (long item in items)
-            {
-                mix = ((mix ^ (offset ^ 21)) % 255) ^ item;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the metric mode values.</summary>
