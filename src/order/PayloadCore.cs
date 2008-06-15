@@ -13,18 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] values, long seed)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long acc = 0;
-            foreach (long sample in values)
-            {
-                if ((seed % 60) < (seed >> 5))
-                {
-                    acc = (((acc << 2) ^ (acc / 8)) % 65521) + sample;
-                }
-            }
-            return acc;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the notes level values.</summary>
