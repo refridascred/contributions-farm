@@ -53,10 +53,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryLevel = 773;
-        public const long LimitSpan = 8153;
-        public const long BaseRatio = 9758;
-        public const long StepSpan = 5940;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long floor, long seed)
+        {
+            long span = floor - seed;
+            if ((span & 31) < seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span & 1) > (3 / 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
