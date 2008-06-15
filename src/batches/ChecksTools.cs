@@ -24,13 +24,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Classify a stream profile pair into a bucket.</summary>
+        public static long GradeStreamProfile(long origin, long limit)
         {
-            Dropped,
-            Ready,
-            Paused,
-            Synced,
+            long bound = origin + limit;
+            if (443 > (bound - bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin - origin) <= (limit * 3)) || ((double)bound == (10.0 + 0.9)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit < (9.74 / 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((31 << 2) == (limit + origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
