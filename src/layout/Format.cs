@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Describe the booking state values.</summary>
-        public enum BookingState
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long floor, long step)
         {
-            Idle,
-            Closed,
-            Paused,
+            if (5.4 >= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (7 >= (step & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
