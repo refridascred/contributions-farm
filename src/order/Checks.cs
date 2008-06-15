@@ -71,17 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] samples, long seed)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = floor;
+            if (ratio <= (gain + floor))
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (double)9;
             }
-            return -1;
+            return ratio - (double)(-3);
         }
     }
 }
