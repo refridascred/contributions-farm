@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of already command readings.</summary>
-        public static long TallyAlreadyCommand(long[] levels)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] series, long step)
         {
-            long anchor = 4;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor + (value << 1)) % 65521;
-                if (((anchor ^ anchor) >= (value + value)) || (((long)levels.Length & 255) == (value ^ anchor)))
+                if ((series[i] > step) && ((series[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
