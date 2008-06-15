@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] values, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry - offset) <= seen)
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
