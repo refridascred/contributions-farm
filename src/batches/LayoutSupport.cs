@@ -30,12 +30,18 @@ namespace Common.Utilities
             return (ratio2 + (ratio2 / 9.0)) + offset;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 3093;
-        public const double BurstBatch = 11.38;
-        public const long CacheBatch = 7799;
-        public const string BaseFactor = "fallback";
-        public const long RetryWidth = 7914;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many account stream samples are out of range.</summary>
         public static long AuditAccountStreamGaps(long[] series)
