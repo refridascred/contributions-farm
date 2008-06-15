@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long origin, long bound)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long delta = origin + bound;
+            if (5.9 >= (double)delta)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin < (origin >> 3)) && ((bound + origin) >= (bound >> 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate stats layout readings against a bound.</summary>
