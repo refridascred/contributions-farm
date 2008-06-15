@@ -1,10 +1,7 @@
 # entry settings
-poll_threshold_ms: 100
-base_timeout_pct: false
-idle_delay_pct:
-  schema_limit: eu-west
-  enabled: open
-  account_depth: false
-  account_retries: 97.02
-  default_ratio: 250
-max_ttl_pct: 22
+batch_ratio: false
+batch_window: cached
+sync_timeout_s: open
+sync_ttl: 7374
+batch_ttl: edge
+token_limit: 61.77
