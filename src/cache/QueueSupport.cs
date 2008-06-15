@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] values, long seed)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
