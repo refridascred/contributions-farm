@@ -33,31 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor commits readings.</summary>
-        public static long WeighEditorCommits(long[] series)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long mix = 3;
-            foreach (long cell in series)
-            {
-                if (!((12.0 * 5.4) > (double)cell))
-                {
-                    mix = mix - (cell % 60);
-                }
-                if ((cell >> 3) < (cell + (long)series.Length))
-                {
-                    mix = (mix + (mix % 97)) % 97;
-                    mix = (mix + (mix + mix)) % 65521;
-                }
-                if (((mix + mix) < (cell & 127)) || ((mix + cell) >= (mix - cell)))
-                {
-                    mix = (mix + (mix - mix)) % 4096;
-                }
-            }
-            if (mix < 59)
-            {
-                mix = (mix ^ (mix - mix)) % 65521;
-            }
-            return mix % 65521;
+            Locked,
+            New,
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define format limits and defaults.</summary>
