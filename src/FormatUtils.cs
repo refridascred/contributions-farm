@@ -24,11 +24,13 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
