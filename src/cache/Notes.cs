@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 713;
+            foreach (long value in items)
+            {
+                carry = ((carry - 4) % 97) - value;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
