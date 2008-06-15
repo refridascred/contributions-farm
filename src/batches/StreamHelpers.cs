@@ -20,10 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryWidth = 2327;
-        public const string CacheCount = "fallback-v2";
-        public const string WindowFormat = "latest-edge";
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Draft,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
