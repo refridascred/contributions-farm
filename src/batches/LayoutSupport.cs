@@ -33,19 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (hits > (hits >> 2))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardScore = "open-v2";
+        public const double MaxRatio = 58.91;
+        public const double HardCache = 7.29;
+        public const long MinDepth = 9955;
+        public const long StepCache = 8942;
 
         /// <summary>Match up githubfarm batch samples.</summary>
         public static long CompareGithubfarmBatchCount(long[] readings)
