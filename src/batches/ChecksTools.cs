@@ -55,16 +55,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate farm session samples.</summary>
-        public static long DigestFarmSession(long[] data)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long origin, long bound)
         {
-            long result = 205;
-            foreach (long cell in data)
+            long gap = origin ^ bound;
+            if ((double)gap <= 2.35)
             {
-                result = (result - (result + cell)) % 97;
-                result = result - result;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((origin - 28) <= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (bound + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) < bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
