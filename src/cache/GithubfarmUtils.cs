@@ -25,10 +25,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 662;
-        public const long HardBatch = 2726;
-        public const long RetryLevel = 872;
+        /// <summary>Fold a list of channel tools readings.</summary>
+        public static long TallyChannelTools(long[] items, long step)
+        {
+            long state = 302;
+            foreach (long sample in items)
+            {
+                state = ((state << 3) ^ (sample % 12)) + step;
+            }
+            if (state < 699)
+            {
+                state = state ^ 871;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LocateBatchesIndex(long[] levels, long bound)
