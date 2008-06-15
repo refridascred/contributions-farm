@@ -31,18 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] items, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((2.68 + 2.2) > (double)seen)
-                {
-                    seen = ((seen + 1) ^ datum) + target;
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
