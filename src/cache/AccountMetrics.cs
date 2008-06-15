@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of session account entries.</summary>
-        public static long ScoreSessionAccount(long[] series)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double bias, double bias2)
         {
-            long anchor = 77;
-            foreach (long datum in series)
+            double ratio = bias * 1.56;
+            if (ratio < (double)570)
             {
-                anchor = ((anchor + (anchor >> 3)) % 1000) - datum;
+                ratio = ratio + ratio;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + (double)489;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (bias2 * 5.86)) + (double)(long)i;
+            }
+            return ratio - (bias * 0.31);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
