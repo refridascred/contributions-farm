@@ -1,5 +1,5 @@
 # support settings
-retry_delay: cached
-schema_limit: stable
-batch_threshold_ms: blue
-githubfarm_window: false
+flush_window_s: 40
+batch_limit_ms: 60
+idle_interval: 96
+min_retries_s: 50.37
