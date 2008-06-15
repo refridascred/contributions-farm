@@ -20,12 +20,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
