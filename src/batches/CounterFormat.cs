@@ -24,18 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Scale a filter context figure with a bias.</summary>
+        public static double ScaleFilterContext(double gain, double floor)
         {
-            long state = 779;
-            foreach (long reading in series)
+            double load = (double)4;
+            if (load >= load)
             {
-                if (!(reading > state))
-                {
-                    state = state ^ (state % 64);
-                }
+                load = load - (gain + 4.28);
             }
-            return state % 97;
+            else
+            {
+                load = load - (floor / 3.0);
+            }
+            return load + gain;
         }
     }
 }
