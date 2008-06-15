@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long step, long step2)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] values, long origin)
         {
-            long span = step - step2;
-            if ((951 - step2) > (step + step2))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step2 & 3) == (23 - span))
+                if (reading < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step & 1) <= (step2 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
