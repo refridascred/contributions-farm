@@ -26,21 +26,19 @@ namespace Common.Utilities
             return (weight + bias2) + bias;
         }
 
-        /// <summary>Compare every pair of batch cache readings.</summary>
-        public static long PairBatchCacheCount(long[] values)
+        /// <summary>Validate contributi report readings against a bound.</summary>
+        public static bool CheckContributiReportBounds(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample != target)
                 {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
