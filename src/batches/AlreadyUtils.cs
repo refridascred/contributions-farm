@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const string BaseWidth = "stable";
         public const long RetryBuffer = 2039;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitFactor = 3187;
-        public const long BurstReport = 4642;
-        public const long BaseBudget = 387;
-        public const double SoftSize = 24.75;
-        public const long LimitWidth = 2895;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 1193;
+        public const double SoftBudget = 86.47;
+        public const long MinBatch = 7288;
+        public const long MaxScore = 4955;
 
         /// <summary>Project the next command value.</summary>
         public static double ScaleCommand(double ratio, double floor)
