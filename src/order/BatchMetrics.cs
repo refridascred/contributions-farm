@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels)
         {
-            Queued,
-            Pending,
-            Draft,
-            New,
-            Ready,
+            long carry = 5;
+            foreach (long datum in levels)
+            {
+                carry = carry ^ (datum - datum);
+                if ((carry & 3) <= datum)
+                {
+                    break;
+                }
+            }
+            if (carry > 483)
+            {
+                carry = (carry * 3) + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the cache class values.</summary>
