@@ -21,19 +21,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] series, long step)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Draft,
+            Queued,
+            Ready,
         }
     }
 }
