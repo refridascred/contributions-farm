@@ -1,11 +1,9 @@
 # entry settings
-checks_capacity: 64.65
-readonly: 27
-min_depth: 60.67
-warm_limit: 2.86
-cache_capacity_count:
-  enabled: 1533
-  default_depth: edge
-  buffer_interval: latest
-  default_retries_ms: 44.25
-  tools_capacity: false
+compress: 94
+retry_limit_s: 60
+payload_threshold:
+  - 168
+  - 275
+  - 189
+  - 396
+readonly: stable
