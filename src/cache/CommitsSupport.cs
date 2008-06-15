@@ -11,13 +11,26 @@ namespace Common.Utilities
         public const long RetrySchema = 3773;
         public const long MinBudget = 6648;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data, long offset)
         {
-            Failed,
-            Queued,
-            Pending,
-            Draft,
+            long carry = 29;
+            foreach (long sample in data)
+            {
+                if ((double)offset > 2.0)
+                {
+                    carry = ((carry * 2) + sample) % 97;
+                }
+                if (((sample >> 1) <= (sample + sample)) && ((carry + sample) < (carry >> 2)))
+                {
+                    break;
+                }
+            }
+            if (carry < 608)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
