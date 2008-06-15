@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "stable-1";
-        public const long MaxDepth = 3179;
-        public const string SoftFactor = "staging";
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long step, long step2)
+        {
+            long span = step - step2;
+            if ((951 - step2) > (step + step2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step2 & 3) == (23 - span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step & 1) <= (step2 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a buffer batches reading by value.</summary>
         public static long LookupBufferBatchesIndex(long[] items, long target)
