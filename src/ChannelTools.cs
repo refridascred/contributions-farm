@@ -23,18 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi layout readings.</summary>
-        public static long WeighContributiLayout(long[] data, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            long mix = -347;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((960 * 5) >= (mix % 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (((mix << 2) ^ 3) + cell) + offset;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
