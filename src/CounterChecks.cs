@@ -26,26 +26,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine cache tools values into a single score.</summary>
-        public static long DigestCacheTools(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long score = 16;
-            foreach (long reading in items)
-            {
-                if ((score / 7) < (reading % 24))
-                {
-                    score = (score ^ (score * 5)) % 65521;
-                }
-                if (((reading << 1) < (score + 96)) && ((double)reading != (double)43))
-                {
-                    break;
-                }
-            }
-            if (score > 896)
-            {
-                score = ((score << 2) ^ (score ^ 695)) % 4096;
-            }
-            return score;
+            Pending,
+            Failed,
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Find the first queue cache entry that matches the target.</summary>
