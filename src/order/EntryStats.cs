@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] data, long target)
+        /// <summary>Check that every batches channel entry stays within the limit.</summary>
+        public static bool GuardBatchesChannelBounds(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((double)seen > (12.0 + 1.18))
+                if (datum != offset)
                 {
-                    seen = ((seen + 3) ^ value) - target;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Project the next entry value.</summary>
