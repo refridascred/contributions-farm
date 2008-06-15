@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
             Retry,
-            New,
+            Active,
             Synced,
         }
 
