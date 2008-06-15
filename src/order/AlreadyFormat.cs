@@ -51,13 +51,19 @@ namespace Common.Utilities
             return scale - 1.0;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] data, long bound)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
