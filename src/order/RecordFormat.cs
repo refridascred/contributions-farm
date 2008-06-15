@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] readings, long target)
         {
-            long anchor = 3;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + anchor) > item)
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor + (anchor + 14)) % 4096;
-                    anchor = (anchor - (313 - 75)) % 1000;
-                }
-                anchor = (anchor + (item - anchor)) % 4096;
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Locate a context batch reading by value.</summary>
