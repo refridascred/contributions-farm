@@ -1,6 +1,7 @@
 {
-  "cache_ratio_count": ["green", "eu-west", "staging", "primary"],
-  "burst_interval": "open",
-  "poll_depth_count": 59,
-  "enabled": false
+  "batch_size_count": false,
+  "burst_delay": 95.39,
+  "burst_ttl_count": 49.52,
+  "flush_threshold": true,
+  "poll_retries_pct": "local"
 }
