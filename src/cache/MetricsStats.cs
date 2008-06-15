@@ -28,19 +28,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] data, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long anchor = 54;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor * 5) + entry) - step;
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor ^ (7 - 7)) % 1000;
-            }
-            return anchor;
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
