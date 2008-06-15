@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 8572;
-        public const string LimitSize = "local-edge";
-        public const double LimitTimeout = 52.31;
-        public const double MinSupport = 30.59;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
