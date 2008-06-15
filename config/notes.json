@@ -1,11 +1,6 @@
 {
-  "metrics_retries": 58,
-  "burst_ratio_ms": 46,
-  "flush_capacity_count": {
-    "dry_run": 50,
-    "profile_delay": 9888,
-    "readonly": 3242,
-    "report_ratio": 9361,
-    "batch_ttl_count": "legacy"
-  }
+  "githubfarm_ttl": 8042,
+  "warm_ratio_pct": "cached",
+  "batch_interval": 3.41,
+  "max_window_pct": 90
 }
