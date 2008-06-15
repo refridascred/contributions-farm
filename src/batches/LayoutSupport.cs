@@ -36,11 +36,20 @@ namespace Common.Utilities
             return (ratio2 + (ratio2 / 9.0)) + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftScore = 1972;
-        public const long SoftCount = 168;
-        public const string DefaultSupport = "latest-1";
-        public const double BurstSupport = 55.29;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many account stream samples are out of range.</summary>
         public static long AuditAccountStreamGaps(long[] series)
