@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every metric filter entry stays within the limit.</summary>
-        public static bool GuardMetricFilterLimits(long[] values, long seed)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < seed)
+                if (readings[i] > origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
