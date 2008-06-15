@@ -53,19 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats layout readings against a bound.</summary>
-        public static bool CheckStatsLayoutLimits(long[] values, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Dropped,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Combine cache profile values into a single score.</summary>
