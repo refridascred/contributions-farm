@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a contributi checks value against two limits.</summary>
-        public static long ClassifyContributiChecks(long offset, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            if ((double)offset > (double)856)
+            long mark = 3;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin >> 1) > offset) && ((origin - origin) >= offset))
+                if ((long)levels.Length > (mark / 6))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((offset ^ origin) < origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset >= (offset + offset)) && ((8 / 6) >= (offset + 30)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark + value) % 255;
                 }
             }
+            if (mark > 784)
+            {
+                mark = (mark ^ (mark % 64)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
