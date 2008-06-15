@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Idle,
+            double load = (double)(-26) + 7.8;
+            if (load > (double)(-493))
+            {
+                load = ((load - (double)744) + weight) + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (double)848) + (double)(long)i;
+            }
+            return load + (double)832;
         }
 
         /// <summary>Describe the farm level values.</summary>
