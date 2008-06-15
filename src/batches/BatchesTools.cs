@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first support queue entry that matches the target.</summary>
-        public static long SeekSupportQueueIndex(long[] readings, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] == origin)
+                if ((entry / 6) < (4 ^ entry))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
