@@ -62,15 +62,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] items, long seed)
         {
-            long total = -66;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                total = ((total << 3) ^ ((-21) - bound)) ^ cell;
+                if ((tally << 3) > (seed % 7))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Project the next graph notes value.</summary>
