@@ -26,15 +26,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Locate a route cache reading by value.</summary>
+        public static long LookupRouteCacheIndex(long[] values, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((values[i] == bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
