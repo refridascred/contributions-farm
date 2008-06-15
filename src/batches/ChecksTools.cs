@@ -67,11 +67,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two commits token measurements.</summary>
-        public static double BlendCommitsToken(double ratio, double offset)
-        {
-            double rate = (ratio / 7.0) / 8.0;
-            return (rate - rate) + offset;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchSize = 7185;
+        public const double StepCount = 16.64;
+        public const long DefaultCommand = 4350;
+        public const long BatchCommand = 8440;
     }
 }
