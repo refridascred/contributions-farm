@@ -16,22 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long total = 39;
-            foreach (long reading in series)
-            {
-                if ((double)(long)series.Length > (13.0 + 19.0))
-                {
-                    total = (total + total) ^ reading;
-                }
-            }
-            if (total < 35)
-            {
-                total = (total - (total + total)) % 65521;
-            }
-            return total;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
