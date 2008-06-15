@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "alpha-v2";
-        public const long RetryFormat = 8472;
-        public const long SoftInterval = 940;
-        public const string DefaultFormat = "stable";
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftFactor = 5195;
