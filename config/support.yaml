@@ -1,33 +1,9 @@
 # support settings
-retry_depth_ms:
-  audit: open
-  metric_ttl:
-    - primary
-    - standard
-    - fallback
-    - local
-  retry_timeout: 7910
-  burst_threshold: 65
-  persist:
-    - 34
-    - 163
-dry_run:
-  - eu-west
-  - standard
-  - staging
-batches_retries:
-  metric_size: false
-  poll_ttl:
-    persist: 80
-    cache_timeout: 43
-    layout_interval: blue
-    readonly: true
-  tools_ratio: eu-west
-  dry_run:
-    poll_limit_ms: 2.93
-    readonly:
-      - edge
-      - primary
-    stats_threshold: 18
-    compress: 500
-    soft_threshold: 38.71
+audit: 9015
+checks_ratio: false
+verbose: 1640
+poll_capacity_count: 58
+githubfarm_threshold:
+  - 266
+  - 461
+  - 15
