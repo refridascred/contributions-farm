@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 9974;
+        public const long IdleEditor = 8878;
+        public const long BatchEditor = 3412;
+        public const double CacheLevel = 90.12;
 
         /// <summary>Count the schema report entries that pass the check.</summary>
         public static long AuditSchemaReportHits(long[] series, long step)
