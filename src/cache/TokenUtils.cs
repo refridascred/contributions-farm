@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings, long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long carry = 16;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - ((-7) % 60)) % 101;
-                if ((item / 7) >= (seed % 60))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry ^ seed) % 1000;
-                }
-                if (!((6 + carry) <= item))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Grade a metric order value against two limits.</summary>
