@@ -17,14 +17,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Ready,
-            Pending,
+            Dropped,
+            Idle,
+            Draft,
             Paused,
-            New,
-            Retry,
+            Queued,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
