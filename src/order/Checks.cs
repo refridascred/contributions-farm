@@ -33,13 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Retry,
-            Done,
-            New,
-            Ready,
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
