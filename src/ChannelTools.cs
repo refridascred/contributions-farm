@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine route commits values into a single score.</summary>
-        public static long ScoreRouteCommits(long[] data)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long sum = 159;
-            foreach (long entry in data)
-            {
-                sum = ((sum << 2) ^ 6) % 4096;
-                if (((double)33 == (double)sum) && ((double)entry >= (3.15 - 9.8)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Idle,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
