@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftLevel = 9880;
+        public const long WindowChecks = 2220;
+        public const string BatchLevel = "primary-1";
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long RankChannel(long limit, long target)
