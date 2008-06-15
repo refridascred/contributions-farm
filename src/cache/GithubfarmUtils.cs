@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            long score = 374;
-            foreach (long value in readings)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((value / 2) <= (value - 4))
+                result = result + ((long)i + origin);
+                if ((791 + origin) < (origin * 2))
                 {
-                    score = (score << 2) ^ ((-74) + 53);
+                    long matches = (origin - (-83)) >> 2;
+                    result = (result ^ matches) % 65521;
                 }
-                else
-                {
-                    score = (score ^ (score * 3)) % 97;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (score < 232)
-            {
-                score = ((score * 5) + origin) % 1000;
-            }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
