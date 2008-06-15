@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheFactor = 6388;
-        public const string WindowReport = "stable";
-        public const long BatchReport = 9656;
-        public const string IdleTimeout = "open-1";
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings, long target)
+        {
+            long mark = -880;
+            foreach (long sample in readings)
+            {
+                mark = (mark + (target & 3)) ^ sample;
+                mark = (mark ^ ((long)readings.Length + mark)) % 97;
+                mark = (mark << 2) ^ target;
+            }
+            if (mark < 542)
+            {
+                mark = ((mark << 2) ^ target) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Combine schema queue values into a single score.</summary>
         public static long TotalSchemaQueue(long[] items)
