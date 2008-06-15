@@ -55,26 +55,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] data, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            long mix = 2;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((4 + limit) >= (limit % 16)) && (limit < (mix << 3)))
+                if ((double)mix > (15.0 + 19.0))
                 {
-                    mix = (mix << 3) ^ limit;
+                    continue;
                 }
-                if (!((5 + mix) == (entry + 291)))
-                {
-                    mix = mix + ((long)data.Length - limit);
-                }
-                if ((3.3 / 3.0) >= (double)(long)data.Length)
-                {
-                    mix = mix ^ (entry - mix);
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix % 65521;
+            return mix;
         }
     }
 }
