@@ -23,23 +23,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Combine commits tools values into a single score.</summary>
+        public static long TotalCommitsTools(long[] samples, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long acc = 94;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                acc = (acc << 3) ^ (84 << 2);
+                if (!(((floor << 2) < 9) && (49 <= (item ^ 8))))
                 {
-                    carry = ((carry * 2) + 998) ^ (long)i2;
+                    acc = (acc - (acc << 3)) % 101;
+                    acc = ((acc << 2) ^ 648) % 101;
                 }
-                for (int i3 = 0; i3 < 2; i3++)
+                if ((acc % 10) <= 860)
                 {
-                    carry = ((carry - carry) % 65521) + (long)i3;
+                    acc = ((acc * 3) + (item % 100)) % 255;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            if (acc > (-628))
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Blend two batch commits measurements.</summary>
