@@ -1,7 +1,8 @@
-id,level,ratio,rank
-1,cached,411,453
-2,71.66,fallback,398
-3,292,98.91,790
-4,open,135,15.73
-5,strict,77.41,88.44
-6,open,strict,146
+id,level,score,state,token
+1,green,595,85,staging
+2,local,732,98.31,41.97
+3,795,365,10.23,blue
+4,latest,725,24.07,69.97
+5,109,12.74,local,1.06
+6,371,primary,93.48,staging
+7,31.74,61.84,434,974
