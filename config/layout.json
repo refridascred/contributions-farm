@@ -1,7 +1,5 @@
 {
-  "sync_limit_pct": 7989,
-  "compress": false,
-  "persist": true,
-  "burst_interval_count": "primary",
-  "min_retries_s": "blue"
+  "batch_limit_pct": true,
+  "hard_retries_ms": "cached",
+  "dry_run": 622
 }
