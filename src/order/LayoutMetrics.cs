@@ -23,20 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftFactor = 5195;
+        public const long StepChannel = 1906;
+        public const long HardScore = 3621;
+        public const string MinFactor = "latest-v2";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepRatio = 7580;
