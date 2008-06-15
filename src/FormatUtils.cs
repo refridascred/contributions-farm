@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Pending,
-            Idle,
-            Queued,
-            Done,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSize = 6260;
+        public const long MinCluster = 4664;
+        public const string BatchInterval = "local-v2";
+        public const long DefaultCluster = 6821;
+        public const long HardBudget = 5614;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
