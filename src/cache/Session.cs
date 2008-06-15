@@ -48,19 +48,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate notes batch readings against a bound.</summary>
-        public static bool CheckNotesBatchBounds(long[] samples, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long seed)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell >= floor)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ (seed ^ sum)) + (long)i2;
                 }
+                sum = ((sum << 2) ^ (75 + (long)i)) % 1000;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
     }
 }
