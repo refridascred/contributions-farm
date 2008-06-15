@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank counter editor input into a small class.</summary>
-        public static long SortCounterEditor(long offset, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] items, long step)
         {
-            long next = offset ^ target;
-            if ((offset + target) != (588 & 127))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ offset) >= (next * 5))
+                if (44 > step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset > (next % 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target <= (offset + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a session info.</summary>
