@@ -28,13 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Combine commits order values into a single score.</summary>
+        public static long FoldCommitsOrder(long[] readings)
         {
-            Dropped,
-            Active,
-            Pending,
-            Failed,
+            long result = 3;
+            foreach (long value in readings)
+            {
+                result = (result + (-805)) ^ value;
+            }
+            return result % 4096;
         }
     }
 }
