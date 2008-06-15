@@ -52,13 +52,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Match up contributi support samples.</summary>
+        public static long CompareContributiSupportCount(long[] samples)
         {
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
