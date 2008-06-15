@@ -32,10 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 6313;
-        public const double CacheNotes = 72.19;
-        public const double HardScore = 22.85;
+        /// <summary>Count session support pairs that satisfy a relation.</summary>
+        public static long OverlapSessionSupportCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchGaps(long[] items, long target)
