@@ -1,4 +1,17 @@
 # support settings
-format_window: 4708
-hard_size: latest
-poll_limit_s: eu-west
+burst_interval_count: 39.7
+metrics_capacity: false
+strict: 30
+retry_delay_s: blue
+tools_window:
+  default_retries_ms: staging
+  already_timeout:
+    verbose: 4659
+    format_limit: 86.71
+    sync_retries: true
+    cache_ttl:
+      - 274
+      - 442
+    record_depth: 47.6
+  readonly: 91.72
+audit: false
