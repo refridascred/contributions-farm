@@ -56,39 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a report format pair into a bucket.</summary>
-        public static long SortReportFormat(long seed, long bound)
-        {
-            long prev = seed - bound;
-            if ((740 * 4) >= (29 - prev))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 5) >= prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.0 < (double)bound) || ((prev + 702) < (prev + 985)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed + prev) >= (prev * 2)) && ((73 / 8) <= prev))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 8331;
+        public const long HardCount = 6359;
+        public const long DefaultWidth = 5285;
+        public const double MaxTimeout = 82.97;
+        public const long WindowLevel = 9033;
     }
 }
