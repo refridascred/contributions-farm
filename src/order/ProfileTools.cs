@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardInterval = 92.87;
-        public const string IdlePayload = "fallback";
-        public const long BasePayload = 3820;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 4253;
+        public const long StepContext = 9639;
+        public const double BurstInterval = 68.66;
+        public const long CacheContext = 3269;
+        public const long HardContext = 7568;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] series)
