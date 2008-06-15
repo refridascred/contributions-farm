@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double ratio, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] items, long step)
         {
-            double ratio2 = span;
-            return ratio2 - ratio;
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (step > count)
+                {
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
