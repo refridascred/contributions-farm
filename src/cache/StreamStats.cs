@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] readings, long limit)
+        /// <summary>Combine cache layout values into a single score.</summary>
+        public static long ScoreCacheLayout(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long mark = 616;
+            foreach (long entry in levels)
             {
-                if (cell <= limit)
+                mark = ((mark ^ (93 & 3)) % 65521) + bound;
+                if ((entry % 100) > 2)
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark << 2) ^ (mark - entry)) % 1000;
                 }
             }
-            return stale;
+            if (mark < 740)
+            {
+                mark = (mark * 4) + (25 << 2);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate token samples.</summary>
