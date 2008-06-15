@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-Keep tools and counter names short and lowercase.
-
-Run the support check before changing any editor limits.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Use layout settings to tune how often buffer data is refreshed.
+A editor that stays idle for too long is moved to the farm list.
+When a stream fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every report change
-- Prefer format defaults
-- Keep metrics values small
-- Validate filter input early
+- Document new contributi fields
+- Review already limits each release
+- Prefer checks defaults
+- Log every record change
