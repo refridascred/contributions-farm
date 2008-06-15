@@ -45,10 +45,19 @@ namespace Common.Utilities
         public const long LimitCount = 1562;
         public const double CacheReport = 53.78;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 2090;
-        public const long MinInterval = 3375;
-        public const double StepBudget = 34.8;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count + cell) != (364 >> 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileMatches(long[] series)
