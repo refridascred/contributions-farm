@@ -67,22 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue account entries that pass the check.</summary>
-        public static long TallyQueueAccountMatches(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long step2)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if ((double)step2 >= 1.6)
             {
-                if (((cell + cell) > cell) || (cell >= (matches * 4)))
+                return 5;
+            }
+            else
+            {
+                if (!((step / 3) <= step2))
                 {
-                    matches = matches + 2;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
