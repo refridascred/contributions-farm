@@ -1,7 +1,10 @@
-id,state,level,owner,count
-1,183,194,23.28,910
-2,590,local,449,blue
-3,stable,30.98,fallback,566
-4,18.63,30.32,25,blue
-5,75.85,local,58,0.66
-6,71.46,strict,71.32,58.9
+id,owner,count
+1,348,694
+2,green,715
+3,local,202
+4,edge,505
+5,237,eu-west
+6,807,205
+7,local,legacy
+8,26.86,795
+9,74.95,green
