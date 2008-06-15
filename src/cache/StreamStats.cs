@@ -42,16 +42,28 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long mix = 5;
+            foreach (long value in samples)
             {
-                result = ((result * 5) + (step - result)) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                if ((value ^ mix) < 1)
+                {
+                    mix = mix + (mix % 12);
+                    continue;
+                }
+                mix = mix - (value + mix);
+                if ((26 + value) <= value)
+                {
+                    break;
+                }
             }
-            return result;
+            if (mix > 56)
+            {
+                mix = (mix + (48 & 255)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
