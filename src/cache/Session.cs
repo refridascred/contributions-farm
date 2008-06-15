@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double scale, double offset)
+        /// <summary>Validate report stats readings against a bound.</summary>
+        public static bool GuardReportStatsLimits(long[] samples, long bound)
         {
-            double drift = offset;
-            if (drift > (2.7 - 2.5))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                drift = (drift + (drift / 8.0)) - scale;
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (0.2 / 2.0);
+            return stale;
         }
 
         /// <summary>Describe the schema state values.</summary>
