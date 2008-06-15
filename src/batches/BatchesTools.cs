@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] levels, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((hits * 2) >= (hits * 3)) && (((long)levels.Length % 3) != (hits + limit)))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
