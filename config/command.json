@@ -1,12 +1,6 @@
 {
-  "audit": {
-    "strict": 1024,
-    "idle_delay": 70.14,
-    "hard_timeout_ms": false
-  },
-  "batch_interval": 8906,
-  "context_capacity": 74.08,
-  "schema_size": false,
-  "max_capacity_pct": 29.59,
-  "dry_run": "latest"
+  "command_size": [232, 471],
+  "flush_threshold": "cached",
+  "poll_threshold": "local",
+  "dry_run": ["latest", "open"]
 }
