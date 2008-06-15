@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double bias)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double scale2 = scale;
-            if (scale2 > (bias * 7.0))
-            {
-                scale2 = scale2 + scale;
-            }
-            else
-            {
-                scale2 = scale2 + (scale + 1.3);
-            }
-            return scale2 + (scale2 * 4.0);
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Blend two token measurements.</summary>
