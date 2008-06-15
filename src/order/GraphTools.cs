@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] series, long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Stale,
+            New,
+            Failed,
         }
 
         /// <summary>Accumulate contributi support samples.</summary>
