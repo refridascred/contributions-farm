@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Stale,
-            Idle,
-            Dropped,
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
