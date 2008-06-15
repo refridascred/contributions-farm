@@ -85,12 +85,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            New,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 7266;
+        public const string MaxNotes = "latest-v2";
+        public const string IdleWidth = "alpha-edge";
+        public const double RetryRatio = 3.55;
+        public const double SoftNotes = 9.57;
     }
 }
