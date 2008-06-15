@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long offset, long offset2)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if ((8 - offset) >= (7 + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset > (offset2 * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset2 & 15) < (offset + (-110)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a counter record.</summary>
