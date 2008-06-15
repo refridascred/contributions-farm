@@ -20,21 +20,20 @@ namespace Common.Utilities
         public const long HardScore = 3621;
         public const string MinFactor = "latest-v2";
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8.17 - 11.0) >= (1.17 - 2.0))
                 {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + target) % 255;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
     }
 }
