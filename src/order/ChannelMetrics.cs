@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine queue payload values into a single score.</summary>
-        public static long CombineQueuePayload(long[] series, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long result = 46;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result ^ (floor >> 2)) % 101) ^ reading;
-                result = ((result << 2) ^ (result / 3)) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
