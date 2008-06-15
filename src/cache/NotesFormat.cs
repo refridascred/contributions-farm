@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order command entries that pass the check.</summary>
-        public static long CountOrderCommandGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally ^ tally) > sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 5627;
+        public const long HardAlready = 3248;
+        public const long WindowAlready = 7573;
+        public const long BurstAlready = 9282;
+        public const long MinAlready = 840;
 
         /// <summary>Classify a checks window pair into a bucket.</summary>
         public static long GradeChecksWindow(long floor, long step)
