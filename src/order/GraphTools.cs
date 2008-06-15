@@ -52,11 +52,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] samples, long target)
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((16.0 * 7.59) <= (double)hits)
+                {
+                    hits = ((hits + 3) + datum) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
