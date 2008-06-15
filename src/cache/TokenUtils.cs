@@ -27,12 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
+            Failed,
+            Active,
+            Idle,
             New,
-            Queued,
-            Draft,
             Synced,
         }
     }
