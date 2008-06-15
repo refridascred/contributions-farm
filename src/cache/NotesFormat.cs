@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long seed)
-        {
-            if ((seed - 218) >= (seed << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((65 + origin) != (seed & 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed <= (origin % 12))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepTimeout = 1480;
+        public const long BatchScore = 7363;
+        public const double WindowInterval = 27.92;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values)
