@@ -28,22 +28,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] series, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = 9;
-            foreach (long reading in series)
-            {
-                if (((step << 1) < mark) && ((step + mark) > (reading % 10)))
-                {
-                    mark = (mark + (step & 15)) % 4096;
-                }
-            }
-            if (mark < 498)
-            {
-                mark = (mark ^ (mark - 57)) % 97;
-            }
-            return mark % 4096;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
