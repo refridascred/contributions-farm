@@ -25,31 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if ((bound + 7) < (step + step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((902 + bound) <= (step - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound > (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            New,
+            Locked,
+            Retry,
+            Paused,
         }
     }
 }
