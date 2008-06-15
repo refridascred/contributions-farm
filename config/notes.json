@@ -1,5 +1,16 @@
 {
-  "min_window_count": ["edge", "primary"],
-  "audit": "strict",
-  "poll_ttl": 18.83
+  "compress": {
+    "batch_ratio_ms": 14.6,
+    "default_limit_ms": true,
+    "sync_ttl_s": true,
+    "cache_ratio": {
+      "sync_size": 250,
+      "batch_ttl_ms": "edge",
+      "batch_size_count": 48.61
+    },
+    "soft_depth_pct": "stable"
+  },
+  "sync_capacity": "green",
+  "burst_ttl_count": 91.47,
+  "record_ratio": "primary"
 }
