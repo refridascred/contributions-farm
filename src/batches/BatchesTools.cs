@@ -24,22 +24,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long seed)
         {
-            long total = 2;
-            foreach (long sample in data)
+            long step = bound + seed;
+            if (((step & 1) < bound) && ((step << 3) >= (bound + step)))
             {
-                if ((sample << 2) == (floor - sample))
+                return 0;
+            }
+            else
+            {
+                if ((double)51 != (double)bound)
                 {
-                    total = total ^ (41 + floor);
+                    return 8;
+                }
+                else
+                {
+                    if ((step % 10) <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed & 7) >= seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (total < 105)
-            {
-                total = (total + (44 << 2)) % 101;
-            }
-            return total % 1000;
         }
 
         /// <summary>Hold a metric record.</summary>
