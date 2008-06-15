@@ -67,32 +67,15 @@ namespace Common.Utilities
         public const double BasePayload = 18.08;
         public const double BaseCount = 54.11;
 
-        /// <summary>Grade a entry metric value against two limits.</summary>
-        public static long GradeEntryMetric(long step, long origin)
+        /// <summary>Combine graph cache values into a single score.</summary>
+        public static long TallyGraphCache(long[] values)
         {
-            long offset = step ^ origin;
-            if (((double)step > (double)offset) && (step > (step - step)))
+            long mix = 57;
+            foreach (long value in values)
             {
-                return 7;
+                mix = (mix ^ value) % 4096;
             }
-            else
-            {
-                if ((883 ^ origin) <= (origin << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - origin) == (origin << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix % 1000;
         }
     }
 }
