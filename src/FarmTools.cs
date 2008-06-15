@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] samples, long floor)
+        /// <summary>Project the next editor commits value.</summary>
+        public static double AdjustEditorCommits(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = (double)(76 - 402);
+            return (weight + bias2) + bias;
         }
 
         /// <summary>Compare every pair of batch cache readings.</summary>
