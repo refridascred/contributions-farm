@@ -20,23 +20,18 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double offset)
+        /// <summary>Count the stream batch entries that pass the check.</summary>
+        public static long AuditStreamBatchHits(long[] readings, long origin)
         {
-            double scale = weight;
-            if (scale < (offset / 9.0))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                scale = scale - weight;
+                if ((origin * 2) >= (entry / 4))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                scale = scale + (double)4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (5.6 * 5.51)) - (double)(long)i;
-            }
-            return scale - scale;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
