@@ -43,31 +43,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank counter graph input into a small class.</summary>
-        public static long RankCounterGraph(long floor, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            if ((step >> 5) >= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step * 5) < (step % 10)) && ((0 - 131) < (step >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - floor) != (floor + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a order summary.</summary>
