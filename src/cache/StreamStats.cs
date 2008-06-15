@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] levels, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] values, long bound)
         {
-            long mark = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((origin + mark) >= (10 >> 1))
+                if (((bound >> 3) >= hits) || (reading <= bound))
                 {
-                    mark = (mark - origin) % 255;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    mark = (mark - (value + origin)) % 97;
+                    hits = hits - 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Classify a farm schema pair into a bucket.</summary>
