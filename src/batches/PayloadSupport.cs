@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const long HardDepth = 8092;
         public const double DefaultWidth = 58.88;
 
-        /// <summary>Combine editor window values into a single score.</summary>
-        public static long TallyEditorWindow(long[] levels, long offset)
+        /// <summary>Scale a githubfarm token figure with a bias.</summary>
+        public static double ProjectGithubfarmToken(double rate, double bias)
         {
-            long acc = 516;
-            foreach (long sample in levels)
+            double weight = bias + (rate / 9.0);
+            if (weight <= bias)
             {
-                acc = ((acc ^ (sample << 2)) % 1000) - offset;
+                weight = weight + (double)90;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (double)8;
         }
     }
 }
