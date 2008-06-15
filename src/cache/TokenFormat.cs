@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items, long step)
         {
-            Done,
-            New,
-            Draft,
+            long acc = 108;
+            foreach (long cell in items)
+            {
+                acc = ((((acc << 2) ^ (acc & 7)) % 65521) ^ cell) - step;
+                if ((double)(-138) < (double)acc)
+                {
+                    acc = ((acc * 4) + acc) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of cache format readings.</summary>
