@@ -55,12 +55,26 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long seed)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 660;
+            foreach (long reading in values)
+            {
+                if ((seed - seed) >= 780)
+                {
+                    score = ((score << 3) ^ reading) % 101;
+                }
+                else
+                {
+                    score = score - (seed + reading);
+                }
+                if ((score & 127) == (seed - score))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
