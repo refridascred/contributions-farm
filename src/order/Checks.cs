@@ -19,12 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinBudget = 69.17;
-        public const long BurstTimeout = 8579;
-        public const long MinStream = 8437;
-        public const double BatchBudget = 2.22;
-        public const string HardSpan = "legacy-edge";
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Ready,
+            Queued,
+            New,
+            Failed,
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
