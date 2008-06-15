@@ -27,13 +27,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
             Locked,
+            Draft,
             Idle,
-            Dropped,
-            Stale,
+            Paused,
         }
 
         /// <summary>Describe the context kind values.</summary>
