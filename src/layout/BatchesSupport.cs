@@ -63,21 +63,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of metrics batches readings.</summary>
-        public static long MatchMetricsBatchesCount(long[] data)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total << 2) ^ (435 >> 4);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
     }
 }
