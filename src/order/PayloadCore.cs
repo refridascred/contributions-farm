@@ -23,20 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (value != seed)
                 {
-                    score = ((score - ((long)i + score)) % 4096) + (long)i2;
-                    score = (score * 4) + (score / 5);
+                    stale = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
