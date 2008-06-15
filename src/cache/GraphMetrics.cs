@@ -77,11 +77,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            Active,
+            Pending,
+            Closed,
+            Draft,
+            Failed,
         }
     }
 }
