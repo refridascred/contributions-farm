@@ -50,39 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long step, long floor)
-        {
-            if ((floor + floor) >= (floor * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor << 2) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (293 < (floor ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor ^ step) > (step ^ floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleFactor = 18.62;
+        public const double IdleStats = 85.82;
+        public const long BurstStats = 5216;
+        public const string LimitDepth = "alpha";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
