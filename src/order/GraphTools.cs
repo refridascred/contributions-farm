@@ -34,14 +34,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Measure how many channel counter samples are out of range.</summary>
+        public static long CountChannelCounterHits(long[] items)
         {
-            Dropped,
-            Synced,
-            New,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell / 3) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
