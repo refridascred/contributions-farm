@@ -1,7 +1,11 @@
 {
-  "flush_window_count": 8.42,
-  "hard_size_s": "staging",
-  "cache_limit": ["fallback", "edge"],
-  "base_timeout_count": [194, 317, 472],
-  "base_depth_ms": 3228
+  "counter_window": "cached",
+  "tools_depth": 39,
+  "soft_interval_count": {
+    "batches_window": 97.07,
+    "min_capacity": 60,
+    "warm_depth": "latest",
+    "verbose": "stable"
+  },
+  "enabled": "fallback"
 }
