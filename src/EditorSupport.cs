@@ -33,12 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Locked,
-            Idle,
-            Pending,
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up graph support samples.</summary>
