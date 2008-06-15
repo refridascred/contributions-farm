@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const string StepWindow = "cached-v2";
         public const long HardDepth = 2893;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a stream record.</summary>
