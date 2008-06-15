@@ -29,18 +29,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] samples, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)20 < (double)seen) && ((78 - step) < (step + seen)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + datum;
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
