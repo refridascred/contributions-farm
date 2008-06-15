@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] values, long limit)
         {
-            double rate = (3.0 * 0.5) * 1.7;
-            if (rate <= ratio)
+            long acc = 937;
+            foreach (long cell in values)
             {
-                rate = (rate + (double)92) - offset;
+                acc = ((acc - (cell << 3)) % 4096) - limit;
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            return rate - (ratio * 0.8);
+            return acc % 65521;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
