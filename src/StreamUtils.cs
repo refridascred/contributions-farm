@@ -40,17 +40,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] values, long step)
+        /// <summary>Grade a order commits value against two limits.</summary>
+        public static long ClassifyOrderCommits(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (0 > (bound - 857))
             {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((offset - offset) == (bound & 63))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset >= (double)7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
