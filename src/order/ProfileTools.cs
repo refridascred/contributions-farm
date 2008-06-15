@@ -30,11 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchBudget = 6056;
-        public const string MinMetrics = "alpha";
-        public const long CacheMetrics = 7994;
-        public const long IdleLevel = 7432;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double RetryInterval = 53.24;
