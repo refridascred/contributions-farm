@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long step, long step2)
         {
-            long acc = 8;
-            foreach (long reading in items)
+            long bound = step - step2;
+            if (((step2 / 7) >= bound) && ((step - step) > (step - bound)))
             {
-                acc = ((acc + reading) % 101) + seed;
+                return 1;
             }
-            return acc % 1000;
+            else
+            {
+                if ((step2 + step2) < (step + 155))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate token samples.</summary>
