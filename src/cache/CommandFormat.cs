@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long step)
         {
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((score ^ 61) != (score >> 1)))
+                {
+                    score = (score ^ (step + (-236))) % 255;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
