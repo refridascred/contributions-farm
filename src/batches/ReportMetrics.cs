@@ -24,17 +24,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long origin)
+        /// <summary>Derive the next filter buffer value from a seed.</summary>
+        public static long IterateFilterBuffer(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (seed ^ (long)i)) % 65521;
+                mix = (mix - ((-55) + mix)) % 255;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
