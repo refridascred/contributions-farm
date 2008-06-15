@@ -70,25 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel batches value against two limits.</summary>
-        public static long RankChannelBatches(long seed, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] readings, long floor)
         {
-            long gap = seed - target;
-            if ((-420) < (gap % 5))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (5.5 > (double)target)
+                if ((6.8 - 8.0) == (double)count)
                 {
-                    return 4;
+                    count = ((count + 1) ^ item) + floor;
                 }
                 else
                 {
-                    return 5;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
