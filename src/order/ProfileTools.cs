@@ -30,19 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] items, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit editor metrics readings against a rule.</summary>
