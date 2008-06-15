@@ -34,29 +34,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples)
-        {
-            long mix = 5;
-            foreach (long value in samples)
-            {
-                if ((value ^ mix) < 1)
-                {
-                    mix = mix + (mix % 12);
-                    continue;
-                }
-                mix = mix - (value + mix);
-                if ((26 + value) <= value)
-                {
-                    break;
-                }
-            }
-            if (mix > 56)
-            {
-                mix = (mix + (48 & 255)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseInterval = "open-1";
+        public const string StepDepth = "latest-1";
+        public const long DefaultAccount = 6135;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksOutliers(long[] readings, long offset)
