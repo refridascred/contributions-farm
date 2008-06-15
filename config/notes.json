@@ -1,6 +1,6 @@
 {
-  "githubfarm_ttl": 8042,
-  "warm_ratio_pct": "cached",
-  "batch_interval": 3.41,
-  "max_window_pct": 90
+  "strict": 28,
+  "flush_interval_s": "primary",
+  "command_capacity": 30.08,
+  "enabled": [146, 128, 21]
 }
