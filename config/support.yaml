@@ -1,16 +1,25 @@
 # support settings
-default_threshold_s: primary
-layout_window: fallback
-poll_depth_count:
-  sync_interval: legacy
-  sync_size:
-    hard_window:
-      - 126
-      - 408
-      - 355
-    soft_timeout_ms: legacy
-    batch_ratio_s: false
-    strict: 92.7
-    warm_depth_pct: 1.16
-  context_depth: 17
-  account_depth: strict
+compress: true
+warm_threshold_ms:
+  - standard
+  - blue
+  - blue
+  - standard
+editor_delay: 43.04
+hard_retries:
+  default_ttl: true
+  audit: legacy
+  record_capacity:
+    support_limit:
+      - standard
+      - primary
+    retry_size_count: 9
+    default_capacity:
+      - 373
+      - 262
+      - 38
+      - 235
+  retry_capacity: 60
+  soft_threshold_pct: true
+  persist: 88
+poll_limit_s: stable
