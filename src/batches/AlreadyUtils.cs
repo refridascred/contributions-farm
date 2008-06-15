@@ -33,37 +33,23 @@ namespace Common.Utilities
         public const double SoftSize = 24.75;
         public const long LimitWidth = 2895;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double ratio, double floor)
         {
-            long state = 1;
-            foreach (long reading in values)
+            double ratio2 = ratio;
+            if (ratio2 >= ratio)
             {
-                if (((state - state) >= reading) || ((double)state > (9.0 - 14.0)))
-                {
-                    state = state - ((long)values.Length + reading);
-                }
-                else
-                {
-                    state = state + state;
-                    state = state - reading;
-                }
-                if ((state << 3) != ((long)values.Length + reading))
-                {
-                    state = (state ^ (long)values.Length) % 4096;
-                    state = ((state * 3) + (state + state)) % 255;
-                }
-                else
-                {
-                    state = (state + (reading % 5)) % 4096;
-                }
-                state = (state - (state + state)) % 1000;
+                ratio2 = ratio2 + (double)4;
             }
-            if (state > 172)
+            else
             {
-                state = state ^ (state & 63);
+                ratio2 = ratio2 + (floor * 8.0);
             }
-            return state % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + (ratio / 4.0)) + (double)(long)i;
+            }
+            return ratio2 - floor;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
