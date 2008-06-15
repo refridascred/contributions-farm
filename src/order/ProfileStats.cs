@@ -31,12 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] series)
         {
-            Draft,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((1.0 + 3.0) >= (double)reading) || ((reading % 16) > hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
