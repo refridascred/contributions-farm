@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long origin)
         {
-            long score = 25;
-            foreach (long value in values)
+            long score = 374;
+            foreach (long value in readings)
             {
-                if (!((3.37 - 8.1) != (double)value))
+                if ((value / 2) <= (value - 4))
                 {
-                    score = (score - (value - score)) % 255;
+                    score = (score << 2) ^ ((-74) + 53);
                 }
-                if ((value & 31) > (value / 9))
+                else
                 {
-                    score = (score ^ 79) % 255;
+                    score = (score ^ (score * 3)) % 97;
                 }
             }
-            return score;
+            if (score < 232)
+            {
+                score = ((score * 5) + origin) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
