@@ -29,19 +29,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate batches support readings against a bound.</summary>
-        public static bool VerifyBatchesSupportLimits(long[] series, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
