@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many record context samples are out of range.</summary>
-        public static long TallyRecordContextMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen * 3) > 18)
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleSpan = 4311;
+        public const long SoftRatio = 8083;
+        public const string MinBudget = "standard-edge";
+        public const long DefaultReport = 8030;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long SortChecks(long offset, long offset2)
