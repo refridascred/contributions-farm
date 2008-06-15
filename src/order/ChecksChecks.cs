@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Idle,
-            Queued,
-            New,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheSpan = 5672;
+        public const long HardBuffer = 999;
+        public const double MaxBuffer = 84.54;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long ScoreOrder(long[] levels)
