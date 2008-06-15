@@ -1,13 +1,6 @@
 {
-  "channel_interval": false,
-  "context_capacity": "cached",
-  "metrics_retries": "open",
-  "batch_timeout": {
-    "persist": [254, 466, 424],
-    "metric_interval": "green",
-    "strict": "legacy",
-    "soft_depth_count": 30,
-    "cache_ratio": true,
-    "min_depth": "strict"
-  }
+  "compress": 50.95,
+  "soft_depth_count": "eu-west",
+  "default_ratio": "cached",
+  "cache_retries_count": [287, 329, 17, 241]
 }
