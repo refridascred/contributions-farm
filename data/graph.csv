@@ -1,6 +1,8 @@
-id,region,rank,owner
-1,86.79,547,61.48
-2,84.26,legacy,212
-3,775,783,696
-4,local,edge,89.17
-5,eu-west,open,735
+id,token,region
+1,35.07,53
+2,standard,eu-west
+3,533,29.29
+4,staging,blue
+5,legacy,80.0
+6,89,218
+7,standard,97.27
