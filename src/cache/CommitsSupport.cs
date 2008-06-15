@@ -25,15 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Closed,
-            Paused,
-            Ready,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardScore = "staging-edge";
+        public const long RetryCount = 795;
+        public const long BatchLevel = 2642;
+        public const long MaxBudget = 3402;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorLimits(long[] items, long bound)
