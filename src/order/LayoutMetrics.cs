@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 1370;
-        public const string SoftBudget = "stable-v2";
-        public const long SoftCounter = 7332;
-        public const long LimitCount = 7618;
+        /// <summary>Count the notes graph entries that pass the check.</summary>
+        public static long TallyNotesGraphOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) <= (reading + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 8551;
