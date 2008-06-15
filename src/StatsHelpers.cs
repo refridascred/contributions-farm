@@ -39,22 +39,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Audit checks layout readings against a rule.</summary>
+        public static long CountChecksLayoutMatches(long[] items)
         {
-            long anchor = 4;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (item > (item / 4))
+                if ((9.7 - 5.6) != (double)datum)
                 {
-                    anchor = (anchor - ((long)series.Length - anchor)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (item >> 2);
+                    hits = hits + 1;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
