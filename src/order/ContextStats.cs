@@ -62,19 +62,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine cache profile values into a single score.</summary>
-        public static long TallyCacheProfile(long[] values)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mix = 542;
-            foreach (long item in values)
-            {
-                mix = mix - (item - 9);
-            }
-            if (mix < 35)
-            {
-                mix = ((mix * 2) + (mix >> 4)) % 101;
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
