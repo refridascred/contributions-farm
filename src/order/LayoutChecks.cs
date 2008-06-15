@@ -72,18 +72,11 @@ namespace Common.Utilities
         public const long RetryFactor = 4275;
         public const long LimitMetrics = 8755;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] values)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 5) >= datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
