@@ -38,19 +38,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double weight, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double scale = 14.0;
-            if (scale < (floor / 3.0))
-            {
-                scale = (scale + scale) - weight;
-            }
-            else
-            {
-                scale = scale + (double)8;
-            }
-            return scale - (scale * 8.6);
+            Idle,
+            Retry,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the command level values.</summary>
