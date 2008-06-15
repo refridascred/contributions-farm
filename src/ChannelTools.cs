@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (floor > (-286))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleBudget = 0.9;
+        public const long RetryWindow = 4122;
+        public const long MaxSpan = 9089;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] samples, long floor)
