@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] samples, long target)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of route readings.</summary>
