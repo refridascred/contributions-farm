@@ -22,22 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Match up command tools samples.</summary>
+        public static long OverlapCommandToolsCount(long[] series)
         {
-            long result = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < (value >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result - (result - value);
-                }
-                else
-                {
-                    result = result - (value + result);
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
