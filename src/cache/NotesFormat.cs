@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardWidth = "open-v2";
-        public const string StepBatch = "fallback-v2";
-        public const long MinBatch = 4681;
-        public const long RetryRatio = 3063;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
