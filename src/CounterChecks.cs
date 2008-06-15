@@ -64,16 +64,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] items, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long sum = 3;
+            foreach (long entry in items)
             {
-                result = ((result * 4) + step) % 101;
-                result = ((result * 3) + (long)i) % 101;
+                sum = (sum << 2) ^ floor;
+                sum = sum ^ (floor + entry);
+                if (!(770 < ((-660) + entry)))
+                {
+                    break;
+                }
             }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
