@@ -33,19 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] series, long seed)
         {
-            long result = 3;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                result = (result + (215 >> 4)) ^ item;
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (result < 47)
-            {
-                result = ((result * 2) + (result * 2)) % 4096;
-            }
-            return result % 65521;
+            return flag;
         }
     }
 }
