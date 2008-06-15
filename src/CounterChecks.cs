@@ -72,18 +72,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record batches readings against a rule.</summary>
-        public static long CountRecordBatchesMatches(long[] values, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (bound < 80)
+                if (reading < offset)
                 {
-                    seen = (seen + 2) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
