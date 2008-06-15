@@ -1,7 +1,5 @@
 {
-  "compress": "cached",
-  "sync_limit_pct": 4478,
-  "already_limit": 2451,
-  "editor_interval": 65.65,
-  "soft_interval": 23.12
+  "warm_ratio_pct": false,
+  "cache_delay": 35.75,
+  "readonly": "legacy"
 }
