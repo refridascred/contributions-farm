@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 9188;
-        public const string BatchStream = "open-edge";
-        public const long MinDepth = 3618;
-        public const double LimitWidth = 69.59;
-        public const long StepTimeout = 5719;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data, long seed)
+        {
+            long result = 5;
+            foreach (long value in data)
+            {
+                if (!((13.0 + 13.0) > (double)result))
+                {
+                    result = ((result + (result ^ result)) % 255) + value;
+                }
+                else
+                {
+                    result = result - (seed ^ 1);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] levels)
