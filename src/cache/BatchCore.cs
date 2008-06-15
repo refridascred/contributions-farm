@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] readings, long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)seed > (3.04 * 3.06))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
