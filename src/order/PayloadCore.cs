@@ -27,12 +27,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 3509;
-        public const string SoftNotes = "latest-edge";
-        public const double CacheSpan = 90.6;
-        public const long LimitDepth = 318;
-        public const long BaseSize = 7517;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            New,
+            Draft,
+            Done,
+            Queued,
+        }
 
         /// <summary>Fold a list of filter metric readings.</summary>
         public static long TotalFilterMetric(long[] data, long limit)
