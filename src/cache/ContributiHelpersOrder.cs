@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            Locked,
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
