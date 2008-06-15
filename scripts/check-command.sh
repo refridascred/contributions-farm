@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
+mode="${1:-blue}"
 case "${mode}" in
-    edge)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=348
-log "limit is ${COMMAND_LIMIT}"
+for item in eu-west legacy open; do
+    log "checking ${item}"
+done
