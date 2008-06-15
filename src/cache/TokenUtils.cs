@@ -34,18 +34,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] readings, long offset)
+        /// <summary>Grade a metric order value against two limits.</summary>
+        public static long ClassifyMetricOrder(long seed, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long offset = seed - target;
+            if ((7 / 3) >= offset)
             {
-                if ((offset + offset) > (152 - reading))
+                return 6;
+            }
+            else
+            {
+                if ((19.0 / 6.0) <= (double)offset)
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
