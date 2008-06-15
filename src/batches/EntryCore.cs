@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long anchor = -361;
+            foreach (long item in levels)
             {
-                if (reading < 656)
+                if (((anchor + (long)levels.Length) != (item >> 2)) && (5.8 > (double)item))
                 {
-                    count = count + 1;
+                    anchor = anchor - (anchor >> 5);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (25 + item)) % 255;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the order state values.</summary>
