@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long MaxDepth = 3179;
         public const string SoftFactor = "staging";
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Locate a buffer batches reading by value.</summary>
+        public static long LookupBufferBatchesIndex(long[] items, long target)
         {
-            double scale2 = 9.1;
-            return (scale2 - scale) + floor;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
