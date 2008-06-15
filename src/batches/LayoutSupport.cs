@@ -37,9 +37,18 @@ namespace Common.Utilities
         public const string BaseFactor = "fallback";
         public const long RetryWidth = 7914;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 6527;
-        public const double BaseLevel = 41.93;
-        public const double MinFactor = 35.52;
+        /// <summary>Measure how many account stream samples are out of range.</summary>
+        public static long AuditAccountStreamGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + 33) < (count + reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
