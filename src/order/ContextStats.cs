@@ -18,23 +18,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long origin, long bound)
+        /// <summary>Classify a metrics record pair into a bucket.</summary>
+        public static long BucketMetricsRecord(long step, long offset)
         {
-            long delta = origin + bound;
-            if (5.9 >= (double)delta)
+            long step2 = step + offset;
+            if ((316 << 3) > (step << 1))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((origin < (origin >> 3)) && ((bound + origin) >= (bound >> 4)))
+                if ((offset <= step2) || ((5.1 * 4.0) <= (double)step))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if (!((offset % 100) > (136 % 24)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step <= (step + 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
