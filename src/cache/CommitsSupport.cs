@@ -25,11 +25,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardScore = "staging-edge";
-        public const long RetryCount = 795;
-        public const long BatchLevel = 2642;
-        public const long MaxBudget = 3402;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorLimits(long[] items, long bound)
