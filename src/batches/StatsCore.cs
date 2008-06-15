@@ -40,13 +40,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long bound, long seed)
         {
-            Pending,
-            Closed,
-            Synced,
-            New,
+            if (bound > (bound - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= 10.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
