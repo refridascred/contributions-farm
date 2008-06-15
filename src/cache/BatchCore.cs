@@ -14,11 +14,33 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 1629;
-        public const long WindowInterval = 6522;
-        public const long LimitStream = 3052;
-        public const long DefaultRatio = 8042;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long offset, long seed)
+        {
+            long bound = offset + seed;
+            if ((double)1 <= (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)2 < (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((61 / 2) <= offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long bound)
