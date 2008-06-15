@@ -65,18 +65,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!(hits <= (cell - cell)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            New,
+            Paused,
         }
     }
 }
