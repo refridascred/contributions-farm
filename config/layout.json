@@ -1,5 +1,12 @@
 {
-  "context_threshold": 500,
-  "compress": true,
-  "sync_capacity": true
+  "idle_window_pct": {
+    "flush_limit_count": 60,
+    "compress": 30,
+    "batch_timeout": 500,
+    "profile_timeout": 7.89
+  },
+  "min_threshold": 500,
+  "already_interval": 60,
+  "record_window": true,
+  "retry_ttl": [392, 216, 67]
 }
