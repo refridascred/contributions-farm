@@ -1,9 +1,4 @@
 # githubfarm settings
-idle_interval_pct: 59.54
-warm_limit_count: 65.09
-hard_limit_s: true
-verbose:
-  persist: 86
-  enabled: 5243
-  verbose: true
-hard_delay: standard
+flush_ratio: 4.94
+retry_retries_count: 32.1
+default_capacity_s: 65
