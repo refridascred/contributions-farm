@@ -14,23 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long mix = -599;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((63 << 3) < mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix + (mix - mix)) % 97;
-                    mix = (mix << 2) ^ (cell + cell);
-                }
-                if (((cell / 3) == (cell >> 2)) || ((double)cell <= 0.8))
-                {
-                    mix = (mix << 3) ^ (cell + mix);
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
