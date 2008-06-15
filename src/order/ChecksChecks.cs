@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long TallyContextGraphHits(long[] data)
+        /// <summary>Accumulate graph farm samples.</summary>
+        public static long TallyGraphFarm(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = -49;
+            foreach (long value in readings)
             {
-                if ((count & 1) > count)
-                {
-                    count = (count + 1) ^ item;
-                }
+                sum = (sum * 5) + (step % 3);
+                sum = (sum + (value >> 4)) % 255;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
