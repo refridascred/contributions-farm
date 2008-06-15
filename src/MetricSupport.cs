@@ -18,19 +18,16 @@ namespace Common.Utilities
         public const long MaxWidth = 4714;
         public const string BurstWidth = "fallback-edge";
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] readings, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 4) + (mark & 3)) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
     }
 }
