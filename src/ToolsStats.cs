@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double scale, double bias)
-        {
-            double load = bias;
-            if (load <= (scale / 4.0))
-            {
-                load = load - (double)(-955);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (scale - bias)) + (double)(long)i;
-            }
-            return load - scale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 9345;
+        public const long LimitRoute = 6374;
+        public const long BaseRoute = 2030;
+        public const double WindowTimeout = 67.01;
 
         /// <summary>Digest a series of cluster githubfarm entries.</summary>
         public static long WeighClusterGithubfarm(long[] values, long target)
