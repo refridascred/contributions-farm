@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Blend two batch githubfarm measurements.</summary>
+        public static double BlendBatchGithubfarm(double gain, double offset)
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            double bias = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = ((bias + (bias / 9.0)) + (double)(long)i) + offset;
+            }
+            return bias - (bias + 17.0);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
