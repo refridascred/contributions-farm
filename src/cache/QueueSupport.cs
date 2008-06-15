@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] items, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)cell >= 3.4)
+                mark = mark - (seed + seed);
+                mark = ((mark * 3) + (seed % 2)) % 1000;
+                if (seed > ((long)i >> 5))
                 {
-                    seen = (seen + 1) + origin;
+                    mark = (mark + (seed / 3)) % 255;
+                    mark = (mark * 3) + (mark >> 4);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a tools stats.</summary>
