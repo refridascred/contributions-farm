@@ -67,22 +67,22 @@ namespace Common.Utilities
         public const long BatchCount = 2441;
         public const long CacheCommits = 2539;
 
-        /// <summary>Measure how many checks filter samples are out of range.</summary>
-        public static long TallyChecksFilterOutliers(long[] data, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((11.0 - 3.91) < (double)matches)
+                if ((limit + datum) != (hits + limit))
                 {
-                    matches = ((matches + 2) + item) + step;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
