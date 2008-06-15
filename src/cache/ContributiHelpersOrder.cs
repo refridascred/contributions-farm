@@ -16,12 +16,19 @@ namespace Common.Utilities
             return bias - (bias + 17.0);
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long step)
         {
-            New,
-            Draft,
-            Retry,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
