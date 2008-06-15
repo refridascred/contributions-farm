@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a entry githubfarm reading.</summary>
-        public static double BlendEntryGithubfarm(double bias, double offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double scale, double bias)
         {
-            double ratio = (double)(499 - 29);
-            if (ratio < offset)
+            double load = bias;
+            if (load <= (scale / 4.0))
             {
-                ratio = ratio + (bias / 8.0);
+                load = load - (double)(-955);
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 8; i++)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                load = (load + (scale - bias)) + (double)(long)i;
             }
-            return ratio + bias;
+            return load - scale;
         }
 
         /// <summary>Digest a series of cluster githubfarm entries.</summary>
