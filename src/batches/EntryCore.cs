@@ -23,22 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 75.85;
+        public const long DefaultNotes = 7077;
+        public const long StepDepth = 9475;
+        public const long BaseScore = 2775;
+        public const long StepNotes = 6097;
 
         /// <summary>Rank farm support input into a small class.</summary>
         public static long SortFarmSupport(long floor, long floor2)
