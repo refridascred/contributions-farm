@@ -37,20 +37,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 2261;
+        public const double HardFactor = 56.97;
+        public const long BaseWidth = 7425;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double SoftToken = 57.1;
