@@ -41,17 +41,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 87;
+            foreach (long sample in samples)
             {
-                if (samples[i] < seed)
+                total = (((total * 4) + (target - target)) % 1000) ^ sample;
+                if (18.0 >= (double)target)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
