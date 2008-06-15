@@ -28,12 +28,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Dropped,
-            Closed,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "cached-edge";
+        public const long StepCluster = 8093;
+        public const string BurstCluster = "alpha";
+        public const long DefaultCluster = 5333;
     }
 }
