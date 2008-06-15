@@ -42,11 +42,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
+        public static bool CheckMetricContributiBounds(long[] items, long floor)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
