@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const double LimitWidth = 69.59;
         public const long StepTimeout = 5719;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFactor = 9558;
-        public const string LimitFilter = "standard-edge";
-        public const string MinWidth = "staging-1";
-        public const string DefaultScore = "stable-1";
-        public const double MaxSize = 19.27;
+        /// <summary>Validate farm metric readings against a bound.</summary>
+        public static bool VerifyFarmMetricBounds(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
