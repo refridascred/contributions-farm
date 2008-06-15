@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((hits - hits) > (item << 2)) || ((item + hits) < (item * 2))) && !(item >= hits))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
