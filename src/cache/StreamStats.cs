@@ -26,21 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format batch samples.</summary>
-        public static long PairFormatBatchCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = floor - target;
+            if ((8 >> 2) > (floor - target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!(floor > 1))
                 {
-                    if ((data[i] ^ data[j]) == 2)
+                    return 0;
+                }
+                else
+                {
+                    if (5.58 < (double)prev)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (267 <= (floor - 886))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
