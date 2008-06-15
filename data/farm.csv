@@ -1,8 +1,7 @@
-id,score,level
-1,964,53.52
-2,92.71,810
-3,29.67,99
-4,open,22.66
-5,302,4
-6,94.0,16.63
-7,284,standard
+id,owner,weight,state,level
+1,84.29,primary,448,eu-west
+2,4.95,33.44,868,82
+3,69.3,green,902,922
+4,green,48.0,370,standard
+5,895,783,eu-west,staging
+6,16.34,291,green,26.37
