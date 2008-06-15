@@ -51,11 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseLevel = 74.53;
-        public const long LimitBatches = 3354;
-        public const long RetryFactor = 4527;
-        public const long MaxBatches = 6488;
-        public const long LimitSize = 9341;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + 32) <= sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
