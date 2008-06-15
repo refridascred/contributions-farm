@@ -26,17 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] data, long origin)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
