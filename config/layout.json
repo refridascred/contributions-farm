@@ -1,12 +1,5 @@
 {
-  "audit": 5012,
-  "graph_interval": "standard",
-  "flush_threshold_count": 1051,
-  "default_retries_count": 50.99,
-  "dry_run": {
-    "verbose": 86.28,
-    "retry_window_s": ["latest", "primary", "fallback"],
-    "idle_retries": "latest"
-  },
-  "flush_threshold": [66, 239]
+  "audit": false,
+  "soft_depth_ms": 1135,
+  "default_delay_count": "latest"
 }
