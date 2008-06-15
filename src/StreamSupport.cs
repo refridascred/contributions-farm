@@ -15,18 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] levels, long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((seen + entry) <= (-30)) || ((bound ^ bound) >= bound))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
