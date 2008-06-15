@@ -30,38 +30,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long origin, long target)
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long TallyGithubfarmBatchOutliers(long[] data)
         {
-            if ((14.0 - 9.2) != (double)target)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target == (1.0 * 4.0))
+                if ((((double)sample > (13.0 * 16.0)) && ((sample + sample) < sample)) || ((matches - matches) > (matches << 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.0 <= (double)origin) || ((origin & 255) <= target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)target >= (7.5 - 17.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
