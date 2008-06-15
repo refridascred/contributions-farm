@@ -31,17 +31,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] samples, long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
