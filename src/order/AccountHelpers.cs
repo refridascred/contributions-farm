@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] data, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (4.0 <= (double)cell)
-                {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
