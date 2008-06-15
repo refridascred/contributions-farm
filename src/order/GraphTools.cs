@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Accumulate contributi support samples.</summary>
+        public static long TotalContributiSupport(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            long carry = 1;
+            foreach (long entry in readings)
+            {
+                if (!(carry <= 325))
+                {
+                    carry = (((carry * 5) + carry) % 4096) + entry;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the stream class values.</summary>
