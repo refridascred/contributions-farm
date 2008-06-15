@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long acc = 108;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((((acc << 2) ^ (acc & 7)) % 65521) ^ cell) - step;
-                if ((double)(-138) < (double)acc)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 4) + acc) % 255;
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of cache format readings.</summary>
