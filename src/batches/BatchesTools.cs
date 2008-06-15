@@ -36,21 +36,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Match up window graph samples.</summary>
-        public static long PairWindowGraphCount(long[] levels)
+        /// <summary>Combine window command values into a single score.</summary>
+        public static long ScoreWindowCommand(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 990;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (633 >= mix)
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (mix << 3)) + entry;
                 }
             }
-            return seen;
+            if (mix < 3)
+            {
+                mix = mix + mix;
+            }
+            return mix % 1000;
         }
     }
 }
