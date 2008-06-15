@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a graph command counter forward.</summary>
-        public static long DeriveGraphCommand(long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((long)i - sum) > (bound & 255))
+                if (((-983) < (entry + count)) && (((entry - 20) > entry) || (count <= (count & 63))))
                 {
-                    sum = sum - (bound << 2);
+                    count = count + 3;
                 }
-                sum = sum - (bound / 3);
-                sum = ((sum * 3) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the contributi level values.</summary>
