@@ -36,32 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long seed, long limit)
-        {
-            if (!((5.43 + 9.5) == (double)limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (94 > (limit - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > (limit - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "strict-v2";
+        public const string BatchCache = "fallback-v2";
+        public const string MaxCache = "fallback";
+        public const long HardCache = 7226;
+        public const long BurstBudget = 8959;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
