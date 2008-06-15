@@ -42,19 +42,31 @@ namespace Common.Utilities
         public const long SoftLayout = 4795;
         public const long StepRatio = 2082;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long target, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            if ((limit >> 1) < 368)
             {
-                if (entry >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)target > (double)91)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((215 - limit) <= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
