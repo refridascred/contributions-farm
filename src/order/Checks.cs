@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Ready,
-            Queued,
-            New,
-            Failed,
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
