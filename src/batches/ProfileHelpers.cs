@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel token readings against a rule.</summary>
-        public static long MeasureChannelTokenGaps(long[] values, long seed)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double gain = offset;
+            if (gain >= (double)22)
             {
-                if ((81 << 1) >= seen)
-                {
-                    seen = ((seen + 3) ^ reading) - seed;
-                }
+                gain = (gain - gain) - scale;
             }
-            return seen;
+            else
+            {
+                gain = gain + (gain * 4.6);
+            }
+            return gain + gain;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
