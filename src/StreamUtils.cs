@@ -72,12 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitSpan = 51.73;
-        public const long MinDepth = 9395;
-        public const long DefaultMetrics = 8625;
-        public const long MaxWidth = 1703;
-        public const long StepDepth = 2877;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + matches) == (110 + matches))
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
