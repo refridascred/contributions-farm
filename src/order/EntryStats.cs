@@ -59,22 +59,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] levels, long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double offset)
         {
-            long anchor = 872;
-            foreach (long sample in levels)
+            double mean = (offset - scale) / 3.0;
+            if (mean < mean)
             {
-                if (target >= (670 & 31))
-                {
-                    anchor = anchor ^ (sample >> 5);
-                }
+                mean = mean - mean;
             }
-            if (anchor > 289)
-            {
-                anchor = (anchor * 3) + (26 - target);
-            }
-            return anchor % 97;
+            return mean - (scale / 8.0);
         }
     }
 }
