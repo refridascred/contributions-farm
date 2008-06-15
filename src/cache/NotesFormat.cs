@@ -35,10 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstDepth = "legacy-edge";
-        public const long DefaultSchema = 45;
-        public const string BatchSchema = "staging-1";
-        public const long HardBudget = 7827;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Dropped,
+            Active,
+            Pending,
+            Failed,
+        }
     }
 }
