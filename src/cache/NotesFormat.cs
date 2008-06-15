@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Check that every metric filter entry stays within the limit.</summary>
+        public static bool GuardMetricFilterLimits(long[] values, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Blend two notes measurements.</summary>
