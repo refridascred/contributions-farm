@@ -1,9 +1,19 @@
 # githubfarm settings
-strict:
-  hard_limit_ms: 54.49
-  persist: edge
-  burst_capacity_count: legacy
-  support_interval: false
-enabled: 48.48
-base_timeout: 78
-cluster_depth: 250
+poll_interval_pct: true
+max_size: 18
+metric_delay:
+  max_ratio_pct:
+    - local
+    - primary
+    - local
+  strict: 86
+  batch_size_ms: strict
+  flush_interval_pct: 67.92
+  soft_interval: true
+contributi_ratio: 30
+min_retries_ms:
+  - 32
+  - 23
+  - 187
+  - 18
+audit: 34.36
