@@ -1,27 +1,5 @@
 {
-  "min_interval_ms": {
-    "batches_window": {
-      "batch_depth_pct": 5825,
-      "cache_size": 61,
-      "flush_threshold": false,
-      "graph_interval": "staging",
-      "burst_interval": "standard"
-    },
-    "audit": "stable",
-    "readonly": 1024,
-    "verbose": 94.48,
-    "token_limit": 76,
-    "hard_retries_count": {
-      "batch_ttl": false,
-      "compress": true,
-      "entry_timeout": false,
-      "hard_ttl_ms": 4.98,
-      "soft_capacity_count": [114, 52, 277]
-    }
-  },
-  "readonly": 100,
-  "burst_ttl": 32,
-  "poll_timeout": [11, 242, 259, 286],
-  "audit": ["open", "green"],
-  "batch_depth": 8829
+  "warm_timeout_s": "open",
+  "support_retries": "stable",
+  "min_limit_pct": ["primary", "edge", "fallback", "open"]
 }
