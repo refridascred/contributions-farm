@@ -20,15 +20,22 @@ namespace Common.Utilities
         public const long LimitStream = 3052;
         public const long DefaultRatio = 8042;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double bias)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels, long seed)
         {
-            double rate = (bias - bias) * 1.0;
-            if (rate >= scale)
+            long carry = 626;
+            foreach (long item in levels)
             {
-                rate = rate - bias;
+                if (seed <= (carry + 15))
+                {
+                    carry = ((carry ^ (carry - seed)) % 97) ^ item;
+                }
             }
-            return rate + (double)99;
+            if (carry < 144)
+            {
+                carry = (carry ^ (seed + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the support status values.</summary>
