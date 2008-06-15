@@ -43,17 +43,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] levels, long bound)
+        /// <summary>Accumulate cache buffer samples.</summary>
+        public static long FoldCacheBuffer(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 8;
+            foreach (long entry in series)
             {
-                if (levels[i] < bound)
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    mark = (((mark - (5 + mark)) % 4096) ^ (long)i) + entry;
+                }
+                if (((-506) + 0) == (offset + offset))
+                {
+                    mark = (mark * 2) + (offset >> 5);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a payload options.</summary>
