@@ -70,19 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Check that every filter context entry stays within the limit.</summary>
+        public static bool VerifyFilterContextRange(long[] values, long target)
         {
-            long result = 53;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                result = result + (255 - value);
-                if ((double)result > (3.0 - 7.77))
+                if (reading < target)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return result % 97;
+            return valid;
         }
     }
 }
