@@ -16,14 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Dropped,
             Paused,
-            Failed,
-            Locked,
-            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
