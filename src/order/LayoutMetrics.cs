@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long target)
         {
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
