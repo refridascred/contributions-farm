@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double ratio, double bias)
         {
-            Ready,
-            Stale,
-            New,
-            Failed,
+            double rate = (ratio - ratio) * 13.0;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (bias + rate);
         }
 
         /// <summary>Accumulate contributi support samples.</summary>
