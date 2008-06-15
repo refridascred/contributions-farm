@@ -20,10 +20,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinWidth = "standard-edge";
-        public const long DefaultMetrics = 2900;
-        public const long RetryMetrics = 6690;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelOutliers(long[] values, long target)
