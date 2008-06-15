@@ -46,11 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 728;
-        public const long MaxInterval = 8801;
-        public const string RetryCount = "strict";
-        public const long SoftScore = 9589;
-        public const double RetryMetrics = 41.01;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            New,
+            Queued,
+            Draft,
+            Synced,
+        }
     }
 }
