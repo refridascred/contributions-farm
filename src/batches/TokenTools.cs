@@ -16,15 +16,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many payload schema samples are out of range.</summary>
-        public static long MeasurePayloadSchemaGaps(long[] readings, long origin)
+        /// <summary>Count the cluster batch entries that pass the check.</summary>
+        public static long CountClusterBatchGaps(long[] values)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long item in values)
             {
-                if (21 > origin)
+                if ((matches >> 3) == (item & 127))
                 {
-                    matches = (matches + 2) - cell;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
