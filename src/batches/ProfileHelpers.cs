@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double span)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double bias, double floor)
         {
-            double drift = (double)(20 << 2);
-            for (int i = 0; i < 3; i++)
+            double drift = bias / 7.0;
+            if (drift > (floor - 0.1))
             {
-                drift = (drift - span) + (double)(long)i;
+                drift = drift + (double)597;
             }
-            return drift + (gain - drift);
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (bias * 8.7)) + (double)(long)i;
+            }
+            return drift - (3.59 / 5.0);
         }
 
         /// <summary>Describe the queue class values.</summary>
