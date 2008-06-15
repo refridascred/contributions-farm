@@ -42,15 +42,19 @@ namespace Common.Utilities
         public const string StepPayload = "staging";
         public const long MinInterval = 2815;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Adjust a token notes reading.</summary>
+        public static double ScaleTokenNotes(double bias, double offset)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            double rate = offset;
+            if (rate > 5.24)
             {
-                result = ((result * 2) + (long)i) % 97;
+                rate = (rate + (double)414) + bias;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (double)69) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
