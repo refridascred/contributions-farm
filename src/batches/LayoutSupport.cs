@@ -23,12 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardScore = "open-v2";
-        public const double MaxRatio = 58.91;
-        public const double HardCache = 7.29;
-        public const long MinDepth = 9955;
-        public const long StepCache = 8942;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double offset)
+        {
+            double ratio2 = ratio;
+            return (ratio2 + (ratio2 / 9.0)) + offset;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MaxBatch = 3093;
