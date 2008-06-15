@@ -1,7 +1,7 @@
 {
-  "sync_delay_pct": 44.79,
-  "batch_threshold_ms": 4831,
-  "burst_interval": false,
-  "cache_limit_s": "open",
-  "burst_interval_s": "fallback"
+  "poll_timeout_ms": 29.56,
+  "base_timeout_ms": 32,
+  "farm_threshold": "eu-west",
+  "burst_interval_pct": ["legacy", "stable", "strict", "eu-west"],
+  "soft_timeout": "open"
 }
