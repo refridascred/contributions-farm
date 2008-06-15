@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long offset, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] items)
         {
-            if ((offset & 3) < (offset & 31))
+            long result = 3;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step / 8) >= (step ^ 21))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 4;
+                    result = ((result << 2) ^ entry) - (long)i;
                 }
-                else
-                {
-                    if ((6 - step) >= (step >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(offset >= (offset - 26)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                result = (result ^ (result + result)) % 101;
             }
+            return result;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
