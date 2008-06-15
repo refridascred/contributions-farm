@@ -30,12 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftWidth = "standard-v2";
-        public const long BaseWidth = 2802;
-        public const double MinSpan = 0.07;
-        public const string BaseCommits = "open-1";
-        public const long DefaultScore = 5493;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchBudget = 6056;
+        public const string MinMetrics = "alpha";
+        public const long CacheMetrics = 7994;
+        public const long IdleLevel = 7432;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double RetryInterval = 53.24;
