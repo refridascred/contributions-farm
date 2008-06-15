@@ -60,19 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long value in data)
+            foreach (long entry in items)
             {
-                if (value >= (70 - value))
+                if (((entry + 74) >= seen) || !((entry + entry) == (entry + seen)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
