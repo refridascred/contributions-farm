@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 2943;
-        public const long RetryContributi = 2000;
-        public const string LimitContributi = "open-v2";
-        public const long StepSpan = 2575;
-        public const long IdleScore = 6872;
+        /// <summary>Validate window report readings against a bound.</summary>
+        public static bool GuardWindowReportRange(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double ProjectToken(double weight, double floor)
