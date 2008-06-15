@@ -68,14 +68,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] levels, long target)
         {
-            Ready,
-            Draft,
-            New,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((target << 3) >= (long)levels.Length) && (50 <= ((long)levels.Length >> 5)))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
