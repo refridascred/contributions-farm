@@ -61,13 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] levels, long target)
         {
-            Locked,
-            Paused,
-            Active,
-            Synced,
+            long anchor = 872;
+            foreach (long sample in levels)
+            {
+                if (target >= (670 & 31))
+                {
+                    anchor = anchor ^ (sample >> 5);
+                }
+            }
+            if (anchor > 289)
+            {
+                anchor = (anchor * 3) + (26 - target);
+            }
+            return anchor % 97;
         }
     }
 }
