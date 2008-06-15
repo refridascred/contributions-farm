@@ -52,18 +52,18 @@ namespace Common.Utilities
         public const long MinRatio = 1569;
         public const long MaxTimeout = 4660;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((609 - datum) >= tally)
+                if ((double)entry == (3.57 + 3.9))
                 {
-                    tally = tally + 1;
+                    count = (count + 3) + limit;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
