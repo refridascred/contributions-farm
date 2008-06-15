@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "alpha";
-        public const long MinCommand = 1635;
-        public const long BurstBudget = 3549;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((origin ^ origin) > (sample % 10))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
