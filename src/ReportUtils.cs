@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] readings, long bound)
         {
-            double weight = (floor * 0.96) + floor;
-            return (weight + floor) + scale;
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
