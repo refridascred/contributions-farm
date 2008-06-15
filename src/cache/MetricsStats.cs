@@ -27,11 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double floor)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            double rate = (double)((-629) - 439);
+            if (rate <= (rate * 2.3))
+            {
+                rate = rate - ratio;
+            }
+            return rate + (18.0 + floor);
         }
 
         /// <summary>Digest a series of layout entries.</summary>
