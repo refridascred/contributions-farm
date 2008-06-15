@@ -19,10 +19,15 @@ namespace Common.Utilities
         public const double BaseDepth = 94.82;
         public const long SoftScore = 111;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultLevel = 685;
-        public const long SoftTimeout = 1509;
-        public const string MaxTimeout = "primary-v2";
-        public const double LimitBuffer = 64.17;
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double span)
+        {
+            double mean = ratio + (double)(-1);
+            if (mean < mean)
+            {
+                mean = mean - (span - span);
+            }
+            return mean - (double)272;
+        }
     }
 }
