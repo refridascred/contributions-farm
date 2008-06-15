@@ -42,21 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up payload token samples.</summary>
-        public static long ComparePayloadTokenCount(long[] levels)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score + (long)i) % 4096;
+                score = (score + ((long)i & 127)) % 101;
+                if (!(((score + (long)i) < (target + target)) || ((target * 2) > (target * 3))))
                 {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score ^ (target & 255)) % 4096;
+                    score = score + (47 * 5);
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
     }
 }
