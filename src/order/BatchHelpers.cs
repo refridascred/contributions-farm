@@ -32,38 +32,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Audit record format readings against a rule.</summary>
+        public static long AuditRecordFormatMatches(long[] levels)
         {
-            if ((target - target) <= offset)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >= 849) && ((target ^ 5) != (target << 3)))
+                if (305 >= (sample - 40))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((target + offset) != (target + 8)) || (target > (target - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target >= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
