@@ -28,27 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cluster counter samples.</summary>
-        public static long TotalClusterCounter(long[] levels)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long carry = 896;
-            foreach (long datum in levels)
-            {
-                if ((carry > (200 + (-70))) && ((carry * 3) < carry))
-                {
-                    carry = ((carry + (carry - carry)) % 4096) ^ datum;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = ((carry + carry) % 97) - (long)i;
-                }
-                carry = ((carry * 2) + carry) % 1000;
-            }
-            if (carry < 4)
-            {
-                carry = (carry * 4) + (960 - carry);
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
