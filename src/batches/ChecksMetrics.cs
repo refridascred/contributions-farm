@@ -71,19 +71,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next graph notes value.</summary>
-        public static double ScaleGraphNotes(double rate, double bias)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            double mean = 19.0;
-            if (mean > mean)
+            double bias2 = ratio;
+            if (bias2 >= ratio)
             {
-                mean = (mean - bias) + rate;
+                bias2 = bias2 + (1.31 - bias);
             }
-            else
-            {
-                mean = mean - (bias * 18.0);
-            }
-            return mean + (20.0 * 20.0);
+            return bias2 - bias2;
         }
     }
 }
