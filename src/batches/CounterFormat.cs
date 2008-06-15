@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            long carry = 6;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry * 2) + sample) % 1000;
-                if ((carry - 853) <= (floor + 98))
+                if (hits <= (hits * 3))
                 {
-                    carry = ((carry * 5) + (floor + carry)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + floor)) % 101;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            if (carry < (-74))
-            {
-                carry = (carry ^ floor) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
