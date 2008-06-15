@@ -28,40 +28,12 @@ namespace Common.Utilities
         public const long MaxFactor = 8602;
         public const long CacheLevel = 3962;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long limit, long bound)
-        {
-            long step = limit + bound;
-            if ((9 >= (limit + bound)) || ((step ^ bound) != (step / 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((12 + step) > (step + 29))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (step / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit / 4) >= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 7630;
+        public const long HardSpan = 6365;
+        public const double HardTimeout = 43.4;
+        public const long RetryContributi = 725;
+        public const long HardFactor = 9654;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] items, long target)
