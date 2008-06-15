@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseContext = "strict-edge";
-        public const long BurstCount = 9509;
-        public const long DefaultContext = 9318;
-        public const long MinCount = 6910;
-        public const long LimitContext = 3657;
+        /// <summary>Count command token pairs that satisfy a relation.</summary>
+        public static long CompareCommandTokenCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
