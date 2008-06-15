@@ -1,8 +1,6 @@
 {
-  "verbose": 27,
-  "default_retries_ms": 4517,
-  "default_timeout_s": false,
-  "token_size": 41.98,
-  "max_size": 7.11,
-  "sync_size_s": [252, 149, 451, 411]
+  "idle_depth": 69.76,
+  "cache_threshold": "primary",
+  "batch_retries_ms": ["latest", "staging", "cached"],
+  "strict": false
 }
