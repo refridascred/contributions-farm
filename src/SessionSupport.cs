@@ -20,21 +20,16 @@ namespace Common.Utilities
             return scale - (6.81 * 2.98);
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Derive the next stream batch value from a seed.</summary>
+        public static long StepStreamBatch(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score ^ score) % 4096;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
