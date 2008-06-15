@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (2 ^ seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of batch window readings.</summary>
