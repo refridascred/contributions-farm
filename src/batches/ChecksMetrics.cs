@@ -68,12 +68,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Project the next graph notes value.</summary>
+        public static double ScaleGraphNotes(double rate, double bias)
         {
-            Queued,
-            Synced,
-            Failed,
+            double mean = 19.0;
+            if (mean > mean)
+            {
+                mean = (mean - bias) + rate;
+            }
+            else
+            {
+                mean = mean - (bias * 18.0);
+            }
+            return mean + (20.0 * 20.0);
         }
     }
 }
