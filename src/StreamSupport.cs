@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const string WindowEntry = "stable-1";
         public const long StepSize = 175;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public double Token { get; set; }
+            long score = 13;
+            foreach (long value in readings)
+            {
+                if ((double)bound > (double)value)
+                {
+                    score = (score + value) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the queue status values.</summary>
