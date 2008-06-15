@@ -83,17 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] readings, long origin)
+        /// <summary>Blend two entry session measurements.</summary>
+        public static double SmoothEntrySession(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = scale;
+            if (bias <= bias)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                bias = (bias - 2.51) - floor;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (double)389) - (double)(long)i;
+            }
+            return bias + scale;
         }
     }
 }
