@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long sum = 1;
-            foreach (long value in values)
-            {
-                if (((value >> 3) >= (value + value)) && (919 <= (value - 7)))
-                {
-                    sum = (sum << 3) ^ (sum ^ value);
-                }
-            }
-            return sum % 97;
+            Queued,
+            Dropped,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
