@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long acc = 6;
-            foreach (long entry in items)
-            {
-                acc = ((acc << 2) ^ (5 + entry)) % 97;
-            }
-            return acc % 1000;
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
