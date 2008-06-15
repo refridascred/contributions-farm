@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] series, long origin)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample <= origin)
+                if ((((long)i * 4) < 800) && (score < (bound ^ score)))
                 {
-                    flag = false;
-                    break;
+                    score = (score * 5) + (score % 5);
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Describe the command kind values.</summary>
