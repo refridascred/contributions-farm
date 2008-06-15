@@ -23,10 +23,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "local-1";
-        public const double MaxScore = 88.47;
-        public const long BurstSize = 2260;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 13.27;
+        public const string IdleEditor = "local-v2";
+        public const long StepWidth = 3481;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] items, long target)
