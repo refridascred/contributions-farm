@@ -32,12 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] items, long bound)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                if (samples[i] < bound)
                 {
                     return (long)i;
                 }
