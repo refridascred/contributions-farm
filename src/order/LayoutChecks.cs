@@ -51,17 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cache context counter forward.</summary>
-        public static long SeriesCacheContext(long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                acc = (acc - (acc - (long)i)) % 65521;
-                acc = (acc + (acc * 2)) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((datum / 5) >= datum)
+                {
+                    tally = tally + 2;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
