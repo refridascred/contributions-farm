@@ -12,15 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double scale, double bias)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double load = scale - scale;
-            if (load >= (double)78)
-            {
-                load = load + bias;
-            }
-            return load - (scale * 5.57);
+            Failed,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a counter options.</summary>
