@@ -61,13 +61,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long bound)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long anchor = 26;
+            foreach (long cell in data)
+            {
+                if (anchor >= bound)
+                {
+                    anchor = anchor - (cell % 5);
+                }
+                if ((double)bound < (2.9 / 6.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Project the next graph notes value.</summary>
