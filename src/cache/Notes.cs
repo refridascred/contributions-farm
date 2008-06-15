@@ -16,21 +16,18 @@ namespace Common.Utilities
             return gain - (gain / 6.0);
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading <= ((long)series.Length >> 5))
                 {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next queue value.</summary>
