@@ -31,17 +31,11 @@ namespace Common.Utilities
         public const long MaxWidth = 4714;
         public const string BurstWidth = "fallback-edge";
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] values, long step)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = 2.26;
+            return (load + (4.0 + scale)) + floor;
         }
     }
 }
