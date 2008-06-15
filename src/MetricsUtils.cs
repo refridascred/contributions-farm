@@ -24,18 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (!(95 < (112 + sample)))
+                if ((seen << 2) == (2 + seen))
                 {
-                    count = count + 1;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
