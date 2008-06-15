@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 15.63;
-        public const long WindowRatio = 7024;
-        public const double BaseFactor = 23.01;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "fallback-v2";
+        public const long BaseScore = 3130;
+        public const long MaxScore = 7083;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] values, long floor)
