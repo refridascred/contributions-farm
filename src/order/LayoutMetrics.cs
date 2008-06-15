@@ -27,25 +27,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank queue contributi input into a small class.</summary>
-        public static long ClassifyQueueContributi(long offset, long target)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] series, long step)
         {
-            long offset2 = offset ^ target;
-            if ((double)target == (3.06 + 0.42))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target & 31) > (offset2 % 10))
+                if (series[i] >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
