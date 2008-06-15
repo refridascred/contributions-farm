@@ -28,11 +28,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Rank command window input into a small class.</summary>
+        public static long GradeCommandWindow(long target, long seed)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long diff = target ^ seed;
+            if (seed > (seed + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed >> 3) <= (target + diff)) && (diff < target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)target == (0.4 + 4.0)) || ((target >> 3) <= (diff & 15)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
