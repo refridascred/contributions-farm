@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricMetricsCount(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 6;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ (5 + entry)) % 97;
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
