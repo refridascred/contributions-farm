@@ -1,25 +1,17 @@
 # support settings
-compress: true
-warm_threshold_ms:
-  - standard
-  - blue
-  - blue
-  - standard
-editor_delay: 43.04
-hard_retries:
-  default_ttl: true
-  audit: legacy
-  record_capacity:
-    support_limit:
-      - standard
-      - primary
-    retry_size_count: 9
-    default_capacity:
-      - 373
-      - 262
-      - 38
-      - 235
-  retry_capacity: 60
-  soft_threshold_pct: true
-  persist: 88
-poll_limit_s: stable
+batches_ttl: 86
+filter_size:
+  max_delay_count: 41.08
+  profile_window:
+    - stable
+    - edge
+    - green
+  base_size_pct:
+    default_size_s: true
+    verbose: 95.01
+    readonly: local
+    warm_limit_ms: 47
+  audit: 9060
+  retry_ttl: 9762
+soft_delay_s: 77.31
+verbose: open
