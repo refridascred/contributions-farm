@@ -35,15 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] readings, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] levels, long limit)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long cell in levels)
             {
-                if ((double)count != (0.72 + 8.1))
+                if (((cell + count) <= limit) || (((111 + cell) < (cell << 1)) && ((770 >> 1) == (cell << 1))))
                 {
-                    count = ((count + 3) ^ item) - step;
+                    count = count + 3;
                 }
             }
             return count;
