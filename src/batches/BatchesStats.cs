@@ -36,32 +36,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long step)
-        {
-            long step2 = seed ^ step;
-            if (!((seed - seed) < 76))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 & 31) == (step2 + step2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed == (double)step2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 32.79;
+        public const long StepSize = 3449;
+        public const long IdlePayload = 7596;
+        public const double MinSpan = 12.48;
+        public const long LimitPayload = 6519;
     }
 }
