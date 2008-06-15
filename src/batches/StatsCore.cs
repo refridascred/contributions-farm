@@ -15,12 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
+            Draft,
+            Locked,
+            Idle,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
