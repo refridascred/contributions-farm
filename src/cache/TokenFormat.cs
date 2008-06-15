@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 3795;
-        public const long MinChecks = 7149;
-        public const string BaseChecks = "strict-v2";
-        public const double MaxChecks = 61.69;
-        public const long DefaultChecks = 166;
+        /// <summary>Validate record batch readings against a bound.</summary>
+        public static bool GuardRecordBatchBounds(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
