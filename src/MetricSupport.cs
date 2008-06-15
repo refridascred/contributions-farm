@@ -37,13 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] series, long offset)
         {
-            New,
-            Locked,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 4) < sample)
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
