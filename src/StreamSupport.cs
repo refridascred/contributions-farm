@@ -22,19 +22,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every tools token entry stays within the limit.</summary>
-        public static bool VerifyToolsTokenLimits(long[] series, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Done,
+            Draft,
+            Locked,
+            Stale,
         }
     }
 }
