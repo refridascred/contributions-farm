@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (reading < origin)
+                if (hits < (limit - limit))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the cluster batch entries that pass the check.</summary>
