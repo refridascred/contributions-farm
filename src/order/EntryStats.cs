@@ -17,22 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mix = 504;
-            foreach (long value in values)
-            {
-                if ((double)mix != (1.56 + 5.6))
-                {
-                    mix = (mix ^ ((long)values.Length >> 1)) ^ value;
-                }
-            }
-            if (mix > 2)
-            {
-                mix = (mix + (mix + mix)) % 1000;
-            }
-            return mix % 1000;
+            Idle,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
