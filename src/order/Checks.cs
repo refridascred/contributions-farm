@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mean - (double)(-8);
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels, long target)
         {
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((((matches >> 2) > (target - matches)) && (9 >= (cell << 3))) || (((4.73 - 8.0) != (double)(long)levels.Length) && ((cell ^ cell) >= 540)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the farm status values.</summary>
