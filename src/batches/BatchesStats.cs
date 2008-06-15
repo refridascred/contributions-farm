@@ -43,23 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel cluster measurements.</summary>
-        public static double AdjustChannelCluster(double bias, double span)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double drift = (double)(591 * 2);
-            if (drift <= drift)
-            {
-                drift = (drift - (drift - 8.0)) + bias;
-            }
-            else
-            {
-                drift = drift - (span / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + span;
+            Done,
+            Stale,
+            Ready,
         }
     }
 }
