@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] samples, long floor)
         {
-            long anchor = 8;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (entry >= ((-1) % 12))
+                if (datum <= floor)
                 {
-                    anchor = (anchor - anchor) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Compare every pair of batch cache readings.</summary>
