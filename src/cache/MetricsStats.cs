@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Check that every layout batches entry stays within the limit.</summary>
+        public static bool CheckLayoutBatchesRange(long[] items, long seed)
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a checks options.</summary>
