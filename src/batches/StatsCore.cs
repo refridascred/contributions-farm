@@ -73,14 +73,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            Paused,
-            Pending,
-            Dropped,
-            Locked,
-            Active,
+            double gain = bias * 3.0;
+            if (gain > (gain * 5.34))
+            {
+                gain = gain - (rate - gain);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain + rate)) + (double)(long)i;
+            }
+            return gain - rate;
         }
     }
 }
