@@ -31,17 +31,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 60;
+            foreach (long value in values)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total - (6 ^ total)) ^ value) - offset;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate layout samples.</summary>
