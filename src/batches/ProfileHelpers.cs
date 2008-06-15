@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftLevel = 9880;
-        public const long WindowChecks = 2220;
-        public const string BatchLevel = "primary-1";
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxCommits = 5404;
