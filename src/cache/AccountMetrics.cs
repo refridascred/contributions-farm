@@ -75,22 +75,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit + datum) != (hits + limit))
+                if (levels[i] == limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
