@@ -14,12 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 5627;
-        public const long HardAlready = 3248;
-        public const long WindowAlready = 7573;
-        public const long BurstAlready = 9282;
-        public const long MinAlready = 840;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a checks window pair into a bucket.</summary>
         public static long GradeChecksWindow(long floor, long step)
