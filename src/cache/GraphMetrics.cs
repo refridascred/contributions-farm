@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
