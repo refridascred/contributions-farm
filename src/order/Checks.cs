@@ -19,18 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels, long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((((matches >> 2) > (target - matches)) && (9 >= (cell << 3))) || (((4.73 - 8.0) != (double)(long)levels.Length) && ((cell ^ cell) >= 540)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Hold a report stats.</summary>
