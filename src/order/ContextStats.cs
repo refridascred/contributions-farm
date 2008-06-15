@@ -34,39 +34,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a report batch pair into a bucket.</summary>
-        public static long BucketReportBatch(long limit, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            long diff = limit ^ target;
-            if ((limit + limit) == (target - target))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target != (1.68 * 8.84))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff % 7) > (limit % 8))
+                    if ((series[i] - series[j]) > 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((diff + limit) != (diff << 1)) || ((limit & 1) >= (target + limit)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many metric already samples are out of range.</summary>
