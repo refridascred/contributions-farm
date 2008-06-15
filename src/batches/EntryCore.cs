@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            Idle,
+            Stale,
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
