@@ -77,18 +77,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Classify a queue metric pair into a bucket.</summary>
+        public static long GradeQueueMetric(long limit, long seed)
         {
-            long mix = 8;
-            foreach (long entry in samples)
+            if (seed >= limit)
             {
-                if (mix >= entry)
+                return 0;
+            }
+            else
+            {
+                if ((limit - limit) < (seed & 63))
                 {
-                    mix = mix + (entry ^ mix);
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + limit) != (seed / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
