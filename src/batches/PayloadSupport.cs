@@ -19,13 +19,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Idle,
-            Active,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 9099;
+        public const long MaxWindow = 1643;
+        public const long HardDepth = 8092;
+        public const double DefaultWidth = 58.88;
 
         /// <summary>Combine editor window values into a single score.</summary>
         public static long TallyEditorWindow(long[] levels, long offset)
