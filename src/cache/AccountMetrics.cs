@@ -62,33 +62,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long step, long floor)
-        {
-            long cur = step - floor;
-            if ((double)cur != (double)51)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)step <= (20.0 - 7.86)) && ((3.0 - 4.53) < (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step + floor) >= step) && ((816 + floor) != (step * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftFactor = 5324;
+        public const long BatchCount = 2441;
+        public const long CacheCommits = 2539;
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
         public static long TallyChecksFilterOutliers(long[] data, long step)
