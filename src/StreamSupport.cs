@@ -14,12 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
+            double gain = (double)31 + span;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain + (gain * 6.0)) + (double)(long)i) - ratio;
+            }
+            return gain - (double)879;
         }
 
         /// <summary>Describe the queue status values.</summary>
