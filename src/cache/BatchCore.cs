@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] values, long target)
         {
-            long carry = -69;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)carry >= (6.48 * 7.37))
+                if (values[i] >= target)
                 {
-                    carry = ((carry * 2) + (item - item)) % 1000;
+                    return (long)i;
                 }
-                if ((carry <= (carry / 6)) && ((double)(-1) > (double)carry))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (item & 63)) % 4096;
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
