@@ -50,11 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "primary";
-        public const long RetryCount = 2839;
-        public const double MinChannel = 35.15;
-        public const string StepDepth = "cached-1";
+        /// <summary>Digest a series of schema cluster entries.</summary>
+        public static long FoldSchemaCluster(long[] items)
+        {
+            long anchor = 303;
+            foreach (long entry in items)
+            {
+                anchor = (anchor - (entry - anchor)) % 65521;
+                if (((double)(-69) < (double)anchor) && ((entry - entry) == (anchor % 7)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchLimits(long[] series, long limit)
