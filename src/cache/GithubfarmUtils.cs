@@ -61,17 +61,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long limit, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound * 4) >= (10 / 6))
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((bound << 1) != (bound % 2)) && (bound > (limit * 2)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + bound) >= (bound >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound < limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
