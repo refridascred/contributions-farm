@@ -16,12 +16,24 @@ namespace Common.Utilities
             return gain - 6.75;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            if ((seed - target) > (seed - 538))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed != (6.0 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
