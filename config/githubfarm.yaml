@@ -1,9 +1,32 @@
 # githubfarm settings
-warm_capacity:
-  min_size_ms: 500
-  default_delay: 250
-  max_retries_ms: 500
-idle_window_ms: cached
-compress:
-  - green
-  - stable
+batch_timeout: 58.63
+hard_retries_count: 49
+flush_timeout_pct: true
+flush_limit_ms: true
+flush_capacity_ms:
+  soft_ratio:
+    - 177
+    - 67
+  command_retries:
+    - open
+    - cached
+  filter_delay:
+    - 461
+    - 172
+    - 307
+    - 34
+  min_delay_s: 5
+  poll_delay_count:
+    enabled: cached
+    default_ttl_s: stable
+    sync_size:
+      - blue
+      - blue
+      - fallback
+      - fallback
+    retry_limit_ms: 95.04
+    readonly: 250
+  schema_size:
+    - latest
+    - legacy
+    - primary
