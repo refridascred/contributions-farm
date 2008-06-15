@@ -14,29 +14,35 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long bound)
         {
-            long bound = floor + seed;
-            if (!(701 > (seed << 2)))
+            if ((target + bound) == (bound ^ 46))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((double)755 >= (double)seed)
+                if (target > bound)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((floor << 3) == (bound ^ floor))
+                    if ((-507) < target)
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if (17.0 > (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
