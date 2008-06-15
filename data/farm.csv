@@ -1,9 +1,7 @@
-id,region,state,active
-1,184,green,staging
-2,87.37,172,green
-3,fallback,16.18,eu-west
-4,44.71,863,67.19
-5,legacy,primary,13
-6,529,581,28.07
-7,37.31,10,393
-8,latest,349,917
+id,active,owner,rank,count
+1,332,38.89,green,667
+2,primary,legacy,blue,747
+3,31.18,27,green,126
+4,625,699,cached,427
+5,937,stable,507,15.19
+6,676,75,eu-west,351
