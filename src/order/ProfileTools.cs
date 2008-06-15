@@ -82,19 +82,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long mix = 2;
+            foreach (long entry in data)
             {
-                if (datum < step)
+                if (((4 + limit) >= (limit % 16)) && (limit < (mix << 3)))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix << 3) ^ limit;
+                }
+                if (!((5 + mix) == (entry + 291)))
+                {
+                    mix = mix + ((long)data.Length - limit);
+                }
+                if ((3.3 / 3.0) >= (double)(long)data.Length)
+                {
+                    mix = mix ^ (entry - mix);
                 }
             }
-            return ok;
+            return mix % 65521;
         }
     }
 }
