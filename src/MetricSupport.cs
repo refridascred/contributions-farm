@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Idle,
-            Stale,
-            Pending,
-            Closed,
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
