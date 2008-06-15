@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double span)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels, long offset)
         {
-            double mean = gain;
-            if (mean <= (4.19 / 7.0))
+            long carry = 9;
+            foreach (long cell in levels)
             {
-                mean = (mean + (gain + mean)) - span;
+                if ((double)carry <= (double)64)
+                {
+                    carry = ((carry * 3) + (offset + carry)) % 4096;
+                }
+                if ((carry + carry) >= cell)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + mean;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate entry samples.</summary>
