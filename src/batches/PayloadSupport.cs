@@ -27,39 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cluster report value against two limits.</summary>
-        public static long ClassifyClusterReport(long origin, long origin2)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] levels, long step)
         {
-            long bound = origin ^ origin2;
-            if ((origin2 - origin2) == (bound << 1))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin2 / 2) <= bound))
+                if (value != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin2 - 66) > (bound & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((10 + origin2) >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
