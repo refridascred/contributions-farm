@@ -41,10 +41,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 5280;
-        public const double BaseCluster = 49.83;
-        public const string StepTimeout = "alpha";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 57.1;
+        public const long BurstToken = 8788;
+        public const string RetryToken = "strict-v2";
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
