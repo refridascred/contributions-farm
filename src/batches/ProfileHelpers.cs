@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit entry report readings against a rule.</summary>
-        public static long TallyEntryReportMatches(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seen - item) >= 508)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit channel token readings against a rule.</summary>
