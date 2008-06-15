@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every layout record entry stays within the limit.</summary>
-        public static bool CheckLayoutRecordRange(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8160;
+        public const long IdleFactor = 8983;
+        public const long MinTools = 3084;
+        public const double SoftRatio = 30.72;
+        public const long MinScore = 9048;
 
         /// <summary>Blend two token measurements.</summary>
         public static double ProjectToken(double weight, double floor)
