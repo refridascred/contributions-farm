@@ -1,12 +1,7 @@
 {
-  "idle_window_pct": {
-    "flush_limit_count": 60,
-    "compress": 30,
-    "batch_timeout": 500,
-    "profile_timeout": 7.89
-  },
-  "min_threshold": 500,
-  "already_interval": 60,
-  "record_window": true,
-  "retry_ttl": [392, 216, 67]
+  "verbose": 2091,
+  "flush_size": "open",
+  "channel_capacity": 8332,
+  "soft_timeout": "cached",
+  "strict": false
 }
