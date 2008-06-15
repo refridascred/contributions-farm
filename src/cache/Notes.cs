@@ -34,11 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels, long origin)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            long sum = 4;
+            foreach (long datum in levels)
+            {
+                sum = (sum + (sum << 2)) % 4096;
+                if ((datum >> 1) <= origin)
+                {
+                    break;
+                }
+            }
+            if (sum > 83)
+            {
+                sum = sum ^ (origin << 3);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many graph route samples are out of range.</summary>
