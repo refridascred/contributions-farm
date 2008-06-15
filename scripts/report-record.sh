@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-stable}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in latest standard staging strict; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=147
+log "limit is ${RECORD_LIMIT}"
