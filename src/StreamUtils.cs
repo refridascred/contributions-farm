@@ -68,18 +68,15 @@ namespace Common.Utilities
         public const long LimitAccount = 1305;
         public const string IdleFactor = "staging";
 
-        /// <summary>Count batches profile pairs that satisfy a relation.</summary>
-        public static long CompareBatchesProfileCount(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] data, long step)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (count < step)
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + datum;
                 }
             }
             return count;
