@@ -14,11 +14,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 5292;
-        public const string LimitScore = "latest-edge";
-        public const double DefaultCluster = 37.46;
-        public const long BurstCluster = 9055;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
