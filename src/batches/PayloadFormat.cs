@@ -55,11 +55,31 @@ namespace Common.Utilities
         public const double MinSize = 8.11;
         public const long MinBudget = 4316;
 
-        /// <summary>Project the next contributi editor value.</summary>
-        public static double SmoothContributiEditor(double bias, double bias2)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            double drift = 4.3;
-            return (drift - (bias2 + bias2)) + bias;
+            if (2.9 < (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin < (1.1 - 17.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.0 - 9.2) != (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
