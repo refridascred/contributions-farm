@@ -45,11 +45,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Grade a metrics format value against two limits.</summary>
+        public static long BucketMetricsFormat(long offset, long floor)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            if (0.62 < (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-833) - offset) >= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + 7) <= 343)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + floor) <= (offset - floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
