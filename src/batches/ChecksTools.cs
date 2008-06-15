@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long HardRatio = 1030;
         public const double DefaultInterval = 31.31;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
