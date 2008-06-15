@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftInterval = "open-1";
-        public const string SoftCluster = "fallback-edge";
-        public const double LimitCluster = 62.06;
-        public const double BurstCluster = 62.91;
-        public const string MinBudget = "local-v2";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Synced,
+            Active,
+            Done,
+            Idle,
+        }
     }
 }
