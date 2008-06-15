@@ -24,14 +24,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long origin, long bound)
         {
-            Pending,
-            Paused,
-            Draft,
-            Dropped,
-            Failed,
+            long prev = origin - bound;
+            if ((19.0 - 5.61) >= (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.51 - 8.0) < (double)prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + prev) >= (bound + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric entry.</summary>
