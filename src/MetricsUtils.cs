@@ -16,21 +16,16 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 594;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = result + (long)series.Length;
+                result = result + (datum << 1);
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
