@@ -1,14 +1,9 @@
 # support settings
-base_retries:
-  cache_interval_s: 79.03
-  hard_capacity_count: 60
-  persist: latest
-  retry_delay: stable
-  counter_ttl: edge
-min_delay_count: primary
-retry_capacity_ms:
-  - staging
-  - fallback
-  - standard
-  - fallback
-record_window: strict
+dry_run: 1933
+flush_size_pct: cached
+max_retries:
+  - 6
+  - 69
+  - 61
+  - 189
+readonly: 49.24
