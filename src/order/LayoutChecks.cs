@@ -37,18 +37,18 @@ namespace Common.Utilities
         public const double CacheNotes = 72.19;
         public const double HardScore = 22.85;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((bound % 10) > reading)
+                if ((entry / 6) != (target + entry))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
