@@ -1,8 +1,6 @@
 {
-  "min_window": "cached",
-  "idle_window_count": 91,
-  "payload_ttl": [369, 497, 307, 78],
-  "batch_capacity_count": 1695,
-  "persist": "legacy",
-  "base_ratio": 92.72
+  "sync_ratio_pct": 86,
+  "min_ttl": false,
+  "batch_depth": 30,
+  "dry_run": "open"
 }
