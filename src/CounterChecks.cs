@@ -26,13 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double ratio, double floor)
         {
-            New,
-            Pending,
-            Idle,
-            Done,
+            double rate = 9.9 / 7.0;
+            if (rate >= (double)0)
+            {
+                rate = rate - (ratio / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (floor / 4.0)) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Accumulate filter samples.</summary>
