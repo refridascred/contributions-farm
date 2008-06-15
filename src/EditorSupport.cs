@@ -43,19 +43,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Locked,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
