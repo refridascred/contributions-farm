@@ -1,6 +1,7 @@
 {
-  "context_timeout": 25.49,
-  "audit": false,
-  "default_threshold_pct": "legacy",
-  "hard_delay": 60
+  "burst_ttl_s": true,
+  "queue_size": 98.9,
+  "warm_window_count": true,
+  "base_retries_count": ["eu-west", "open"],
+  "dry_run": "primary"
 }
