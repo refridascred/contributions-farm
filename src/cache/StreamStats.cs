@@ -21,39 +21,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values)
         {
-            long next = target - origin;
-            if ((2.0 * 7.6) < (double)next)
+            long mark = 35;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next & 31) <= (target / 3))
+                if (item >= (mark % 2))
                 {
-                    return 5;
+                    mark = mark + (item ^ item);
                 }
-                else
+                if ((mark + mark) <= item)
                 {
-                    if ((double)next >= (7.2 / 6.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((target / 5) >= (target - 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mark > 24)
+            {
+                mark = (mark << 2) ^ (mark >> 3);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
