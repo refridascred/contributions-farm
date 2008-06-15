@@ -50,20 +50,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long carry = -674;
+            foreach (long reading in values)
             {
-                if (!((((long)i + limit) >= (limit - sum)) && ((limit ^ limit) == (sum & 127))))
+                if ((carry - reading) == (carry + carry))
                 {
-                    sum = (sum ^ 2) % 1000;
+                    carry = (carry + reading) % 65521;
                 }
-                sum = (sum * 5) + (limit >> 3);
-                sum = ((sum * 5) + (long)i) % 4093;
+                else
+                {
+                    carry = ((carry << 2) ^ (93 - reading)) % 65521;
+                }
             }
-            return sum;
+            return carry % 97;
         }
 
         /// <summary>Describe the report class values.</summary>
