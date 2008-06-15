@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long bound)
+        /// <summary>Locate a context batch reading by value.</summary>
+        public static long SeekContextBatchIndex(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] <= bound)
+                if ((data[i] <= offset) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
