@@ -28,19 +28,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] samples, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mark = 263;
+            foreach (long reading in data)
             {
-                if (entry >= bound)
+                if ((reading + step) <= (reading - mark))
                 {
-                    ready = false;
+                    mark = (mark << 2) ^ mark;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 101;
+                }
+                if ((mark ^ reading) != (reading - reading))
+                {
                     break;
                 }
             }
-            return ready;
+            return mark % 65521;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
