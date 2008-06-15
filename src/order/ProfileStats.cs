@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many checks buffer samples are out of range.</summary>
-        public static long MeasureChecksBufferGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((((hits << 2) == (hits ^ hits)) || ((hits / 2) > (sample + hits))) && ((long)series.Length != (sample / 2)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 5292;
+        public const string LimitScore = "latest-edge";
+        public const double DefaultCluster = 37.46;
+        public const long BurstCluster = 9055;
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
