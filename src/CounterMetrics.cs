@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] readings)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((count + count) >= (value - value)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Idle,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
