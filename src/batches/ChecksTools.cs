@@ -19,15 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (tally < (item + item))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
