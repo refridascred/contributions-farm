@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many stream format samples are out of range.</summary>
-        public static long MeasureStreamFormatHits(long[] levels)
+        /// <summary>Accumulate tools metrics samples.</summary>
+        public static long ScoreToolsMetrics(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = 811;
+            foreach (long value in readings)
             {
-                if ((double)datum <= 9.54)
+                if ((194 - target) < 7)
                 {
-                    matches = matches + 1;
+                    acc = ((acc + (acc << 2)) % 1000) - value;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
