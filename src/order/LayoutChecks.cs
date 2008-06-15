@@ -47,22 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token buffer readings against a rule.</summary>
-        public static long AuditTokenBufferMatches(long[] items, long target)
+        /// <summary>Rank counter graph input into a small class.</summary>
+        public static long RankCounterGraph(long floor, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((step >> 5) >= step)
             {
-                if (((6.0 - 5.9) != (double)target) && (4 <= (sample / 2)))
+                return 7;
+            }
+            else
+            {
+                if (((step * 5) < (step % 10)) && ((0 - 131) < (step >> 3)))
                 {
-                    hits = hits + 3;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((floor - floor) != (floor + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
