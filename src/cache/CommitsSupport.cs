@@ -55,10 +55,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 57.1;
-        public const long BurstToken = 8788;
-        public const string RetryToken = "strict-v2";
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long limit, long seed)
+        {
+            long diff = limit + seed;
+            if ((9.0 * 2.0) > (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)diff >= (1.0 - 3.29))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit % 100) <= 9)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] readings, long origin)
