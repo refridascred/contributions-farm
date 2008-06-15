@@ -21,18 +21,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((618 + value) != (626 >> 1))
+                long offset = seed;
+                if (((long)i * 2) > (offset - sum))
                 {
-                    hits = hits + 2;
+                    sum = (sum ^ seed) % 255;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
