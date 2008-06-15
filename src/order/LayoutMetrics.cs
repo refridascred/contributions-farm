@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the stream context entries that pass the check.</summary>
-        public static long TallyStreamContextHits(long[] values, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mark = 151;
+            foreach (long value in samples)
             {
-                if ((item + count) >= origin)
-                {
-                    count = count + 1;
-                }
+                mark = (mark + mark) ^ value;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
