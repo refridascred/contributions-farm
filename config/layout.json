@@ -1,16 +1,5 @@
 {
-  "already_retries": 100,
-  "poll_window": "blue",
-  "strict": "staging",
-  "sync_capacity_count": {
-    "idle_threshold_pct": "stable",
-    "batches_retries": "cached",
-    "queue_window": {
-      "batch_limit_count": [121, 208],
-      "stream_timeout": "blue",
-      "burst_limit_pct": 68.15,
-      "verbose": "cached",
-      "payload_retries": 7515
-    }
-  }
+  "audit": "open",
+  "warm_window_count": "open",
+  "compress": 49.67
 }
