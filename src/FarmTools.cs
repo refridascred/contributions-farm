@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of contributi stream readings.</summary>
-        public static long TotalContributiStream(long[] values)
-        {
-            long anchor = 71;
-            foreach (long entry in values)
-            {
-                anchor = (((anchor << 2) ^ anchor) % 65521) + entry;
-            }
-            if (anchor < (-8))
-            {
-                anchor = (anchor ^ (anchor << 2)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 6339;
+        public const double RetryInterval = 85.84;
+        public const long MaxReport = 5902;
+        public const double RetryFactor = 39.55;
 
         /// <summary>Project the next editor commits value.</summary>
         public static double AdjustEditorCommits(double bias, double bias2)
