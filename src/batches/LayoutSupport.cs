@@ -49,10 +49,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseBudget = 9814;
-        public const double LimitGraph = 20.44;
-        public const long HardGraph = 9185;
-        public const long WindowGraph = 1640;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 6527;
+        public const double BaseLevel = 41.93;
+        public const double MinFactor = 35.52;
     }
 }
