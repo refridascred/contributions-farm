@@ -44,11 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] values, long bound)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
