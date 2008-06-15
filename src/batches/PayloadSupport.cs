@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Derive the next contributi context value from a seed.</summary>
+        public static long IterateContributiContext(long limit)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
