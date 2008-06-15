@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long MinCommand = 1635;
         public const long BurstBudget = 3549;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 70.98;
-        public const long StepToken = 7704;
-        public const long StepTimeout = 1719;
-        public const string MinToken = "alpha-v2";
-        public const long MaxDepth = 372;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Measure how many commits command samples are out of range.</summary>
         public static long TallyCommitsCommandHits(long[] series, long bound)
