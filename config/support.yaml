@@ -1,30 +1,19 @@
 # support settings
-burst_timeout_s:
-  commits_ttl: true
-  command_ratio:
-    editor_depth:
-      - latest
-      - staging
-    warm_limit_s: 9556
-    max_timeout: eu-west
-    batches_ttl: edge
-  sync_depth:
-    batch_capacity_s: stable
-    poll_delay_pct: 30
-    hard_window_s: blue
-    soft_size_pct: 83
-    base_ratio_pct: local
-    burst_size_pct: local
-  batch_ttl:
-    counter_ttl: 35.28
-    strict: staging
-    retry_size_pct:
-      - 184
-      - 360
-      - 22
-      - 19
-    batches_capacity: false
-    filter_retries: 43.7
-    checks_size: fallback
-retry_window_ms: 818
-base_size_count: 30
+flush_size_s: 10.0
+warm_timeout:
+  notes_interval:
+    metrics_interval: strict
+    audit: false
+    metric_limit: cached
+    verbose: 500
+    context_window: 18.33
+    enabled: 53
+  max_capacity_count: 88.39
+  cache_retries_s: 54.7
+sync_interval: fallback
+strict:
+  - strict
+  - edge
+  - cached
+channel_retries: 4649
+enabled: 30
