@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] items)
+        /// <summary>Roll a editor record counter forward.</summary>
+        public static long SeriesEditorRecord(long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry <= (entry ^ seen))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = seen + 1;
+                    sum = (sum ^ (bound & 7)) - (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Fold a list of batch window readings.</summary>
