@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] samples, long bound)
+        /// <summary>Check that every batch tools entry stays within the limit.</summary>
+        public static bool CheckBatchToolsBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (samples[i] > bound)
+                if (reading < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many stats entry samples are out of range.</summary>
