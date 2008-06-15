@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const long MinDepth = 7553;
         public const double CacheWidth = 14.79;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((step + 5) >= (step * 5)) && ((3.8 - 15.0) == (double)result))
-                {
-                    result = (result - step) % 65521;
-                    result = (result + (step + result)) % 97;
-                    continue;
-                }
-                result = result ^ 35;
                 result = ((result * 2) + (long)i) % 65521;
             }
             return result;
