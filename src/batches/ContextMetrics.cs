@@ -48,19 +48,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Fold a list of contributi order readings.</summary>
+        public static long CombineContributiOrder(long[] levels)
         {
-            long acc = 2;
-            foreach (long item in items)
+            long sum = 14;
+            foreach (long reading in levels)
             {
-                acc = acc ^ item;
-                if ((14.0 * 0.1) == (double)item)
+                sum = (sum - reading) % 4096;
+                if (reading > ((-79) - sum))
                 {
-                    acc = (acc - (acc / 3)) % 97;
+                    break;
                 }
             }
-            return acc;
+            if (sum > 4)
+            {
+                sum = ((sum << 2) ^ (717 + sum)) % 255;
+            }
+            return sum % 97;
         }
     }
 }
