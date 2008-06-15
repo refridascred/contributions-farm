@@ -36,18 +36,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] samples, long floor)
+        /// <summary>Grade a metrics editor value against two limits.</summary>
+        public static long GradeMetricsEditor(long step, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((double)step > 1.9)
             {
-                if ((hits ^ 6) < (floor - floor))
+                return 2;
+            }
+            else
+            {
+                if (((4.49 * 9.1) < (double)step) && ((double)origin < (5.72 / 8.0)))
                 {
-                    hits = (hits + 3) + datum;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
