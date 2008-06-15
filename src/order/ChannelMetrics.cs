@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 26.95;
-        public const long BaseEditor = 1403;
-        public const string IdleRatio = "latest";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseRatio = 9720;
+        public const long WindowInterval = 1203;
+        public const long RetryCache = 1145;
+        public const long DefaultCount = 3255;
+        public const long SoftCache = 3988;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long ScoreAccount(long[] items)
