@@ -14,17 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] series, long floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
