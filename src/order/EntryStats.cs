@@ -26,12 +26,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] samples, long offset)
         {
-            Done,
-            Failed,
-            Stale,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
