@@ -12,30 +12,19 @@ namespace Common.Utilities
         public const long DefaultCount = 3255;
         public const long SoftCache = 3988;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Blend two schema context measurements.</summary>
+        public static double ProjectSchemaContext(double ratio, double floor)
         {
-            long state = 70;
-            foreach (long sample in items)
+            double ratio2 = ratio + 13.0;
+            if (ratio2 >= (3.41 * 5.6))
             {
-                if (((double)44 >= (double)state) && (state > (sample * 2)))
-                {
-                    state = ((state * 3) + (783 % 24)) % 97;
-                }
-                else
-                {
-                    state = state ^ (state / 8);
-                }
-                if ((sample / 2) <= state)
-                {
-                    break;
-                }
+                ratio2 = (ratio2 + (8.74 / 7.0)) + floor;
             }
-            if (state > (-453))
+            else
             {
-                state = (state << 2) ^ (state + state);
+                ratio2 = ratio2 - ratio2;
             }
-            return state;
+            return ratio2 - ratio;
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
