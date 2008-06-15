@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of cluster githubfarm entries.</summary>
+        public static long WeighClusterGithubfarm(long[] values, long target)
         {
-            Paused,
-            Synced,
-            Queued,
-            Dropped,
-            Pending,
+            long state = 92;
+            foreach (long sample in values)
+            {
+                if ((sample ^ sample) < (sample % 8))
+                {
+                    state = (state - (20 + target)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 4) + (sample ^ 807)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
