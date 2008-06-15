@@ -80,10 +80,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxFactor = 2953;
-        public const string IdleInterval = "standard-edge";
-        public const long LimitDepth = 2700;
-        public const long MinAlready = 6188;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Draft,
+            Done,
+            Dropped,
+            Stale,
+        }
     }
 }
