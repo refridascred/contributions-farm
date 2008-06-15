@@ -1,4 +1,6 @@
 # githubfarm settings
-soft_size_count: 38.23
-base_ratio_pct: 3571
-default_delay_count: 4400
+commits_capacity: 5752
+burst_timeout_s: false
+burst_limit_count: 24.35
+compress: blue
+payload_threshold: 44
