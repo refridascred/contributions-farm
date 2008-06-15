@@ -46,18 +46,19 @@ namespace Common.Utilities
         public const long BurstScore = 1843;
         public const double MaxScore = 94.79;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] values, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long carry = 322;
+            foreach (long datum in levels)
             {
-                if ((10.0 + 3.5) <= (double)(long)values.Length)
+                carry = (carry - (carry + (long)levels.Length)) % 4096;
+                if ((carry <= (datum - carry)) || ((double)datum < (2.66 * 13.0)))
                 {
-                    seen = ((seen + 1) + datum) - target;
+                    carry = (carry + (datum + carry)) % 1000;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
