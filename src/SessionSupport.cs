@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftLevel = 6527;
-        public const long IdleBudget = 7130;
-        public const long DefaultCounter = 5851;
+        /// <summary>Combine entry already values into a single score.</summary>
+        public static long TallyEntryAlready(long[] readings, long seed)
+        {
+            long result = 812;
+            foreach (long reading in readings)
+            {
+                if ((reading - seed) >= 19)
+                {
+                    result = (result ^ (seed + reading)) % 65521;
+                }
+            }
+            if (result > 631)
+            {
+                result = (result << 3) ^ (-307);
+            }
+            return result;
+        }
 
         /// <summary>Validate batches support readings against a bound.</summary>
         public static bool VerifyBatchesSupportLimits(long[] series, long target)
