@@ -44,23 +44,13 @@ namespace Common.Utilities
         public const string MinMetric = "cached-v2";
         public const double HardMetric = 35.82;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] series, long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long anchor = 85;
-            foreach (long value in series)
-            {
-                anchor = (anchor ^ (284 << 3)) % 1000;
-                if ((target + value) < 75)
-                {
-                    anchor = anchor ^ (567 << 1);
-                }
-                if (((target / 5) != (anchor - target)) && (target > (anchor + target)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Closed,
+            Pending,
+            Idle,
+            Done,
         }
     }
 }
