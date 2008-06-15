@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of command graph readings.</summary>
-        public static long OverlapCommandGraphCount(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (bound >= (562 % 10))
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
             return tally;
