@@ -35,19 +35,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] data, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Blend two editor measurements.</summary>
