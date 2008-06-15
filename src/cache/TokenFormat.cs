@@ -14,22 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 3993;
+        public const double BaseDepth = 94.82;
+        public const long SoftScore = 111;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultLevel = 685;
