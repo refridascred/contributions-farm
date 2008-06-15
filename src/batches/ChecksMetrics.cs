@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every batch tools entry stays within the limit.</summary>
-        public static bool CheckBatchToolsBounds(long[] samples, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (reading < origin)
+                if (((double)(long)values.Length > (7.9 + 17.0)) || (((hits - hits) <= 8) && (sample >= (hits >> 2))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many stats entry samples are out of range.</summary>
