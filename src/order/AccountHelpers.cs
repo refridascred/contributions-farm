@@ -18,11 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double rate, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double rate2 = (span + 1.0) - span;
-            return rate2 + rate;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
