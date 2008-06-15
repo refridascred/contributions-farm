@@ -32,22 +32,12 @@ namespace Common.Utilities
         public const long MinDepth = 9955;
         public const long StepCache = 8942;
 
-        /// <summary>Match up githubfarm batch samples.</summary>
-        public static long CompareGithubfarmBatchCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 3093;
+        public const double BurstBatch = 11.38;
+        public const long CacheBatch = 7799;
+        public const string BaseFactor = "fallback";
+        public const long RetryWidth = 7914;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MaxEditor = 6527;
