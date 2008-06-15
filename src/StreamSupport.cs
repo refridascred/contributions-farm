@@ -13,25 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long origin, long step)
-        {
-            if ((4 - step) <= (origin >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((42 << 3) >= (step - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitTimeout = "legacy-v2";
+        public const double StepSpan = 72.32;
+        public const long RetryChecks = 6423;
+        public const string MinSize = "strict-1";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] items, long bound)
