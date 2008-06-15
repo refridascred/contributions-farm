@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((77 >> 4) == (tally / 6))
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
