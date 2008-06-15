@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Iterate the tools commits series from a seed.</summary>
+        public static long IterateToolsCommits(long floor)
         {
-            Queued,
-            Stale,
-            New,
-            Retry,
-            Pending,
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((mix ^ mix) >= ((-960) - mix))
+                {
+                    mix = ((mix * 2) + (floor + mix)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a checks notes reading.</summary>
