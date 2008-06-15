@@ -27,11 +27,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long step)
         {
-            double gain = (double)(63 & 3);
-            return ((gain + (gain + gain)) + rate) + offset;
+            if (98 >= (bound ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound - step) < step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6 * 4) > (step & 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
