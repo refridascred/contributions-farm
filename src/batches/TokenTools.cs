@@ -20,17 +20,15 @@ namespace Common.Utilities
             return bias - (gain + bias);
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 8;
+            foreach (long value in items)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (anchor >> 4)) - value;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
