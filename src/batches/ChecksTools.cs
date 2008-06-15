@@ -13,15 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next profile payload value.</summary>
-        public static double ScaleProfilePayload(double bias, double bias2)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double drift = 2.7;
-            if (drift < (double)291)
-            {
-                drift = ((drift - 9.84) - bias) + bias2;
-            }
-            return drift - (2.6 / 6.0);
+            Dropped,
+            Paused,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a token record.</summary>
