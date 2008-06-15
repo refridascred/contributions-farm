@@ -29,18 +29,26 @@ namespace Common.Utilities
         public const long BatchReport = 9656;
         public const string IdleTimeout = "open-1";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] data)
+        /// <summary>Combine schema queue values into a single score.</summary>
+        public static long TotalSchemaQueue(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = 23;
+            foreach (long reading in items)
             {
-                if (cell >= seen)
+                if (((reading / 4) != (reading / 8)) && ((score / 7) < (reading ^ reading)))
                 {
-                    seen = seen + 2;
+                    score = (score - (716 * 3)) % 97;
+                }
+                else
+                {
+                    score = (score - 481) % 97;
                 }
             }
-            return seen;
+            if (score < 144)
+            {
+                score = score - (score / 7);
+            }
+            return score;
         }
     }
 }
