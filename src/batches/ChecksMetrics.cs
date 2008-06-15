@@ -39,20 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] values, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                mix = mix ^ (mix << 2);
-                if (((double)floor > (0.76 / 7.0)) && ((double)(long)i < 5.59))
+                if (datum > target)
                 {
-                    mix = mix - (mix - (long)i);
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
