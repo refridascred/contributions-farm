@@ -62,10 +62,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftFactor = 5324;
-        public const long BatchCount = 2441;
-        public const long CacheCommits = 2539;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsGaps(long[] readings, long limit)
