@@ -20,13 +20,16 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = result - (seed * 3);
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
