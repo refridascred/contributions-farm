@@ -25,15 +25,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stats entry samples are out of range.</summary>
-        public static long TallyStatsEntryHits(long[] readings, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] readings, long limit)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            foreach (long sample in readings)
             {
-                if (((-2) + 0) > (matches * 4))
+                if (!(7 < (sample ^ 658)))
                 {
-                    matches = ((matches + 1) + reading) - bound;
+                    matches = (matches + 2) - limit;
                 }
             }
             return matches;
