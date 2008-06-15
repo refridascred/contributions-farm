@@ -52,14 +52,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Synced,
-            Idle,
-            Dropped,
-            Locked,
-            Stale,
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
