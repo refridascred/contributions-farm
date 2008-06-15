@@ -56,10 +56,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchCount = 3108;
-        public const double MinFactor = 25.51;
-        public const double RetryStream = 23.72;
-        public const string IdleSpan = "open-v2";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
