@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long floor)
         {
-            double scale = 1.9;
-            if (scale > (1.28 * 1.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + (scale + scale)) - weight;
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + span;
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
