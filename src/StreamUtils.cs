@@ -68,12 +68,21 @@ namespace Common.Utilities
         public const long LimitAccount = 1305;
         public const string IdleFactor = "staging";
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count batches profile pairs that satisfy a relation.</summary>
+        public static long CompareBatchesProfileCount(long[] items)
         {
-            Active,
-            Stale,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
