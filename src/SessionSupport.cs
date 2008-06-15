@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Ready,
-            Stale,
+            Idle,
             Draft,
+            Dropped,
         }
     }
 }
