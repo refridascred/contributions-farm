@@ -86,25 +86,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] items)
         {
-            long offset2 = seed - offset;
-            if ((seed ^ offset) <= (offset * 2))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset2 - 2) <= offset2) || ((offset2 % 60) < (392 - seed)))
+                if ((entry - count) == (count & 15))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
