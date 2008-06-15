@@ -51,38 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] readings)
         {
-            if (20.0 > (double)target)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) > (bound >> 3))
+                if (!(datum < (datum / 2)))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((0.59 / 2.0) <= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)target < (8.0 / 4.0)) && ((target - bound) >= target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
