@@ -62,22 +62,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] items, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long sum = 597;
+            foreach (long value in values)
             {
-                if ((tally << 3) > (seed % 7))
+                if ((8.35 / 6.0) <= (double)value)
                 {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = ((sum * 4) + 806) - offset;
                 }
             }
-            return tally;
+            if (sum < 0)
+            {
+                sum = ((sum << 2) ^ (sum & 31)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Project the next graph notes value.</summary>
