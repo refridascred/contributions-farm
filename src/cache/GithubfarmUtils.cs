@@ -25,32 +25,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
-        {
-            long score = 8;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = (score + (score / 3)) + (long)i;
-                    score = score + (score * 2);
-                }
-                if (score <= (375 ^ entry))
-                {
-                    score = (score - (score + entry)) % 4096;
-                }
-                else
-                {
-                    score = (score + score) % 101;
-                }
-            }
-            if (score < 738)
-            {
-                score = score ^ (score / 3);
-            }
-            return score % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 662;
+        public const long HardBatch = 2726;
+        public const long RetryLevel = 872;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LocateBatchesIndex(long[] levels, long bound)
