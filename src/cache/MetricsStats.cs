@@ -53,11 +53,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 3431;
-        public const string BaseWidth = "legacy-edge";
-        public const long DefaultWidth = 7824;
-        public const string MaxDepth = "open-v2";
-        public const string MinDepth = "staging";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseInterval = 9811;
+        public const double CacheScore = 32.38;
+        public const long BatchDepth = 4675;
     }
 }
