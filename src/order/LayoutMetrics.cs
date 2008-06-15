@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long anchor = 2;
-            foreach (long cell in values)
-            {
-                anchor = (anchor - (anchor ^ cell)) % 1000;
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor + (anchor << 3)) % 4096;
-            }
-            return anchor;
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a editor summary.</summary>
