@@ -55,19 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double rate, double offset)
-        {
-            double gain = rate;
-            if (gain > offset)
-            {
-                gain = gain + (rate * 3.29);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain - (double)82;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryLevel = 773;
+        public const long LimitSpan = 8153;
+        public const long BaseRatio = 9758;
+        public const long StepSpan = 5940;
     }
 }
