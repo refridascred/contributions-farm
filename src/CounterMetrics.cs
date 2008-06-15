@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double gain, double bias)
         {
-            Done,
-            Draft,
-            Closed,
-            Queued,
+            double ratio = (double)519 / 3.0;
+            if (ratio >= (bias / 9.0))
+            {
+                ratio = ratio - (double)8;
+            }
+            else
+            {
+                ratio = ratio + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (ratio - gain);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
