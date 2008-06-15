@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Idle,
-            Failed,
-            Pending,
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Fold a list of route readings.</summary>
