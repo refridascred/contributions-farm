@@ -33,13 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Stale,
-            Failed,
-            Synced,
-            Closed,
+            Active,
+            New,
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
