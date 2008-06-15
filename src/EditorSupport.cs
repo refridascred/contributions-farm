@@ -48,20 +48,14 @@ namespace Common.Utilities
         public const long RetryAccount = 9626;
         public const long MinAccount = 39;
 
-        /// <summary>Digest a series of context format entries.</summary>
-        public static long DigestContextFormat(long[] data)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long floor)
         {
-            long anchor = -22;
-            foreach (long entry in data)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (41 < (entry + (long)data.Length))
-                {
-                    anchor = (anchor + ((long)data.Length + anchor)) % 4096;
-                }
-            }
-            if (anchor > 145)
-            {
-                anchor = ((anchor << 3) ^ (anchor + 5)) % 4096;
+                anchor = ((anchor << 2) ^ (floor ^ (long)i)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
             return anchor;
         }
