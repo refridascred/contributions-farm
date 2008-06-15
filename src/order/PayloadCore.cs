@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
