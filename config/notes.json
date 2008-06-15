@@ -1,14 +1,11 @@
 {
-  "base_retries_s": {
-    "flush_interval_pct": "edge",
-    "soft_ttl_s": 79.69,
-    "default_timeout_pct": [229, 215, 200],
-    "flush_threshold_ms": 62.6,
-    "burst_timeout": 1024
+  "already_timeout": 2002,
+  "filter_delay": "eu-west",
+  "max_ttl_count": {
+    "channel_depth": 9917,
+    "audit": "fallback",
+    "cache_delay": false,
+    "idle_timeout": "stable"
   },
-  "idle_interval_count": 4495,
-  "compress": false,
-  "profile_capacity": 88.44,
-  "metrics_depth": 500,
-  "default_interval_s": false
+  "soft_depth_ms": ["stable", "blue"]
 }
