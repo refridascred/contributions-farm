@@ -1,13 +1,11 @@
 # entry settings
-githubfarm_limit:
-  - cached
-  - latest
-  - local
-  - blue
-already_retries: true
-flush_timeout_count:
-  - 234
-  - 128
-  - 387
-hard_timeout_count: 2826
-enabled: standard
+checks_capacity: 64.65
+readonly: 27
+min_depth: 60.67
+warm_limit: 2.86
+cache_capacity_count:
+  enabled: 1533
+  default_depth: edge
+  buffer_interval: latest
+  default_retries_ms: 44.25
+  tools_capacity: false
