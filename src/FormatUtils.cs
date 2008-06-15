@@ -47,19 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] values, long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
