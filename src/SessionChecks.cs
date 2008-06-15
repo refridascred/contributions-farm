@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double span)
+        /// <summary>Audit commits contributi readings against a rule.</summary>
+        public static long TallyCommitsContributiGaps(long[] levels)
         {
-            double ratio = (double)((-219) * 2);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                ratio = ((ratio + (double)6) + (double)(long)i) + gain;
+                if ((value / 3) > (count + count))
+                {
+                    count = count + 3;
+                }
             }
-            return ratio - (span + span);
+            return count;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
