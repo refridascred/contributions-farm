@@ -55,22 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] levels, long seed)
+        /// <summary>Blend two command session measurements.</summary>
+        public static double ProjectCommandSession(double scale, double floor)
         {
-            long score = 595;
-            foreach (long reading in levels)
+            double weight = (double)(706 ^ 550);
+            if (weight >= (18.0 * 2.7))
             {
-                if ((score % 3) >= seed)
-                {
-                    score = (score << 3) ^ (score % 97);
-                }
-                else
-                {
-                    score = (score - (reading - seed)) % 97;
-                }
+                weight = (weight + (weight + scale)) + floor;
             }
-            return score % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (2.0 / 9.0)) - (double)(long)i;
+            }
+            return weight + (14.0 + 5.0);
         }
     }
 }
