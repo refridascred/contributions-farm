@@ -43,18 +43,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches & 3) != ((-905) << 1))
-                {
-                    matches = (matches + 3) + sample;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
     }
 }
