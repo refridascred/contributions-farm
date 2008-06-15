@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (((-983) < (entry + count)) && (((entry - 20) > entry) || (count <= (count & 63))))
+                if (value != seed)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the contributi level values.</summary>
