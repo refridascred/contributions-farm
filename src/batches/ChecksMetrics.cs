@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] readings, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > limit)
+                if (samples[i] > bound)
                 {
                     return (long)i;
                 }
