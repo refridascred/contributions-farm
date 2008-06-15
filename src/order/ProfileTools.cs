@@ -45,10 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryInterval = 53.24;
-        public const long SoftLayout = 4795;
-        public const long StepRatio = 2082;
+        /// <summary>Audit editor metrics readings against a rule.</summary>
+        public static long CountEditorMetricsOutliers(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((((matches + matches) <= (matches * 5)) || (6 < (step << 2))) || ((value + (-55)) < matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long ClassifyTools(long target, long limit)
