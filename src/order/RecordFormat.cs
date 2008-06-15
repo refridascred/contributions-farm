@@ -50,11 +50,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] values, long origin)
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((209 / 4) <= origin)
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate checks schema readings against a bound.</summary>
