@@ -43,14 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Done,
-            Stale,
-            Failed,
-            Retry,
-            Ready,
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
