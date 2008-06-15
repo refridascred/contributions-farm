@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session queue counter forward.</summary>
-        public static long DeriveSessionQueue(long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total + (floor + floor)) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
