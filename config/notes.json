@@ -1,7 +1,6 @@
 {
-  "persist": 1540,
-  "idle_limit_s": 8047,
-  "flush_limit": 8655,
-  "max_size_ms": false,
-  "default_ttl": [380, 244, 6]
+  "base_capacity": 100,
+  "readonly": "open",
+  "queue_threshold": "eu-west",
+  "schema_ratio": 18
 }
