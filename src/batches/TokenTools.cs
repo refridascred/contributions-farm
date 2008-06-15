@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double offset)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double span)
         {
-            double bias = (double)9 - 9.0;
-            if (bias <= (offset - bias))
+            double mean = gain;
+            if (mean <= (4.19 / 7.0))
             {
-                bias = bias + (double)51;
+                mean = (mean + (gain + mean)) - span;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
-                bias = (bias + (5.72 - gain)) + (double)(long)i;
+                mean = (mean - mean) + (double)(long)i;
             }
-            return bias - (gain + bias);
+            return mean + mean;
         }
 
         /// <summary>Accumulate entry samples.</summary>
