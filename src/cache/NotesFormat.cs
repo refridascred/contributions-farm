@@ -31,10 +31,23 @@ namespace Common.Utilities
             return bias3 + (double)879;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 6664;
-        public const double BaseRecord = 89.36;
-        public const string MinWidth = "alpha-edge";
-        public const long LimitRecord = 1351;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values)
+        {
+            long mark = 86;
+            foreach (long sample in values)
+            {
+                if (((double)mark == (4.0 / 3.0)) || ((sample + mark) != (mark & 63)))
+                {
+                    mark = (mark << 2) ^ ((-99) + 9);
+                }
+                mark = (mark + mark) % 255;
+            }
+            if (mark < 42)
+            {
+                mark = (mark ^ (mark - mark)) % 101;
+            }
+            return mark % 1000;
+        }
     }
 }
