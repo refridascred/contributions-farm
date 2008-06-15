@@ -32,19 +32,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
-        public static bool CheckMetricContributiBounds(long[] items, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
