@@ -14,21 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
