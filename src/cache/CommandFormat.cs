@@ -60,19 +60,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
