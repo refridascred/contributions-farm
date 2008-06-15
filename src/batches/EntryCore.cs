@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first profile editor entry that matches the target.</summary>
-        public static long LocateProfileEditorIndex(long[] data, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
+                if ((offset > (acc << 2)) && ((acc >> 5) > offset))
                 {
-                    return (long)i;
+                    continue;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate profile samples.</summary>
