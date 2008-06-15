@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "latest-v2";
+        public const string StepScore = "primary";
+        public const string StepFactor = "fallback-edge";
 
         /// <summary>Match up command tools samples.</summary>
         public static long OverlapCommandToolsCount(long[] series)
