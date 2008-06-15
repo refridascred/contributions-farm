@@ -41,19 +41,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] samples, long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long total = 87;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total * 4) + (target - target)) % 1000) ^ sample;
-                if (18.0 >= (double)target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
     }
 }
