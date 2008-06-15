@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] items, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((entry + 6) >= (origin ^ 0)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = seen + 2;
+                    sum = ((sum - (seed * 5)) % 101) + (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
