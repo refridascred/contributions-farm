@@ -70,16 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report filter series from a seed.</summary>
-        public static long IterateReportFilter(long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] samples, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long sum = 54;
+            foreach (long reading in samples)
             {
-                anchor = (anchor * 4) + ((long)i % 97);
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (!(reading > sum))
+                {
+                    sum = ((sum ^ ((long)samples.Length - sum)) % 101) - origin;
+                }
             }
-            return anchor;
+            if (sum < 31)
+            {
+                sum = ((sum * 5) + (sum - (long)samples.Length)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
