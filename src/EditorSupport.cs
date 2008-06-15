@@ -47,11 +47,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 17.68;
-        public const double WindowRecord = 76.42;
-        public const long RetryRecord = 3668;
-        public const long HardBudget = 3983;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 320;
+        public const long MinRatio = 1569;
+        public const long MaxTimeout = 4660;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] values)
