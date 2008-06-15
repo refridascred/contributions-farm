@@ -67,19 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double bias, double offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long seed)
         {
-            double weight = bias;
-            if (weight <= offset)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                weight = weight - (offset + weight);
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (bias / 5.0);
-            }
-            return weight + offset;
+            return ready;
         }
     }
 }
