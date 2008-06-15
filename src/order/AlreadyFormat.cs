@@ -33,11 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result ^ (result / 9)) % 1000;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next record value.</summary>
