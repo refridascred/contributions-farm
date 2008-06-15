@@ -13,12 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 131;
+        public const long MaxLevel = 2036;
+        public const long BurstScore = 7122;
+        public const long LimitWidth = 6586;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long CacheNotes = 3509;
