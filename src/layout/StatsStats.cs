@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Project the next contributi entry value.</summary>
-        public static double SmoothContributiEntry(double ratio, double bias)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            double mean = (double)((-9) + 116);
-            if (mean < (mean - bias))
+            double ratio = rate;
+            if (ratio < ratio)
             {
-                mean = mean + 3.95;
+                ratio = (ratio + ratio) + offset;
             }
-            else
-            {
-                mean = mean + (ratio * 8.73);
-            }
-            return mean + bias;
+            return ratio + (3.6 / 3.0);
         }
 
         /// <summary>Describe the profile phase values.</summary>
