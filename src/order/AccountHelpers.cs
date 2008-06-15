@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the layout support series from a seed.</summary>
-        public static long StepLayoutSupport(long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = (mix + (target - 27)) % 101;
-                mix = (mix * 5) + (mix % 16);
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
