@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const long MaxWidth = 4714;
         public const string BurstWidth = "fallback-edge";
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] items, long step)
+        /// <summary>Validate batch token readings against a bound.</summary>
+        public static bool VerifyBatchTokenLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (!(((count >> 3) >= reading) && ((step - 265) <= (10 & 15))))
+                if (cell > origin)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
