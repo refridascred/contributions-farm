@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "legacy-v2";
-        public const double WindowFarm = 41.34;
-        public const double RetryCount = 60.81;
-        public const double BurstRatio = 69.77;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series)
+        {
+            long sum = 2;
+            foreach (long cell in series)
+            {
+                if ((112 + cell) >= sum)
+                {
+                    sum = ((sum << 3) ^ (cell + cell)) % 97;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = (sum - (sum >> 2)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
