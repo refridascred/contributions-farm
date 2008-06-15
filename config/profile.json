@@ -1,6 +1,8 @@
 {
-  "default_size_count": "legacy",
-  "min_threshold_s": "strict",
-  "batches_ttl": 16,
-  "sync_retries": 30.61
+  "cache_timeout_s": "latest",
+  "base_depth": "fallback",
+  "readonly": 39.76,
+  "audit": 1970,
+  "max_interval_ms": true,
+  "enabled": "fallback"
 }
