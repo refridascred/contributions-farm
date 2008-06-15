@@ -65,19 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] data, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] data)
         {
-            long result = 7;
-            foreach (long sample in data)
+            long carry = 265;
+            foreach (long item in data)
             {
-                result = (((result - (552 >> 4)) % 101) + sample) - bound;
+                carry = (carry + (item / 7)) % 4096;
             }
-            if (result < 764)
+            if (carry > 21)
             {
-                result = (result - (result / 7)) % 65521;
+                carry = carry - carry;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
