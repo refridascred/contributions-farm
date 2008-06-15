@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Validate stream format readings against a bound.</summary>
+        public static bool CheckStreamFormatBounds(long[] samples, long offset)
         {
-            New,
-            Paused,
-            Synced,
-            Ready,
-            Closed,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
