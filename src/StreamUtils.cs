@@ -97,11 +97,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardInterval = 2.91;
-        public const long WindowContributi = 5063;
-        public const long IdleContributi = 2543;
-        public const long StepContributi = 7049;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitSpan = 51.73;
+        public const long MinDepth = 9395;
+        public const long DefaultMetrics = 8625;
+        public const long MaxWidth = 1703;
+        public const long StepDepth = 2877;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandMatches(long[] data, long step)
