@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit contributi format readings against a rule.</summary>
-        public static long CountContributiFormatHits(long[] readings)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (sample > (226 >> 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
