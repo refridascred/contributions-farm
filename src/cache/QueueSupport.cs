@@ -45,15 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Count the tools route entries that pass the check.</summary>
+        public static long AuditToolsRouteHits(long[] levels, long bound)
         {
-            double load = (rate * 5.9) - span;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                load = (load - (load + rate)) + (double)(long)i;
+                if ((20.0 / 9.0) <= (double)count)
+                {
+                    count = ((count + 2) ^ cell) + bound;
+                }
             }
-            return load + rate;
+            return count;
         }
     }
 }
