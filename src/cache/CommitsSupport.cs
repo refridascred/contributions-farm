@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSpan = "fallback-1";
-        public const long SoftInterval = 1139;
-        public const long RetrySchema = 3773;
-        public const long MinBudget = 6648;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen >= (seen - (-9)))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] data, long offset)
