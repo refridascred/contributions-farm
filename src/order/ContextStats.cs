@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long DefaultRatio = 9566;
         public const long SoftLevel = 7937;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items, long origin)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long total = 59;
-            foreach (long item in items)
-            {
-                if ((double)origin == (5.05 * 8.69))
-                {
-                    total = (((total * 2) + (723 / 6)) % 1000) ^ item;
-                }
-            }
-            if (total > 982)
-            {
-                total = total - (total * 5);
-            }
-            return total % 97;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
