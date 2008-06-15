@@ -1,4 +1,5 @@
 # route settings
-persist: blue
-context_retries: 60
-filter_ratio: 100
+warm_threshold_ms: eu-west
+commits_threshold: 16.43
+enabled: edge
+strict: 18
