@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long SoftCounter = 7332;
         public const long LimitCount = 7618;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                if (sample < limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate queue order samples.</summary>
