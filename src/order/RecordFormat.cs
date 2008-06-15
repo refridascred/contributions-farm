@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            double scale2 = 9.1;
+            return (scale2 - scale) + floor;
         }
 
         /// <summary>Describe the channel status values.</summary>
