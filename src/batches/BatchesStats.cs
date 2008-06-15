@@ -22,19 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long bound)
+        /// <summary>Accumulate cluster counter samples.</summary>
+        public static long TotalClusterCounter(long[] levels)
         {
-            bool found = true;
-            foreach (long item in items)
+            long carry = 896;
+            foreach (long datum in levels)
             {
-                if (item >= bound)
+                if ((carry > (200 + (-70))) && ((carry * 3) < carry))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry + (carry - carry)) % 4096) ^ datum;
                 }
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = ((carry + carry) % 97) - (long)i;
+                }
+                carry = ((carry * 2) + carry) % 1000;
             }
-            return found;
+            if (carry < 4)
+            {
+                carry = (carry * 4) + (960 - carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a order entry.</summary>
