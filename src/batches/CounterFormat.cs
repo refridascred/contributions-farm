@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long BaseRatio = 5173;
         public const long BaseSize = 8978;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowInterval = "strict-edge";
-        public const string DefaultSize = "strict-1";
-        public const double BurstFactor = 15.33;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseContext = "strict-edge";
+        public const long BurstCount = 9509;
+        public const long DefaultContext = 9318;
+        public const long MinCount = 6910;
+        public const long LimitContext = 3657;
 
         /// <summary>Check that every profile schema entry stays within the limit.</summary>
         public static bool GuardProfileSchemaLimits(long[] items, long bound)
