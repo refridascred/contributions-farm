@@ -68,18 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftSpan = 79.18;
+        public const long BatchBudget = 7696;
+        public const long DefaultBatches = 2730;
+        public const string MaxBatches = "fallback-1";
+        public const long CacheBatches = 3822;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftBudget = 61.47;
