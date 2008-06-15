@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate tools metrics samples.</summary>
-        public static long ScoreToolsMetrics(long[] readings, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] levels, long floor)
         {
-            long acc = 811;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((194 - target) < 7)
+                if (floor > (-286))
                 {
-                    acc = ((acc + (acc << 2)) % 1000) - value;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
