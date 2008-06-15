@@ -1,12 +1,8 @@
 {
-  "hard_window": {
-    "command_size": "open",
-    "audit": 53,
-    "idle_retries_count": 98.08,
-    "metric_depth": 20.02,
-    "idle_threshold_ms": 8,
-    "burst_ttl_ms": 12
-  },
-  "channel_depth": false,
-  "default_timeout": true
+  "burst_ratio": 9139,
+  "order_ratio": false,
+  "max_size_s": false,
+  "hard_capacity": false,
+  "soft_depth_count": [195, 489, 102, 457],
+  "retry_ttl": 67.58
 }
