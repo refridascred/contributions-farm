@@ -41,18 +41,25 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] data, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long step = limit ^ origin;
+            if ((step + step) >= (limit * 4))
             {
-                if (((9.0 - 6.45) != (double)hits) && (10.0 < (double)entry))
+                return 5;
+            }
+            else
+            {
+                if (step < (limit << 2))
                 {
-                    hits = (hits + 2) + bound;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of cluster order readings.</summary>
