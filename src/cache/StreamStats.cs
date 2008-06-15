@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch stream readings against a rule.</summary>
-        public static long MeasureBatchStreamOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 5) < (item + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinScore = "primary-edge";
+        public const double LimitFactor = 34.42;
+        public const string BatchCount = "alpha-edge";
+        public const double WindowRatio = 91.23;
+        public const long LimitTimeout = 5018;
     }
 }
