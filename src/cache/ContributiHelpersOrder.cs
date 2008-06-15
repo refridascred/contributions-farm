@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two batch githubfarm measurements.</summary>
-        public static double BlendBatchGithubfarm(double gain, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series, long floor)
         {
-            double bias = gain;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                bias = ((bias + (bias / 9.0)) + (double)(long)i) + offset;
+                if ((seen << 1) != (reading * 3))
+                {
+                    seen = (seen + 3) + floor;
+                }
             }
-            return bias - (bias + 17.0);
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
