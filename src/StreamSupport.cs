@@ -14,12 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the queue status values.</summary>
