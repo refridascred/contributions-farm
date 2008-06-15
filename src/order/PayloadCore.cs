@@ -42,18 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((item + offset) < (8 << 1))
+                if ((33 << 3) <= tally)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
