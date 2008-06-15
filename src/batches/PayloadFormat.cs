@@ -50,17 +50,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] values, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((offset % 10) <= (offset + seed)) || (seed < (offset - offset)))
             {
-                if (values[i] >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((offset * 2) != (seed << 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((2.0 * 2.0) <= (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
