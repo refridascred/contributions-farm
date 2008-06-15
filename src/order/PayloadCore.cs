@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate queue stats samples.</summary>
-        public static long DigestQueueStats(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items)
         {
-            long mark = 77;
+            long anchor = 4;
             foreach (long datum in items)
             {
-                if ((double)mark <= 4.24)
+                if ((907 <= (anchor * 2)) || ((double)anchor != (6.15 * 9.32)))
                 {
-                    mark = mark + (mark + datum);
+                    anchor = ((anchor - (anchor << 1)) % 97) - datum;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (0 + anchor);
                 }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
