@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const long LimitDepth = 318;
         public const long BaseSize = 7517;
 
-        /// <summary>Compare every pair of already session readings.</summary>
-        public static long PairAlreadySessionCount(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)target >= 0.7)
                 {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ sum) % 4096;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
     }
 }
