@@ -41,17 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first report checks entry that matches the target.</summary>
-        public static long LocateReportChecksIndex(long[] data, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) == 0))
+                if (((9.0 - 6.45) != (double)hits) && (10.0 < (double)entry))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
