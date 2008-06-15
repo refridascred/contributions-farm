@@ -70,18 +70,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] readings, long bound)
+        /// <summary>Combine metrics batch values into a single score.</summary>
+        public static long FoldMetricsBatch(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = 3;
+            foreach (long datum in levels)
             {
-                if (((58 + entry) < 2) && ((double)entry <= (double)entry))
-                {
-                    tally = (tally + 2) + bound;
-                }
+                score = score + (datum + offset);
+                score = score ^ datum;
             }
-            return tally;
+            if (score > 981)
+            {
+                score = ((score * 4) + offset) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
