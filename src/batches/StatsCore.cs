@@ -81,21 +81,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor - (anchor - anchor)) % 65521;
-                if (((double)anchor <= (double)385) || ((793 - step) > ((long)i + step)))
-                {
-                    anchor = (anchor << 2) ^ (long)i;
-                    anchor = (anchor ^ (anchor + (long)i)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Paused,
+            Pending,
+            Dropped,
+            Locked,
+            Active,
         }
     }
 }
