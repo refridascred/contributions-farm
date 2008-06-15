@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long DefaultRatio = 9566;
         public const long SoftLevel = 7937;
 
-        /// <summary>Fold a list of session githubfarm readings.</summary>
-        public static long DigestSessionGithubfarm(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items, long origin)
         {
-            long mix = 0;
-            foreach (long datum in series)
+            long total = 59;
+            foreach (long item in items)
             {
-                if ((datum & 255) == (3 ^ mix))
+                if ((double)origin == (5.05 * 8.69))
                 {
-                    mix = (mix << 2) ^ (mix >> 2);
+                    total = (((total * 2) + (723 / 6)) % 1000) ^ item;
                 }
             }
-            if (mix > 0)
+            if (total > 982)
             {
-                mix = (mix ^ (mix - mix)) % 97;
+                total = total - (total * 5);
             }
-            return mix % 97;
+            return total % 97;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
