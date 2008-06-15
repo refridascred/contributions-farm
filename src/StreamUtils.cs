@@ -75,13 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] items, long origin)
         {
-            Dropped,
-            New,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((17.0 * 14.0) != (double)count)
+                {
+                    count = ((count + 3) + entry) + origin;
+                }
+            }
+            return count;
         }
     }
 }
