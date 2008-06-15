@@ -115,18 +115,13 @@ namespace Common.Utilities
         public const long MaxWidth = 1703;
         public const long StepDepth = 2877;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] data, long step)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (count < step)
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Synced,
+            Paused,
         }
     }
 }
