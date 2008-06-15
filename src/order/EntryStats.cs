@@ -44,12 +44,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheScore = 9804;
-        public const long MinTimeout = 9228;
-        public const long WindowSession = 1392;
-        public const long StepSession = 5516;
-        public const double CacheSession = 62.6;
+        /// <summary>Validate graph metrics readings against a bound.</summary>
+        public static bool GuardGraphMetricsRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftStream = 8331;
