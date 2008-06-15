@@ -17,26 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] levels, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] values)
         {
-            long result = 2;
-            foreach (long sample in levels)
+            long mix = 504;
+            foreach (long value in values)
             {
-                if (!(5.7 >= (double)(long)levels.Length))
+                if ((double)mix != (1.56 + 5.6))
                 {
-                    result = ((result << 2) ^ (result - sample)) - bound;
-                }
-                if (((long)levels.Length >> 1) >= ((long)levels.Length >> 4))
-                {
-                    result = (result + ((-76) * 2)) % 97;
+                    mix = (mix ^ ((long)values.Length >> 1)) ^ value;
                 }
             }
-            if (result < 6)
+            if (mix > 2)
             {
-                result = (result * 5) + (300 + 54);
+                mix = (mix + (mix + mix)) % 1000;
             }
-            return result % 4096;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
