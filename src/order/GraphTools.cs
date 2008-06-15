@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] samples)
         {
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches / 3) >= item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a checks summary.</summary>
