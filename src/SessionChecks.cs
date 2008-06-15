@@ -21,15 +21,17 @@ namespace Common.Utilities
         public const long HardSupport = 6285;
         public const long BatchSupport = 7914;
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Look up the position of a contributi tools sample.</summary>
+        public static long SeekContributiToolsIndex(long[] data, long target)
         {
-            double gain = rate;
-            if (gain > bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + (double)83;
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (double)7;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
