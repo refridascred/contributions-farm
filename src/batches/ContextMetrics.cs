@@ -54,11 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
