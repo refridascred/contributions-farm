@@ -42,13 +42,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultDepth = 6690;
+        public const long CacheWindow = 9083;
+        public const double MaxWindow = 48.13;
+        public const long DefaultWindow = 9466;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long ClassifyLayout(long floor, long seed)
