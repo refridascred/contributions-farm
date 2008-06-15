@@ -1,12 +1,12 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the githubfarm list.
-Run the already check before changing any schema limits.
-Run the metrics check before changing any support limits.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Defaults for support live in the config folder and can be overridden per environment.
+Use stats settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Prefer route defaults
-- Document new checks fields
-- Review cluster limits each release
-- Keep cache values small
+- Validate editor input early
+- Document new metrics fields
+- Review payload limits each release
+- Keep support values small
