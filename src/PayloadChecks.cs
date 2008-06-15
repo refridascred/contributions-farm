@@ -68,18 +68,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] readings, long bound)
+        /// <summary>Digest a series of token profile entries.</summary>
+        public static long FoldTokenProfile(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long sum = 430;
+            foreach (long entry in levels)
             {
-                if (((-99) % 100) <= (bound & 63))
+                sum = sum ^ (sum + sum);
+                sum = (sum ^ sum) % 4096;
+                if ((sum >> 1) <= entry)
                 {
-                    hits = (hits + 2) + item;
+                    sum = (sum * 5) + (sum << 1);
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
