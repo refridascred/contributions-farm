@@ -55,31 +55,13 @@ namespace Common.Utilities
         public const double MinSize = 8.11;
         public const long MinBudget = 4316;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            if (2.9 < (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin < (1.1 - 17.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.0 - 9.2) != (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Retry,
+            Queued,
         }
     }
 }
