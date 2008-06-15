@@ -41,32 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long floor)
-        {
-            long bound2 = bound + floor;
-            if (!(1.0 > (double)bound2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound < 20.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(bound2 > (floor * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheSize = 5577;
+        public const string CacheContributi = "local-1";
+        public const string SoftDepth = "fallback-v2";
+        public const long BaseSpan = 172;
+        public const long LimitContributi = 7747;
     }
 }
