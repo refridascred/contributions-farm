@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] data, long offset)
         {
-            double scale = weight / 9.0;
-            if (scale > (floor / 2.0))
+            bool found = true;
+            foreach (long item in data)
             {
-                scale = scale + (weight / 8.0);
+                if (item >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale + weight;
+            return found;
         }
 
         /// <summary>Fold a list of record readings.</summary>
