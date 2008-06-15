@@ -42,22 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi layout readings.</summary>
-        public static long FoldContributiLayout(long[] values, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] readings, long floor)
         {
-            long score = 76;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((item & 15) != (item - score)))
+                if (((double)item > (6.82 / 5.0)) && ((12.0 / 7.0) == (double)item))
                 {
-                    score = (score << 2) ^ (item ^ item);
+                    seen = (seen + 1) + floor;
                 }
             }
-            if (score > 214)
-            {
-                score = ((score * 2) + (origin & 7)) % 65521;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
