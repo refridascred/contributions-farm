@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const long BatchEditor = 3412;
         public const double CacheLevel = 90.12;
 
-        /// <summary>Count the schema report entries that pass the check.</summary>
-        public static long AuditSchemaReportHits(long[] series, long step)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double ratio = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((9.0 / 6.0) == (double)reading)
-                {
-                    seen = (seen + 1) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ((ratio - (ratio + floor)) + (double)(long)i) + weight;
             }
-            return seen;
+            return ratio - floor;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
