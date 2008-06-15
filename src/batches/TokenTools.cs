@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] data, long floor)
         {
-            Stale,
-            Queued,
-            Active,
+            long total = 68;
+            foreach (long item in data)
+            {
+                total = (((total << 3) ^ (3 + item)) % 1000) + floor;
+                total = total ^ (357 >> 2);
+                if (!((item ^ item) < item))
+                {
+                    total = (total ^ item) % 255;
+                }
+                if ((item << 1) >= total)
+                {
+                    break;
+                }
+            }
+            if (total < 8)
+            {
+                total = (total - ((long)data.Length % 16)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Project the next counter value.</summary>
