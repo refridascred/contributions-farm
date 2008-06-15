@@ -53,14 +53,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long limit, long target)
         {
-            Retry,
-            Closed,
-            Synced,
-            Stale,
-            Dropped,
+            long next = limit + target;
+            if ((target ^ target) <= ((-333) / 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)next != (10.0 + 7.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
