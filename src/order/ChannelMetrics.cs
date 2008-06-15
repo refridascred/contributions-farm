@@ -17,18 +17,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((2.5 + 8.57) < (double)(long)readings.Length)
-                {
-                    hits = ((hits + 1) ^ entry) + limit;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
