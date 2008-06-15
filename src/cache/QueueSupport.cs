@@ -23,11 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
