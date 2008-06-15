@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] values, long limit)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long acc = 937;
-            foreach (long cell in values)
-            {
-                acc = ((acc - (cell << 3)) % 4096) - limit;
-            }
-            return acc % 65521;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a account header.</summary>
