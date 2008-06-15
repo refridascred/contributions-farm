@@ -33,31 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long step, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] data, long floor)
         {
-            if ((step <= (step << 3)) || (1.85 >= (double)floor))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9 & 7) >= (floor ^ 67))
+                if ((double)26 < (double)datum)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((6 * 3) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 1) - floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
