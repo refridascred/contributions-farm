@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] levels, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = floor - seed;
+            if ((2 + floor) >= (step & 7))
             {
-                if (levels[i] >= target)
+                return 5;
+            }
+            else
+            {
+                if ((seed > 9) || (floor <= (seed & 127)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((1 - step) >= floor) && ((355 - floor) < 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
