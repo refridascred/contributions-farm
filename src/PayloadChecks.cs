@@ -43,13 +43,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] data, long origin)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            long state = 3;
+            foreach (long reading in data)
+            {
+                state = ((((state << 2) ^ 3) % 101) ^ reading) - origin;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
