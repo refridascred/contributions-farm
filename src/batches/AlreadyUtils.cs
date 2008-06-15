@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!((tally - entry) != (entry * 4)) && !((entry >> 1) != (bound + tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
