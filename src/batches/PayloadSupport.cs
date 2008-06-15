@@ -24,17 +24,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] items, long limit)
+        /// <summary>Combine editor window values into a single score.</summary>
+        public static long TallyEditorWindow(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 516;
+            foreach (long sample in levels)
             {
-                if ((items[i] == limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (sample << 2)) % 1000) - offset;
             }
-            return -1;
+            return acc;
         }
     }
 }
