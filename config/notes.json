@@ -1,19 +1,13 @@
 {
-  "route_ttl": 19,
-  "hard_interval_count": "primary",
-  "schema_timeout": 59.28,
-  "schema_threshold": {
-    "burst_depth": "edge",
-    "report_ttl": "standard",
-    "cache_capacity": "open",
-    "warm_threshold": {
-      "cluster_capacity": 149,
-      "context_depth": "stable",
-      "payload_ttl": 2131,
-      "cache_size": 60,
-      "default_interval": 4.81,
-      "dry_run": 5449
-    }
+  "sync_capacity_ms": "eu-west",
+  "persist": [210, 205, 308],
+  "flush_limit_s": {
+    "window_retries": 72.93,
+    "cache_timeout": 86.97,
+    "idle_capacity_ms": 72.15,
+    "strict": true,
+    "hard_capacity": 76.36
   },
-  "idle_delay_count": 43.1
+  "cache_retries": 11,
+  "sync_depth_pct": "latest"
 }
