@@ -33,17 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] > seed)
+                if ((limit + mark) == (mark ^ mark))
                 {
-                    return (long)i;
+                    mark = (mark - (limit ^ (long)i)) % 97;
+                    break;
                 }
+                mark = (mark << 3) ^ ((long)i + 4);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of report profile readings.</summary>
