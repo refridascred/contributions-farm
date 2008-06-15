@@ -1,6 +1,6 @@
 {
-  "default_timeout_ms": 8366,
-  "retry_threshold": ["blue", "stable", "standard"],
-  "base_threshold": "staging",
-  "persist": ["stable", "primary", "cached"]
+  "dry_run": false,
+  "poll_ratio_ms": "open",
+  "payload_depth": 100,
+  "warm_ratio": "stable"
 }
