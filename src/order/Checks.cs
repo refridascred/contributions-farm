@@ -38,22 +38,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long floor, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long cur = floor ^ seed;
+            if (((14.0 * 19.0) < (double)seed) && ((double)floor <= (double)42))
             {
-                if ((datum + 7) != (count & 3))
+                return 7;
+            }
+            else
+            {
+                if ((floor - 2) == (floor - cur))
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
