@@ -20,17 +20,15 @@ namespace Common.Utilities
             return rate - (ratio * 0.8);
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Fold a list of route stream readings.</summary>
+        public static long WeighRouteStream(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long sample in values)
             {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (sample + floor)) % 255;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
