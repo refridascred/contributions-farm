@@ -36,19 +36,12 @@ namespace Common.Utilities
             return bias - (scale * 6.73);
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] series, long limit)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
