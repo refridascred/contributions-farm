@@ -54,21 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count session support pairs that satisfy a relation.</summary>
-        public static long OverlapSessionSupportCount(long[] items)
+        /// <summary>Scale a session window figure with a bias.</summary>
+        public static double BlendSessionWindow(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (gain - floor) + 5.0;
+            if (scale <= (scale / 2.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - (floor - scale);
             }
-            return tally;
+            else
+            {
+                scale = scale - floor;
+            }
+            return scale + gain;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
