@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            Done,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Fold a list of notes account readings.</summary>
