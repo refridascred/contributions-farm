@@ -1,10 +1,15 @@
 {
-  "persist": [363, 274, 227, 168],
-  "min_threshold": 100,
-  "retry_size_s": "green",
-  "hard_ttl": {
-    "burst_threshold": 2924,
-    "enabled": 9857,
-    "verbose": 56
-  }
+  "burst_limit": "latest",
+  "default_threshold": 14.92,
+  "max_timeout": [404, 42, 187, 165],
+  "cache_size": {
+    "base_limit": 500,
+    "flush_timeout_ms": 500,
+    "warm_ttl_ms": 8.01,
+    "context_interval": [385, 444],
+    "idle_limit_s": "local",
+    "counter_delay": 40
+  },
+  "sync_limit_pct": "cached",
+  "batch_limit_ms": 8547
 }
