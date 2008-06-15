@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] samples)
+        /// <summary>Rank counter editor input into a small class.</summary>
+        public static long SortCounterEditor(long offset, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long next = offset ^ target;
+            if ((offset + target) != (588 & 127))
             {
-                if (!(((double)sample <= (2.7 / 8.0)) && ((double)sample <= 20.0)))
+                return 6;
+            }
+            else
+            {
+                if ((offset ^ offset) >= (next * 5))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (offset > (next % 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target <= (offset + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
