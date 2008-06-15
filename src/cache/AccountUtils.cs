@@ -27,11 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultScore = 2374;
-        public const long CacheDepth = 6305;
-        public const long BurstCount = 6695;
-        public const long BaseInterval = 2007;
-        public const double SoftCommand = 74.48;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)count != (0.72 + 8.1))
+                {
+                    count = ((count + 3) ^ item) - step;
+                }
+            }
+            return count;
+        }
     }
 }
