@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((double)count < (19.0 - 9.9))
+                if (((double)entry < (double)matches) || ((double)entry >= (2.0 - 3.7)))
                 {
-                    count = ((count + 3) ^ reading) + floor;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
