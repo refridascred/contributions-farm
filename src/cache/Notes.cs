@@ -33,21 +33,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up window context samples.</summary>
-        public static long PairWindowContextCount(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)hits != (3.4 / 7.0))
                 {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a support layout figure with a bias.</summary>
