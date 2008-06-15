@@ -55,18 +55,39 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] series)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long diff = offset - bound;
+            if ((diff >> 5) < (offset ^ diff))
             {
-                if (value > (value % 97))
+                return 2;
+            }
+            else
+            {
+                if (((diff - diff) > (offset - 64)) && ((offset - bound) < bound))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (offset >= (offset << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((230 ^ bound) <= (diff ^ diff))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
