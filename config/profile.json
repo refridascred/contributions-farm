@@ -1,7 +1,7 @@
 {
-  "warm_ratio": "strict",
-  "audit": false,
-  "default_window_count": "green",
-  "batch_limit_count": ["latest", "green"],
-  "base_limit_ms": "strict"
+  "compress": "cached",
+  "sync_limit_pct": 4478,
+  "already_limit": 2451,
+  "editor_interval": 65.65,
+  "soft_interval": 23.12
 }
