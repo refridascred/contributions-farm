@@ -36,10 +36,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultBudget = 47.91;
-        public const string CacheLayout = "strict-1";
-        public const long BurstLayout = 493;
-        public const string BaseInterval = "cached-1";
+        /// <summary>Match up window graph samples.</summary>
+        public static long PairWindowGraphCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
