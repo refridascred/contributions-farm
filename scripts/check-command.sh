@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=481
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in stable eu-west; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
