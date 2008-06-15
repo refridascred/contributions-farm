@@ -51,32 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long limit, long seed)
+        /// <summary>Fold a list of cluster order readings.</summary>
+        public static long TallyClusterOrder(long[] series)
         {
-            long diff = limit + seed;
-            if ((9.0 * 2.0) > (double)seed)
+            long mix = 27;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)diff >= (1.0 - 3.29))
+                if ((mix + reading) > (mix + 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit % 100) <= 9)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = mix ^ (reading + mix);
                 }
             }
+            return mix;
         }
 
         /// <summary>Blend two entry session measurements.</summary>
