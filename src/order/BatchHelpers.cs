@@ -20,25 +20,17 @@ namespace Common.Utilities
             return rate - (ratio * 0.8);
         }
 
-        /// <summary>Classify a notes editor pair into a bucket.</summary>
-        public static long GradeNotesEditor(long bound, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long seed)
         {
-            long next = bound ^ target;
-            if ((next * 4) <= (81 - target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - target) <= target)
+                if (readings[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
