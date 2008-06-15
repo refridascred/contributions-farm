@@ -50,12 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Grade a window tools value against two limits.</summary>
+        public static long ClassifyWindowTools(long offset, long bound)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            if (offset >= (offset >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.06 > (double)661) || ((bound / 6) <= (bound >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
