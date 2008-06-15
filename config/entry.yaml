@@ -1,5 +1,25 @@
 # entry settings
-queue_window: 8
-batches_window: 250
-audit: 90.36
-readonly: 1024
+contributi_retries: false
+burst_capacity_ms: 53
+cache_ttl_count:
+  hard_timeout_s: 1295
+  contributi_capacity: strict
+  cache_timeout: 5557
+  base_delay:
+    - legacy
+    - stable
+  persist: false
+  strict:
+    buffer_delay: staging
+    hard_ttl_ms:
+      - strict
+      - green
+      - legacy
+      - primary
+    soft_retries: false
+persist: 1354
+githubfarm_limit:
+  - 22
+  - 210
+  - 477
+batches_retries: legacy
