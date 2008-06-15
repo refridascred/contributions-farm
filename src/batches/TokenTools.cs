@@ -13,16 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] series, long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            long mix = 9;
-            foreach (long entry in series)
-            {
-                mix = (mix - (mix - entry)) - floor;
-                mix = mix + (entry + entry);
-            }
-            return mix;
+            double bias = (double)(23 + 0);
+            return (bias - rate) + span;
         }
 
         /// <summary>Describe the batches class values.</summary>
