@@ -1,7 +1,7 @@
-id,region,active
-1,37.4,46.67
-2,744,19.07
-3,844,897
-4,541,54.27
-5,16.07,legacy
-6,green,500
+id,state,score,rank
+1,latest,26.14,178
+2,eu-west,16.58,30.46
+3,eu-west,35.7,712
+4,open,cached,29.05
+5,88,edge,248
+6,3.21,legacy,green
