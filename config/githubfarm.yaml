@@ -1,29 +1,7 @@
 # githubfarm settings
-metrics_capacity: 100
-burst_size_ms:
-  min_ratio_count:
-    default_limit_ms: 5419
-    queue_ratio: 250
-    flush_threshold_ms: standard
-    stream_limit:
-      - 42
-      - 31
-      - 344
-  command_limit:
-    verbose: edge
-    flush_size_pct: 500
-    retry_capacity_pct: true
-    enabled:
-      - 340
-      - 108
-    contributi_retries: blue
-  default_interval: 30
-  hard_window_count:
-    - 342
-    - 58
-    - 38
-    - 207
-retry_retries_pct:
-  - 285
-  - 182
-batch_window_pct: latest
+poll_timeout_s: cached
+tools_limit:
+  - eu-west
+  - stable
+dry_run: 5999
+hard_threshold_ms: 7927
