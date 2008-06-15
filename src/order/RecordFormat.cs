@@ -35,18 +35,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a queue already counter forward.</summary>
-        public static long IterateQueueAlready(long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc << 2) ^ (4 + origin)) % 1000;
-                acc = ((acc * 5) + ((long)i >> 2)) % 4096;
-                acc = ((acc << 3) ^ origin) % 255;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate checks schema readings against a bound.</summary>
