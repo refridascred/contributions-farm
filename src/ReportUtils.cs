@@ -60,20 +60,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a batches already counter forward.</summary>
-        public static long SeriesBatchesAlready(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((4.09 + 20.0) > (4.3 / 6.0))
-                {
-                    sum = (sum << 3) ^ (offset - offset);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 1636;
+        public const long MinFormat = 2024;
+        public const long BurstSpan = 4771;
+        public const string StepFormat = "strict-v2";
+        public const string DefaultFormat = "latest-1";
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] samples, long limit)
