@@ -37,18 +37,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] levels, long seed)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample << 2) < (hits + sample))
+                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
                 {
-                    hits = (hits + 2) - seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
