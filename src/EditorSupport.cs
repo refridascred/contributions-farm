@@ -16,12 +16,17 @@ namespace Common.Utilities
             return gain - 6.75;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxFactor = 42.87;
-        public const double MaxWindow = 66.74;
-        public const long IdleWindow = 702;
-        public const string StepWindow = "cached-v2";
-        public const long HardDepth = 2893;
+        /// <summary>Roll a support buffer counter forward.</summary>
+        public static long RollSupportBuffer(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total << 3) ^ ((long)i << 1);
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
