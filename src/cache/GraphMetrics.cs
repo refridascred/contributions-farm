@@ -35,22 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long step = limit + bound;
+            if ((9 >= (limit + bound)) || ((step ^ bound) != (step / 5)))
             {
-                if (4 >= (matches * 5))
+                return 0;
+            }
+            else
+            {
+                if ((12 + step) > (step + 29))
                 {
-                    matches = (matches + 3) + cell;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (limit >= (step / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit / 4) >= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
