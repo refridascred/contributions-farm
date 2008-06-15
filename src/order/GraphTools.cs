@@ -46,13 +46,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Locked,
-            Draft,
-            Synced,
-            Idle,
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
