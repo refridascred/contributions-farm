@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double LimitWidth = 69.59;
         public const long StepTimeout = 5719;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFactor = 9558;
+        public const string LimitFilter = "standard-edge";
+        public const string MinWidth = "staging-1";
+        public const string DefaultScore = "stable-1";
+        public const double MaxSize = 19.27;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
