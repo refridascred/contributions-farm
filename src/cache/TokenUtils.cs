@@ -25,14 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] readings, long offset)
         {
-            Failed,
-            Active,
-            Idle,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((offset + offset) > (152 - reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
