@@ -23,12 +23,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Check that every tools token entry stays within the limit.</summary>
+        public static bool VerifyToolsTokenLimits(long[] series, long origin)
         {
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
