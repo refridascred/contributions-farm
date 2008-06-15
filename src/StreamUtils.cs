@@ -46,30 +46,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long step, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long origin, long target)
         {
-            if (((step % 8) < target) && (18.0 >= (13.0 * 8.8)))
+            if ((14.0 - 9.2) != (double)target)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((1.0 > (7.72 * 1.9)) || ((6.5 - 7.15) != (double)target))
+                if ((double)target == (1.0 * 4.0))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((target - step) < 7)
+                    if ((9.0 <= (double)origin) || ((origin & 255) <= target))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if (!((target << 2) == (target * 4)))
+                        if (!((double)target >= (7.5 - 17.0)))
                         {
-                            return 2;
+                            return 3;
                         }
                         else
                         {
