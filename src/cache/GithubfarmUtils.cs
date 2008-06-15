@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] samples, long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double gain2 = gain;
+            if (gain2 > gain)
             {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                gain2 = (gain2 - (double)98) - floor;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + 3.38) + (double)(long)i;
+            }
+            return gain2 - (double)6;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
