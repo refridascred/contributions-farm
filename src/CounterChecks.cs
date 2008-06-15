@@ -41,17 +41,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first queue cache entry that matches the target.</summary>
-        public static long FindQueueCacheIndex(long[] data, long bound)
+        /// <summary>Rank token context input into a small class.</summary>
+        public static long BucketTokenContext(long limit, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = limit + step;
+            if (step <= bound)
             {
-                if (data[i] < bound)
+                return 6;
+            }
+            else
+            {
+                if ((8 ^ bound) >= (822 & 7))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((8.9 - 8.31) <= (double)bound) || ((5.0 + 9.1) == (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound * 4) <= (bound - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
