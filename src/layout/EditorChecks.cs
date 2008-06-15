@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long SoftChannel = 5798;
         public const double BatchChannel = 55.49;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] data, long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + sample) < (seen - limit))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
