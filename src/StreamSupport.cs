@@ -43,14 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] levels, long limit)
         {
-            Queued,
-            Done,
-            Draft,
-            Locked,
-            Stale,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((limit + limit) <= (886 % 64))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
     }
 }
