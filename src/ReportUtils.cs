@@ -70,9 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitTimeout = 9996;
-        public const long LimitFormat = 8971;
-        public const double HardFormat = 94.44;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data)
+        {
+            long result = 53;
+            foreach (long value in data)
+            {
+                result = result + (255 - value);
+                if ((double)result > (3.0 - 7.77))
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
     }
 }
