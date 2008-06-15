@@ -23,15 +23,26 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values, long step)
         {
-            long anchor = 8;
-            foreach (long value in items)
+            long result = 884;
+            foreach (long datum in values)
             {
-                anchor = ((anchor << 2) ^ (anchor >> 4)) - value;
+                if ((step + step) > (datum ^ datum))
+                {
+                    result = ((result << 2) ^ (step + datum)) % 255;
+                }
+                if ((step - 32) > (step / 8))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (result > 63)
+            {
+                result = ((result << 2) ^ (step % 64)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Locate a command reading by value.</summary>
