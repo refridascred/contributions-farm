@@ -50,18 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema context samples are out of range.</summary>
-        public static long MeasureSchemaContextOutliers(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample <= (86 - tally)) || ((0 & 63) <= (sample * 5)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
