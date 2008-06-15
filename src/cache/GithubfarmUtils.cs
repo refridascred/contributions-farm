@@ -36,13 +36,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long origin)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            if ((12.0 / 8.0) <= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)limit >= (7.8 + 5.0)) && ((limit + limit) < limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9.92 / 9.0) != (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit == (4.0 - 4.2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
