@@ -26,21 +26,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((acc % 100) == (acc << 3)))
-                {
-                    acc = (acc ^ (step ^ step)) % 65521;
-                    acc = (acc - (1 + acc)) % 255;
-                }
-                acc = ((acc << 2) ^ acc) % 65521;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Accumulate profile samples.</summary>
