@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "strict-v2";
-        public const string BatchCache = "fallback-v2";
-        public const string MaxCache = "fallback";
-        public const long HardCache = 7226;
-        public const long BurstBudget = 8959;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings, long step)
+        {
+            long score = 773;
+            foreach (long value in readings)
+            {
+                if (38 > (score + score))
+                {
+                    score = ((score - (score & 31)) - value) - step;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
