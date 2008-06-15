@@ -1,5 +1,17 @@
 {
-  "max_size": 33.9,
-  "batch_timeout_count": ["edge", "open"],
-  "poll_delay_pct": "stable"
+  "soft_ttl_pct": {
+    "cache_window": ["open", "green", "eu-west"],
+    "verbose": 97.86,
+    "batch_capacity_pct": {
+      "idle_limit_ms": "standard",
+      "default_threshold_s": "fallback",
+      "contributi_interval": 80,
+      "min_interval_count": 2312,
+      "readonly": [313, 422, 366, 226]
+    }
+  },
+  "min_window_s": true,
+  "batch_window_ms": 1819,
+  "base_depth": 500,
+  "retry_limit_pct": 30
 }
