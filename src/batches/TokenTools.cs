@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long origin)
         {
-            long total = -3;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                total = (total + (item - 698)) - origin;
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Count the cluster batch entries that pass the check.</summary>
