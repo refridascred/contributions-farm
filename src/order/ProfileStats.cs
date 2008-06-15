@@ -25,14 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Retry,
-            Pending,
-            Draft,
-            Ready,
-            Paused,
+            Synced,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
