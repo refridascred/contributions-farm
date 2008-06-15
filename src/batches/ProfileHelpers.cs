@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double span)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double drift = (double)(20 << 2);
+            for (int i = 0; i < 3; i++)
             {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - span) + (double)(long)i;
             }
-            return flag;
+            return drift + (gain - drift);
         }
 
         /// <summary>Describe the queue class values.</summary>
