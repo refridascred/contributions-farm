@@ -15,16 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] items, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry - (carry + (long)i);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
