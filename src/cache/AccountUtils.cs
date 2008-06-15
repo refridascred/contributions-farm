@@ -27,11 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two batch commits measurements.</summary>
-        public static double ScaleBatchCommits(double rate, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] samples, long seed)
         {
-            double scale = (double)(-625) / 9.0;
-            return ((scale + (6.2 / 2.0)) + rate) + span;
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits << 1) <= (hits + datum))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
     }
 }
