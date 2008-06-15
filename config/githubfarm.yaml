@@ -1,7 +1,7 @@
 # githubfarm settings
-notes_interval: 62
-default_timeout_pct: 60
-soft_timeout_ms: 25
-token_size: true
-verbose: 778
-cache_ratio: 60
+session_capacity: legacy
+audit: open
+warm_interval:
+  - 336
+  - 405
+  - 435
