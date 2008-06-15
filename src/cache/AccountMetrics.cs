@@ -58,17 +58,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] data, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                if (!((((long)i + limit) >= (limit - sum)) && ((limit ^ limit) == (sum & 127))))
                 {
-                    return (long)i;
+                    sum = (sum ^ 2) % 1000;
                 }
+                sum = (sum * 5) + (limit >> 3);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a record reading by value.</summary>
