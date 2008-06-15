@@ -38,17 +38,18 @@ namespace Common.Utilities
         public const long RetrySpan = 7274;
         public const long RetryRatio = 9837;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long floor)
+        /// <summary>Roll a queue already counter forward.</summary>
+        public static long IterateQueueAlready(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (4 + origin)) % 1000;
+                acc = ((acc * 5) + ((long)i >> 2)) % 4096;
+                acc = ((acc << 3) ^ origin) % 255;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate checks schema readings against a bound.</summary>
