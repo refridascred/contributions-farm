@@ -21,12 +21,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] series, long limit)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
