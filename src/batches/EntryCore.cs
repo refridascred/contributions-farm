@@ -29,31 +29,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples, long limit)
+        /// <summary>Rank farm support input into a small class.</summary>
+        public static long SortFarmSupport(long floor, long floor2)
         {
-            long result = 7;
-            foreach (long sample in samples)
+            long gap = floor ^ floor2;
+            if ((double)floor <= (3.0 / 9.0))
             {
-                result = (result ^ (limit & 255)) % 65521;
-                if (((limit + 132) >= (limit + result)) && ((double)limit <= (3.0 - 9.9)))
+                return 6;
+            }
+            else
+            {
+                if (((floor2 * 5) >= (gap / 8)) || ((floor & 3) >= (floor2 % 2)))
                 {
-                    result = (result - (limit + 348)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (sample >> 2)) % 97;
-                }
-                if ((6.87 + 12.0) <= (double)sample)
-                {
-                    break;
+                    if ((32 + gap) > (floor2 / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor ^ gap) <= (floor2 % 24))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (result > 2)
-            {
-                result = ((result * 2) + (678 & 3)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Describe the payload class values.</summary>
