@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 96.0;
+        public const string MinMetric = "cached";
+        public const long MaxMetric = 4736;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] data, long offset)
