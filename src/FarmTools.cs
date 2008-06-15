@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter window entries that pass the check.</summary>
-        public static long MeasureCounterWindowOutliers(long[] items, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long anchor = 8;
+            foreach (long entry in levels)
             {
-                if (!((count + count) >= (count / 8)))
+                if (entry >= ((-1) % 12))
                 {
-                    count = ((count + 3) - datum) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor - anchor) % 65521;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Compare every pair of batch cache readings.</summary>
