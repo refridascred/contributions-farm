@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long BaseRoute = 2030;
         public const double WindowTimeout = 67.01;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
