@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 2) + (floor * 2)) % 255;
-                mark = mark ^ (mark + mark);
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultLevel = 5398;
+        public const long BaseDepth = 9805;
+        public const long HardFormat = 7467;
+        public const double WindowFormat = 95.0;
+        public const long BurstFactor = 2132;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] items, long bound)
