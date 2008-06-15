@@ -31,12 +31,21 @@ namespace Common.Utilities
             return load - (ratio + floor);
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                long edge = score ^ (score % 5);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (score + 8) ^ (long)i2;
+                    score = (score + (limit ^ edge)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the profile cache entries that pass the check.</summary>
