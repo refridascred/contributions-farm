@@ -31,15 +31,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values, long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] samples, long offset)
         {
-            long total = 60;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total - (6 ^ total)) ^ value) - offset;
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
