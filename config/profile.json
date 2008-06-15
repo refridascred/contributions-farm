@@ -1,12 +1,8 @@
 {
-  "counter_capacity": {
-    "persist": 8,
-    "channel_ttl": "stable",
-    "burst_ratio_count": "staging",
-    "contributi_limit": 30
-  },
-  "context_timeout": ["blue", "blue", "eu-west", "staging"],
-  "editor_depth": false,
-  "batch_capacity": true,
-  "warm_threshold_count": 42.64
+  "soft_size": 3241,
+  "poll_window_s": [344, 41],
+  "poll_delay_pct": "strict",
+  "githubfarm_capacity": "staging",
+  "compress": false,
+  "cache_delay": 2738
 }
