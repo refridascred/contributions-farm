@@ -55,22 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = 303;
+            foreach (long datum in values)
             {
-                if (!(datum < (datum / 2)))
+                if (!(datum >= (datum << 3)))
                 {
-                    hits = hits + 1;
+                    sum = (sum ^ datum) % 1000;
                 }
-                else
+                if (!((sum >> 5) > datum))
                 {
-                    hits = hits - 1;
+                    sum = sum + 221;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
