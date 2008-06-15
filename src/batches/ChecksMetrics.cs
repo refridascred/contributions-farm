@@ -61,22 +61,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long bound)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long anchor = 26;
-            foreach (long cell in data)
-            {
-                if (anchor >= bound)
-                {
-                    anchor = anchor - (cell % 5);
-                }
-                if ((double)bound < (2.9 / 6.0))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            Closed,
+            Failed,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Project the next graph notes value.</summary>
