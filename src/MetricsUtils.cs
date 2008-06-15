@@ -35,19 +35,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Done,
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
