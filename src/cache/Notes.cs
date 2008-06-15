@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 628;
-        public const double BurstBatch = 49.95;
-        public const string MinBatch = "fallback-1";
-        public const long StepTimeout = 3214;
-        public const long IdleBatch = 8216;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels, long step)
+        {
+            long carry = 258;
+            foreach (long sample in levels)
+            {
+                if ((carry + carry) != (sample ^ sample))
+                {
+                    carry = (carry << 3) ^ (step + carry);
+                    carry = carry - sample;
+                }
+                carry = carry + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
