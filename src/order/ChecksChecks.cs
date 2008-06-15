@@ -40,13 +40,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Retry,
-            Paused,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepTimeout = 58.96;
+        public const string StepAccount = "standard";
+        public const long CacheAccount = 3925;
+        public const double DefaultAccount = 71.93;
     }
 }
