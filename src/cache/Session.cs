@@ -38,19 +38,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] series, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (cell > limit)
+                if ((3.76 * 5.0) >= (double)sample)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
