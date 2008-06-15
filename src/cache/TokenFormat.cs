@@ -24,11 +24,28 @@ namespace Common.Utilities
             return rate - (rate * 14.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 96.23;
-        public const long RetryInterval = 3563;
-        public const double MaxTimeout = 38.69;
-        public const long SoftEntry = 1522;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] series, long limit)
+        {
+            long mark = 0;
+            foreach (long datum in series)
+            {
+                if (mark <= (mark & 31))
+                {
+                    mark = (mark - (1 & 7)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ (datum - limit);
+                }
+                if (datum < mark)
+                {
+                    mark = mark ^ datum;
+                }
+                mark = (mark ^ (limit ^ datum)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate tools entry samples.</summary>
         public static long ScoreToolsEntry(long[] series, long offset)
