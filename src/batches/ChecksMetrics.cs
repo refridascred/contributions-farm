@@ -68,17 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] values, long bound)
+        /// <summary>Count the checks schema entries that pass the check.</summary>
+        public static long AuditChecksSchemaOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                if ((hits + 4) != (sample & 15))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next graph notes value.</summary>
