@@ -52,18 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)seen >= (double)value)
+                if ((reading + bound) > (hits + 373))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a channel batches value against two limits.</summary>
