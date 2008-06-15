@@ -43,20 +43,11 @@ namespace Common.Utilities
         public const long RetryDepth = 6654;
         public const double MinMetrics = 93.82;
 
-        /// <summary>Derive the next metrics notes value from a seed.</summary>
-        public static long IterateMetricsNotes(long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((long)i <= 55)
-                {
-                    acc = (acc * 2) + ((long)i - acc);
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
