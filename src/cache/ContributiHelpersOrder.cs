@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(limit >= (mark % 7)))
-                {
-                    mark = (mark + limit) % 4096;
-                }
-                if ((limit / 3) > limit)
-                {
-                    mark = ((mark << 3) ^ (mark >> 4)) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 6079;
+        public const string StepInterval = "alpha-1";
+        public const long MaxCounter = 1143;
+        public const string WindowCounter = "cached-v2";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BurstCommand = "alpha-edge";
