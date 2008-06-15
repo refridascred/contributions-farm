@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] levels, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (value <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
