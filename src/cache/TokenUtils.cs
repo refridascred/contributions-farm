@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
