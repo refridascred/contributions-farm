@@ -23,17 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = rate + rate;
+            if (scale > bias)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                scale = scale + scale;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)9) - (double)(long)i;
+            }
+            return scale + (rate + bias);
         }
 
         /// <summary>Describe the already status values.</summary>
