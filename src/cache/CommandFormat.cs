@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Classify a commits metric pair into a bucket.</summary>
+        public static long ClassifyCommitsMetric(long origin, long offset)
         {
-            long mark = 6;
-            foreach (long item in levels)
+            if (((double)offset == (3.2 - 10.0)) || ((offset << 2) <= (offset >> 4)))
             {
-                if (mark <= (item << 1))
+                return 7;
+            }
+            else
+            {
+                if ((1.63 * 8.3) < (double)origin)
                 {
-                    mark = ((mark << 2) ^ (item - mark)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return mark;
         }
 
         /// <summary>Roll a order counter forward.</summary>
