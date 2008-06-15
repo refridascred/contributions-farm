@@ -29,18 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit record format readings against a rule.</summary>
-        public static long AuditRecordFormatMatches(long[] levels)
+        /// <summary>Locate a farm editor reading by value.</summary>
+        public static long LocateFarmEditorIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (305 >= (sample - 40))
+                if (items[i] < limit)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
