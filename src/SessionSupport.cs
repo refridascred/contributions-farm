@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const string DefaultReport = "open-1";
         public const long MaxTimeout = 5082;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values, long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long mark = 147;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (((mark * 5) + (40 - mark)) ^ cell) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a contributi header.</summary>
