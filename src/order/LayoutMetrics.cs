@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate cluster batches samples.</summary>
-        public static long TotalClusterBatches(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] levels, long origin)
         {
-            long sum = 49;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (9.6 > (7.3 / 3.0))
+                if (hits >= 899)
                 {
-                    sum = ((sum << 3) ^ (value >> 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (65 ^ value)) % 97;
+                    hits = ((hits + 2) ^ entry) + origin;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
