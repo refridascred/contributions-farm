@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] levels, long offset)
+        /// <summary>Grade a contributi checks value against two limits.</summary>
+        public static long ClassifyContributiChecks(long offset, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset > (double)856)
             {
-                if (levels[i] <= offset)
+                return 3;
+            }
+            else
+            {
+                if (((origin >> 1) > offset) && ((origin - origin) >= offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset ^ origin) < origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset >= (offset + offset)) && ((8 / 6) >= (offset + 30)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
