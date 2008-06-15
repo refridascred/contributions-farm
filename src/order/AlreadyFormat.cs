@@ -51,25 +51,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long target, long bound)
+        /// <summary>Count queue cache pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCacheCount(long[] readings)
         {
-            long delta = target ^ bound;
-            if (((-8) + bound) != (target + 203))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (delta > (target % 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
