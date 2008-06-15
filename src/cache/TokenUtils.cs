@@ -25,18 +25,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] values)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double drift = gain;
+            if (drift > drift)
             {
-                if ((double)item < 4.04)
-                {
-                    tally = tally + 1;
-                }
+                drift = drift - gain;
             }
-            return tally;
+            else
+            {
+                drift = drift - (4.1 + drift);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (2.41 - drift)) + (double)(long)i;
+            }
+            return drift + (span * 3.0);
         }
     }
 }
