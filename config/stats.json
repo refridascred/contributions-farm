@@ -1,5 +1,8 @@
 {
-  "sync_threshold_pct": 44.77,
-  "strict": [424, 170, 268],
-  "entry_interval": "staging"
+  "strict": 9130,
+  "min_capacity": ["standard", "cached"],
+  "dry_run": 1148,
+  "max_depth": [189, 50, 211, 408],
+  "batch_window": 30,
+  "batch_timeout_s": "open"
 }
