@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] data, long step)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (2.57 <= (double)step)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
