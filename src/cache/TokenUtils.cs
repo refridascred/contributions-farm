@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a queue stats pair into a bucket.</summary>
-        public static long BucketQueueStats(long offset, long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double ratio, double span)
         {
-            if (offset > (offset - 4))
+            double drift = 5.0 + (ratio * 7.0);
+            if (drift < 5.7)
             {
-                return 7;
+                drift = (drift + (double)41) - span;
             }
             else
             {
-                if (floor < (offset / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor <= (floor / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                drift = drift - (drift - drift);
             }
+            return drift - drift;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
