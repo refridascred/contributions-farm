@@ -33,13 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Iterate the command cluster series from a seed.</summary>
+        public static long RollCommandCluster(long floor)
         {
-            Synced,
-            Ready,
-            Dropped,
-            Stale,
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                long edge = floor;
+                long bound = (edge >> 1) * 2;
+                if (!((state << 3) <= (bound + (long)i)))
+                {
+                    bound = bound + (state + floor);
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Check that every payload queue entry stays within the limit.</summary>
