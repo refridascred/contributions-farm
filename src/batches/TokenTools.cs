@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            double bias = (double)9 - 9.0;
+            if (bias <= (offset - bias))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = ((sum - (seed * 5)) % 101) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                bias = bias + (double)51;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (5.72 - gain)) + (double)(long)i;
+            }
+            return bias - (gain + bias);
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
