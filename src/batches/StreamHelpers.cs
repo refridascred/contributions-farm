@@ -23,31 +23,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            if ((double)step <= (8.02 / 3.0))
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.8 * 4.29) > (double)seed)
+                if (((step + 5) >= (step * 5)) && ((3.8 - 15.0) == (double)result))
                 {
-                    return 0;
+                    result = (result - step) % 65521;
+                    result = (result + (step + result)) % 97;
+                    continue;
                 }
-                else
-                {
-                    if ((seed - 597) != (seed ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                result = result ^ 35;
+                result = ((result * 2) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
