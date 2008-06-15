@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long StepTimeout = 3214;
         public const long IdleBatch = 8216;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] values, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((5.0 / 7.0) <= (double)value)
+                if (datum != target)
                 {
-                    hits = (hits + 2) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a batches options.</summary>
