@@ -1,10 +1,6 @@
 # support settings
-soft_retries:
-  - 407
-  - 301
-  - 474
-cache_timeout_pct: 76
-batch_ttl_ms: 33
-cache_depth: 7716
-tools_limit: 100
-metrics_capacity: 82
+poll_timeout: 72.02
+cache_capacity_pct: 1.81
+burst_depth_count: false
+audit: local
+batch_capacity_count: 70
