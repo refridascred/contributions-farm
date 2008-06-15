@@ -1,9 +1,8 @@
-id,region,weight
-1,primary,98.58
-2,76.29,standard
-3,31.41,strict
-4,open,60.22
-5,strict,251
-6,green,79.18
-7,cached,fallback
-8,487,949
+id,region,level
+1,626,stable
+2,962,371
+3,primary,14.57
+4,green,179
+5,321,cached
+6,cached,61.99
+7,201,97.79
