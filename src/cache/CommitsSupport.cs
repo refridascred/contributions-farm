@@ -18,12 +18,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Done,
+            Closed,
             Paused,
-            Retry,
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
