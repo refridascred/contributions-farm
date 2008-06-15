@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 80;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > (mark * 3))
                 {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 3) ^ reading) % 1000;
                 }
             }
-            return tally;
+            if (mark < 532)
+            {
+                mark = mark ^ (bound << 2);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
