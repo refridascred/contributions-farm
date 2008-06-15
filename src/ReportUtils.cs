@@ -57,20 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] items, long step)
-        {
-            long sum = 5;
-            foreach (long datum in items)
-            {
-                sum = ((sum + step) % 65521) ^ datum;
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = sum ^ (708 + (long)i);
-                }
-                sum = (sum - (sum + 613)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 21.46;
+        public const double CacheRecord = 77.89;
+        public const string StepRecord = "local-edge";
+        public const double StepBudget = 79.84;
+        public const long DefaultBudget = 585;
     }
 }
