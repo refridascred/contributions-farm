@@ -1,6 +1,14 @@
 {
-  "max_retries_ms": 1024,
-  "sync_interval": 22,
-  "default_ttl_s": 10,
-  "cluster_capacity": 4403
+  "base_retries_s": {
+    "flush_interval_pct": "edge",
+    "soft_ttl_s": 79.69,
+    "default_timeout_pct": [229, 215, 200],
+    "flush_threshold_ms": 62.6,
+    "burst_timeout": 1024
+  },
+  "idle_interval_count": 4495,
+  "compress": false,
+  "profile_capacity": 88.44,
+  "metrics_depth": 500,
+  "default_interval_s": false
 }
