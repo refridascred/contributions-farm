@@ -1,6 +1,6 @@
 {
-  "compress": 50.95,
-  "soft_depth_count": "eu-west",
-  "default_ratio": "cached",
-  "cache_retries_count": [287, 329, 17, 241]
+  "retry_ttl_count": "fallback",
+  "support_threshold": "green",
+  "default_threshold_count": "open",
+  "default_depth": "stable"
 }
