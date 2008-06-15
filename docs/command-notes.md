@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-Keep batch and editor names short and lowercase.
-Each context is validated before it reaches the checks queue.
+Each report is validated before it reaches the batches queue.
+Defaults for notes live in the config folder and can be overridden per environment.
+When a record fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate schema input early
-- Prefer metrics defaults
-- Document new format fields
-- Keep order values small
+- Validate stats input early
+- Document new window fields
+- Keep metric values small
+- Review contributi limits each release
