@@ -1,15 +1,4 @@
 # entry settings
-warm_interval:
-  cluster_size: standard
-  cache_threshold_ms: false
-  hard_window_s: 5924
-  already_depth: true
-counter_window:
-  - primary
-  - cached
-  - blue
-  - green
-account_delay:
-  - 274
-  - 454
-  - 50
+retry_limit_ms: 9.87
+retry_capacity: edge
+audit: false
