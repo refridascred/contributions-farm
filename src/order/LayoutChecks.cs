@@ -46,11 +46,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the buffer state values.</summary>
