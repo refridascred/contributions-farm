@@ -46,11 +46,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double scale2 = floor;
+            if (scale2 <= (double)(-2))
+            {
+                scale2 = (scale2 - (14.0 * 3.4)) + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + scale2) - (double)(long)i;
+            }
+            return scale2 - (double)9;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
