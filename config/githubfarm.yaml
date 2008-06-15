@@ -1,10 +1,5 @@
 # githubfarm settings
-batch_interval_ms: local
-max_ratio:
-  metric_size: 82
-  burst_interval:
-    - 487
-    - 351
-    - 195
-  base_timeout_count: open
-soft_size_s: 98.16
+idle_threshold: 1946
+poll_size_pct: true
+support_ttl: false
+session_limit: 2540
