@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in staging eu-west standard; do
+for item in eu-west stable edge; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=271
+log "limit is ${BUFFER_LIMIT}"
