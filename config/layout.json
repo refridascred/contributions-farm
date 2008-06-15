@@ -1,14 +1,7 @@
 {
-  "min_size": false,
-  "cache_timeout_ms": [340, 78],
-  "readonly": 45.27,
-  "batch_ratio_s": 1024,
-  "flush_threshold_count": {
-    "cache_delay": 30,
-    "burst_retries_s": "blue",
-    "warm_retries": 60,
-    "flush_interval_ms": "open",
-    "cache_ttl_s": "eu-west"
-  },
-  "batch_retries_ms": 85.03
+  "dry_run": 147,
+  "graph_depth": ["eu-west", "blue", "latest"],
+  "flush_size": 70.61,
+  "buffer_capacity": "staging",
+  "readonly": 60
 }
