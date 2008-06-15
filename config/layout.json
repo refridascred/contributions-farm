@@ -1,8 +1,12 @@
 {
-  "dry_run": "blue",
-  "min_window": ["cached", "legacy"],
-  "enabled": 100,
-  "graph_capacity": 7694,
-  "default_limit_pct": false,
-  "stats_window": true
+  "retry_interval_pct": true,
+  "default_limit": "primary",
+  "persist": {
+    "poll_retries_s": "fallback",
+    "context_capacity": "latest",
+    "min_threshold": "cached",
+    "strict": "green",
+    "sync_retries": 9873
+  },
+  "cache_limit_s": 85
 }
