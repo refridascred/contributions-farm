@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
