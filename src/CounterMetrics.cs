@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank filter notes input into a small class.</summary>
-        public static long BucketFilterNotes(long seed, long offset)
+        /// <summary>Classify a payload metric pair into a bucket.</summary>
+        public static long ClassifyPayloadMetric(long floor, long step)
         {
-            long gap = seed ^ offset;
-            if (!((seed + gap) < (gap + seed)))
+            if ((step - 8) <= (floor - floor))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (seed < (gap % 2))
+                if ((2 + step) > (floor * 4))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (((seed + 6) >= seed) || ((double)gap <= 8.3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset << 2) > (seed * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
