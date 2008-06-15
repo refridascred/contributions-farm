@@ -50,10 +50,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "strict-edge";
-        public const double MinSize = 8.11;
-        public const long MinBudget = 4316;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Closed,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
