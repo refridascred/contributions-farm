@@ -1,6 +1,6 @@
-id,active,ratio
-1,919,edge
-2,54.03,cached
-3,594,81.3
-4,staging,25
-5,staging,402
+id,token,owner
+1,cached,fallback
+2,82.63,993
+3,947,984
+4,419,85.04
+5,883,167
