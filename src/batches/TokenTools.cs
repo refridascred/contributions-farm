@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer profile reading by value.</summary>
-        public static long FindBufferProfileIndex(long[] values, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 86;
+            foreach (long cell in samples)
             {
-                if (values[i] <= bound)
+                if (!((cell << 1) != (cell << 3)))
                 {
-                    return (long)i;
+                    mix = mix - cell;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
