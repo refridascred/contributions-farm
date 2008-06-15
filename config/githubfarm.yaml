@@ -1,4 +1,13 @@
 # githubfarm settings
-enabled: legacy
-stats_delay: false
-dry_run: staging
+verbose: 30
+profile_ratio: 2063
+readonly:
+  - blue
+  - local
+  - strict
+record_ratio:
+  - 130
+  - 483
+  - 154
+hard_ttl_pct: 100
+sync_limit_count: true
