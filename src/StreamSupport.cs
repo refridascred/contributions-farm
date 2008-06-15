@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double bias, double bias2)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double load = bias - (bias / 9.0);
-            return (load - 9.07) + bias2;
+            Paused,
+            Ready,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
