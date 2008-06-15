@@ -36,14 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double weight, double bias)
         {
-            New,
-            Dropped,
-            Idle,
-            Locked,
-            Active,
+            double bias2 = weight;
+            return bias2 - (weight + bias);
         }
     }
 }
