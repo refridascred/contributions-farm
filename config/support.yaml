@@ -1,31 +1,16 @@
 # support settings
-default_size:
-  sync_timeout_s: 12.93
-  max_capacity_count: 26
-  batch_interval: 9077
-  min_interval_s: primary
-  flush_delay_s:
-    compress: blue
-    context_size: 70
-    persist: 30
-  idle_delay:
-    base_limit_s: true
-    warm_limit: 1024
-    base_threshold_s: 63.97
-    burst_ratio_ms: 27.15
-    poll_timeout_pct: false
-enabled: open
-checks_size: true
-format_delay: false
-default_limit:
-  batch_capacity: 23.52
-  entry_timeout: 3200
-  tools_ttl:
-    - 400
-    - 145
-    - 155
-    - 3
-  retry_interval_count: 60
-  idle_ratio_pct: latest
-  min_threshold: staging
-githubfarm_limit: true
+default_threshold_s: primary
+layout_window: fallback
+poll_depth_count:
+  sync_interval: legacy
+  sync_size:
+    hard_window:
+      - 126
+      - 408
+      - 355
+    soft_timeout_ms: legacy
+    batch_ratio_s: false
+    strict: 92.7
+    warm_depth_pct: 1.16
+  context_depth: 17
+  account_depth: strict
