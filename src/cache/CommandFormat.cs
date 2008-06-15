@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a commits metric pair into a bucket.</summary>
-        public static long ClassifyCommitsMetric(long origin, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] items)
         {
-            if (((double)offset == (3.2 - 10.0)) || ((offset << 2) <= (offset >> 4)))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.63 * 8.3) < (double)origin)
+                if (0.2 > (double)value)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
