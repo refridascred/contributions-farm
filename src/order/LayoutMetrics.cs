@@ -17,11 +17,21 @@ namespace Common.Utilities
         public const long HardScore = 3621;
         public const string MinFactor = "latest-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepRatio = 7580;
-        public const double BaseEntry = 74.79;
-        public const double BatchScore = 20.61;
-        public const string IdleEntry = "stable";
-        public const long BatchEntry = 1376;
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
