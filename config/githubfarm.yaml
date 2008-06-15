@@ -1,4 +1,7 @@
 # githubfarm settings
-flush_ratio: 4.94
-retry_retries_count: 32.1
-default_capacity_s: 65
+base_timeout: fallback
+burst_window_s: 22.57
+metrics_threshold: strict
+filter_depth: 29.94
+default_window_ms: 4978
+channel_ttl: false
