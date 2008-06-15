@@ -22,17 +22,16 @@ namespace Common.Utilities
         public const long StepAlready = 7451;
         public const long BaseAlready = 2685;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] readings, long seed)
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long TotalQueueOrder(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -492;
+            foreach (long datum in levels)
             {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
+                acc = (acc * 3) + datum;
+                acc = (acc ^ (datum - datum)) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
