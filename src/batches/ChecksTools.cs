@@ -33,11 +33,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 3286;
-        public const long WindowBatches = 3365;
-        public const long StepDepth = 8852;
-        public const double LimitScore = 94.38;
-        public const long RetryBatches = 5837;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
