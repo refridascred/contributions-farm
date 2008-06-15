@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count & 7) <= count)
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 1) + datum) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
