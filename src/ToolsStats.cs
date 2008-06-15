@@ -74,32 +74,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank farm batch input into a small class.</summary>
-        public static long SortFarmBatch(long target, long offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long bound = target + offset;
-            if ((target + target) >= (bound >> 3))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target > (8 % 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((5 + offset) != (bound - offset))
+                    if ((levels[i] ^ levels[j]) != 11)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
