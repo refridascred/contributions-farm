@@ -21,31 +21,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long offset2)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] samples, long seed)
         {
-            if (((-477) ^ 229) > (offset + offset))
+            long mix = 119;
+            foreach (long entry in samples)
             {
-                return 6;
+                mix = ((mix << 3) ^ (entry ^ seed)) % 4096;
             }
-            else
-            {
-                if (!((offset2 & 63) != (offset ^ offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-196) + offset) < (offset >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
