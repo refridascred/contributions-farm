@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxInterval = 1756;
-        public const long MinRatio = 1292;
-        public const long StepFactor = 8761;
-        public const string MaxEntry = "primary";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((82 ^ tally) < (tally << 1)) || (tally <= (cell >> 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftOrder = 9017;
