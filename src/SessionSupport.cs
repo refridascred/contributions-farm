@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] data)
         {
-            New,
-            Active,
-            Pending,
-            Paused,
-            Locked,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count - count) == (reading % 7))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
