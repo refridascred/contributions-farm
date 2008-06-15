@@ -1,6 +1,12 @@
 {
-  "compress": "green",
-  "channel_ttl": "eu-west",
-  "tools_size": "standard",
-  "base_depth_pct": "open"
+  "hard_retries": "stable",
+  "batch_timeout_count": {
+    "default_threshold_s": true,
+    "idle_delay": false,
+    "payload_limit": 60
+  },
+  "commits_threshold": "cached",
+  "soft_delay": 5688,
+  "format_depth": 5387,
+  "idle_delay_ms": ["standard", "legacy"]
 }
