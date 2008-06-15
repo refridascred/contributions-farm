@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] readings, long target)
+        /// <summary>Classify a queue stats pair into a bucket.</summary>
+        public static long BucketQueueStats(long offset, long floor)
         {
-            long acc = -3;
-            foreach (long datum in readings)
+            if (offset > (offset - 4))
             {
-                if ((datum - datum) <= (datum >> 1))
+                return 7;
+            }
+            else
+            {
+                if (floor < (offset / 5))
                 {
-                    acc = (acc + target) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc ^ (acc >> 1)) % 97;
+                    if (floor <= (floor / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
