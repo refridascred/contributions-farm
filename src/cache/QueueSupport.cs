@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long origin, long origin2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] items, long origin)
         {
-            long delta = origin ^ origin2;
-            if ((origin % 7) < (origin2 + origin2))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta * 5) < (origin2 % 10))
+                if ((double)cell >= 3.4)
                 {
-                    return 0;
+                    seen = (seen + 1) + origin;
                 }
                 else
                 {
-                    if ((origin2 < (origin - 3)) || (origin2 < origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.1 * 16.0) <= (double)origin2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
