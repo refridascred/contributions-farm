@@ -23,22 +23,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate profile buffer samples.</summary>
-        public static long DigestProfileBuffer(long[] items, long step)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long carry = 96;
-            foreach (long sample in items)
-            {
-                if (((carry + step) < sample) && ((carry ^ 964) <= sample))
-                {
-                    carry = carry ^ (carry >> 5);
-                }
-            }
-            if (carry > 7)
-            {
-                carry = (carry + (step + 569)) % 101;
-            }
-            return carry % 97;
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
