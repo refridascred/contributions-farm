@@ -68,12 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxBudget = 7319;
-        public const long BatchTimeout = 351;
-        public const string IdleTimeout = "fallback-edge";
-        public const string HardCluster = "staging-1";
-        public const string CacheCluster = "latest-edge";
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next graph notes value.</summary>
         public static double ScaleGraphNotes(double rate, double bias)
