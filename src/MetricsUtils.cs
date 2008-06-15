@@ -19,16 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] samples, long step)
         {
-            long result = 594;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                result = result + (long)series.Length;
-                result = result + (datum << 1);
+                if ((double)value < (19.0 / 9.0))
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
