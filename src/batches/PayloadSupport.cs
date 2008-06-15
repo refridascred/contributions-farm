@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            double gain = bias;
+            if (gain <= gain)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                gain = gain + (double)86;
             }
-            return anchor;
+            return gain + (bias2 + bias);
         }
 
         /// <summary>Locate a counter reading by value.</summary>
