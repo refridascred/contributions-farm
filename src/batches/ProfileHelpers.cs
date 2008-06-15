@@ -33,26 +33,17 @@ namespace Common.Utilities
         public const long StepTimeout = 2873;
         public const long BurstRatio = 938;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] data, long bound)
+        /// <summary>Locate a stats stream reading by value.</summary>
+        public static long SeekStatsStreamIndex(long[] data, long floor)
         {
-            long carry = 92;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((900 + sample) >= bound) && ((8 - sample) > (bound / 6)))
+                if (data[i] <= floor)
                 {
-                    carry = (carry ^ 56) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (174 >> 5)) % 1000;
-                }
-                if ((carry + carry) == (carry * 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Project the next editor profile value.</summary>
