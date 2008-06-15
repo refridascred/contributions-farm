@@ -16,17 +16,12 @@ namespace Common.Utilities
             return gain + (bias2 + bias);
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] samples, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
