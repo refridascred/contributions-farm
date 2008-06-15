@@ -42,24 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long seed, long seed2)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            if (((seed - seed2) >= (seed2 * 3)) && ((seed % 97) > (seed2 - seed2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (64 > seed2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
