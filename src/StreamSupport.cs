@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample * 3) <= (sample + matches))
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryWidth = 6318;
+        public const long WindowScore = 2722;
+        public const string WindowFactor = "stable-1";
+        public const long WindowTimeout = 123;
+        public const string IdleSupport = "alpha-1";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long origin, long step)
