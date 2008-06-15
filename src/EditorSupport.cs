@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double weight, double floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double ratio, double span)
         {
-            double gain = (floor + weight) - (weight * 9.0);
-            if (gain <= floor)
-            {
-                gain = gain - (double)238;
-            }
-            return gain - 6.75;
+            double ratio2 = span;
+            return ratio2 - ratio;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
