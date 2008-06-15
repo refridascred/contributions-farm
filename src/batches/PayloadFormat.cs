@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
