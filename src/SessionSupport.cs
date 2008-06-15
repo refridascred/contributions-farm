@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] data, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 6;
+            foreach (long sample in items)
             {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                if (sample <= (sample + sample))
                 {
-                    return (long)i;
+                    anchor = anchor + (sample * 4);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (sample << 1)) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a context options.</summary>
