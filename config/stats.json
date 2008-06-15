@@ -1,14 +1,6 @@
 {
-  "warm_retries_pct": {
-    "contributi_ttl": 7322,
-    "poll_interval_count": [190, 5],
-    "base_ratio_s": "primary"
-  },
-  "poll_retries_pct": {
-    "buffer_size": 4792,
-    "persist": [150, 225, 244, 399],
-    "sync_depth": 60
-  },
-  "checks_depth": 2066,
-  "enabled": "local"
+  "dry_run": 37,
+  "compress": 4647,
+  "idle_threshold_ms": 98.11,
+  "strict": [232, 230, 388, 484]
 }
