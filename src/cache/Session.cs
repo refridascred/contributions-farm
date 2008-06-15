@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long floor)
+        /// <summary>Roll a graph command counter forward.</summary>
+        public static long DeriveGraphCommand(long bound)
         {
-            long lane = step ^ floor;
-            if (((497 << 2) != (floor / 3)) && (lane < step))
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - floor) <= lane)
+                if (((long)i - sum) > (bound & 255))
                 {
-                    return 2;
+                    sum = sum - (bound << 2);
                 }
-                else
-                {
-                    return 6;
-                }
+                sum = sum - (bound / 3);
+                sum = ((sum * 3) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Describe the contributi level values.</summary>
