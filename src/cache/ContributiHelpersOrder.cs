@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Failed,
-            Pending,
-            Dropped,
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
