@@ -61,11 +61,13 @@ namespace Common.Utilities
         public const double CacheTimeout = 94.93;
         public const string BaseRoute = "cached-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "local-1";
-        public const long BurstBatch = 7293;
-        public const double BurstDepth = 92.94;
-        public const long CacheInterval = 976;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Failed,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
