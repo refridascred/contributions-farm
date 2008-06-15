@@ -35,12 +35,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7448;
-        public const long BatchMetric = 3619;
-        public const long MaxScore = 9262;
-        public const long BurstSize = 1436;
-        public const string SoftMetric = "latest-v2";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings)
+        {
+            long result = 2;
+            foreach (long sample in readings)
+            {
+                result = ((result << 2) ^ (result - sample)) % 97;
+            }
+            if (result < 0)
+            {
+                result = ((result * 3) + (result / 3)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] items, long floor)
