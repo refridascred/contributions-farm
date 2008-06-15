@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long floor, long bound)
         {
-            long result = 326;
-            foreach (long datum in series)
+            if (((floor % 60) == (floor & 15)) && ((floor + floor) > (bound + floor)))
             {
-                if ((origin >= (datum % 5)) && ((datum >> 3) < origin))
+                return 6;
+            }
+            else
+            {
+                if ((floor & 1) > (bound + bound))
                 {
-                    result = result - origin;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.0 * 8.04) > (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Audit channel token readings against a rule.</summary>
