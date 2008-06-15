@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long RetrySpan = 7274;
         public const long RetryRatio = 9837;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] series, long step)
         {
-            Ready,
-            Active,
-            Idle,
-            Failed,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank session input into a small class.</summary>
