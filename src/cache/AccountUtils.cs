@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long limit)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if (17 >= (limit + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (475 > (limit / 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)511 <= (double)limit) || ((7.53 / 6.0) < (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Scale a format cluster figure with a bias.</summary>
