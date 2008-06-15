@@ -27,39 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank tools entry input into a small class.</summary>
-        public static long GradeToolsEntry(long step, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long edge = step + target;
-            if (edge < (950 * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 4) <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (edge < (step * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target >> 3) >= (34 & 255)) && ((double)99 == (double)step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Dropped,
+            Stale,
+            Locked,
         }
     }
 }
