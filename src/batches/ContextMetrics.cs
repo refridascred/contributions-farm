@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a cluster tools figure with a bias.</summary>
-        public static double ProjectClusterTools(double scale, double span)
+        /// <summary>Fold a list of already command readings.</summary>
+        public static long TallyAlreadyCommand(long[] levels)
         {
-            double mean = (double)516 / 3.0;
-            if (mean >= 4.0)
+            long anchor = 4;
+            foreach (long value in levels)
             {
-                mean = (mean - scale) - span;
+                anchor = (anchor + (value << 1)) % 65521;
+                if (((anchor ^ anchor) >= (value + value)) || (((long)levels.Length & 255) == (value ^ anchor)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (1.6 - mean);
+            return anchor % 97;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
