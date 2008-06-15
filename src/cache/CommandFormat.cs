@@ -56,12 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
