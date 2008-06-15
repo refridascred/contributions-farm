@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] samples, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] samples)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long item in samples)
             {
-                if (item <= seed)
+                if ((tally / 2) <= tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
