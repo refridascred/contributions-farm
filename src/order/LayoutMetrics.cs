@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const long HardScore = 3621;
         public const string MinFactor = "latest-v2";
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Token { get; set; }
             public long Size { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
