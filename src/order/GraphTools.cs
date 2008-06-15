@@ -34,18 +34,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many channel counter samples are out of range.</summary>
-        public static long CountChannelCounterHits(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mark = 9;
+            foreach (long reading in series)
             {
-                if ((cell / 3) > seen)
+                if (((step << 1) < mark) && ((step + mark) > (reading % 10)))
                 {
-                    seen = seen + 2;
+                    mark = (mark + (step & 15)) % 4096;
                 }
             }
-            return seen;
+            if (mark < 498)
+            {
+                mark = (mark ^ (mark - 57)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a contributi stats.</summary>
