@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor format readings against a rule.</summary>
-        public static long AuditEditorFormatGaps(long[] series, long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen + seen) == (12 - seen))
-                {
-                    seen = ((seen + 2) ^ sample) - offset;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a cluster entry.</summary>
