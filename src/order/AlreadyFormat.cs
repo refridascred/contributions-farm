@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] readings, long seed)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long score = 20;
-            foreach (long entry in readings)
-            {
-                if ((seed % 3) > (seed + entry))
-                {
-                    score = (score * 3) + score;
-                }
-                else
-                {
-                    score = (score << 2) ^ ((long)readings.Length * 4);
-                }
-            }
-            return score;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
