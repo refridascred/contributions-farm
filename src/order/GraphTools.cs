@@ -41,11 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
+            public bool Total { get; set; }
+            public long Limit { get; set; }
             public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
