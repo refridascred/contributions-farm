@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate report entry readings against a bound.</summary>
-        public static bool CheckReportEntryBounds(long[] readings, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (datum <= limit)
+                if (value > origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Describe the stream class values.</summary>
