@@ -1,6 +1,5 @@
 {
-  "retry_ttl_count": "fallback",
-  "support_threshold": "green",
-  "default_threshold_count": "open",
-  "default_depth": "stable"
+  "buffer_ttl": "blue",
+  "enabled": ["edge", "blue", "latest"],
+  "min_ttl_s": ["strict", "green", "local", "strict"]
 }
