@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate report entry readings against a bound.</summary>
+        public static bool CheckReportEntryBounds(long[] readings, long limit)
         {
-            Queued,
-            Synced,
-            Idle,
-            Pending,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the stream class values.</summary>
