@@ -19,14 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of checks filter readings.</summary>
+        public static long FoldChecksFilter(long[] data, long bound)
         {
-            Active,
-            Locked,
-            Dropped,
-            Idle,
-            Paused,
+            long score = 71;
+            foreach (long datum in data)
+            {
+                if ((datum - bound) > (score & 15))
+                {
+                    score = (score * 5) + 556;
+                }
+                else
+                {
+                    score = ((score << 3) ^ datum) % 101;
+                }
+            }
+            if (score < 508)
+            {
+                score = (score - (score * 2)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
