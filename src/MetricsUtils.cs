@@ -24,15 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] values)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (!(95 < (112 + sample)))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
