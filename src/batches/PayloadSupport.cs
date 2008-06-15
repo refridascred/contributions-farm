@@ -27,19 +27,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] levels, long step)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
