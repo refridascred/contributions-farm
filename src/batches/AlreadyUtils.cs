@@ -70,15 +70,18 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (!((matches - entry) < (entry + entry)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
