@@ -59,16 +59,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 8051;
+        public const long RetryAccount = 9626;
+        public const long MinAccount = 39;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double HardDepth = 41.88;
