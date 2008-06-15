@@ -32,18 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] levels)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length - cell) < (tally / 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
