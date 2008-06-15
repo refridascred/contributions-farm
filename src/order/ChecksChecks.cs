@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "open-v2";
-        public const long RetryBudget = 1321;
-        public const string BaseScore = "stable-1";
-        public const long MinGraph = 8594;
-        public const long WindowGraph = 7648;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 9332;
+        public const long WindowGithubfarm = 9075;
+        public const double StepGithubfarm = 50.55;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double SmoothGithubfarm(double weight, double offset)
