@@ -70,11 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "open-v2";
-        public const double BatchMetrics = 18.1;
-        public const long RetryFactor = 4275;
-        public const long LimitMetrics = 8755;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
