@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine contributi counter values into a single score.</summary>
-        public static long TallyContributiCounter(long[] data, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long state = 40;
-            foreach (long reading in data)
-            {
-                if ((43 & 1) <= (84 - reading))
-                {
-                    state = ((state << 2) ^ (reading * 4)) + seed;
-                }
-            }
-            return state % 1000;
+            Pending,
+            Active,
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
