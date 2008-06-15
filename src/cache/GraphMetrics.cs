@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 2714;
-        public const long BatchRatio = 4888;
-        public const double IdleLevel = 38.28;
-        public const double BurstContributi = 58.67;
-        public const long MinContributi = 7096;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 67.81;
+        public const long StepTimeout = 9550;
+        public const long BaseSize = 2399;
+        public const double LimitBatches = 33.85;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long bound, long target)
