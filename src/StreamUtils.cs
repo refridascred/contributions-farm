@@ -44,32 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long step, long target)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long step2 = step ^ target;
-            if ((5.0 - 4.06) > (double)step2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((786 & 3) <= (target ^ step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(target <= (step << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
