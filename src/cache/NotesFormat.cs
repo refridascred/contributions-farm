@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] data, long target)
+        /// <summary>Count the order command entries that pass the check.</summary>
+        public static long CountOrderCommandGaps(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                if ((tally ^ tally) > sample)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
