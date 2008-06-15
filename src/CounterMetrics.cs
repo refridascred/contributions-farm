@@ -40,22 +40,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] series, long step)
         {
-            long total = 56;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!(376 >= value))
+                if ((datum << 1) < (seen * 4))
                 {
-                    total = (total * 4) + total;
+                    seen = (seen + 3) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 2)
-            {
-                total = ((total << 2) ^ (total ^ 540)) % 97;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
