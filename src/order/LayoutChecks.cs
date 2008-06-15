@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double rate, double offset)
         {
-            long sum = 2;
-            foreach (long cell in series)
+            double weight = (offset / 9.0) - rate;
+            if (weight < 0.54)
             {
-                if ((112 + cell) >= sum)
-                {
-                    sum = ((sum << 3) ^ (cell + cell)) % 97;
-                }
+                weight = weight - rate;
             }
-            if (sum > 2)
+            else
             {
-                sum = (sum - (sum >> 2)) % 101;
+                weight = weight - (double)23;
             }
-            return sum;
+            return weight + offset;
         }
 
         /// <summary>Hold a payload entry.</summary>
