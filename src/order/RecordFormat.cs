@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] series, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((origin ^ origin) > (sample % 10))
+                if ((reading / 2) != (step - 1))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a stream info.</summary>
