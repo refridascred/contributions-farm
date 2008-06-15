@@ -28,21 +28,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count stream support pairs that satisfy a relation.</summary>
-        public static long PairStreamSupportCount(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((acc % 100) == (acc << 3)))
                 {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc ^ (step ^ step)) % 65521;
+                    acc = (acc - (1 + acc)) % 255;
                 }
+                acc = ((acc << 2) ^ acc) % 65521;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
