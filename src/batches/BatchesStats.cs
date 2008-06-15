@@ -22,17 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] values, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((floor % 60) >= seed) && ((floor % 3) != (157 / 5)))
             {
-                if (values[i] > floor)
+                return 0;
+            }
+            else
+            {
+                if (((double)seed <= (14.0 - 1.63)) && ((seed / 8) > (floor / 6)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (seed <= (1 & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
