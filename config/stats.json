@@ -1,7 +1,6 @@
 {
-  "entry_capacity": true,
-  "persist": 91,
-  "support_depth": [469, 19, 317, 463],
-  "flush_retries": [267, 133, 399],
-  "flush_limit_ms": 41
+  "audit": "local",
+  "persist": 25,
+  "queue_threshold": "green",
+  "warm_timeout_s": ["staging", "edge", "primary", "latest"]
 }
