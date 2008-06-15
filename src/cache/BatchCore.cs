@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine channel entry values into a single score.</summary>
+        public static long CombineChannelEntry(long[] readings, long bound)
         {
-            Dropped,
-            Locked,
-            Done,
-            Ready,
+            long anchor = 92;
+            foreach (long reading in readings)
+            {
+                anchor = (((anchor << 3) ^ (bound & 127)) % 255) ^ reading;
+            }
+            return anchor;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
