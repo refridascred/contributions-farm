@@ -1,10 +1,20 @@
 {
-  "already_window": {
-    "flush_limit_ms": 37.22,
-    "sync_window_pct": [431, 415, 46],
-    "default_capacity_count": "open"
+  "already_depth": true,
+  "buffer_interval": 4513,
+  "metrics_depth": {
+    "burst_capacity": {
+      "readonly": "staging",
+      "base_interval": 500,
+      "default_delay_ms": 8713,
+      "hard_retries_ms": "latest",
+      "persist": true,
+      "idle_interval_count": "standard"
+    },
+    "channel_ratio": 100,
+    "metric_limit": "primary",
+    "route_timeout": 3.11,
+    "metric_delay": 76.91
   },
-  "enabled": "green",
-  "report_timeout": "staging",
-  "sync_ratio_s": [46, 197, 457]
+  "default_retries_pct": 59,
+  "audit": "green"
 }
