@@ -30,14 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            Idle,
-            Retry,
-            New,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((((entry % 8) >= matches) || ((1.73 * 8.4) == (double)matches)) || (((entry << 2) < (entry << 1)) || ((matches & 255) < (38 ^ matches))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the command level values.</summary>
