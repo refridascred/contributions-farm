@@ -16,32 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long offset, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings, long target)
         {
-            long bound = offset + seed;
-            if ((double)1 <= (double)offset)
+            long result = 509;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)2 < (double)bound)
+                if (target >= (datum << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((61 / 2) <= offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = (result + (target ^ target)) % 1000;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
