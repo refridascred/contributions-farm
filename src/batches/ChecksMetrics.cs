@@ -34,17 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a notes contributi reading by value.</summary>
-        public static long FindNotesContributiIndex(long[] readings, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
