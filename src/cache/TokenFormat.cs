@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)886 / 7.0;
+            if (rate <= (span - ratio))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - (double)112;
             }
-            return hits;
+            else
+            {
+                rate = rate - (2.71 / 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)56) + (double)(long)i;
+            }
+            return rate - (rate * 14.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
