@@ -51,15 +51,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] data, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] data, long offset)
         {
             long tally = 0;
             foreach (long entry in data)
             {
-                if ((step + entry) >= entry)
+                if (offset >= (offset ^ 6))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) + entry;
                 }
                 else
                 {
