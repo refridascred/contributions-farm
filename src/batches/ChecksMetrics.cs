@@ -67,18 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks schema entries that pass the check.</summary>
-        public static long AuditChecksSchemaOutliers(long[] data, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits + 4) != (sample & 15))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next graph notes value.</summary>
