@@ -43,12 +43,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Derive the next metrics notes value from a seed.</summary>
+        public static long IterateMetricsNotes(long floor)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((long)i <= 55)
+                {
+                    acc = (acc * 2) + ((long)i - acc);
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the graph mode values.</summary>
