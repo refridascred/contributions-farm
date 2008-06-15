@@ -1,7 +1,6 @@
 {
-  "compress": "primary",
-  "poll_window_s": "strict",
-  "channel_ttl": ["green", "latest", "cached"],
-  "sync_limit": "blue",
-  "retry_retries_s": 77
+  "token_ratio": 100,
+  "command_threshold": "eu-west",
+  "soft_interval_pct": 3304,
+  "verbose": "cached"
 }
