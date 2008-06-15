@@ -49,18 +49,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 17.68;
+        public const double WindowRecord = 76.42;
+        public const long RetryRecord = 3668;
+        public const long HardBudget = 3983;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long floor)
