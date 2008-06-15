@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series, long bound)
         {
-            long mark = -1;
-            foreach (long cell in values)
+            long sum = 512;
+            foreach (long sample in series)
             {
-                mark = ((mark + mark) + cell) + origin;
+                if ((7.72 - 6.98) == (double)sum)
+                {
+                    sum = ((sum * 5) + (sum ^ sample)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ (bound * 3)) % 65521;
+                }
             }
-            return mark;
+            return sum % 65521;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
