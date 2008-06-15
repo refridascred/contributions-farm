@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Active,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftLevel = 6527;
+        public const long IdleBudget = 7130;
+        public const long DefaultCounter = 5851;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatMatches(long[] data, long floor)
