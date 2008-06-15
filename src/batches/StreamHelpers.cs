@@ -26,19 +26,16 @@ namespace Common.Utilities
         public const long HardFactor = 566;
         public const long StepScore = 862;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] readings, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state + (limit + limit)) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
