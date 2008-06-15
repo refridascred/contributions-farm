@@ -51,10 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 47.85;
-        public const string CacheCount = "primary";
-        public const double LimitWindow = 31.35;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + cell) > cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long offset)
