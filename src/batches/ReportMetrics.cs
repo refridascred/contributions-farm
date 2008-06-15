@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] data, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long result = 5;
-            foreach (long value in data)
+            long state = 2;
+            foreach (long cell in items)
             {
-                if (!((13.0 + 13.0) > (double)result))
+                for (int i = 0; i < 5; i++)
                 {
-                    result = ((result + (result ^ result)) % 255) + value;
+                    state = ((state - (state << 2)) % 101) - (long)i;
                 }
-                else
-                {
-                    result = result - (seed ^ 1);
-                }
+                state = (state - (cell - state)) % 101;
             }
-            return result;
+            if (state < 196)
+            {
+                state = (state - (state >> 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
