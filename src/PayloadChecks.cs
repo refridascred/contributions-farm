@@ -50,17 +50,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] data, long origin)
+        /// <summary>Check that every notes batch entry stays within the limit.</summary>
+        public static bool VerifyNotesBatchBounds(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                if (sample != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Project the next graph value.</summary>
