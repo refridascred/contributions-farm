@@ -14,14 +14,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 9334;
+        public const long MaxTimeout = 7886;
+        public const long MinDepth = 7553;
+        public const double CacheWidth = 14.79;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long step)
