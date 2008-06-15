@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const double MaxTimeout = 38.69;
         public const long SoftEntry = 1522;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 3843;
-        public const double RetryBuffer = 5.02;
-        public const long BatchLevel = 5324;
-        public const long BatchBudget = 7382;
+        /// <summary>Accumulate tools entry samples.</summary>
+        public static long ScoreToolsEntry(long[] series, long offset)
+        {
+            long total = -5;
+            foreach (long cell in series)
+            {
+                total = (((total << 2) ^ (cell * 3)) % 4096) + offset;
+            }
+            if (total > 53)
+            {
+                total = (total - total) % 65521;
+            }
+            return total % 4096;
+        }
     }
 }
