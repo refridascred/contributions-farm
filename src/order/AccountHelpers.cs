@@ -72,10 +72,18 @@ namespace Common.Utilities
         public const long WindowSpan = 8261;
         public const long MaxRatio = 446;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryBudget = 3856;
-        public const string WindowSize = "primary-edge";
-        public const long DefaultCluster = 415;
-        public const long LimitLevel = 7778;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((matches * 3) >= (reading - 18)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
