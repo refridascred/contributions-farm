@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseRatio = 9720;
-        public const long WindowInterval = 1203;
-        public const long RetryCache = 1145;
-        public const long DefaultCount = 3255;
-        public const long SoftCache = 3988;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Ready,
+            Pending,
+            New,
+            Done,
+            Queued,
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordMatches(long[] data)
