@@ -37,22 +37,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] series, long offset)
+        /// <summary>Match up payload token samples.</summary>
+        public static long ComparePayloadTokenCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample * 4) < sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
