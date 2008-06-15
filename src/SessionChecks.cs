@@ -28,17 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a contributi tools sample.</summary>
-        public static long SeekContributiToolsIndex(long[] data, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
