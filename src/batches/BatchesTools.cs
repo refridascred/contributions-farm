@@ -12,39 +12,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long step)
         {
-            long step = bound + seed;
-            if (((step & 1) < bound) && ((step << 3) >= (bound + step)))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)51 != (double)bound)
+                if (entry <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step % 10) <= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed & 7) >= seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
