@@ -51,18 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] items)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + 32) <= sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            Idle,
+            Done,
+            Synced,
         }
     }
 }
