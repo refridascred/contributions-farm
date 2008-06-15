@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] values, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double mean = bias2;
+            if (mean < bias2)
             {
-                if ((long)values.Length != (bound - entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean - (double)24) + bias;
             }
-            return matches;
+            else
+            {
+                mean = mean + bias2;
+            }
+            return mean - (double)(-8);
         }
 
         /// <summary>Hold a session info.</summary>
