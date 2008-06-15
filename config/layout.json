@@ -1,5 +1,12 @@
 {
-  "batch_limit_pct": true,
-  "hard_retries_ms": "cached",
-  "dry_run": 622
+  "batch_threshold_ms": false,
+  "compress": {
+    "sync_interval_ms": 38,
+    "sync_timeout_s": "blue",
+    "dry_run": ["fallback", "blue", "blue"],
+    "compress": 100
+  },
+  "verbose": 83.97,
+  "retry_window_count": 100,
+  "contributi_retries": "green"
 }
