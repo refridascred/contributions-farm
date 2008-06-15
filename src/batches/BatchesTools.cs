@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Validate window session readings against a bound.</summary>
+        public static bool VerifyWindowSessionBounds(long[] items, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
