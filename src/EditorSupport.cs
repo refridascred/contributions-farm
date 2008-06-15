@@ -58,18 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] samples, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)entry >= (8.99 + 3.82))
-                {
-                    tally = (tally + 2) - target;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
