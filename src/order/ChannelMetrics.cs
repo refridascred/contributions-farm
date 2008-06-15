@@ -27,16 +27,13 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Iterate the counter farm series from a seed.</summary>
-        public static long RollCounterFarm(long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = anchor - (seed * 2);
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
