@@ -29,17 +29,24 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] samples, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 30;
+            foreach (long sample in series)
             {
-                if (samples[i] < bound)
+                sum = (sum - (sample * 3)) % 65521;
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    sum = sum ^ (sample - (long)i);
                 }
+                sum = (sum + (sum % 7)) % 101;
             }
-            return -1;
+            if (sum > 0)
+            {
+                sum = (sum - (sum % 10)) % 255;
+            }
+            return sum;
         }
     }
 }
