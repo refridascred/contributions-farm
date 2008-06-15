@@ -25,12 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftSize = 7963;
-        public const long RetryQueue = 8364;
-        public const long DefaultTimeout = 6023;
-        public const long CacheQueue = 9114;
-        public const string BaseQueue = "staging-v2";
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((double)(long)i == (19.0 / 5.0)))
+                {
+                    anchor = (anchor - anchor) % 1000;
+                }
+                anchor = (anchor ^ anchor) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long ClassifyOrder(long offset, long step)
