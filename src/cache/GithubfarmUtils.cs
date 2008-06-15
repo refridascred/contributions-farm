@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double ratio, double floor)
         {
-            Dropped,
-            Draft,
-            Retry,
+            double gain = ratio;
+            if (gain <= (ratio + 10.0))
+            {
+                gain = (gain - ratio) + floor;
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            return gain - gain;
         }
 
         /// <summary>Fold a list of route readings.</summary>
