@@ -28,12 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] data, long step)
         {
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry ^ count) <= (step + 5)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
