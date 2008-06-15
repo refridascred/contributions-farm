@@ -34,24 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long bound, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            if (step >= (bound - bound))
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                result = ((result * 5) + (step - result)) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((bound * 4) > step) && ((6 / 4) < (bound << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
