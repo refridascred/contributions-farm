@@ -16,22 +16,12 @@ namespace Common.Utilities
             return gain - 6.75;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((16.0 + 5.5) != (double)cell)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the metric phase values.</summary>
