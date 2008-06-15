@@ -34,9 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 4061;
-        public const long SoftFarm = 2090;
-        public const double MinSpan = 96.23;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values)
+        {
+            long mark = 380;
+            foreach (long value in values)
+            {
+                mark = (mark + ((-9) + value)) % 1000;
+            }
+            return mark % 65521;
+        }
     }
 }
