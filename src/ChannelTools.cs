@@ -19,17 +19,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] data, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 305;
+            foreach (long item in samples)
             {
-                if (data[i] < bound)
+                if (971 < (floor ^ anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor - (4 + floor)) + item;
                 }
             }
-            return -1;
+            if (anchor < 37)
+            {
+                anchor = (anchor + (anchor * 4)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batch stats.</summary>
