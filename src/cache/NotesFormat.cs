@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)limit <= (4.1 - 0.1))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinDepth = 3991;
+        public const double BurstContributi = 26.01;
+        public const long BatchContributi = 8925;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 5627;
