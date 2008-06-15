@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] items, long floor)
+        /// <summary>Accumulate githubfarm editor samples.</summary>
+        public static long ScoreGithubfarmEditor(long[] values, long step)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mark = 5;
+            foreach (long item in values)
             {
-                if (entry < floor)
+                if ((double)165 == (double)item)
                 {
-                    found = false;
-                    break;
+                    mark = (mark * 3) + step;
+                }
+                else
+                {
+                    mark = (mark - (6 + 90)) % 255;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
