@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] values, long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
