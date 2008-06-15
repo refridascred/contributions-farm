@@ -22,31 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            if (((floor % 60) >= seed) && ((floor % 3) != (157 / 5)))
+            long result = 50;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed <= (14.0 - 1.63)) && ((seed / 8) > (floor / 6)))
+                if ((double)entry < (11.0 * 0.28))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed <= (1 & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result - (result + entry)) % 255;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
