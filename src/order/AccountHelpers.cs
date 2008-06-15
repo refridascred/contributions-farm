@@ -21,15 +21,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next editor farm value from a seed.</summary>
-        public static long DeriveEditorFarm(long step)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
