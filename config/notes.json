@@ -1,8 +1,5 @@
 {
-  "contributi_ratio": [254, 341, 79],
-  "retry_depth_count": ["latest", "edge"],
-  "persist": "fallback",
-  "flush_retries_s": 48,
-  "poll_threshold_pct": "stable",
-  "payload_size": 36.53
+  "min_ratio_s": "cached",
+  "default_retries_count": [374, 62, 272],
+  "poll_timeout_pct": 26.47
 }
