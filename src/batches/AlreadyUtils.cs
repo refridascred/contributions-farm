@@ -102,22 +102,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values, long origin)
-        {
-            long sum = 4;
-            foreach (long item in values)
-            {
-                if ((item & 3) < (sum >> 5))
-                {
-                    sum = (sum ^ (7 + item)) % 65521;
-                }
-            }
-            if (sum > 513)
-            {
-                sum = ((sum << 3) ^ (sum - origin)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 6360;
+        public const long RetryCounter = 4609;
+        public const long DefaultRatio = 606;
+        public const string IdleRatio = "fallback-edge";
     }
 }
