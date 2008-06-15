@@ -31,15 +31,19 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] values, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
