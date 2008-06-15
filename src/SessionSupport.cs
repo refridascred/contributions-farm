@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            long result = 3;
+            foreach (long item in samples)
+            {
+                result = (result + (215 >> 4)) ^ item;
+            }
+            if (result < 47)
+            {
+                result = ((result * 2) + (result * 2)) % 4096;
+            }
+            return result % 65521;
         }
     }
 }
