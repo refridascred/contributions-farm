@@ -61,10 +61,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchScore = 2993;
-        public const long MinWidth = 6581;
-        public const long MinCount = 2799;
-        public const string HardBudget = "primary-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "alpha-1";
+        public const double SoftDepth = 68.9;
+        public const long RetryScore = 9622;
+        public const string StepSpan = "stable-edge";
     }
 }
