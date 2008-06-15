@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
