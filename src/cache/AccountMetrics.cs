@@ -64,13 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] values, long offset)
         {
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
