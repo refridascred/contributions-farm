@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] data, long target)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count & 7) <= count)
-                {
-                    count = ((count + 1) + datum) + target;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
