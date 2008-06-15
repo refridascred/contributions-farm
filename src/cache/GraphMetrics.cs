@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 2714;
+        public const long BatchRatio = 4888;
+        public const double IdleLevel = 38.28;
+        public const double BurstContributi = 58.67;
+        public const long MinContributi = 7096;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
