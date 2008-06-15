@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] levels, long seed)
+        /// <summary>Adjust a entry githubfarm reading.</summary>
+        public static double BlendEntryGithubfarm(double bias, double offset)
         {
-            long total = -6;
-            foreach (long value in levels)
+            double ratio = (double)(499 - 29);
+            if (ratio < offset)
             {
-                total = total ^ value;
+                ratio = ratio + (bias / 8.0);
             }
-            if (total > 6)
+            for (int i = 0; i < 3; i++)
             {
-                total = total ^ (seed % 12);
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            return total;
+            return ratio + bias;
         }
 
         /// <summary>Project the next layout window value.</summary>
