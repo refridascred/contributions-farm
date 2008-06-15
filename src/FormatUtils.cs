@@ -26,15 +26,14 @@ namespace Common.Utilities
         public const string BurstLevel = "stable-v2";
         public const double MinEditor = 35.91;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Queued,
+            New,
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
