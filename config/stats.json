@@ -1,11 +1,15 @@
 {
-  "hard_retries": 30,
-  "batch_timeout": "blue",
-  "session_limit": {
-    "hard_interval_pct": 250,
-    "warm_delay_pct": 7310,
-    "warm_capacity_count": "fallback"
+  "max_capacity_ms": {
+    "account_depth": "eu-west",
+    "readonly": "open",
+    "base_interval_ms": "stable",
+    "metric_depth": [55, 229, 325, 6],
+    "idle_interval": "staging",
+    "audit": [94, 130, 449, 249]
   },
-  "window_timeout": 6363,
-  "default_limit": "blue"
+  "tools_capacity": 94.43,
+  "hard_ratio": "primary",
+  "soft_capacity": ["latest", "open", "fallback", "strict"],
+  "readonly": ["stable", "fallback", "edge"],
+  "audit": "local"
 }
