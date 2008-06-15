@@ -24,18 +24,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((seen << 2) == (8 % 8)) && ((7 ^ offset) < (offset / 3)))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 9325;
+        public const long BurstPayload = 232;
+        public const long RetryPayload = 7210;
     }
 }
