@@ -41,14 +41,17 @@ namespace Common.Utilities
         public const long BurstSize = 1436;
         public const string SoftMetric = "latest-v2";
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long floor)
         {
-            Paused,
-            Pending,
-            Locked,
-            Retry,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
