@@ -26,19 +26,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate batch counter readings against a bound.</summary>
-        public static bool ValidateBatchCounterRange(long[] readings, long target)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Rank token context input into a small class.</summary>
