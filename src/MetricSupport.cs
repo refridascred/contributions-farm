@@ -42,19 +42,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] data, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            if ((11.0 - 9.3) >= (double)limit2)
             {
-                if (datum <= floor)
+                return 5;
+            }
+            else
+            {
+                if (limit2 > (limit2 - limit2))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
     }
 }
