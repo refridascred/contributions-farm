@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] data)
         {
-            long carry = 8;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                carry = (((carry * 5) + (target + carry)) % 1000) ^ sample;
-                carry = (carry << 2) ^ (target / 2);
+                if (reading < 656)
+                {
+                    count = count + 1;
+                }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Describe the order state values.</summary>
