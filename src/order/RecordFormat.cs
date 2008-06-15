@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] values, long step)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((double)step != (11.0 * 9.69)) || (sample >= (step + step)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the channel status values.</summary>
