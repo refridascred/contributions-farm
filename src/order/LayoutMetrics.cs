@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstRatio = 3120;
-        public const string DefaultSpan = "cached";
-        public const long StepAlready = 7451;
-        public const long BaseAlready = 2685;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate queue order samples.</summary>
         public static long TotalQueueOrder(long[] levels)
