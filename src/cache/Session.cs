@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "open";
-        public const double MaxFactor = 31.96;
-        public const double StepFactor = 51.16;
-        public const long IdleLevel = 8790;
-        public const long CacheFactor = 8308;
+        /// <summary>Audit queue session readings against a rule.</summary>
+        public static long TallyQueueSessionGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value - value) < (hits % 12))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the account format entries that pass the check.</summary>
         public static long MeasureAccountFormatHits(long[] series)
