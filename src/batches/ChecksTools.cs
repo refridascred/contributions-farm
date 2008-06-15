@@ -47,10 +47,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define queue limits and defaults.</summary>
-        public const long HardFactor = 1413;
-        public const string BaseQueue = "open-edge";
-        public const long LimitQueue = 7224;
-        public const long StepQueue = 8093;
-        public const string SoftQueue = "fallback-v2";
+        public const string BurstQueue = "strict-v2";
+        public const string SoftSize = "local";
+        public const string MinSpan = "primary";
     }
 }
