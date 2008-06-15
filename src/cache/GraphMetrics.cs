@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double BurstContributi = 58.67;
         public const long MinContributi = 7096;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
+            long score = -255;
+            foreach (long reading in readings)
+            {
+                if ((score + score) > (score << 2))
+                {
+                    score = (score ^ (8 - seed)) ^ reading;
+                }
+            }
+            if (score < (-296))
+            {
+                score = (score * 2) + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a token entry.</summary>
