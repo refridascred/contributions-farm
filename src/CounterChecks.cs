@@ -87,18 +87,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((entry - count) == (count & 15))
+                if ((hits << 1) > (hits << 3))
                 {
-                    count = count + 2;
+                    hits = ((hits + 1) ^ sample) + offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
