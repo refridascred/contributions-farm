@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const string DefaultSize = "strict-1";
         public const double BurstFactor = 15.33;
 
-        /// <summary>Scale a filter context figure with a bias.</summary>
-        public static double ScaleFilterContext(double gain, double floor)
+        /// <summary>Check that every profile schema entry stays within the limit.</summary>
+        public static bool GuardProfileSchemaLimits(long[] items, long bound)
         {
-            double load = (double)4;
-            if (load >= load)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                load = load - (gain + 4.28);
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (floor / 3.0);
-            }
-            return load + gain;
+            return ready;
         }
     }
 }
