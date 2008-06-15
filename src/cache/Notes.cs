@@ -50,13 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Scale a support layout figure with a bias.</summary>
+        public static double AdjustSupportLayout(double gain, double span)
         {
-            Idle,
-            Draft,
-            New,
-            Done,
+            double gain2 = (double)(80 - 4);
+            if (gain2 > (span + 1.25))
+            {
+                gain2 = gain2 + gain;
+            }
+            return gain2 - (span + 2.0);
         }
     }
 }
