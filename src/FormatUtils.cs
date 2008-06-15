@@ -42,12 +42,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
