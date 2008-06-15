@@ -1,7 +1,7 @@
 # githubfarm settings
-base_timeout: fallback
-burst_window_s: 22.57
-metrics_threshold: strict
-filter_depth: 29.94
-default_window_ms: 4978
-channel_ttl: false
+base_ratio: 39.74
+burst_limit: true
+max_limit: fallback
+cache_delay_s: green
+cache_delay_ms: false
+soft_window_count: 29
