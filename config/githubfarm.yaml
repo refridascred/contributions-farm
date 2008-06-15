@@ -1,7 +1,6 @@
 # githubfarm settings
-session_capacity: legacy
-audit: open
-warm_interval:
-  - 336
-  - 405
-  - 435
+persist: eu-west
+compress: open
+token_window: 250
+retry_timeout_s: true
+retry_interval: 38.59
