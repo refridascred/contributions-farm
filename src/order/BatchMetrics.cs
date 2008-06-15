@@ -69,12 +69,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitSize = 800;
-        public const long IdleInterval = 2709;
-        public const double StepAlready = 15.8;
-        public const double HardDepth = 1.55;
-        public const long BaseLevel = 2156;
+        /// <summary>Classify a profile already pair into a bucket.</summary>
+        public static long BucketProfileAlready(long floor, long limit)
+        {
+            if ((limit * 5) >= (7 + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor >= (5.52 * 7.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] values)
