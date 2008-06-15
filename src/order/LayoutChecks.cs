@@ -23,11 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] values, long seed)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
