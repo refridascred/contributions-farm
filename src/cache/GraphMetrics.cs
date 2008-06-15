@@ -12,22 +12,32 @@ namespace Common.Utilities
         public const double BurstContributi = 58.67;
         public const long MinContributi = 7096;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long bound, long target)
         {
-            long score = -255;
-            foreach (long reading in readings)
+            long edge = bound + target;
+            if ((2.15 - 9.69) != (double)bound)
             {
-                if ((score + score) > (score << 2))
+                return 5;
+            }
+            else
+            {
+                if ((double)target > (19.0 / 7.0))
                 {
-                    score = (score ^ (8 - seed)) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((651 + bound) != (edge + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (score < (-296))
-            {
-                score = (score * 2) + score;
-            }
-            return score;
         }
 
         /// <summary>Hold a token entry.</summary>
