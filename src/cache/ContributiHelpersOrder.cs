@@ -31,9 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 9325;
-        public const long BurstPayload = 232;
-        public const long RetryPayload = 7210;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
