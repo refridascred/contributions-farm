@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank stream commits input into a small class.</summary>
-        public static long ClassifyStreamCommits(long target, long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] levels, long target)
         {
-            if ((78 - 89) >= seed)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target > (target % 97)) || (target > (target + target)))
+                if (levels[i] >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
