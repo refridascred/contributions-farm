@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxBudget = "strict-v2";
-        public const double DefaultPayload = 96.61;
-        public const string IdleRatio = "fallback-v2";
-        public const long WindowBudget = 2504;
+        /// <summary>Iterate the layout support series from a seed.</summary>
+        public static long StepLayoutSupport(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix + (target - 27)) % 101;
+                mix = (mix * 5) + (mix % 16);
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count the cache contributi entries that pass the check.</summary>
         public static long MeasureCacheContributiHits(long[] series, long offset)
