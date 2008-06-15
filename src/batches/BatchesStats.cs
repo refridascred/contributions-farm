@@ -63,25 +63,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long step)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long step2 = seed ^ step;
+            if (!((seed - seed) < 76))
             {
-                result = result - (result + (long)i);
-                if ((5.0 >= (double)result) && ((double)target >= (double)result))
+                return 5;
+            }
+            else
+            {
+                if ((step2 & 31) == (step2 + step2))
                 {
-                    result = (result - (result << 2)) % 4096;
-                    result = result - (result * 4);
+                    return 6;
                 }
                 else
                 {
-                    result = result ^ target;
+                    if ((double)seed == (double)step2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
         }
     }
 }
