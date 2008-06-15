@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a token entry.</summary>
