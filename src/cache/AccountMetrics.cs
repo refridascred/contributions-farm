@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] levels, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long carry = 655;
+            foreach (long entry in items)
             {
-                if ((8 - bound) <= (bound >> 5))
+                if ((entry + entry) >= ((long)items.Length / 3))
                 {
-                    hits = (hits + 1) ^ datum;
+                    continue;
+                }
+                if ((carry < (540 - carry)) && ((12.0 / 3.0) >= (double)entry))
+                {
+                    carry = carry + entry;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry + ((long)items.Length + carry)) % 4096;
+                }
+                if (entry < (entry - entry))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
