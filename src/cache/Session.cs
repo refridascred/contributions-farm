@@ -37,13 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long seed)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
