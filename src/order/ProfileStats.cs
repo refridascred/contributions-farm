@@ -14,21 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
                 {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
