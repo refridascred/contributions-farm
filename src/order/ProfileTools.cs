@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] series, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Paused,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
