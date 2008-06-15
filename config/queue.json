@@ -1,25 +1,7 @@
 {
-  "filter_size": 4.47,
-  "record_timeout": "standard",
-  "dry_run": 60,
-  "warm_retries_count": 1024,
-  "githubfarm_size": {
-    "stream_capacity": ["staging", "blue", "green", "primary"],
-    "entry_limit": "open",
-    "verbose": {
-      "soft_ratio": 1562,
-      "persist": ["primary", "standard", "staging", "edge"],
-      "poll_interval_pct": "green",
-      "report_retries": 250,
-      "retry_interval_s": false,
-      "record_interval": ["stable", "fallback", "local"]
-    },
-    "route_size": {
-      "poll_depth_count": "legacy",
-      "min_ratio": ["strict", "standard", "stable", "latest"],
-      "githubfarm_ttl": 6387,
-      "sync_window": 54.11
-    },
-    "min_window": "latest"
-  }
+  "sync_depth_s": ["latest", "legacy", "standard"],
+  "idle_timeout_ms": ["eu-west", "standard", "edge"],
+  "max_timeout_count": 53,
+  "default_delay_ms": 11,
+  "stats_depth": 85.01
 }
