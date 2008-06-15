@@ -36,11 +36,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 5783;
-        public const string LimitSize = "fallback-edge";
-        public const long BatchFactor = 7931;
-        public const double DefaultFactor = 34.85;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long StepChecks = 4295;
