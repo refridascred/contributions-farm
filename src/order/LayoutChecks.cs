@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long seed, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long gap = seed + step;
-            if ((5.13 - 8.0) == (double)gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if (7.3 > (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step + gap) < (gap + seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a stream record.</summary>
