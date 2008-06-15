@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const double LimitWidth = 69.59;
         public const long StepTimeout = 5719;
 
-        /// <summary>Validate farm metric readings against a bound.</summary>
-        public static bool VerifyFarmMetricBounds(long[] values, long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
