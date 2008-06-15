@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long score = 101;
-            foreach (long cell in series)
-            {
-                if (!((cell + score) == (cell + cell)))
-                {
-                    score = ((score << 3) ^ (cell - 759)) % 255;
-                }
-            }
-            return score;
+            Stale,
+            Paused,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
