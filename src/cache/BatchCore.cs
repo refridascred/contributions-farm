@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultLevel = "standard-v2";
-        public const long WindowSize = 5920;
-        public const double BaseSpan = 65.65;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Dropped,
+            Locked,
+            Done,
+            Ready,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 1629;
