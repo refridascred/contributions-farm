@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-edge";
         public const string BurstBudget = "local-edge";
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series, long limit)
         {
-            Synced,
-            Failed,
-            Active,
-            Retry,
-            Pending,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((double)count != (7.58 * 20.0)))
+                {
+                    count = ((count + 1) ^ entry) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
