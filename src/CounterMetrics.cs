@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            Closed,
-            Idle,
-            Failed,
-            Stale,
-            Queued,
+            long anchor = -12;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor + (anchor % 16)) % 1000;
+                if ((anchor + cell) <= (cell << 3))
+                {
+                    break;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
