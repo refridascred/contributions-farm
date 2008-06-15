@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] readings, long seed)
         {
-            Dropped,
-            Locked,
-            Ready,
-            Retry,
-            Idle,
+            long score = 20;
+            foreach (long entry in readings)
+            {
+                if ((seed % 3) > (seed + entry))
+                {
+                    score = (score * 3) + score;
+                }
+                else
+                {
+                    score = (score << 2) ^ ((long)readings.Length * 4);
+                }
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
