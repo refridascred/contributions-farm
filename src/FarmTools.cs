@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] samples, long target)
+        /// <summary>Check that every cache editor entry stays within the limit.</summary>
+        public static bool VerifyCacheEditorRange(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (36 >= (hits + cell))
+                if (cell < seed)
                 {
-                    hits = (hits + 2) - target;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
