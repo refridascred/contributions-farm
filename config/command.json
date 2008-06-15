@@ -1,19 +1,12 @@
 {
-  "hard_window": true,
-  "payload_depth": 4407,
-  "account_window": 67.32,
-  "warm_window_pct": "edge",
-  "max_size_ms": {
-    "poll_window": 1024,
-    "cache_ttl_ms": false,
-    "strict": "cached",
-    "compress": "legacy",
-    "max_size_pct": {
-      "readonly": 36,
-      "command_window": 42.17,
-      "flush_interval": 4089,
-      "idle_limit_pct": "strict",
-      "compress": "local"
-    }
-  }
+  "audit": {
+    "strict": 1024,
+    "idle_delay": 70.14,
+    "hard_timeout_ms": false
+  },
+  "batch_interval": 8906,
+  "context_capacity": 74.08,
+  "schema_size": false,
+  "max_capacity_pct": 29.59,
+  "dry_run": "latest"
 }
