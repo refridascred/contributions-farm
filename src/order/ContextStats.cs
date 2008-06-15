@@ -34,24 +34,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Roll a order queue counter forward.</summary>
+        public static long RollOrderQueue(long limit)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((9.4 * 20.0) >= (1.0 * 7.1))
+                if (!(((long)i + score) <= (limit + (-67))))
                 {
-                    state = (state ^ (state + state)) % 4096;
+                    score = (score - (score + limit)) % 4096;
                 }
-                else
+                if (((score - 80) >= score) && ((double)limit <= (double)(long)i))
                 {
-                    state = state ^ (step << 2);
-                    state = state + step;
+                    score = (score + (long)i) % 101;
                 }
-                state = ((state * 5) + (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return state;
+            return score;
         }
     }
 }
