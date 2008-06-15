@@ -33,12 +33,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] samples, long origin)
         {
-            Done,
-            Stale,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
