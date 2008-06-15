@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
