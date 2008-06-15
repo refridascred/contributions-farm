@@ -28,19 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] samples, long origin)
+        /// <summary>Digest a series of buffer counter entries.</summary>
+        public static long DigestBufferCounter(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long anchor = 12;
+            foreach (long sample in readings)
             {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor + sample) % 4096;
             }
-            return valid;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
