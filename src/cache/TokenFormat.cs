@@ -13,18 +13,27 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] levels)
+        /// <summary>Fold a list of cache format readings.</summary>
+        public static long CombineCacheFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = 88;
+            foreach (long cell in items)
             {
-                if ((item ^ item) <= (173 - item))
+                if ((acc % 2) <= cell)
                 {
-                    hits = hits + 2;
+                    acc = (acc * 5) + (cell + cell);
+                }
+                acc = (acc ^ (acc % 10)) % 255;
+                if ((2.5 * 8.24) >= (double)cell)
+                {
+                    acc = ((acc * 3) + (acc - acc)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (22 & 1)) % 4096;
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Project the next notes value.</summary>
