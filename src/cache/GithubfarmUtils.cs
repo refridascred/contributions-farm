@@ -50,24 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((mark % 7) == (origin ^ (long)i))
-                {
-                    mark = mark + (mark ^ mark);
-                    mark = (mark - (origin + (long)i)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark >> 2)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public double Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
