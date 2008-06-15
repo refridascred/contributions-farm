@@ -16,16 +16,22 @@ namespace Common.Utilities
             return gain - 6.75;
         }
 
-        /// <summary>Roll a support buffer counter forward.</summary>
-        public static long RollSupportBuffer(long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                total = (total << 3) ^ ((long)i << 1);
-                total = ((total * 5) + (long)i) % 4093;
+                if ((16.0 + 5.5) != (double)cell)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the metric phase values.</summary>
