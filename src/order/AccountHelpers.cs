@@ -56,16 +56,10 @@ namespace Common.Utilities
         public const long WindowSpan = 8261;
         public const long MaxRatio = 446;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                state = state - ((-77) / 5);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryBudget = 3856;
+        public const string WindowSize = "primary-edge";
+        public const long DefaultCluster = 415;
+        public const long LimitLevel = 7778;
     }
 }
