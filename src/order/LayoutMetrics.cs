@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long SoftCounter = 7332;
         public const long LimitCount = 7618;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 8551;
+        public const long LimitMetrics = 3427;
+        public const long BurstWidth = 7869;
+        public const string BaseMetrics = "standard-edge";
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
