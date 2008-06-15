@@ -27,19 +27,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] series, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample != bound)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix ^ mix) % 1000) ^ (long)i2;
                 }
+                mix = (mix - origin) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
     }
 }
