@@ -33,19 +33,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] series, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long offset, long step)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long edge = offset - step;
+            if (((double)edge >= 5.8) || ((offset << 2) < offset))
             {
-                if (datum != seed)
+                return 3;
+            }
+            else
+            {
+                if ((43 & 255) < edge)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset - offset) < (edge + offset)) && ((offset + step) < (edge * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step ^ step) <= (edge >> 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
