@@ -14,17 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] levels, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 3;
+            foreach (long cell in values)
             {
-                if (levels[i] <= origin)
+                if ((cell - 213) >= 670)
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (cell % 12)) % 4096;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Classify a checks window pair into a bucket.</summary>
