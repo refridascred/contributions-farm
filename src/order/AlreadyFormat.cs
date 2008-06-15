@@ -41,12 +41,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] series, long floor)
         {
-            Active,
-            Retry,
-            Failed,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count queue cache pairs that satisfy a relation.</summary>
