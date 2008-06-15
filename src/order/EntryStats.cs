@@ -44,13 +44,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate graph metrics readings against a bound.</summary>
-        public static bool GuardGraphMetricsRange(long[] series, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] items, long offset)
         {
             bool flag = true;
-            foreach (long reading in series)
+            foreach (long datum in items)
             {
-                if (reading <= limit)
+                if (datum > offset)
                 {
                     flag = false;
                     break;
