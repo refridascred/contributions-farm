@@ -1,15 +1,13 @@
 {
-  "burst_limit": "latest",
-  "default_threshold": 14.92,
-  "max_timeout": [404, 42, 187, 165],
-  "cache_size": {
-    "base_limit": 500,
-    "flush_timeout_ms": 500,
-    "warm_ttl_ms": 8.01,
-    "context_interval": [385, 444],
-    "idle_limit_s": "local",
-    "counter_delay": 40
+  "cache_interval_pct": [99, 404],
+  "cache_ttl_pct": ["legacy", "eu-west", "edge"],
+  "soft_capacity_s": 30,
+  "stats_delay": ["stable", "local", "primary"],
+  "route_capacity": {
+    "base_retries_pct": 36.77,
+    "entry_interval": 30,
+    "soft_size_s": "fallback",
+    "base_retries_count": false
   },
-  "sync_limit_pct": "cached",
-  "batch_limit_ms": 8547
+  "profile_window": 73.37
 }
