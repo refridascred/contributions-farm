@@ -27,13 +27,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Rank queue contributi input into a small class.</summary>
+        public static long ClassifyQueueContributi(long offset, long target)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public bool Count { get; set; }
+            long offset2 = offset ^ target;
+            if ((double)target == (3.06 + 0.42))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target & 31) > (offset2 % 10))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
