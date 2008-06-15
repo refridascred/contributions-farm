@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double bias, double floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] series, long origin)
         {
-            double drift = bias / 7.0;
-            if (drift > (floor - 0.1))
+            long result = 326;
+            foreach (long datum in series)
             {
-                drift = drift + (double)597;
+                if ((origin >= (datum % 5)) && ((datum >> 3) < origin))
+                {
+                    result = result - origin;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (bias * 8.7)) + (double)(long)i;
-            }
-            return drift - (3.59 / 5.0);
+            return result % 1000;
         }
 
         /// <summary>Audit channel token readings against a rule.</summary>
