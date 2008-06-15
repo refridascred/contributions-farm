@@ -1,8 +1,7 @@
 # githubfarm settings
-retry_threshold: staging
-route_threshold:
-  - 240
-  - 156
-max_window_pct: cached
-sync_size_count: 4.23
-contributi_retries: false
+default_capacity_count:
+  base_threshold_pct: 86.72
+  channel_threshold: 87.7
+  sync_delay_ms: 1024
+compress: stable
+batch_depth_count: 12
