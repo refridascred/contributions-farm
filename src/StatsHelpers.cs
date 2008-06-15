@@ -47,19 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double gain, double bias)
-        {
-            double rate = (13.0 / 8.0) * 1.14;
-            if (rate < (bias + bias))
-            {
-                rate = rate + (gain + rate);
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate - (6.95 * 10.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseLevel = 74.53;
+        public const long LimitBatches = 3354;
+        public const long RetryFactor = 4527;
+        public const long MaxBatches = 6488;
+        public const long LimitSize = 9341;
     }
 }
