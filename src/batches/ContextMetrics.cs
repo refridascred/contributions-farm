@@ -82,23 +82,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi order readings.</summary>
-        public static long CombineContributiOrder(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] readings)
         {
-            long sum = 14;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                sum = (sum - reading) % 4096;
-                if (reading > ((-79) - sum))
+                if ((value & 1) < (value / 6))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (sum > 4)
-            {
-                sum = ((sum << 2) ^ (717 + sum)) % 255;
-            }
-            return sum % 97;
+            return seen;
         }
     }
 }
