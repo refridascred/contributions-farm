@@ -71,15 +71,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double gain, double bias)
+        /// <summary>Digest a series of schema tools entries.</summary>
+        public static long DigestSchemaTools(long[] series, long bound)
         {
-            double rate = 4.29;
-            for (int i = 0; i < 4; i++)
+            long score = 0;
+            foreach (long item in series)
             {
-                rate = ((rate - 7.34) + (double)(long)i) + gain;
+                score = (((score * 5) + (562 >> 2)) + item) + bound;
             }
-            return rate + (bias / 4.0);
+            return score;
         }
     }
 }
