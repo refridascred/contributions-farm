@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Adjust a order report reading.</summary>
+        public static double ScaleOrderReport(double ratio, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score << 3) ^ ((long)i + bound);
-                score = score + (568 - 94);
-                score = score ^ bound;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            double rate = offset;
+            return rate + (rate - ratio);
         }
 
         /// <summary>Describe the already phase values.</summary>
