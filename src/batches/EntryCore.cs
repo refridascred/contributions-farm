@@ -62,18 +62,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long mix = 8;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (mix >= entry)
                 {
-                    long bound = (long)i2 - (mix & 3);
-                    mix = ((mix << 3) ^ (bound * 2)) % 4096;
+                    mix = mix + (entry ^ mix);
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
             return mix;
         }
