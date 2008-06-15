@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state << 2) ^ ((long)i - state)) % 97;
-                if ((double)floor > (double)state)
-                {
-                    state = (state - floor) % 97;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
