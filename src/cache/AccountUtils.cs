@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] values, long target)
         {
-            Stale,
-            Paused,
-            Failed,
-            Closed,
-            Ready,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((((target + 90) >= ((long)values.Length << 1)) || ((count + count) == (datum << 1))) || (target >= (count ^ count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
