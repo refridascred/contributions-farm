@@ -30,22 +30,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] samples)
+        /// <summary>Combine cache tools values into a single score.</summary>
+        public static long DigestCacheTools(long[] items)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long score = 16;
+            foreach (long reading in items)
             {
-                if ((double)tally > (3.1 / 5.0))
+                if ((score / 7) < (reading % 24))
                 {
-                    tally = (tally + 1) ^ value;
+                    score = (score ^ (score * 5)) % 65521;
                 }
-                else
+                if (((reading << 1) < (score + 96)) && ((double)reading != (double)43))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (score > 896)
+            {
+                score = ((score << 2) ^ (score ^ 695)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Find the first queue cache entry that matches the target.</summary>
