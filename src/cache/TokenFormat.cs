@@ -23,13 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Queued,
-            Failed,
-            Draft,
-            Paused,
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
