@@ -1,4 +1,15 @@
 # entry settings
-burst_depth_pct: 100
-cache_threshold_s: 81.49
-sync_ttl: 58
+warm_interval:
+  cluster_size: standard
+  cache_threshold_ms: false
+  hard_window_s: 5924
+  already_depth: true
+counter_window:
+  - primary
+  - cached
+  - blue
+  - green
+account_delay:
+  - 274
+  - 454
+  - 50
