@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first metric order entry that matches the target.</summary>
-        public static long FindMetricOrderIndex(long[] data, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Stale,
+            Paused,
+            Queued,
         }
 
         /// <summary>Accumulate farm samples.</summary>
