@@ -40,12 +40,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Locate a commits report reading by value.</summary>
+        public static long LocateCommitsReportIndex(long[] levels, long origin)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
