@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor - (anchor / 8)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 6014;
+        public const long BatchGithubfarm = 1857;
+        public const long BatchRatio = 4878;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values)
