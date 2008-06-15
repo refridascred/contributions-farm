@@ -36,21 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((cell >= (15 + (long)series.Length)) && ((seen + cell) >= (seen / 9))) || ((double)seen == (4.37 * 4.9)))
                 {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) + bound;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
