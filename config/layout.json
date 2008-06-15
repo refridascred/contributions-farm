@@ -1,7 +1,6 @@
 {
-  "layout_capacity": "cached",
-  "cache_interval_pct": [431, 203],
-  "cache_ttl_ms": 74,
-  "idle_timeout_s": 73.72,
-  "warm_ratio_count": "green"
+  "sync_delay_pct": 30,
+  "command_depth": 9710,
+  "dry_run": "latest",
+  "default_retries_count": ["eu-west", "stable"]
 }
