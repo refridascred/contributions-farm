@@ -47,19 +47,14 @@ namespace Common.Utilities
         public const long LimitToken = 602;
         public const double RetryTimeout = 70.37;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix + seed) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            New,
+            Ready,
+            Dropped,
+            Stale,
+            Draft,
         }
     }
 }
