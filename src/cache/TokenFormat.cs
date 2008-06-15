@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] readings, long limit)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample + sample) == (784 ^ sample)) || !(sample >= (limit + matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
