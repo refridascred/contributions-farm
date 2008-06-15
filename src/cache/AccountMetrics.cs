@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a record editor pair into a bucket.</summary>
-        public static long BucketRecordEditor(long floor, long seed)
-        {
-            if (floor < (seed + seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed * 3) < (-2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxFactor = 5868;
+        public const string SoftSize = "open-v2";
+        public const long DefaultWidth = 729;
+        public const long StepAccount = 3019;
+        public const long MinAccount = 781;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] levels, long seed)
