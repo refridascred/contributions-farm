@@ -14,36 +14,29 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long step, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long seed)
         {
-            long next = step ^ seed;
-            if ((seed >> 4) != (step % 8))
+            long bound = floor + seed;
+            if (!(701 > (seed << 2)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((556 + next) > step)
+                if ((double)755 >= (double)seed)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)seed <= (double)next)
+                    if ((floor << 3) == (bound ^ floor))
                     {
                         return 8;
                     }
                     else
                     {
-                        if (175 > step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 5;
                     }
                 }
             }
