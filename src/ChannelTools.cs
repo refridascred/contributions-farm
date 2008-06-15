@@ -37,16 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 2) + (offset + (long)i)) % 97;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Dropped,
+            Closed,
+            Active,
         }
     }
 }
