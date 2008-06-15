@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Idle,
-            Draft,
-            Dropped,
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
