@@ -48,15 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Active,
-            Pending,
-            Synced,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "strict-v2";
+        public const long MaxEntry = 8735;
+        public const string CacheScore = "standard-edge";
+        public const long HardEntry = 3084;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] values, long limit)
