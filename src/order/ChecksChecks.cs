@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate graph farm samples.</summary>
-        public static long TallyGraphFarm(long[] readings, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] items)
         {
-            long sum = -49;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                sum = (sum * 5) + (step % 3);
-                sum = (sum + (value >> 4)) % 255;
+                if ((double)seen != (double)590)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
