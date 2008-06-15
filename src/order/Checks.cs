@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (bound >= (562 % 10))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 7524;
+        public const string IdleGraph = "stable-edge";
+        public const long BatchFactor = 8417;
+        public const long IdleBudget = 7156;
+        public const string BaseLevel = "standard-edge";
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
