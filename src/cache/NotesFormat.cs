@@ -35,11 +35,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstDepth = "legacy-edge";
+        public const long DefaultSchema = 45;
+        public const string BatchSchema = "staging-1";
+        public const long HardBudget = 7827;
     }
 }
