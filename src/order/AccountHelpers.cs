@@ -36,15 +36,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double ratio, double bias)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] data, long offset)
         {
-            double bias2 = (double)(1 * 3);
-            if (bias2 <= (4.0 / 2.0))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                bias2 = (bias2 + bias2) + bias;
+                if (511 >= (offset ^ (-9)))
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            return bias2 + ratio;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
