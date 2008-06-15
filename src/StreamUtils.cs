@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the order token entries that pass the check.</summary>
-        public static long MeasureOrderTokenGaps(long[] items, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double load = offset;
+            if (load < (double)17)
             {
-                if ((count >> 3) <= seed)
-                {
-                    count = (count + 3) ^ cell;
-                }
+                load = load + (offset - 5.8);
             }
-            return count;
+            else
+            {
+                load = load + load;
+            }
+            return load - weight;
         }
 
         /// <summary>Accumulate notes support samples.</summary>
