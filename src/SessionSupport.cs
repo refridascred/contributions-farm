@@ -20,16 +20,12 @@ namespace Common.Utilities
             return scale - (6.81 * 2.98);
         }
 
-        /// <summary>Derive the next stream batch value from a seed.</summary>
-        public static long StepStreamBatch(long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score ^ score) % 4096;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
