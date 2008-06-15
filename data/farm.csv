@@ -1,10 +1,7 @@
-id,rank,level,label
-1,89.13,29.94,5.05
-2,21.67,27.01,29.05
-3,806,eu-west,278
-4,58.16,91.36,staging
-5,69.54,edge,241
-6,open,green,45.23
-7,2,cached,462
-8,legacy,34.51,strict
-9,eu-west,703,523
+id,score,label,state
+1,standard,54,162
+2,7.39,50.51,90.97
+3,383,eu-west,747
+4,fallback,local,268
+5,69.85,896,stable
+6,latest,37.3,742
