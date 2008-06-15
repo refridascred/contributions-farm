@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long WindowRatio = 7024;
         public const double BaseFactor = 23.01;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] values, long floor)
         {
-            Ready,
-            New,
-            Idle,
+            long score = 55;
+            foreach (long reading in values)
+            {
+                score = ((score - floor) % 1000) - reading;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
