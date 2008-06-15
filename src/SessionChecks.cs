@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
             Failed,
-            Active,
-            Draft,
             Pending,
+            Retry,
         }
 
         /// <summary>Hold a counter options.</summary>
