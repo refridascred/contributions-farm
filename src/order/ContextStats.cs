@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] data, long floor)
+        /// <summary>Adjust a checks notes reading.</summary>
+        public static double BlendChecksNotes(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double scale = (double)(0 - (-71));
+            for (int i = 0; i < 7; i++)
             {
-                if (cell != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = ((scale + (double)(long)i) - ratio) + span;
             }
-            return ok;
+            return scale + (scale * 3.84);
         }
 
         /// <summary>Hold a cluster entry.</summary>
