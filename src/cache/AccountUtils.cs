@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter already entries that pass the check.</summary>
-        public static long MeasureFilterAlreadyMatches(long[] levels)
+        /// <summary>Scale a format cluster figure with a bias.</summary>
+        public static double ScaleFormatCluster(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double drift = (rate / 6.0) + floor;
+            if (drift > (floor + rate))
             {
-                if (((datum >= (datum % 60)) && ((4 + datum) < (matches >> 1))) && ((7.5 / 4.0) <= (double)matches))
-                {
-                    matches = matches + 2;
-                }
+                drift = drift + (double)(-2);
             }
-            return matches;
+            return drift + rate;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
