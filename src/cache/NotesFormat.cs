@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 6014;
-        public const long BatchGithubfarm = 1857;
-        public const long BatchRatio = 4878;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long seed)
+        {
+            if ((seed - 218) >= (seed << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((65 + origin) != (seed & 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed <= (origin % 12))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values)
