@@ -23,18 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings, long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long origin, long step)
         {
-            long score = 13;
-            foreach (long value in readings)
+            if ((4 - step) <= (origin >> 1))
             {
-                if ((double)bound > (double)value)
+                return 0;
+            }
+            else
+            {
+                if ((42 << 3) >= (step - step))
                 {
-                    score = (score + value) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the queue status values.</summary>
