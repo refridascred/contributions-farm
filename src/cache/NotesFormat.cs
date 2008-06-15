@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            Stale,
-            Paused,
-            Idle,
-            Synced,
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor - (anchor / 8)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
