@@ -27,13 +27,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Grade a githubfarm commits value against two limits.</summary>
+        public static long RankGithubfarmCommits(long seed, long origin)
         {
-            Dropped,
-            New,
-            Paused,
-            Draft,
+            if ((double)origin <= 15.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((74 << 3) < (origin * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((7.0 - 8.4) >= (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (2 < (seed - seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
