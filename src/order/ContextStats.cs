@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics record pair into a bucket.</summary>
-        public static long BucketMetricsRecord(long step, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long offset)
         {
-            long step2 = step + offset;
-            if ((316 << 3) > (step << 1))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset <= step2) || ((5.1 * 4.0) <= (double)step))
+                if (item < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset % 100) > (136 % 24)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step <= (step + 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
