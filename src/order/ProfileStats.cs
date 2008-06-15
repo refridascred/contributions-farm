@@ -28,18 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mark = 4;
-            foreach (long sample in levels)
-            {
-                if (!((double)(long)levels.Length <= (double)4))
-                {
-                    mark = (mark - (4 + mark)) - sample;
-                }
-            }
-            return mark;
+            Failed,
+            Paused,
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a token summary.</summary>
