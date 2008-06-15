@@ -25,19 +25,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix ^ ((-992) & 63)) % 65521;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
