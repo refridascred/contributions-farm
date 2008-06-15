@@ -30,24 +30,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a already route pair into a bucket.</summary>
-        public static long GradeAlreadyRoute(long seed, long seed2)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] values, long offset)
         {
-            if (seed2 <= (seed * 4))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (1.0 <= (double)seed)
+                if (datum >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up commits githubfarm samples.</summary>
