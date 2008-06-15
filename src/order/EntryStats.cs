@@ -61,15 +61,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double offset)
+        /// <summary>Classify a report format pair into a bucket.</summary>
+        public static long SortReportFormat(long seed, long bound)
         {
-            double mean = (offset - scale) / 3.0;
-            if (mean < mean)
+            long prev = seed - bound;
+            if ((740 * 4) >= (29 - prev))
             {
-                mean = mean - mean;
+                return 0;
             }
-            return mean - (scale / 8.0);
+            else
+            {
+                if ((seed * 5) >= prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.0 < (double)bound) || ((prev + 702) < (prev + 985)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed + prev) >= (prev * 2)) && ((73 / 8) <= prev))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
