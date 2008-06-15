@@ -45,14 +45,9 @@ namespace Common.Utilities
         public const long MinSpan = 4103;
         public const string StepCount = "staging-1";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            New,
-            Ready,
-            Dropped,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 7023;
+        public const double MaxEditor = 93.98;
+        public const long StepRatio = 4892;
     }
 }
