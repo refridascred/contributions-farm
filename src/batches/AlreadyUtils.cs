@@ -98,18 +98,22 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Measure how many commits checks samples are out of range.</summary>
-        public static long MeasureCommitsChecksHits(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long sum = 4;
+            foreach (long item in values)
             {
-                if ((count < (841 << 3)) && ((reading + reading) <= reading))
+                if ((item & 3) < (sum >> 5))
                 {
-                    count = count + 2;
+                    sum = (sum ^ (7 + item)) % 65521;
                 }
             }
-            return count;
+            if (sum > 513)
+            {
+                sum = ((sum << 3) ^ (sum - origin)) % 101;
+            }
+            return sum;
         }
     }
 }
