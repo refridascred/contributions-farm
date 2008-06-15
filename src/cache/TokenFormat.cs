@@ -19,19 +19,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a session stats reading.</summary>
-        public static double ProjectSessionStats(double ratio, double span)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            double load = (double)((-208) * 5);
-            if (load >= (ratio - span))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (span / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - 9.0;
+            return tally;
         }
     }
 }
