@@ -59,18 +59,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((double)item < (double)tally) && ((double)13 < (double)item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchScore = 1466;
+        public const string HardSupport = "local-edge";
+        public const long LimitInterval = 998;
     }
 }
