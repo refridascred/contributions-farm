@@ -42,33 +42,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long origin)
-        {
-            long cur = step - origin;
-            if ((868 & 7) > cur)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin < (9.5 * 9.1)) || ((double)cur != (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (cur <= ((-6) & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitFactor = 3187;
+        public const long BurstReport = 4642;
+        public const long BaseBudget = 387;
+        public const double SoftSize = 24.75;
+        public const long LimitWidth = 2895;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] values)
