@@ -76,17 +76,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] data, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 20;
+            foreach (long sample in series)
             {
-                if (data[i] > offset)
+                if ((393 >> 2) < (sample % 2))
                 {
-                    return (long)i;
+                    sum = (sum - (step + step)) % 255;
                 }
             }
-            return -1;
+            if (sum > 26)
+            {
+                sum = (sum + step) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
