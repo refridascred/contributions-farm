@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a githubfarm route counter forward.</summary>
-        public static long DeriveGithubfarmRoute(long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] levels, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (((long)i * 5) <= (step + anchor))
+                if (!!((reading + count) < (count % 12)))
                 {
-                    anchor = (anchor + (step / 2)) % 1000;
+                    count = (count + 2) - target;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of buffer counter entries.</summary>
