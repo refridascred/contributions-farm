@@ -1,9 +1,9 @@
 # entry settings
-entry_ratio: false
-verbose: 93.2
-payload_size: 3
-compress: 500
-min_threshold: 250
-warm_timeout:
-  - 290
-  - 178
+idle_depth: true
+base_ttl_pct: false
+audit: 8219
+order_capacity:
+  - green
+  - blue
+  - eu-west
+  - staging
