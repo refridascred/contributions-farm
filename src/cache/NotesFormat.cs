@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] items, long limit)
         {
-            long result = 92;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((result ^ item) < (result / 2))
+                if ((double)limit <= (4.1 - 0.1))
                 {
-                    result = (result - (result >> 2)) % 101;
-                }
-                else
-                {
-                    result = (result + result) % 101;
+                    count = (count + 1) + item;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
