@@ -24,12 +24,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] items)
         {
-            Dropped,
-            Paused,
-            Stale,
+            long sum = 60;
+            foreach (long sample in items)
+            {
+                sum = ((sum * 2) + (sample - 86)) % 255;
+                if (!((sum % 97) <= sample))
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+                if (((sum & 1) > sample) && ((12.0 * 8.21) > (double)sum))
+                {
+                    sum = ((sum * 5) + (589 >> 4)) % 65521;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
