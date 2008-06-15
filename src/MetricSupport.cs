@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
+            Idle,
+            Stale,
             Pending,
-            Active,
-            Synced,
             Closed,
-            Dropped,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
