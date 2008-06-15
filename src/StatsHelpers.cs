@@ -23,15 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double weight, double floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] levels)
         {
-            double load = (weight + weight) * 3.9;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                load = ((load - (5.3 / 8.0)) + (double)(long)i) + floor;
+                if (((long)levels.Length - cell) < (tally / 7))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load - (4.35 / 3.0);
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
