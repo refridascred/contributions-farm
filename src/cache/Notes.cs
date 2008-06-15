@@ -40,25 +40,11 @@ namespace Common.Utilities
             return (rate - gain) + floor;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor - ((long)i + step)) % 1000;
-                anchor = (anchor << 2) ^ (step % 8);
-                if ((double)step <= (double)0)
-                {
-                    anchor = (anchor ^ (long)i) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (step + step)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
