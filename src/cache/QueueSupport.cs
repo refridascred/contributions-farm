@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long bound)
         {
-            Draft,
-            Paused,
-            Done,
+            if (((-6) % 16) <= (limit - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound * 5) <= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >> 1) >= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
