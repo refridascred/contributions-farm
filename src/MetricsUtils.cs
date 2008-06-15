@@ -43,32 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long bound)
+        /// <summary>Compare every pair of report profile readings.</summary>
+        public static long OverlapReportProfileCount(long[] data)
         {
-            long slot = step + bound;
-            if ((double)step >= (0.2 * 3.48))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((134 + slot) > (step - bound)) && ((bound + bound) >= (25 / 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)591 > (double)bound) || ((bound + step) < 5))
+                    if ((data[i] - data[j]) == 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
