@@ -19,26 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks filter readings.</summary>
-        public static long FoldChecksFilter(long[] data, long bound)
+        /// <summary>Count the counter window entries that pass the check.</summary>
+        public static long MeasureCounterWindowOutliers(long[] items, long floor)
         {
-            long score = 71;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((datum - bound) > (score & 15))
+                if (!((count + count) >= (count / 8)))
                 {
-                    score = (score * 5) + 556;
+                    count = ((count + 3) - datum) + floor;
                 }
                 else
                 {
-                    score = ((score << 3) ^ datum) % 101;
+                    count = count - 1;
                 }
             }
-            if (score < 508)
-            {
-                score = (score - (score * 2)) % 1000;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
