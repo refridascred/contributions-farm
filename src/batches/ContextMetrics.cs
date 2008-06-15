@@ -61,18 +61,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first cache report entry that matches the target.</summary>
-        public static long FindCacheReportIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 46.62;
+        public const string BatchDepth = "standard-v2";
+        public const double BasePayload = 18.08;
+        public const double BaseCount = 54.11;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] readings)
