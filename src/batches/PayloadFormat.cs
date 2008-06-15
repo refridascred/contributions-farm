@@ -56,31 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            if (((offset % 10) <= (offset + seed)) || (seed < (offset - offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset * 2) != (seed << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((2.0 * 2.0) <= (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Synced,
         }
     }
 }
