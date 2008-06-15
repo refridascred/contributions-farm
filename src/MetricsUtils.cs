@@ -56,19 +56,17 @@ namespace Common.Utilities
         public const string CacheCount = "primary";
         public const double LimitWindow = 31.35;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] readings, long floor)
+        /// <summary>Iterate the stream context series from a seed.</summary>
+        public static long StepStreamContext(long seed)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total << 2) ^ (seed + total)) % 65521;
+                total = (total ^ (total - (long)i)) % 97;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
     }
 }
