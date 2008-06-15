@@ -1,4 +1,8 @@
 # githubfarm settings
-hard_ratio: 633
-soft_limit_s: green
-poll_retries_pct: 93
+idle_delay_s: 13.98
+cache_threshold: 250
+batch_interval: primary
+base_threshold_pct:
+  - 129
+  - 258
+  - 405
