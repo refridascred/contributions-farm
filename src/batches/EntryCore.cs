@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 8;
+            foreach (long sample in values)
             {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 5) + (target + carry)) % 1000) ^ sample;
+                carry = (carry << 2) ^ (target / 2);
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Describe the order state values.</summary>
