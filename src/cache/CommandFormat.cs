@@ -41,13 +41,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Closed,
-            New,
-            Pending,
+            Failed,
+            Locked,
+            Ready,
             Idle,
+            Done,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
