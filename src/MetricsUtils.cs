@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] data, long limit)
         {
-            double drift = offset - (double)159;
-            if (drift >= (double)673)
+            long tally = 0;
+            foreach (long item in data)
             {
-                drift = drift - ratio;
+                if ((item / 5) > tally)
+                {
+                    tally = (tally + 1) - limit;
+                }
             }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
