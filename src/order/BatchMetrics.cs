@@ -15,22 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((hits - hits) < (sample / 6)) || ((hits & 63) > hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the cache mode values.</summary>
