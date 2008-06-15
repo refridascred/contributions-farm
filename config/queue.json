@@ -1,7 +1,23 @@
 {
-  "dry_run": 47.89,
-  "max_delay_s": "green",
-  "hard_retries_s": "blue",
-  "soft_depth_s": 30,
-  "checks_retries": 25
+  "flush_ttl_pct": [287, 121],
+  "hard_retries_s": true,
+  "base_timeout": {
+    "cache_ratio": {
+      "persist": 26,
+      "idle_size": "latest",
+      "account_size": "legacy"
+    },
+    "editor_retries": true,
+    "session_capacity": ["open", "stable", "open", "edge"],
+    "readonly": 54.9
+  },
+  "enabled": [37, 125],
+  "flush_timeout": {
+    "verbose": true,
+    "schema_retries": [175, 140, 71],
+    "notes_ttl": "edge",
+    "sync_ttl": 68,
+    "route_ttl": 7.17
+  },
+  "window_timeout": 100
 }
