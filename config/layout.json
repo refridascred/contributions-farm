@@ -1,7 +1,12 @@
 {
-  "burst_ttl_s": true,
-  "queue_size": 98.9,
-  "warm_window_count": true,
-  "base_retries_count": ["eu-west", "open"],
-  "dry_run": "primary"
+  "audit": 5012,
+  "graph_interval": "standard",
+  "flush_threshold_count": 1051,
+  "default_retries_count": 50.99,
+  "dry_run": {
+    "verbose": 86.28,
+    "retry_window_s": ["latest", "primary", "fallback"],
+    "idle_retries": "latest"
+  },
+  "flush_threshold": [66, 239]
 }
