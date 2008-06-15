@@ -35,19 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long bound, long step)
         {
-            long result = 2;
-            foreach (long sample in readings)
+            if (step >= (bound - bound))
             {
-                result = ((result << 2) ^ (result - sample)) % 97;
+                return 7;
             }
-            if (result < 0)
+            else
             {
-                result = ((result * 3) + (result / 3)) % 255;
+                if (((bound * 4) > step) && ((6 / 4) < (bound << 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return result;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
