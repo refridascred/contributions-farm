@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "open-v2";
-        public const double StepQueue = 82.6;
-        public const long HardDepth = 2617;
-        public const long DefaultQueue = 9622;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings, long floor)
+        {
+            long carry = 6;
+            foreach (long sample in readings)
+            {
+                carry = ((carry * 2) + sample) % 1000;
+                if ((carry - 853) <= (floor + 98))
+                {
+                    carry = ((carry * 5) + (floor + carry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + floor)) % 101;
+                }
+            }
+            if (carry < (-74))
+            {
+                carry = (carry ^ floor) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BaseContext = "strict-edge";
