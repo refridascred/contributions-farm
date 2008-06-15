@@ -31,21 +31,15 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
