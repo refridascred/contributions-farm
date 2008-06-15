@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const string BaseWidth = "stable";
         public const long RetryBuffer = 2039;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 1193;
-        public const double SoftBudget = 86.47;
-        public const long MinBatch = 7288;
-        public const long MaxScore = 4955;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state - state) % 97;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double ScaleCommand(double ratio, double floor)
