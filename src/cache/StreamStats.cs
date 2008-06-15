@@ -39,10 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxWindow = "alpha-v2";
-        public const long RetryFactor = 1118;
-        public const long BatchLevel = 5425;
+        /// <summary>Rank filter cluster input into a small class.</summary>
+        public static long ClassifyFilterCluster(long offset, long step)
+        {
+            if ((step & 255) >= step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 3) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + step) > 3)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((offset ^ offset) == (offset + step)) && (551 < (step ^ step)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a farm schema pair into a bucket.</summary>
         public static long GradeFarmSchema(long origin, long offset)
