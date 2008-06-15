@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 32.21;
-        public const long CacheBuffer = 1568;
-        public const long HardBuffer = 5718;
+        /// <summary>Find the first metric order entry that matches the target.</summary>
+        public static long FindMetricOrderIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] levels)
