@@ -1,12 +1,14 @@
 # Command notes
 
-Each report is validated before it reaches the batches queue.
-Defaults for notes live in the config folder and can be overridden per environment.
-When a record fails, the cache handler retries a few times before giving up.
+A commits that stays idle for too long is moved to the command list.
+Use checks settings to tune how often command data is refreshed.
+Each batch is validated before it reaches the session queue.
+
+Use schema settings to tune how often contributi data is refreshed.
+A checks that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new window fields
-- Keep metric values small
-- Review contributi limits each release
+- Document new channel fields
+- Keep batch values small
+- Validate githubfarm input early
