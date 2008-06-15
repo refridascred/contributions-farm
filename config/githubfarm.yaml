@@ -1,11 +1,9 @@
 # githubfarm settings
-idle_ttl_count: false
-soft_limit_pct:
-  - staging
-  - open
-  - eu-west
-  - fallback
-min_retries_count:
-  - 231
-  - 400
-max_ratio_pct: latest
+warm_capacity:
+  min_size_ms: 500
+  default_delay: 250
+  max_retries_ms: 500
+idle_window_ms: cached
+compress:
+  - green
+  - stable
