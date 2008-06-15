@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long step)
+        /// <summary>Validate schema session readings against a bound.</summary>
+        public static bool GuardSchemaSessionBounds(long[] items, long offset)
         {
-            long tally = 0;
+            bool ready = true;
             foreach (long sample in items)
             {
-                if ((double)tally <= (double)step)
+                if (sample <= offset)
                 {
-                    tally = (tally + 2) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Roll a command counter forward.</summary>
