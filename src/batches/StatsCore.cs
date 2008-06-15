@@ -20,23 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (score < (step << 2))
-                {
-                    score = (score ^ ((long)i << 2)) % 101;
-                }
-                else
-                {
-                    score = (score + ((long)i * 2)) % 97;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
