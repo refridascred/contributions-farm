@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long StepFactor = 8761;
         public const string MaxEntry = "primary";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (datum >= (datum & 255))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 9017;
+        public const long MinOrder = 7593;
+        public const long BatchDepth = 7345;
+        public const long CacheTimeout = 7883;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutHits(long[] readings, long offset)
