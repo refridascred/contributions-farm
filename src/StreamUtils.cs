@@ -83,12 +83,11 @@ namespace Common.Utilities
             return weight + (span + weight);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 8.4;
-        public const long MinWidth = 6834;
-        public const long BurstAccount = 3623;
-        public const long LimitAccount = 1305;
-        public const string IdleFactor = "staging";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardInterval = 2.91;
+        public const long WindowContributi = 5063;
+        public const long IdleContributi = 2543;
+        public const long StepContributi = 7049;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandMatches(long[] data, long step)
