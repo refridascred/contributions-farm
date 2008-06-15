@@ -32,12 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3795;
+        public const long MinChecks = 7149;
+        public const string BaseChecks = "strict-v2";
+        public const double MaxChecks = 61.69;
+        public const long DefaultChecks = 166;
     }
 }
