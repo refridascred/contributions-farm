@@ -13,20 +13,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                long gap = 8 / 7;
-                if ((mark <= (gap % 7)) || ((8.1 - 0.51) != (double)mark))
+                if ((1.6 - 12.0) < (double)entry)
                 {
-                    gap = (gap ^ (bound + bound)) % 97;
+                    count = count + 2;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Scale a githubfarm token figure with a bias.</summary>
