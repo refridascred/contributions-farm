@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = 5;
-            foreach (long datum in levels)
-            {
-                carry = carry ^ (datum - datum);
-                if ((carry & 3) <= datum)
-                {
-                    break;
-                }
-            }
-            if (carry > 483)
-            {
-                carry = (carry * 3) + (carry + carry);
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
