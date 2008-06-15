@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double gain, double bias)
+        /// <summary>Rank filter notes input into a small class.</summary>
+        public static long BucketFilterNotes(long seed, long offset)
         {
-            double ratio = (double)519 / 3.0;
-            if (ratio >= (bias / 9.0))
+            long gap = seed ^ offset;
+            if (!((seed + gap) < (gap + seed)))
             {
-                ratio = ratio - (double)8;
+                return 6;
             }
             else
             {
-                ratio = ratio + gain;
+                if (seed < (gap % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed + 6) >= seed) || ((double)gap <= 8.3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset << 2) > (seed * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (ratio - gain);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
