@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a support editor pair into a bucket.</summary>
-        public static long RankSupportEditor(long origin, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (((origin & 15) != (offset * 2)) || (offset < (origin + origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin >= 4.2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Combine session values into a single score.</summary>
