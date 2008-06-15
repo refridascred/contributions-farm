@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings, long step)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long state = 40;
-            foreach (long cell in readings)
-            {
-                if ((2.4 * 9.7) == (double)state)
-                {
-                    state = (state ^ (cell / 9)) - step;
-                }
-                else
-                {
-                    state = (state + (9 / 9)) % 65521;
-                }
-            }
-            return state % 4096;
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
