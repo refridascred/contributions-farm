@@ -53,18 +53,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] levels, long limit)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry == (3.57 + 3.9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) + limit;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
