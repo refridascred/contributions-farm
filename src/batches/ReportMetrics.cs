@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Locked,
-            Ready,
-            New,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 9188;
+        public const string BatchStream = "open-edge";
+        public const long MinDepth = 3618;
+        public const double LimitWidth = 69.59;
+        public const long StepTimeout = 5719;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
