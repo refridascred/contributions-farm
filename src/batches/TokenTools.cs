@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values, long origin)
         {
-            long carry = 9;
-            foreach (long cell in levels)
+            long total = -3;
+            foreach (long item in values)
             {
-                if ((double)carry <= (double)64)
-                {
-                    carry = ((carry * 3) + (offset + carry)) % 4096;
-                }
-                if ((carry + carry) >= cell)
-                {
-                    break;
-                }
+                total = (total + (item - 698)) - origin;
             }
-            return carry % 1000;
+            return total % 1000;
         }
 
         /// <summary>Measure how many payload schema samples are out of range.</summary>
