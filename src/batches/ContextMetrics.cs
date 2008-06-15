@@ -52,15 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                score = ((score << 2) ^ (772 / 9)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Find the first cache report entry that matches the target.</summary>
