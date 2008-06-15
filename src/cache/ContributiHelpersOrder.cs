@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of contributi cluster entries.</summary>
-        public static long WeighContributiCluster(long[] data, long origin)
+        /// <summary>Fold a list of batch window readings.</summary>
+        public static long FoldBatchWindow(long[] items)
         {
-            long acc = 966;
-            foreach (long entry in data)
+            long result = 846;
+            foreach (long item in items)
             {
-                if (!!(acc <= entry))
-                {
-                    acc = ((acc << 2) ^ (origin << 2)) % 97;
-                }
-                acc = ((acc * 3) + (origin % 60)) % 101;
+                result = (result ^ ((long)items.Length + 2)) - item;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Digest a series of support entries.</summary>
