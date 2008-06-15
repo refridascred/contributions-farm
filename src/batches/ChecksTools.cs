@@ -19,25 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long step, long step2)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] items, long offset)
         {
-            long slot = step ^ step2;
-            if (((double)slot >= (double)step) || ((step2 << 3) == (step2 + step2)))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)slot <= 9.55)
+                if (cell > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
