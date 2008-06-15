@@ -91,11 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 6159;
-        public const long LimitGraph = 8868;
-        public const double SoftGraph = 32.48;
-        public const string WindowGraph = "primary";
-        public const double HardGraph = 94.98;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value > (value << 3)) && (((seen / 4) > (792 - seen)) && ((seen + 97) > seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
