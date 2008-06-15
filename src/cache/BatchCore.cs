@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine channel entry values into a single score.</summary>
-        public static long CombineChannelEntry(long[] readings, long bound)
+        /// <summary>Grade a metrics checks value against two limits.</summary>
+        public static long GradeMetricsChecks(long offset, long limit)
         {
-            long anchor = 92;
-            foreach (long reading in readings)
+            long delta = offset ^ limit;
+            if ((double)offset <= (double)delta)
             {
-                anchor = (((anchor << 3) ^ (bound & 127)) % 255) ^ reading;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((offset >= (-8)) || (limit > (delta << 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (1.0 * 0.9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit >> 2) != (944 - 956)) || ((limit ^ delta) >= (limit + delta)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate schema samples.</summary>
