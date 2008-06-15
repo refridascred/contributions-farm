@@ -27,13 +27,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long anchor = 280;
+            foreach (long item in levels)
+            {
+                anchor = (anchor ^ (item ^ item)) % 4096;
+                if ((double)anchor < (4.6 * 9.03))
+                {
+                    anchor = (anchor - (item % 24)) % 65521;
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
