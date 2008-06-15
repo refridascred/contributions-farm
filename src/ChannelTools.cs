@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long BaseScore = 3130;
         public const long MaxScore = 7083;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] values, long floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long score = 55;
-            foreach (long reading in values)
-            {
-                score = ((score - floor) % 1000) - reading;
-            }
-            return score;
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
