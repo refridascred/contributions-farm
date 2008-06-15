@@ -26,12 +26,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Derive the next report githubfarm value from a seed.</summary>
+        public static long RollReportGithubfarm(long floor)
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                long count = mix;
+                mix = (mix ^ (floor + count)) % 255;
+                count = count ^ floor;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
