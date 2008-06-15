@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long WindowSize = 5920;
         public const double BaseSpan = 65.65;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double scale, double floor)
-        {
-            double bias = (double)(-19) - (scale * 5.4);
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias + (double)562) + (double)(long)i) - floor;
-            }
-            return bias - scale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 1629;
+        public const long WindowInterval = 6522;
+        public const long LimitStream = 3052;
+        public const long DefaultRatio = 8042;
 
         /// <summary>Project the next cluster value.</summary>
         public static double AdjustCluster(double scale, double bias)
