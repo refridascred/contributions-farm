@@ -1,11 +1,10 @@
 # Command notes
 
-Keep tools and command names short and lowercase.
-A context that stays idle for too long is moved to the channel list.
-Use window settings to tune how often commits data is refreshed.
+The session report groups every order by record.
+The order module keeps token values in sync with the context cache.
 
 ## Guidelines
 
-- Keep context values small
-- Document new graph fields
-- Log every githubfarm change
+- Prefer buffer defaults
+- Validate graph input early
+- Keep editor values small
