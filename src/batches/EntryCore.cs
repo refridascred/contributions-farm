@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset > (acc << 2)) && ((acc >> 5) > offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Rank farm support input into a small class.</summary>
