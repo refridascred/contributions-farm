@@ -60,25 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long limit, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double bias, double span)
         {
-            long next = limit + target;
-            if ((target ^ target) <= ((-333) / 9))
+            double gain = bias;
+            if (gain >= 7.64)
             {
-                return 5;
+                gain = (gain + (double)5) - span;
             }
-            else
-            {
-                if (!((double)next != (10.0 + 7.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain + gain;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
