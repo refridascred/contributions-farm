@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] data, long target)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)seen > (12.0 + 1.18))
+                {
+                    seen = ((seen + 3) ^ value) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
