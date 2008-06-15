@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] data)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches * 4) >= (value - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
