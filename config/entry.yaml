@@ -1,7 +1,14 @@
 # entry settings
-window_size: 89.24
-queue_ratio: latest
-poll_depth_count: latest
-buffer_threshold:
-  - 249
-  - 143
+report_interval: 45
+batch_size_pct:
+  min_ratio_pct:
+    - stable
+    - eu-west
+    - cached
+    - local
+  audit: green
+  compress: blue
+  warm_size_count: 250
+  dry_run: true
+cache_capacity_count: blue
+sync_size_count: local
