@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of contributi cluster entries.</summary>
