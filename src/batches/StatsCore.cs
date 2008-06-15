@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 9294;
-        public const long DefaultWidth = 9073;
-        public const double WindowDepth = 44.76;
-        public const long LimitCommits = 4371;
-        public const long SoftWidth = 8253;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items, long limit)
+        {
+            long mark = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length != (limit & 31)) || (6 > (cell % 16)))
+                {
+                    mark = mark ^ (cell + limit);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double SmoothCache(double bias, double span)
