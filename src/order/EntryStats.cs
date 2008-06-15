@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many batch context samples are out of range.</summary>
-        public static long TallyBatchContextGaps(long[] values, long offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((offset << 2) <= sample)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
