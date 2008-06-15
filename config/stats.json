@@ -1,6 +1,11 @@
 {
-  "readonly": [434, 216, 268],
-  "base_capacity_s": 31,
-  "warm_limit_ms": "primary",
-  "max_timeout_pct": 81
+  "hard_retries": 30,
+  "batch_timeout": "blue",
+  "session_limit": {
+    "hard_interval_pct": 250,
+    "warm_delay_pct": 7310,
+    "warm_capacity_count": "fallback"
+  },
+  "window_timeout": 6363,
+  "default_limit": "blue"
 }
