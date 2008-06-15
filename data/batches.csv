@@ -1,7 +1,7 @@
-id,token,state
-1,737,staging
-2,86.6,6.2
-3,latest,82.42
-4,451,standard
-5,721,89.92
-6,439,blue
+id,level,state,ratio
+1,19.95,blue,legacy
+2,0.42,52.7,936
+3,legacy,303,360
+4,267,678,standard
+5,611,edge,53.11
+6,standard,26.72,680
