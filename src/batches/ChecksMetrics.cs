@@ -33,11 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
