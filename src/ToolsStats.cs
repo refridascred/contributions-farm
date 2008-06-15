@@ -83,10 +83,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "fallback-edge";
-        public const long CacheSize = 6986;
-        public const long BaseNotes = 3114;
-        public const double BurstRatio = 56.45;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 7220;
+        public const long DefaultOrder = 6640;
+        public const long MinScore = 7119;
     }
 }
