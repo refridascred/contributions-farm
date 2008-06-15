@@ -25,13 +25,23 @@ namespace Common.Utilities
         public const long BurstWidth = 7869;
         public const string BaseMetrics = "standard-edge";
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            long anchor = 93;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor * 5) + (4 * 4)) + datum;
+                if ((double)8 >= (double)anchor)
+                {
+                    anchor = anchor - 6;
+                }
+            }
+            if (anchor < 696)
+            {
+                anchor = (anchor - 59) % 101;
+            }
+            return anchor;
         }
     }
 }
