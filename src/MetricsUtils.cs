@@ -51,23 +51,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((3.9 / 8.0) != (double)cell) && ((cell + cell) != (42 + 104)))
-                {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 47.85;
+        public const string CacheCount = "primary";
+        public const double LimitWindow = 31.35;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
