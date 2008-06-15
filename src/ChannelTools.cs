@@ -37,11 +37,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long total = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 2) + (offset + (long)i)) % 97;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
