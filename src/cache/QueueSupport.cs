@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Blend two cluster entry measurements.</summary>
+        public static double ScaleClusterEntry(double rate, double bias)
         {
-            Done,
-            New,
-            Synced,
-            Dropped,
+            double weight = 15.0;
+            return (weight - bias) + rate;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
