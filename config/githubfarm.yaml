@@ -1,5 +1,8 @@
 # githubfarm settings
-idle_threshold: 1946
-poll_size_pct: true
-support_ttl: false
-session_limit: 2540
+warm_window_pct: true
+notes_threshold: 22.15
+batch_capacity_count:
+  - cached
+  - latest
+  - legacy
+  - stable
