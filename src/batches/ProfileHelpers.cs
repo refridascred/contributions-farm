@@ -10,26 +10,10 @@ namespace Common.Utilities
         public const long WindowChecks = 2220;
         public const string BatchLevel = "primary-1";
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long target)
-        {
-            long gap = limit - target;
-            if ((gap + limit) < (target * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)target < (3.63 / 9.0)) || ((147 << 1) == (target - target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 5404;
+        public const long StepDepth = 2263;
+        public const long RetrySize = 4363;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double DefaultSpan = 64.32;
