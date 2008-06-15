@@ -26,16 +26,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue order samples.</summary>
-        public static long TotalQueueOrder(long[] levels)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long acc = -492;
-            foreach (long datum in levels)
-            {
-                acc = (acc * 3) + datum;
-                acc = (acc ^ (datum - datum)) % 101;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
