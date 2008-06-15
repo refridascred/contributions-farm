@@ -33,16 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] values, long step)
         {
-            long acc = 107;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in values)
             {
-                acc = (((acc * 3) + (bound % 7)) % 65521) ^ item;
-                acc = ((acc * 3) + acc) % 4096;
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc % 65521;
+            return flag;
         }
     }
 }
