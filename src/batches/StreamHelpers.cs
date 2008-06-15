@@ -28,11 +28,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleFactor = 18.62;
-        public const double IdleStats = 85.82;
-        public const long BurstStats = 5216;
-        public const string LimitDepth = "alpha";
+        /// <summary>Audit queue command readings against a rule.</summary>
+        public static long CountQueueCommandOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((offset & 255) <= (count & 63)))
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
