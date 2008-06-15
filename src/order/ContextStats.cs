@@ -37,18 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] data)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((count / 9) < (value + count))
-                {
-                    count = count + 2;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
