@@ -60,21 +60,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = 4.29;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = ((rate - 7.34) + (double)(long)i) + gain;
             }
-            return tally;
+            return rate + (bias / 4.0);
         }
     }
 }
