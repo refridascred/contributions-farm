@@ -1,8 +1,9 @@
-id,level,score,state,token
-1,green,595,85,staging
-2,local,732,98.31,41.97
-3,795,365,10.23,blue
-4,latest,725,24.07,69.97
-5,109,12.74,local,1.06
-6,371,primary,93.48,staging
-7,31.74,61.84,434,974
+id,token,score
+1,strict,60.42
+2,edge,53.47
+3,66.97,latest
+4,14.96,513
+5,94.72,823
+6,edge,911
+7,latest,60.17
+8,eu-west,152
