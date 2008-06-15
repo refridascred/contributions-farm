@@ -81,22 +81,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] values, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = 909;
-            foreach (long item in values)
-            {
-                if (limit <= (limit + acc))
-                {
-                    acc = (acc * 4) + 16;
-                }
-                if (((limit % 5) == (item + item)) || ((item / 6) >= (limit + acc)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Closed,
+            New,
+            Done,
+            Dropped,
         }
     }
 }
