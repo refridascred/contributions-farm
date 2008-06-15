@@ -1,26 +1,33 @@
 # support settings
-record_limit: staging
-strict: legacy
-poll_ttl:
-  max_limit:
-    - staging
+retry_depth_ms:
+  audit: open
+  metric_ttl:
+    - primary
     - standard
-  base_interval_pct: eu-west
-  min_retries_ms: staging
-  enabled: legacy
-  hard_delay: cached
-  max_size_pct:
-    flush_threshold_s: fallback
-    soft_depth_pct: 9314
-    dry_run:
-      - 274
-      - 5
-      - 323
-    filter_retries: false
-    enabled: false
-    base_delay_s:
-      - 465
-      - 327
-      - 233
-      - 399
-base_capacity_ms: false
+    - fallback
+    - local
+  retry_timeout: 7910
+  burst_threshold: 65
+  persist:
+    - 34
+    - 163
+dry_run:
+  - eu-west
+  - standard
+  - staging
+batches_retries:
+  metric_size: false
+  poll_ttl:
+    persist: 80
+    cache_timeout: 43
+    layout_interval: blue
+    readonly: true
+  tools_ratio: eu-west
+  dry_run:
+    poll_limit_ms: 2.93
+    readonly:
+      - edge
+      - primary
+    stats_threshold: 18
+    compress: 500
+    soft_threshold: 38.71
