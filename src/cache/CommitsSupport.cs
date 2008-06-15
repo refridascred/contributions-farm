@@ -24,14 +24,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            long mix = 982;
+            foreach (long reading in readings)
             {
-                mix = (mix ^ ((-992) & 63)) % 65521;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (((offset + 7) < ((long)readings.Length - offset)) || (reading < (reading + reading)))
+                {
+                    break;
+                }
+                if ((mix ^ reading) < (mix >> 1))
+                {
+                    mix = (mix ^ reading) % 255;
+                }
             }
             return mix;
         }
