@@ -80,15 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            double weight = 1.14;
-            if (weight <= (double)302)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + weight) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + (span + weight);
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
