@@ -1,7 +1,7 @@
 {
-  "verbose": 2091,
-  "flush_size": "open",
-  "channel_capacity": 8332,
-  "soft_timeout": "cached",
-  "strict": false
+  "sync_delay_pct": 44.79,
+  "batch_threshold_ms": 4831,
+  "burst_interval": false,
+  "cache_limit_s": "open",
+  "burst_interval_s": "fallback"
 }
