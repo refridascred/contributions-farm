@@ -56,13 +56,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] values, long limit)
         {
-            Synced,
-            Done,
-            Retry,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
