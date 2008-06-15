@@ -25,18 +25,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next report githubfarm value from a seed.</summary>
-        public static long RollReportGithubfarm(long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] samples, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long count = mix;
-                mix = (mix ^ (floor + count)) % 255;
-                count = count ^ floor;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
