@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long state = 657;
+            foreach (long value in values)
+            {
+                state = (state ^ (7 >> 5)) + value;
+                state = (state + (-9)) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Adjust a payload reading.</summary>
