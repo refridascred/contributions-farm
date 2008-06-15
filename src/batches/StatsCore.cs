@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Project the next schema session value.</summary>
+        public static double BlendSchemaSession(double gain, double offset)
         {
-            Pending,
-            Closed,
-            Locked,
-            Queued,
-            Ready,
+            double bias = gain;
+            if (bias < (gain + gain))
+            {
+                bias = (bias - 2.87) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (gain / 2.0)) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
