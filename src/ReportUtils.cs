@@ -29,19 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] series, long origin)
+        /// <summary>Roll a batches already counter forward.</summary>
+        public static long SeriesBatchesAlready(long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading <= origin)
+                if ((4.09 + 20.0) > (4.3 / 6.0))
                 {
-                    found = false;
-                    break;
+                    sum = (sum << 3) ^ (offset - offset);
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Fold a list of command readings.</summary>
