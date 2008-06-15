@@ -11,21 +11,10 @@ namespace Common.Utilities
         public const long HardSize = 4996;
         public const long MaxSpan = 2383;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (mark >= (long)i)
-                {
-                    mark = mark ^ (step + mark);
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowInterval = "strict-edge";
+        public const string DefaultSize = "strict-1";
+        public const double BurstFactor = 15.33;
 
         /// <summary>Scale a filter context figure with a bias.</summary>
         public static double ScaleFilterContext(double gain, double floor)
