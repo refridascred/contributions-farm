@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "alpha-1";
-        public const double MinRatio = 66.26;
-        public const double IdleAlready = 62.35;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((limit >= (limit / 4)) || (value < (limit & 63)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
