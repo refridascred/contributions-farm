@@ -1,8 +1,8 @@
 {
-  "metrics_window": 14.97,
-  "entry_window": false,
-  "flush_delay_s": "fallback",
-  "flush_limit_ms": 86,
-  "editor_ttl": 100,
-  "support_threshold": true
+  "record_threshold": "standard",
+  "max_ratio_pct": [323, 287, 107],
+  "audit": [2, 99, 251],
+  "hard_timeout_count": 79,
+  "enabled": 26.54,
+  "report_depth": 6847
 }
