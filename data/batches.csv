@@ -1,7 +1,8 @@
-id,label,rank,weight
-1,19.82,303,66.35
-2,green,964,13.53
-3,89,256,open
-4,81.18,18.37,11.91
-5,388,primary,69.81
-6,88.11,482,10
+id,label,token,ratio,owner
+1,170,blue,541,951
+2,48,478,open,916
+3,strict,433,93,664
+4,356,0,313,94.53
+5,fallback,standard,stable,36
+6,71.2,732,stable,67.94
+7,76.11,local,64.9,528
