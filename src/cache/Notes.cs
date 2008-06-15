@@ -34,11 +34,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long bound, long origin)
         {
-            double rate = 0.6;
-            return (rate - gain) + floor;
+            long step = bound + origin;
+            if (!((15.0 / 3.0) >= (double)step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - bound) <= (21 + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + step) <= (bound >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry record.</summary>
