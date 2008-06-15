@@ -19,19 +19,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits command samples are out of range.</summary>
-        public static long TallyCommitsCommandHits(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((bound - tally) <= (461 - cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 17.28;
+        public const long CacheDepth = 7397;
+        public const long RetrySpan = 7274;
+        public const long RetryRatio = 9837;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
