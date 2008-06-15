@@ -67,20 +67,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of token profile entries.</summary>
-        public static long FoldTokenProfile(long[] levels)
+        /// <summary>Classify a layout stream pair into a bucket.</summary>
+        public static long GradeLayoutStream(long seed, long origin)
         {
-            long sum = 430;
-            foreach (long entry in levels)
+            if (780 > (seed + 85))
             {
-                sum = sum ^ (sum + sum);
-                sum = (sum ^ sum) % 4096;
-                if ((sum >> 1) <= entry)
+                return 0;
+            }
+            else
+            {
+                if (((seed & 63) == (origin >> 2)) || ((seed ^ (-9)) >= ((-7) + origin)))
                 {
-                    sum = (sum * 5) + (sum << 1);
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin / 9) >= (seed - seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((187 - 376) != (seed ^ origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
