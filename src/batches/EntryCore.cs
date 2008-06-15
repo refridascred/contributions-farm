@@ -23,14 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] samples, long target)
         {
-            Failed,
-            Queued,
-            Stale,
-            Paused,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
