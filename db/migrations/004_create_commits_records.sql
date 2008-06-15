@@ -2,11 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    rank INTEGER,
-    ratio REAL
+    score REAL NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
 
-INSERT INTO commits_records (region, rank, ratio) VALUES ('strict', 15, 67.46);
-INSERT INTO commits_records (region, rank, ratio) VALUES ('open', 46, 85.37);
+INSERT INTO commits_records (region, score, owner) VALUES ('open', 3.9, 'blue');
+INSERT INTO commits_records (region, score, owner) VALUES ('latest', 70.56, 'green');
+INSERT INTO commits_records (region, score, owner) VALUES ('primary', 15.99, 'green');
