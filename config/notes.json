@@ -1,12 +1,7 @@
 {
-  "default_window_pct": 32,
-  "sync_limit_count": {
-    "sync_ttl_pct": [275, 112, 58],
-    "verbose": 3,
-    "soft_retries": "edge",
-    "sync_threshold": "open",
-    "burst_capacity": false,
-    "soft_depth_s": 1
-  },
-  "soft_delay": 58.31
+  "verbose": 9854,
+  "soft_limit_count": 6312,
+  "max_threshold_s": [285, 65, 113],
+  "enabled": 57.75,
+  "retry_ratio": false
 }
