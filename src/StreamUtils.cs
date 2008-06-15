@@ -38,28 +38,35 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a order commits value against two limits.</summary>
-        public static long ClassifyOrderCommits(long offset, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long step, long target)
         {
-            if (0 > (bound - 857))
+            if (((step % 8) < target) && (18.0 >= (13.0 * 8.8)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((offset - offset) == (bound & 63))
+                if ((1.0 > (7.72 * 1.9)) || ((6.5 - 7.15) != (double)target))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)offset >= (double)7)
+                    if ((target - step) < 7)
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        if (!((target << 2) == (target * 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
