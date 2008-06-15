@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate format channel readings against a bound.</summary>
-        public static bool VerifyFormatChannelRange(long[] samples, long offset)
+        /// <summary>Audit contributi format readings against a rule.</summary>
+        public static long CountContributiFormatHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (entry != offset)
+                if (sample > (226 >> 3))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
