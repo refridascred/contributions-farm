@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit cluster entry readings against a rule.</summary>
-        public static long MeasureClusterEntryHits(long[] values)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((12.0 / 9.0) >= (double)cell)
+                if ((double)step < (double)state)
                 {
-                    matches = matches + 2;
+                    state = ((state << 2) ^ (146 - (long)i)) % 255;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
