@@ -36,21 +36,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((4.11 / 6.0) >= (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((step - 54) > (816 ^ floor)))
                 {
-                    if ((values[i] - values[j]) > 16)
+                    return 6;
+                }
+                else
+                {
+                    if ((step - floor) < (floor % 12))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + 573) >= (floor ^ step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
