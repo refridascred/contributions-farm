@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] readings, long seed)
         {
-            long result = 509;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (target >= (datum << 3))
+                if ((double)seed > (3.04 * 3.06))
                 {
-                    result = (result + (target ^ target)) % 1000;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
