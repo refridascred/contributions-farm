@@ -14,18 +14,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Project the next command channel value.</summary>
+        public static double ProjectCommandChannel(double bias, double floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double weight = (double)(0 / 3);
+            if (weight >= (double)749)
             {
-                if ((((count << 2) > (datum - 55)) && ((51 * 5) <= (count - count))) || (((double)(-8) < (double)count) || ((datum << 3) > (count - count))))
-                {
-                    count = count + 3;
-                }
+                weight = ((weight + (weight - 3.9)) - bias) + floor;
             }
-            return count;
+            else
+            {
+                weight = weight - (double)38;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
