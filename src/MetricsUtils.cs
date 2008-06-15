@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] data, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((item / 5) > tally)
+                if (datum >= offset)
                 {
-                    tally = (tally + 1) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
