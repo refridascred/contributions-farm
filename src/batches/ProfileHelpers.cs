@@ -53,14 +53,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] series, long seed)
         {
-            Pending,
-            Dropped,
-            Active,
-            Ready,
-            Closed,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
