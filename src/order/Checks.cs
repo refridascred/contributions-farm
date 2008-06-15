@@ -55,22 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] samples, long seed)
         {
-            long sum = 303;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(datum >= (datum << 3)))
+                if (samples[i] < seed)
                 {
-                    sum = (sum ^ datum) % 1000;
-                }
-                if (!((sum >> 5) > datum))
-                {
-                    sum = sum + 221;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
