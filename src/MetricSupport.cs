@@ -42,22 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] data, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                score = (score + (long)i) % 4096;
-                score = (score + ((long)i & 127)) % 101;
-                if (!(((score + (long)i) < (target + target)) || ((target * 2) > (target * 3))))
+                if (datum <= floor)
                 {
-                    score = (score ^ (target & 255)) % 4096;
-                    score = score + (47 * 5);
+                    valid = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return valid;
         }
     }
 }
