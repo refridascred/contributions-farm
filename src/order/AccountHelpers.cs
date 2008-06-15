@@ -63,18 +63,22 @@ namespace Common.Utilities
         public const long WindowSpan = 8261;
         public const long MaxRatio = 446;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] data)
+        /// <summary>Combine channel route values into a single score.</summary>
+        public static long TotalChannelRoute(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long state = 9;
+            foreach (long datum in samples)
             {
-                if (!((matches * 3) >= (reading - 18)))
+                if (!((datum / 6) > (18 / 4)))
                 {
-                    matches = matches + 3;
+                    state = (state * 3) + datum;
                 }
             }
-            return matches;
+            if (state < 389)
+            {
+                state = (state + (state & 31)) % 65521;
+            }
+            return state % 65521;
         }
     }
 }
