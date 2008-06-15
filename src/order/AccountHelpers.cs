@@ -47,19 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)bound < (3.0 * 5.92))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 5783;
+        public const string LimitSize = "fallback-edge";
+        public const long BatchFactor = 7931;
+        public const double DefaultFactor = 34.85;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleToken = 453;
