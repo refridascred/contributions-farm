@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "strict-1";
+        public const long RetryBuffer = 4841;
+        public const double BatchWidth = 24.86;
+        public const string StepBuffer = "fallback-edge";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TallyPayload(long[] levels)
