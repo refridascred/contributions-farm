@@ -13,34 +13,34 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank filter cluster input into a small class.</summary>
-        public static long ClassifyFilterCluster(long offset, long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long floor, long origin)
         {
-            if ((step & 255) >= step)
+            if ((floor / 3) >= (53 + origin))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((offset << 3) >= step)
+                if (origin <= (origin + floor))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset + step) > 3)
+                    if ((double)floor > (2.0 - 10.0))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        if (((offset ^ offset) == (offset + step)) && (551 < (step ^ step)))
+                        if ((3 % 8) < (floor % 2))
                         {
                             return 2;
                         }
                         else
                         {
-                            return 1;
+                            return 8;
                         }
                     }
                 }
