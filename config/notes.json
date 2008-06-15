@@ -1,10 +1,12 @@
 {
-  "record_threshold": "eu-west",
-  "max_ratio_count": false,
-  "idle_interval": {
-    "warm_threshold": true,
-    "min_depth_s": 1764,
-    "strict": 174
+  "poll_delay_ms": false,
+  "enabled": "primary",
+  "max_ratio_pct": {
+    "contributi_interval": "standard",
+    "warm_capacity": "cached",
+    "schema_window": [225, 13, 281],
+    "enabled": "strict"
   },
-  "stream_capacity": false
+  "sync_depth_pct": 7,
+  "burst_size_pct": "blue"
 }
