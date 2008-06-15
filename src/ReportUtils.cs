@@ -44,13 +44,19 @@ namespace Common.Utilities
         public const string StepFormat = "strict-v2";
         public const string DefaultFormat = "latest-1";
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double floor)
         {
-            Synced,
-            Dropped,
-            Locked,
-            Failed,
+            double load = weight;
+            if (load < (1.56 + weight))
+            {
+                load = load - 4.8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (weight + floor);
         }
 
         /// <summary>Grade a cache account value against two limits.</summary>
