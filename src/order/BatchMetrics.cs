@@ -34,39 +34,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long step, long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long offset = step + origin;
-            if (((origin + offset) > (origin * 4)) && ((origin / 6) == (step & 31)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (offset * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (17.0 < (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin * 2) > origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
