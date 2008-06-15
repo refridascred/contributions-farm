@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] readings, long offset)
         {
-            Active,
-            Synced,
-            Paused,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((offset >> 1) <= sample) || !(offset <= sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue stats.</summary>
