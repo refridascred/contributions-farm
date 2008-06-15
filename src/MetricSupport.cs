@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Look up the position of a route payload sample.</summary>
+        public static long FindRoutePayloadIndex(long[] samples, long bound)
         {
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
