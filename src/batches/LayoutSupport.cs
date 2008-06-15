@@ -51,18 +51,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many account stream samples are out of range.</summary>
-        public static long AuditAccountStreamGaps(long[] series)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading + 33) < (count + reading))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix << 2) ^ mix) % 255;
+                mix = (mix ^ (260 + mix)) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
