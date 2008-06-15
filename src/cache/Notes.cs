@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (offset - ratio) / 3.0;
+            if (gain <= (double)1)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + (double)895;
             }
-            return count;
+            return gain - (gain / 6.0);
         }
 
         /// <summary>Describe the route mode values.</summary>
