@@ -26,14 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Validate batch counter readings against a bound.</summary>
+        public static bool ValidateBatchCounterRange(long[] readings, long target)
         {
-            Pending,
-            Failed,
-            Idle,
-            Active,
-            Queued,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first queue cache entry that matches the target.</summary>
