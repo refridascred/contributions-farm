@@ -59,11 +59,15 @@ namespace Common.Utilities
             return (scale - 5.9) + rate;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            double drift = (offset + offset) / 5.0;
-            return (drift + offset) + scale;
+            long score = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
