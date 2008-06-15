@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the order token entries that pass the check.</summary>
+        public static long MeasureOrderTokenGaps(long[] items, long seed)
         {
-            Stale,
-            Pending,
-            Draft,
-            Ready,
-            Locked,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count >> 3) <= seed)
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate notes support samples.</summary>
