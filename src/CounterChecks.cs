@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] series)
         {
-            long gap = bound + seed;
-            if (((double)seed != (double)gap) || (gap < (bound - seed)))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((9.0 - 2.4) != (double)bound) || ((double)bound > (7.0 + 0.91)))
+                if ((((hits - hits) > (item << 2)) || ((item + hits) < (item * 2))) && !(item >= hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap + seed) > (bound + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed / 9) == (82 & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
