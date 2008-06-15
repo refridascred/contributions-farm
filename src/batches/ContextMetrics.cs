@@ -20,17 +20,38 @@ namespace Common.Utilities
             return mean - (1.6 - mean);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((target & 1) != (limit - limit)) && ((target / 9) > ((-31) & 1)))
             {
-                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((target * 5) == (5 % 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((((-4) >> 2) <= (target + target)) && ((818 - target) < target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit > (limit + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
