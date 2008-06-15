@@ -1,6 +1,22 @@
 # githubfarm settings
-commits_capacity: 5752
-burst_timeout_s: false
-burst_limit_count: 24.35
-compress: blue
-payload_threshold: 44
+batch_threshold_ms: 19.93
+poll_ttl: false
+cache_window_s:
+  context_timeout: 8963
+  warm_threshold_ms: 52.24
+  sync_size_ms:
+    burst_size_ms: 4750
+    batch_ttl_pct:
+      - 25
+      - 345
+    retry_threshold:
+      - local
+      - stable
+    report_retries: strict
+  min_interval_s: 41.39
+  soft_limit_ms: staging
+poll_size_s: 7.09
+soft_ttl_count:
+  - stable
+  - local
+  - blue
