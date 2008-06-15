@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardScore = "latest";
+        public const long HardStats = 8766;
+        public const string WindowInterval = "staging-v2";
+        public const long MinFactor = 2320;
+        public const double MinStats = 13.57;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmHits(long[] readings, long target)
