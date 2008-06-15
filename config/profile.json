@@ -1,8 +1,7 @@
 {
-  "cache_timeout_s": "latest",
-  "base_depth": "fallback",
-  "readonly": 39.76,
-  "audit": 1970,
-  "max_interval_ms": true,
-  "enabled": "fallback"
+  "compress": "primary",
+  "poll_window_s": "strict",
+  "channel_ttl": ["green", "latest", "cached"],
+  "sync_limit": "blue",
+  "retry_retries_s": 77
 }
