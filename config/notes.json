@@ -1,6 +1,7 @@
 {
-  "strict": 28,
-  "flush_interval_s": "primary",
-  "command_capacity": 30.08,
-  "enabled": [146, 128, 21]
+  "readonly": "local",
+  "dry_run": 500,
+  "account_ttl": ["fallback", "open"],
+  "persist": "edge",
+  "base_timeout": 10.76
 }
