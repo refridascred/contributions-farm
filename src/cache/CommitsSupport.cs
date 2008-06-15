@@ -42,10 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 2261;
-        public const double HardFactor = 56.97;
-        public const long BaseWidth = 7425;
+        /// <summary>Find the first report checks entry that matches the target.</summary>
+        public static long LocateReportChecksIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double SoftToken = 57.1;
