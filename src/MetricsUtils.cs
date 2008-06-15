@@ -20,18 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] samples, long step)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < (19.0 / 9.0))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            Synced,
+            Failed,
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
