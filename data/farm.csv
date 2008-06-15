@@ -1,6 +1,8 @@
-id,region,rank,owner
-1,801,328,511
-2,blue,465,fallback
-3,open,160,eu-west
-4,59,standard,400
-5,546,13.81,459
+id,owner,ratio
+1,stable,legacy
+2,73.17,449
+3,677,green
+4,62,612
+5,266,blue
+6,local,60
+7,54,blue
