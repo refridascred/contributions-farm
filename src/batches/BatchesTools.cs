@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the contributi format entries that pass the check.</summary>
+        public static long TallyContributiFormatGaps(long[] items)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((long)items.Length % 10) <= (datum + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate window session readings against a bound.</summary>
