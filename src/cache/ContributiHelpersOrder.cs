@@ -12,10 +12,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 418;
-        public const double BaseBatches = 84.28;
-        public const long StepBatches = 9563;
+        /// <summary>Digest a series of contributi cluster entries.</summary>
+        public static long WeighContributiCluster(long[] data, long origin)
+        {
+            long acc = 966;
+            foreach (long entry in data)
+            {
+                if (!!(acc <= entry))
+                {
+                    acc = ((acc << 2) ^ (origin << 2)) % 97;
+                }
+                acc = ((acc * 3) + (origin % 60)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
