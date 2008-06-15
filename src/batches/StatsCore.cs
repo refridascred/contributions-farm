@@ -52,11 +52,13 @@ namespace Common.Utilities
         public const long LimitSpan = 9469;
         public const string SoftCluster = "alpha-v2";
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            Retry,
+            Locked,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
