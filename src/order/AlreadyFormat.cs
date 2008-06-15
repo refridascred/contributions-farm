@@ -56,21 +56,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count queue cache pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCacheCount(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = step + seed;
+            if (!(cur < (seed << 3)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step - 493) > (step & 7))
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
+                    return 3;
+                }
+                else
+                {
+                    if ((54 + seed) < step)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (9.3 / 4.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
