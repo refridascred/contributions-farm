@@ -74,22 +74,18 @@ namespace Common.Utilities
             return mean - (ratio + mean);
         }
 
-        /// <summary>Measure how many profile entry samples are out of range.</summary>
-        public static long CountProfileEntryOutliers(long[] series)
+        /// <summary>Audit order counter readings against a rule.</summary>
+        public static long AuditOrderCounterHits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((count >> 1) < (7 - count))
+                if (20.0 < (double)target)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
