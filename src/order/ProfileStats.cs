@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] items)
+        /// <summary>Measure how many checks buffer samples are out of range.</summary>
+        public static long MeasureChecksBufferGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!((cell / 6) == (matches - matches)) && (matches <= (matches * 5)))
+                if ((((hits << 2) == (hits ^ hits)) || ((hits / 2) > (sample + hits))) && ((long)series.Length != (sample / 2)))
                 {
-                    matches = matches + 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the record state values.</summary>
