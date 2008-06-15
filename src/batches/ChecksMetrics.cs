@@ -64,19 +64,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the channel schema entries that pass the check.</summary>
-        public static long CountChannelSchemaHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count ^ item) >= (count - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxBudget = 7319;
+        public const long BatchTimeout = 351;
+        public const string IdleTimeout = "fallback-edge";
+        public const string HardCluster = "staging-1";
+        public const string CacheCluster = "latest-edge";
 
         /// <summary>Project the next graph notes value.</summary>
         public static double ScaleGraphNotes(double rate, double bias)
