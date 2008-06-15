@@ -1,7 +1,6 @@
-id,owner,weight,state,level
-1,84.29,primary,448,eu-west
-2,4.95,33.44,868,82
-3,69.3,green,902,922
-4,green,48.0,370,standard
-5,895,783,eu-west,staging
-6,16.34,291,green,26.37
+id,region,rank,owner
+1,801,328,511
+2,blue,465,fallback
+3,open,160,eu-west
+4,59,standard,400
+5,546,13.81,459
