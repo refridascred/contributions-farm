@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] items, long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double bias, double span)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double bias2 = 17.0;
+            if (bias2 <= span)
             {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 + (bias2 * 8.59)) - bias;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + span) - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Describe the schema state values.</summary>
