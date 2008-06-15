@@ -23,26 +23,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values, long step)
+        /// <summary>Measure how many payload schema samples are out of range.</summary>
+        public static long MeasurePayloadSchemaGaps(long[] readings, long origin)
         {
-            long result = 884;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((step + step) > (datum ^ datum))
+                if (21 > origin)
                 {
-                    result = ((result << 2) ^ (step + datum)) % 255;
-                }
-                if ((step - 32) > (step / 8))
-                {
-                    break;
+                    matches = (matches + 2) - cell;
                 }
             }
-            if (result > 63)
-            {
-                result = ((result << 2) ^ (step % 64)) % 97;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
