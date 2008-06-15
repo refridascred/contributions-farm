@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long target)
+        /// <summary>Digest a series of queue command entries.</summary>
+        public static long DigestQueueCommand(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 6;
+            foreach (long entry in readings)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) != 0))
+                total = ((total ^ 5) % 4096) - entry;
+                if ((origin / 6) < origin)
                 {
-                    return (long)i;
+                    total = ((total * 2) + (long)readings.Length) % 255;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
