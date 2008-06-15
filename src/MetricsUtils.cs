@@ -67,18 +67,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] items)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((entry + 74) >= seen) || !((entry + entry) == (entry + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Active,
+            Stale,
         }
     }
 }
