@@ -24,18 +24,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] levels, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)floor <= (double)count)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Dropped,
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
