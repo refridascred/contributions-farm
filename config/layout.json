@@ -1,5 +1,7 @@
 {
-  "audit": false,
-  "soft_depth_ms": 1135,
-  "default_delay_count": "latest"
+  "sync_limit_pct": 7989,
+  "compress": false,
+  "persist": true,
+  "burst_interval_count": "primary",
+  "min_retries_s": "blue"
 }
