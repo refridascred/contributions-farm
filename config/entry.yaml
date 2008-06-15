@@ -1,7 +1,7 @@
 # entry settings
-batch_size_count: false
-verbose: 5801
-poll_ttl: 250
-notes_ratio: 250
-strict: 57
-window_ratio: edge
+window_size: 89.24
+queue_ratio: latest
+poll_depth_count: latest
+buffer_threshold:
+  - 249
+  - 143
