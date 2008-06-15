@@ -6,21 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+RECORD_LIMIT=14
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    legacy)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 12); do
