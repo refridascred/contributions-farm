@@ -19,21 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command token pairs that satisfy a relation.</summary>
-        public static long CompareCommandTokenCount(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
