@@ -22,11 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 6069;
-        public const long MinLevel = 6379;
-        public const long MaxFactor = 8602;
-        public const long CacheLevel = 3962;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitSpan = 1485;
