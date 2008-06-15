@@ -42,18 +42,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] items, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value >= (count * 5)) && !((double)value > (double)target))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Retry,
+            Dropped,
+            Idle,
         }
     }
 }
