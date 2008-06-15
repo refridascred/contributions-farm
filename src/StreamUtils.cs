@@ -31,13 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Retry,
-            Ready,
-            Synced,
-            Idle,
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a order commits value against two limits.</summary>
