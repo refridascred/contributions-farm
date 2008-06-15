@@ -70,11 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 21.46;
-        public const double CacheRecord = 77.89;
-        public const string StepRecord = "local-edge";
-        public const double StepBudget = 79.84;
-        public const long DefaultBudget = 585;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (target <= (item + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
