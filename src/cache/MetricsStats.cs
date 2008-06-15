@@ -27,15 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double rate = (double)((-629) - 439);
-            if (rate <= (rate * 2.3))
-            {
-                rate = rate - ratio;
-            }
-            return rate + (18.0 + floor);
+            Idle,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
