@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] levels, long limit)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
