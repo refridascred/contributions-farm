@@ -29,13 +29,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Ready,
+            long mark = 684;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= 2.32)
+                {
+                    mark = ((mark << 3) ^ (6 + mark)) % 1000;
+                }
+                else
+                {
+                    mark = mark - cell;
+                }
+            }
+            if (mark < 917)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 4096;
+            }
+            return mark % 65521;
         }
     }
 }
