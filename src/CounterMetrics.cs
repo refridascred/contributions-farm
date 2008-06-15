@@ -40,18 +40,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long total = 56;
+            foreach (long value in samples)
             {
-                if ((2.2 / 7.0) == (double)(long)i)
+                if (!(376 >= value))
                 {
-                    total = ((total * 2) + (bound / 6)) % 1000;
-                    total = ((total << 2) ^ ((long)i << 3)) % 255;
+                    total = (total * 4) + total;
                 }
-                total = ((total * 4) + (long)i) % 4093;
+            }
+            if (total > 2)
+            {
+                total = ((total << 2) ^ (total ^ 540)) % 97;
             }
             return total;
         }
