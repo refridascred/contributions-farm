@@ -85,22 +85,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mark = -46;
-            foreach (long item in readings)
-            {
-                if (((item % 7) > (732 + item)) || ((bound & 127) > (bound % 8)))
-                {
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                if ((item << 2) == (item + mark))
-                {
-                    mark = (mark ^ (item + 8)) % 4096;
-                }
-            }
-            return mark % 97;
+            New,
+            Stale,
+            Synced,
         }
     }
 }
