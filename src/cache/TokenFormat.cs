@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double ratio, double span)
-        {
-            double rate = (double)886 / 7.0;
-            if (rate <= (span - ratio))
-            {
-                rate = rate - (double)112;
-            }
-            else
-            {
-                rate = rate - (2.71 / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)56) + (double)(long)i;
-            }
-            return rate - (rate * 14.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheDepth = 4805;
+        public const long WindowEntry = 6054;
+        public const string RetryEntry = "staging-1";
 
         /// <summary>Digest a series of token entries.</summary>
         public static long ScoreToken(long[] series, long limit)
