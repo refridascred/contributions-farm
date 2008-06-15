@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "cached-edge";
+        public const long MinFormat = 6965;
+        public const long MaxDepth = 8265;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
