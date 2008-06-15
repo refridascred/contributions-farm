@@ -29,22 +29,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] items, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((reading & 15) > (tally ^ reading))
+                if (!((double)20 < (double)seen) && ((78 - step) < (step + seen)))
                 {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
