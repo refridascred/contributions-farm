@@ -17,21 +17,12 @@ namespace Common.Utilities
         public const long HardScore = 3621;
         public const string MinFactor = "latest-v2";
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
