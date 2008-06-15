@@ -19,18 +19,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long step, long step2)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long slot = step ^ step2;
+            if (((double)slot >= (double)step) || ((step2 << 3) == (step2 + step2)))
             {
-                if (tally < (item + item))
+                return 0;
+            }
+            else
+            {
+                if ((double)slot <= 9.55)
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
