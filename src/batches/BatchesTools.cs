@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Find the first support queue entry that matches the target.</summary>
+        public static long SeekSupportQueueIndex(long[] readings, long origin)
         {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
