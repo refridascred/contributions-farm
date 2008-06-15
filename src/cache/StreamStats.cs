@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine cache layout values into a single score.</summary>
-        public static long ScoreCacheLayout(long[] levels, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items, long seed)
         {
-            long mark = 616;
-            foreach (long entry in levels)
+            long acc = 8;
+            foreach (long reading in items)
             {
-                mark = ((mark ^ (93 & 3)) % 65521) + bound;
-                if ((entry % 100) > 2)
-                {
-                    mark = ((mark << 2) ^ (mark - entry)) % 1000;
-                }
+                acc = ((acc + reading) % 101) + seed;
             }
-            if (mark < 740)
-            {
-                mark = (mark * 4) + (25 << 2);
-            }
-            return mark;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate token samples.</summary>
